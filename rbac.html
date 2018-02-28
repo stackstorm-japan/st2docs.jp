@@ -1,0 +1,1578 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="ovwnX0ej2kps4UuJ9NOzNjJcLOQD8JPDLNhe-hMYTMk" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
+  <!-- End Google Tag Manager -->
+  
+  <title>Role Based Access Control &mdash; StackStorm 2.7dev documentation</title>
+  
+
+  <link rel="shortcut icon" href="_static/favicon.ico?v4"/>
+  
+  
+    <link rel="canonical" href="https://docs.stackstorm.com/rbac.html"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="StackStorm 2.7dev documentation" href="index.html"/>
+        <link rel="next" title="Inquiries" href="inquiries.html"/>
+        <link rel="prev" title="Authentication" href="authentication.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKZBMHZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html">
+            <svg class="logo"
+                xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                viewBox="0 0 680 120"
+                xml:space="preserve">
+              <polygon points="116,0 56.8,0 116,48.6"/>
+              <polygon points="0.7,120 64.7,120 0.7,69.9"/>
+              <path d="M450.756 55.793l-8.824-2.206c-4.584-1.161-7.865-2.744-9.85-4.746c-1.982-1.999-2.977-4.727-2.977-8.181 c0-4.549 1.523-8.071 4.568-10.569c3.045-2.496 7.336-3.744 12.875-3.744c5.881 0 10.4 1.5 13.7 4.4 c3.248 2.9 4.9 7.1 5 12.44h7.031c-0.104-7.25-2.385-12.892-6.85-16.929c-4.465-4.034-10.664-6.053-18.596-6.053 c-7.49 0-13.475 1.846-17.955 5.54c-4.48 3.693-6.721 8.603-6.721 14.723c0 5.5 1.5 9.8 4.4 12.9 c2.957 3.1 8.3 5.6 16 7.567l7.184 1.796c7.047 1.8 11.8 3.8 14.1 6.104c2.361 2.3 3.5 5.5 3.5 9.8 c0 4.652-1.686 8.303-5.053 10.954c-3.369 2.649-7.996 3.975-13.879 3.975c-6.701 0-11.9-1.641-15.594-4.924 s-5.574-7.9-5.643-13.851h-6.926v0.512c0 7.9 2.4 13.9 7.3 18.136c4.855 4.2 11.8 6.3 20.8 6.3 c8.035 0 14.371-1.948 19.006-5.848c4.635-3.897 6.951-9.233 6.951-16.004c0-5.883-1.76-10.499-5.283-13.853 C465.598 60.8 459.5 58 450.8 55.8"/>
+              <path d="M494.566 27.527h-6.311v15.648h-7.438v5.13h7.438v39.755c0 4.2 0.7 7.1 1.9 8.6 s3.523 2.4 6.7 2.386c1.129 0 2.328-0.096 3.592-0.281c1.268-0.189 2.666-0.489 4.207-0.899l-0.051-5.027 c-1.744 0.377-3.027 0.625-3.85 0.745c-0.82 0.119-1.555 0.179-2.203 0.179c-1.508 0-2.549-0.375-3.131-1.13 c-0.582-0.751-0.871-2.29-0.871-4.616V48.305h10.105v-5.13h-10.105V27.527z"/>
+              <path d="M536.99 41.79c-7.934 0-14.082 2.505-18.443 7.514c-4.359 5.01-6.541 12.081-6.541 21.2 c0 9.1 2.2 16.1 6.5 21.11c4.361 5 10.5 7.5 18.4 7.465c8.002 0 14.189-2.496 18.57-7.491 c4.377-4.992 6.566-12.02 6.566-21.084c0-9.132-2.199-16.203-6.592-21.213C551.141 44.3 545 41.8 537 41.8 M550.686 87.6 c-3.215 4.001-7.779 6.001-13.695 6.001c-5.848 0-10.389-2.016-13.619-6.052c-3.234-4.035-4.85-9.713-4.85-17.032 c0-7.352 1.615-13.047 4.85-17.083c3.23-4.035 7.771-6.053 13.619-6.053c5.916 0 10.5 2 13.7 6 c3.217 4 4.8 9.7 4.8 17.109S553.902 83.6 550.7 87.6"/>
+              <path d="M586.008 44.508c-2.789 1.812-4.969 4.549-6.541 8.207v-9.541h-6.105v54.531h6.514V67.644 c0-6.395 1.359-11.2 4.078-14.414c2.719-3.215 6.797-4.823 12.234-4.823h0.822V41.79h-0.717 C592.221 41.8 588.8 42.7 586 44.5"/>
+              <path d="M675.166 46.227c-2.926-2.957-7.346-4.437-13.262-4.437c-3.898 0-7.346 0.915-10.338 2.7 s-5.395 4.489-7.207 7.977c-0.891-3.42-2.68-6.062-5.377-7.925c-2.699-1.864-6.08-2.796-10.143-2.796 c-3.791 0-7.162 0.897-10.113 2.693c-2.957 1.795-5.355 4.369-7.199 7.72v-9.029h-5.9v54.532h6.311V64.001 c0-4.925 1.477-8.907 4.428-11.954c2.955-3.042 6.82-4.566 11.6-4.566c3.893 0 6.8 1.1 8.7 3.3 c1.879 2.2 2.8 5.5 2.8 10.054v36.886h6.309V63.54c0-4.821 1.453-8.723 4.361-11.696c2.906-2.976 6.771-4.463 11.592-4.463 c4.07 0 7 1 8.8 2.976c1.775 2 2.7 5.3 2.7 9.85v37.5h6.412V59.692 C679.551 53.7 678.1 49.2 675.2 46.2"/>
+              <path d="M118.944 67.886c-2.638-4.731-7.001-9.521-13.085-14.393L41.482 0.8 c-4.365 0.046-7.895 0.271-10.581 0.677c-2.734 0.466-5.502 1.227-8.287 2.282c-7.151 2.9-12.714 7.208-16.671 12.9 C1.991 22.4 0 29 0 36.76c0 2.8 0.4 5.8 1.2 8.973c0.762 3.2 1.8 6.1 3.2 8.8 c1.728 3.2 4.6 7 8.7 11.351c4.111 4.5 9.7 9.6 16.7 15.438c7.149 6.1 14.6 11.9 22.2 17.6 c4.731 3.4 8.8 6.4 12.3 8.825c3.447 2.4 9.3 6.5 17.5 12.247c3.098-0.096 5.736-0.263 7.912-0.451 c1.932-0.193 3.863-0.546 5.789-1.013c1.36-0.283 3.006-0.828 4.933-1.642c7.011-2.849 12.514-7.222 16.523-13.117 c4.048-5.868 6.093-12.454 6.093-19.776C122.984 78.1 121.6 72.7 118.9 67.9"/>
+              <path d="M182.358 53.177c-7.319-1.88-12.124-3.735-14.416-5.566c-2.292-1.829-3.435-4.181-3.435-7.054 c0-2.838 1.297-5.215 3.896-7.13c2.599-1.915 5.952-2.873 10.056-2.873c4.958 0 8.9 1.2 11.9 3.6 c2.958 2.4 4.6 5.8 4.8 10.056l11.953-0.051c-0.07-7.352-2.559-13.192-7.466-17.519c-4.908-4.327-11.483-6.49-19.725-6.49 c-8.482 0-15.279 1.976-20.391 5.926c-5.112 3.95-7.669 9.073-7.669 15.363c0 5.9 1.7 10.6 5.2 14 c3.489 3.4 9.5 6.3 17.9 8.49c0.754 0.2 1.9 0.4 3.3 0.822c6.839 1.7 11.2 3.4 13.2 5.2 c1.197 1.1 2.2 2.4 2.9 3.924c0.77 1.5 1.2 2.9 1.2 4.079c0 3.044-1.375 5.609-4.128 7.7 c-2.754 2.087-6.285 3.131-10.595 3.131c-5.711 0-10.234-1.351-13.567-4.053c-3.336-2.702-5.174-6.498-5.514-11.389h-12.212 c0.378 8.5 3.2 15 8.4 19.494c5.214 4.5 12.5 6.8 21.9 6.771c8.893 0 15.997-2.163 21.315-6.49 c5.319-4.324 7.977-10.045 7.977-17.16c0-5.882-1.7-10.465-5.104-13.746C200.73 59 193.5 56 182.4 53.2"/>
+              <path d="M233.915 27.117h-11.646v15.236h-7.9v8.721h7.9v34.012c0 5 0.9 8.5 2.8 10.4 c1.899 1.9 5.2 2.9 9.8 2.924c1.366 0 3.726-0.171 7.078-0.513c0.511-0.035 0.905-0.068 1.18-0.103v-9.335l-2.308 0.1 c-0.239 0-0.609 0.018-1.105 0.051c-0.494 0.035-0.895 0.053-1.206 0.053c-1.777 0-2.99-0.333-3.639-1 c-0.651-0.668-0.976-2.01-0.976-4.027V51.074h9.234v-8.721h-9.234V27.117z"/>
+              <path d="M299.373 89.498c-1.267 0-2.147-0.325-2.643-0.977c-0.497-0.648-0.745-2.032-0.745-4.153V56.922 c0-5.404-1.871-9.481-5.617-12.234c-3.744-2.754-9.293-4.13-16.647-4.13c-7.011 0-12.541 1.599-16.594 4.8 c-4.053 3.2-6.081 7.551-6.081 13.058v0.923h11.134v-0.41c0-2.805 0.957-4.959 2.872-6.465c1.916-1.505 4.667-2.257 8.259-2.257 c3.865 0 6.7 0.6 8.6 1.897c1.845 1.3 2.8 3.2 2.8 5.9c0 3.283-3.711 5.404-11.133 6.4 c-0.513 0.069-0.908 0.12-1.18 0.153c-8.893 1.129-15.03 3.104-18.416 5.924c-3.386 2.822-5.079 7.038-5.079 12.6 c0 5.1 1.6 9.1 4.7 12.056c3.164 2.9 7.5 4.4 13.1 4.36c3.626 0 7.027-0.794 10.208-2.386 c3.18-1.591 5.899-3.838 8.158-6.746c0.068 2.8 1 4.9 2.7 6.311c1.726 1.4 4.4 2.1 7.9 2.1 c0.925 0 1.89-0.069 2.899-0.205c1.009-0.139 2.044-0.345 3.104-0.616v-8.567c-0.718 0.068-1.224 0.112-1.514 0.1 C299.876 89.5 299.6 89.5 299.4 89.5 M284.547 76.878c0 3.831-1.436 6.976-4.31 9.4 c-2.873 2.464-6.481 3.694-10.825 3.694c-2.873 0-5.095-0.692-6.668-2.079c-1.574-1.384-2.36-3.341-2.36-5.874 c0-2.256 0.667-4.077 2.001-5.463c1.333-1.384 3.368-2.333 6.105-2.847c0.922-0.171 2.36-0.41 4.31-0.717 c5.369-0.787 9.284-1.814 11.747-3.079V76.878z"/>
+              <path d="M341.311 86.086c-2.174 2-5.021 3.002-8.542 3.002c-4.411 0-7.78-1.634-10.105-4.9s-3.489-8.01-3.489-14.236 c0-6.359 1.174-11.173 3.515-14.439c2.342-3.267 5.805-4.901 10.389-4.901c3.419 0 6.2 1 8.3 2.8 c2.119 1.9 3.3 4.5 3.6 7.774h11.541c-0.34-6.43-2.643-11.483-6.9-15.161c-4.256-3.676-9.891-5.514-16.902-5.514 c-8.036 0-14.337 2.625-18.902 7.874c-4.566 5.25-6.849 12.492-6.849 21.726c0 9 2.2 16.2 6.6 21.4 c4.411 5.3 10.4 7.9 18 7.899c7.355 0 13.246-1.957 17.675-5.872c4.428-3.917 6.916-9.312 7.463-16.186h-11.389 C344.822 81.2 343.5 84.1 341.3 86.1"/>
+              <polygon points="414,42.4 399.7,42.4 377.9,64.9 377.9,22.1 366.4,22.1 366.4,97.7 377.9,97.7 377.9,79.2 385.8,71.2 400.7,97.7 414.4,97.7 394,62.7"/>
+            </svg>
+          </a>
+        
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <p class="caption"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">StackStorm 概要</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#how-it-works">How it Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#what-s-next">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install/index.html">インストールと設定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/overview.html">Reference Deployment Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/deb.html">Ubuntu 14.04 / 16.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/rhel7.html">RHEL 7 / CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/rhel6.html">RHEL 6 / CentOS 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/ansible.html">Ansible Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/bwc.html">Extreme Workflow Composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/config/index.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/upgrades.html">Upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/uninstall.html">Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">クイックスタート</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#explore-st2-with-cli">Explore StackStorm with CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#authenticate">Authenticate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#work-with-actions">Work with Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#define-a-rule">Define a Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#deploy-a-rule">Deploy a Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#deploy-examples">Deploy Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#datastore">Datastore</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">基本機能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#managing-and-running-actions">Managing and Running Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#action-runners">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#writing-custom-actions">Writing Custom Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#built-in-parameters">Built-in Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#overriding-runner-parameters">Overriding Runner Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#environment-variables-available-to-actions">Environment Variables Available to Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#converting-existing-scripts-into-actions">Converting Existing Scripts into Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#writing-custom-python-actions">Writing Custom Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#pre-defined-actions">Pre-defined Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors and Triggers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#sensors">Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#triggers">Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#internal-triggers">Internal Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#creating-a-sensor">Creating a Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#how-sensors-are-run">How Sensors are Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#sensor-service">Sensor Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#common-operations">Common Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#datastore-management-operations">Datastore Management Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#running-your-first-sensor">Running Your First Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#debugging-a-sensor-from-a-pack">Debugging a Sensor From a Pack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#rule-structure">Rule Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#trigger">Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#criteria">Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#critera-comparison">Critera Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#advanced-comparison">Advanced Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#action">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#variable-interpolation">Variable Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#managing-rules">Managing Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#rule-location">Rule Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#testing-rules">Testing Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#timers">Timers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflows.html">Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actionchain.html">ActionChain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mistral.html">Mistral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mistral_yaql.html">Mistral + YAQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mistral_jinja.html">Mistral + Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudslang.html">CloudSlang</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="packs.html">Packs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#what-is-a-pack">What is a Pack?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#managing-packs">Managing Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#discovering-packs">Discovering Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#installing-a-pack">Installing a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#configuring-a-pack">Configuring a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#developing-a-pack">Developing a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhooks.html">Webhooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#sensors-vs-webhooks">Sensors vs Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#request-body">Request Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#registering-a-webhook">Registering a Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#using-a-generic-webhook">Using a Generic Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#listing-registered-webhooks">Listing Registered Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#my-webhook-isn-t-working">My Webhook Isn’t Working!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#when-not-to-use-webhooks">When Not to Use Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datastore.html">Datastore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#storing-and-retrieving-key-value-pairs-via-cli">Storing and Retrieving Key-Value Pairs via CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#loading-key-value-pairs-from-a-file">Loading Key-Value Pairs from a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#scoping-datastore-items">Scoping Datastore Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#setting-a-key-value-pair-ttl">Setting a Key-Value Pair TTL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#storing-and-retrieving-via-python-client">Storing and Retrieving via Python Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#referencing-key-value-pairs-in-rule-definitions">Referencing Key-Value Pairs in Rule Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#securing-secrets-admin-only">Securing Secrets (admin only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#storing-secrets">Storing Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#security-notes">Security notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chatops/index.html">ChatOps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html">What is ChatOps?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#stackstorm-flavored-chatops">StackStorm-flavored ChatOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#adding-new-chatops-commands">Adding New ChatOps Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/aliases.html">Action Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/pack_deploy.html">Pack Deployment</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">応用トピック</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#auth-backends">Auth Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#running-the-service">Running the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#api-keys">API Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Role Based Access Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#system-roles">System Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-it-works">How it Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-rbac">Enabling RBAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-roles-and-assignments">Defining Roles and Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#applying-rbac-definitions">Applying RBAC Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automatically-granting-roles-based-on-ldap-group-membership">Automatically Granting Roles Based on LDAP Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-rbac-example">Using RBAC Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#garbage-collection-for-inquiries">Garbage Collection for Inquiries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">References and Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/sharing_code_sensors_actions.html">Sharing code between Sensors and Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html">CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pack_configs.html">Pack Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/packs.html">Create and Contribute a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pack_management_transition.html">Pack Management Transition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/jinja.html">Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/policies.html">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/runners.html">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/traces.html">Traces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/client_libraries.html">Client Libraries and Language Bindings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ha.html">High Availability Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html">REST API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/monitoring.html">System Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/sensor_partitioning.html">Partitioning Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html">History and Audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/secrets_masking.html">Secrets Masking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting/index.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/self_verification.html">Running Self-Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/basic_chatops_troubleshooting.html">ChatOps Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/rules.html">Rule is not Being Matched</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/sensors.html">Sensor Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/mistral.html">Mistral Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/ssh.html">SSH Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/database.html">Database Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/rest_api_access.html">REST API access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/tuning_action_runner_dispatcher_pool.html">Tuning Action Runner Dispatcher Pool Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/purging_old_data.html">Purging Old Operational Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/private_networks.html">WebUI Access on Private Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/submit_debug_info.html">Submitting Debugging Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/debug_mode.html">Enabling Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/ask_for_support.html">Ask for help!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/webhooks.html">Troubleshooting Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#setting-up-a-development-environment">Setting up a Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#general-contribution-guidelines">General Contribution Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#code-style-guide">Code Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#deprecation-policy">Deprecation Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#general-coding-guidelines">General Coding Guidelines</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#september-12-2017">2.4.1 - September 12, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-23-2017">2.4.0 - August 23, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-28-2017">2.3.2 - July 28, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-07-2017">2.3.1 - July 07, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-19-2017">2.3.0 - June 19, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-3-2017">2.2.1 - April 3, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#february-27-2017">2.2.0 - February 27, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-16-2016">2.1.1 - December 16, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-05-2016">2.1.0 - December 05, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#september-30-2016">2.0.1 - September 30, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-31-2016">2.0.0 - August 31, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-8-2016">1.6.0 - August 8, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-13-2016">1.5.1 - July 13, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-24-2016">1.5.0 - June 24, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-18-2016">1.4.0 - April 18, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#february-12-2016">1.3.2 - February 12, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#january-25-2016">1.3.1 - January 25, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#january-22-2016">1.3.0 - January 22, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-07-2015">1.2.0 - December 07, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#november-13-2015">1.1.1 - November 13, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#october-27-2015">1.1.0 - October 27, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#september-09-2015">0.13.2 - September 09, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-28-2015">0.13.1 - August 28, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-24-2015">0.13.0 - August 24, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-11-2015">0.12.2 - August 11, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-31-2015">0.12.1 - July 31, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-20-2015">0.12.0 - July 20, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-2-2015">0.11.6 - July 2, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-1-2015">0.11.5 - July 1, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-30-2015">0.11.4 - June 30, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-16-2015">0.11.3 - June 16, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-12-2015">0.11.2 - June 12, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-8-2015">0.11.1 - June 8, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-5-2015">0.11.0 - June 5, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-2-may-26-2015">v0.9.2 - May 26, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-1-may-12-2015">v0.9.1 - May 12, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-0-april-29-2015">v0.9.0 - April 29, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-3-march-23-2015">v0.8.3 - March 23, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-2-march-10-2015">v0.8.2 - March 10, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-1-march-10-2015">v0.8.1 - March 10, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-0-march-2-2015">v0.8.0 - March 2, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-7-january-16-2015">v0.7 - January 16, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-6-0-december-8-2014">v0.6.0 - December 8, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-5-1-november-3rd-2014">v0.5.1 - November 3rd, 2014</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-3">StackStorm v2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-2">StackStorm v2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-1">StackStorm v2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-0">StackStorm v2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v1-6">StackStorm v1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v1-5">StackStorm v1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v1-4">StackStorm v1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v1-3">StackStorm v1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v1-2">StackStorm v1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v1-1">StackStorm v1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v-0-11">StackStorm v 0.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v0-9">StackStorm v0.9</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#release-history">Release History</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">StackStorm</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs v2.7dev </a> &raquo;</li>
+        
+      <li>Role Based Access Control</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/rbac.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document">
+            <div id="version-warning" class="admonition warning hide">
+              <p class="first admonition-title">Note</p>
+              <p class="last">
+                The documentation you're currently reading is for version 2.7dev.
+                Click <a href="/">here</a> to view documentation for the latest stable version.
+              </p>
+            </div>
+            
+  <div class="section" id="role-based-access-control">
+<h1>Role Based Access Control<a class="headerlink" href="#role-based-access-control" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Role Based Access Control (RBAC) is only available in Extreme Workflow Composer. For information
+about Extreme Workflow Composer and the differences between StackStorm and Extreme Workflow Composer, please see
+<a class="reference external" href="https://stackstorm.com/product/#enterprise">stackstorm.com/product</a>.</p>
+</div>
+<p>Role Based Access Control (RBAC) allows system administrators to restrict users’ access and limit
+the operations they can perform. For instance, you could give your database operator access only
+to the database-related actions.</p>
+<p>Read through the detailed overview below, or jump straight to a <a class="reference internal" href="#rbac-using-rbac"><span class="std std-ref">usage example</span></a>.</p>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<p>This section describes basic concepts with which you need to familiarize yourself, in order to
+understand and efficiently utilize RBAC.</p>
+<div class="section" id="user">
+<h3>User<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h3>
+<p>A user represents an entity (person/system) which needs to be authenticated and interacts with
+StackStorm through the API.</p>
+<p>User permissions are represented as a union of permission grants which are assigned to all the user
+roles.</p>
+<p>By default when a new StackStorm user is created, this user has no roles assigned to it, meaning it
+doesn’t have access to perform any API operation which is behind the RBAC wall.</p>
+</div>
+<div class="section" id="role">
+<h3>Role<a class="headerlink" href="#role" title="Permalink to this headline">¶</a></h3>
+<p>A role contains a set of permissions (permission grants) which apply to the resources. Permission
+grants are usually grouped together in a role using specific criteria (e.g. by project, location,
+team, responsibility, etc.).</p>
+<p>Roles are assigned to the users. Each user can have multiple roles assigned to it and each role can
+be assigned to multiple users.</p>
+</div>
+</div>
+<div class="section" id="system-roles">
+<h2>System Roles<a class="headerlink" href="#system-roles" title="Permalink to this headline">¶</a></h2>
+<p>System roles are roles which are available by default and can’t be manipulated (modified and/or
+deleted).</p>
+<p>Currently, the following system roles are available:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="13%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Role</th>
+<th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Administrator</strong></td>
+<td><code class="docutils literal"><span class="pre">admin</span></code></td>
+<td>All permissions on all the resources</td>
+</tr>
+<tr class="row-odd"><td><strong>System Administrator</strong></td>
+<td><code class="docutils literal"><span class="pre">system_admin</span></code></td>
+<td>Same as <code class="docutils literal"><span class="pre">admin</span></code>, but this role is assigned to the first user in the system and can’t be revoked</td>
+</tr>
+<tr class="row-even"><td><strong>Observer</strong></td>
+<td><code class="docutils literal"><span class="pre">observer</span></code></td>
+<td><code class="docutils literal"><span class="pre">view</span></code> permission on all the resources</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="permission-grant">
+<h3>Permission Grant<a class="headerlink" href="#permission-grant" title="Permalink to this headline">¶</a></h3>
+<p>Permission grant grants a particular permission (permission type) to a particular resource. For
+example, you could grant an execute/run permission (<code class="docutils literal"><span class="pre">action_execute</span></code>) to an action
+<code class="docutils literal"><span class="pre">core.local</span></code>.</p>
+<p>In general, there are five permission types available for each supported resource type:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">view</span></code> - Ability to view a specific resource or ability to list all the
+resources of a specific type.</li>
+<li><code class="docutils literal"><span class="pre">create</span></code> - Ability to create a new resource.</li>
+<li><code class="docutils literal"><span class="pre">modify</span></code> - Ability to modify (update) an existing resource.</li>
+<li><code class="docutils literal"><span class="pre">delete</span></code> - Ability to delete a specific resource.</li>
+<li><code class="docutils literal"><span class="pre">all</span></code> - Ability to perform all the supported operations on a specific resource. For example,
+if you grant <code class="docutils literal"><span class="pre">action_all</span></code> on a particular action this implies the following permissions:
+<code class="docutils literal"><span class="pre">action_view</span></code>, <code class="docutils literal"><span class="pre">action_create</span></code>, <code class="docutils literal"><span class="pre">action_modify</span></code>, <code class="docutils literal"><span class="pre">action_delete</span></code> and <code class="docutils literal"><span class="pre">action_execute</span></code>.</li>
+</ul>
+<p>In addition to that, there is also a special <code class="docutils literal"><span class="pre">execute</span></code> (<code class="docutils literal"><span class="pre">action_execute</span></code>) permission type
+available for actions. This permission allows users to execute (run) a particular action.</p>
+<p>Keep in mind that in StackStorm a workflow is just an action so if you want someone to be able to
+execute a particular workflow, you simply need to grant them <code class="docutils literal"><span class="pre">action_execute</span></code> permission on that
+workflow.</p>
+<p>As described in the table below, <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">modify</span></code>, <code class="docutils literal"><span class="pre">delete</span></code> and <code class="docutils literal"><span class="pre">execute</span></code> permissions
+also implicitly grant corresponding <code class="docutils literal"><span class="pre">view</span></code> permission. This means that, for example, if you
+grant <code class="docutils literal"><span class="pre">action_execute</span></code> permission on a particular action, the user will also be able to view and
+retrieve details for this particular action.</p>
+</div>
+<div class="section" id="available-permission-types">
+<span id="ref-rbac-available-permission-types"></span><h3>Available Permission Types<a class="headerlink" href="#available-permission-types" title="Permalink to this headline">¶</a></h3>
+<p>The table below contains a list of all the available permission types.</p>
+</div>
+<div class="section" id="pack">
+<h3>Pack<a class="headerlink" href="#pack" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>pack_list</strong></td>
+<td>Ability to list (view all) packs.</td>
+</tr>
+<tr class="row-odd"><td><strong>pack_view</strong></td>
+<td>Ability to view a pack.</td>
+</tr>
+<tr class="row-even"><td><strong>pack_create</strong></td>
+<td>Ability to create a new pack.</td>
+</tr>
+<tr class="row-odd"><td><strong>pack_modify</strong></td>
+<td>Ability to modify (update) an existing pack.</td>
+</tr>
+<tr class="row-even"><td><strong>pack_delete</strong></td>
+<td>Ability to delete an existing pack.</td>
+</tr>
+<tr class="row-odd"><td><strong>pack_install</strong></td>
+<td>Ability to install packs.</td>
+</tr>
+<tr class="row-even"><td><strong>pack_uninstall</strong></td>
+<td>Ability to uninstall packs.</td>
+</tr>
+<tr class="row-odd"><td><strong>pack_register</strong></td>
+<td>Ability to register packs and corresponding resources.</td>
+</tr>
+<tr class="row-even"><td><strong>pack_config</strong></td>
+<td>Ability to configure a pack.</td>
+</tr>
+<tr class="row-odd"><td><strong>pack_search</strong></td>
+<td>Ability to query registry and search packs.</td>
+</tr>
+<tr class="row-even"><td><strong>pack_views_index_health</strong></td>
+<td>Ability to query health of pack registries.</td>
+</tr>
+<tr class="row-odd"><td><strong>pack_all</strong></td>
+<td>Ability to perform all the supported operations on a particular pack.</td>
+</tr>
+<tr class="row-even"><td><strong>sensor_type_view</strong></td>
+<td>Ability to view a sensor</td>
+</tr>
+<tr class="row-odd"><td><strong>sensor_type_modify</strong></td>
+<td>Ability to modify (update) an existing sensor. Also implies “sensor_type_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>sensor_type_all</strong></td>
+<td>Ability to perform all the supported operations on a particular sensor.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_view</strong></td>
+<td>Ability to view an action.</td>
+</tr>
+<tr class="row-even"><td><strong>action_create</strong></td>
+<td>Ability to create a new action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_modify</strong></td>
+<td>Ability to modify (update) an existing action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>action_delete</strong></td>
+<td>Ability to delete an existing action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_execute</strong></td>
+<td>Ability to execute (run) an action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>action_all</strong></td>
+<td>Ability to perform all the supported operations on a particular action.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_view</strong></td>
+<td>Ability to view an action alias.</td>
+</tr>
+<tr class="row-even"><td><strong>action_alias_create</strong></td>
+<td>Ability to create a new action alias. Also implies “action_alias_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_modify</strong></td>
+<td>Ability to modify (update) an existing action alias. Also implies “action_alias_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>action_alias_delete</strong></td>
+<td>Ability to delete an existing action alias. Also implies “action_alias_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_all</strong></td>
+<td>Ability to perform all the supported operations on a particular action alias.</td>
+</tr>
+<tr class="row-even"><td><strong>rule_view</strong></td>
+<td>Ability to view a rule.</td>
+</tr>
+<tr class="row-odd"><td><strong>rule_create</strong></td>
+<td>Ability to create a new rule. Also implies “rule_view” permission</td>
+</tr>
+<tr class="row-even"><td><strong>rule_modify</strong></td>
+<td>Ability to modify (update) an existing rule. Also implies “rule_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>rule_delete</strong></td>
+<td>Ability to delete an existing rule. Also implies “rule_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>rule_all</strong></td>
+<td>Ability to perform all the supported operations on a particular rule.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sensor-type">
+<h3>Sensor Type<a class="headerlink" href="#sensor-type" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>sensor_type_list</strong></td>
+<td>Ability to list (view all) sensors.</td>
+</tr>
+<tr class="row-odd"><td><strong>sensor_type_view</strong></td>
+<td>Ability to view a sensor</td>
+</tr>
+<tr class="row-even"><td><strong>sensor_type_modify</strong></td>
+<td>Ability to modify (update) an existing sensor. Also implies “sensor_type_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>sensor_type_all</strong></td>
+<td>Ability to perform all the supported operations on a particular sensor.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="action">
+<h3>Action<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>action_list</strong></td>
+<td>Ability to list (view all) actions.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_view</strong></td>
+<td>Ability to view an action.</td>
+</tr>
+<tr class="row-even"><td><strong>action_create</strong></td>
+<td>Ability to create a new action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_modify</strong></td>
+<td>Ability to modify (update) an existing action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>action_delete</strong></td>
+<td>Ability to delete an existing action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_execute</strong></td>
+<td>Ability to execute (run) an action. Also implies “action_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>action_all</strong></td>
+<td>Ability to perform all the supported operations on a particular action.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="action-alias">
+<h3>Action Alias<a class="headerlink" href="#action-alias" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>action_alias_list</strong></td>
+<td>Ability to list (view all) action aliases.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_view</strong></td>
+<td>Ability to view an action alias.</td>
+</tr>
+<tr class="row-even"><td><strong>action_alias_create</strong></td>
+<td>Ability to create a new action alias. Also implies “action_alias_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_modify</strong></td>
+<td>Ability to modify (update) an existing action alias. Also implies “action_alias_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>action_alias_match</strong></td>
+<td>Ability to use action alias match API endpoint.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_help</strong></td>
+<td>Ability to use action alias help API endpoint.</td>
+</tr>
+<tr class="row-even"><td><strong>action_alias_delete</strong></td>
+<td>Ability to delete an existing action alias. Also implies “action_alias_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>action_alias_all</strong></td>
+<td>Ability to perform all the supported operations on a particular action alias.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="api-key">
+<h3>Api Key<a class="headerlink" href="#api-key" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>api_key_list</strong></td>
+<td>Ability to list (view all) API keys.</td>
+</tr>
+<tr class="row-odd"><td><strong>api_key_view</strong></td>
+<td>Ability to view an API Key.</td>
+</tr>
+<tr class="row-even"><td><strong>api_key_create</strong></td>
+<td>Ability to create a new API Key.</td>
+</tr>
+<tr class="row-odd"><td><strong>api_key_modify</strong></td>
+<td>Ability to modify (update) an existing API key. Also implies “api_key_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>api_key_delete</strong></td>
+<td>Ability to delete an existing API Keys.</td>
+</tr>
+<tr class="row-odd"><td><strong>api_key_all</strong></td>
+<td>Ability to perform all the supported operations on an API Key.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="key-value-pair">
+<h3>Key Value Pair<a class="headerlink" href="#key-value-pair" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>key_value_pair_view</strong></td>
+<td>Ability to view Key-Value Pairs.</td>
+</tr>
+<tr class="row-odd"><td><strong>key_value_pair_set</strong></td>
+<td>Ability to set a Key-Value Pair.</td>
+</tr>
+<tr class="row-even"><td><strong>key_value_pair_delete</strong></td>
+<td>Ability to delete an existing Key-Value Pair.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rule">
+<h3>Rule<a class="headerlink" href="#rule" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>rule_list</strong></td>
+<td>Ability to list (view all) rules.</td>
+</tr>
+<tr class="row-odd"><td><strong>rule_view</strong></td>
+<td>Ability to view a rule.</td>
+</tr>
+<tr class="row-even"><td><strong>rule_create</strong></td>
+<td>Ability to create a new rule. Also implies “rule_view” permission</td>
+</tr>
+<tr class="row-odd"><td><strong>rule_modify</strong></td>
+<td>Ability to modify (update) an existing rule. Also implies “rule_view” permission.</td>
+</tr>
+<tr class="row-even"><td><strong>rule_delete</strong></td>
+<td>Ability to delete an existing rule. Also implies “rule_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>rule_all</strong></td>
+<td>Ability to perform all the supported operations on a particular rule.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="runner-type">
+<h3>Runner Type<a class="headerlink" href="#runner-type" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>runner_type_list</strong></td>
+<td>Ability to list (view all) runners.</td>
+</tr>
+<tr class="row-odd"><td><strong>runner_type_view</strong></td>
+<td>Ability to view a runner.</td>
+</tr>
+<tr class="row-even"><td><strong>runner_type_modify</strong></td>
+<td>Ability to modify (update) an existing runner. Also implies “runner_type_view” permission.</td>
+</tr>
+<tr class="row-odd"><td><strong>runner_type_all</strong></td>
+<td>Ability to perform all the supported operations on a particular runner.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="execution">
+<h3>Execution<a class="headerlink" href="#execution" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>execution_list</strong></td>
+<td>Ability to list (view all) executions.</td>
+</tr>
+<tr class="row-odd"><td><strong>execution_view</strong></td>
+<td>Ability to view an execution.</td>
+</tr>
+<tr class="row-even"><td><strong>execution_rerun</strong></td>
+<td>Ability to create a new action.</td>
+</tr>
+<tr class="row-odd"><td><strong>execution_stop</strong></td>
+<td>Ability to stop (cancel) a running execution.</td>
+</tr>
+<tr class="row-even"><td><strong>execution_all</strong></td>
+<td>Ability to perform all the supported operations on a particular execution.</td>
+</tr>
+<tr class="row-odd"><td><strong>execution_views_filters_list</strong></td>
+<td>Ability view all the distinct execution filters.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="trigger">
+<h3>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>trigger_list</strong></td>
+<td>Ability to list (view all) triggers.</td>
+</tr>
+<tr class="row-odd"><td><strong>trigger_view</strong></td>
+<td>Ability to view a trigger.</td>
+</tr>
+<tr class="row-even"><td><strong>trigger_all</strong></td>
+<td>Ability to perform all the supported operations on triggers.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="webhook">
+<h3>Webhook<a class="headerlink" href="#webhook" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>webhook_list</strong></td>
+<td>Ability to list (view all) webhooks.</td>
+</tr>
+<tr class="row-odd"><td><strong>webhook_view</strong></td>
+<td>Ability to view a webhook.</td>
+</tr>
+<tr class="row-even"><td><strong>webhook_create</strong></td>
+<td>Ability to create a new webhook.</td>
+</tr>
+<tr class="row-odd"><td><strong>webhook_send</strong></td>
+<td>Ability to send / POST data to an existing webhook.</td>
+</tr>
+<tr class="row-even"><td><strong>webhook_delete</strong></td>
+<td>Ability to delete an existing webhook.</td>
+</tr>
+<tr class="row-odd"><td><strong>webhook_all</strong></td>
+<td>Ability to perform all the supported operations on a particular webhook.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="trace">
+<h3>Trace<a class="headerlink" href="#trace" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>trace_list</strong></td>
+<td>Ability to list (view all) traces.</td>
+</tr>
+<tr class="row-odd"><td><strong>trace_view</strong></td>
+<td>Ability to view a trace.</td>
+</tr>
+<tr class="row-even"><td><strong>trace_all</strong></td>
+<td>Ability to perform all the supported operations on traces.</td>
+</tr>
+</tbody>
+</table>
+<p>This list can also be retrieved using the RBAC meta API (<code class="docutils literal"><span class="pre">GET</span> <span class="pre">/v1.0/rbac/permission_types</span></code>).</p>
+</div>
+<div class="section" id="user-permissions">
+<h3>User Permissions<a class="headerlink" href="#user-permissions" title="Permalink to this headline">¶</a></h3>
+<p>User permissions (also called effective user permission set) are represented as a union of all
+the permission grants which are assigned to the user roles.</p>
+<p>For example, if a user has the following two roles assigned to it:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;role_five&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">execute</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">my_action_1&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">permission_grants</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;action:dummy_pack_1:my_action_1&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_execute&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;role_six&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">execute</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">my_action_2&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">permission_grants</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;action:dummy_pack_1:my_action_2&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_execute&quot;</span>
+</pre></div>
+</div>
+<p>The effective user permission set is:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">action_execute</span></code> on <code class="docutils literal"><span class="pre">action:dummy_pack_1:my_action_1</span></code></li>
+<li><code class="docutils literal"><span class="pre">action_execute</span></code> on <code class="docutils literal"><span class="pre">action:dummy_pack_1:my_action_2</span></code></li>
+</ul>
+<p>RBAC system uses a whitelist approach which means there is no possibility of conflicting and
+contradictory permission grants in different roles (e.g. one role granting a particular
+permission and another role revoking it).</p>
+</div>
+<div class="section" id="resource">
+<h3>Resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h3>
+<p>In the context of RBAC, a resource refers to the resource to which the permission grant applies to.
+Permission grants can be applied to the following resource types:</p>
+<ul class="simple">
+<li>packs</li>
+<li>sensors</li>
+<li>actions</li>
+<li>action aliases</li>
+<li>rules</li>
+<li>executions</li>
+<li>webhooks</li>
+<li>inquiries</li>
+</ul>
+<p>A resource is identified by a <code class="docutils literal"><span class="pre">uid</span></code>, and referenced as such in permission grants. UID is an
+identifier which is unique for each resource in the StackStorm installation. UIDs follow this format:
+<code class="docutils literal"><span class="pre">&lt;resource</span> <span class="pre">type&gt;:&lt;resource</span> <span class="pre">specific</span> <span class="pre">identifier</span> <span class="pre">value&gt;</span></code> (e.g. <code class="docutils literal"><span class="pre">pack:libcloud</span></code>,
+<code class="docutils literal"><span class="pre">action:libcloud:list_vms</span></code>, etc.).</p>
+<p>You can retrieve the UID of a particular resource by listing all the resources of a particular
+type or by retrieving details of a single resource using either API or CLI.</p>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action list
++-------------------------+-------------------------+-----------+-------------------------+-------------------------+
+<span class="p">|</span> uid                     <span class="p">|</span> ref                     <span class="p">|</span> pack      <span class="p">|</span> name                    <span class="p">|</span> description             <span class="p">|</span>
++-------------------------+-------------------------+-----------+-------------------------+-------------------------+
+<span class="p">|</span> action:core:remote      <span class="p">|</span> core.remote             <span class="p">|</span> core      <span class="p">|</span> remote                  <span class="p">|</span> Action to execute       <span class="p">|</span>
+<span class="p">|</span>                         <span class="p">|</span>                         <span class="p">|</span>           <span class="p">|</span>                         <span class="p">|</span> arbitrary linux <span class="nb">command</span> <span class="p">|</span>
+<span class="p">|</span>                         <span class="p">|</span>                         <span class="p">|</span>           <span class="p">|</span>                         <span class="p">|</span> remotely.               <span class="p">|</span>
++-------------------------+-------------------------+-----------+-------------------------+-------------------------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-it-works">
+<h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>User permissions are checked when a user performs an operation using the API. If the user has the
+necessary permissions the API operation proceeds normally, otherwise an access denied error is
+returned and the error is logged in the audit log.</p>
+<div class="section" id="permission-inheritance">
+<h3>Permission Inheritance<a class="headerlink" href="#permission-inheritance" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pack resources</strong></p>
+<p>Pack resources inherit all the permissions from a pack. This means that if you grant
+<code class="docutils literal"><span class="pre">action_execute</span></code> permission to a pack, the user will be able to execute all the actions inside
+that pack. Similarly, if you grant <code class="docutils literal"><span class="pre">rule_create</span></code> permission to a pack, the user will be able to
+create new rules in that pack.</p>
+<p><strong>Executions</strong></p>
+<p>Executions inherit permissions from the action they belong to and from the action’s parent pack. This
+means that if you grant <code class="docutils literal"><span class="pre">action_view</span></code> permission on a particular action, the user will be able to
+view all the executions which belong to that action. Similarly, if you grant <code class="docutils literal"><span class="pre">action_view</span></code> to the
+parent pack which the action execution belongs to, the user will be able to view all the executions
+which belong to the action with that parent pack.</p>
+<p>On top of that, granting <code class="docutils literal"><span class="pre">action_execute</span></code> on a particular pack or action also grants
+<code class="docutils literal"><span class="pre">execution_rerun</span></code> and <code class="docutils literal"><span class="pre">execution_stop</span></code> to all the executions which belong to that action.</p>
+<p><strong>Rule enforcements</strong></p>
+<p>Rule enforcements (models that represent when a rule evaluated actually resulted in an action)
+inherit permissions from the rule they belong to and from the rule’s parent pack. This means, if
+a user has a <code class="docutils literal"><span class="pre">rule_view</span></code> permission on a particular rule, then they also have permissions to
+view the rule enforcement model for the rule. Similarly, if you grant <code class="docutils literal"><span class="pre">rule_view</span></code> to the
+parent pack of the rule, users will be able to see all enforcements of rules belonging to that
+pack.</p>
+<p>Note that rule enforcements are <code class="docutils literal"><span class="pre">operational</span> <span class="pre">models</span></code>. You cannot create/modify/delete them
+via API. So permissions other than <code class="docutils literal"><span class="pre">view</span></code> and <code class="docutils literal"><span class="pre">list</span></code> do not make sense.</p>
+<p><strong>Inquiries</strong></p>
+<p>Inquiries inherit response permissions based on execution permissions of the workflow
+that generated them. This is useful for ensuring that anyone that has rights to execute a
+workflow that generates an Inquiry is also automatically granted permissions to respond to
+that Inquiry.</p>
+<p>Specifically, granting <code class="docutils literal"><span class="pre">action_execute</span></code> on a workflow action, or its parent pack, also grants
+<code class="docutils literal"><span class="pre">inquiry_respond</span></code> permissions for any Inquiries generated from that Workflow.</p>
+<p>For detailed examples, see <a class="reference internal" href="inquiries.html#ref-securing-inquiries"><span class="std std-ref">Securing Inquiries</span></a>.</p>
+</div>
+<div class="section" id="permissions-and-executions-which-are-not-triggered-via-the-api">
+<h3>Permissions and Executions Which Are Not Triggered via the API<a class="headerlink" href="#permissions-and-executions-which-are-not-triggered-via-the-api" title="Permalink to this headline">¶</a></h3>
+<p>Normally when an execution is triggered via the API (POST to <code class="docutils literal"><span class="pre">/actionexecutions/</span></code>), the
+authenticated StackStorm user who triggered the execution is the effective user for RBAC purposes.
+There are some exceptions, described below:</p>
+<p><strong>Rules</strong> - Effective user for executions which are triggered by a rule is the system user
+(by default, <code class="docutils literal"><span class="pre">stanley</span></code>).</p>
+<p><strong>ChatOps</strong> - Effective user for executions which are triggered via ChatOps (POST to
+<code class="docutils literal"><span class="pre">/aliasexecutions/</span></code>) using hubot is the StackStorm user that is configured in hubot
+(<code class="docutils literal"><span class="pre">ST2_AUTH_USERNAME</span></code> - by default that is <code class="docutils literal"><span class="pre">chatops_bot</span></code>).</p>
+</div>
+</div>
+<div class="section" id="enabling-rbac">
+<h2>Enabling RBAC<a class="headerlink" href="#enabling-rbac" title="Permalink to this headline">¶</a></h2>
+<p>If you installed Extreme Workflow Composer using the <a class="reference internal" href="install/bwc.html"><span class="doc">one-line install</span></a>, RBAC will be automatically
+enabled. It will assign the <code class="docutils literal"><span class="pre">admin</span></code> role to <code class="docutils literal"><span class="pre">stanley</span></code> and <code class="docutils literal"><span class="pre">st2admin</span></code>.</p>
+<p>If you installed Extreme Workflow Composer separately, by installing the <code class="docutils literal"><span class="pre">bwc-enterprise</span></code> package on top of StackStorm, you
+will need to manually enable RBAC, and assign <code class="docutils literal"><span class="pre">admin</span></code> privileges to <code class="docutils literal"><span class="pre">stanley</span></code>. It is not
+enabled by default. To enable it, add this section to <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[rbac]</span>
+<span class="na">enable</span> <span class="o">=</span> <span class="s">True</span>
+</pre></div>
+</div>
+<p>Run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">restart-component</span> <span class="pre">st2api</span></code> to apply that change.</p>
+<p>To assign <code class="docutils literal"><span class="pre">admin</span></code> privileges to <code class="docutils literal"><span class="pre">stanley</span></code> and <code class="docutils literal"><span class="pre">st2admin</span></code>, create these two files:</p>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/stanley.yaml</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;stanley&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;admin&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/st2admin.yaml</span></code>:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;st2admin&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;admin&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2-apply-rbac-definitions</span> <span class="pre">--config-file</span> <span class="pre">/etc/st2/st2.conf</span></code> to apply those changes.</p>
+</div>
+<div class="section" id="defining-roles-and-assignments">
+<h2>Defining Roles and Assignments<a class="headerlink" href="#defining-roles-and-assignments" title="Permalink to this headline">¶</a></h2>
+<p>To follow the infrastructure as code approach, roles and user role assignments are defined in YAML
+files which are stored in <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/</span></code>.</p>
+<p>Those definitions are simple YAML files means you can (and should) version control and manage
+them in the same way you version control and manage other source code and infrastructure artifacts.</p>
+<p>Both roles and user role assignments are loaded in lexicographical order based on the filename.
+For example, if you have two role definitions in the files named <code class="docutils literal"><span class="pre">role_b.yaml</span></code> and
+<code class="docutils literal"><span class="pre">role_a.yaml</span></code>, <code class="docutils literal"><span class="pre">role_a.yaml</span></code> will be loaded before <code class="docutils literal"><span class="pre">role_b.yaml</span></code>.</p>
+<div class="section" id="defining-roles-and-permission-grants">
+<h3>Defining Roles and Permission Grants<a class="headerlink" href="#defining-roles-and-permission-grants" title="Permalink to this headline">¶</a></h3>
+<p>Roles and permission grants are defined in YAML files which are stored in
+<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/roles/</span></code>. Each file defines role information and associated permission
+grants for a single role which means that if you want to define <strong>n</strong> roles you will need <strong>n</strong> files.</p>
+<p>Example role definition (<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/roles/role_sample.yaml</span></code>):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;sample&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">contains</span><span class="nv"> </span><span class="s">many</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">serves</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">demonstration</span><span class="nv"> </span><span class="s">purposes&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">permission_grants</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;pack_all&quot; to &quot;dummy_pack_1&quot; pack which means user can perform all the</span>
+            <span class="c1"># operations on this pack.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;pack:dummy_pack_1&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;pack_all&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;action_view&quot; and &quot;rule_view&quot; to &quot;dummy_pack_1&quot; pack which means user</span>
+            <span class="c1"># can view (list) all the actions and rules inside this pack.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;pack:dummy_pack_1&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_view&quot;</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;rule_view&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;rule_create&quot; to &quot;dummy_pack_1&quot; pack which means user can create new</span>
+            <span class="c1"># rules inside this pack.</span>
+            <span class="c1"># Note: To be able to create a rule user also needs to have an &quot;action_execute&quot; permission</span>
+            <span class="c1"># on the action used inside the rule. In case the rule trigger type is a webhook, user also</span>
+            <span class="c1"># needs to have &quot;webhook_create&quot; permission on the corresponding webhook.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;pack:dummy_pack_1&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;rule_create&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;webhook_create&quot; which allows user to create a webhook with a name of</span>
+            <span class="c1"># &quot;my_sample_webhook&quot;.</span>
+            <span class="c1"># Keep in mind that webhooks have no parent resource so the permission grant is</span>
+            <span class="c1"># directly on the webhook you want to allow a user to create.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;webhook:my_sample_webhook&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;webhook_create&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;action_execute&quot; to &quot;dummy_pack_2&quot; which means user can execute (run)</span>
+            <span class="c1"># all the actions inside this pack. Execute permission also grants &quot;execution_re_run&quot;</span>
+            <span class="c1"># and &quot;execution_stop&quot; which means user can also re-run and stop (cancel) all the</span>
+            <span class="c1"># executions which are triggered for the actions which belong to this pack.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;pack:dummy_pack_2&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_execute&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;action_all&quot; to action &quot;my_action_1&quot; inside &quot;dummy_pack_2&quot; which means</span>
+            <span class="c1"># user can perform all the operations (view, modify, execute and delete) on the</span>
+            <span class="c1"># specified action.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;action:dummy_pack_2:my_action_1&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_all&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;action_execute&quot; to action &quot;my_action_2&quot; inside &quot;dummy_pack_2&quot; allowing</span>
+            <span class="c1"># user to execute (run) this particular action.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;action:dummy_pack_2:my_action_2&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_execute&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;rule_view&quot; and &quot;rule_modify&quot; to rule &quot;my_rule_1&quot; inside &quot;dummy_pack_2&quot; allowing</span>
+            <span class="c1"># user to view and modify (but not delete) this particular rule.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;rule:dummy_pack_2:my_rule_1&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;rule_view&quot;</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;rule_modify&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;webhook_send&quot; to a webhook named &quot;st2&quot; (that&#39;s a generic webhook which exists</span>
+            <span class="c1"># by default in every installation) allowing user to POST triggers to this particular webhook.</span>
+            <span class="c1"># Keep in mind that the user needs to have &quot;webhook_create&quot; permissions on a particular webhook</span>
+            <span class="c1"># if you want to allow user to create / register a new webhook via rule.</span>
+            <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;webhook:st2&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;webhook_send&quot;</span>
+        <span class="p p-Indicator">-</span>
+            <span class="c1"># Here we grant &quot;action_list&quot; and &quot;rule_list&quot; allowing user to view / list all the actions and</span>
+            <span class="c1"># rules</span>
+            <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;action_list&quot;</span>
+               <span class="p p-Indicator">-</span> <span class="s">&quot;rule_list&quot;</span>
+</pre></div>
+</div>
+<p>The example above contains a variety of permission grants with corresponding explanations
+(comments).</p>
+</div>
+<div class="section" id="defining-user-role-assignments">
+<h3>Defining User Role Assignments<a class="headerlink" href="#defining-user-role-assignments" title="Permalink to this headline">¶</a></h3>
+<p>User role assignments are defined in YAML files which are located in
+<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/</span></code>. Each file defines assignments for a single user
+which means that if you want to define assignments for <strong>n</strong> users, you will need <strong>n</strong> files.</p>
+<p>Example role definition (<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/user4.yaml</span></code>):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;user4&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+        <span class="p p-Indicator">-</span> <span class="s">&quot;role_one&quot;</span>
+        <span class="p p-Indicator">-</span> <span class="s">&quot;observer&quot;</span>
+</pre></div>
+</div>
+<p>In the example above we assign two roles to the user named <code class="docutils literal"><span class="pre">user4</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">role_one</span></code> (a custom role which needs to be defined as described above) and</li>
+<li><code class="docutils literal"><span class="pre">observer</span></code> (system role).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="applying-rbac-definitions">
+<h2>Applying RBAC Definitions<a class="headerlink" href="#applying-rbac-definitions" title="Permalink to this headline">¶</a></h2>
+<p>As described above, RBAC definitions are defined in YAML files located in the
+<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/</span></code> directory. For those definitions to take effect, you need to apply them
+using the <code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code> script.</p>
+<p>Usually, you will want to run this script every time you modify the RBAC definitions.</p>
+<p>For example:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file<span class="o">=</span>/etc/st2/st2.conf
+
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,439 - INFO - Synchronizing roles...
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,441 - DEBUG - New roles: set<span class="o">([])</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,442 - DEBUG - Updated roles: set<span class="o">([</span><span class="s1">&#39;role_two&#39;</span>, <span class="s1">&#39;role_one&#39;</span>, <span class="s1">&#39;role_three&#39;</span><span class="o">])</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,442 - DEBUG - Removed roles: set<span class="o">([])</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,443 - DEBUG - Deleting <span class="m">3</span> stale roles
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,444 - DEBUG - Deleted <span class="m">3</span> stale roles
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,446 - DEBUG - Deleting <span class="m">5</span> stale permission grants
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,447 - DEBUG - Deleted <span class="m">5</span> stale permission grants
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,448 - DEBUG - Creating <span class="m">3</span> new roles
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,454 - DEBUG - Created <span class="m">3</span> new roles
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,458 - INFO - Synchronizing users role assignments...
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,460 - DEBUG - New assignments <span class="k">for</span> user <span class="s2">&quot;user1&quot;</span>: set<span class="o">([])</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,461 - DEBUG - Updated assignments <span class="k">for</span> user <span class="s2">&quot;user1&quot;</span>: set<span class="o">([</span><span class="s1">&#39;role_two&#39;</span>, <span class="s1">&#39;role_one&#39;</span><span class="o">])</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,461 - DEBUG - Removed assignments <span class="k">for</span> user <span class="s2">&quot;user1&quot;</span>: set<span class="o">([])</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,462 - DEBUG - Removed <span class="m">2</span> assignments <span class="k">for</span> user <span class="s2">&quot;user1&quot;</span>
+<span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,464 - DEBUG - Created <span class="m">2</span> new assignments <span class="k">for</span> user <span class="s2">&quot;user1&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="automatically-granting-roles-based-on-ldap-group-membership">
+<span id="rbac-using-rbac"></span><h2>Automatically Granting Roles Based on LDAP Group Membership<a class="headerlink" href="#automatically-granting-roles-based-on-ldap-group-membership" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This functionality is only available in StackStorm v2.3.0 and above, with the LDAP auth backend
+used for authentication.</p>
+</div>
+<p>In addition to manually assigning roles to the users based on the definitions in the
+<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/</span></code> directory, StackStorm also supports automatically granting roles
+to users upon authentication, based on LDAP groups membership.</p>
+<p>This comes handy in enterprise environments and makes StackStorm user provisioning easier and faster.
+It means administrators don’t need to manually write and manage RBAC role assignment files on disk,
+because roles are automatically granted to the users based on their LDAP group membership and
+mappings files in <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/</span></code> directory.</p>
+<p>To be able to utilize this feature it first needs to be enabled in <code class="docutils literal"><span class="pre">st2.conf</span></code> by setting
+<code class="docutils literal"><span class="pre">rbac.sync_remote_groups</span></code> option to <code class="docutils literal"><span class="pre">True</span></code>.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[rbac]</span>
+<span class="na">sync_remote_groups</span> <span class="o">=</span> <span class="s">True</span>
+</pre></div>
+</div>
+<p>After this feature is enabled, the StackStorm administrator needs to write mapping files that tell StackStorm
+which roles to automatically grant to users, based upon LDAP group membership.</p>
+<p>Mapping files are located in the <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/</span></code> directory and map an LDAP group
+to one or more StackStorm roles.</p>
+<p>Two examples of such mapping files can be found below:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">LDAP group names referenced in the <code class="docutils literal"><span class="pre">group</span></code> attribute are case-sensitive.</p>
+</div>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/stormers.yaml</span></code></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+  <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="s">&quot;CN=stormers,OU=groups,DC=stackstorm,DC=net&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Automatically</span><span class="nv"> </span><span class="s">grant</span><span class="nv"> </span><span class="s">admin</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">stormers</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">members.&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;admin&quot;</span>
+</pre></div>
+</div>
+<p>Each user who is a member of the <code class="docutils literal"><span class="pre">CN=stormers,OU=groups,DC=stackstorm,DC=net</span></code> LDAP group will
+automatically be granted <code class="docutils literal"><span class="pre">admin</span></code> StackStorm role when they successfully authenticate with StackStorm.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/testers.yaml</span></code></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+  <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="s">&quot;CN=testers,OU=groups,DC=stackstorm,DC=net&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Automatically</span><span class="nv"> </span><span class="s">grant</span><span class="nv"> </span><span class="s">observer</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">qa_admin</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">testers</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">members.&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;observer&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;qa_admin&quot;</span>
+</pre></div>
+</div>
+<p>Each user who is a member of the <code class="docutils literal"><span class="pre">CN=testers,OU=groups,DC=stackstorm,DC=net</span></code> LDAP group will
+automatically be granted <code class="docutils literal"><span class="pre">observer</span></code> and <code class="docutils literal"><span class="pre">qa_admin</span></code> StackStorm roles when they successfully
+authenticate with StackStorm.</p>
+</li>
+</ul>
+<p>Once the mapping definitions files are written, the StackStorm administrator needs to run the
+<code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code> tool to store those definitions in the database. This tool also
+needs to be run after any change or removal of mappings files.</p>
+<div class="section" id="how-ldap-group-based-role-assignments-work">
+<h3>How LDAP Group-Based Role Assignments Work<a class="headerlink" href="#how-ldap-group-based-role-assignments-work" title="Permalink to this headline">¶</a></h3>
+<p>Role assignments based on the LDAP group to StackStorm role mappings are synchronized each time a user
+authenticates with the StackStorm auth API and receives a fresh auth token.</p>
+<p>If for some reason you want user roles to be synchronized before the existing auth token expires
+(default TTL is 24 hours), you can simply ask the user to re-authenticate to retrieve a new auth
+token. Alternatively, administrators can manually expire or disable an active auth token which will
+force the user to re-authenticate.</p>
+<p>A similar workflow can be used when removing a user from your system. By default, when a user is
+removed from LDAP they will still be able to use StackStorm if they have a valid auth token, until that
+auth token expires. If you want user access to be revoked as soon as they are removed from LDAP,
+you can manually purge active auth tokens for a particular user from the user database.</p>
+</div>
+</div>
+<div class="section" id="using-rbac-example">
+<h2>Using RBAC Example<a class="headerlink" href="#using-rbac-example" title="Permalink to this headline">¶</a></h2>
+<p><strong>Possible scenarios:</strong></p>
+<ol class="arabic simple">
+<li>A user owns a pack i.e is able to view, create, delete, modify and where applicable execute
+various resources like actions, rules, sensors.</li>
+<li>A user can create rules, execute actions and view a handful of actions.</li>
+<li>A user is capable of viewing actions in a pack but cannot execute any action.</li>
+</ol>
+<p>This example provides a walk-through of scenario 1 i.e configuring a user as a pack owner. The
+steps to be followed are by a StackStorm Administrator, on a system running StackStorm.</p>
+<div class="section" id="user-creation">
+<h3>User Creation<a class="headerlink" href="#user-creation" title="Permalink to this headline">¶</a></h3>
+<p>All user and password management is kept outside of StackStorm. Read the
+<a class="reference internal" href="authentication.html"><span class="doc">authentication</span></a> docs to see how to configure to configure StackStorm with various
+identity providers.</p>
+<p>For sake of this example let us assume that the identity provider is managed by the OS on which
+StackStorm runs.</p>
+<p>On most Linux systems, to create a user and set their password, run this:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ useradd rbac_user1
+$ passwd rbac_user1
+</pre></div>
+</div>
+<p>Once this user is created StackStorm will allow access to this user. (Optional) To validate, try:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 auth rbac_user1 -p <span class="s1">&#39;&lt;RBACU1_PASSWORD&gt;&#39;</span>
+$ <span class="nb">export</span> <span class="nv">ST2_AUTH_TOKEN</span><span class="o">=</span>&lt;USER_SCOPED_AUTH_TOKEN&gt;
+$ st2 action list
+</pre></div>
+</div>
+</div>
+<div class="section" id="role-creation">
+<h3>Role Creation<a class="headerlink" href="#role-creation" title="Permalink to this headline">¶</a></h3>
+<p>A newly created user has no assigned permissions. Each permission must be explicitly assigned to a
+user. To assign permission grants requires creation of a role and then associating this role
+with a user. In this case we are trying to create a pack owner role.</p>
+<p>Lets first make sure there is a pack <code class="docutils literal"><span class="pre">example</span></code> we can use to experiment.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/
+$ mkdir example
+$ mkdir example/actions example/rules example/sensors
+$ touch pack.yaml
+$ touch /opt/stackstorm/configs/example.yaml
+$ touch requirements.txt
+$ cp core/icon.png example/icon.png
+</pre></div>
+</div>
+<p>Now we setup a role. Create <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/roles/example_pack_owner.yaml</span></code> with the
+following content:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;example_pack_owner&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Owner</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">pack</span><span class="nv"> </span><span class="s">example&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">permission_grants</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span>
+        <span class="l l-Scalar l-Scalar-Plain">resource_uid</span><span class="p p-Indicator">:</span> <span class="s">&quot;pack:example&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
+           <span class="p p-Indicator">-</span> <span class="s">&quot;pack_all&quot;</span>
+           <span class="p p-Indicator">-</span> <span class="s">&quot;sensor_type_all&quot;</span>
+           <span class="p p-Indicator">-</span> <span class="s">&quot;rule_all&quot;</span>
+           <span class="p p-Indicator">-</span> <span class="s">&quot;action_all&quot;</span>
+</pre></div>
+</div>
+<p>A <code class="docutils literal"><span class="pre">pack</span> <span class="pre">owner</span></code> role would require the user to be able to view, create, modify and delete all
+contents of a pack. Again, let’s pick the pack <code class="docutils literal"><span class="pre">example</span></code> as the target of ownership.</p>
+<p>See <a class="reference internal" href="#ref-rbac-available-permission-types"><span class="std std-ref">available permission types</span></a> for a full list of
+permission types.</p>
+</div>
+<div class="section" id="role-assignment">
+<h3>Role Assignment<a class="headerlink" href="#role-assignment" title="Permalink to this headline">¶</a></h3>
+<p>Creation of a role is followed by assignment of a role to the user. Create the file
+<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/rbac_user1.yaml</span></code> with the following content:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;rbac_user1&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Grant</span><span class="nv"> </span><span class="s">example_pack_owner</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rbac_user1</span><span class="nv"> </span><span class="s">user.&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;example_pack_owner&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="applying-rbac">
+<h3>Applying RBAC<a class="headerlink" href="#applying-rbac" title="Permalink to this headline">¶</a></h3>
+<p>As a StackStorm administrator, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file<span class="o">=</span>/etc/st2/st2.conf
+</pre></div>
+</div>
+<p>This command will sync the StackStorm RBAC state with the filesystem state. Only after running this
+command does StackStorm know of the latest changes to RBAC permission grants.</p>
+</div>
+<div class="section" id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
+<p>Lets take this for a spin using the StackStorm CLI.</p>
+<ol class="arabic simple">
+<li>Setup Authentication token:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 auth rbac_user1 -p <span class="s1">&#39;&lt;RBACU1_PASSWORD&gt;&#39;</span>
+$ <span class="nb">export</span> <span class="nv">ST2_AUTH_TOKEN</span><span class="o">=</span>&lt;USER_SCOPED_AUTH_TOKEN&gt;
+$ st2 action list
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Validate rule visibility and creation:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/example
+$ cp /usr/share/doc/st2/examples/rules/sample_rule_with_timer.yaml rules/
+$ sed -i <span class="s1">&#39;s/pack: &quot;examples&quot;/pack: &quot;example&quot;/g&#39;</span> rules/sample_rule_with_timer.yaml
+$ st2 rule create rules/sample_rule_with_timer.yaml
+$ st2 rule get example.sample_rule_with_timer.yaml
+$ st2 rule delete example.sample_rule_with_timer.yaml
+
+<span class="c1"># Expect Failure</span>
+$ st2 rule get &lt;EXISTING_RULE_REF&gt;
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Validation action visibility, creation and execute:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/example
+$ cp /usr/share/doc/st2/examples/actions/local.yaml actions/
+$ <span class="nb">echo</span> <span class="s2">&quot;pack: example&quot;</span> &gt;&gt; actions/local.yaml
+$ st2 action create actions/local.yaml
+$ st2 action get example.local-notify
+$ st2 run example.local-notify hostname
+$ st2 action delete example.local-notify
+
+<span class="c1"># Expect failure</span>
+$ st2 action get core.local
+$ st2 run core.local hostname
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="inquiries.html" class="btn btn-neutral float-right" title="Inquiries">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="authentication.html" class="btn btn-neutral" title="Authentication"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2018, StackStorm.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+  <div id="versions"></div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+  <script type="text/javascript" src="/_static/js/versions.js"></script> 
+
+</body>
+</html>

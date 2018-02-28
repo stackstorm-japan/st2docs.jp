@@ -1,0 +1,1154 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="ovwnX0ej2kps4UuJ9NOzNjJcLOQD8JPDLNhe-hMYTMk" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
+  <!-- End Google Tag Manager -->
+  
+  <title>Upgrade Notes &mdash; StackStorm 2.7dev documentation</title>
+  
+
+  <link rel="shortcut icon" href="_static/favicon.ico?v4"/>
+  
+  
+    <link rel="canonical" href="https://docs.stackstorm.com/upgrade_notes.html"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="StackStorm 2.7dev documentation" href="index.html"/>
+        <link rel="next" title="Roadmap" href="roadmap.html"/>
+        <link rel="prev" title="Changelog" href="changelog.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKZBMHZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html">
+            <svg class="logo"
+                xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                viewBox="0 0 680 120"
+                xml:space="preserve">
+              <polygon points="116,0 56.8,0 116,48.6"/>
+              <polygon points="0.7,120 64.7,120 0.7,69.9"/>
+              <path d="M450.756 55.793l-8.824-2.206c-4.584-1.161-7.865-2.744-9.85-4.746c-1.982-1.999-2.977-4.727-2.977-8.181 c0-4.549 1.523-8.071 4.568-10.569c3.045-2.496 7.336-3.744 12.875-3.744c5.881 0 10.4 1.5 13.7 4.4 c3.248 2.9 4.9 7.1 5 12.44h7.031c-0.104-7.25-2.385-12.892-6.85-16.929c-4.465-4.034-10.664-6.053-18.596-6.053 c-7.49 0-13.475 1.846-17.955 5.54c-4.48 3.693-6.721 8.603-6.721 14.723c0 5.5 1.5 9.8 4.4 12.9 c2.957 3.1 8.3 5.6 16 7.567l7.184 1.796c7.047 1.8 11.8 3.8 14.1 6.104c2.361 2.3 3.5 5.5 3.5 9.8 c0 4.652-1.686 8.303-5.053 10.954c-3.369 2.649-7.996 3.975-13.879 3.975c-6.701 0-11.9-1.641-15.594-4.924 s-5.574-7.9-5.643-13.851h-6.926v0.512c0 7.9 2.4 13.9 7.3 18.136c4.855 4.2 11.8 6.3 20.8 6.3 c8.035 0 14.371-1.948 19.006-5.848c4.635-3.897 6.951-9.233 6.951-16.004c0-5.883-1.76-10.499-5.283-13.853 C465.598 60.8 459.5 58 450.8 55.8"/>
+              <path d="M494.566 27.527h-6.311v15.648h-7.438v5.13h7.438v39.755c0 4.2 0.7 7.1 1.9 8.6 s3.523 2.4 6.7 2.386c1.129 0 2.328-0.096 3.592-0.281c1.268-0.189 2.666-0.489 4.207-0.899l-0.051-5.027 c-1.744 0.377-3.027 0.625-3.85 0.745c-0.82 0.119-1.555 0.179-2.203 0.179c-1.508 0-2.549-0.375-3.131-1.13 c-0.582-0.751-0.871-2.29-0.871-4.616V48.305h10.105v-5.13h-10.105V27.527z"/>
+              <path d="M536.99 41.79c-7.934 0-14.082 2.505-18.443 7.514c-4.359 5.01-6.541 12.081-6.541 21.2 c0 9.1 2.2 16.1 6.5 21.11c4.361 5 10.5 7.5 18.4 7.465c8.002 0 14.189-2.496 18.57-7.491 c4.377-4.992 6.566-12.02 6.566-21.084c0-9.132-2.199-16.203-6.592-21.213C551.141 44.3 545 41.8 537 41.8 M550.686 87.6 c-3.215 4.001-7.779 6.001-13.695 6.001c-5.848 0-10.389-2.016-13.619-6.052c-3.234-4.035-4.85-9.713-4.85-17.032 c0-7.352 1.615-13.047 4.85-17.083c3.23-4.035 7.771-6.053 13.619-6.053c5.916 0 10.5 2 13.7 6 c3.217 4 4.8 9.7 4.8 17.109S553.902 83.6 550.7 87.6"/>
+              <path d="M586.008 44.508c-2.789 1.812-4.969 4.549-6.541 8.207v-9.541h-6.105v54.531h6.514V67.644 c0-6.395 1.359-11.2 4.078-14.414c2.719-3.215 6.797-4.823 12.234-4.823h0.822V41.79h-0.717 C592.221 41.8 588.8 42.7 586 44.5"/>
+              <path d="M675.166 46.227c-2.926-2.957-7.346-4.437-13.262-4.437c-3.898 0-7.346 0.915-10.338 2.7 s-5.395 4.489-7.207 7.977c-0.891-3.42-2.68-6.062-5.377-7.925c-2.699-1.864-6.08-2.796-10.143-2.796 c-3.791 0-7.162 0.897-10.113 2.693c-2.957 1.795-5.355 4.369-7.199 7.72v-9.029h-5.9v54.532h6.311V64.001 c0-4.925 1.477-8.907 4.428-11.954c2.955-3.042 6.82-4.566 11.6-4.566c3.893 0 6.8 1.1 8.7 3.3 c1.879 2.2 2.8 5.5 2.8 10.054v36.886h6.309V63.54c0-4.821 1.453-8.723 4.361-11.696c2.906-2.976 6.771-4.463 11.592-4.463 c4.07 0 7 1 8.8 2.976c1.775 2 2.7 5.3 2.7 9.85v37.5h6.412V59.692 C679.551 53.7 678.1 49.2 675.2 46.2"/>
+              <path d="M118.944 67.886c-2.638-4.731-7.001-9.521-13.085-14.393L41.482 0.8 c-4.365 0.046-7.895 0.271-10.581 0.677c-2.734 0.466-5.502 1.227-8.287 2.282c-7.151 2.9-12.714 7.208-16.671 12.9 C1.991 22.4 0 29 0 36.76c0 2.8 0.4 5.8 1.2 8.973c0.762 3.2 1.8 6.1 3.2 8.8 c1.728 3.2 4.6 7 8.7 11.351c4.111 4.5 9.7 9.6 16.7 15.438c7.149 6.1 14.6 11.9 22.2 17.6 c4.731 3.4 8.8 6.4 12.3 8.825c3.447 2.4 9.3 6.5 17.5 12.247c3.098-0.096 5.736-0.263 7.912-0.451 c1.932-0.193 3.863-0.546 5.789-1.013c1.36-0.283 3.006-0.828 4.933-1.642c7.011-2.849 12.514-7.222 16.523-13.117 c4.048-5.868 6.093-12.454 6.093-19.776C122.984 78.1 121.6 72.7 118.9 67.9"/>
+              <path d="M182.358 53.177c-7.319-1.88-12.124-3.735-14.416-5.566c-2.292-1.829-3.435-4.181-3.435-7.054 c0-2.838 1.297-5.215 3.896-7.13c2.599-1.915 5.952-2.873 10.056-2.873c4.958 0 8.9 1.2 11.9 3.6 c2.958 2.4 4.6 5.8 4.8 10.056l11.953-0.051c-0.07-7.352-2.559-13.192-7.466-17.519c-4.908-4.327-11.483-6.49-19.725-6.49 c-8.482 0-15.279 1.976-20.391 5.926c-5.112 3.95-7.669 9.073-7.669 15.363c0 5.9 1.7 10.6 5.2 14 c3.489 3.4 9.5 6.3 17.9 8.49c0.754 0.2 1.9 0.4 3.3 0.822c6.839 1.7 11.2 3.4 13.2 5.2 c1.197 1.1 2.2 2.4 2.9 3.924c0.77 1.5 1.2 2.9 1.2 4.079c0 3.044-1.375 5.609-4.128 7.7 c-2.754 2.087-6.285 3.131-10.595 3.131c-5.711 0-10.234-1.351-13.567-4.053c-3.336-2.702-5.174-6.498-5.514-11.389h-12.212 c0.378 8.5 3.2 15 8.4 19.494c5.214 4.5 12.5 6.8 21.9 6.771c8.893 0 15.997-2.163 21.315-6.49 c5.319-4.324 7.977-10.045 7.977-17.16c0-5.882-1.7-10.465-5.104-13.746C200.73 59 193.5 56 182.4 53.2"/>
+              <path d="M233.915 27.117h-11.646v15.236h-7.9v8.721h7.9v34.012c0 5 0.9 8.5 2.8 10.4 c1.899 1.9 5.2 2.9 9.8 2.924c1.366 0 3.726-0.171 7.078-0.513c0.511-0.035 0.905-0.068 1.18-0.103v-9.335l-2.308 0.1 c-0.239 0-0.609 0.018-1.105 0.051c-0.494 0.035-0.895 0.053-1.206 0.053c-1.777 0-2.99-0.333-3.639-1 c-0.651-0.668-0.976-2.01-0.976-4.027V51.074h9.234v-8.721h-9.234V27.117z"/>
+              <path d="M299.373 89.498c-1.267 0-2.147-0.325-2.643-0.977c-0.497-0.648-0.745-2.032-0.745-4.153V56.922 c0-5.404-1.871-9.481-5.617-12.234c-3.744-2.754-9.293-4.13-16.647-4.13c-7.011 0-12.541 1.599-16.594 4.8 c-4.053 3.2-6.081 7.551-6.081 13.058v0.923h11.134v-0.41c0-2.805 0.957-4.959 2.872-6.465c1.916-1.505 4.667-2.257 8.259-2.257 c3.865 0 6.7 0.6 8.6 1.897c1.845 1.3 2.8 3.2 2.8 5.9c0 3.283-3.711 5.404-11.133 6.4 c-0.513 0.069-0.908 0.12-1.18 0.153c-8.893 1.129-15.03 3.104-18.416 5.924c-3.386 2.822-5.079 7.038-5.079 12.6 c0 5.1 1.6 9.1 4.7 12.056c3.164 2.9 7.5 4.4 13.1 4.36c3.626 0 7.027-0.794 10.208-2.386 c3.18-1.591 5.899-3.838 8.158-6.746c0.068 2.8 1 4.9 2.7 6.311c1.726 1.4 4.4 2.1 7.9 2.1 c0.925 0 1.89-0.069 2.899-0.205c1.009-0.139 2.044-0.345 3.104-0.616v-8.567c-0.718 0.068-1.224 0.112-1.514 0.1 C299.876 89.5 299.6 89.5 299.4 89.5 M284.547 76.878c0 3.831-1.436 6.976-4.31 9.4 c-2.873 2.464-6.481 3.694-10.825 3.694c-2.873 0-5.095-0.692-6.668-2.079c-1.574-1.384-2.36-3.341-2.36-5.874 c0-2.256 0.667-4.077 2.001-5.463c1.333-1.384 3.368-2.333 6.105-2.847c0.922-0.171 2.36-0.41 4.31-0.717 c5.369-0.787 9.284-1.814 11.747-3.079V76.878z"/>
+              <path d="M341.311 86.086c-2.174 2-5.021 3.002-8.542 3.002c-4.411 0-7.78-1.634-10.105-4.9s-3.489-8.01-3.489-14.236 c0-6.359 1.174-11.173 3.515-14.439c2.342-3.267 5.805-4.901 10.389-4.901c3.419 0 6.2 1 8.3 2.8 c2.119 1.9 3.3 4.5 3.6 7.774h11.541c-0.34-6.43-2.643-11.483-6.9-15.161c-4.256-3.676-9.891-5.514-16.902-5.514 c-8.036 0-14.337 2.625-18.902 7.874c-4.566 5.25-6.849 12.492-6.849 21.726c0 9 2.2 16.2 6.6 21.4 c4.411 5.3 10.4 7.9 18 7.899c7.355 0 13.246-1.957 17.675-5.872c4.428-3.917 6.916-9.312 7.463-16.186h-11.389 C344.822 81.2 343.5 84.1 341.3 86.1"/>
+              <polygon points="414,42.4 399.7,42.4 377.9,64.9 377.9,22.1 366.4,22.1 366.4,97.7 377.9,97.7 377.9,79.2 385.8,71.2 400.7,97.7 414.4,97.7 394,62.7"/>
+            </svg>
+          </a>
+        
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <p class="caption"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">StackStorm 概要</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#how-it-works">How it Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#what-s-next">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install/index.html">インストールと設定</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install/overview.html">Reference Deployment Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/deb.html">Ubuntu 14.04 / 16.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/rhel7.html">RHEL 7 / CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/rhel6.html">RHEL 6 / CentOS 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/ansible.html">Ansible Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/bwc.html">Extreme Workflow Composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/config/index.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/upgrades.html">Upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/uninstall.html">Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">クイックスタート</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#explore-st2-with-cli">Explore StackStorm with CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#authenticate">Authenticate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#work-with-actions">Work with Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#define-a-rule">Define a Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#deploy-a-rule">Deploy a Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#deploy-examples">Deploy Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#datastore">Datastore</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">基本機能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#managing-and-running-actions">Managing and Running Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#action-runners">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#writing-custom-actions">Writing Custom Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#built-in-parameters">Built-in Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#overriding-runner-parameters">Overriding Runner Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#environment-variables-available-to-actions">Environment Variables Available to Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#converting-existing-scripts-into-actions">Converting Existing Scripts into Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#writing-custom-python-actions">Writing Custom Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actions.html#pre-defined-actions">Pre-defined Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sensors.html">Sensors and Triggers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#sensors">Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#triggers">Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#internal-triggers">Internal Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#creating-a-sensor">Creating a Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#how-sensors-are-run">How Sensors are Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#sensor-service">Sensor Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#common-operations">Common Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#datastore-management-operations">Datastore Management Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#running-your-first-sensor">Running Your First Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensors.html#debugging-a-sensor-from-a-pack">Debugging a Sensor From a Pack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rules.html">Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#rule-structure">Rule Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#trigger">Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#criteria">Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#critera-comparison">Critera Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#advanced-comparison">Advanced Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#action">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#variable-interpolation">Variable Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#managing-rules">Managing Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#rule-location">Rule Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#testing-rules">Testing Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rules.html#timers">Timers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workflows.html">Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actionchain.html">ActionChain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mistral.html">Mistral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mistral_yaql.html">Mistral + YAQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mistral_jinja.html">Mistral + Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cloudslang.html">CloudSlang</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="packs.html">Packs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#what-is-a-pack">What is a Pack?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#managing-packs">Managing Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#discovering-packs">Discovering Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#installing-a-pack">Installing a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#configuring-a-pack">Configuring a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#developing-a-pack">Developing a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packs.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webhooks.html">Webhooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#sensors-vs-webhooks">Sensors vs Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#request-body">Request Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#registering-a-webhook">Registering a Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#using-a-generic-webhook">Using a Generic Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#listing-registered-webhooks">Listing Registered Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#my-webhook-isn-t-working">My Webhook Isn’t Working!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#when-not-to-use-webhooks">When Not to Use Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datastore.html">Datastore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#storing-and-retrieving-key-value-pairs-via-cli">Storing and Retrieving Key-Value Pairs via CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#loading-key-value-pairs-from-a-file">Loading Key-Value Pairs from a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#scoping-datastore-items">Scoping Datastore Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#setting-a-key-value-pair-ttl">Setting a Key-Value Pair TTL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#storing-and-retrieving-via-python-client">Storing and Retrieving via Python Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#referencing-key-value-pairs-in-rule-definitions">Referencing Key-Value Pairs in Rule Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#securing-secrets-admin-only">Securing Secrets (admin only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#storing-secrets">Storing Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#security-notes">Security notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chatops/index.html">ChatOps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html">What is ChatOps?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#stackstorm-flavored-chatops">StackStorm-flavored ChatOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#adding-new-chatops-commands">Adding New ChatOps Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/chatops.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/aliases.html">Action Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chatops/pack_deploy.html">Pack Deployment</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">応用トピック</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#auth-backends">Auth Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#running-the-service">Running the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#api-keys">API Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rbac.html">Role Based Access Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#system-roles">System Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#how-it-works">How it Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#enabling-rbac">Enabling RBAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#defining-roles-and-assignments">Defining Roles and Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#applying-rbac-definitions">Applying RBAC Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#automatically-granting-roles-based-on-ldap-group-membership">Automatically Granting Roles Based on LDAP Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#using-rbac-example">Using RBAC Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#garbage-collection-for-inquiries">Garbage Collection for Inquiries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">References and Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/sharing_code_sensors_actions.html">Sharing code between Sensors and Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/cli.html">CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pack_configs.html">Pack Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/packs.html">Create and Contribute a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/pack_management_transition.html">Pack Management Transition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/jinja.html">Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/policies.html">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/runners.html">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/traces.html">Traces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/client_libraries.html">Client Libraries and Language Bindings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/ha.html">High Availability Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/api.html">REST API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/monitoring.html">System Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/sensor_partitioning.html">Partitioning Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/history.html">History and Audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/secrets_masking.html">Secrets Masking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting/index.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/self_verification.html">Running Self-Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/basic_chatops_troubleshooting.html">ChatOps Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/rules.html">Rule is not Being Matched</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/sensors.html">Sensor Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/mistral.html">Mistral Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/ssh.html">SSH Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/database.html">Database Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/rest_api_access.html">REST API access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/tuning_action_runner_dispatcher_pool.html">Tuning Action Runner Dispatcher Pool Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/purging_old_data.html">Purging Old Operational Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/private_networks.html">WebUI Access on Private Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/submit_debug_info.html">Submitting Debugging Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/debug_mode.html">Enabling Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/ask_for_support.html">Ask for help!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting/webhooks.html">Troubleshooting Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#setting-up-a-development-environment">Setting up a Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#general-contribution-guidelines">General Contribution Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#code-style-guide">Code Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#deprecation-policy">Deprecation Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/index.html#general-coding-guidelines">General Coding Guidelines</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Release Notes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#september-12-2017">2.4.1 - September 12, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-23-2017">2.4.0 - August 23, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-28-2017">2.3.2 - July 28, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-07-2017">2.3.1 - July 07, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-19-2017">2.3.0 - June 19, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-3-2017">2.2.1 - April 3, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#february-27-2017">2.2.0 - February 27, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-16-2016">2.1.1 - December 16, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-05-2016">2.1.0 - December 05, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#september-30-2016">2.0.1 - September 30, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-31-2016">2.0.0 - August 31, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-8-2016">1.6.0 - August 8, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-13-2016">1.5.1 - July 13, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-24-2016">1.5.0 - June 24, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-18-2016">1.4.0 - April 18, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#february-12-2016">1.3.2 - February 12, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#january-25-2016">1.3.1 - January 25, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#january-22-2016">1.3.0 - January 22, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#december-07-2015">1.2.0 - December 07, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#november-13-2015">1.1.1 - November 13, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#october-27-2015">1.1.0 - October 27, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#september-09-2015">0.13.2 - September 09, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-28-2015">0.13.1 - August 28, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-24-2015">0.13.0 - August 24, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#august-11-2015">0.12.2 - August 11, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-31-2015">0.12.1 - July 31, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-20-2015">0.12.0 - July 20, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-2-2015">0.11.6 - July 2, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#july-1-2015">0.11.5 - July 1, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-30-2015">0.11.4 - June 30, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-16-2015">0.11.3 - June 16, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-12-2015">0.11.2 - June 12, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-8-2015">0.11.1 - June 8, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#june-5-2015">0.11.0 - June 5, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-2-may-26-2015">v0.9.2 - May 26, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-1-may-12-2015">v0.9.1 - May 12, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-9-0-april-29-2015">v0.9.0 - April 29, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-3-march-23-2015">v0.8.3 - March 23, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-2-march-10-2015">v0.8.2 - March 10, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-1-march-10-2015">v0.8.1 - March 10, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-8-0-march-2-2015">v0.8.0 - March 2, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-7-january-16-2015">v0.7 - January 16, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-6-0-december-8-2014">v0.6.0 - December 8, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#v0-5-1-november-3rd-2014">v0.5.1 - November 3rd, 2014</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-6">StackStorm v2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-5">StackStorm v2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-4">StackStorm v2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-3">StackStorm v2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-2">StackStorm v2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-1">StackStorm v2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-0">StackStorm v2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v1-6">StackStorm v1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v1-5">StackStorm v1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v1-4">StackStorm v1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v1-3">StackStorm v1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v1-2">StackStorm v1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v1-1">StackStorm v1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v-0-11">StackStorm v 0.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v0-9">StackStorm v0.9</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#release-history">Release History</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">StackStorm</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs v2.7dev </a> &raquo;</li>
+        
+      <li>Upgrade Notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/upgrade_notes.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document">
+            <div id="version-warning" class="admonition warning hide">
+              <p class="first admonition-title">Note</p>
+              <p class="last">
+                The documentation you're currently reading is for version 2.7dev.
+                Click <a href="/">here</a> to view documentation for the latest stable version.
+              </p>
+            </div>
+            
+  <div class="section" id="upgrade-notes">
+<span id="id1"></span><h1>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="st2-v2-6">
+<h2>StackStorm v2.6<a class="headerlink" href="#st2-v2-6" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">st2actions.runners.pythonrunner.Action</span></code> class path for base Python runner actions has been
+deprecated since StackStorm v1.6.0 and will be fully removed in StackStorm v2.7.0. If you have
+any actions still using this path you are encouraged to update them to use
+<code class="docutils literal"><span class="pre">st2common.runners.base_action.Action</span></code> path.</p>
+<p>Old code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2actions.runners.pythonrunner</span> <span class="kn">import</span> <span class="n">Action</span>
+</pre></div>
+</div>
+<p>New code</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2common.runners.base_action</span> <span class="kn">import</span> <span class="n">Action</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v2-5">
+<h2>StackStorm v2.5<a class="headerlink" href="#st2-v2-5" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/v1/actionalias/match</span></code> API endpoint now correctly returns a dictionary. Previously the
+code incorrectly returned an array with a single item (dictionary) on success. There is no need
+for this API endpoint to return an array since on success there will always only be a single
+item.</p>
+<p>If you have code which utilizes this API endpoint you need to update it to handle success
+response as a dictionary instead of an array with a single item (dictionary).</p>
+<p>Old response on a successful match:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;actionalias&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Execute a command on a remote host via SSH.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="nt">&quot;ack&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;Hold tight while I run command: *{{execution.parameters.cmd}}* on hosts *{{execution.parameters.hosts}}*&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;remote_shell_cmd&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;Ran command *{{execution.parameters.cmd}}* on *{{ execution.result | length }}* hosts.\n\nDetails are as follows:\n{% for host in execution.result -%}\n    Host: *{{host}}*\n    ---&gt; stdout: {{execution.result[host].stdout}}\n    ---&gt; stderr: {{execution.result[host].stderr}}\n{%+ endfor %}\n&quot;</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;formats&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;run {{cmd}} on {{hosts}}&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;action_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;core.remote&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;pack&quot;</span><span class="p">:</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;ref&quot;</span><span class="p">:</span> <span class="s2">&quot;examples.remote_shell_cmd&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;59d2522a0640fd7e919fee7d&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uid&quot;</span><span class="p">:</span> <span class="s2">&quot;action:examples:remote_shell_cmd&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;run {{cmd}} on {{hosts}}&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;representation&quot;</span><span class="p">:</span> <span class="s2">&quot;run {{cmd}} on {{hosts}}&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>New response on a successful match:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;actionalias&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Execute a command on a remote host via SSH.&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{},</span>
+        <span class="nt">&quot;ack&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;Hold tight while I run command: *{{execution.parameters.cmd}}* on hosts *{{execution.parameters.hosts}}*&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;remote_shell_cmd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;Ran command *{{execution.parameters.cmd}}* on *{{ execution.result | length }}* hosts.\n\nDetails are as follows:\n{% for host in execution.result -%}\n    Host: *{{host}}*\n    ---&gt; stdout: {{execution.result[host].stdout}}\n    ---&gt; stderr: {{execution.result[host].stderr}}\n{%+ endfor %}\n&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;formats&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;run {{cmd}} on {{hosts}}&quot;</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;action_ref&quot;</span><span class="p">:</span> <span class="s2">&quot;core.remote&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;pack&quot;</span><span class="p">:</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ref&quot;</span><span class="p">:</span> <span class="s2">&quot;examples.remote_shell_cmd&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;59d2522a0640fd7e919fee7d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;uid&quot;</span><span class="p">:</span> <span class="s2">&quot;action:examples:remote_shell_cmd&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;display&quot;</span><span class="p">:</span> <span class="s2">&quot;run {{cmd}} on {{hosts}}&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;representation&quot;</span><span class="p">:</span> <span class="s2">&quot;run {{cmd}} on {{hosts}}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v2-4">
+<h2>StackStorm v2.4<a class="headerlink" href="#st2-v2-4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">st2kv</span></code> function has been changed so that it no longer attempts to decrypt stored values by
+default. To return decrypted values, this must be explicitly enabled via parameter, e.g.:
+<code class="docutils literal"><span class="pre">st2kv('st2_key_id',</span> <span class="pre">decrypt=true)</span></code>.</li>
+<li>The installation script now installs MongoDB 3.4 by default (previously, 3.2 was installed).
+For information on how to upgrade MongoDB on existing installations, please refer to the official
+MongoDB documentation - <a class="reference external" href="https://docs.mongodb.com/v3.4/release-notes/3.4-upgrade-standalone/">https://docs.mongodb.com/v3.4/release-notes/3.4-upgrade-standalone/</a>,
+<a class="reference external" href="https://docs.mongodb.com/manual/release-notes/3.4-upgrade-replica-set/">https://docs.mongodb.com/manual/release-notes/3.4-upgrade-replica-set/</a>.</li>
+<li>Node.js v6 is now used by ChatOps. Previously v4 was used). See the <a class="reference internal" href="install/upgrades.html"><span class="doc">upgrades documentation</span></a> for how to switch to the Node.js v6 repositories.</li>
+</ul>
+</div>
+<div class="section" id="st2-v2-3">
+<h2>StackStorm v2.3<a class="headerlink" href="#st2-v2-3" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The <code class="docutils literal"><span class="pre">dest_server</span></code> parameter has been removed from the <code class="docutils literal"><span class="pre">linux.scp</span></code> action and replaced with
+the <code class="docutils literal"><span class="pre">destination</span></code> parameter.</p>
+<p>This offers more flexibility. <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">destination</span></code> parameters can now contain a
+local path or a full source/destination which includes the server part (e.g.
+<code class="docutils literal"><span class="pre">server.fqdn:/etc/hosts</span></code>).</p>
+</li>
+<li><p class="first">The API endpoint for searching or showing packs has been updated to return an empty list
+instead of <code class="docutils literal"><span class="pre">None</span></code> when the pack was not found in the index. This is technically a breaking
+change, but a necessary one because returning <code class="docutils literal"><span class="pre">None</span></code> caused the client to throw an exception.</p>
+</li>
+<li><p class="first">Notifier now consumes the <code class="docutils literal"><span class="pre">ActionExecution</span></code> RabbitMQ exchange with queue name
+<code class="docutils literal"><span class="pre">st2.notifiers.execution.work</span></code>. Notifier used to scan the <code class="docutils literal"><span class="pre">LiveAction</span></code> exchange with
+<code class="docutils literal"><span class="pre">st2.notifiers.work</span></code> queue name. When you upgrade from StackStorm versions older than v2.3,
+make sure the <code class="docutils literal"><span class="pre">st2.notifiers.work</span></code> queue size is 0 before upgrading. If you upgrade when
+it’s non-empty, you might miss notifications. Post-upgrade, please delete the <code class="docutils literal"><span class="pre">st2.notifiers.work</span></code>
+queue manually using <code class="docutils literal"><span class="pre">rabbitmqadmin</span> <span class="pre">delete</span> <span class="pre">queue</span> <span class="pre">name=st2.notifiers.work</span></code>. If this is not done, the
+queue will grow indefinitely and RabbitMQ will consume large amounts of disk space.
+See <a class="reference external" href="https://github.com/StackStorm/st2/issues/3622">issue 3622</a> for details.</p>
+</li>
+<li><p class="first">Introduced a backward incompatible change (<a class="reference external" href="https://github.com/StackStorm/st2/pull/3514">PR #3514</a>)
+in the st2client API <code class="docutils literal"><span class="pre">query()</span></code> method. It returns a tuple of <code class="docutils literal"><span class="pre">(result,</span> <span class="pre">total_number_of_items)</span></code>
+instead of <code class="docutils literal"><span class="pre">result</span></code>. This is fixed in v2.3.2. Upgrade to v2.3.2 if you are seeing errors
+similar to those in issue <a class="reference external" href="https://github.com/StackStorm/st2/issues/3606">#3606</a> or if you are
+using the st2client API’s <code class="docutils literal"><span class="pre">query()</span></code> method.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v2-2">
+<h2>StackStorm v2.2<a class="headerlink" href="#st2-v2-2" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Additional validation has been introduced for triggers.</p>
+<ol class="arabic">
+<li><p class="first">Trigger payload is now validated against the trigger <code class="docutils literal"><span class="pre">payload_schema</span></code> schema when
+dispatching a trigger inside the sensor.</p>
+<p>Validation is only performed if the <code class="docutils literal"><span class="pre">system.validate_trigger_payload</span></code> config option is
+enabled and if the trigger object defines a <code class="docutils literal"><span class="pre">payload_schema</span></code> attribute.</p>
+</li>
+<li><p class="first">Trigger parameters are now validated for non-system (user-defined) triggers when creating
+a rule.</p>
+<p>Validation is only performed if the <code class="docutils literal"><span class="pre">system.validate_trigger_parameters</span></code> config option is
+enabled and if the trigger object defines <code class="docutils literal"><span class="pre">parameters_schema</span></code> attribute.</p>
+</li>
+</ol>
+<p>Both of these configuration options are disabled by default with v2.2. In future they will be
+enabled by default.</p>
+</li>
+<li><p class="first">The database schema for Mistral has changed. The <code class="docutils literal"><span class="pre">executions_v2</span></code> table is no longer used. The
+table has been broken down into <code class="docutils literal"><span class="pre">workflow_executions_v2</span></code>, <code class="docutils literal"><span class="pre">task_executions_v2</span></code>, and
+<code class="docutils literal"><span class="pre">action_executions_v2</span></code>. After upgrade, using the Mistral CLI commands such as
+<code class="docutils literal"><span class="pre">mistral</span> <span class="pre">execution-list</span></code> will return an empty table. The records in <code class="docutils literal"><span class="pre">executions_v2</span></code> have not
+been deleted. The commands are reading from the new tables. There is currently no migration
+script to move existing records from <code class="docutils literal"><span class="pre">executions_v2</span></code> into the new tables. To read from
+<code class="docutils literal"><span class="pre">executions_v2</span></code>, either use <code class="docutils literal"><span class="pre">psql</span></code> or install an older version of the python-mistralclient in a
+separate Python virtual environment.</p>
+</li>
+<li><p class="first">If you’re seeing an error <code class="docutils literal"><span class="pre">event_triggers_v2</span> <span class="pre">already</span> <span class="pre">exists</span></code> when running
+<code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code>, this means the mistral services started before the
+<code class="docutils literal"><span class="pre">mistral-db-manage</span></code> commands were run. Refer to this <a class="reference internal" href="install/upgrades.html#mistral-db-recover"><span class="std std-ref">procedure</span></a> to
+recover the system.</p>
+</li>
+<li><p class="first">Jinja notations <code class="docutils literal"><span class="pre">{{user.key}}</span></code> and <code class="docutils literal"><span class="pre">{{system.key}}</span></code> to access datastore items under
+<code class="docutils literal"><span class="pre">user</span></code> and <code class="docutils literal"><span class="pre">system</span></code> scopes are now unsupported. Please use <code class="docutils literal"><span class="pre">{{st2kv.user.key}}</span></code> and
+<code class="docutils literal"><span class="pre">{{st2kv.system.key}}</span></code> notations instead. Also, please update your StackStorm content
+(actions, rules and workflows) to use the new notation.</p>
+</li>
+<li><p class="first">When installing StackStorm using the installer script a random password is generated for MongoDB
+and PostgreSQL. This means you now need to explicitly pass the <code class="docutils literal"><span class="pre">--config-file</span> <span class="pre">/etc/st2/st2.conf</span></code>
+argument to all <code class="docutils literal"><span class="pre">st2</span></code> CLI scripts (e.g. <code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code>) which need access
+to the database (MongoDB). If you don’t do that, “access denied” error will be returned, because
+it will try to use a default password when connecting to the database.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file /etc/st2/st2.conf
+</pre></div>
+</div>
+<p>If you need access to the plain-text version of the password used by StackStorm
+services to talk to MongoDB and PostgreSQL, you can find it in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>
+(<code class="docutils literal"><span class="pre">[database]</span></code> section) <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code> (<code class="docutils literal"><span class="pre">[database]</span></code> section) files.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v2-1">
+<h2>StackStorm v2.1<a class="headerlink" href="#st2-v2-1" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><strong>WARNING:</strong> The following changes may require you to update your custom packs during the upgrade.</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">version</span></code> attribute in <code class="docutils literal"><span class="pre">pack.yaml</span></code> metadata must now contain a valid <code class="docutils literal"><span class="pre">semver</span></code> version
+string (<code class="docutils literal"><span class="pre">&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</span></code>, e.g. <code class="docutils literal"><span class="pre">1.0.1</span></code>). In addition, the <code class="docutils literal"><span class="pre">email</span></code> attribute must
+be a valid email address.</li>
+<li>Pack <code class="docutils literal"><span class="pre">ref</span></code> and action parameter names can now only contain valid word characters (<code class="docutils literal"><span class="pre">a-z</span></code>,
+<code class="docutils literal"><span class="pre">0-9</span></code> and <code class="docutils literal"><span class="pre">_</span></code>). No dashes! <code class="docutils literal"><span class="pre">hpe_icsp</span></code> is ok, but <code class="docutils literal"><span class="pre">hpe-icsp</span></code> is not.</li>
+</ul>
+<p>The <code class="docutils literal"><span class="pre">st2ctl</span></code> and <code class="docutils literal"><span class="pre">st2-register-content</span></code> scripts are now doing additional validation. If you
+happen to have a pack which doesn’t satisfy these new validation criteria, it will fail to load.
+Therefore, to upgrade StackStorm from v2.0.* to 2.1.*, follow these steps:</p>
+<ol class="arabic simple">
+<li>Use <code class="docutils literal"><span class="pre">yum</span></code> or <code class="docutils literal"><span class="pre">apt-get</span></code> to upgrade to the newest version.</li>
+<li>Update community packs to the latest version from
+<a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack&gt;</span></code>.</li>
+<li>Reload the content with <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</li>
+<li>If you have packs that don’t satisfy the rules above, validation fails and the pack load will
+throw errors. Fix the packs to conform to the rules above, and reload the content again.</li>
+</ol>
+<p>In 2.1.0, StackStorm attempts to auto-correct some validation failures and display a warning.
+In a future release this auto-correction will be removed. Please update your packs ASAP.</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://github.com/stackstorm/st2contrib">st2contrib</a> is now deprecated and replaced by
+<a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> . All the packs from
+<a class="reference external" href="https://github.com/stackstorm/st2contrib">st2contrib</a> have been migrated to StackStorm Exchange.
+For more information see <a class="reference internal" href="reference/pack_management_transition.html"><span class="doc">Pack Management Transition</span></a>.</p>
+</li>
+<li><p class="first">Pack “subtree” repositories (repositories containing multiple packs inside the <code class="docutils literal"><span class="pre">packs/</span></code> subdir)
+are no longer supported. The subtree parameter in <code class="docutils literal"><span class="pre">packs.install</span></code> is removed. The new convention is
+one pack per git/GitHub repo. If you happen to use subtrees with your private packs, they will
+have to be split into multiple single-pack repositories in order for <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> to be able
+to install the packs.</p>
+</li>
+<li><p class="first">The <code class="docutils literal"><span class="pre">packs</span></code> pack is deprecated starting from 2.1; in future versions it will be completely
+replaced with the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">&lt;...&gt;</span></code> commands and API endpoints.</p>
+</li>
+<li><p class="first">Pack metadata file (<code class="docutils literal"><span class="pre">pack.yaml</span></code>) can now contain a new <code class="docutils literal"><span class="pre">ref</span></code> attribute, in addition to <code class="docutils literal"><span class="pre">name</span></code>.
+<code class="docutils literal"><span class="pre">ref</span></code> acts as a unique identifier; it offers for a more readable <code class="docutils literal"><span class="pre">name</span></code>. For example, if a
+pack name is <code class="docutils literal"><span class="pre">Travis</span> <span class="pre">CI</span></code>, a repo containing it is stackstorm-travis_ci, and <code class="docutils literal"><span class="pre">ref</span></code> is <code class="docutils literal"><span class="pre">travis_ci</span></code>.
+Previously the pack files would live in <code class="docutils literal"><span class="pre">travis_ci/</span></code> directory and pack directory name served
+as a unique identifier for a pack.</p>
+</li>
+<li><p class="first">Support for <code class="docutils literal"><span class="pre">.gitinfo</span></code> file has been removed and as such the <code class="docutils literal"><span class="pre">packs.info</span></code> action has also been
+removed. All the pack directories at <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code> are now direct git checkouts of the
+corresponding pack repositories from Exchange or your own origin, so this file is not needed anymore.</p>
+</li>
+<li><p class="first">Datastore scopes are now <code class="docutils literal"><span class="pre">st2kv.system</span></code> and <code class="docutils literal"><span class="pre">st2kv.user</span></code> as opposed to <code class="docutils literal"><span class="pre">system</span></code> and <code class="docutils literal"><span class="pre">user</span></code>.
+If you are accessing datastore items in your content, you should now use the Jinja expressions
+<code class="docutils literal"><span class="pre">{{st2kv.system.foo}}</span></code> and <code class="docutils literal"><span class="pre">{{st2kv.user.foo}}</span></code>. The older Jinja expressions <code class="docutils literal"><span class="pre">{{system.foo}}</span></code>
+and <code class="docutils literal"><span class="pre">{{user.foo}}</span></code> are still supported for backward compatibility but will be removed in future
+releases.</p>
+</li>
+<li><p class="first">Runners are now <cite>pluggable</cite>. With this version, we are piloting an ability to register
+runners just like other StackStorm content. You can register runners by simply running
+<code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-runners</span></code>. This feature is in beta. No backward compatibility is
+guaranteed. Please wait for a release note indicating general availability of this feature.</p>
+</li>
+<li><p class="first">Config schemas now also support nested objects. Previously config schema and configuration files
+needed to be fully flat to be able to utilize default values from the config schema and dynamic
+configuration values.</p>
+<p>The config schema file can now contain arbitrary levels of nesting of the attributes and it will
+still work as expected.</p>
+<p>Old approach (flat schema):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+  <span class="l l-Scalar l-Scalar-Plain">api_server_host</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">host.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">api_server_port</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">port.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;integer&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">api_server_token</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">token.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">auth_server_host</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Auth</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">host.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">auth_server_port</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Auth</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">port.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;integer&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>New approach (nested schemas are supported):</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+  <span class="l l-Scalar l-Scalar-Plain">api_settings</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">related</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">options.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;object&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">additionalProperties</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">host.&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">port.&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;integer&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">token</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">token.&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">auth_settings</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Auth</span><span class="nv"> </span><span class="s">API</span><span class="nv"> </span><span class="s">related</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">options.&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;object&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">additionalProperties</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Auth</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">host.&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+      <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Auth</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">port.&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;integer&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v2-0">
+<h2>StackStorm v2.0<a class="headerlink" href="#st2-v2-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> now also registers rules by default. Prior to this release actions, aliases,
+sensors, triggers and configs were registered. Now rules are also registered by default.</li>
+</ul>
+</div>
+<div class="section" id="st2-v1-6">
+<h2>StackStorm v1.6<a class="headerlink" href="#st2-v1-6" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Python runner actions can now return execution status (success, failure) by returning a tuple
+from the Python action class <code class="docutils literal"><span class="pre">run()</span></code> method. The first item in this tuple is a boolean flag
+indicating success or failure and the second one is the result. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1">#</span>
+    <span class="c1"># Code to do something awesome</span>
+    <span class="c1">#</span>
+    <span class="k">if</span> <span class="n">something_awesome_working</span> <span class="o">==</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>  <span class="c1">#  Succeeded is True and the result from action on success</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>  <span class="c1">#  Succeeded is False and the result from action on failure</span>
+</pre></div>
+</div>
+<p>This allows users to also return a result from a failing action. This result can then be used in
+workflows, etc. Previously this was not possible since the only way for action to be considered
+as failed was to throw an exception or exit with a non-zero exit code.</p>
+<p><strong>Note:</strong>  This change is fully backward compatible unless you have an existing action which
+returns a tuple with two items.</p>
+<p>For existing actions which don’t return a status flag, the same rules apply as before - an action
+is considered successful unless it throws an exception or exits with a non-zero exit code.</p>
+<p>If you have an existing action which returns a tuple with two items such as the one shown in the
+example below, you have two options:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p class="first">Update action to return a list instead of a tuple.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update action to also return a status.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v1-5">
+<h2>StackStorm v1.5<a class="headerlink" href="#st2-v1-5" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The previously deprecated Fabric-based remote runner has been removed. This means
+<code class="docutils literal"><span class="pre">ssh_runner.use_paramiko_ssh_runner</span></code> config option is now obsolete.</p>
+</li>
+<li><p class="first">Underscore (<code class="docutils literal"><span class="pre">_</span></code>) prefix has been removed from the <code class="docutils literal"><span class="pre">sensor_service</span></code> and <code class="docutils literal"><span class="pre">config</span></code> variable
+available on the <code class="docutils literal"><span class="pre">Sensor</span></code> and <code class="docutils literal"><span class="pre">PollingSensor</span></code> class. Those variables are now available via
+<code class="docutils literal"><span class="pre">self.sensor_service</span></code> and <code class="docutils literal"><span class="pre">self.config</span></code> respectively.</p>
+<p>For backward compatibility reasons and ease of migration, the old approach will still work, but
+you are encouraged to upgrade your sensors to use the new way of referencing those variables.</p>
+</li>
+<li><p class="first">Support for loading content (sensors, actions and rules) from <code class="docutils literal"><span class="pre">.json</span></code> files has been removed.
+Support for JSON was deprecated a long time ago and now the only supported format is YAML
+files with <code class="docutils literal"><span class="pre">.yaml</span></code> extension).</p>
+<p>If you want to directly save content which you retrieve from the API using CLI on disk, you can
+now use the <code class="docutils literal"><span class="pre">--yaml</span></code> flag with the <code class="docutils literal"><span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">get</span></code> CLI commands (e.g.
+<code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">get</span> <span class="pre">&lt;rule</span> <span class="pre">ref&gt;</span> <span class="pre">--yaml</span> <span class="pre">&gt;</span> <span class="pre">packs/&lt;my</span> <span class="pre">pack&gt;/my_rule.yaml</span></code>).</p>
+</li>
+<li><p class="first">Pack config files located inside the pack directory (<code class="docutils literal"><span class="pre">config.yaml</span></code>) have been deprecated in
+favor of the new pack configuration v2. This new configuration approach offers more flexibility.
+In addition, those new config files are located outside the pack directory, in the
+<code class="docutils literal"><span class="pre">/opt/stackstorm/configs/</span></code> directory. This makes it easier to follow an infrastructure as code
+approach. Updating packs is also easier, as users don’t need to directly manipulate
+pack content anymore.</p>
+<p>For more information about the new pack configuration, please see <a class="reference internal" href="reference/pack_configs.html"><span class="doc">Pack Configuration</span></a>.</p>
+</li>
+<li><p class="first">New <code class="docutils literal"><span class="pre">log</span></code> attribute has been added to the action execution object. This attribute is a list
+and contains all the state (status) transitions for executions (e.g. requested -&gt; scheduled
+-&gt; running -&gt; complete, etc.).</p>
+<p>Keep in mind that this attribute will only be populated for new execution objects (those created
+after the upgrade to v1.5).</p>
+</li>
+<li><p class="first">The datastore data model has changed. We’ve introduced the notion of <code class="docutils literal"><span class="pre">scope</span></code> and
+<code class="docutils literal"><span class="pre">secret</span></code>. See <a class="reference internal" href="datastore.html#datastore-scopes-in-key-value-store"><span class="std std-ref">Scoping items in datastore</span></a> and
+<a class="reference internal" href="datastore.html#datastore-storing-secrets-in-key-value-store"><span class="std std-ref">storing secrets in datastore</span></a> for details.</p>
+<p>A migration tool is provided (<code class="docutils literal"><span class="pre">/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py</span></code>)
+if you are upgrading from older versions.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v1-4">
+<h2>StackStorm v1.4<a class="headerlink" href="#st2-v1-4" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">matchregex</span></code> rule criteria operator has been updated so now the dot character (<code class="docutils literal"><span class="pre">.</span></code>) also
+matches a new line. This makes the existing criteria patterns which use dot character more greedy.
+Previously, it didn’t match new lines so some of the existing <code class="docutils literal"><span class="pre">matchregex</span></code> criteria patterns
+which operate on multi line strings might be affected.</p>
+<p>For example, let’s say we have the following criteria pattern - <code class="docutils literal"><span class="pre">.*stackstorm.*</span></code>. Previously,
+the following string - <code class="docutils literal"><span class="pre">test\nstackstorm\ntest</span></code> would not match, but now it does.</p>
+<p>If you are affected and you want to revert to the old behavior (less greedy matches), you can do
+so by modifying the criteria pattern regular expression so it’s less greedy (e.g. by adding <code class="docutils literal"><span class="pre">^</span></code>
+and/or <code class="docutils literal"><span class="pre">$</span></code> character or similar).</p>
+<p><code class="docutils literal"><span class="pre">matchregex</span></code> is now deprecated in favor of <code class="docutils literal"><span class="pre">regex</span></code> and <code class="docutils literal"><span class="pre">iregex</span></code> operators.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">regex</span></code> and <code class="docutils literal"><span class="pre">iregex</span></code> been added to the rule criteria operators list. These behave like
+<code class="docutils literal"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value)</span></code> and <code class="docutils literal"><span class="pre">re.search('pattern',trigger_value,</span> <span class="pre">re.IGNORECASE)</span></code>
+in Python.  They do not have the DOTALL modifier. To match newline characters, they must be
+explicit in the search pattern.</p>
+</li>
+<li><p class="first">To make working with non-string positional parameters in the local and remote runner script
+actions easier, simple new rules for parameter value serialization have been established.
+Previously all the values were serialized as Python literals which made all the parameters
+with type other than <code class="docutils literal"><span class="pre">string</span></code> very hard to parse and use in the script actions.</p>
+<p>More information about new positional parameter serialization rules can be found in the
+<a class="reference internal" href="actions.html#ref-positional-parameters-serialization"><span class="std std-ref">documentation</span></a>.</p>
+</li>
+<li><p class="first">The list of required and optional configuration arguments for the LDAP authentication backend has
+changed. The LDAP authentication backend supports other login name such as sAMAccountName. This
+requires a separate service account for the LDAP backend to query for the DN related to the login
+name for bind to validate the user password. Also, users must be in one or more groups specified
+in <code class="docutils literal"><span class="pre">group_dns</span></code> to be granted access.</p>
+</li>
+<li><p class="first">Mistral has deprecated the use of task name (i.e. <code class="docutils literal"><span class="pre">$.task1</span></code>) to reference task result. It is
+replaced with a <code class="docutils literal"><span class="pre">task</span></code> function that returns attributes of the task such as id, state, result,
+and additional information (i.e. <code class="docutils literal"><span class="pre">task(task1).result</span></code>).</p>
+</li>
+</ul>
+</div>
+<div class="section" id="st2-v1-3">
+<h2>StackStorm v1.3<a class="headerlink" href="#st2-v1-3" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>New <code class="docutils literal"><span class="pre">abandoned</span></code> action execution status has been introduced. State is applied to action execution
+when an actionrunner currently running some executions quits or is killed via TERM. This is therefore
+effectively a failure state as StackStorm can no longer validate the state of this execution. Being a
+failure state, any code that checks for an action failure should be updated to check for <code class="docutils literal"><span class="pre">abandoned</span></code>
+state in addition to <code class="docutils literal"><span class="pre">failed</span></code> and <code class="docutils literal"><span class="pre">timeout</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="st2-v1-2">
+<h2>StackStorm v1.2<a class="headerlink" href="#st2-v1-2" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Refactor retries in the Mistral action runner to use exponential backoff. Configuration options
+for Mistral have changed. The options <code class="docutils literal"><span class="pre">max_attempts</span></code> and <code class="docutils literal"><span class="pre">retry_wait</span></code> are deprecated. Please
+refer to the configuration section of docs for more details.</p>
+</li>
+<li><p class="first">Change <code class="docutils literal"><span class="pre">headers</span></code> and <code class="docutils literal"><span class="pre">params</span></code> parameters in the <code class="docutils literal"><span class="pre">core.http</span></code> action from <code class="docutils literal"><span class="pre">string</span></code> to
+<code class="docutils literal"><span class="pre">object</span></code>. If you have any code or rules that call this action, you need to update it to
+pass in a new and correct type.</p>
+</li>
+<li><p class="first">Local runner has been updated so all the commands which are executed as a different user and
+result in using <code class="docutils literal"><span class="pre">sudo</span></code> set <code class="docutils literal"><span class="pre">$HOME</span></code> variable to the home directory of the target user.
+Previously, the <code class="docutils literal"><span class="pre">$HOME</span></code> variable reflected the home directory of the user which executed
+<code class="docutils literal"><span class="pre">sudo</span></code> and under which action runner is running.</p>
+<p>Keep in mind that this condition is only met if action runner is running as root and/or if
+action runner is running a system user (stanley) and a different user is requested when running
+a command using <code class="docutils literal"><span class="pre">user</span></code> parameter.</p>
+</li>
+<li><p class="first">Support of default values is added to the API model. As a result, input parameters defined in
+the action metadata that is of type <code class="docutils literal"><span class="pre">string</span></code> no longer supports None or null.</p>
+</li>
+<li><p class="first">New <code class="docutils literal"><span class="pre">timeout</span></code> action execution status has been introduced. This status is a special type of
+a failure and implies an action timeout.</p>
+</li>
+</ul>
+<blockquote>
+<div><p>All the existing runners (local, remote, python, http, action chain) have been updated to utilize
+this new status when applicable. Previously, if an action timed out, status was set to <code class="docutils literal"><span class="pre">failed</span></code>
+and the timeout could only be inferred from the error message in the result object.</p>
+<p>If you have code which checks for an action failure you need to update it to also check for
+<code class="docutils literal"><span class="pre">timeout</span></code> in addition to <code class="docutils literal"><span class="pre">failed</span></code> status.</p>
+</div></blockquote>
+<div class="section" id="upgrading-from-1-1">
+<h3>Upgrading from 1.1<a class="headerlink" href="#upgrading-from-1-1" title="Permalink to this headline">¶</a></h3>
+<p>To upgrade a pre-1.2.0 StackStorm instance provisioned with the <a class="reference internal" href="install/all_in_one.html"><span class="doc">All-in-one Installer</span></a>, you will
+need to perform the following steps:</p>
+<ol class="arabic simple">
+<li>Back up <code class="docutils literal"><span class="pre">/opt/puppet/hieradata/answers.json</span></code>.</li>
+<li>Update (or insert) the following lines in <code class="docutils literal"><span class="pre">/opt/puppet/hieradata/answers.yaml</span></code>:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-puppet"><div class="highlight"><pre><span></span><span class="na">st2</span><span class="p">::</span><span class="na">version</span><span class="p">:</span> <span class="mf">1.2.0</span>
+<span class="na">st2</span><span class="p">::</span><span class="na">revision</span><span class="p">:</span> <span class="mi">8</span>
+<span class="na">st2</span><span class="p">::</span><span class="na">mistral_git_branch</span><span class="p">:</span> <span class="na">st2</span><span class="o">-</span><span class="mf">1.2.0</span>
+<span class="na">hubot</span><span class="p">::</span><span class="na">docker</span><span class="p">:</span> <span class="k">true</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal"><span class="pre">answers.yaml</span></code> does not exist, create it. If you changed any install parameters manually
+(e.g. password, ChatOps token, SSH user), put these values into <code class="docutils literal"><span class="pre">answers.yaml</span></code> as well,
+otherwise they’ll be overwritten.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>If you’re running ChatOps, stop the Hubot service with <code class="docutils literal"><span class="pre">service</span> <span class="pre">hubot</span> <span class="pre">stop</span></code>.</li>
+<li>Remove <code class="docutils literal"><span class="pre">/etc/facter/facts.d/st2web_bootstrapped.txt</span></code> and execute <code class="docutils literal"><span class="pre">update-system</span></code>:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm /etc/facter/facts.d/st2web_bootstrapped.txt
+sudo update-system
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>After the update is done, restart StackStorm and hubot:</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl restart
+sudo service docker-hubot restart
+</pre></div>
+</div>
+</div></blockquote>
+<p>To verify the upgrade, please follow the link to run the <a class="reference internal" href="troubleshooting/self_verification.html"><span class="doc">self-verification script</span></a>.</p>
+</div>
+</div>
+<div class="section" id="st2-v1-1">
+<h2>StackStorm v1.1<a class="headerlink" href="#st2-v1-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="migrating-to-v1">
+<h3>Migrating to v1<a class="headerlink" href="#migrating-to-v1" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">st2_deploy</span> <span class="pre">scripted</span> <span class="pre">installer</span></code> will upgrade v0.13 to v1.1. However we encourage you to switch
+to <a class="reference internal" href="install/all_in_one.html"><span class="doc">All-in-one Installer</span></a>. To migrate to new All-in-one deployment from existing pre-v1.1
+installations:</p>
+<ol class="arabic simple">
+<li>Install StackStorm on a new clean box with <a class="reference internal" href="install/all_in_one.html"><span class="doc">All-in-one Installer</span></a>.</li>
+<li>Copy the content from the previous installation to <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>
+and reload it with <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</li>
+<li>Adjust the content according to upgrade notes below. Test and ensure your automations work.</li>
+<li>Save the audit log files from <code class="docutils literal"><span class="pre">/var/log/st2/*.audit.log</span></code> for future reference.
+We do not migrate execution history to the new installation, but all the execution data is
+kept in these structured logs for audit purpose.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don’t run the All-in-one installer over an existing StackStorm deployment.</p>
+</div>
+</div>
+<div class="section" id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Triggers now have a <code class="docutils literal"><span class="pre">ref_count</span></code> property which must be included in Trigger objects
+created in previous versions of StackStorm. A migration script is provided at
+<code class="docutils literal"><span class="pre">${dist_packages}/st2common/bin/migrate_triggers_to_include_ref_count.py</span></code>.
+The migration script is run as part of <code class="docutils literal"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &gt;= 0.13
+to v1.1.</p>
+</li>
+<li><p class="first">Messaging queues are now exclusive and in some cases renamed from previous versions. To
+remove old queues run the migration script
+<code class="docutils literal"><span class="pre">${dist_packages}/st2common/bin/migrate_messaging_setup.py</span></code> after installation. The migration
+script is run as part of <code class="docutils literal"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &gt;= 0.13 to v1.1.</p>
+</li>
+<li><p class="first">Mistral is updated to YAQL v1.0. Earlier versions of YAQL are deprecated. Expect some minor
+syntax changes to YAQL expressions.</p>
+</li>
+<li><p class="first">Mistral has implemented new YAQL function for referencing environment variables in the data
+context. The <code class="docutils literal"><span class="pre">env()</span></code> function replaces <code class="docutils literal"><span class="pre">$.__env</span></code> when referencing the environment variables.
+For example, <code class="docutils literal"><span class="pre">$.__env.st2_execution_id</span></code> becomes <code class="docutils literal"><span class="pre">env().st2_execution_id</span></code>.</p>
+<p><strong>WARNING</strong>: Referencing <code class="docutils literal"><span class="pre">$.__env</span></code> will lead to YAQL evaluation errors! Please update your workflows
+accordingly.</p>
+</li>
+<li><p class="first">Mistral has implemented new YAQL function for referencing task result. Given <code class="docutils literal"><span class="pre">task1</span></code>,
+the function call <code class="docutils literal"><span class="pre">task(task1).result</span></code>, replaces <code class="docutils literal"><span class="pre">$.task1</span></code> when referencing the result of
+<code class="docutils literal"><span class="pre">task1</span></code>. The old reference style will be fully deprecated in the next major release of Mistral
+(the OpenStack Mitaka release cycle).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="st2-v-0-11">
+<h2>StackStorm v 0.11<a class="headerlink" href="#st2-v-0-11" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Rules now have to be part of a pack. If you don’t specify a pack, the pack name is assumed to be
+<code class="docutils literal"><span class="pre">default</span></code>. A migration script is installed at
+<code class="docutils literal"><span class="pre">${dist_packages}/st2common/bin/migrate_rules_to_include_pack.py</span></code>. This migration script
+is run as part of <code class="docutils literal"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &lt; 0.9 to 0.11.</li>
+</ul>
+</div>
+<div class="section" id="st2-v0-9">
+<h2>StackStorm v0.9<a class="headerlink" href="#st2-v0-9" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Process names for all StackStorm services now start with <code class="docutils literal"><span class="pre">st2</span></code>. <code class="docutils literal"><span class="pre">sensor_container</span></code> now runs as
+<code class="docutils literal"><span class="pre">st2sensorcontainer</span></code>, <code class="docutils literal"><span class="pre">rules_engine</span></code> runs as <code class="docutils literal"><span class="pre">st2rulesengine</span></code>, <code class="docutils literal"><span class="pre">actionrunner</span></code> now runs as
+<code class="docutils literal"><span class="pre">st2actionrunner</span></code>. <code class="docutils literal"><span class="pre">st2ctl</span></code> has been updated to handle the name change seamlessly. If you
+have tools that rely on the old process names, upgrade them to use the new names.</p>
+</li>
+<li><p class="first">All StackStorm tools now use the <code class="docutils literal"><span class="pre">st2</span></code> prefix as well. <code class="docutils literal"><span class="pre">rule_tester</span></code> is now <code class="docutils literal"><span class="pre">st2-rule-tester</span></code>,
+registercontent is now <code class="docutils literal"><span class="pre">st2-register-content</span></code>.</p>
+</li>
+<li><p class="first">Authentication is now enabled by default for production (package based) deployments. For
+information on how to configure this, see <a class="reference internal" href="authentication.html"><span class="doc">Authentication</span></a>.</p>
+</li>
+<li><p class="first">For consistency reasons, the runners have been renamed:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">run-local</span></code> -&gt; <code class="docutils literal"><span class="pre">local-shell-cmd</span></code></li>
+<li><code class="docutils literal"><span class="pre">run-local-script</span></code> -&gt; <code class="docutils literal"><span class="pre">local-shell-script</span></code></li>
+<li><code class="docutils literal"><span class="pre">run-remote</span></code> -&gt; <code class="docutils literal"><span class="pre">remote-shell-cmd</span></code></li>
+<li><code class="docutils literal"><span class="pre">run-remote-script</span></code> -&gt; <code class="docutils literal"><span class="pre">remote-shell-script</span></code></li>
+<li><code class="docutils literal"><span class="pre">run-python</span></code> -&gt; <code class="docutils literal"><span class="pre">python-script</span></code></li>
+<li><code class="docutils literal"><span class="pre">run-http</span></code> -&gt; <code class="docutils literal"><span class="pre">http-request</span></code></li>
+</ul>
+<p>Note: For backward compatibility reasons, those runners are still available and can be referenced
+through their old names, but you are encouraged to update your actions to use the new names.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roadmap.html" class="btn btn-neutral float-right" title="Roadmap">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="changelog.html" class="btn btn-neutral" title="Changelog"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2018, StackStorm.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+  <div id="versions"></div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.7dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+  <script type="text/javascript" src="/_static/js/versions.js"></script> 
+
+</body>
+</html>

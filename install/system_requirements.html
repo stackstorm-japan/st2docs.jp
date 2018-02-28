@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="ovwnX0ej2kps4UuJ9NOzNjJcLOQD8JPDLNhe-hMYTMk" />
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
+  <!-- End Google Tag Manager -->
+  
+  <title>System Requirements &mdash; StackStorm 2.7dev documentation</title>
+  
+
+  <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
+  
+  
+    <link rel="canonical" href="https://docs.stackstorm.com/install/system_requirements.html"/>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="StackStorm 2.7dev documentation" href="../index.html"/>
+        <link rel="up" title="Installation" href="index.html"/>
+        <link rel="next" title="Ubuntu Trusty/Xenial" href="deb.html"/>
+        <link rel="prev" title="Overview: Single-box Reference Deployment" href="overview.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKZBMHZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="../index.html">
+            <svg class="logo"
+                xmlns="http://www.w3.org/2000/svg"xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                viewBox="0 0 680 120"
+                xml:space="preserve">
+              <polygon points="116,0 56.8,0 116,48.6"/>
+              <polygon points="0.7,120 64.7,120 0.7,69.9"/>
+              <path d="M450.756 55.793l-8.824-2.206c-4.584-1.161-7.865-2.744-9.85-4.746c-1.982-1.999-2.977-4.727-2.977-8.181 c0-4.549 1.523-8.071 4.568-10.569c3.045-2.496 7.336-3.744 12.875-3.744c5.881 0 10.4 1.5 13.7 4.4 c3.248 2.9 4.9 7.1 5 12.44h7.031c-0.104-7.25-2.385-12.892-6.85-16.929c-4.465-4.034-10.664-6.053-18.596-6.053 c-7.49 0-13.475 1.846-17.955 5.54c-4.48 3.693-6.721 8.603-6.721 14.723c0 5.5 1.5 9.8 4.4 12.9 c2.957 3.1 8.3 5.6 16 7.567l7.184 1.796c7.047 1.8 11.8 3.8 14.1 6.104c2.361 2.3 3.5 5.5 3.5 9.8 c0 4.652-1.686 8.303-5.053 10.954c-3.369 2.649-7.996 3.975-13.879 3.975c-6.701 0-11.9-1.641-15.594-4.924 s-5.574-7.9-5.643-13.851h-6.926v0.512c0 7.9 2.4 13.9 7.3 18.136c4.855 4.2 11.8 6.3 20.8 6.3 c8.035 0 14.371-1.948 19.006-5.848c4.635-3.897 6.951-9.233 6.951-16.004c0-5.883-1.76-10.499-5.283-13.853 C465.598 60.8 459.5 58 450.8 55.8"/>
+              <path d="M494.566 27.527h-6.311v15.648h-7.438v5.13h7.438v39.755c0 4.2 0.7 7.1 1.9 8.6 s3.523 2.4 6.7 2.386c1.129 0 2.328-0.096 3.592-0.281c1.268-0.189 2.666-0.489 4.207-0.899l-0.051-5.027 c-1.744 0.377-3.027 0.625-3.85 0.745c-0.82 0.119-1.555 0.179-2.203 0.179c-1.508 0-2.549-0.375-3.131-1.13 c-0.582-0.751-0.871-2.29-0.871-4.616V48.305h10.105v-5.13h-10.105V27.527z"/>
+              <path d="M536.99 41.79c-7.934 0-14.082 2.505-18.443 7.514c-4.359 5.01-6.541 12.081-6.541 21.2 c0 9.1 2.2 16.1 6.5 21.11c4.361 5 10.5 7.5 18.4 7.465c8.002 0 14.189-2.496 18.57-7.491 c4.377-4.992 6.566-12.02 6.566-21.084c0-9.132-2.199-16.203-6.592-21.213C551.141 44.3 545 41.8 537 41.8 M550.686 87.6 c-3.215 4.001-7.779 6.001-13.695 6.001c-5.848 0-10.389-2.016-13.619-6.052c-3.234-4.035-4.85-9.713-4.85-17.032 c0-7.352 1.615-13.047 4.85-17.083c3.23-4.035 7.771-6.053 13.619-6.053c5.916 0 10.5 2 13.7 6 c3.217 4 4.8 9.7 4.8 17.109S553.902 83.6 550.7 87.6"/>
+              <path d="M586.008 44.508c-2.789 1.812-4.969 4.549-6.541 8.207v-9.541h-6.105v54.531h6.514V67.644 c0-6.395 1.359-11.2 4.078-14.414c2.719-3.215 6.797-4.823 12.234-4.823h0.822V41.79h-0.717 C592.221 41.8 588.8 42.7 586 44.5"/>
+              <path d="M675.166 46.227c-2.926-2.957-7.346-4.437-13.262-4.437c-3.898 0-7.346 0.915-10.338 2.7 s-5.395 4.489-7.207 7.977c-0.891-3.42-2.68-6.062-5.377-7.925c-2.699-1.864-6.08-2.796-10.143-2.796 c-3.791 0-7.162 0.897-10.113 2.693c-2.957 1.795-5.355 4.369-7.199 7.72v-9.029h-5.9v54.532h6.311V64.001 c0-4.925 1.477-8.907 4.428-11.954c2.955-3.042 6.82-4.566 11.6-4.566c3.893 0 6.8 1.1 8.7 3.3 c1.879 2.2 2.8 5.5 2.8 10.054v36.886h6.309V63.54c0-4.821 1.453-8.723 4.361-11.696c2.906-2.976 6.771-4.463 11.592-4.463 c4.07 0 7 1 8.8 2.976c1.775 2 2.7 5.3 2.7 9.85v37.5h6.412V59.692 C679.551 53.7 678.1 49.2 675.2 46.2"/>
+              <path d="M118.944 67.886c-2.638-4.731-7.001-9.521-13.085-14.393L41.482 0.8 c-4.365 0.046-7.895 0.271-10.581 0.677c-2.734 0.466-5.502 1.227-8.287 2.282c-7.151 2.9-12.714 7.208-16.671 12.9 C1.991 22.4 0 29 0 36.76c0 2.8 0.4 5.8 1.2 8.973c0.762 3.2 1.8 6.1 3.2 8.8 c1.728 3.2 4.6 7 8.7 11.351c4.111 4.5 9.7 9.6 16.7 15.438c7.149 6.1 14.6 11.9 22.2 17.6 c4.731 3.4 8.8 6.4 12.3 8.825c3.447 2.4 9.3 6.5 17.5 12.247c3.098-0.096 5.736-0.263 7.912-0.451 c1.932-0.193 3.863-0.546 5.789-1.013c1.36-0.283 3.006-0.828 4.933-1.642c7.011-2.849 12.514-7.222 16.523-13.117 c4.048-5.868 6.093-12.454 6.093-19.776C122.984 78.1 121.6 72.7 118.9 67.9"/>
+              <path d="M182.358 53.177c-7.319-1.88-12.124-3.735-14.416-5.566c-2.292-1.829-3.435-4.181-3.435-7.054 c0-2.838 1.297-5.215 3.896-7.13c2.599-1.915 5.952-2.873 10.056-2.873c4.958 0 8.9 1.2 11.9 3.6 c2.958 2.4 4.6 5.8 4.8 10.056l11.953-0.051c-0.07-7.352-2.559-13.192-7.466-17.519c-4.908-4.327-11.483-6.49-19.725-6.49 c-8.482 0-15.279 1.976-20.391 5.926c-5.112 3.95-7.669 9.073-7.669 15.363c0 5.9 1.7 10.6 5.2 14 c3.489 3.4 9.5 6.3 17.9 8.49c0.754 0.2 1.9 0.4 3.3 0.822c6.839 1.7 11.2 3.4 13.2 5.2 c1.197 1.1 2.2 2.4 2.9 3.924c0.77 1.5 1.2 2.9 1.2 4.079c0 3.044-1.375 5.609-4.128 7.7 c-2.754 2.087-6.285 3.131-10.595 3.131c-5.711 0-10.234-1.351-13.567-4.053c-3.336-2.702-5.174-6.498-5.514-11.389h-12.212 c0.378 8.5 3.2 15 8.4 19.494c5.214 4.5 12.5 6.8 21.9 6.771c8.893 0 15.997-2.163 21.315-6.49 c5.319-4.324 7.977-10.045 7.977-17.16c0-5.882-1.7-10.465-5.104-13.746C200.73 59 193.5 56 182.4 53.2"/>
+              <path d="M233.915 27.117h-11.646v15.236h-7.9v8.721h7.9v34.012c0 5 0.9 8.5 2.8 10.4 c1.899 1.9 5.2 2.9 9.8 2.924c1.366 0 3.726-0.171 7.078-0.513c0.511-0.035 0.905-0.068 1.18-0.103v-9.335l-2.308 0.1 c-0.239 0-0.609 0.018-1.105 0.051c-0.494 0.035-0.895 0.053-1.206 0.053c-1.777 0-2.99-0.333-3.639-1 c-0.651-0.668-0.976-2.01-0.976-4.027V51.074h9.234v-8.721h-9.234V27.117z"/>
+              <path d="M299.373 89.498c-1.267 0-2.147-0.325-2.643-0.977c-0.497-0.648-0.745-2.032-0.745-4.153V56.922 c0-5.404-1.871-9.481-5.617-12.234c-3.744-2.754-9.293-4.13-16.647-4.13c-7.011 0-12.541 1.599-16.594 4.8 c-4.053 3.2-6.081 7.551-6.081 13.058v0.923h11.134v-0.41c0-2.805 0.957-4.959 2.872-6.465c1.916-1.505 4.667-2.257 8.259-2.257 c3.865 0 6.7 0.6 8.6 1.897c1.845 1.3 2.8 3.2 2.8 5.9c0 3.283-3.711 5.404-11.133 6.4 c-0.513 0.069-0.908 0.12-1.18 0.153c-8.893 1.129-15.03 3.104-18.416 5.924c-3.386 2.822-5.079 7.038-5.079 12.6 c0 5.1 1.6 9.1 4.7 12.056c3.164 2.9 7.5 4.4 13.1 4.36c3.626 0 7.027-0.794 10.208-2.386 c3.18-1.591 5.899-3.838 8.158-6.746c0.068 2.8 1 4.9 2.7 6.311c1.726 1.4 4.4 2.1 7.9 2.1 c0.925 0 1.89-0.069 2.899-0.205c1.009-0.139 2.044-0.345 3.104-0.616v-8.567c-0.718 0.068-1.224 0.112-1.514 0.1 C299.876 89.5 299.6 89.5 299.4 89.5 M284.547 76.878c0 3.831-1.436 6.976-4.31 9.4 c-2.873 2.464-6.481 3.694-10.825 3.694c-2.873 0-5.095-0.692-6.668-2.079c-1.574-1.384-2.36-3.341-2.36-5.874 c0-2.256 0.667-4.077 2.001-5.463c1.333-1.384 3.368-2.333 6.105-2.847c0.922-0.171 2.36-0.41 4.31-0.717 c5.369-0.787 9.284-1.814 11.747-3.079V76.878z"/>
+              <path d="M341.311 86.086c-2.174 2-5.021 3.002-8.542 3.002c-4.411 0-7.78-1.634-10.105-4.9s-3.489-8.01-3.489-14.236 c0-6.359 1.174-11.173 3.515-14.439c2.342-3.267 5.805-4.901 10.389-4.901c3.419 0 6.2 1 8.3 2.8 c2.119 1.9 3.3 4.5 3.6 7.774h11.541c-0.34-6.43-2.643-11.483-6.9-15.161c-4.256-3.676-9.891-5.514-16.902-5.514 c-8.036 0-14.337 2.625-18.902 7.874c-4.566 5.25-6.849 12.492-6.849 21.726c0 9 2.2 16.2 6.6 21.4 c4.411 5.3 10.4 7.9 18 7.899c7.355 0 13.246-1.957 17.675-5.872c4.428-3.917 6.916-9.312 7.463-16.186h-11.389 C344.822 81.2 343.5 84.1 341.3 86.1"/>
+              <polygon points="414,42.4 399.7,42.4 377.9,64.9 377.9,22.1 366.4,22.1 366.4,97.7 377.9,97.7 377.9,79.2 385.8,71.2 400.7,97.7 414.4,97.7 394,62.7"/>
+            </svg>
+          </a>
+        
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <p class="caption"><span class="caption-text">はじめに</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">StackStorm 概要</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#about">About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#how-it-works">How it Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview.html#what-s-next">What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">インストールと設定</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Reference Deployment Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rhel6.html">RHEL 6 / CentOS 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html">Ansible Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bwc.html">Extreme Workflow Composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrades.html">Upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstall.html">Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start.html">クイックスタート</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#explore-st2-with-cli">Explore StackStorm with CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#authenticate">Authenticate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#work-with-actions">Work with Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#define-a-rule">Define a Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#deploy-a-rule">Deploy a Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#deploy-examples">Deploy Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start.html#datastore">Datastore</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">基本機能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../actions.html">Actions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#managing-and-running-actions">Managing and Running Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#action-runners">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#writing-custom-actions">Writing Custom Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#built-in-parameters">Built-in Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#overriding-runner-parameters">Overriding Runner Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#environment-variables-available-to-actions">Environment Variables Available to Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#converting-existing-scripts-into-actions">Converting Existing Scripts into Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#writing-custom-python-actions">Writing Custom Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../actions.html#pre-defined-actions">Pre-defined Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sensors.html">Sensors and Triggers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#sensors">Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#triggers">Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#internal-triggers">Internal Triggers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#creating-a-sensor">Creating a Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#how-sensors-are-run">How Sensors are Run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#sensor-service">Sensor Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#common-operations">Common Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#datastore-management-operations">Datastore Management Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#running-your-first-sensor">Running Your First Sensor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sensors.html#debugging-a-sensor-from-a-pack">Debugging a Sensor From a Pack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rules.html">Rules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#rule-structure">Rule Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#trigger">Trigger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#criteria">Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#critera-comparison">Critera Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#advanced-comparison">Advanced Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#action">Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#variable-interpolation">Variable Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#managing-rules">Managing Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#rule-location">Rule Location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#testing-rules">Testing Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rules.html#timers">Timers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../workflows.html">Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../actionchain.html">ActionChain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mistral.html">Mistral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mistral_yaql.html">Mistral + YAQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mistral_jinja.html">Mistral + Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cloudslang.html">CloudSlang</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../packs.html">Packs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#what-is-a-pack">What is a Pack?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#managing-packs">Managing Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#discovering-packs">Discovering Packs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#installing-a-pack">Installing a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#configuring-a-pack">Configuring a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#developing-a-pack">Developing a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../packs.html#advanced-topics">Advanced Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../webhooks.html">Webhooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#sensors-vs-webhooks">Sensors vs Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#authentication">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#request-body">Request Body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#registering-a-webhook">Registering a Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#using-a-generic-webhook">Using a Generic Webhook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#listing-registered-webhooks">Listing Registered Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#my-webhook-isn-t-working">My Webhook Isn’t Working!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../webhooks.html#when-not-to-use-webhooks">When Not to Use Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datastore.html">Datastore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#storing-and-retrieving-key-value-pairs-via-cli">Storing and Retrieving Key-Value Pairs via CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#loading-key-value-pairs-from-a-file">Loading Key-Value Pairs from a File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#scoping-datastore-items">Scoping Datastore Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#setting-a-key-value-pair-ttl">Setting a Key-Value Pair TTL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#storing-and-retrieving-via-python-client">Storing and Retrieving via Python Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#referencing-key-value-pairs-in-rule-definitions">Referencing Key-Value Pairs in Rule Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#securing-secrets-admin-only">Securing Secrets (admin only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#storing-secrets">Storing Secrets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#security-notes">Security notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../chatops/index.html">ChatOps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/chatops.html">What is ChatOps?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/chatops.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/chatops.html#stackstorm-flavored-chatops">StackStorm-flavored ChatOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/chatops.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/chatops.html#adding-new-chatops-commands">Adding New ChatOps Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/chatops.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/aliases.html">Action Aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chatops/pack_deploy.html">Pack Deployment</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">応用トピック</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#auth-backends">Auth Backends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#running-the-service">Running the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#api-keys">API Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../rbac.html">Role Based Access Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#terminology">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#system-roles">System Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#how-it-works">How it Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#enabling-rbac">Enabling RBAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#defining-roles-and-assignments">Defining Roles and Assignments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#applying-rbac-definitions">Applying RBAC Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#automatically-granting-roles-based-on-ldap-group-membership">Automatically Granting Roles Based on LDAP Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#using-rbac-example">Using RBAC Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#garbage-collection-for-inquiries">Garbage Collection for Inquiries</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">References and Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sharing_code_sensors_actions.html">Sharing code between Sensors and Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cli.html">CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/pack_configs.html">Pack Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/packs.html">Create and Contribute a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/pack_management_transition.html">Pack Management Transition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/jinja.html">Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/policies.html">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/runners.html">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/traces.html">Traces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/client_libraries.html">Client Libraries and Language Bindings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/ha.html">High Availability Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/api.html">REST API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/monitoring.html">System Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sensor_partitioning.html">Partitioning Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/history.html">History and Audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/secrets_masking.html">Secrets Masking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/self_verification.html">Running Self-Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/basic_chatops_troubleshooting.html">ChatOps Troubleshooting Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/rules.html">Rule is not Being Matched</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/sensors.html">Sensor Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/mistral.html">Mistral Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/ssh.html">SSH Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/database.html">Database Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/rest_api_access.html">REST API access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/tuning_action_runner_dispatcher_pool.html">Tuning Action Runner Dispatcher Pool Size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/purging_old_data.html">Purging Old Operational Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/private_networks.html">WebUI Access on Private Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/submit_debug_info.html">Submitting Debugging Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/debug_mode.html">Enabling Debug Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/ask_for_support.html">Ask for help!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/webhooks.html">Troubleshooting Webhooks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/index.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/index.html#setting-up-a-development-environment">Setting up a Development Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/index.html#general-contribution-guidelines">General Contribution Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/index.html#code-style-guide">Code Style Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/index.html#deprecation-policy">Deprecation Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/index.html#general-coding-guidelines">General Coding Guidelines</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Release Notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#september-12-2017">2.4.1 - September 12, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#august-23-2017">2.4.0 - August 23, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-28-2017">2.3.2 - July 28, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-07-2017">2.3.1 - July 07, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-19-2017">2.3.0 - June 19, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-3-2017">2.2.1 - April 3, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#february-27-2017">2.2.0 - February 27, 2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-16-2016">2.1.1 - December 16, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-05-2016">2.1.0 - December 05, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#september-30-2016">2.0.1 - September 30, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#august-31-2016">2.0.0 - August 31, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#august-8-2016">1.6.0 - August 8, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-13-2016">1.5.1 - July 13, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-24-2016">1.5.0 - June 24, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-18-2016">1.4.0 - April 18, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#february-12-2016">1.3.2 - February 12, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-25-2016">1.3.1 - January 25, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-22-2016">1.3.0 - January 22, 2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-07-2015">1.2.0 - December 07, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#november-13-2015">1.1.1 - November 13, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-27-2015">1.1.0 - October 27, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#september-09-2015">0.13.2 - September 09, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#august-28-2015">0.13.1 - August 28, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#august-24-2015">0.13.0 - August 24, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#august-11-2015">0.12.2 - August 11, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-31-2015">0.12.1 - July 31, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-20-2015">0.12.0 - July 20, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-2-2015">0.11.6 - July 2, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#july-1-2015">0.11.5 - July 1, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-30-2015">0.11.4 - June 30, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-16-2015">0.11.3 - June 16, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-12-2015">0.11.2 - June 12, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-8-2015">0.11.1 - June 8, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#june-5-2015">0.11.0 - June 5, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-2-may-26-2015">v0.9.2 - May 26, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-1-may-12-2015">v0.9.1 - May 12, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-9-0-april-29-2015">v0.9.0 - April 29, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-3-march-23-2015">v0.8.3 - March 23, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-2-march-10-2015">v0.8.2 - March 10, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-1-march-10-2015">v0.8.1 - March 10, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-8-0-march-2-2015">v0.8.0 - March 2, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-7-january-16-2015">v0.7 - January 16, 2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-6-0-december-8-2014">v0.6.0 - December 8, 2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#v0-5-1-november-3rd-2014">v0.5.1 - November 3rd, 2014</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-3">StackStorm v2.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-2">StackStorm v2.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-1">StackStorm v2.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-0">StackStorm v2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v1-6">StackStorm v1.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v1-5">StackStorm v1.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v1-4">StackStorm v1.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v1-3">StackStorm v1.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v1-2">StackStorm v1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v1-1">StackStorm v1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v-0-11">StackStorm v 0.11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v0-9">StackStorm v0.9</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap.html#release-history">Release History</a></li>
+</ul>
+</li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">StackStorm</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>System Requirements</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/install/system_requirements.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document">
+            <div id="version-warning" class="admonition warning hide">
+              <p class="first admonition-title">Note</p>
+              <p class="last">
+                The documentation you're currently reading is for version 2.7dev.
+                Click <a href="/">here</a> to view documentation for the latest stable version.
+              </p>
+            </div>
+            
+  <div class="section" id="system-requirements">
+<h1>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h1>
+<p>StackStorm requires Ubuntu, RHEL or CentOS Linux. It is not supported on any other Linux distributions.
+The table below lists the supported Linux versions, along with the Vagrant Boxes and Amazon AWS
+instances we use for testing.</p>
+<p>If you are installing from ISO, perform a minimal installation. For Ubuntu, use the “Server”
+variant, and only add OpenSSH Server to the base set of packages. All other dependencies will
+be automatically added when you install StackStorm.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please note that only 64-bit architecture is supported.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="23%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Linux (64-bit)</th>
+<th class="head">Vagrant Box</th>
+<th class="head">Amazon AWS AMI</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="http://releases.ubuntu.com/trusty/ubuntu-14.04.5-server-amd64.iso">Ubuntu 14.04</a></td>
+<td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/ubuntu-14.04">bento/ubuntu-14.04</a></td>
+<td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B00JV9TBA6/ref=srh_res_product_title?ie=UTF8&amp;sr=0-3&amp;qid=1457037882965">Ubuntu Server 14.04 LTS (HVM)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://www.ubuntu.com/download/server/thank-you?version=16.04.3&amp;architecture=amd64">Ubuntu 16.04</a></td>
+<td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04">bento/ubuntu-16.04</a></td>
+<td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B01JBL2M0O/">Ubuntu 16.04 LTS - Xenial (HVM)</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux">RHEL 7</a> /
+<a class="reference external" href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso">CentOS 7</a></td>
+<td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/centos-7.2">bento/centos-7.2</a></td>
+<td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B019NS7T5I/ref=srh_res_product_title?ie=UTF8&amp;sr=0-2&amp;qid=1457037671547">Red Hat Enterprise Linux (RHEL) 7.2 (HVM)</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux">RHEL 6</a> /
+<a class="reference external" href="http://mirror.centos.org/centos/6/isos/x86_64/">CentOS 6</a></td>
+<td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/centos-6.7">bento/centos-6.7</a></td>
+<td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B00CFQWLS6/ref=srh_res_product_title?ie=UTF8&amp;sr=0-8&amp;qid=1457037733401">Red Hat Enterprise Linux (RHEL) 6 (HVM)</a></td>
+</tr>
+</tbody>
+</table>
+<p>Alternatively, you can use the StackStorm Docker image. You will need at least version 1.13.0 of Docker
+engine, and optionally <code class="docutils literal"><span class="pre">docker-compose</span></code>. See our <a class="reference internal" href="docker.html"><span class="doc">Docker</span></a> guide for more
+information.</p>
+<p>This is the recommended minimum sizing for testing and deploying StackStorm:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Testing</th>
+<th class="head">Production</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><ul class="first last simple">
+<li>Dual CPU</li>
+<li>2GB RAM</li>
+<li>10GB storage</li>
+<li>Recommended EC2: <strong>t2.medium</strong></li>
+</ul>
+</td>
+<td><ul class="first last simple">
+<li>Quad core CPU</li>
+<li>&gt;16GB RAM</li>
+<li>40GB storage</li>
+<li>Recommended EC2: <strong>m4.xlarge</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you are planning to add the <a class="reference external" href="https://bwc-docs.brocade.com/solutions/dcfabric/">DC Fabric Automation Suite</a>
+to your system later, you will need additional RAM. Check the <a class="reference external" href="https://bwc-docs.brocade.com/solutions/dcfabric/install.html#system-requirements">DC Fabric Automation Suite System Requirements</a></p>
+</div>
+<p>If you split your filesystem into multiple partitions and mount points, ensure you have at least
+1GB of free space in <code class="docutils literal"><span class="pre">/var</span></code> and <code class="docutils literal"><span class="pre">/opt</span></code>. RabbitMQ and MongoDB may not operate correctly without
+sufficient free space.</p>
+<p>By default, StackStorm and related services use these TCP ports:</p>
+<ul class="simple">
+<li>nginx (80, 443)</li>
+<li>mongodb (27017)</li>
+<li>rabbitmq (4369, 5672, 25672)</li>
+<li>postgresql (5432)</li>
+<li>st2auth (9100)</li>
+<li>st2api (9101)</li>
+<li>st2stream (9102)</li>
+</ul>
+<p>If any other services are currently using these ports, StackStorm may fail to install or run correctly.</p>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="deb.html" class="btn btn-neutral float-right" title="Ubuntu Trusty/Xenial">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="Overview: Single-box Reference Deployment"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2014 - 2018, StackStorm.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+  <div id="versions"></div>
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.7dev',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+
+  <script type="text/javascript" src="/_static/js/versions.js"></script> 
+
+</body>
+</html>
