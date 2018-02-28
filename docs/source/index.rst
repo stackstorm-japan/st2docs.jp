@@ -5,15 +5,15 @@ Contents:
 
 .. toctree::
     :maxdepth: 2
-    :caption: Getting Started
+    :caption: はじめに
 
-    overview
-    Install and Configure <install/index>
-    start
+    StackStorm 概要 <overview>
+    インストールと設定 <install/index>
+    クイックスタート <start>
 
 .. toctree::
     :maxdepth: 2
-    :caption: Automation Basics
+    :caption: 基本機能
 
     actions
     sensors
@@ -30,7 +30,7 @@ Contents:
 
 .. toctree::
     :maxdepth: 2
-    :caption: Advanced Topics
+    :caption: 応用トピック
 
     authentication
     rbac
