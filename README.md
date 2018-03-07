@@ -21,8 +21,8 @@ c.f. [Build and Run the Docs - README (@st2docs)](https://github.com/StackStorm/
 
 ## ドキュメント規約
 ### 句読点
-* 読点は「`,` (カンマ)」を用いる
-* 句点は「`.` (ピリオド)」を用いる
+* 読点は「`、`」を用いる
+* 句点は「`。`」を用いる
 
 ### 語尾
 * 原則「です・ます調」を用いる（体言止めを用いても良い）
@@ -39,5 +39,4 @@ c.f. [Build and Run the Docs - README (@st2docs)](https://github.com/StackStorm/
   - 環境変数
   - URL
 
-### 引用符
-  - StackStorm の固有名詞には引用符 (\`\`) を用いる
+* StackStorm の固有名詞には引用符 (\`\`) を用いる
