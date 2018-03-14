@@ -563,14 +563,20 @@ If <code class="docutils literal"><span class="pre">$.path</span> <span class="p
             <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core.local</span>
             <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
                 <span class="l l-Scalar l-Scalar-Plain">cmd</span><span class="p p-Indicator">:</span> <span class="s">&quot;echo</span><span class="nv"> </span><span class="s">&#39;Took</span><span class="nv"> </span><span class="s">path</span><span class="nv"> </span><span class="s">A.&#39;&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">publish</span><span class="p p-Indicator">:</span>
+                <span class="l l-Scalar l-Scalar-Plain">stdout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(a).result.stdout %&gt;</span> 
         <span class="l l-Scalar l-Scalar-Plain">b</span><span class="p p-Indicator">:</span>
             <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core.local</span>
             <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
                 <span class="l l-Scalar l-Scalar-Plain">cmd</span><span class="p p-Indicator">:</span> <span class="s">&quot;echo</span><span class="nv"> </span><span class="s">&#39;Took</span><span class="nv"> </span><span class="s">path</span><span class="nv"> </span><span class="s">B.&#39;&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">publish</span><span class="p p-Indicator">:</span>
+                <span class="l l-Scalar l-Scalar-Plain">stdout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(b).result.stdout %&gt;</span> 
         <span class="l l-Scalar l-Scalar-Plain">c</span><span class="p p-Indicator">:</span>
             <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core.local</span>
             <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
                 <span class="l l-Scalar l-Scalar-Plain">cmd</span><span class="p p-Indicator">:</span> <span class="s">&quot;echo</span><span class="nv"> </span><span class="s">&#39;Took</span><span class="nv"> </span><span class="s">path</span><span class="nv"> </span><span class="s">C.&#39;&quot;</span>
+            <span class="l l-Scalar l-Scalar-Plain">publish</span><span class="p p-Indicator">:</span>
+                <span class="l l-Scalar l-Scalar-Plain">stdout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(c).result.stdout %&gt;</span> 
 </pre></div>
 </div>
 <p>The statement <code class="docutils literal"><span class="pre">with-items</span></code> in Mistral is used to execute an action over iteration of one or more
