@@ -609,8 +609,8 @@ complete installation:</p>
 <div class="section" id="bwc">
 <h2><a class="toc-backref" href="#id7">Extreme Workflow Composer</a><a class="headerlink" href="#bwc" title="Permalink to this headline">¶</a></h2>
 <p>Here’s an example showing how to add <a class="reference internal" href="bwc.html"><span class="doc">Extreme Workflow Composer</span></a>, with
-<a class="reference external" href="https://bwc-docs.brocade.com/authentication.html#ldap">LDAP</a> authentication and
-<a class="reference external" href="https://bwc-docs.brocade.com/rbac.html">RBAC</a> configuration to allow/restrict/limit StackStorm
+<a class="reference external" href="https://ewc-docs.extremenetworks.com/authentication.html#ldap">LDAP</a> authentication and
+<a class="reference external" href="https://ewc-docs.extremenetworks.com/rbac.html">RBAC</a> configuration to allow/restrict/limit StackStorm
 functionality to specific users:</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install StackStorm Enterprise</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
@@ -622,7 +622,7 @@ functionality to specific users:</p>
         <span class="l l-Scalar l-Scalar-Plain">bwc_license</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CHANGE-ME-PLEASE</span>
         <span class="l l-Scalar l-Scalar-Plain">bwc_version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">latest</span>
         <span class="c1"># Configure LDAP backend</span>
-        <span class="c1"># See: https://bwc-docs.brocade.com/authentication.html#ldap</span>
+        <span class="c1"># See: https://ewc-docs.extremenetworks.com/authentication.html#ldap</span>
         <span class="l l-Scalar l-Scalar-Plain">bwc_ldap</span><span class="p p-Indicator">:</span>
           <span class="l l-Scalar l-Scalar-Plain">backend_kwargs</span><span class="p p-Indicator">:</span>
             <span class="l l-Scalar l-Scalar-Plain">bind_dn</span><span class="p p-Indicator">:</span> <span class="s">&quot;cn=Administrator,cn=users,dc=change-you-org,dc=net&quot;</span>
@@ -634,10 +634,10 @@ functionality to specific users:</p>
             <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">389</span>
             <span class="l l-Scalar l-Scalar-Plain">id_attr</span><span class="p p-Indicator">:</span> <span class="s">&quot;samAccountName&quot;</span>
         <span class="c1"># Configure RBAC</span>
-        <span class="c1"># See: https://bwc-docs.brocade.com/rbac.html</span>
+        <span class="c1"># See: https://ewc-docs.extremenetworks.com/rbac.html</span>
         <span class="l l-Scalar l-Scalar-Plain">bwc_rbac</span><span class="p p-Indicator">:</span>
           <span class="c1"># Define EWC roles and permissions</span>
-          <span class="c1"># https://bwc-docs.brocade.com/rbac.html#defining-roles-and-permission-grants</span>
+          <span class="c1"># https://ewc-docs.extremenetworks.com/rbac.html#defining-roles-and-permission-grants</span>
           <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core_local_only</span>
               <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">access</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">action</span><span class="nv"> </span><span class="s">core.local</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">pack</span><span class="nv"> </span><span class="s">&#39;core&#39;&quot;</span>
@@ -650,7 +650,7 @@ functionality to specific users:</p>
                 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">permission_types</span><span class="p p-Indicator">:</span>
                   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">runner_type_list</span>
           <span class="c1"># Assign roles to specific users</span>
-          <span class="c1"># https://bwc-docs.brocade.com/rbac.html#defining-user-role-assignments</span>
+          <span class="c1"># https://ewc-docs.extremenetworks.com/rbac.html#defining-user-role-assignments</span>
           <span class="l l-Scalar l-Scalar-Plain">assignments</span><span class="p p-Indicator">:</span>
             <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test_user</span>
               <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>

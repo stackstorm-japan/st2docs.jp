@@ -796,12 +796,7 @@ rule-related syntax.</p>
 </div>
 <div class="section" id="securing-secrets-admin-only">
 <span id="admin-setup-for-encrypted-datastore"></span><h2>Securing Secrets (admin only)<a class="headerlink" href="#securing-secrets-admin-only" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This guide and the corresponding implementation is alpha quality. We are working on the feature
-and feedback is welcome. Until the feature matures, no guarantee is made about the security of the credentials stored in the key-value store.</p>
-</div>
-<p>The key-value store now allows users to store encrypted values (secrets). Symmetric encryption
+<p>The key-value store allows users to store encrypted values (secrets). Symmetric encryption
 using AES-256 is used to encrypt secrets. The StackStorm administrator is responsible for generating the
 symmetric key used for encryption/decryption. Note that the StackStorm operator and administrator
 (or anyone else who has access to the key) can decrypt the encrypted values.</p>
