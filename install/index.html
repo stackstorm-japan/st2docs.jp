@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Installation &mdash; StackStorm 2.7dev documentation</title>
+  <title>インストール &mdash; StackStorm 2.7dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
@@ -108,7 +108,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">インストールと設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="overview.html">Reference Deployment Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html">デプロイ後の構成</a></li>
 <li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
@@ -424,7 +424,7 @@
     
       <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
         
-      <li>Installation</li>
+      <li>インストール</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -451,53 +451,47 @@
               </p>
             </div>
             
-  <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Ready to install StackStorm? Here’s an overview of how to get your system up and running.</p>
-<p>StackStorm is distributed as RPMs and Debs for RedHat/CentOS and Ubuntu Linux systems, and as Docker
-images. You can either use a script to automatically install and configure all components on a
-single system, or you can follow the manual instructions for your OS.</p>
-<p>Here’s an overview of the options:</p>
+  <div class="section" id="id1">
+<h1>インストール<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>ここでは StackStorm をインストールする方法の全体像を示します。</p>
+<p>StackStorm は、RPM 及び deb パッケージによるインストールの他、Docker による環境構築に加え、インストールスクリプトによる自動インストールといった、様々なインストール方法を提供しています。以下に StackStorm がサポートするインストール方法の選択肢を示します。</p>
 <ul class="simple">
-<li><strong>One-line Install:</strong> Run our installation script for an opinionated install of all components
-on a single system. This is a our recommended way to get started. See the <a class="reference internal" href="#ref-one-line-install"><span class="std std-ref">Quick Install</span></a> section below for details.</li>
-<li><strong>Manual Installation:</strong> Have custom needs? Maybe no Internet access from your servers? Or just
-don’t like using scripted installs? Read the manual installation instructions for your OS
-(<a class="reference internal" href="deb.html"><span class="doc">Ubuntu 14/16</span></a>, <a class="reference internal" href="rhel6.html"><span class="doc">RHEL/CentOS 6</span></a>, <a class="reference internal" href="rhel7.html"><span class="doc">RHEL/CentOS 7</span></a>), and adapt them to your needs. Here’s some <a class="reference external" href="https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/">additional guidance</a> for setting up an
-internal mirror for the StackStorm repos.</li>
-<li><strong>Ansible Playbooks:</strong> If you are an Ansible user, check these <a class="reference internal" href="ansible.html"><span class="doc">Ansible Playbooks</span></a> for
-installing StackStorm. Ideal for repeatable, consistent, idempotent installation of StackStorm.</li>
-<li><strong>Docker:</strong> StackStorm is now supported on Docker - check out our <a class="reference internal" href="docker.html"><span class="doc">Docker</span></a> instructions.</li>
-<li><strong>Vagrant:</strong> Vagrant is a quick way to spin up a test system - see  <a class="reference external" href="https://github.com/StackStorm/st2vagrant">st2vagrant</a>. This will bring up a new VM, and install StackStorm.</li>
+<li><strong>One-line Install:</strong>
+これはインストールスクリプトによって全てのコンポーネントを単一ホストにインストールする方法です。
+とりあえず StackStorm を使ってみたいといった場合には、こちらの方法がお勧めです。詳しくは後述の <a class="reference internal" href="#ref-one-line-install"><span class="std std-ref">Quick Install</span></a> をご覧ください。</li>
+<li><strong>Manual Installation:</strong>
+カスタマイズや細かなニーズに合わせて手動でインストールしたい場合は、各 GNU/Linux ディストリビューション (<a class="reference internal" href="deb.html"><span class="doc">Ubuntu 14/16</span></a>、<a class="reference internal" href="rhel6.html"><span class="doc">RHEL/CentOS 6</span></a>、<a class="reference internal" href="rhel7.html"><span class="doc">RHEL/CentOS 7</span></a>) 毎のマニュアルが用意されていますので、お使いの環境にあったものをご覧ください。
+もしインターネットから切り離した環境で StackStorm を構築するため、リポジトリミラーを構築する場合には
+<a class="reference external" href="https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/">こちらのドキュメント</a>
+もご参照ください。</li>
+<li><strong>Ansible Playbooks:</strong>
+Ansible によるインストールを行う場合には、<a class="reference internal" href="ansible.html"><span class="doc">Ansible Playbooks</span></a> をご覧ください。</li>
+<li><strong>Docker:</strong>
+StackStorm は Docker イメージを提供しています。詳しくは <a class="reference internal" href="docker.html"><span class="doc">Docker による環境構築</span></a> をご覧ください。</li>
+<li><strong>Vagrant:</strong>
+Vagrant を使えば、手っ取り早くテスト環境を構築できます。<a class="reference external" href="https://github.com/StackStorm/st2vagrant">st2vagrant</a> は VM を作成し、そこに StackStorm をインストールします。</li>
 </ul>
-<p>Choose the option that best suits your needs.</p>
-<p>Upgrading to Extreme Workflow Composer? This is installed as a set of additional packages on top of StackStorm. You
-can either install StackStorm + Extreme Workflow Composer in one go, or add the Extreme Workflow Composer packages to an existing
-StackStorm system. If you are using Extreme Workflow Composer, you can also add Network Automation Suites.
-Read the <a class="reference internal" href="bwc.html"><span class="doc">Installing Extreme Workflow Composer</span></a> documentation for more.</p>
-<p class="rubric" id="ref-one-line-install">Quick Install</p>
-<p>Grab a <strong>clean</strong> 64-bit Linux system that fits the <a class="reference internal" href="system_requirements.html"><span class="doc">system requirements</span></a>. Make sure that <code class="docutils literal"><span class="pre">curl</span></code> is up to date using <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">curl</span></code>
-on Ubuntu, or <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">curl</span> <span class="pre">nss</span></code> on RHEL/CentOS. Then run this command:</p>
+<p>ニーズに合わせて最適な方法をお選びください。</p>
+<p>Extreme Workflow Composer にアップグレードしたい場合は、StackStorm がインストールされた環境にパッケージを追加する形でアップグレードできます (もちろん StackStorm と Extreme Workflow Composer を同時にイストールすることもできます)。
+Extreme Workflow Composer を使うことで Network Automation Suites を利用できるようになります。詳しくは <a class="reference internal" href="bwc.html"><span class="doc">Installing Extreme Workflow Composer</span></a> をご覧ください。</p>
+<p class="rubric" id="ref-one-line-install">クイックスタート</p>
+<p><a class="reference internal" href="system_requirements.html"><span class="doc">システム要求</span></a> を満たす <strong>まっさらな</strong> 64-bit GNU/Linux 環境が用意できたら、
+<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">curl</span></code>  や <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">curl</span> <span class="pre">nss</span></code> を実行し <code class="docutils literal"><span class="pre">curl</span></code> が最新版であることを確認したうえで、
+以下コマンドを実行してください。</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sSL https://stackstorm.com/packages/install.sh <span class="p">|</span> bash -s -- --user<span class="o">=</span>st2admin --password<span class="o">=</span><span class="s1">&#39;Ch@ngeMe&#39;</span>
 </pre></div>
 </div>
-<p>This is an opinionated installation of StackStorm. It will download and install all components, as per
-the <a class="reference internal" href="overview.html"><span class="doc">single host reference deployment</span></a>. It assumes that you have a clean, basic
-installation of Ubuntu or RHEL/CentOS.</p>
-<p>If you are trying to install StackStorm on a server with other applications, or local customisations,
-you may run into problems. In that case, you should use one of the manual installation methods.</p>
-<p>The script itself is not idempotent. If you try to re-run the script on top of a failed
-installation, it will fail. Start again with a clean system, or switch to a manual install.</p>
-<p>If you’re installing behind a proxy, just export the proxy ENV variables
-<code class="docutils literal"><span class="pre">http_proxy</span></code>, <code class="docutils literal"><span class="pre">https_proxy</span></code>, <code class="docutils literal"><span class="pre">no_proxy</span></code> before running the script.</p>
+<p>このコマンドは <a class="reference internal" href="overview.html"><span class="doc">シングルホストへのデプロイ後の構成</span></a> で示す通り、全てのコンポーネントをコマンドを実行したホストにインストールします。</p>
+<p>上記コマンドは OS インストール直後のまっさらな環境で実行してください。そうでない場合、インストールに失敗する可能性があります。その場合は、手動で問題解決と残りのインストール作業を行う必要があります。
+上記インストールスクリプトは冪等性がないため、インストール処理に失敗した場合には OS 環境をまっさらにし直した上で再実行してください。</p>
+<p>またプロキシ経由でインストールする場合、上記インストールコマンドを実行する前に、以下の環境変数を設定してください。</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>http://proxy.server.io:port
 <span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>http://proxy.server.io:port
 <span class="nb">export</span> <span class="nv">no_proxy</span><span class="o">=</span>localhost,127.0.0.1
 </pre></div>
 </div>
-<p>In case of MITM proxy, you may need to export additional <code class="docutils literal"><span class="pre">proxy_ca_bundle_path</span></code>, see <a class="reference internal" href="../packs.html#packs-behind-proxy"><span class="std std-ref">Installing Packs from Behind a Proxy</span></a>.</p>
-<p>If you have problems accessing the Web UI on a RHEL 7/CentOS 7 system, check the
-<a class="reference internal" href="rhel7.html#ref-rhel7-firewall"><span class="std std-ref">system firewall settings</span></a>.</p>
+<p>もし MITM プロキシを利用する場合は、上記に加え環境変数 <code class="docutils literal"><span class="pre">proxy_ca_bundle_path</span></code> も設定する必要があります (c.f. <a class="reference internal" href="../packs.html#packs-behind-proxy"><span class="std std-ref">Installing Packs from Behind a Proxy</span></a>)。</p>
+<p>また RHEL 7 もしくは CentOS 7 の環境における Web UI アクセスで問題が生じる場合は、<a class="reference internal" href="rhel7.html#ref-rhel7-firewall"><span class="std std-ref">system firewall settings</span></a> をご参照ください。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For security reasons, the installer script enables authentication and generates random
@@ -507,10 +501,10 @@ passwords in the config files - <code class="docutils literal"><span class="pre"
 <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code> for PostgreSQL password.</p>
 </div>
 <p class="rubric">Other Installation Options</p>
-<p>For more details on reference deployments, or OS-specific installation instructions, see below:</p>
+<p>デプロイ後のサービス構成や、その他のインストール方法については以下をご覧ください。</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Reference Deployment Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">デプロイ後の構成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
