@@ -1,60 +1,49 @@
-Installation
+インストール
 ============
 
-Ready to install |st2|? Here's an overview of how to get your system up and running.
+ここでは |st2| をインストールする方法の全体像を示します。
 
-|st2| is distributed as RPMs and Debs for RedHat/CentOS and Ubuntu Linux systems, and as Docker
-images. You can either use a script to automatically install and configure all components on a
-single system, or you can follow the manual instructions for your OS.
+|st2| は、RPM 及び deb パッケージによるインストールの他、Docker による環境構築に加え、インストールスクリプトによる自動インストールといった、様々なインストール方法を提供しています。以下に |st2| がサポートするインストール方法の選択肢を示します。
 
-Here's an overview of the options:
+* **One-line Install:**
+  これはインストールスクリプトによって全てのコンポーネントを単一ホストにインストールする方法です。
+  とりあえず |st2| を使ってみたいといった場合には、こちらの方法がお勧めです。詳しくは後述の :ref:`Quick Install <ref-one-line-install>` をご覧ください。
+* **Manual Installation:**
+  カスタマイズや細かなニーズに合わせて手動でインストールしたい場合は、各 GNU/Linux ディストリビューション (:doc:`Ubuntu 14/16 </install/deb>`、:doc:`RHEL/CentOS 6 </install/rhel6>`、:doc:`RHEL/CentOS 7 </install/rhel7>`) 毎のマニュアルが用意されていますので、お使いの環境にあったものをご覧ください。
+  もしインターネットから切り離した環境で |st2| を構築するため、リポジトリミラーを構築する場合には
+  `こちらのドキュメント <https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/>`_
+  もご参照ください。
+* **Ansible Playbooks:**
+  Ansible によるインストールを行う場合には、:doc:`/install/ansible` をご覧ください。
+* **Docker:**
+  |st2| は Docker イメージを提供しています。詳しくは :doc:`Docker による環境構築 <docker>` をご覧ください。
+* **Vagrant:**
+  Vagrant を使えば、手っ取り早くテスト環境を構築できます。`st2vagrant
+  <https://github.com/StackStorm/st2vagrant>`_ は VM を作成し、そこに |st2| をインストールします。
 
-* **One-line Install:** Run our installation script for an opinionated install of all components
-  on a single system. This is a our recommended way to get started. See the :ref:`Quick Install
-  <ref-one-line-install>` section below for details.
-* **Manual Installation:** Have custom needs? Maybe no Internet access from your servers? Or just
-  don't like using scripted installs? Read the manual installation instructions for your OS
-  (:doc:`Ubuntu 14/16 </install/deb>`, :doc:`RHEL/CentOS 6 </install/rhel6>`, :doc:`RHEL/CentOS 7
-  </install/rhel7>`), and adapt them to your needs. Here's some `additional guidance
-  <https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/>`_ for setting up an
-  internal mirror for the |st2| repos. 
-* **Ansible Playbooks:** If you are an Ansible user, check these :doc:`/install/ansible` for
-  installing |st2|. Ideal for repeatable, consistent, idempotent installation of |st2|.
-* **Docker:** |st2| is now supported on Docker - check out our :doc:`docker` instructions.
-* **Vagrant:** Vagrant is a quick way to spin up a test system - see  `st2vagrant
-  <https://github.com/StackStorm/st2vagrant>`_. This will bring up a new VM, and install |st2|.
+ニーズに合わせて最適な方法をお選びください。
 
-Choose the option that best suits your needs.
-
-Upgrading to |bwc|? This is installed as a set of additional packages on top of StackStorm. You
-can either install StackStorm + |bwc| in one go, or add the |bwc| packages to an existing
-StackStorm system. If you are using |bwc|, you can also add Network Automation Suites.
-Read the :doc:`/install/bwc` documentation for more.
+|bwc| にアップグレードしたい場合は、StackStorm がインストールされた環境にパッケージを追加する形でアップグレードできます (もちろん StackStorm と |bwc| を同時にイストールすることもできます)。
+|bwc| を使うことで Network Automation Suites を利用できるようになります。詳しくは :doc:`/install/bwc` をご覧ください。
 
 .. _ref-one-line-install:
 
-.. rubric:: Quick Install
+.. rubric:: クイックスタート
 
-Grab a **clean** 64-bit Linux system that fits the :doc:`system requirements
-<system_requirements>`. Make sure that ``curl`` is up to date using ``sudo apt-get install curl``
-on Ubuntu, or ``sudo yum install curl nss`` on RHEL/CentOS. Then run this command:
+:doc:`システム要求 <system_requirements>` を満たす **まっさらな** 64-bit GNU/Linux 環境が用意できたら、
+``sudo apt-get install curl``  や ``sudo yum install curl nss`` を実行し ``curl`` が最新版であることを確認したうえで、
+以下コマンドを実行してください。
 
 .. code-block:: bash
 
    curl -sSL https://stackstorm.com/packages/install.sh | bash -s -- --user=st2admin --password='Ch@ngeMe'
 
-This is an opinionated installation of |st2|. It will download and install all components, as per
-the :doc:`single host reference deployment <./overview>`. It assumes that you have a clean, basic
-installation of Ubuntu or RHEL/CentOS. 
+このコマンドは :doc:`シングルホストへのデプロイ後の構成 <./overview>` で示す通り、全てのコンポーネントをコマンドを実行したホストにインストールします。
 
-If you are trying to install |st2| on a server with other applications, or local customisations,
-you may run into problems. In that case, you should use one of the manual installation methods.
+上記コマンドは OS インストール直後のまっさらな環境で実行してください。そうでない場合、インストールに失敗する可能性があります。その場合は、手動で問題解決と残りのインストール作業を行う必要があります。
+上記インストールスクリプトは冪等性がないため、インストール処理に失敗した場合には OS 環境をまっさらにし直した上で再実行してください。
 
-The script itself is not idempotent. If you try to re-run the script on top of a failed
-installation, it will fail. Start again with a clean system, or switch to a manual install.
-
-If you're installing behind a proxy, just export the proxy ENV variables
-``http_proxy``, ``https_proxy``, ``no_proxy`` before running the script.
+またプロキシ経由でインストールする場合、上記インストールコマンドを実行する前に、以下の環境変数を設定してください。
 
 .. code-block:: bash
 
@@ -62,22 +51,20 @@ If you're installing behind a proxy, just export the proxy ENV variables
   export https_proxy=http://proxy.server.io:port
   export no_proxy=localhost,127.0.0.1
 
-In case of MITM proxy, you may need to export additional ``proxy_ca_bundle_path``, see :ref:`packs-behind-proxy`.
+もし MITM プロキシを利用する場合は、上記に加え環境変数 ``proxy_ca_bundle_path`` も設定する必要があります (c.f. :ref:`packs-behind-proxy`)。
 
-
-If you have problems accessing the Web UI on a RHEL 7/CentOS 7 system, check the
-:ref:`system firewall settings <ref-rhel7-firewall>`.
+また RHEL 7 もしくは CentOS 7 の環境における Web UI アクセスで問題が生じる場合は、:ref:`system firewall settings <ref-rhel7-firewall>` をご参照ください。
 
 .. include:: __installer_passwords.rst
 
 .. rubric:: Other Installation Options
 
-For more details on reference deployments, or OS-specific installation instructions, see below:
+デプロイ後のサービス構成や、その他のインストール方法については以下をご覧ください。
 
 .. toctree::
     :maxdepth: 1
 
-    Reference Deployment Overview <overview>
+    デプロイ後の構成 <overview>
     system_requirements
     Ubuntu 14.04 / 16.04 <deb>
     RHEL 7 / CentOS 7 <rhel7>
