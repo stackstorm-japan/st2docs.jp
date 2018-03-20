@@ -481,6 +481,16 @@ location for <code class="docutils literal"><span class="pre">st2.conf</span></c
 (new feature) #4027</p>
 <p>Contributed by Nick Maludy (Encore Technologies).</p>
 </li>
+<li><p class="first">Add support for new optional <code class="docutils literal"><span class="pre">content_version</span></code> runner parameter to the Python and Local Shell
+Script runner. This parameter can contain a git commit hash / tag / branch from a pack git
+repository and runner will ensure this revision of the pack content (Python action / local shell
+script action) is used for a particular action execution.</p>
+<p>Keep in mind that providing this parameter only ensures a particular revision of the pack content
+is used. Python runner virtual environment and dependencies are outside of this scope.</p>
+<p>Note: To be able to utilize this functionality, git version &gt;= 2.5.0 must be installed on the
+system.
+(new feature) #3997</p>
+</li>
 </ul>
 </div>
 <div class="section" id="changed">
@@ -522,6 +532,9 @@ webhooks and system <code class="docutils literal"><span class="pre">st2</span><
 <li><p class="first">Fix a bug in the CLI causing <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">pause</span></code> and <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">resume</span></code>
 to not work. (bugfix) #4001</p>
 <p>Contributed by Nick Maludy (Encore Technologies).</p>
+</li>
+<li><p class="first">Fixed missing “paused” status option from “st2 execution list” help output. (bugfix) #4037</p>
+<p>Contributed by Ben Hohnke (NTT Communications ICT Solutions)</p>
 </li>
 </ul>
 </div>

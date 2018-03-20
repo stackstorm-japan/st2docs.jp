@@ -482,7 +482,7 @@ st2 key <span class="nb">set</span> aws_cfn_endpoint https://cloudformation.us-w
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># To list first 50 key-value pairs (default)</span>
 st2 key list
 <span class="c1"># To list all the key-value pairs in the datastore</span>
-st2 key list -n <span class="m">0</span>
+st2 key list -n -1
 
 <span class="c1"># Get value for key &quot;os_keystone_endpoint&quot;</span>
 st2 key get os_keystone_endpoint
@@ -533,15 +533,15 @@ key-value pairs as the JSON file above:</p>
 </pre></div>
 </div>
 <p>The load command also allows you to directly load the output of the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-j</span></code> command.
-If you have more than 50 key-value pairs, use <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-n</span> <span class="pre">0</span> <span class="pre">-j</span></code> to export all keys. This
+If you have more than 50 key-value pairs, use <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-n</span> <span class="pre">-1</span> <span class="pre">-j</span></code> to export all keys. This
 is useful if you want to migrate datastore items from a different cluster or if you want to
 version control the datastore items and load them from version controlled files:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># JSON</span>
-st2 key list -n <span class="m">0</span> -j &gt; mydata.json
+st2 key list -n -1 -j &gt; mydata.json
 st2 key load mydata.json
 
 <span class="c1"># YAML</span>
-st2 key list -n <span class="m">0</span> -y &gt; mydata.yaml
+st2 key list -n -1 -y &gt; mydata.yaml
 st2 key load mydata.yaml
 </pre></div>
 </div>

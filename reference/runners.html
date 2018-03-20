@@ -501,11 +501,13 @@ the output.</p>
 <div class="section" id="id1">
 <h3>Runner Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
 <li><code class="docutils literal"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
 <li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script(e.g. key1=val1,key2=val2)</li>
 <li><code class="docutils literal"><span class="pre">sudo</span></code> (boolean) - The command will be executed with sudo.</li>
+<li><code class="docutils literal"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
+<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal"><span class="pre">debug</span></code> (boolean) - Enable runner debug mode.</li>
+<li><code class="docutils literal"><span class="pre">content_version</span></code> (string) - Git revision of the pack content to use for this action execution (git commit sha / tag / branch). Only applies to packs which are git repositories.</li>
 <li><code class="docutils literal"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in</li>
 </ul>
 </div>
@@ -669,6 +671,8 @@ and result or just the result object.</p>
 <div class="section" id="id7">
 <h3>Runner Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
+<li><code class="docutils literal"><span class="pre">debug</span></code> (boolean) - Enable runner debug mode.</li>
+<li><code class="docutils literal"><span class="pre">content_version</span></code> (string) - Git revision of the pack content to use for this action execution (git commit sha / tag / branch). Only applies to packs which are git repositories.</li>
 <li><code class="docutils literal"><span class="pre">log_level</span></code> (string) - Default log level for Python runner actions.</li>
 <li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script.</li>
 <li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
