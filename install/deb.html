@@ -582,7 +582,7 @@ cat <span class="s">&lt;&lt; EHD | sudo -u postgres psql</span>
 <span class="c1"># Setup Mistral DB tables, etc.</span>
 /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
 <span class="c1"># Register mistral actions</span>
-/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate
+/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v -e openstack -e keystone
 </pre></div>
 </div>
 </div>

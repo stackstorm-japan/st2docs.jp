@@ -955,7 +955,7 @@ also be made to offer different services.</p>
 <li>Register mistral actions:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v -e openstack -e keystone
 </pre></div>
 </div>
 </div></blockquote>

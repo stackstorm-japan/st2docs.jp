@@ -482,10 +482,12 @@ Windows hosts.</li>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum install samba-client
 </pre></div>
 </div>
-<p>You will need to compile <a class="reference external" href="https://sourceforge.net/p/winexe/winexe-waf/ci/master/tree/">winexe</a>
-packages for your system. This <a class="reference external" href="https://github.com/beardedeagle/winexe-rpm">script</a> can be used
-to build RPM packages. The instructions <a class="reference external" href="https://sourceforge.net/p/winexe/winexe-waf/ci/master/tree/">here</a> can be used to build binaries for
-Ubuntu systems.</p>
+<p><code class="docutils literal"><span class="pre">winexe</span></code> is not distributed in normal RHEL/Ubuntu package repositories. You will need to compile it yourself,
+or obtain a pre-built binary.</p>
+<ul class="simple">
+<li><strong>Ubuntu</strong>: Instructions and binary packages for 14.04 and 16.04 are available <a class="reference external" href="https://doublefault0.wordpress.com/2017/02/21/winexe-1-1-ubuntu-16-04/">here</a>.</li>
+<li><strong>RHEL/CentOS</strong>:  <a class="reference external" href="https://github.com/beardedeagle/winexe-rpm">These instructions</a> explain how to build RPMs for RHEL/CentOS systems.</li>
+</ul>
 </div>
 <div class="section" id="supported-windows-versions">
 <h2>Supported Windows Versions<a class="headerlink" href="#supported-windows-versions" title="Permalink to this headline">¶</a></h2>

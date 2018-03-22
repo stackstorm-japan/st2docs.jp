@@ -484,7 +484,7 @@ migration scripts for skipped versions.</p>
 </li>
 <li><p class="first">Upgrade Mistral database:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
-/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v openstack
+/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v -e openstack -e keystone
 </pre></div>
 </div>
 <div class="admonition warning">

@@ -514,6 +514,8 @@ pymongo, stevedore, paramiko, tooz, flex, webob, prance).</li>
 This reduces the unnecessary traffic and CPU time by querying the mistral API. Included a command to
 manually add a state entry for Mistral workflow execution to recover from any callback failures.
 (improvement)</li>
+<li>Throw a more user-friendly error when writing pack data files to disk and when an invalid file
+path is provided (e.g. path is outside the pack directory, etc.). (improvement) #4039 #4046</li>
 </ul>
 </div>
 <div class="section" id="fixed">
@@ -535,6 +537,9 @@ to not work. (bugfix) #4001</p>
 </li>
 <li><p class="first">Fixed missing “paused” status option from “st2 execution list” help output. (bugfix) #4037</p>
 <p>Contributed by Ben Hohnke (NTT Communications ICT Solutions)</p>
+</li>
+<li><p class="first">Fix “st2 pack install” command so it doesn’t require access to pack index (index.stackstorm.org)
+when installing a local pack (pack name starting with “<a class="reference external" href="file://">file://</a>”). (bug fix) #3771 #3772</p>
 </li>
 </ul>
 </div>
