@@ -491,31 +491,49 @@ is used. Python runner virtual environment and dependencies are outside of this 
 system.
 (new feature) #3997</p>
 </li>
+<li><p class="first">Update windows runner to correctly handle and use <code class="docutils literal"><span class="pre">timeout</span></code> action execution status.
+(improvement) #4047</p>
+</li>
 </ul>
 </div>
 <div class="section" id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Modified RabbitMQ connection error message to make clear that it is an MQ connection issue. #3992</li>
-<li>Additional refactor which makes action runners fully standalone and re-distributable Python
+<ul>
+<li><p class="first">Modified RabbitMQ connection error message to make clear that it is an MQ connection issue. #3992</p>
+</li>
+<li><p class="first">Additional refactor which makes action runners fully standalone and re-distributable Python
 packages. Also add support for multiple runners (runner modules) inside a single Python package
 and consolidate Python packages from two to one for the following runners: local runners, remote
-runners, windows runners. (improvement) #3999</li>
-<li>Upgrade eventlet library to the latest stable version (0.22.1) (improvement) #4007 #3968</li>
-<li>Increase maximum retry delay for <code class="docutils literal"><span class="pre">action.retry</span></code> policy from 5 seconds to 120 seconds. Because
+runners, windows runners. (improvement) #3999</p>
+</li>
+<li><p class="first">Upgrade eventlet library to the latest stable version (0.22.1) (improvement) #4007 #3968</p>
+</li>
+<li><p class="first">Increase maximum retry delay for <code class="docutils literal"><span class="pre">action.retry</span></code> policy from 5 seconds to 120 seconds. Because
 of the way retries are currently implemented (they are not st2notifier service restart safe),
 long retry delays are not recommended. For more information on this limitation please refer to
-the documentation - <a class="reference external" href="https://docs.stackstorm.com/reference/policies.html#retry">https://docs.stackstorm.com/reference/policies.html#retry</a>. #3630 #3637</li>
-<li>Update Python runner so it throws a more user-friendly exception in case Python script tries to
-access a key in <code class="docutils literal"><span class="pre">self.config</span></code> dictionary which doesn’t exist. (improvement) #4014</li>
-<li>Update various Python dependencies to the latest stable versions (apscheduler, gitpython,
-pymongo, stevedore, paramiko, tooz, flex, webob, prance).</li>
-<li>Refactored mistral runner to support callback from mistral instead of relying on st2resultstracker.
+the documentation - <a class="reference external" href="https://docs.stackstorm.com/reference/policies.html#retry">https://docs.stackstorm.com/reference/policies.html#retry</a>. #3630 #3637</p>
+</li>
+<li><p class="first">Update Python runner so it throws a more user-friendly exception in case Python script tries to
+access a key in <code class="docutils literal"><span class="pre">self.config</span></code> dictionary which doesn’t exist. (improvement) #4014</p>
+</li>
+<li><p class="first">Update various Python dependencies to the latest stable versions (apscheduler, gitpython,
+pymongo, stevedore, paramiko, tooz, flex, webob, prance).</p>
+</li>
+<li><p class="first">Refactored mistral runner to support callback from mistral instead of relying on st2resultstracker.
 This reduces the unnecessary traffic and CPU time by querying the mistral API. Included a command to
 manually add a state entry for Mistral workflow execution to recover from any callback failures.
-(improvement)</li>
-<li>Throw a more user-friendly error when writing pack data files to disk and when an invalid file
-path is provided (e.g. path is outside the pack directory, etc.). (improvement) #4039 #4046</li>
+(improvement)</p>
+</li>
+<li><p class="first">Throw a more user-friendly error when writing pack data files to disk and when an invalid file
+path is provided (e.g. path is outside the pack directory, etc.). (improvement) #4039 #4046</p>
+</li>
+<li><p class="first">Change the output object returned by Windows runners so it matches the format from the local and
+remote runner.</p>
+<p>Note: This change is backward incompatible - <code class="docutils literal"><span class="pre">result</span></code> attribute has been removed (same
+information is available in <code class="docutils literal"><span class="pre">stdout</span></code> attribute), <code class="docutils literal"><span class="pre">exit_code</span></code> renamed to <code class="docutils literal"><span class="pre">return_code</span></code> and
+two new attributes added - <code class="docutils literal"><span class="pre">succeeded</span></code> and <code class="docutils literal"><span class="pre">failed</span></code>.</p>
+<p>For more information, please refer to the upgrade notes. #4044 #4047</p>
+</li>
 </ul>
 </div>
 <div class="section" id="fixed">
