@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Installing StackStorm with configuration management tools &mdash; StackStorm 2.7dev documentation</title>
+  <title>Installing StackStorm with Configuration Management Tools &mdash; StackStorm 2.7dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
@@ -230,6 +230,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#standalone-auth-mode">Standalone Auth Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html#proxy-auth-mode">Proxy Auth Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#auth-backends">Auth Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#running-the-service">Running the Service</a></li>
@@ -310,6 +312,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -360,6 +363,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
@@ -422,7 +426,7 @@
     
       <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
         
-      <li>Installing StackStorm with configuration management tools</li>
+      <li>Installing StackStorm with Configuration Management Tools</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -450,186 +454,40 @@
             </div>
             
   <div class="section" id="installing-st2-with-configuration-management-tools">
-<h1><a class="toc-backref" href="#id1">Installing StackStorm with configuration management tools</a><a class="headerlink" href="#installing-st2-with-configuration-management-tools" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<h1><a class="toc-backref" href="#id1">Installing StackStorm with Configuration Management Tools</a><a class="headerlink" href="#installing-st2-with-configuration-management-tools" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p class="last">Some of the installation methods described on this page might be out of date. If you experience
 issues, please follow distribution-specific package based installation instructions.</p>
 </div>
-<p>In this section we gathered the pointers to . Some are used internally by StackStorm, some
-are contributed by our users, some others are community contributions.
-Maintaining this section is a community effort, thus if you are Chef, Ansible, Puppet, or Salt expert,
-your contributions here are very welcome.</p>
+<p>This section has pointers to using StackStorm with configuration management tools. Some are used internally by StackStorm, some
+are contributed by our users, some others are community contributions. Maintaining this section is a community effort,
+thus if you are a Chef, Ansible, Puppet, or Salt expert, your contributions here are very welcome.</p>
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#installing-st2-with-configuration-management-tools" id="id1">Installing StackStorm with configuration management tools</a><ul>
-<li><a class="reference internal" href="#puppet" id="id2">Puppet</a><ul>
-<li><a class="reference internal" href="#supported-operating-systems" id="id3">Supported Operating Systems</a></li>
-<li><a class="reference internal" href="#puppet-installation" id="id4">Puppet Installation</a></li>
-<li><a class="reference internal" href="#getting-started" id="id5">Getting Started</a></li>
-<li><a class="reference internal" href="#configuration" id="id6">Configuration</a></li>
-<li><a class="reference internal" href="#pack-installation-and-management" id="id7">Pack Installation and Management</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#chef" id="id8">Chef</a></li>
-<li><a class="reference internal" href="#salt" id="id9">Salt</a></li>
-<li><a class="reference internal" href="#ansible" id="id10">Ansible</a><ul>
-<li><a class="reference internal" href="#supported-platforms" id="id11">Supported platforms</a></li>
-<li><a class="reference internal" href="#requirements" id="id12">Requirements</a></li>
-<li><a class="reference internal" href="#ansible-installation" id="id13">Ansible Installation</a></li>
-<li><a class="reference internal" href="#variables" id="id14">Variables</a></li>
-<li><a class="reference internal" href="#examples" id="id15">Examples</a></li>
+<li><a class="reference internal" href="#installing-st2-with-configuration-management-tools" id="id1">Installing StackStorm with Configuration Management Tools</a><ul>
+<li><a class="reference internal" href="#ansible" id="id2">Ansible</a></li>
+<li><a class="reference internal" href="#puppet" id="id3">Puppet</a></li>
+<li><a class="reference internal" href="#chef" id="id4">Chef</a></li>
+<li><a class="reference internal" href="#salt" id="id5">Salt</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+</div>
+<div class="section" id="ansible">
+<h2><a class="toc-backref" href="#id2">Ansible</a><a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h2>
+<p>We use Ansible playbooks internally to deploy StackStorm, and you can too. See <a class="reference internal" href="ansible.html"><span class="doc">Ansible Playbooks</span></a> for details on how to use these
+playbooks.</p>
 </div>
 <div class="section" id="puppet">
-<h2><a class="toc-backref" href="#id2">Puppet</a><a class="headerlink" href="#puppet" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm provides a supported Puppet module for use when deploying in an existing Puppet infrastructure. This module is designed to allow relative flexibility with the configuration methods and management techniques of the StackStorm application.</p>
-<p>This module aims to provide sane default configurations, but also stay out of your way in the event you need something more custom. To accomplish this, this module uses the Roles/Profiles pattern. Included in this module are several modules that come with sane defaults that you can use directly or use to compose your own site-specific profile for StackStorm installation.</p>
-<div class="section" id="supported-operating-systems">
-<h3><a class="toc-backref" href="#id3">Supported Operating Systems</a><a class="headerlink" href="#supported-operating-systems" title="Permalink to this headline">¶</a></h3>
-<p>As of this writing, the following operating systems are supported:</p>
-<ul class="simple">
-<li>Ubuntu 14.04 LTS</li>
-<li>RedHat/CentOS 7.x</li>
-<li>RedHat/CentOS 6.x</li>
-</ul>
-</div>
-<div class="section" id="puppet-installation">
-<h3><a class="toc-backref" href="#id4">Puppet Installation</a><a class="headerlink" href="#puppet-installation" title="Permalink to this headline">¶</a></h3>
-<p>The Puppet module is updated frequently, and uploaded to the Puppet Forge on each release. You can find the module at <a class="reference external" href="https://forge.puppetlabs.com/stackstorm/st2">https://forge.puppetlabs.com/stackstorm/st2</a></p>
-<div class="section" id="manual-installation">
-<h4>Manual Installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h4>
-<p>The <code class="docutils literal"><span class="pre">puppet</span> <span class="pre">module</span> <span class="pre">install</span></code> action will install a module and all of its dependencies. By default, it will install into the first directory in Puppet’s modulepath. To install the module from the Puppet Forge, simply type the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>puppet module install stackstorm-st2
-</pre></div>
-</div>
-</div>
-<div class="section" id="puppetfile">
-<h4>Puppetfile<a class="headerlink" href="#puppetfile" title="Permalink to this headline">¶</a></h4>
-<p>Alternatively, you can install this module using <code class="docutils literal"><span class="pre">librarian-puppet</span></code> or <code class="docutils literal"><span class="pre">r10k</span></code> and add this file to your <code class="docutils literal"><span class="pre">Puppetfile</span></code>. Add the following line:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mod <span class="s2">&quot;stackstorm/st2&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="getting-started">
-<h3><a class="toc-backref" href="#id5">Getting Started</a><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
-<p>Getting started is very easy. Several pre-configured profiles have been included out-of-the-box to get you started with minimal effort. We will go over this method, as well as how to consume the individual portions of the module.</p>
-<div class="section" id="quick-start">
-<h4>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h4>
-<p>For a full installation on a single node, a profile already exists to get you setup and going with minimal effort. Simply add the following class declaration to your site or node manifest.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>include ::st2::profile::fullinstall
-</pre></div>
-</div>
-<p>This module will install StackStorm and all its dependencies with sane defaults. This class is a great way to test out StackStorm in your environment, or to take a look at how each of the different components composes to create a StackStorm installation profile.</p>
-</div>
-<div class="section" id="profiles">
-<h4>Profiles<a class="headerlink" href="#profiles" title="Permalink to this headline">¶</a></h4>
-<p>In addition to providing a full-install profile, each of the separate profiles are broken up to allow flexibly in defining a site-specific StackStorm profile. Within the module exist several default-configured profiles for the components of StackStorm and its dependencies.</p>
-<p>The full list of profiles are:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">st2::profile::client</span></code>      - Profile to install all client libraries for st2</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::fullinstall</span></code> - Full installation of StackStorm and dependencies</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::mistral</span></code>     - Install of OpenStack Mistral</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::mongodb</span></code>     - st2 configured MongoDB installation</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::nodejs</span></code>      - st2 configured NodeJS installation</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::python</span></code>      - Python installed and configured for st2</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::rabbitmq</span></code>    - st2 configured RabbitMQ installation</li>
-<li><code class="docutils literal"><span class="pre">st2::proflle::server</span></code>      - st2 server components</li>
-<li><code class="docutils literal"><span class="pre">st2::profile::web</span></code>         - st2 web components</li>
-</ul>
-<p>When composing a site-profile, select the various components of the StackStorm installation to deploy. An example configuration profile can be found in the <em>st2workroom</em> project at <a class="reference external" href="http://git.io/v3Z5B">http://git.io/v3Z5B</a>.</p>
-</div>
-</div>
-<div class="section" id="configuration">
-<h3><a class="toc-backref" href="#id6">Configuration</a><a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
-<p>Configuration can be done directly via code composition, or set via Hiera data bindings. By design, all of the configuration options available to the user are set at the top-level of the module. The configuration values are:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">version</span></code>            - Version of StackStorm to install</li>
-<li><code class="docutils literal"><span class="pre">revision</span></code>           - Revision of StackStorm to install</li>
-<li><code class="docutils literal"><span class="pre">mistral_git_branch</span></code> - Tagged branch of Mistral to download/install</li>
-<li><code class="docutils literal"><span class="pre">api_url</span></code>            - URL where the StackStorm API lives (default: undef)</li>
-<li><code class="docutils literal"><span class="pre">auth</span></code>               - Toggle to enable/disable auth (Default: false)</li>
-<li><code class="docutils literal"><span class="pre">auth_url</span></code>           - URL where the StackStorm WebUI lives (default: undef)</li>
-<li><code class="docutils literal"><span class="pre">cli_base_url</span></code>       - CLI config - Base URL lives</li>
-<li><code class="docutils literal"><span class="pre">cli_api_version</span></code>    - CLI config - API Version</li>
-<li><code class="docutils literal"><span class="pre">cli_debug</span></code>          - CLI config - Enable/Disable Debug</li>
-<li><code class="docutils literal"><span class="pre">cli_cache_token</span></code>    - CLI config - True to cache auth token until expries</li>
-<li><code class="docutils literal"><span class="pre">cli_username</span></code>       - CLI config - Auth Username</li>
-<li><code class="docutils literal"><span class="pre">cli_password</span></code>       - CLI config - Auth Password</li>
-<li><code class="docutils literal"><span class="pre">cli_api_url</span></code>        - CLI config - API URL</li>
-<li><code class="docutils literal"><span class="pre">cli_auth_url</span></code>       - CLI config - Auth URL</li>
-<li><code class="docutils literal"><span class="pre">workers</span></code>            - Set the number of actionrunner processes to start</li>
-<li><code class="docutils literal"><span class="pre">ng_init</span></code>            - [Experimental] Init scripts for services. Upstart ONLY</li>
-</ul>
-<div class="section" id="class-configuration">
-<h4>Class Configuration<a class="headerlink" href="#class-configuration" title="Permalink to this headline">¶</a></h4>
-<p>Any of the module configuration settings can be set at declaration. An example of this:</p>
-<div class="highlight-puppet"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="p">{</span> <span class="s">&#39;::st2&#39;</span><span class="p">:</span>
-  <span class="na">auth</span>     <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-  <span class="na">auth_url</span> <span class="o">=&gt;</span> <span class="s">&#39;https://st2auth.stackstorm.net&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>When composing your own profile, you can include <code class="docutils literal"><span class="pre">Class[::st2]</span></code> into your catalog to set any variables necessary.</p>
-</div>
-<div class="section" id="hiera-configuration">
-<h4>Hiera Configuration<a class="headerlink" href="#hiera-configuration" title="Permalink to this headline">¶</a></h4>
-<p>Likewise, module configuration can be set via Hiera. For example in a hiera data file:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">st2::auth</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="l l-Scalar l-Scalar-Plain">st2::auth_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://st2auth.stackstorm.net</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="pack-installation-and-management">
-<h3><a class="toc-backref" href="#id7">Pack Installation and Management</a><a class="headerlink" href="#pack-installation-and-management" title="Permalink to this headline">¶</a></h3>
-<p>StackStorm packs can be installed and configured directly from Puppet. This can be done via the <code class="docutils literal"><span class="pre">st2::pack</span></code> and <code class="docutils literal"><span class="pre">st2::pack::config</span></code> defined types.</p>
-<div class="section" id="defined-types">
-<h4>Defined Types<a class="headerlink" href="#defined-types" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-puppet"><div class="highlight"><pre><span></span><span class="na">st2</span><span class="p">::</span><span class="na">pack</span> <span class="p">{</span> <span class="s">&#39;linux&#39;</span><span class="p">:</span> <span class="p">}</span>
-<span class="na">st2</span><span class="p">::</span><span class="na">pack</span> <span class="p">{</span> <span class="p">[</span><span class="s">&#39;librato&#39;</span><span class="p">,</span> <span class="s">&#39;consul&#39;</span><span class="p">]:</span>
-  <span class="na">repo_url</span> <span class="o">=&gt;</span> <span class="s">&#39;https://github.com/StackStorm/st2incubator.git&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="na">st2</span><span class="p">::</span><span class="na">pack</span> <span class="p">{</span> <span class="s">&#39;slack&#39;</span><span class="p">:</span>
-  <span class="na">repo_url</span> <span class="o">=&gt;</span> <span class="s">&#39;https://github.com/StackStorm/st2incubator.git&#39;</span><span class="p">,</span>
-  <span class="na">config</span>     <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="s">&#39;post_message_action&#39;</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="s">&#39;webhook_url&#39;</span>         <span class="o">=&gt;</span> <span class="s">&#39;XXX&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-  <span class="p">},</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="hiera">
-<h4>Hiera<a class="headerlink" href="#hiera" title="Permalink to this headline">¶</a></h4>
-<p>In order to load packs via hiera, you will need to include the <cite>::st2::packs</cite> class in your site profile. Then, values will be read from Hiera.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">st2::packs</span><span class="p p-Indicator">:</span>
-<span class="l l-Scalar l-Scalar-Plain">linux</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">ensure</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
-<span class="l l-Scalar l-Scalar-Plain">cicd</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">ensure</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
-    <span class="l l-Scalar l-Scalar-Plain">repo_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/StackStorm/st2incubator.git</span>
-<span class="l l-Scalar l-Scalar-Plain">slack</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">ensure</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
-    <span class="l l-Scalar l-Scalar-Plain">repo_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/StackStorm/st2incubator.git</span>
-    <span class="l l-Scalar l-Scalar-Plain">config</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">post_message_action</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">webhook_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">XXX</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h2><a class="toc-backref" href="#id3">Puppet</a><a class="headerlink" href="#puppet" title="Permalink to this headline">¶</a></h2>
+<p>StackStorm provides a community-supported Puppet module. This module is actively maintained, and sees frequent updates.</p>
+<p>Check the <a class="reference external" href="https://github.com/stackstorm/puppet-st2/">puppet-st2</a> repository for more details on how to use this module.</p>
 </div>
 <div class="section" id="chef">
-<h2><a class="toc-backref" href="#id8">Chef</a><a class="headerlink" href="#chef" title="Permalink to this headline">¶</a></h2>
-<p>We don’t have documentation for Chef just quite yet. If you’d like to help us fill in this section, pull requests are gladly accepted. In the meantime, here are some resources that we do have to get you started. There, we have documentation on how to consume the cookbooks.</p>
+<h2><a class="toc-backref" href="#id4">Chef</a><a class="headerlink" href="#chef" title="Permalink to this headline">¶</a></h2>
+<p>We don’t have documentation for Chef yet. If you’d like to help us fill in this section, pull requests are gladly accepted. In the meantime, here are some resources to get you started:</p>
 <blockquote>
 <div><ul class="simple">
 <li>StackStorm Cookbook: <a class="reference external" href="https://supermarket.chef.io/cookbooks/stackstorm">https://supermarket.chef.io/cookbooks/stackstorm</a></li>
@@ -638,107 +496,13 @@ your contributions here are very welcome.</p>
 </div></blockquote>
 </div>
 <div class="section" id="salt">
-<h2><a class="toc-backref" href="#id9">Salt</a><a class="headerlink" href="#salt" title="Permalink to this headline">¶</a></h2>
-<p>We don’t have a Salt States or Documentation for Salt just quite yet. If you’d like to help us fill in this section, pull requests are gladly accepted. In the meantime, here are some resources that we do have to get you started.</p>
+<h2><a class="toc-backref" href="#id5">Salt</a><a class="headerlink" href="#salt" title="Permalink to this headline">¶</a></h2>
+<p>We don’t have a Salt States or Documentation for Salt. If you’d like to help us fill in this section, pull requests are gladly accepted. In the meantime, here are some resources that we do have to get you started.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Integrating SaltStack and StackStorm: <a class="reference external" href="https://stackstorm.com/2015/07/29/getting-started-with-stackstorm-and-saltstack/">https://stackstorm.com/2015/07/29/getting-started-with-stackstorm-and-saltstack/</a> - a blog post on how to integrate the two systems.</li>
 </ul>
 </div></blockquote>
-</div>
-<div class="section" id="ansible">
-<h2><a class="toc-backref" href="#id10">Ansible</a><a class="headerlink" href="#ansible" title="Permalink to this headline">¶</a></h2>
-<p>Ansible playbooks to install StackStorm.</p>
-<p>Allows you to deploy and further configure StackStorm installation on local or remote machines with Ansible configuration management tool.
-Playbooks source code is available as GitHub repository <a class="reference external" href="https://github.com/StackStorm/ansible-st2">ansible-st2</a>.</p>
-<hr class="docutils" />
-<div class="section" id="supported-platforms">
-<h3><a class="toc-backref" href="#id11">Supported platforms</a><a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Ubuntu 12.04 LTS</li>
-<li>Ubuntu 14.04 LTS</li>
-</ul>
-</div>
-<div class="section" id="requirements">
-<h3><a class="toc-backref" href="#id12">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
-<p>At least 2GB of memory and 3.5GB of disk space is required, since StackStorm is shipped with RabbitMQ, MySQL, Mongo, OpenStack Mistral and dozens of Python dependencies.</p>
-</div>
-<div class="section" id="ansible-installation">
-<h3><a class="toc-backref" href="#id13">Ansible Installation</a><a class="headerlink" href="#ansible-installation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/ansible-st2.git
-<span class="nb">cd</span> ansible-st2
-
-ansible-playbook playbooks/st2express.yaml
-</pre></div>
-</div>
-</div>
-<div class="section" id="variables">
-<h3><a class="toc-backref" href="#id14">Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
-<p>Below is the list of variables you can redefine in your playbook to customize st2 deployment:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="21%" />
-<col width="15%" />
-<col width="64%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Variable</th>
-<th class="head">Default</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">st2_version</span></code></td>
-<td><code class="docutils literal"><span class="pre">stable</span></code></td>
-<td>StackStorm version to install. Latest <code class="docutils literal"><span class="pre">stable</span></code>, <code class="docutils literal"><span class="pre">unstable</span></code>
-to get automatic updates or pin it to numeric version like <code class="docutils literal"><span class="pre">0.12.1</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">st2_revision</span></code></td>
-<td><code class="docutils literal"><span class="pre">current</span></code></td>
-<td>StackStorm revision to install. <code class="docutils literal"><span class="pre">current</span></code> to get the
-latest build (autoupdating) or pin it to numeric build like <code class="docutils literal"><span class="pre">6</span></code>.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">st2_action_runners</span></code></td>
-<td><code class="docutils literal"><span class="pre">#</span> <span class="pre">vCPUs</span></code></td>
-<td>Number of action runner workers to start.
-Defaults to number of machine vCPUs, but not less than <code class="docutils literal"><span class="pre">2</span></code>.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">st2_system_user</span></code></td>
-<td><code class="docutils literal"><span class="pre">stanley</span></code></td>
-<td>System user on whose behalf st2 would work,
-including remote/local action runners.</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">st2_auth_username</span></code></td>
-<td><code class="docutils literal"><span class="pre">testu</span></code></td>
-<td>Username used by StackStorm standalone authentication.</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">st2_auth_password</span></code></td>
-<td><code class="docutils literal"><span class="pre">testp</span></code></td>
-<td>Password used by StackStorm standalone authentication.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="examples">
-<h3><a class="toc-backref" href="#id15">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
-<p>Install <code class="docutils literal"><span class="pre">stable</span></code> StackStorm with all its components on local machine:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>ansible-playbook playbooks/st2express.yaml -i <span class="s1">&#39;localhost,&#39;</span> --connection<span class="o">=</span><span class="nb">local</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Keeping <code class="docutils literal"><span class="pre">stable</span></code> version is useful to update StackStorm by re-running playbook, since it will reinstall StackStorm if there is new version available.
-This is default behavior. If you don’t want updates - consider pinning version numbers.</p>
-</div>
-<p>Install specific numeric version of st2 with pinned revision number as well:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>ansible-playbook playbooks/st2express.yaml --extra-vars<span class="o">=</span><span class="s1">&#39;st2_version=0.12.2 st2_revision=6&#39;</span>
-</pre></div>
-</div>
-<p>or latest unstable (development branch):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>ansible-playbook playbooks/st2express.yaml --extra-vars<span class="o">=</span><span class="s1">&#39;st2_version=unstable&#39;</span>
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 

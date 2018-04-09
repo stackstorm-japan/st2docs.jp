@@ -232,6 +232,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#standalone-auth-mode">Standalone Auth Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#proxy-auth-mode">Proxy Auth Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#auth-backends">Auth Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#running-the-service">Running the Service</a></li>
@@ -312,6 +314,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#april-06-2018">2.7.0 - April 06, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -362,6 +365,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
@@ -455,6 +459,9 @@
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="in-development">
 <h2>in development<a class="headerlink" href="#in-development" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="april-06-2018">
+<h2>2.7.0 - April 06, 2018<a class="headerlink" href="#april-06-2018" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
 <ul>
@@ -493,6 +500,10 @@ system.
 </li>
 <li><p class="first">Update windows runner to correctly handle and use <code class="docutils literal"><span class="pre">timeout</span></code> action execution status.
 (improvement) #4047</p>
+</li>
+<li><p class="first">Add missing <code class="docutils literal"><span class="pre">scope</span></code>, <code class="docutils literal"><span class="pre">decrypt</span></code> and <code class="docutils literal"><span class="pre">encrypt</span></code> arguments to the datastore management
+related methods on the SensorService class. (improvement) #3895 #4057 #4058</p>
+<p>Reported by &#64;djh2020, &#64;mxmader.</p>
 </li>
 </ul>
 </div>
@@ -558,6 +569,13 @@ to not work. (bugfix) #4001</p>
 </li>
 <li><p class="first">Fix “st2 pack install” command so it doesn’t require access to pack index (index.stackstorm.org)
 when installing a local pack (pack name starting with “<a class="reference external" href="file://">file://</a>”). (bug fix) #3771 #3772</p>
+</li>
+<li><p class="first">Fix rules engine so it correctly handles and renders action parameters which contain Jinja
+expressions and default values. (bug fix) #4050 #4050</p>
+<p>Reported by &#64;rakeshrm.</p>
+</li>
+<li><p class="first">Make sure <code class="docutils literal"><span class="pre">observer</span></code> system role also grants <code class="docutils literal"><span class="pre">pack_search</span></code> permission. (bug fix) #4063 #4064</p>
+<p>Reported by &#64;SURAJTHEGREAT.</p>
 </li>
 </ul>
 </div>

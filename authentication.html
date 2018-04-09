@@ -232,6 +232,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standalone-auth-mode">Standalone Auth Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#proxy-auth-mode">Proxy Auth Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#auth-backends">Auth Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-service">Running the Service</a></li>
@@ -312,6 +314,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -362,6 +365,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
@@ -497,6 +501,27 @@ running StackStorm on multiple servers, please ensure that this is set to True o
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo st2ctl restart
 </pre></div>
 </div>
+</div>
+<div class="section" id="standalone-auth-mode">
+<h2>Standalone Auth Mode<a class="headerlink" href="#standalone-auth-mode" title="Permalink to this headline">¶</a></h2>
+<p>Standalone mode is the default auth mode where external users authenticate directly with
+StackStorm. Under the hood the <code class="docutils literal"><span class="pre">st2auth</span></code> service delegates to the configured
+<code class="docutils literal"><span class="pre">backend</span></code> to perform the authentication. When the backend service properly
+authenticates the user, an auth token is returned. This token can then be used
+to make further API calls.</p>
+</div>
+<div class="section" id="proxy-auth-mode">
+<h2>Proxy Auth Mode<a class="headerlink" href="#proxy-auth-mode" title="Permalink to this headline">¶</a></h2>
+<p>Proxy mode can be used when there is a service that sits in front of StackStorm
+that performs user authentication (ex: load balancer, apache, nginx, etc). When
+the frontend service authenticates a user it will need to make an API call
+<code class="docutils literal"><span class="pre">POST</span> <span class="pre">https://&lt;stackstorm&gt;/auth/v1/tokens</span></code> to the <code class="docutils literal"><span class="pre">st2auth</span></code> service in order
+to obtain an auth token. In this request the following headers need to be added:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">remote_addr</span></code> Source of the request (hostname/ip).</li>
+<li><code class="docutils literal"><span class="pre">remote_user</span></code> User identity of proxy authenticated user.</li>
+</ul>
+<p>The request will return an auth token that can be used to make further API calls.</p>
 </div>
 <div class="section" id="auth-backends">
 <span id="ref-auth-backends"></span><h2>Auth Backends<a class="headerlink" href="#auth-backends" title="Permalink to this headline">¶</a></h2>

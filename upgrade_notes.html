@@ -232,6 +232,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#standalone-auth-mode">Standalone Auth Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#proxy-auth-mode">Proxy Auth Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#auth-backends">Auth Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#running-the-service">Running the Service</a></li>
@@ -312,6 +314,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -362,6 +365,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#st2-v2-5">StackStorm v2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#st2-v2-4">StackStorm v2.4</a></li>
@@ -453,6 +457,45 @@
             
   <div class="section" id="upgrade-notes">
 <span id="id1"></span><h1>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="st2-v2-7">
+<h2>StackStorm v2.7<a class="headerlink" href="#st2-v2-7" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Update output (result) object returned by the Windows runner so it’s consistent with and matches
+the format returned by the local and remote runners.</p>
+<p><code class="docutils literal"><span class="pre">result</span></code> attribute has been removed (same information is available in the <code class="docutils literal"><span class="pre">stdout</span></code>
+attribute), <code class="docutils literal"><span class="pre">exit_code</span></code> renamed to <code class="docutils literal"><span class="pre">return_code</span></code> and two new attributes added -
+<code class="docutils literal"><span class="pre">succeeded</span></code> and <code class="docutils literal"><span class="pre">failed</span></code>.</p>
+<p>Before:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span> <span class="n">succeeded</span> <span class="p">(</span><span class="mi">1</span><span class="n">s</span> <span class="n">elapsed</span><span class="p">)</span>
+<span class="n">parameters</span><span class="p">:</span>
+  <span class="n">host</span><span class="p">:</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.1</span>
+  <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;********&#39;</span>
+<span class="n">result</span><span class="p">:</span>
+  <span class="n">stdout</span><span class="p">:</span> <span class="s2">&quot;Uptime: 0 days, 18 hours, 15 minutes&quot;</span>
+  <span class="n">stderr</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">result</span><span class="p">:</span> <span class="s2">&quot;Uptime: 0 days, 18 hours, 15 minutes&quot;</span>
+  <span class="n">exit_code</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>After:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span> <span class="n">succeeded</span> <span class="p">(</span><span class="mi">1</span><span class="n">s</span> <span class="n">elapsed</span><span class="p">)</span>
+<span class="n">parameters</span><span class="p">:</span>
+  <span class="n">host</span><span class="p">:</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.1</span>
+  <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;********&#39;</span>
+<span class="n">result</span><span class="p">:</span>
+  <span class="n">stdout</span><span class="p">:</span> <span class="s2">&quot;Uptime: 0 days, 18 hours, 15 minutes&quot;</span>
+  <span class="n">stderr</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">return_code</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="n">succeeded</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">failed</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+<p>Keep in mind that information contained in the <code class="docutils literal"><span class="pre">result</span></code> attribute which has been removed is
+also contained in <code class="docutils literal"><span class="pre">stdout</span></code> attribute so you only need to update your code if it relied on
+<code class="docutils literal"><span class="pre">result</span></code> and / or <code class="docutils literal"><span class="pre">exit_code</span></code> attribute being present.</p>
+</li>
+</ul>
+</div>
 <div class="section" id="st2-v2-6">
 <h2>StackStorm v2.6<a class="headerlink" href="#st2-v2-6" title="Permalink to this headline">¶</a></h2>
 <ul>

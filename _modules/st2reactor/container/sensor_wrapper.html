@@ -231,6 +231,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../authentication.html">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../authentication.html#standalone-auth-mode">Standalone Auth Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../authentication.html#proxy-auth-mode">Proxy Auth Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../authentication.html#auth-backends">Auth Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../authentication.html#running-the-service">Running the Service</a></li>
@@ -311,6 +313,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -361,6 +364,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
@@ -473,6 +477,7 @@
 <span class="kn">from</span> <span class="nn">jsonschema</span> <span class="k">import</span> <span class="n">ValidationError</span>
 
 <span class="kn">from</span> <span class="nn">st2common</span> <span class="k">import</span> <span class="n">log</span> <span class="k">as</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">st2common.constants.keyvalue</span> <span class="k">import</span> <span class="n">SYSTEM_SCOPE</span>
 <span class="kn">from</span> <span class="nn">st2common.logging.misc</span> <span class="k">import</span> <span class="n">set_log_level_for_all_loggers</span>
 <span class="kn">from</span> <span class="nn">st2common.models.api.trace</span> <span class="k">import</span> <span class="n">TraceContext</span>
 <span class="kn">from</span> <span class="nn">st2common.models.api.trigger</span> <span class="k">import</span> <span class="n">TriggerAPI</span>
@@ -533,7 +538,7 @@
     <span class="c1">##################################</span>
 
     <span class="k">def</span> <span class="nf">get_user_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datastore_service</span><span class="o">.</span><span class="n">get_user_info</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datastore_service</span><span class="o">.</span><span class="n">get_user_info</span><span class="p">()</span>
 
     <span class="c1">##################################</span>
     <span class="c1"># Sensor related methods</span>
@@ -594,16 +599,18 @@
     <span class="c1">##################################</span>
 
     <span class="k">def</span> <span class="nf">list_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datastore_service</span><span class="o">.</span><span class="n">list_values</span><span class="p">(</span><span class="n">local</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datastore_service</span><span class="o">.</span><span class="n">list_values</span><span class="p">(</span><span class="n">local</span><span class="o">=</span><span class="n">local</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="n">prefix</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datastore_service</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">SYSTEM_SCOPE</span><span class="p">,</span> <span class="n">decrypt</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datastore_service</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="n">local</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">scope</span><span class="p">,</span>
+                                                <span class="n">decrypt</span><span class="o">=</span><span class="n">decrypt</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datastore_service</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ttl</span><span class="p">,</span> <span class="n">local</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">set_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">SYSTEM_SCOPE</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datastore_service</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="n">ttl</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="n">local</span><span class="p">,</span>
+                                                <span class="n">scope</span><span class="o">=</span><span class="n">scope</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="n">encrypt</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">delete_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_datastore_service</span><span class="o">.</span><span class="n">delete_value</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">delete_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">SYSTEM_SCOPE</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">datastore_service</span><span class="o">.</span><span class="n">delete_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="n">local</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span></div>
 
 
 <span class="k">class</span> <span class="nc">SensorWrapper</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>

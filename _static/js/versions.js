@@ -24,8 +24,8 @@
     var versions = {
       "latest": "https://docs.stackstorm.com/latest",
       "2.7dev": "https://docs.stackstorm.com/2.7dev",
+      "2.7": "https://docs.stackstorm.com/2.7",
       "2.6": "https://docs.stackstorm.com/2.6",
-      "2.5": "https://docs.stackstorm.com/2.5",
     };
 
     var currentVersion = latestVersion;

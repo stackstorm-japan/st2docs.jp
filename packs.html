@@ -232,6 +232,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="authentication.html">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#configuring-the-service">Configuring the Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#standalone-auth-mode">Standalone Auth Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html#proxy-auth-mode">Proxy Auth Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#auth-backends">Auth Backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#ldap-enterprise-edition">LDAP (Enterprise Edition)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="authentication.html#running-the-service">Running the Service</a></li>
@@ -312,6 +314,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#in-development">in development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -362,6 +365,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-4">StackStorm v2.4</a></li>
@@ -643,6 +647,26 @@ command (usually root, depending on your configuration) to have a private key. D
 more secure than personal access tokens and can be configured on a per-repo basis.</p>
 <p>Other git hosting services should also support either SSH or HTTPS auth, and would be configured
 in a similar fashion.</p>
+</div>
+<div class="section" id="using-python-3-for-pack-python-virtual-environment">
+<h3>Using Python 3 for Pack Python Virtual Environment<a class="headerlink" href="#using-python-3-for-pack-python-virtual-environment" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This functionality is only available in StackStorm v2.7.0 and above.</p>
+</div>
+<p>When installing a pack, a Python virtual environment is created using the Python binary defined by
+the <code class="docutils literal"><span class="pre">actionrunner.python_binary</span></code> config option. By default, the same Python 2.7.x binary which is
+used by all the StackStorm components and services is used for pack virtual environments (majority of
+the packs in the Exchange only support Python 2 right now).</p>
+<p>If for some reason you want to use Python 3 for running your pack Python actions, you can do that
+by passing <code class="docutils literal"><span class="pre">--python3</span></code> flag to the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> command (e.g. <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">libcloud</span>
+<span class="pre">--python3</span></code>).</p>
+<p>This will create pack virtual environment using Python 3 binary defined by
+<code class="docutils literal"><span class="pre">actionrunner.python3_binary</span></code> config option. This value defaults to <code class="docutils literal"><span class="pre">/usr/bin/python3</span></code> and for
+it to work, Python 3 needs to be installed on the system.</p>
+<p>Keep in mind that this feature only means Python runner actions will be executed using Python 3
+binary. All the StackStorm components and services, including the action runner will still use Python 2
+binary.</p>
 </div>
 <div class="section" id="installing-packs-from-behind-a-proxy">
 <span id="packs-behind-proxy"></span><h3>Installing Packs from Behind a Proxy<a class="headerlink" href="#installing-packs-from-behind-a-proxy" title="Permalink to this headline">¶</a></h3>
