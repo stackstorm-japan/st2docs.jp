@@ -1,17 +1,21 @@
-System Requirements
-===================
+システム要件
+============
 
-|st2| requires Ubuntu, RHEL or CentOS Linux. It is not supported on any other Linux distributions.
-The table below lists the supported Linux versions, along with the Vagrant Boxes and Amazon AWS
-instances we use for testing. 
+サポートしているディストリビューション
+--------------------------------------
 
-If you are installing from ISO, perform a minimal installation. For Ubuntu, use the "Server"
-variant, and only add OpenSSH Server to the base set of packages. All other dependencies will
-be automatically added when you install |st2|.
+|st2| は後述する Ubuntu 、RHEL または CentOS にインストールできます。それ以外の GNU/Linux ディス\
+トリビューションはサポートしていません。以下は StackStorm がサポートする各ディストリビューション\
+のバージョンの一覧になります。それぞれに動作確認済みの Vagrant Box 及び AWS インスタンスの AMI を\
+示します。
+
+ISO ファイルから GNU/Linux をインストールした場合、最低限の機能 (Ubuntu の場合 OpenSSH Server と\
+最低限のパッケージ) しかインストールされない点にご注意ください。それ以外の |st2| を動かすために必\
+要なパッケージは |st2| をインストールする際に自動でインストールされます。
 
 .. note::
 
-  Please note that only 64-bit architecture is supported.
+  |st2| を実行する GNU/Linux は 64 bit アーキテクチャ版のみサポートされています。
 
 
 +-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -28,32 +32,37 @@ be automatically added when you install |st2|.
 | `CentOS 6 <http://mirror.centos.org/centos/6/isos/x86_64/>`_                                          |                                                                              |                                                                                                                                                                   |
 +-------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Alternatively, you can use the |st2| Docker image. You will need at least version 1.13.0 of Docker
-engine, and optionally ``docker-compose``. See our :doc:`Docker <docker>` guide for more
-information.
+この他に |st2| の Docker イメージから |st2| を使う方法がります。その際、バージョン 1.13.0 の Docker
+と、オプションで ``docker-compose`` をインストールする必要があります。詳しくは
+:doc:`Docker ガイド <docker>` をご参照ください。
 
-This is the recommended minimum sizing for testing and deploying |st2|:
+システムリソース要件
+--------------------
+
+|st2| をテスト、利用する上で推奨される最低限のシステムリソースです。
 
 +--------------------------------------+-----------------------------------+
-|            Testing                   |         Production                |
+|             テスト環境               |        プロダクション環境         |
 +======================================+===================================+
 |  * Dual CPU                          | * Quad core CPU                   |
 |  * 2GB RAM                           | * >16GB RAM                       |
 |  * 10GB storage                      | * 40GB storage                    |
-|  * Recommended EC2: **t2.medium**    | * Recommended EC2: **m4.xlarge**  |
+|  * 推奨 EC2 モデル: **t2.medium**    | * 推奨 EC2 モデル: **m4.xlarge**  |
 +--------------------------------------+-----------------------------------+
 
 .. note::
+  もし後から `DC Fabric Automation Suite <https://ewc-docs.extremenetworks.com/solutions/dcfabric/>`_ を追加する場合、更に
+  RAM 容量の追加を検討する必要があります。詳しくは `DC Fabric Automation Suite System Requirements
+  <https://ewc-docs.extremenetworks.com/solutions/dcfabric/install.html#system-requirements>`_ をご参照ください。
 
-  If you are planning to add the `DC Fabric Automation Suite <https://ewc-docs.extremenetworks.com/solutions/dcfabric/>`_
-  to your system later, you will need additional RAM. Check the `DC Fabric Automation Suite System Requirements
-  <https://ewc-docs.extremenetworks.com/solutions/dcfabric/install.html#system-requirements>`_
+もしストレージのパーティション設定をしている場合、``/var`` と ``/opt`` に 1GB 以上の空き容量があることを確認してください。
+これらのディレクトリがマウントされているパーティションに十分な空き容量がない場合、RabbitMQ と MongoDB が正常に動作しない\
+可能性があります。
 
-If you split your filesystem into multiple partitions and mount points, ensure you have at least
-1GB of free space in ``/var`` and ``/opt``. RabbitMQ and MongoDB may not operate correctly without
-sufficient free space. 
+使用する TCP ポート番号
+-----------------------
 
-By default, |st2| and related services use these TCP ports: 
+|st2| 及び |st2| に関連するサービスは、デフォルトで以下の番号の TCP ポートを使用します。
 
 * nginx (80, 443)
 * mongodb (27017)
@@ -63,4 +72,4 @@ By default, |st2| and related services use these TCP ports:
 * st2api (9101)
 * st2stream (9102) 
 
-If any other services are currently using these ports, |st2| may fail to install or run correctly.
+もし、他のサービスがこれらのいづれかのポートを使用している場合、|st2| のインストール (ないし起動) に失敗します。
