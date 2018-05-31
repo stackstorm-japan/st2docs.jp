@@ -5,6 +5,8 @@
 
 |st2| は、RPM 及び deb パッケージによるインストールの他、Docker による環境構築に加え、インストールスクリプトによる自動インストールといった、様々なインストール方法を提供しています。以下に |st2| がサポートするインストール方法の選択肢を示します。
 
+* **Vagrant / Virtual Appliance:**
+  `Vagrant のインストール </install/vagrant>` ができた環境であれば、コマンド ``vagrant init stackstorm/st2 && vagrant up`` だけで StackStorm がインストールされた環境を構築できます。動作確認済の StackStorm が既にインストールされているイメージを使うことで、インストールや設定の手間や時間を省けます。StackStorm の動作の確認や、pack の開発、デモなどの用途に最適です。
 * **One-line Install:**
   これはインストールスクリプトによって全てのコンポーネントを単一ホストにインストールする方法です。
   とりあえず |st2| を使ってみたいといった場合には、こちらの方法がお勧めです。詳しくは後述の :ref:`Quick Install <ref-one-line-install>` をご覧ください。
@@ -17,9 +19,6 @@
   Ansible によるインストールを行う場合には、:doc:`/install/ansible` をご覧ください。
 * **Docker:**
   |st2| は Docker イメージを提供しています。詳しくは :doc:`Docker による環境構築 <docker>` をご覧ください。
-* **Vagrant:**
-  Vagrant を使えば、手っ取り早くテスト環境を構築できます。`st2vagrant
-  <https://github.com/StackStorm/st2vagrant>`_ は VM を作成し、そこに |st2| をインストールします。
 
 ニーズに合わせて最適な方法をお選びください。
 
@@ -66,6 +65,7 @@
 
     デプロイ後の構成 <overview>
     system_requirements
+    Vagrant / OVA <vagrant>
     Ubuntu 14.04 / 16.04 <deb>
     RHEL 7 / CentOS 7 <rhel7>
     RHEL 6 / CentOS 6 <rhel6>

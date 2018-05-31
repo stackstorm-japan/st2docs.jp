@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Web UI &mdash; StackStorm 2.7dev documentation</title>
+  <title>Web UI &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../../_static/favicon.ico?v4"/>
@@ -44,7 +44,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="StackStorm 2.7dev documentation" href="../../index.html"/>
+    <link rel="top" title="StackStorm 2.8dev documentation" href="../../index.html"/>
         <link rel="up" title="Configuration" href="index.html"/>
         <link rel="next" title="Windows Runners Configuration" href="windows_runners.html"/>
         <link rel="prev" title="Nginx and WSGI" href="config.html"/> 
@@ -110,7 +110,8 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">インストールと設定</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../system_requirements.html">システム要件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -270,6 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../reference/packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../reference/runners.html">Action Runners</a></li>
@@ -315,7 +317,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../changelog.html#in-development">in development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#may-16-2018">2.7.2 - May 16, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#april-20-2018">2.7.1 - April 20, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../changelog.html#april-12-2018">2.7.0 - April 12, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -427,7 +431,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs v2.7dev </a> &raquo;</li>
+      <li><a href="../../index.html">Docs v2.8dev </a> &raquo;</li>
         
           <li><a href="../index.html">インストール</a> &raquo;</li>
         
@@ -455,14 +459,14 @@
             <div id="version-warning" class="admonition warning hide">
               <p class="first admonition-title">Note</p>
               <p class="last">
-                The documentation you're currently reading is for version 2.7dev.
+                The documentation you're currently reading is for version 2.8dev.
                 Click <a href="/">here</a> to view documentation for the latest stable version.
               </p>
             </div>
             
   <div class="section" id="web-ui">
 <h1>Web UI<a class="headerlink" href="#web-ui" title="Permalink to this headline">¶</a></h1>
-<p>st2web is an Angular-based HTML5 web application. It allows you to control the whole process of
+<p>st2web is a React-based HTML5 web application. It allows you to control the whole process of
 execution, from running an action to seeing the results of the execution. It also helps you to
 explore workflow executions up to the results of individual tasks. All in real time.</p>
 <div class="section" id="deployment">
@@ -486,8 +490,8 @@ can connect to. This is typically <code class="docutils literal"><span class="pr
 an array of objects, each with <code class="docutils literal"><span class="pre">name</span></code>, <code class="docutils literal"><span class="pre">url</span></code> and <code class="docutils literal"><span class="pre">auth</span></code> properties.</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">hosts</span><span class="o">:</span> <span class="p">[{</span>
   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Express Deployment&#39;</span><span class="p">,</span>
-  <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://172.168.90.50:9101&#39;</span><span class="p">,</span>
-  <span class="nx">auth</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://172.168.90.50/api&#39;</span><span class="p">,</span>
+  <span class="nx">auth</span><span class="o">:</span> <span class="s1">&#39;http://172.168.90.50/auth&#39;</span>
 <span class="p">},{</span>
   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Development Environment&#39;</span><span class="p">,</span>
   <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://:9101&#39;</span>
@@ -506,7 +510,7 @@ should look like this:</p>
 <span class="c1"># Host and port to bind the API server.</span>
 <span class="na">host</span> <span class="o">=</span> <span class="s">0.0.0.0</span>
 <span class="na">port</span> <span class="o">=</span> <span class="s">9101</span>
-<span class="na">logging</span> <span class="o">=</span> <span class="s">st2api/conf/logging.conf</span>
+<span class="na">logging</span> <span class="o">=</span> <span class="s">/etc/st2/logging.api.conf</span>
 <span class="c1"># List of allowed origins for CORS, use when deploying st2web client</span>
 <span class="c1"># The URL must match the one the browser uses to access the st2web</span>
 <span class="na">allow_origin</span> <span class="o">=</span> <span class="s">http://webui.example.com</span>
@@ -526,9 +530,10 @@ deployment to connect to your server by setting <code class="docutils literal"><
 </div>
 <div class="section" id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<p>To configure st2web to support authentication, edit <code class="docutils literal"><span class="pre">config.js</span></code> and add <code class="docutils literal"><span class="pre">auth:true</span></code> to every
-server that supports authentication. To enable authentication on the server side, please refer to
-<a class="reference internal" href="../../authentication.html"><span class="doc">Authentication</span></a>.</p>
+<p>To configure st2web to support authentication, edit <code class="docutils literal"><span class="pre">config.js</span></code> and add an <code class="docutils literal"><span class="pre">auth:</span></code> line for
+every server that supports authentication. This should specify the URL to the auth service - usually
+this will look something like <code class="docutils literal"><span class="pre">auth:</span> <span class="pre">'https://192.168.16.20/auth'</span></code>. To enable authentication on the
+server side, please refer to <a class="reference internal" href="../../authentication.html"><span class="doc">Authentication</span></a>.</p>
 </div>
 </div>
 
@@ -570,7 +575,7 @@ server that supports authentication. To enable authentication on the server side
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'2.7dev',
+            VERSION:'2.8dev',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Mistral Issues &mdash; StackStorm 2.7dev documentation</title>
+  <title>Mistral Issues &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
@@ -44,7 +44,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="StackStorm 2.7dev documentation" href="../index.html"/>
+    <link rel="top" title="StackStorm 2.8dev documentation" href="../index.html"/>
         <link rel="up" title="Troubleshooting" href="index.html"/>
         <link rel="next" title="SSH Troubleshooting" href="ssh.html"/>
         <link rel="prev" title="Sensor Troubleshooting" href="sensors.html"/> 
@@ -110,7 +110,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../install/index.html">インストールと設定</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install/overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/system_requirements.html">システム要件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install/deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install/rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install/rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -270,6 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reference/packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/runners.html">Action Runners</a></li>
@@ -315,7 +317,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#in-development">in development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#may-16-2018">2.7.2 - May 16, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-20-2018">2.7.1 - April 20, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-12-2018">2.7.0 - April 12, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -427,7 +431,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
+      <li><a href="../index.html">Docs v2.8dev </a> &raquo;</li>
         
           <li><a href="index.html">Troubleshooting</a> &raquo;</li>
         
@@ -453,7 +457,7 @@
             <div id="version-warning" class="admonition warning hide">
               <p class="first admonition-title">Note</p>
               <p class="last">
-                The documentation you're currently reading is for version 2.7dev.
+                The documentation you're currently reading is for version 2.8dev.
                 Click <a href="/">here</a> to view documentation for the latest stable version.
               </p>
             </div>
@@ -479,17 +483,16 @@ too.</p>
 </div>
 <div class="section" id="troubleshooting-mistral-workflow-completion-latency">
 <span id="mistral-workflows-latency"></span><h2>Troubleshooting Mistral Workflow Completion Latency<a class="headerlink" href="#troubleshooting-mistral-workflow-completion-latency" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm interacts with Mistral via HTTP APIs. This interaction occurs when kicking off a workflow execution
-or collecting the results for a running workflow. StackStorm queries Mistral to check on the workflow
-execution status and the status of individual tasks.</p>
-<p>The process in StackStorm that does the querying is called <code class="docutils literal"><span class="pre">st2resultstracker</span></code>. This process saves the state
-of outstanding workflow executions in the database, and once a workflow is complete, deletes the
-state from the database. The process uses eventlets to simultaneously query multiple workflow
-results. This can consume significant CPU cycles.</p>
-<p>As of StackStorm v2.3 onwards, there are two configurable values for controlling this from happening. These are
-<code class="docutils literal"><span class="pre">thread_pool_size</span></code> (number of eventlets) and <code class="docutils literal"><span class="pre">query_interval</span></code> (interval to space out the
-subsequent queries to Mistral for a single execution). You can configure these values by editing
-the <code class="docutils literal"><span class="pre">results_tracker</span></code> section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<p>Since v2.7, the results tracking mechanism is replaced with a callback mechanism from Mistral. Instead of StackStorm
+querying Mistral at regular intervals, Mistral is configured to callback StackStorm on task and workflow completion.
+See <a class="reference internal" href="../mistral.html#mistral-workflows-completion-latency-and-performance"><span class="std std-ref">Mistral Workflows Completion, Latency, and Performance</span></a></p>
+<p>Prior to v2.7, StackStorm queries Mistral to check on workflow execution status and the status of individual tasks
+via st2resultstracker. This <code class="docutils literal"><span class="pre">st2resultstracker</span></code> process saves the state of outstanding workflow executions
+in the database, and once a workflow is complete, deletes the state from the database. The process uses
+eventlets to simultaneously query multiple workflow results. This can consume significant CPU cycles.</p>
+<p>There are two configurable values for controlling this. These are <code class="docutils literal"><span class="pre">thread_pool_size</span></code> (number of eventlets)
+and <code class="docutils literal"><span class="pre">query_interval</span></code> (interval to space out the subsequent queries to Mistral for a single execution). You
+can configure these values by editing the <code class="docutils literal"><span class="pre">results_tracker</span></code> section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
 <div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[resultstracker]</span>
 <span class="na">query_interval</span> <span class="o">=</span> <span class="s">5 # in seconds</span>
 <span class="na">thread_pool_size</span> <span class="o">=</span> <span class="s">10</span>
@@ -497,14 +500,11 @@ the <code class="docutils literal"><span class="pre">results_tracker</span></cod
 </div>
 <p>These values are subject to load conditions in your infrastructure and the number of workflows
 you are running. The default value for <code class="docutils literal"><span class="pre">query_interval</span></code> is set to <code class="docutils literal"><span class="pre">5</span></code> (seconds) which is a balance
-between the workflow speed and the CPU overhead. With StackStorm 2.2 and
-earlier, this value was <code class="docutils literal"><span class="pre">0.1</span></code>. We have now set the default value to <code class="docutils literal"><span class="pre">5</span></code> seconds to be
-conservative. This also means the time to detect a completed workflow in Mistral by StackStorm could
-take as long as 5 seconds.</p>
+between the workflow speed and the CPU overhead. With StackStorm 2.2 and earlier, this value was <code class="docutils literal"><span class="pre">0.1</span></code>.
+We have now set the default value to <code class="docutils literal"><span class="pre">5</span></code> seconds to be conservative. This also means the time to detect
+a completed workflow in Mistral by StackStorm could take as long as 5 seconds.</p>
 <p>If this is unacceptable for you, you can reduce the <code class="docutils literal"><span class="pre">query_interval</span></code> and also
 simultaneously check CPU usage for the <code class="docutils literal"><span class="pre">st2resultstracker</span></code> process.</p>
-<p>We are reworking the design to use HTTP callbacks from Mistral to StackStorm. Until then, these tunable
-knobs should help.</p>
 </div>
 </div>
 
@@ -546,7 +546,7 @@ knobs should help.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.7dev',
+            VERSION:'2.8dev',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

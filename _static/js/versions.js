@@ -19,11 +19,11 @@
   }
 
   $(document).ready(function () {
-    var latestVersion = "2.7dev";
+    var latestVersion = "2.8dev";
 
     var versions = {
       "latest": "https://docs.stackstorm.com/latest",
-      "2.7dev": "https://docs.stackstorm.com/2.7dev",
+      "2.8dev": "https://docs.stackstorm.com/2.8dev",
       "2.7": "https://docs.stackstorm.com/2.7",
       "2.6": "https://docs.stackstorm.com/2.6",
     };

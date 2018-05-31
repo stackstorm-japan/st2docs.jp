@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>システム要件 &mdash; StackStorm 2.7dev documentation</title>
+  <title>System Requirements &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
@@ -44,9 +44,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="StackStorm 2.7dev documentation" href="../index.html"/>
+    <link rel="top" title="StackStorm 2.8dev documentation" href="../index.html"/>
         <link rel="up" title="インストール" href="index.html"/>
-        <link rel="next" title="Ubuntu Trusty/Xenial" href="deb.html"/>
+        <link rel="next" title="Vagrant &amp; Virtual Appliance" href="vagrant.html"/>
         <link rel="prev" title="Overview: Single-box Reference Deployment" href="overview.html"/> 
 
   
@@ -110,7 +110,8 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">インストールと設定</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">システム要件</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -270,6 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reference/packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/runners.html">Action Runners</a></li>
@@ -315,7 +317,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#in-development">in development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#may-16-2018">2.7.2 - May 16, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-20-2018">2.7.1 - April 20, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-12-2018">2.7.0 - April 12, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -427,11 +431,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
+      <li><a href="../index.html">Docs v2.8dev </a> &raquo;</li>
         
           <li><a href="index.html">インストール</a> &raquo;</li>
         
-      <li>システム要件</li>
+      <li>System Requirements</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -453,20 +457,23 @@
             <div id="version-warning" class="admonition warning hide">
               <p class="first admonition-title">Note</p>
               <p class="last">
-                The documentation you're currently reading is for version 2.7dev.
+                The documentation you're currently reading is for version 2.8dev.
                 Click <a href="/">here</a> to view documentation for the latest stable version.
               </p>
             </div>
             
-  <div class="section" id="id1">
-<h1>システム要件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>サポートしているディストリビューション<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm は後述する Ubuntu 、RHEL または CentOS にインストールできます。それ以外の GNU/Linux ディストリビューションはサポートしていません。以下は StackStorm がサポートする各ディストリビューションのバージョンの一覧になります。それぞれに動作確認済みの Vagrant Box 及び AWS インスタンスの AMI を示します。</p>
-<p>ISO ファイルから GNU/Linux をインストールした場合、最低限の機能 (Ubuntu の場合 OpenSSH Server と最低限のパッケージ) しかインストールされない点にご注意ください。それ以外の StackStorm を動かすために必要なパッケージは StackStorm をインストールする際に自動でインストールされます。</p>
+  <div class="section" id="system-requirements">
+<h1>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h1>
+<p>StackStorm requires Ubuntu, RHEL or CentOS Linux. It is not supported on any other Linux distributions.
+The table below lists the supported Linux versions, along with the Vagrant Boxes and Amazon AWS
+instances we use for testing. See <a class="reference internal" href="#ref-os-support-policy"><span class="std std-ref">below</span></a> for more details about
+our Linux distribution support policy.</p>
+<p>If you are installing from ISO, perform a minimal installation. For Ubuntu, use the “Server”
+variant, and only add OpenSSH Server to the base set of packages. All other dependencies will
+be automatically added when you install StackStorm.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">StackStorm を実行する GNU/Linux は 64 bit アーキテクチャ版のみサポートされています。</p>
+<p class="last">Please note that only 64-bit architecture is supported.</p>
 </div>
 <table border="1" class="docutils">
 <colgroup>
@@ -485,37 +492,34 @@
 <td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/ubuntu-14.04">bento/ubuntu-14.04</a></td>
 <td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B00JV9TBA6/ref=srh_res_product_title?ie=UTF8&amp;sr=0-3&amp;qid=1457037882965">Ubuntu Server 14.04 LTS (HVM)</a></td>
 </tr>
-<tr class="row-odd"><td><a class="reference external" href="https://www.ubuntu.com/download/server/thank-you?version=16.04.3&amp;architecture=amd64">Ubuntu 16.04</a></td>
+<tr class="row-odd"><td><a class="reference external" href="https://www.ubuntu.com/download/server/thank-you?version=16.04.4&amp;architecture=amd64">Ubuntu 16.04</a></td>
 <td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/ubuntu-16.04">bento/ubuntu-16.04</a></td>
 <td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B01JBL2M0O/">Ubuntu 16.04 LTS - Xenial (HVM)</a></td>
 </tr>
 <tr class="row-even"><td><a class="reference external" href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux">RHEL 7</a> /
 <a class="reference external" href="http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso">CentOS 7</a></td>
-<td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/centos-7.2">bento/centos-7.2</a></td>
+<td><a class="reference external" href="https://app.vagrantup.com/bento/boxes/centos-7.4">bento/centos-7.4</a></td>
 <td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B019NS7T5I/ref=srh_res_product_title?ie=UTF8&amp;sr=0-2&amp;qid=1457037671547">Red Hat Enterprise Linux (RHEL) 7.2 (HVM)</a></td>
 </tr>
 <tr class="row-odd"><td><a class="reference external" href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux">RHEL 6</a> /
 <a class="reference external" href="http://mirror.centos.org/centos/6/isos/x86_64/">CentOS 6</a></td>
-<td><a class="reference external" href="https://atlas.hashicorp.com/bento/boxes/centos-6.7">bento/centos-6.7</a></td>
+<td><a class="reference external" href="https://app.vagrantup.com/bento/boxes/centos-6.9">bento/centos-6.7</a></td>
 <td><a class="reference external" href="https://aws.amazon.com/marketplace/pp/B00CFQWLS6/ref=srh_res_product_title?ie=UTF8&amp;sr=0-8&amp;qid=1457037733401">Red Hat Enterprise Linux (RHEL) 6 (HVM)</a></td>
 </tr>
 </tbody>
 </table>
-<p>この他に StackStorm の Docker イメージから StackStorm を使う方法がります。その際、バージョン 1.13.0 の Docker
-と、オプションで <code class="docutils literal"><span class="pre">docker-compose</span></code> をインストールする必要があります。詳しくは
-<a class="reference internal" href="docker.html"><span class="doc">Docker ガイド</span></a> をご参照ください。</p>
-</div>
-<div class="section" id="id3">
-<h2>システムリソース要件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm をテスト、利用する上で推奨される最低限のシステムリソースです。</p>
+<p>Alternatively, you can use the StackStorm Docker image. You will need at least version 1.13.0 of Docker
+engine, and optionally <code class="docutils literal"><span class="pre">docker-compose</span></code>. See our <a class="reference internal" href="docker.html"><span class="doc">Docker</span></a> guide for more
+information.</p>
+<p>This is the recommended minimum sizing for testing and deploying StackStorm:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="52%" />
 <col width="48%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">テスト環境</th>
-<th class="head">プロダクション環境</th>
+<tr class="row-odd"><th class="head">Testing</th>
+<th class="head">Production</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -523,14 +527,14 @@
 <li>Dual CPU</li>
 <li>2GB RAM</li>
 <li>10GB storage</li>
-<li>推奨 EC2 モデル: <strong>t2.medium</strong></li>
+<li>Recommended EC2: <strong>t2.medium</strong></li>
 </ul>
 </td>
 <td><ul class="first last simple">
 <li>Quad core CPU</li>
 <li>&gt;16GB RAM</li>
 <li>40GB storage</li>
-<li>推奨 EC2 モデル: <strong>m4.xlarge</strong></li>
+<li>Recommended EC2: <strong>m4.xlarge</strong></li>
 </ul>
 </td>
 </tr>
@@ -538,15 +542,13 @@
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">もし後から <a class="reference external" href="https://ewc-docs.extremenetworks.com/solutions/dcfabric/">DC Fabric Automation Suite</a> を追加する場合、更に
-RAM 容量の追加を検討する必要があります。詳しくは <a class="reference external" href="https://ewc-docs.extremenetworks.com/solutions/dcfabric/install.html#system-requirements">DC Fabric Automation Suite System Requirements</a> をご参照ください。</p>
+<p class="last">If you are planning to add the <a class="reference external" href="https://ewc-docs.extremenetworks.com/solutions/dcfabric/">DC Fabric Automation Suite</a>
+to your system later, you will need additional RAM. Check the <a class="reference external" href="https://ewc-docs.extremenetworks.com/solutions/dcfabric/install.html#system-requirements">DC Fabric Automation Suite System Requirements</a></p>
 </div>
-<p>もしストレージのパーティション設定をしている場合、<code class="docutils literal"><span class="pre">/var</span></code> と <code class="docutils literal"><span class="pre">/opt</span></code> に 1GB 以上の空き容量があることを確認してください。
-これらのディレクトリがマウントされているパーティションに十分な空き容量がない場合、RabbitMQ と MongoDB が正常に動作しない可能性があります。</p>
-</div>
-<div class="section" id="tcp">
-<h2>使用する TCP ポート番号<a class="headerlink" href="#tcp" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm 及び StackStorm に関連するサービスは、デフォルトで以下の番号の TCP ポートを使用します。</p>
+<p>If you split your filesystem into multiple partitions and mount points, ensure you have at least
+1GB of free space in <code class="docutils literal"><span class="pre">/var</span></code> and <code class="docutils literal"><span class="pre">/opt</span></code>. RabbitMQ and MongoDB may not operate correctly without
+sufficient free space.</p>
+<p>By default, StackStorm and related services use these TCP ports:</p>
 <ul class="simple">
 <li>nginx (80, 443)</li>
 <li>mongodb (27017)</li>
@@ -556,7 +558,25 @@ RAM 容量の追加を検討する必要があります。詳しくは <a class=
 <li>st2api (9101)</li>
 <li>st2stream (9102)</li>
 </ul>
-<p>もし、他のサービスがこれらのいづれかのポートを使用している場合、StackStorm のインストール (ないし起動) に失敗します。</p>
+<p>If any other services are currently using these ports, StackStorm may fail to install or run correctly.</p>
+<div class="section" id="linux-distribution-support-policy">
+<span id="ref-os-support-policy"></span><h2>Linux Distribution Support Policy<a class="headerlink" href="#linux-distribution-support-policy" title="Permalink to this headline">¶</a></h2>
+<p>StackStorm only support Ubuntu and RHEL/CentOS Linux distributions. In general, it is supported
+on the two most recent major supported releases for those distributions. Specifically:</p>
+<ul>
+<li><p class="first"><strong>Ubuntu</strong>: All current LTS releases are supported, from the time of their first <code class="docutils literal"><span class="pre">.1</span></code> release
+- e.g. <code class="docutils literal"><span class="pre">16.04.1</span></code> - until the Ubuntu end of life date. Currently we support Ubuntu <code class="docutils literal"><span class="pre">14.04</span></code> and
+<code class="docutils literal"><span class="pre">16.04</span></code>. We aim to test and validate Ubuntu <code class="docutils literal"><span class="pre">18.04</span></code>, when it is released later in 2018.</p>
+<p>At that point, Ubuntu <code class="docutils literal"><span class="pre">14.04</span></code> will be considered deprecated. It will continue to be supported until
+April 2019, when it goes end of life. No ongoing testing will be done with Ubuntu 14 after April 2019.</p>
+</li>
+<li><p class="first"><strong>RHEL/CentOS</strong>: We currently support RHEL/CentOS <code class="docutils literal"><span class="pre">6.x</span></code> and <code class="docutils literal"><span class="pre">7.x</span></code>. In general, we recommend using
+the most recent version in that series, but any version may be used. When RHEL <code class="docutils literal"><span class="pre">8.0</span></code> is released,
+we will test and validate it. At that point, RHEL 6.x should be considered deprecated.</p>
+<p>When RHEL <code class="docutils literal"><span class="pre">8.1</span></code> is released, StackStorm support for RHEL <code class="docutils literal"><span class="pre">6.x</span></code> will finish. No ongoing testing will be
+done with RHEL <code class="docutils literal"><span class="pre">6.x</span></code> after that date.</p>
+</li>
+</ul>
 </div>
 </div>
 
@@ -566,7 +586,7 @@ RAM 容量の追加を検討する必要があります。詳しくは <a class=
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="deb.html" class="btn btn-neutral float-right" title="Ubuntu Trusty/Xenial">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vagrant.html" class="btn btn-neutral float-right" title="Vagrant &amp; Virtual Appliance">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="overview.html" class="btn btn-neutral" title="Overview: Single-box Reference Deployment"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -598,7 +618,7 @@ RAM 容量の追加を検討する必要があります。詳しくは <a class=
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.7dev',
+            VERSION:'2.8dev',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

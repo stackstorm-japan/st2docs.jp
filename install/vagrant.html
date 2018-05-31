@@ -15,13 +15,13 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Secrets Masking &mdash; StackStorm 2.8dev documentation</title>
+  <title>Vagrant &amp; Virtual Appliance &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
   
   
-    <link rel="canonical" href="https://docs.stackstorm.com/reference/secrets_masking.html"/>
+    <link rel="canonical" href="https://docs.stackstorm.com/install/vagrant.html"/>
   
 
   
@@ -45,9 +45,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="StackStorm 2.8dev documentation" href="../index.html"/>
-        <link rel="up" title="References and Guides" href="index.html"/>
-        <link rel="next" title="Troubleshooting" href="../troubleshooting/index.html"/>
-        <link rel="prev" title="History and Audit" href="history.html"/> 
+        <link rel="up" title="インストール" href="index.html"/>
+        <link rel="next" title="Ubuntu Trusty/Xenial" href="deb.html"/>
+        <link rel="prev" title="System Requirements" href="system_requirements.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -101,26 +101,26 @@
         
         
             <p class="caption"><span class="caption-text">はじめに</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">StackStorm 概要</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#about">About</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#how-it-works">How it Works</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../overview.html#what-s-next">What’s Next?</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../install/index.html">インストールと設定</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../install/overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/system_requirements.html">System Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/vagrant.html">Vagrant / OVA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/deb.html">Ubuntu 14.04 / 16.04</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/rhel7.html">RHEL 7 / CentOS 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/rhel6.html">RHEL 6 / CentOS 6</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/docker.html">Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/ansible.html">Ansible Playbooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/bwc.html">Extreme Workflow Composer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/config/index.html">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/upgrades.html">Upgrades</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/uninstall.html">Uninstall</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">インストールと設定</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">デプロイ後の構成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Vagrant / OVA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rhel6.html">RHEL 6 / CentOS 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html">Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html">Ansible Playbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bwc.html">Extreme Workflow Composer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrades.html">Upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstall.html">Uninstall</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../start.html">クイックスタート</a><ul>
@@ -231,7 +231,7 @@
 </li>
 </ul>
 <p class="caption"><span class="caption-text">応用トピック</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../authentication.html">Authentication</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#configuring-the-service">Configuring the Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication.html#standalone-auth-mode">Standalone Auth Mode</a></li>
@@ -264,25 +264,25 @@
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#garbage-collection-for-inquiries">Garbage Collection for Inquiries</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">References and Guides</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="sharing_code_sensors_actions.html">Sharing code between Sensors and Python Actions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cli.html">CLI Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pack_configs.html">Pack Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packs.html">Create and Contribute a Pack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pack_management_transition.html">Pack Management Transition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="action_output_streaming.html">Real-time Action Output Streaming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jinja.html">Jinja</a></li>
-<li class="toctree-l2"><a class="reference internal" href="policies.html">Policies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="runners.html">Action Runners</a></li>
-<li class="toctree-l2"><a class="reference internal" href="traces.html">Traces</a></li>
-<li class="toctree-l2"><a class="reference internal" href="client_libraries.html">Client Libraries and Language Bindings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ha.html">High Availability Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html">REST API Reference</a></li>
-<li class="toctree-l2"><a class="reference internal" href="monitoring.html">System Monitoring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensor_partitioning.html">Partitioning Sensors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="history.html">History and Audit</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Secrets Masking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">References and Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sharing_code_sensors_actions.html">Sharing code between Sensors and Python Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/cli.html">CLI Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/pack_configs.html">Pack Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/packs.html">Create and Contribute a Pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/pack_management_transition.html">Pack Management Transition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/jinja.html">Jinja</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/policies.html">Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/runners.html">Action Runners</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/traces.html">Traces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/client_libraries.html">Client Libraries and Language Bindings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/ha.html">High Availability Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/api.html">REST API Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/monitoring.html">System Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/sensor_partitioning.html">Partitioning Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/history.html">History and Audit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/secrets_masking.html">Secrets Masking</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a><ul>
@@ -433,16 +433,16 @@
     
       <li><a href="../index.html">Docs v2.8dev </a> &raquo;</li>
         
-          <li><a href="index.html">References and Guides</a> &raquo;</li>
+          <li><a href="index.html">インストール</a> &raquo;</li>
         
-      <li>Secrets Masking</li>
+      <li>Vagrant &amp; Virtual Appliance</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/reference/secrets_masking.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/install/vagrant.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -462,126 +462,122 @@
               </p>
             </div>
             
-  <div class="section" id="secrets-masking">
-<h1>Secrets Masking<a class="headerlink" href="#secrets-masking" title="Permalink to this headline">¶</a></h1>
-<p>StackStorm offers functionality for masking secrets in API responses and log messages. This is enabled
-by default.</p>
-<p>To disable it, set the <code class="docutils literal"><span class="pre">api.mask_secrets</span></code> and <code class="docutils literal"><span class="pre">log.mask_secrets</span></code> config options in
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[api]</span>
-<span class="na">mask_secrets</span> <span class="o">=</span> <span class="s">True</span>
-
-<span class="na">...</span>
-
-<span class="k">[log]</span>
-<span class="na">mask_secrets</span> <span class="o">=</span> <span class="s">False</span>
-</pre></div>
-</div>
-<div class="section" id="masking-secrets-in-api-responses">
-<h2>Masking Secrets in API Responses<a class="headerlink" href="#masking-secrets-in-api-responses" title="Permalink to this headline">¶</a></h2>
-<p>When secret masking is enabled for API responses, StackStorm will mask values for secret parameters in
-all the API responses which operate on the following system entities:</p>
+  <div class="section" id="vagrant-virtual-appliance">
+<h1>Vagrant &amp; Virtual Appliance<a class="headerlink" href="#vagrant-virtual-appliance" title="Permalink to this headline">¶</a></h1>
+<p>Vagrant / OVA is a quick and easy way to try StackStorm in a VM.</p>
+<p>It’s already pre-installed, configured and tested virtual machine image and so saves time avoiding
+time-consuming installation and configuration steps. Perfect for a quick platform overview,
+testing, demo or even using StackStorm in isolated from the internet air-gapped systems.</p>
+<p>We highly recommend using a Vagrant box to get familiar with the StackStorm platform.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title first">Contents</p>
 <ul class="simple">
-<li>Action Executions</li>
-<li>Live Actions</li>
-<li>Datastore (key-value) Items</li>
+<li><a class="reference internal" href="#requirements" id="id2">Requirements</a></li>
+<li><a class="reference internal" href="#vagrant-quick-start" id="id3">Vagrant Quick Start</a></li>
+<li><a class="reference internal" href="#virtual-appliance-ova" id="id4">Virtual Appliance / OVA</a></li>
+<li><a class="reference internal" href="#tips-tricks" id="id5">Tips &amp; Tricks</a><ul>
+<li><a class="reference internal" href="#updating-the-vagrant-box" id="id6">Updating the Vagrant box</a></li>
+<li><a class="reference internal" href="#pinning-the-vagrant-box-version" id="id7">Pinning the Vagrant box version</a></li>
 </ul>
-<p>StackStorm will determine if a particular action parameter is a secret based on the parameter definition
-in the action metadata file.</p>
-<p>Any action parameter that has the <code class="docutils literal"><span class="pre">secret:</span> <span class="pre">true</span></code> attribute will be treated as a secret for
-masking purposes.</p>
-<p>Masking can be disabled on a per-API request basis, by passing the <code class="docutils literal"><span class="pre">?show_secrets=True</span></code> query
-parameter to all of the supported API endpoints. This is only available to users with the admin
-role.</p>
-<p>This example shows the secret parameter <code class="docutils literal"><span class="pre">cmd</span></code> being masked in the response of the
-<code class="docutils literal"><span class="pre">/v1/executions/</span></code> API endpoint.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET <span class="s1">&#39;http://127.0.0.1:9101/v1/executions/?limit=1&#39;</span>
-<span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-        <span class="s2">&quot;start_timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.953242Z&quot;</span>,
-        <span class="s2">&quot;log&quot;</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-                <span class="s2">&quot;timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.970000Z&quot;</span>
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">&quot;parameters&quot;</span>: <span class="o">{</span>
-            <span class="s2">&quot;cmd&quot;</span>: <span class="s2">&quot;********&quot;</span>
-        <span class="o">}</span>,
-        ...
-        <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;58e78dbe0640fd765ca74896&quot;</span>
-    <span class="o">}</span>
-<span class="o">]</span>
-</pre></div>
-</div>
-<p>This shows the same request, when a user with admin role disables masking on a per-request basis:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET <span class="s1">&#39;http://127.0.0.1:9101/v1/executions/?limit=1&amp;show_secrets=True&#39;</span>
-<span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-        <span class="s2">&quot;start_timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.953242Z&quot;</span>,
-        <span class="s2">&quot;log&quot;</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-                <span class="s2">&quot;timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.970000Z&quot;</span>
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">&quot;parameters&quot;</span>: <span class="o">{</span>
-            <span class="s2">&quot;cmd&quot;</span>: <span class="s2">&quot;date&quot;</span>
-        <span class="o">}</span>,
-        ...
-        <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;58e78dbe0640fd765ca74896&quot;</span>
-    <span class="o">}</span>
-<span class="o">]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="masking-secrets-in-log-messages">
-<h2>Masking Secrets in Log Messages<a class="headerlink" href="#masking-secrets-in-log-messages" title="Permalink to this headline">¶</a></h2>
-<p>When secret masking is enabled for log messages, StackStorm uses a static blacklist of attribute and
-parameter names which are considered as secrets and tries to mask them in the log messages. By
-default, this blacklist contains the following names:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">password</span></code></li>
-<li><code class="docutils literal"><span class="pre">auth_token</span></code></li>
-<li><code class="docutils literal"><span class="pre">token</span></code></li>
-<li><code class="docutils literal"><span class="pre">secret</span></code></li>
-<li><code class="docutils literal"><span class="pre">credentials</span></code></li>
-<li><code class="docutils literal"><span class="pre">st2_auth_token</span></code></li>
+</li>
+<li><a class="reference internal" href="#debugging" id="id8">Debugging</a><ul>
+<li><a class="reference internal" href="#st2-integration-tests" id="id9">st2-integration-tests</a></li>
 </ul>
-<p>Values for all the masked parameters are replaced with <code class="docutils literal"><span class="pre">********</span></code>.</p>
-<p>For example, for a log method call in the code which looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;User authenticated&#39;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;dummy&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;supersecret&#39;</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="s1">&#39;supersecret&#39;</span><span class="p">})</span>
+</li>
+<li><a class="reference internal" href="#bugs-issues-contributions" id="id10">Bugs &amp; Issues &amp; Contributions</a></li>
+</ul>
+</div>
+<p>The source code is available as a GitHub repo:
+<a class="reference external" href="https://github.com/StackStorm/packer-st2">StackStorm/packer-st2</a></p>
+<hr class="docutils" />
+<div class="section" id="requirements">
+<h2><a class="toc-backref" href="#id2">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.virtualbox.org/">Virtualbox</a> is required along with <a class="reference external" href="https://www.vagrantup.com/">Vagrant</a>
+when it’s used. If you’re not familiar with Vagrant, we recommend looking at <a class="reference external" href="https://www.vagrantup.com/intro/index.html">Introduction to Vagrant</a>.</p>
+</div>
+<div class="section" id="vagrant-quick-start">
+<h2><a class="toc-backref" href="#id3">Vagrant Quick Start</a><a class="headerlink" href="#vagrant-quick-start" title="Permalink to this headline">¶</a></h2>
+<p>Starting a StackStorm Vagrant VM is easy:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant init stackstorm/st2
+vagrant up
+vagrant ssh
 </pre></div>
 </div>
-<p>With masking disabled, the actual log line in the log file looks like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2017</span>-04-07 <span class="m">12</span>:20:09,368 INFO <span class="o">[</span>-<span class="o">]</span> User authenticated <span class="o">(</span><span class="nv">username</span><span class="o">=</span>dummy, <span class="nv">token</span><span class="o">=</span>supersecret<span class="o">)</span>
+<p>This will boot up a fresh StackStorm installation along with the Mistral workflow engine on Ubuntu 16.04 LTS.
+You can access Web UI at <code class="docutils literal"><span class="pre">https://10.10.10.10/</span></code> or SSH to the box <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> if you prefer st2 CLI.</p>
+</div>
+<div class="section" id="virtual-appliance-ova">
+<h2><a class="toc-backref" href="#id4">Virtual Appliance / OVA</a><a class="headerlink" href="#virtual-appliance-ova" title="Permalink to this headline">¶</a></h2>
+<p>As alternative to Vagrant box is Virtual appliance which is available for download as <code class="docutils literal"><span class="pre">.OVA</span></code>
+image from the <a class="reference external" href="https://github.com/StackStorm/packer-st2/releases">StackStorm/packer-st2 Github Releases</a>
+page. It might be especially helpful for the isolated from the internet air-gapped environments.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line"><em>Linux login credentials:</em></div>
+<div class="line">Username: <code class="docutils literal"><span class="pre">vagrant</span></code></div>
+<div class="line">Password: <code class="docutils literal"><span class="pre">vagrant</span></code></div>
+<div class="line"><br /></div>
+<div class="line"><em>StackStorm login details:</em></div>
+<div class="line">Username: <code class="docutils literal"><span class="pre">st2admin</span></code></div>
+<div class="line">Password: <code class="docutils literal"><span class="pre">Ch&#64;ngeMe</span></code></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If using OVA in production environment, don’t forget to change the default credentials
+and delete SSH authorized keys for <code class="docutils literal"><span class="pre">vagrant</span></code> linux user.</p>
+</div>
+<p>At the moment only Virtualbox provider is supported. VMWare-compatible virtual appliance is
+available with <a class="reference external" href="https://stackstorm.com/#product">StackStorm Enterprise (EWC)</a> image.
+Ask <a class="reference external" href="mailto:support&#37;&#52;&#48;stackstorm&#46;com">StackStorm Support</a> for more info.</p>
+</div>
+<div class="section" id="tips-tricks">
+<h2><a class="toc-backref" href="#id5">Tips &amp; Tricks</a><a class="headerlink" href="#tips-tricks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="updating-the-vagrant-box">
+<h3><a class="toc-backref" href="#id6">Updating the Vagrant box</a><a class="headerlink" href="#updating-the-vagrant-box" title="Permalink to this headline">¶</a></h3>
+<p>Once the newer box version is released, Vagrant will warn you about the available update.
+To update the box:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant box outdated
+vagrant box remove stackstorm/st2
+vagrant up
 </pre></div>
 </div>
-<p>With masking enabled (the default), it looks like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2017</span>-04-07 <span class="m">12</span>:20:09,368 INFO <span class="o">[</span>-<span class="o">]</span> User authenticated <span class="o">(</span><span class="nv">username</span><span class="o">=</span>dummy, <span class="nv">token</span><span class="o">=</span>********<span class="o">)</span>
+</div>
+<div class="section" id="pinning-the-vagrant-box-version">
+<h3><a class="toc-backref" href="#id7">Pinning the Vagrant box version</a><a class="headerlink" href="#pinning-the-vagrant-box-version" title="Permalink to this headline">¶</a></h3>
+<p>Whether you want to pin StackStorm, it’s possible to use specific box version.
+While adding the box for the first time:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant init stackstorm/st2 --box-version <span class="m">2</span>.7.1-20180507
+vagrant up
 </pre></div>
 </div>
+<p>Or directly in <code class="docutils literal"><span class="pre">Vagrantfile</span></code>:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;stackstorm/st2&quot;</span>
+  <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span> <span class="o">=</span> <span class="s2">&quot;2.7.1-20180507&quot;</span>
+<span class="k">end</span>
+</pre></div>
 </div>
-<div class="section" id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
-<p>API response and log message secret masking use a best-effort approach and as such, have multiple
-limitations.</p>
-<p>You are strongly encouraged to not rely on secret masking functionality alone, but use it in
-combination with other security related primitives available in StackStorm such as RBAC and encrypted
-datastore values (defense in depth principle).</p>
-<p>The best approach when dealing with secrets is to store secret and/or potentially sensitive values
-encrypted in a datastore. Then you should directly retrieve and decrypt those secret values only in
-the actions where you need to access them.</p>
-<p>Doing that instead of passing those values around as action parameters makes actions and workflows
-a bit more tightly coupled and harder to re-use and troubleshoot, but it decreases the surface area
-where those values could potentially be leaked/exposed and as such makes it more secure - you are
-trading readability and re-use for security.</p>
-<p>In addition to that, you should be careful to not use <code class="docutils literal"><span class="pre">DEBUG</span></code> log level or <code class="docutils literal"><span class="pre">debug</span></code> mode in
-production deployments. When debug mode is enabled, log verbosity is increased. This provides a lot
-of data which is helpful when debugging, but could also contain sensitive information. No masking
-is performed.</p>
+<p>The list of available box versions can be found at <a class="reference external" href="https://app.vagrantup.com/stackstorm/boxes/st2">Vagrant Cloud</a>.</p>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2><a class="toc-backref" href="#id8">Debugging</a><a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="st2-integration-tests">
+<h3><a class="toc-backref" href="#id9">st2-integration-tests</a><a class="headerlink" href="#st2-integration-tests" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes StackStorm does not run properly for some reason.</p>
+<p>Discovering why at a infra level is the responsibility of <code class="docutils literal"><span class="pre">st2-integration-tests</span></code> which will
+perform StackStorm infrastructure/integration tests and report back with more detailed info.
+This can save time for both you &amp; community to avoid extensive troubleshooting steps.</p>
+<p>If something went wrong, - just run <code class="docutils literal"><span class="pre">st2-integration-tests</span></code></p>
+</div>
+</div>
+<div class="section" id="bugs-issues-contributions">
+<h2><a class="toc-backref" href="#id10">Bugs &amp; Issues &amp; Contributions</a><a class="headerlink" href="#bugs-issues-contributions" title="Permalink to this headline">¶</a></h2>
+<p>The source code is available as a GitHub repo:
+<a class="reference external" href="https://github.com/StackStorm/packer-st2">StackStorm/packer-st2</a>.
+We’re welcoming your bug reports, feature requests or even better, - pull requests.</p>
 </div>
 </div>
 
@@ -591,10 +587,10 @@ is performed.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../troubleshooting/index.html" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="deb.html" class="btn btn-neutral float-right" title="Ubuntu Trusty/Xenial">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="history.html" class="btn btn-neutral" title="History and Audit"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="system_requirements.html" class="btn btn-neutral" title="System Requirements"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

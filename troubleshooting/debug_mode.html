@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Enabling Debug Mode &mdash; StackStorm 2.7dev documentation</title>
+  <title>Enabling Debug Mode &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
@@ -44,7 +44,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="StackStorm 2.7dev documentation" href="../index.html"/>
+    <link rel="top" title="StackStorm 2.8dev documentation" href="../index.html"/>
         <link rel="up" title="Troubleshooting" href="index.html"/>
         <link rel="next" title="Ask for help!" href="ask_for_support.html"/>
         <link rel="prev" title="Submitting Debugging Information" href="submit_debug_info.html"/> 
@@ -110,7 +110,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../install/index.html">インストールと設定</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../install/overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../install/system_requirements.html">システム要件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install/vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install/deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install/rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install/rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -270,6 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reference/packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/runners.html">Action Runners</a></li>
@@ -315,7 +317,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#in-development">in development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#may-16-2018">2.7.2 - May 16, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-20-2018">2.7.1 - April 20, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-12-2018">2.7.0 - April 12, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -427,7 +431,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
+      <li><a href="../index.html">Docs v2.8dev </a> &raquo;</li>
         
           <li><a href="index.html">Troubleshooting</a> &raquo;</li>
         
@@ -453,7 +457,7 @@
             <div id="version-warning" class="admonition warning hide">
               <p class="first admonition-title">Note</p>
               <p class="last">
-                The documentation you're currently reading is for version 2.7dev.
+                The documentation you're currently reading is for version 2.8dev.
                 Click <a href="/">here</a> to view documentation for the latest stable version.
               </p>
             </div>
@@ -470,9 +474,117 @@ below:</p>
 <p>After making this change, restart all services with <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">restart</span></code>.</p>
 <p>When running a service in the debug mode, all log messages logged under the <code class="docutils literal"><span class="pre">DEBUG</span></code> log level
 will also be included in the StackStorm logs at <code class="docutils literal"><span class="pre">/var/log/st2/</span></code>.</p>
-<p>In addition to that, when debug mode is enabled, all the API JSON responses are pretty-formatted and
-a traceback will also be included in the logs for all the API requests which result in an
+<p>In addition to that, when debug mode is enabled, all the API JSON responses are pretty-formatted
+and a traceback will also be included in the logs for all the API requests which result in an
 exception.</p>
+<p>If you are using a custom logging setup (e.g. messages are sent to syslog) you will also need to
+edit logging config for a service for which you want to enable debug logging. Logging config
+files are located in <code class="docutils literal"><span class="pre">/etc/st2/logging.&lt;service</span> <span class="pre">name&gt;.conf</span></code>.</p>
+<p>For example, if you want to set log level to <code class="docutils literal"><span class="pre">DEBUG</span></code> for action runner services, you would change
+the config (<code class="docutils literal"><span class="pre">/etc/st2/logging.actionrunner.conf</span></code>) from:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span> <span class="k">[loggers]</span>
+ <span class="na">keys</span><span class="o">=</span><span class="s">root</span>
+
+ <span class="k">[handlers]</span>
+ <span class="na">keys</span><span class="o">=</span><span class="s">consoleHandler, fileHandler, auditHandler</span>
+
+ <span class="k">[formatters]</span>
+ <span class="na">keys</span><span class="o">=</span><span class="s">simpleConsoleFormatter, verboseConsoleFormatter, gelfFormatter, jsonFormatter</span>
+
+ <span class="k">[logger_root]</span>
+<span class="hll"> <span class="na">level</span><span class="o">=</span><span class="s">INFO</span>
+</span><span class="s"> handlers=consoleHandler, fileHandler, auditHandler</span>
+
+ <span class="k">[handler_consoleHandler]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">StreamHandler</span>
+<span class="hll"><span class="s"> level=INFO</span>
+</span><span class="s"> formatter=simpleConsoleFormatter</span>
+<span class="s"> args=(sys.stdout,)</span>
+
+ <span class="k">[handler_fileHandler]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.log.FormatNamedFileHandler</span>
+<span class="hll"><span class="s"> level=INFO</span>
+</span><span class="s"> formatter=verboseConsoleFormatter</span>
+<span class="s"> args=(&#39;/var/log/st2/st2actionrunner.{pid}.log&#39;,)</span>
+
+ <span class="k">[handler_auditHandler]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.log.FormatNamedFileHandler</span>
+<span class="s"> level=AUDIT</span>
+<span class="s"> formatter=jsonFormatter</span>
+<span class="s"> args=(&#39;/var/log/st2/st2actionrunner.{pid}.audit.log&#39;,)</span>
+
+ <span class="k">[formatter_simpleConsoleFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.logging.formatters.ConsoleLogFormatter</span>
+<span class="s"> format=%(asctime)s %(levelname)s [-] %(message)s</span>
+<span class="s"> datefmt=</span>
+
+ <span class="k">[formatter_verboseConsoleFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.logging.formatters.ConsoleLogFormatter</span>
+<span class="s"> format=%(asctime)s %(thread)s %(levelname)s %(module)s [-] %(message)s</span>
+<span class="s"> datefmt=</span>
+
+ <span class="k">[formatter_gelfFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.logging.formatters.GelfLogFormatter</span>
+<span class="s"> format=%(message)s</span>
+
+ <span class="k">[formatter_jsonFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">pythonjsonlogger.jsonlogger.JsonFormatter</span>
+<span class="s"> format=%(asctime) %(thread) %(levelname) %(module) %(message)</span>
+</pre></div>
+</div>
+<p>To:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span> <span class="k">[loggers]</span>
+ <span class="na">keys</span><span class="o">=</span><span class="s">root</span>
+
+ <span class="k">[handlers]</span>
+ <span class="na">keys</span><span class="o">=</span><span class="s">consoleHandler, fileHandler, auditHandler</span>
+
+ <span class="k">[formatters]</span>
+ <span class="na">keys</span><span class="o">=</span><span class="s">simpleConsoleFormatter, verboseConsoleFormatter, gelfFormatter, jsonFormatter</span>
+
+ <span class="k">[logger_root]</span>
+<span class="hll"> <span class="na">level</span><span class="o">=</span><span class="s">DEBUG</span>
+</span><span class="s"> handlers=consoleHandler, fileHandler, auditHandler</span>
+
+ <span class="k">[handler_consoleHandler]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">StreamHandler</span>
+<span class="hll"><span class="s"> level=DEBUG</span>
+</span><span class="s"> formatter=simpleConsoleFormatter</span>
+<span class="s"> args=(sys.stdout,)</span>
+
+ <span class="k">[handler_fileHandler]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.log.FormatNamedFileHandler</span>
+<span class="hll"><span class="s"> level=DEBUG</span>
+</span><span class="s"> formatter=verboseConsoleFormatter</span>
+<span class="s"> args=(&#39;/var/log/st2/st2actionrunner.{pid}.log&#39;,)</span>
+
+ <span class="k">[handler_auditHandler]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.log.FormatNamedFileHandler</span>
+<span class="s"> level=AUDIT</span>
+<span class="s"> formatter=jsonFormatter</span>
+<span class="s"> args=(&#39;/var/log/st2/st2actionrunner.{pid}.audit.log&#39;,)</span>
+
+ <span class="k">[formatter_simpleConsoleFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.logging.formatters.ConsoleLogFormatter</span>
+<span class="s"> format=%(asctime)s %(levelname)s [-] %(message)s</span>
+<span class="s"> datefmt=</span>
+
+ <span class="k">[formatter_verboseConsoleFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.logging.formatters.ConsoleLogFormatter</span>
+<span class="s"> format=%(asctime)s %(thread)s %(levelname)s %(module)s [-] %(message)s</span>
+<span class="s"> datefmt=</span>
+
+ <span class="k">[formatter_gelfFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">st2common.logging.formatters.GelfLogFormatter</span>
+<span class="s"> format=%(message)s</span>
+
+ <span class="k">[formatter_jsonFormatter]</span>
+ <span class="na">class</span><span class="o">=</span><span class="s">pythonjsonlogger.jsonlogger.JsonFormatter</span>
+<span class="s"> format=%(asctime) %(thread) %(levelname) %(module) %(message)</span>
+</pre></div>
+</div>
+<p>After that you need to restart the corresponding service or services with <code class="docutils literal"><span class="pre">st2ctl</span>
+<span class="pre">restart-component</span> <span class="pre">st2actionrunner</span></code> / <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">restart</span></code> for changes to take an affect.</p>
 <div class="section" id="running-single-threaded-services">
 <h2>Running Single-threaded Services<a class="headerlink" href="#running-single-threaded-services" title="Permalink to this headline">¶</a></h2>
 <p>If you are debugging issues with <code class="docutils literal"><span class="pre">st2api</span></code> or <code class="docutils literal"><span class="pre">st2auth</span></code>, it may be useful to start a
@@ -523,7 +635,7 @@ single-threaded worker. You can do so with these commands:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.7dev',
+            VERSION:'2.8dev',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

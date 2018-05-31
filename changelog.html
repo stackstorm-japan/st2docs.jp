@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Changelog &mdash; StackStorm 2.7dev documentation</title>
+  <title>Changelog &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="_static/favicon.ico?v4"/>
@@ -44,7 +44,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="StackStorm 2.7dev documentation" href="index.html"/>
+    <link rel="top" title="StackStorm 2.8dev documentation" href="index.html"/>
         <link rel="next" title="Upgrade Notes" href="upgrade_notes.html"/>
         <link rel="prev" title="Pack Testing" href="development/pack_testing.html"/> 
 
@@ -109,7 +109,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="install/index.html">インストールと設定</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="install/overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install/system_requirements.html">システム要件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install/vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install/rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -269,6 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="reference/packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reference/runners.html">Action Runners</a></li>
@@ -314,7 +316,9 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#in-development">in development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#april-06-2018">2.7.0 - April 06, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#may-16-2018">2.7.2 - May 16, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#april-20-2018">2.7.1 - April 20, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#april-12-2018">2.7.0 - April 12, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -426,7 +430,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs v2.7dev </a> &raquo;</li>
+      <li><a href="index.html">Docs v2.8dev </a> &raquo;</li>
         
       <li>Changelog</li>
     
@@ -450,7 +454,7 @@
             <div id="version-warning" class="admonition warning hide">
               <p class="first admonition-title">Note</p>
               <p class="last">
-                The documentation you're currently reading is for version 2.7dev.
+                The documentation you're currently reading is for version 2.8dev.
                 Click <a href="/">here</a> to view documentation for the latest stable version.
               </p>
             </div>
@@ -459,11 +463,141 @@
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="in-development">
 <h2>in development<a class="headerlink" href="#in-development" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="april-06-2018">
-<h2>2.7.0 - April 06, 2018<a class="headerlink" href="#april-06-2018" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Added metrics for collecting performance and health information about the various ST2 services
+and functions. (new feature) #4004 #2974</p>
+</li>
+<li><p class="first">When running a dev (unstable) release include git revision hash in the output when using
+<code class="docutils literal"><span class="pre">st2</span> <span class="pre">--version</span></code> CLI command. (new feature) #4117</p>
+</li>
+<li><p class="first">Update rules engine to also create rule enforcement object when trigger instances fails to match
+a rule during the rule matching / filtering phase due to an exception in the rule criteria (e.g.
+invalid Jinja expression, etc.).</p>
+<p>This change increases visibility into rules which didn’t match due to an exception. Previously
+this was only visible / reflected in the rules engine log file. (improvement) #4134</p>
+</li>
+<li><p class="first">Add new <code class="docutils literal"><span class="pre">GET</span> <span class="pre">/v1/ruleenforcements/views[/&lt;enforcement</span> <span class="pre">id&gt;]</span></code> API endpoints which allow user to
+retrieve RuleEnforcement objects with the corresponding TriggerInstance and Execution objects.
+(new feature) #4134</p>
+</li>
+<li><p class="first">Add new <code class="docutils literal"><span class="pre">status</span></code> field to the <code class="docutils literal"><span class="pre">RuleEnforcement</span></code> model. This field can contain the following
+values - <code class="docutils literal"><span class="pre">succeeded</span></code> (trigger instance matched a rule and action execution was triggered
+successfully), <code class="docutils literal"><span class="pre">failed</span></code> (trigger instance matched a rule, but it didn’t result in an action
+execution due to Jinja rendering failure or other exception). (improvement) #4134</p>
+</li>
+<li><p class="first">Add trigger type reference based filtering to the <code class="docutils literal"><span class="pre">/v1/triggerinstances</span></code> API endpoint - e.g.
+<code class="docutils literal"><span class="pre">/v1/triggerinstances?trigger_type=core.st2.webhook</span></code>. (new feature) #4151</p>
+</li>
+</ul>
+</div>
+<div class="section" id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Update various Python dependencies to the latest stable versions (gunicorn, gitpython,
+python-gnupg, tooz, flex). #4110</p>
+</li>
+<li><p class="first">Update all the service and script entry points to use <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code> as a default value
+for the config file location.</p>
+<p>This way users don’t need to explicitly provide <code class="docutils literal"><span class="pre">--config-file</span></code> CLI argument when running
+various scripts (e.g. <code class="docutils literal"><span class="pre">st2-track-result</span></code>, <code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code>, etc.) and when they
+just want to use a default config file. (improvement) #4111</p>
+</li>
+<li><p class="first">Update st2 CLI to print a warning if a non-unicode system locale which would prevent StackStorm
+to function correctly in some scenarios is used. (improvement) #4127 #4120</p>
+</li>
+</ul>
+</div>
+<div class="section" id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Fixed a bug where secrets in pack configs weren’t being masked. Recently we
+introduced support for nested objects and arrays. Secret parameters within these
+nested objects and arrays were not being masked. The fix involves us fully
+traversing deeply nested objects and arrays and masking out any variables
+marked as secret. This means we now support pack config JSON schemas with
+<code class="docutils literal"><span class="pre">type:</span> <span class="pre">object</span></code> and its corresponding <code class="docutils literal"><span class="pre">parameters:</span> <span class="pre">{}</span></code> stanza, along with
+<code class="docutils literal"><span class="pre">type:</span> <span class="pre">array</span></code> and its corresponding <code class="docutils literal"><span class="pre">items:</span> <span class="pre">{}</span></code> stanza. We still do NOT
+support JSON schema combinations that includes the <code class="docutils literal"><span class="pre">anyOf</span></code>, <code class="docutils literal"><span class="pre">allOf</span></code>,
+<code class="docutils literal"><span class="pre">oneOf</span></code>, and <code class="docutils literal"><span class="pre">not</span></code> keywords. (bug fix) #4139</p>
+<p>Contributed by Nick Maludy (Encore Technologies).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="may-16-2018">
+<h2>2.7.2 - May 16, 2018<a class="headerlink" href="#may-16-2018" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Changed<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Reduce load on LDAP server and cache user groups response in an in-memory cache when RBAC
+remote LDAP group to local RBAC role synchronization feature is enabled.</p>
+<p>Previously on authentication the code would hit LDAP server multiple times to retrieve user
+groups. With this change, user LDAP groups are only retrieved once upon authentication and
+cached and re-used in-memory by default for 120 seconds.</p>
+<p>This reduces load on LDAP server and improves performance upon regular and concurrent user
+authentication.</p>
+<p>This functionality can be disabled by setting <code class="docutils literal"><span class="pre">cache_user_groups_response</span></code> LDAP
+authentication backend kwarg to <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<p>Note: This change only affects users which utilize RBAC with remote LDAP groups to local RBAC
+roles synchronization feature enabled. (enterprise) (bug fix) #4103 #4105</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Fixed<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Fix an issue (race condition) which would result in not all the remote LDAP groups being
+synchronized with local RBAC roles if a user tried to authenticate with the same auth token
+concurrently in a short time frame.</p>
+<p>Note: This issue only affects users which utilize RBAC with remote LDAP groups to local RBAC
+roles synchronization feature enabled. (enterprise) (bug fix) #4103 #4105</p>
+</li>
+<li><p class="first">Fix an issue with some sensors which rely on <code class="docutils literal"><span class="pre">select.poll()</span></code> (FileWatch, GithubSensor, etc.)
+stopped working with StackStorm &gt;= 2.7.0.</p>
+<p>StackStorm v2.7.0 inadvertently introduced a change which broke a small set of sensors which
+rely on <code class="docutils literal"><span class="pre">select.poll()</span></code> functionality. (bug fix) #4118</p>
+</li>
+<li><p class="first">Throw if <code class="docutils literal"><span class="pre">id</span></code> CLI argument is not passed to the <code class="docutils literal"><span class="pre">st2-track-result</span></code> script. (bug fix) #4115</p>
+</li>
+<li><p class="first">Fixed pack config’s not properly rendering Jinja expressions within lists. (bugfix) #4121</p>
+<p>Contributed by Nick Maludy (Encore Technologies).</p>
+</li>
+<li><p class="first">Fixed pack config rendering error throw meaningful message when a Jinja syntax error is
+encountered. (bugfix) #4123</p>
+<p>Contributed by Nick Maludy (Encore Technologies).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="april-20-2018">
+<h2>2.7.1 - April 20, 2018<a class="headerlink" href="#april-20-2018" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Changed<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">When creating a pack environment during the pack installation, we now pass <code class="docutils literal"><span class="pre">--no-download</span></code> flag
+to the <code class="docutils literal"><span class="pre">virtualenv</span></code> binary. This way version of pip, wheel and distutils which is enforced by
+virtualenv is used instead of downloading the latest stable versions from PyPi.</p>
+<p>This results in more reproducible pack virtual environments and we also ensure pip 9.0 is used (
+there are some known issues with pip 10.0).</p>
+<p>If for some reason you want to revert to the old behavior, you can do that by passing
+<code class="docutils literal"><span class="pre">no_download=False</span></code> parameter to the <code class="docutils literal"><span class="pre">packs.setup_virtualenv</span></code> action. #4085</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>Fixed<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fix <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">search</span></code> and <code class="docutils literal"><span class="pre">POST</span> <span class="pre">/api/v1/packs/index/search</span></code> API endpoint so it doesn’t
+return internal server error when a single pack search term is provided. (bug fix) #4083</li>
+</ul>
+</div>
+</div>
+<div class="section" id="april-12-2018">
+<h2>2.7.0 - April 12, 2018<a class="headerlink" href="#april-12-2018" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Added<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Update <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">tail</span></code> command so it supports double nested workflows (workflow -&gt;
 workflow -&gt; execution). Previously, only top-level executions and single nested workflows
@@ -471,14 +605,6 @@ workflow -&gt; execution). Previously, only top-level executions and single nest
 </li>
 <li><p class="first">Add support for utf-8 / unicode characters in the pack config files. (improvement) #3980 #3989</p>
 <p>Contributed by &#64;sumkire.</p>
-</li>
-<li><p class="first">Add new <code class="docutils literal"><span class="pre">--python3</span></code> flag to <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> CLI command and <code class="docutils literal"><span class="pre">python3</span></code> parameter to
-<code class="docutils literal"><span class="pre">packs.{install,setup_virtualenv}</span></code> actions. When the value of this parameter is True, it
-uses <code class="docutils literal"><span class="pre">python3</span></code> binary when creating virtual environment for that pack (based on the value of
-<code class="docutils literal"><span class="pre">actionrunner.python3_binary</span></code> config option).</p>
-<p>Note: For this feature to work, Python 3 needs to be installed on the system and <code class="docutils literal"><span class="pre">virtualenv</span></code>
-package installed on the system needs to support Python 3 (it needs to be a recent version).
-(new feature) #4016 #3922</p>
 </li>
 <li><p class="first">Added the ability of <code class="docutils literal"><span class="pre">st2ctl</span></code> to utilize environment variables from <code class="docutils literal"><span class="pre">/etc/default/st2ctl</span></code>
 (for Ubuntu/Debian) and <code class="docutils literal"><span class="pre">/etc/sysconfig/st2ctl</span></code> (RHEL/CentOS). This allows
@@ -505,10 +631,17 @@ system.
 related methods on the SensorService class. (improvement) #3895 #4057 #4058</p>
 <p>Reported by &#64;djh2020, &#64;mxmader.</p>
 </li>
+<li><p class="first">Add context field to rule model in which each rule has its own corresponding user. Besides, there
+is a new RBAC configuration <code class="docutils literal"><span class="pre">permission_isolation</span></code>. Whoever can only operate and observe their
+own rules or executions except <code class="docutils literal"><span class="pre">system_user</span></code> and users with RBAC admin role when set to
+<code class="docutils literal"><span class="pre">True</span></code>. That means system_user has the most powerful permission to operate all resources
+including rules or executions. (new feature) #4013</p>
+<p>Contributed by Hanxi Liu (&#64;apolloliu).</p>
+</li>
 </ul>
 </div>
-<div class="section" id="changed">
-<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3>Changed<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Modified RabbitMQ connection error message to make clear that it is an MQ connection issue. #3992</p>
 </li>
@@ -547,8 +680,8 @@ two new attributes added - <code class="docutils literal"><span class="pre">succ
 </li>
 </ul>
 </div>
-<div class="section" id="fixed">
-<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Fixed<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix Python runner actions and <code class="docutils literal"><span class="pre">Argument</span> <span class="pre">list</span> <span class="pre">too</span> <span class="pre">long</span></code> error when very large parameters are
 passed into the action. The fix utilizes <code class="docutils literal"><span class="pre">stdin</span></code> to pass parameters to the Python action wrapper
@@ -577,13 +710,16 @@ expressions and default values. (bug fix) #4050 #4050</p>
 <li><p class="first">Make sure <code class="docutils literal"><span class="pre">observer</span></code> system role also grants <code class="docutils literal"><span class="pre">pack_search</span></code> permission. (bug fix) #4063 #4064</p>
 <p>Reported by &#64;SURAJTHEGREAT.</p>
 </li>
+<li><p class="first">Fix st2 webhook get -h which was asking for a name or id as opposed to the URL of the webhook.
+Also, fix st2 webhook list to explicitly add a webhook column. (bugfix) #4048</p>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="january-19-2018">
 <h2>2.6.0 - January 19, 2018<a class="headerlink" href="#january-19-2018" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Added<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Added<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add new <code class="docutils literal"><span class="pre">get_user_info</span></code> method to action and sensor service. With this method, user can
 retrieve information about the user account which is used to perform datastore operations inside
@@ -641,8 +777,8 @@ this - <code class="docutils literal"><span class="pre">/v1/executions?include_a
 </li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>Changed<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Changed<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">st2actions.runners.pythonrunner.Action</span></code> class path for base Python runner actions has been
 deprecated since StackStorm v1.6.0 and will be fully removed in StackStorm v2.7.0. If you have
@@ -665,8 +801,8 @@ You can disable this functionality by setting <code class="docutils literal"><sp
 <code class="docutils literal"><span class="pre">st2.conf</span></code> to <code class="docutils literal"><span class="pre">False</span></code> and restart the services (<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">restart</span></code>).</li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h3>Fixed<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Fixed<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fully fix performance regressions for short Python runner actions introduced in the past and
 partially fixed in #3809. (bug fix) #3803</p>
@@ -690,8 +826,8 @@ need for that and now we only retrieve and load id which is the only field we ne
 </div>
 <div class="section" id="december-14-2017">
 <h2>2.5.1 - December 14, 2017<a class="headerlink" href="#december-14-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3>Added<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Added<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add new <code class="docutils literal"><span class="pre">log_level</span></code> runner parameter to Python runner. With this parameter, user can control
 which log messages generated by Python runner actions are output to action <code class="docutils literal"><span class="pre">stderr</span></code>. For
@@ -720,8 +856,8 @@ in the intended value type. (improvement) #3892</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h3>Changed<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Changed<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Update the output of <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">{run,get}</span></code> CLI command to colorize the value of the
 <code class="docutils literal"><span class="pre">status</span></code> attribute (green for <code class="docutils literal"><span class="pre">succeeded</span></code>, red for <code class="docutils literal"><span class="pre">failed</span></code>, etc. aka the same as for the
@@ -744,8 +880,8 @@ loaded. (improvement) #3815</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h3>Fixed<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Fixed<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix log messages generated by Python runner actions to include the correct action class name.
 Previously they always incorrectly used “ABCMeta” instead of the actual action class name.
@@ -773,8 +909,8 @@ stderr output when utilizing action service / datastore service inside actions. 
 </div>
 <div class="section" id="october-25-2017">
 <h2>2.5.0 - October 25, 2017<a class="headerlink" href="#october-25-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id7">
-<h3>Added<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Added<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add new feature which allows runner action output (stdout and stderr) to be streamed
 and consumed in real-time by using one of the following approaches:</p>
@@ -839,8 +975,8 @@ st2-packages: #505, #506, #507, #508, #509, #510, #512, #517.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h3>Fixed<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Fixed<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix a bug where sensor watch queues were not deleted after sensor container process was shut
 down. This resulted in spurious queues left behind. This should not have caused performance
@@ -903,8 +1039,8 @@ Full / complete fix will be included in v2.6.0. #3809</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h3>Changed<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Changed<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Minor language and style tidy up of help strings and error messages. #3782</li>
 </ul>
@@ -912,8 +1048,8 @@ Full / complete fix will be included in v2.6.0. #3809</p>
 </div>
 <div class="section" id="september-12-2017">
 <h2>2.4.1 - September 12, 2017<a class="headerlink" href="#september-12-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id10">
-<h3>Fixed<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Fixed<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix a bug with <code class="docutils literal"><span class="pre">/v1/packs/install</span></code> and <code class="docutils literal"><span class="pre">/v1/packs/uninstall</span></code> API endpoints incorrectly using
 system user for scheduled pack install and pack uninstall executions instead of the user which
@@ -933,8 +1069,8 @@ This now uses the new <code class="docutils literal"><span class="pre">st2-clean
 </li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h3>Changed<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Changed<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Update <code class="docutils literal"><span class="pre">st2</span></code> CLI command to print a more user-friendly usage / help string if no arguments are
 passed to the CLI. (improvement) #3710</p>
@@ -951,8 +1087,8 @@ passed to the CLI. (improvement) #3710</p>
 </div>
 <div class="section" id="august-23-2017">
 <h2>2.4.0 - August 23, 2017<a class="headerlink" href="#august-23-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id12">
-<h3>Added<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Added<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add sample passive sensor at <code class="docutils literal"><span class="pre">contrib/examples/sensors/echo_flask_app</span></code>. (improvement) #3667</p>
 </li>
@@ -1003,8 +1139,8 @@ returning the result. (improvement)</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>Changed<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>Changed<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Rename ST2 action runner cancel queue from <code class="docutils literal"><span class="pre">st2.actionrunner.canel</span></code>
 to <code class="docutils literal"><span class="pre">st2.actionrunner.cancel</span></code>. (improvement) #3247</li>
@@ -1024,8 +1160,8 @@ style, at <code class="docutils literal"><span class="pre">/opt/stackstorm/confi
 a fatal ERROR on pack registration.</li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>Fixed<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Fixed<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix retrying in message bus exchange registration. (bug fix) #3635 #3638</p>
 <p>Reported by John Arnold.</p>
@@ -1052,8 +1188,8 @@ Descending order by default.(bug fix) #3237 #3665</p>
 </div>
 <div class="section" id="july-28-2017">
 <h2>2.3.2 - July 28, 2017<a class="headerlink" href="#july-28-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id15">
-<h3>Added<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>Added<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add test coverage and test timing capabilities to <code class="docutils literal"><span class="pre">st2-run-pack-tests</span></code>.
 The <code class="docutils literal"><span class="pre">-c</span></code> option enables test coverage and the <code class="docutils literal"><span class="pre">-t</span></code> option enables test timings.
@@ -1068,15 +1204,15 @@ These capabilities have also been enabled in the ci pipeline for packs in the ex
 </li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h3>Changed<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>Changed<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update <code class="docutils literal"><span class="pre">st2</span></code> CLI so it also displays “there are more results” note when <code class="docutils literal"><span class="pre">-n</span></code> flag is
 used and there are more items available. (improvement) #3552</li>
 </ul>
 </div>
-<div class="section" id="id17">
-<h3>Fixed<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>Fixed<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix st2client to display unicode characters in pack content description. (bug-fix) #3511</p>
 </li>
@@ -1118,8 +1254,8 @@ for each file that it rotates. Also, it will no longer print an error if
 </div>
 <div class="section" id="july-07-2017">
 <h2>2.3.1 - July 07, 2017<a class="headerlink" href="#july-07-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id18">
-<h3>Added<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>Added<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Add support for <code class="docutils literal"><span class="pre">passphrase</span></code> parameter to <code class="docutils literal"><span class="pre">remote-shell-script</span></code> runner and as such, support
 for password protected SSH key files. (improvement)</p>
@@ -1136,8 +1272,8 @@ Default limit is 50. (improvement)</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id19">
-<h3>Changed<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>Changed<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Update <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span></code> / <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">run</span></code> command to display result of workflow actions when
 they finish. In the workflow case, result of the last task (action) of the workflow is used.
@@ -1175,8 +1311,8 @@ group instead. If you have <code class="docutils literal"><span class="pre">resu
 to switch to <code class="docutils literal"><span class="pre">resultstracker</span></code> instead. (bug-fix) #3500</li>
 </ul>
 </div>
-<div class="section" id="id20">
-<h3>Fixed<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>Fixed<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix <code class="docutils literal"><span class="pre">?name</span></code> query param filter in <code class="docutils literal"><span class="pre">/v1/actionalias</span></code> API endpoint. (bug fix) #3503</p>
 </li>
@@ -1204,8 +1340,8 @@ fixes a bug and allows user to set TTL value for non service tokens to less than
 </div>
 <div class="section" id="june-19-2017">
 <h2>2.3.0 - June 19, 2017<a class="headerlink" href="#june-19-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id21">
-<h3>Added<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>Added<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Introduce new <code class="docutils literal"><span class="pre">CAPABILITIES</span></code> constant on auth backend classes. With this constant, auth
 backends can advertise functionality they support (e.g. authenticate a user, retrieve information
@@ -1265,8 +1401,8 @@ how to iterate over multiple pages inside a workflow. #3328
 </li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h3>Changed<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id29">
+<h3>Changed<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Refactor the action execution asynchronous callback functionality into the runner plugin
 architecture. (improvement)</p>
@@ -1336,23 +1472,23 @@ warning is in place. (improvement)</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id23">
-<h3>Removed<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>Removed<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Drop support for invalid semver versions strings (e.g. <code class="docutils literal"><span class="pre">2.0</span></code>) in pack.yaml pack metadata. Only
 full semver version strings are supported, e.g. <code class="docutils literal"><span class="pre">2.1.1</span></code>. This was originally deprecated in
 v2.1.0.</li>
 </ul>
 </div>
-<div class="section" id="id24">
-<h3>Deprecated<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h3>Deprecated<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Packs containing <code class="docutils literal"><span class="pre">config.yaml</span></code> will now generate a WARNING log on pack registration. Support for
 <code class="docutils literal"><span class="pre">config.yaml</span></code> will be removed in StackStorm 2.4. Migrate your pack configurations now.</li>
 </ul>
 </div>
-<div class="section" id="id25">
-<h3>Fixed<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>Fixed<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update st2rulesengine to exit non-0 on failure (bug fix) #3394 [Andrew Regan]</li>
 <li>Fix a bug where trigger parameters and payloads were being validated regardless of the relevant settings
@@ -1389,8 +1525,8 @@ after deleting an assignment file from <code class="docutils literal"><span clas
 </div>
 <div class="section" id="april-3-2017">
 <h2>2.2.1 - April 3, 2017<a class="headerlink" href="#april-3-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id26">
-<h3>Added<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h3>Added<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to specify which branch of <code class="docutils literal"><span class="pre">st2tests</span></code> repository to use by passing <code class="docutils literal"><span class="pre">-b</span></code> option to
 <code class="docutils literal"><span class="pre">st2-self-check</span></code> script. (improvement)</li>
@@ -1399,8 +1535,8 @@ StackStorm now also supports using <code class="docutils literal"><span class="p
 tooz for coordination. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id27">
-<h3>Fixed<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>Fixed<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> command so it preserves exit code from <cite>st2-register-content</cite> script and
 correctly fails on failure by default.</p>
@@ -1441,8 +1577,8 @@ bad or empty config schema to end up in the system. (bug fix)</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id28">
-<h3>Security<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>Security<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Removed support for medium-strength ciphers from default nginx configuration (#3244)</li>
 <li>Various security related improvements in the enterprise LDAP auth backend. (improvement,
@@ -1452,8 +1588,8 @@ bug fix)</li>
 </div>
 <div class="section" id="february-27-2017">
 <h2>2.2.0 - February 27, 2017<a class="headerlink" href="#february-27-2017" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id29">
-<h3>Added<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>Added<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Use the newly introduced CANCELLED state in mistral for workflow cancellation. Currently, st2
 put the workflow in a PAUSED state in mistral. (improvement)</p>
@@ -1492,8 +1628,8 @@ when you know dependencies are already installed and up to date. (new feature)</
 </li>
 </ul>
 </div>
-<div class="section" id="id30">
-<h3>Changed<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>Changed<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Mistral fork is updated to match the master branch at OpenStack Mistral. (improvement)</li>
 <li>Update Python runner to throw a more user-friendly exception in case action metadata file
@@ -1506,8 +1642,8 @@ delete state object on workflow completion or when the workflow or task referenc
 longer exists. (improvement)`</li>
 </ul>
 </div>
-<div class="section" id="id31">
-<h3>Removed<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>Removed<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">{{user.}}</span></code> and <code class="docutils literal"><span class="pre">{{system.}}</span></code> notations to access user and system
 scoped items from datastore are now unsupported. Use  <code class="docutils literal"><span class="pre">{{st2kv.user.}}</span></code>
@@ -1515,8 +1651,8 @@ and <code class="docutils literal"><span class="pre">{{st2kv.system.}}</span></c
 workflows) to use the new notation. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id32">
-<h3>Fixed<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>Fixed<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix returning a tuple from the Python runner so it also works correctly, even if action returns
 a complex type (e.g. Python class instance) as a result. (bug fix)</p>
@@ -1564,8 +1700,8 @@ propagated to all the API calls issued in the <code class="docutils literal"><sp
 </div>
 <div class="section" id="december-16-2016">
 <h2>2.1.1 - December 16, 2016<a class="headerlink" href="#december-16-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id33">
-<h3>Added<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>Added<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">core.http</span></code> action now also supports HTTP basic auth and digest authentication by passing
 <code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> parameter to the action. (new feature)</li>
@@ -1573,8 +1709,8 @@ propagated to all the API calls issued in the <code class="docutils literal"><sp
 (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id34">
-<h3>Changed<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>Changed<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update <code class="docutils literal"><span class="pre">/v1/packs/register</span></code> API endpoint so it throws on failure (e.g. invalid pack or resource
 metadata). This way the default behavior is consistent with default
@@ -1586,8 +1722,8 @@ name is invalid. (improvement)</li>
 <li>Update <code class="docutils literal"><span class="pre">packs.load</span></code> action to also register triggers by default. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id35">
-<h3>Fixed<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>Fixed<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix <code class="docutils literal"><span class="pre">GET</span> <span class="pre">/v1/packs/&lt;pack</span> <span class="pre">ref</span> <span class="pre">or</span> <span class="pre">id&gt;</span></code> API endpoint - make sure pack object is correctly returned
 when pack ref doesn’t match pack name. Previously, 404 not found was thrown. (bug fix)</p>
@@ -1604,8 +1740,8 @@ is the same as order used in <code class="docutils literal"><span class="pre">st
 </div>
 <div class="section" id="december-05-2016">
 <h2>2.1.0 - December 05, 2016<a class="headerlink" href="#december-05-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id36">
-<h3>Added<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>Added<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">New pack management:</p>
 <ul class="simple">
@@ -1651,8 +1787,8 @@ entry for the host. #2941 #3032 #3058 [Eric Edgar] (improvement)</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id37">
-<h3>Changed<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>Changed<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Improved pack validation - now when the packs are registered we check that:</p>
 <ul class="simple">
@@ -1697,16 +1833,16 @@ kombu, six, appscheduler, passlib, python-gnupg, semver, paramiko, python-keycza
 </li>
 </ul>
 </div>
-<div class="section" id="id38">
-<h3>Removed<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>Removed<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Remove <code class="docutils literal"><span class="pre">packs.info</span></code> action because <code class="docutils literal"><span class="pre">.gitinfo</span></code> file has been deprecated with the new pack
 management approach. Now pack directories are actual checkouts of the corresponding pack git
 repositories so this file is not needed anymore.</li>
 </ul>
 </div>
-<div class="section" id="id39">
-<h3>Fixed<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>Fixed<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>Fix <code class="docutils literal"><span class="pre">packs.uninstall</span></code> action so it also deletes <code class="docutils literal"><span class="pre">configs</span></code> and <code class="docutils literal"><span class="pre">policies</span></code> which belong to</dt>
@@ -1725,8 +1861,8 @@ directory don’t pollute <code class="docutils literal"><span class="pre">PYTHO
 </div>
 <div class="section" id="september-30-2016">
 <h2>2.0.1 - September 30, 2016<a class="headerlink" href="#september-30-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id40">
-<h3>Added<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>Added<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow users to specify sort order when listing traces using the API endpoint by specifying
 <code class="docutils literal"><span class="pre">?sort_desc=True|False</span></code> query parameters and by passing <code class="docutils literal"><span class="pre">--sort=asc|desc</span></code> parameter to
@@ -1738,24 +1874,24 @@ datastore items from workflows, actions and rules. This is in addition to suppor
 expressions <code class="docutils literal"><span class="pre">{{system.foo}}</span></code> and <code class="docutils literal"><span class="pre">{{user.foo}}</span></code>.</li>
 </ul>
 </div>
-<div class="section" id="id41">
-<h3>Changed<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h3>Changed<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update traces list API endpoint and <code class="docutils literal"><span class="pre">st2</span> <span class="pre">trace</span> <span class="pre">list</span></code> so the traces are sorted by
 <code class="docutils literal"><span class="pre">start_timestamp</span></code> in descending order by default. This way it’s consistent with executions
 list and <code class="docutils literal"><span class="pre">-n</span></code> CLI parameter works as expected. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id42">
-<h3>Deprecated<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>Deprecated<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>In subsequent releases, the expressions <code class="docutils literal"><span class="pre">{{system.}}</span></code> and <code class="docutils literal"><span class="pre">{{user.}}</span></code> for accessing
 datastore items will be deprecated. It is recommended to switch to using
 <code class="docutils literal"><span class="pre">{{st2kv.system.}}</span></code> and <code class="docutils literal"><span class="pre">{{st2kv.user.}}</span></code> for your content. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id43">
-<h3>Fixed<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>Fixed<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span></code> command so now <code class="docutils literal"><span class="pre">--attr</span></code> argument correctly works with child
 properties of the <code class="docutils literal"><span class="pre">result</span></code> and <code class="docutils literal"><span class="pre">trigger_instance</span></code> dictionary (e.g. <code class="docutils literal"><span class="pre">--attr</span>
@@ -1768,8 +1904,8 @@ notation for parameters of type <code class="docutils literal"><span class="pre"
 </div>
 <div class="section" id="august-31-2016">
 <h2>2.0.0 - August 31, 2016<a class="headerlink" href="#august-31-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id44">
-<h3>Added<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>Added<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Implement custom Jinja filter functions <code class="docutils literal"><span class="pre">to_json_string</span></code>, <code class="docutils literal"><span class="pre">to_yaml_string</span></code>,
 <code class="docutils literal"><span class="pre">to_human_time_from_seconds</span></code> that can be used in actions and workflows. (improvement)</li>
@@ -1787,8 +1923,8 @@ non-existent trigger. This shouldn’t happen during normal usage of StackStorm,
 easier for the user to clean up in case database ends up in a inconsistent state. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id45">
-<h3>Changed<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h3>Changed<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Refactor Jinja filter functions into appropriate modules. (improvement)</li>
 <li>Bump default timeout for <code class="docutils literal"><span class="pre">packs.load</span></code> command from <code class="docutils literal"><span class="pre">60</span></code> to <code class="docutils literal"><span class="pre">100</span></code> seconds. (improvement)</li>
@@ -1799,8 +1935,8 @@ the module name clashes with another module which is already in <code class="doc
 (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id46">
-<h3>Fixed<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>Fixed<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Fix a bug when jinja templates with filters (for example,
 <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">core.local</span> <span class="pre">cmd='echo</span> <span class="pre">{{&quot;1.6.0&quot;</span> <span class="pre">|</span> <span class="pre">version_bump_minor}}'</span></code>) in parameters wasn’t rendered
@@ -1821,8 +1957,8 @@ library (&gt;= 2.11.0). (bug-fix) #2880</p>
 </div>
 <div class="section" id="august-8-2016">
 <h2>1.6.0 - August 8, 2016<a class="headerlink" href="#august-8-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id47">
-<h3>Added<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id54">
+<h3>Added<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to specify an action which is performed on an execution (<code class="docutils literal"><span class="pre">delay</span></code>, <code class="docutils literal"><span class="pre">cancel</span></code>) when a
 concurrency policy is used and a defined threshold is reached. For backward compatibility,
@@ -1840,8 +1976,8 @@ the API can now use <code class="docutils literal"><span class="pre">elapsed_sec
 datastore. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id48">
-<h3>Changed<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id55">
+<h3>Changed<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Upgrade to pymongo 3.2.2 and mongoengine 0.10.6 so StackStorm now also supports and works with
 MongoDB 3.x. (improvement)</li>
@@ -1868,8 +2004,8 @@ action types. (improvement)</li>
 a config schema (<code class="docutils literal"><span class="pre">config.schema.yaml</span></code>). (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id49">
-<h3>Fixed<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id56">
+<h3>Fixed<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Make sure policies which are disabled are not applied. (bug fix)
 Reported by Brian Martin.</li>
@@ -1883,8 +2019,8 @@ whether execution was kicked off or not. (bug-fix)</li>
 </div>
 <div class="section" id="july-13-2016">
 <h2>1.5.1 - July 13, 2016<a class="headerlink" href="#july-13-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id50">
-<h3>Added<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h3>Added<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add support for default values when a new pack configuration is used. Now if a default value
 is specified for a required config item in the config schema and a value for that item is not
@@ -1892,15 +2028,15 @@ provided in the config, default value from config schema is used. (improvement)<
 <li>Add support for posixGroup to the enterprise LDAP auth backend. (improvement, bug-fix)</li>
 </ul>
 </div>
-<div class="section" id="id51">
-<h3>Changed<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id58">
+<h3>Changed<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to prevent execution parameter merging when re-running an execution by passing
 <code class="docutils literal"><span class="pre">?no_merge=true</span></code> query parameter to the execution re-run API endpoint. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id52">
-<h3>Fixed<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id59">
+<h3>Fixed<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix trigger registration when using st2-register-content script with <code class="docutils literal"><span class="pre">--register-triggers</span></code>
 flag. (bug-fix)</li>
@@ -1912,8 +2048,8 @@ Reported by Cody A. Ray</li>
 </div>
 <div class="section" id="june-24-2016">
 <h2>1.5.0 - June 24, 2016<a class="headerlink" href="#june-24-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id53">
-<h3>Added<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id60">
+<h3>Added<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>TriggerInstances now have statuses to help track if a TriggerInstance has been processed,
 is being processed or failed to process. This bring out some visibility into parts of the
@@ -1953,8 +2089,8 @@ registered, consistent with the behavior of sensors, actions, etc. This feature 
 to register trigger types outside the scope of the sensors. (new-feature) [Cody A. Ray]</li>
 </ul>
 </div>
-<div class="section" id="id54">
-<h3>Changed<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id61">
+<h3>Changed<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Lazily establish SFTP connection inside the remote runner when and if SFTP connection is needed.
 This way, remote runner should now also work under cygwin on Windows if SFTP related
@@ -1965,8 +2101,8 @@ Reported by  Cody A. Ray</li>
 supply passphrase with private_key when running a remote SSH action. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id55">
-<h3>Removed<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id62">
+<h3>Removed<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Remove now deprecated Fabric based remote runner and corresponding
 <code class="docutils literal"><span class="pre">ssh_runner.use_paramiko_ssh_runner</span></code> config option. (cleanup)</li>
@@ -1974,8 +2110,8 @@ supply passphrase with private_key when running a remote SSH action. (improvemen
 JSON has been deprecated in StackStorm v0.6. Now the only supported metadata file format is YAML.</li>
 </ul>
 </div>
-<div class="section" id="id56">
-<h3>Fixed<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id63">
+<h3>Fixed<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix for <code class="docutils literal"><span class="pre">data`</span> <span class="pre">is</span> <span class="pre">dropped</span> <span class="pre">if</span> <span class="pre">``message</span></code> is not present in notification. (bug-fix)</li>
 <li>Fix support for password protected private key files in the remote runner. (bug-fix)</li>
@@ -2001,8 +2137,8 @@ under some circumstances. (workaround, bug-fix)</li>
 client. (bug-fix) #2543 [Adam Mielke]</li>
 </ul>
 </div>
-<div class="section" id="id57">
-<h3>Security<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h3>Security<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>SSL support for mongodb connections. (improvement)</li>
 </ul>
@@ -2010,8 +2146,8 @@ client. (bug-fix) #2543 [Adam Mielke]</li>
 </div>
 <div class="section" id="april-18-2016">
 <h2>1.4.0 - April 18, 2016<a class="headerlink" href="#april-18-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id58">
-<h3>Added<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id65">
+<h3>Added<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Passphrase support for the SSH runner. (improvement)</li>
 <li>Add <code class="docutils literal"><span class="pre">extra</span></code> field to the ActionAlias schema for adapter-specific parameters. (improvement)</li>
@@ -2070,8 +2206,8 @@ TriggerInstance payload value can be <code class="docutils literal"><span class=
 action parameter. (improvement, workaround)</li>
 </ul>
 </div>
-<div class="section" id="id59">
-<h3>Changed<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id66">
+<h3>Changed<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Improvements to ChatOps deployments of packs via <code class="docutils literal"><span class="pre">pack</span> <span class="pre">deploy</span></code> [Jon Middleton]</li>
 <li>Allow <code class="docutils literal"><span class="pre">/v1/webhooks</span></code> API endpoint request body to either be JSON or url encoded form data.
@@ -2095,8 +2231,8 @@ be granted access.</li>
 <li>For consistency rename <code class="docutils literal"><span class="pre">deploy_pack</span></code> alias to <code class="docutils literal"><span class="pre">pack_deploy</span></code>.</li>
 </ul>
 </div>
-<div class="section" id="id60">
-<h3>Deprecated<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id67">
+<h3>Deprecated<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Drop deprecated and unused <code class="docutils literal"><span class="pre">system.admin_users</span></code> config option which has been replaced with
 RBAC.</li>
@@ -2107,8 +2243,8 @@ replaced with a <code class="docutils literal"><span class="pre">task</span></co
 and additional information (i.e. <code class="docutils literal"><span class="pre">task(task1).result</span></code>).</li>
 </ul>
 </div>
-<div class="section" id="id61">
-<h3>Fixed<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id68">
+<h3>Fixed<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Bug fixes to allow Sensors to have their own log files. #2487 [Andrew Regan]</p>
 </li>
@@ -2137,8 +2273,8 @@ ignored. (bug fix)</p>
 </div>
 <div class="section" id="february-12-2016">
 <h2>1.3.2 - February 12, 2016<a class="headerlink" href="#february-12-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id62">
-<h3>Removed<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id69">
+<h3>Removed<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Remove <code class="docutils literal"><span class="pre">get_open_ports</span></code> action from Linux pack.</li>
 </ul>
@@ -2146,8 +2282,8 @@ ignored. (bug fix)</p>
 </div>
 <div class="section" id="january-25-2016">
 <h2>1.3.1 - January 25, 2016<a class="headerlink" href="#january-25-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id63">
-<h3>Changed<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id70">
+<h3>Changed<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Dev environment by default now uses gunicorn to spin API and AUTH processes. (improvement)</li>
 <li>Allow user to pass a boolean value for the <code class="docutils literal"><span class="pre">cacert</span></code> st2client constructor argument. This way
@@ -2155,8 +2291,8 @@ it now mimics the behavior of the <code class="docutils literal"><span class="pr
 (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id64">
-<h3>Fixed<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id71">
+<h3>Fixed<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Make sure <code class="docutils literal"><span class="pre">setup.py</span></code> of <code class="docutils literal"><span class="pre">st2client</span></code> package doesn’t rely on functionality which is only
 available in newer versions of pip.</li>
@@ -2168,8 +2304,8 @@ issues. (bug-fix)</li>
 </div>
 <div class="section" id="january-22-2016">
 <h2>1.3.0 - January 22, 2016<a class="headerlink" href="#january-22-2016" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id65">
-<h3>Added<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id72">
+<h3>Added<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Allow user to pass <code class="docutils literal"><span class="pre">env</span></code> parameter to <code class="docutils literal"><span class="pre">packs.setup_virtualenv</span></code> and <code class="docutils literal"><span class="pre">packs.install</span></code>
 action.</p>
@@ -2210,8 +2346,8 @@ the config.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id66">
-<h3>Changed<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id73">
+<h3>Changed<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Change the rule list columns in the CLI from ref, pack, description and enabled to ref,
 trigger.ref, action.ref and enabled. This aligns closer the UI and also brings important
@@ -2228,15 +2364,15 @@ on st2 pack from st2contrib.</li>
 <li>Trace also maintains causation chain through workflows.</li>
 </ul>
 </div>
-<div class="section" id="id67">
-<h3>Deprecated<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id74">
+<h3>Deprecated<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Deprecated <code class="docutils literal"><span class="pre">params</span></code> action attribute in the action chain definition in favor of the new
 <code class="docutils literal"><span class="pre">parameters</span></code> attribute. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id68">
-<h3>Fixed<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id75">
+<h3>Fixed<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add missing logrotate config entry for <code class="docutils literal"><span class="pre">st2auth</span></code> service. #2294 [Vignesh Terafast]</li>
 <li>Add a missing <code class="docutils literal"><span class="pre">get_logger</span></code> method to the <cite>MockSensorService`</cite>. This method now returns an
@@ -2265,8 +2401,8 @@ indicate that the lock was never acquired.</li>
 </div>
 <div class="section" id="december-07-2015">
 <h2>1.2.0 - December 07, 2015<a class="headerlink" href="#december-07-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id69">
-<h3>Added<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id76">
+<h3>Added<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add SSH bastion host support to the paramiko SSH runner. Utilizes same connection parameters as
 the targeted box. (new feature, improvement) #2144, #2150 [Logan Attwood]</li>
@@ -2288,8 +2424,8 @@ in an action execution) to db to help debugging rules easier. Also, CLI bindings
 and view these models are added. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id70">
-<h3>Changed<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id77">
+<h3>Changed<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Refactor retries in the Mistral action runner to use exponential backoff. Configuration options
 for Mistral have changed. (improvement)</li>
@@ -2312,8 +2448,8 @@ both flags to the binary - <code class="docutils literal"><span class="pre">--de
 explicit model deletion to improve speed. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id71">
-<h3>Fixed<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id78">
+<h3>Fixed<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix trigger parameters validation for system triggers during rule creation - make sure we
 validate the parameters before creating a TriggerDB object. (bug fix)</li>
@@ -2334,16 +2470,16 @@ is canceled. (bug fix)</li>
 </div>
 <div class="section" id="november-13-2015">
 <h2>1.1.1 - November 13, 2015<a class="headerlink" href="#november-13-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id72">
-<h3>Added<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id79">
+<h3>Added<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to specify URL which Mistral uses to talk to StackStorm API using <code class="docutils literal"><span class="pre">mistral.api_url</span></code>
 configuration option. If this option is not provided it defaults to the old behavior of using the
 public API url (<code class="docutils literal"><span class="pre">auth.api_url</span></code> setting). (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id73">
-<h3>Changed<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id80">
+<h3>Changed<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Improve speed of <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">list</span></code> command by not requesting <code class="docutils literal"><span class="pre">result</span></code> and
 <code class="docutils literal"><span class="pre">trigger_instance</span></code> attributes. The effect of this change will be especially pronounced for
@@ -2357,8 +2493,8 @@ pretty indented.</li>
 elapsed time in seconds for all the executions which are currently in “running” state.</li>
 </ul>
 </div>
-<div class="section" id="id74">
-<h3>Fixed<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id81">
+<h3>Fixed<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a race condition in sensor container where a sensor which takes &lt;= 5 seconds to shut down
 could be respawned before it exited. (bug fix) #2187 [Kale Blankenship]</li>
@@ -2370,8 +2506,8 @@ could be respawned before it exited. (bug fix) #2187 [Kale Blankenship]</li>
 </div>
 <div class="section" id="october-27-2015">
 <h2>1.1.0 - October 27, 2015<a class="headerlink" href="#october-27-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id75">
-<h3>Added<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id82">
+<h3>Added<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add YAQL v1.0 support to Mistral. Earlier versions are deprecated. (improvement)</li>
 <li>Move st2auth service authentication backends to a “repo per backend” model. Backends are now also
@@ -2401,8 +2537,8 @@ action or by using new <code class="docutils literal"><span class="pre">packs.up
 value and default is <code class="docutils literal"><span class="pre">st2packs</span></code>. (new feature)</li>
 </ul>
 </div>
-<div class="section" id="id76">
-<h3>Changed<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id83">
+<h3>Changed<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update CLI so <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span></code> / <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">run</span></code> and <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span></code> commands exit with
 non-zero code if the action fails. (improvement)</li>
@@ -2421,14 +2557,14 @@ parameter to the action. (improvement)
 [pixelrebel]</li>
 </ul>
 </div>
-<div class="section" id="id77">
-<h3>Deprecated<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id84">
+<h3>Deprecated<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>YAQL versions &lt; 1.0 are deprecated.</li>
 </ul>
 </div>
-<div class="section" id="id78">
-<h3>Fixed<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id85">
+<h3>Fixed<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix <code class="docutils literal"><span class="pre">timestamp_lt</span></code> and <code class="docutils literal"><span class="pre">timestamp_gt</span></code> filtering in the <cite>/executions</cite> API endpoint. Now we
 return a correct result which is expected from a user-perspective. (bug-fix)</li>
@@ -2474,8 +2610,8 @@ if the sensor container is forcefully terminated (SIGKILL). (bug fix, improvemen
 </div>
 <div class="section" id="september-09-2015">
 <h2>0.13.2 - September 09, 2015<a class="headerlink" href="#september-09-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id79">
-<h3>Changed<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id86">
+<h3>Changed<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Last newline character (<code class="docutils literal"><span class="pre">\n</span></code>) is now stripped from <code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> fields in local
 and remote command/shell runners. (improvement)</li>
@@ -2484,8 +2620,8 @@ easier since user simply needs to start sensor container with <code class="docut
 logs with level debug or higher will be routed to the container log. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id80">
-<h3>Fixed<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id87">
+<h3>Fixed<a class="headerlink" href="#id87" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">private_key</span></code> supplied for remote_actions is now used to auth correctly. The <code class="docutils literal"><span class="pre">private_key</span></code>
 argument should be the contents of private key file (of user specified in username argument).
@@ -2498,8 +2634,8 @@ FileWatchSensor from the system linux pack. (bug-fix)</li>
 </div>
 <div class="section" id="august-28-2015">
 <h2>0.13.1 - August 28, 2015<a class="headerlink" href="#august-28-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id81">
-<h3>Fixed<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id88">
+<h3>Fixed<a class="headerlink" href="#id88" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">cwd</span></code> for paramiko script runner should use <code class="docutils literal"><span class="pre">cwd</span></code> provided as runner parameter.
 (bug-fix)</li>
@@ -2511,8 +2647,8 @@ makes it safer to update trace objects from multiple processes. (bug-fix)</li>
 </div>
 <div class="section" id="august-24-2015">
 <h2>0.13.0 - August 24, 2015<a class="headerlink" href="#august-24-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id82">
-<h3>Added<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id89">
+<h3>Added<a class="headerlink" href="#id89" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add new OpenStack Keystone authentication backend.
 [Itxaka Serrano]</li>
@@ -2535,8 +2671,8 @@ nodes on failover. (feature)</li>
 (<code class="docutils literal"><span class="pre">{sensor,action,rule}</span> <span class="pre">{enable,</span> <span class="pre">disable}</span> <span class="pre">&lt;ref</span> <span class="pre">or</span> <span class="pre">id&gt;</span></code>) (feature)</li>
 </ul>
 </div>
-<div class="section" id="id83">
-<h3>Changed<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id90">
+<h3>Changed<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Information about parent workflow is now a dict in child’s context field. (improvement)</li>
 <li>Add support for restarting sensors which exit with a non-zero status code to
@@ -2549,8 +2685,8 @@ To switch to fabric runner, set <code class="docutils literal"><span class="pre"
 (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id84">
-<h3>Fixed<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id91">
+<h3>Fixed<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug when some runner parameter default values were not overridden when a
 false value was used in the action metadata parameter override (e.g. False, 0).
@@ -2577,14 +2713,14 @@ process contains <code class="docutils literal"><span class="pre">&lt;virtualenv
 </div>
 <div class="section" id="august-11-2015">
 <h2>0.12.2 - August 11, 2015<a class="headerlink" href="#august-11-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id85">
-<h3>Added<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id92">
+<h3>Added<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Support local ssh config file in remote runners. (feature)</li>
 </ul>
 </div>
-<div class="section" id="id86">
-<h3>Changed<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id93">
+<h3>Changed<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Changes to htpasswd file used in <code class="docutils literal"><span class="pre">flat_file</span></code> auth backend do not require
 a restart of st2auth and consequently StackStorm. (feature)</li>
@@ -2593,8 +2729,8 @@ a restart of st2auth and consequently StackStorm. (feature)</li>
 </div>
 <div class="section" id="july-31-2015">
 <h2>0.12.1 - July 31, 2015<a class="headerlink" href="#july-31-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id87">
-<h3>Fixed<a class="headerlink" href="#id87" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id94">
+<h3>Fixed<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Un-registering a pack also removes <code class="docutils literal"><span class="pre">rules</span></code> and <code class="docutils literal"><span class="pre">action</span> <span class="pre">aliases</span></code> from the pack. (bug-fix)</li>
 <li>Disable parallel SSH in fabric runner which causes issues with eventlets. (bug-fix)</li>
@@ -2605,8 +2741,8 @@ a restart of st2auth and consequently StackStorm. (feature)</li>
 </div>
 <div class="section" id="july-20-2015">
 <h2>0.12.0 - July 20, 2015<a class="headerlink" href="#july-20-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id88">
-<h3>Added<a class="headerlink" href="#id88" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id95">
+<h3>Added<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add support for script arguments to the Windows script runner. (new feature)
 [James Sigurðarson]</li>
@@ -2631,8 +2767,8 @@ it’s value has changed. (new-feature)</li>
 <li>Add ability to use action context params as action params in meta. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id89">
-<h3>Changed<a class="headerlink" href="#id89" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id96">
+<h3>Changed<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow users to use <code class="docutils literal"><span class="pre">timediff_lt</span></code> and <code class="docutils literal"><span class="pre">timediff_gt</span></code> rule comparison operator with many string
 date formats - previously it only worked with ISO8601 date strings. (improvement)</li>
@@ -2643,8 +2779,8 @@ date formats - previously it only worked with ISO8601 date strings. (improvement
 <li>Display friendly message for error in parameters validation on action execution. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id90">
-<h3>Fixed<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id97">
+<h3>Fixed<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug with with reinstalling a pack with no existing config - only try to move the config
 file over if it exists. (bug fix)</li>
@@ -2658,8 +2794,8 @@ Mistral workflows. (bug-fix)</li>
 </div>
 <div class="section" id="july-2-2015">
 <h2>0.11.6 - July 2, 2015<a class="headerlink" href="#july-2-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id91">
-<h3>Changed<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id98">
+<h3>Changed<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update all the code to handle all the datetime objects internally in UTC. (improvement, bug-fix)</li>
 </ul>
@@ -2667,8 +2803,8 @@ Mistral workflows. (bug-fix)</li>
 </div>
 <div class="section" id="july-1-2015">
 <h2>0.11.5 - July 1, 2015<a class="headerlink" href="#july-1-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id92">
-<h3>Fixed<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id99">
+<h3>Fixed<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug where <code class="docutils literal"><span class="pre">end_timestamp</span></code> is not captured for Mistral workflow executions (bug-fix)</li>
 <li>Fix a bug where the CLI failed to display Mistral workflow that errored (bug-fix)</li>
@@ -2678,8 +2814,8 @@ Mistral workflows. (bug-fix)</li>
 </div>
 <div class="section" id="june-30-2015">
 <h2>0.11.4 - June 30, 2015<a class="headerlink" href="#june-30-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id93">
-<h3>Removed<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id100">
+<h3>Removed<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Remove unnecessary rule notify_hubot from core.</li>
 </ul>
@@ -2687,8 +2823,8 @@ Mistral workflows. (bug-fix)</li>
 </div>
 <div class="section" id="june-16-2015">
 <h2>0.11.3 - June 16, 2015<a class="headerlink" href="#june-16-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id94">
-<h3>Fixed<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id101">
+<h3>Fixed<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix RHEL6 packaging issues</li>
 </ul>
@@ -2696,8 +2832,8 @@ Mistral workflows. (bug-fix)</li>
 </div>
 <div class="section" id="june-12-2015">
 <h2>0.11.2 - June 12, 2015<a class="headerlink" href="#june-12-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id95">
-<h3>Fixed<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id102">
+<h3>Fixed<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug with <code class="docutils literal"><span class="pre">start_timestamp</span></code> and <code class="docutils literal"><span class="pre">end_timestamp</span></code> sometimes returning an invalid value in
 a local instead of UTC timezone. (bug-fix)</li>
@@ -2708,14 +2844,14 @@ as such and as a result would fail after the 1st poll. (bug-fix)</li>
 </div>
 <div class="section" id="june-8-2015">
 <h2>0.11.1 - June 8, 2015<a class="headerlink" href="#june-8-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id96">
-<h3>Changed<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id103">
+<h3>Changed<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Action aliases are registered by default. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id97">
-<h3>Fixed<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id104">
+<h3>Fixed<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Repair failing pack installation. (bug-fix)</li>
 </ul>
@@ -2723,8 +2859,8 @@ as such and as a result would fail after the 1st poll. (bug-fix)</li>
 </div>
 <div class="section" id="june-5-2015">
 <h2>0.11.0 - June 5, 2015<a class="headerlink" href="#june-5-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id98">
-<h3>Added<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id105">
+<h3>Added<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to configure the CLI using an ini style config file located at <code class="docutils literal"><span class="pre">~/.st2rc</span></code>.
 (new-feature)</li>
@@ -2737,8 +2873,8 @@ as such and as a result would fail after the 1st poll. (bug-fix)</li>
 <li>CLI now has <code class="docutils literal"><span class="pre">re-emit</span></code> command for triggerinstance. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id99">
-<h3>Changed<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id106">
+<h3>Changed<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Throw a more-user friendly exception when enforcing a rule if an action referenced inside
 the rule definition doesn’t exist. (improvement)</li>
@@ -2748,8 +2884,8 @@ the rule definition doesn’t exist. (improvement)</li>
 <li>Validate parameters during rule creation for system triggers. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id100">
-<h3>Fixed<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id107">
+<h3>Fixed<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug with the rule evaluation failing if the trigger payload contained a key with a
 dot in the name. (bug-fix)</li>
@@ -2761,8 +2897,8 @@ dot in the name. (bug-fix)</li>
 </div>
 <div class="section" id="v0-9-2-may-26-2015">
 <h2>v0.9.2 - May 26, 2015<a class="headerlink" href="#v0-9-2-may-26-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id101">
-<h3>Fixed<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id108">
+<h3>Fixed<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix broken <code class="docutils literal"><span class="pre">packs.download</span></code> action. (bug-fix)</li>
 </ul>
@@ -2770,20 +2906,20 @@ dot in the name. (bug-fix)</li>
 </div>
 <div class="section" id="v0-9-1-may-12-2015">
 <h2>v0.9.1 - May 12, 2015<a class="headerlink" href="#v0-9-1-may-12-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id102">
-<h3>Added<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id109">
+<h3>Added<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow option to bypass SSL Certificate Check (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id103">
-<h3>Changed<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id110">
+<h3>Changed<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Return HTTP BAD REQUEST when TTL requested for token &gt; Max configured TTL (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id104">
-<h3>Fixed<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id111">
+<h3>Fixed<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug with alias parser to support empty formats (bug-fix)</li>
 </ul>
@@ -2791,8 +2927,8 @@ dot in the name. (bug-fix)</li>
 </div>
 <div class="section" id="v0-9-0-april-29-2015">
 <h2>v0.9.0 - April 29, 2015<a class="headerlink" href="#v0-9-0-april-29-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id105">
-<h3>Added<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id112">
+<h3>Added<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Sensor container now can dynamically load/reload/unload sensors on data model changes.
 (new-feature)</li>
@@ -2803,8 +2939,8 @@ and PowerShell scripts on Windows hosts. (new-feature)</li>
 <li>Update all the Python services to re-open log files on the <code class="docutils literal"><span class="pre">SIGUSR1</span></code> signal. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id106">
-<h3>Changed<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id113">
+<h3>Changed<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Report a more user-friendly error if an action-chain task references an invalid or inexistent
 action. Also treat invalid / inexistent action as a top-level action-chain error. (improvement)</li>
@@ -2821,8 +2957,8 @@ compatibility reasons, runners can still be referenced using their old names.
 (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id107">
-<h3>Fixed<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id114">
+<h3>Fixed<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Sensor container now returns non-zero exit codes for errors. (bug-fix)</li>
 <li>Fix a bug in datastore operations exposed in st2client. (bug-fix)</li>
@@ -2835,8 +2971,8 @@ in clean db. (improvement)</li>
 <li>Internal trigger types registered using APIs should use auth token. (bug-fix)</li>
 </ul>
 </div>
-<div class="section" id="id108">
-<h3>Security<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id115">
+<h3>Security<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Enable authentication by default for package based installations.</li>
 </ul>
@@ -2844,15 +2980,15 @@ in clean db. (improvement)</li>
 </div>
 <div class="section" id="v0-8-3-march-23-2015">
 <h2>v0.8.3 - March 23, 2015<a class="headerlink" href="#v0-8-3-march-23-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id109">
-<h3>Changed<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id116">
+<h3>Changed<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Don’t allow <code class="docutils literal"><span class="pre">run-remote-script</span></code> actions without an <code class="docutils literal"><span class="pre">entry_point</span></code> attribute - throw an
 exception when running an action. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id110">
-<h3>Fixed<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id117">
+<h3>Fixed<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix <code class="docutils literal"><span class="pre">packs.setup_virtualenv</span></code> command so it works correctly if user has specified multiple packs
 search paths. (bug-fix)</li>
@@ -2864,8 +3000,8 @@ on a different host than the API. (bug-fix)</li>
 </div>
 <div class="section" id="v0-8-2-march-10-2015">
 <h2>v0.8.2 - March 10, 2015<a class="headerlink" href="#v0-8-2-march-10-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id111">
-<h3>Fixed<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id118">
+<h3>Fixed<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug with python-runner actions sometimes not correctly reporting the action’s <code class="docutils literal"><span class="pre">stdout</span></code>.
 (bug-fix)</li>
@@ -2876,8 +3012,8 @@ authentication settings which were supplied to the action as parameters. (bug-fi
 </div>
 <div class="section" id="v0-8-1-march-10-2015">
 <h2>v0.8.1 - March 10, 2015<a class="headerlink" href="#v0-8-1-march-10-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id112">
-<h3>Added<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id119">
+<h3>Added<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to exclude particular attributes from a response by passing
 <code class="docutils literal"><span class="pre">?exclude_attributes=result,trigger_instance</span></code> query parameter to the <code class="docutils literal"><span class="pre">/actionexecutions/</span></code>
@@ -2886,8 +3022,8 @@ and <code class="docutils literal"><span class="pre">/actionexecutions/&lt;execu
 retrieve a value of a particular action execution attribute. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id113">
-<h3>Changed<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id120">
+<h3>Changed<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Update <code class="docutils literal"><span class="pre">execution</span> <span class="pre">get</span></code> CLI command so it automatically detects workflows and returns more
 user-friendly output by default. (improvement)</li>
@@ -2897,8 +3033,8 @@ take the same options and return output in the same consistent format.</li>
 definition file. (improvement)</li>
 </ul>
 </div>
-<div class="section" id="id114">
-<h3>Fixed<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id121">
+<h3>Fixed<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a bug with http runner not parsing JSON HTTP response body if the content-type header also
 contained a charset. (bug-fix)</li>
@@ -2914,8 +3050,8 @@ substitution in the <code class="docutils literal"><span class="pre">publish</sp
 </div>
 <div class="section" id="v0-8-0-march-2-2015">
 <h2>v0.8.0 - March 2, 2015<a class="headerlink" href="#v0-8-0-march-2-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id115">
-<h3>Added<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id122">
+<h3>Added<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Allow user to specify current working directory (<code class="docutils literal"><span class="pre">cwd</span></code> parameter) when running actions using the
 local or the remote runner (<code class="docutils literal"><span class="pre">run-local</span></code>, <code class="docutils literal"><span class="pre">run-local-script</span></code>, <code class="docutils literal"><span class="pre">run-remote</span></code>,
@@ -2957,8 +3093,8 @@ argument to the <code class="docutils literal"><span class="pre">get_value</span
 parameter to the <code class="docutils literal"><span class="pre">/keys</span></code> endpoint. (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id116">
-<h3>Changed<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id123">
+<h3>Changed<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Rename ActionExecution to LiveAction. (refactor)</li>
 <li>Rename ActionExecutionHistory to ActionExecution. (refactor)</li>
@@ -2966,23 +3102,23 @@ parameter to the <code class="docutils literal"><span class="pre">/keys</span></
 <li>Execution list shows only top level executions by default to see full list use –showall. (refactor)</li>
 </ul>
 </div>
-<div class="section" id="id117">
-<h3>Removed<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id124">
+<h3>Removed<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>A separate history process is no longer required. ActionExecution updates are carried at time of
 update to LiveAction. (refactor)</li>
 </ul>
 </div>
-<div class="section" id="id118">
-<h3>Deprecated<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id125">
+<h3>Deprecated<a class="headerlink" href="#id125" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>API url <code class="docutils literal"><span class="pre">/v1/actionexecutions/</span></code> is now deprecated in favor of <code class="docutils literal"><span class="pre">/v1/executions/</span></code> (refactor)</li>
 <li>API url change <code class="docutils literal"><span class="pre">/v1/history/execution</span></code> to <code class="docutils literal"><span class="pre">/v1/executions</span></code> (refactor)</li>
 <li>API url change <code class="docutils literal"><span class="pre">/v1/history/execution/views/filters</span></code> to <code class="docutils literal"><span class="pre">/v1/executions/views/filters</span></code> (refactor)</li>
 </ul>
 </div>
-<div class="section" id="id119">
-<h3>Fixed<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id126">
+<h3>Fixed<a class="headerlink" href="#id126" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Fix a race-condition / bug which would occur when multiple packs are installed at the same time.
 (bug-fix)</li>
@@ -3004,8 +3140,8 @@ has triggered the action execution. (bug-fix)</li>
 </div>
 <div class="section" id="v0-7-january-16-2015">
 <h2>v0.7 - January 16, 2015<a class="headerlink" href="#v0-7-january-16-2015" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id120">
-<h3>Added<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id127">
+<h3>Added<a class="headerlink" href="#id127" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Python runner and all the fabric based runners (<code class="docutils literal"><span class="pre">run-local</span></code>, <code class="docutils literal"><span class="pre">run-local-script</span></code>,
 <code class="docutils literal"><span class="pre">run-remote</span></code>, <code class="docutils literal"><span class="pre">run-remote-script</span></code>) now expose the <code class="docutils literal"><span class="pre">timeout</span></code> argument. With this argument
@@ -3032,8 +3168,8 @@ all the keys with names starting with the provided prefix. (new-feature)</li>
 running (new-feature)</li>
 </ul>
 </div>
-<div class="section" id="id121">
-<h3>Changed<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id128">
+<h3>Changed<a class="headerlink" href="#id128" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Refactor local runners so they are more robust, efficient and easier to debug. Previously, local
 actions were executed through SSH, now they are executed directly without the overhead of SSH.</li>
@@ -3044,8 +3180,8 @@ on the pythonpath thus making it possible to run st2api standalone.</li>
 <li>Change default mode for authentication to standalone. (refactor)</li>
 </ul>
 </div>
-<div class="section" id="id122">
-<h3>Fixed<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id129">
+<h3>Fixed<a class="headerlink" href="#id129" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Status code 400 (bad request) is now returned if user doesn’t provide a body to API endpoints
 which require it. Previously 500 internal server error was returned (bug-fix).</li>
@@ -3066,8 +3202,8 @@ registered. (bug-fix)</li>
 </div>
 <div class="section" id="v0-6-0-december-8-2014">
 <h2>v0.6.0 - December 8, 2014<a class="headerlink" href="#v0-6-0-december-8-2014" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id123">
-<h3>Added<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id130">
+<h3>Added<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Add Sensor and PollingSensor base classes. (NB: Sensors API change is non-backward compatible.)</li>
 <li>YAML support for action, rules and chain meta.</li>
@@ -3076,8 +3212,8 @@ registered. (bug-fix)</li>
 <code class="docutils literal"><span class="pre">st2actionrunner.{pid}.audit.log</span></code> log file.</li>
 </ul>
 </div>
-<div class="section" id="id124">
-<h3>Changed<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id131">
+<h3>Changed<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Separate virtualenv per pack. (Pythonic sensors and actions use them by default.)</li>
 <li>Install pip requirements from <code class="docutils literal"><span class="pre">requirements.txt</span></code> in packs by default.</li>
@@ -3091,8 +3227,8 @@ be required.)</li>
 (e.g. <code class="docutils literal"><span class="pre">/v1/actions</span></code>).</li>
 </ul>
 </div>
-<div class="section" id="id125">
-<h3>Fixed<a class="headerlink" href="#id125" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id132">
+<h3>Fixed<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Numerous bug fixes.</li>
 </ul>
@@ -3100,8 +3236,8 @@ be required.)</li>
 </div>
 <div class="section" id="v0-5-1-november-3rd-2014">
 <h2>v0.5.1 - November 3rd, 2014<a class="headerlink" href="#v0-5-1-november-3rd-2014" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id126">
-<h3>Added<a class="headerlink" href="#id126" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id133">
+<h3>Added<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Initial public release</li>
 </ul>
@@ -3147,7 +3283,7 @@ be required.)</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.7dev',
+            VERSION:'2.8dev',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

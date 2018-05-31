@@ -15,13 +15,13 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>Secrets Masking &mdash; StackStorm 2.8dev documentation</title>
+  <title>Using a Specific Version of Pack Content When Running an Action &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
   
   
-    <link rel="canonical" href="https://docs.stackstorm.com/reference/secrets_masking.html"/>
+    <link rel="canonical" href="https://docs.stackstorm.com/reference/content_version.html"/>
   
 
   
@@ -46,8 +46,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="StackStorm 2.8dev documentation" href="../index.html"/>
         <link rel="up" title="References and Guides" href="index.html"/>
-        <link rel="next" title="Troubleshooting" href="../troubleshooting/index.html"/>
-        <link rel="prev" title="History and Audit" href="history.html"/> 
+        <link rel="next" title="Jinja" href="jinja.html"/>
+        <link rel="prev" title="Real-time Action Output Streaming" href="action_output_streaming.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -271,7 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="action_output_streaming.html">Real-time Action Output Streaming</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="runners.html">Action Runners</a></li>
@@ -282,7 +282,7 @@
 <li class="toctree-l2"><a class="reference internal" href="monitoring.html">System Monitoring</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sensor_partitioning.html">Partitioning Sensors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="history.html">History and Audit</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Secrets Masking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets_masking.html">Secrets Masking</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a><ul>
@@ -435,14 +435,14 @@
         
           <li><a href="index.html">References and Guides</a> &raquo;</li>
         
-      <li>Secrets Masking</li>
+      <li>Using a Specific Version of Pack Content When Running an Action</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/reference/secrets_masking.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/StackStorm/st2docs/blob/master/docs/source/reference/content_version.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -462,126 +462,101 @@
               </p>
             </div>
             
-  <div class="section" id="secrets-masking">
-<h1>Secrets Masking<a class="headerlink" href="#secrets-masking" title="Permalink to this headline">¶</a></h1>
-<p>StackStorm offers functionality for masking secrets in API responses and log messages. This is enabled
-by default.</p>
-<p>To disable it, set the <code class="docutils literal"><span class="pre">api.mask_secrets</span></code> and <code class="docutils literal"><span class="pre">log.mask_secrets</span></code> config options in
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[api]</span>
-<span class="na">mask_secrets</span> <span class="o">=</span> <span class="s">True</span>
+  <div class="section" id="using-a-specific-version-of-pack-content-when-running-an-action">
+<h1>Using a Specific Version of Pack Content When Running an Action<a class="headerlink" href="#using-a-specific-version-of-pack-content-when-running-an-action" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This functionality is available in StackStorm &gt;= 2.7.0 and requires git &gt;= 2.5 to be installed. Using
+the latest stable version of git is recommended.</p>
+<p class="last">If you are using Ubuntu 14.04, the latest stable version of git can be installed directly from the
+<a class="reference external" href="https://launchpad.net/~git-core/+archive/ubuntu/ppa">official git ppa</a>. For RHEL / CentOS,
+the latest version can be found in the <a class="reference external" href="https://ius.io/">IUS repos</a>.</p>
+</div>
+<p>By default, when running an execution for an action from a pack on disk which is a git repository,
+StackStorm will use the currently checked out git revision of the pack content. That is the version you
+have specified when installing the pack using <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack</span> <span class="pre">name&gt;[=pack</span> <span class="pre">version]</span></code>.</p>
+<p>If you don’t explicitly specify a version, the latest stable version will be installed and used
+for the action executions.</p>
+<p>StackStorm v2.7.0 introduced a new <code class="docutils literal"><span class="pre">content_version</span></code> runner parameter for the local and Python runner
+actions.</p>
+<p>When running an action, users can specify this parameter, which can be a git revision hash,
+tag or a branch. This will cause StackStorm to use action content from that git revision.</p>
+<p>This is useful in many scenarios, such as when performing consistent zero downtime pack upgrades
+and you want to use different version of the action content for different pack executions (e.g. for
+some executions you want to use the older version <code class="docutils literal"><span class="pre">v2.2.0</span></code> and for other executions you want to use
+version <code class="docutils literal"><span class="pre">v2.3.0</span></code> which has just been deployed).</p>
+<div class="section" id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to demonstrate this functionality is using a pack which was built for purposes of
+demonstrating and testing it - <a class="reference external" href="https://github.com/StackStorm-Exchange/stackstorm-test-content-version">https://github.com/StackStorm-Exchange/stackstorm-test-content-version</a>.</p>
+<p>This pack contains 3 different actions which sole purpose is to print out the current pack version.
+The pack itself contains 4 different versions / tags (v0.1.0, v0.2.0, v0.3.0, v0.4.0). In a standard
+StackStorm pack git repository layout each pack version should have a corresponding git tag.</p>
+<div class="section" id="installing-the-pack">
+<h3>Installing the pack<a class="headerlink" href="#installing-the-pack" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 pack install https://github.com/StackStorm-Exchange/stackstorm-test-content-version
 
-<span class="na">...</span>
+vagrant@local$ st2 pack install https://github.com/StackStorm-Exchange/stackstorm-test-content-version
 
-<span class="k">[log]</span>
-<span class="na">mask_secrets</span> <span class="o">=</span> <span class="s">False</span>
-</pre></div>
-</div>
-<div class="section" id="masking-secrets-in-api-responses">
-<h2>Masking Secrets in API Responses<a class="headerlink" href="#masking-secrets-in-api-responses" title="Permalink to this headline">¶</a></h2>
-<p>When secret masking is enabled for API responses, StackStorm will mask values for secret parameters in
-all the API responses which operate on the following system entities:</p>
-<ul class="simple">
-<li>Action Executions</li>
-<li>Live Actions</li>
-<li>Datastore (key-value) Items</li>
-</ul>
-<p>StackStorm will determine if a particular action parameter is a secret based on the parameter definition
-in the action metadata file.</p>
-<p>Any action parameter that has the <code class="docutils literal"><span class="pre">secret:</span> <span class="pre">true</span></code> attribute will be treated as a secret for
-masking purposes.</p>
-<p>Masking can be disabled on a per-API request basis, by passing the <code class="docutils literal"><span class="pre">?show_secrets=True</span></code> query
-parameter to all of the supported API endpoints. This is only available to users with the admin
-role.</p>
-<p>This example shows the secret parameter <code class="docutils literal"><span class="pre">cmd</span></code> being masked in the response of the
-<code class="docutils literal"><span class="pre">/v1/executions/</span></code> API endpoint.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET <span class="s1">&#39;http://127.0.0.1:9101/v1/executions/?limit=1&#39;</span>
-<span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-        <span class="s2">&quot;start_timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.953242Z&quot;</span>,
-        <span class="s2">&quot;log&quot;</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-                <span class="s2">&quot;timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.970000Z&quot;</span>
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">&quot;parameters&quot;</span>: <span class="o">{</span>
-            <span class="s2">&quot;cmd&quot;</span>: <span class="s2">&quot;********&quot;</span>
-        <span class="o">}</span>,
-        ...
-        <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;58e78dbe0640fd765ca74896&quot;</span>
-    <span class="o">}</span>
-<span class="o">]</span>
-</pre></div>
-</div>
-<p>This shows the same request, when a user with admin role disables masking on a per-request basis:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET <span class="s1">&#39;http://127.0.0.1:9101/v1/executions/?limit=1&amp;show_secrets=True&#39;</span>
-<span class="o">[</span>
-    <span class="o">{</span>
-        <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-        <span class="s2">&quot;start_timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.953242Z&quot;</span>,
-        <span class="s2">&quot;log&quot;</span>: <span class="o">[</span>
-            <span class="o">{</span>
-                <span class="s2">&quot;status&quot;</span>: <span class="s2">&quot;requested&quot;</span>,
-                <span class="s2">&quot;timestamp&quot;</span>: <span class="s2">&quot;2017-04-07T13:01:50.970000Z&quot;</span>
-            <span class="o">}</span>
-        <span class="o">]</span>,
-        <span class="s2">&quot;parameters&quot;</span>: <span class="o">{</span>
-            <span class="s2">&quot;cmd&quot;</span>: <span class="s2">&quot;date&quot;</span>
-        <span class="o">}</span>,
-        ...
-        <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;58e78dbe0640fd765ca74896&quot;</span>
-    <span class="o">}</span>
-<span class="o">]</span>
+    <span class="o">[</span> succeeded <span class="o">]</span> download pack
+    <span class="o">[</span> succeeded <span class="o">]</span> make a prerun
+    <span class="o">[</span> succeeded <span class="o">]</span> install pack dependencies
+    <span class="o">[</span> succeeded <span class="o">]</span> register pack
+
++-------------+-------------------------------------------------------------+
+<span class="p">|</span> Property    <span class="p">|</span> Value                                                       <span class="p">|</span>
++-------------+-------------------------------------------------------------+
+<span class="p">|</span> name        <span class="p">|</span> test_content_version                                        <span class="p">|</span>
+<span class="p">|</span> description <span class="p">|</span> StackStorm pack <span class="k">for</span> testing <span class="s2">&quot;content_version&quot;</span> functionality <span class="p">|</span>
+<span class="p">|</span> version     <span class="p">|</span> <span class="m">0</span>.4.0                                                       <span class="p">|</span>
+<span class="p">|</span> author      <span class="p">|</span> st2-dev                                                     <span class="p">|</span>
++-------------+-------------------------------------------------------------+
 </pre></div>
 </div>
 </div>
-<div class="section" id="masking-secrets-in-log-messages">
-<h2>Masking Secrets in Log Messages<a class="headerlink" href="#masking-secrets-in-log-messages" title="Permalink to this headline">¶</a></h2>
-<p>When secret masking is enabled for log messages, StackStorm uses a static blacklist of attribute and
-parameter names which are considered as secrets and tries to mask them in the log messages. By
-default, this blacklist contains the following names:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">password</span></code></li>
-<li><code class="docutils literal"><span class="pre">auth_token</span></code></li>
-<li><code class="docutils literal"><span class="pre">token</span></code></li>
-<li><code class="docutils literal"><span class="pre">secret</span></code></li>
-<li><code class="docutils literal"><span class="pre">credentials</span></code></li>
-<li><code class="docutils literal"><span class="pre">st2_auth_token</span></code></li>
-</ul>
-<p>Values for all the masked parameters are replaced with <code class="docutils literal"><span class="pre">********</span></code>.</p>
-<p>For example, for a log method call in the code which looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;User authenticated&#39;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;dummy&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;supersecret&#39;</span><span class="p">,</span> <span class="s1">&#39;token&#39;</span><span class="p">:</span> <span class="s1">&#39;supersecret&#39;</span><span class="p">})</span>
+<div class="section" id="running-the-latest-installed-and-checked-out-pack-version-v0-4-0">
+<h3>Running the latest installed and checked out pack version (v0.4.0)<a class="headerlink" href="#running-the-latest-installed-and-checked-out-pack-version-v0-4-0" title="Permalink to this headline">¶</a></h3>
+<p>By default, if no version if specified, the latest installed and checked out version is used. This is
+the same behavior as before:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant@local$ st2 run test_content_version.python_runner_print_version
+
+id: 5ad0ce8b0640fd27f7b97845
+status: succeeded
+parameters: None
+result:
+  exit_code: <span class="m">0</span>
+  result: v0.4.0
+  stderr: <span class="s1">&#39;&#39;</span>
+  stdout: <span class="s1">&#39;v0.4.0</span>
+<span class="s1">    &#39;</span>
 </pre></div>
 </div>
-<p>With masking disabled, the actual log line in the log file looks like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2017</span>-04-07 <span class="m">12</span>:20:09,368 INFO <span class="o">[</span>-<span class="o">]</span> User authenticated <span class="o">(</span><span class="nv">username</span><span class="o">=</span>dummy, <span class="nv">token</span><span class="o">=</span>supersecret<span class="o">)</span>
+</div>
+<div class="section" id="running-a-specific-version">
+<h3>Running a specific version<a class="headerlink" href="#running-a-specific-version" title="Permalink to this headline">¶</a></h3>
+<p>In this case we specify that we want to use git tag <code class="docutils literal"><span class="pre">v0.2.0</span></code> which matches the same pack version:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant@local$ st2 run test_content_version.python_runner_print_version <span class="nv">content_version</span><span class="o">=</span>v0.2.0
+
+id: 5ad0cee40640fd27f7b97848
+status: succeeded
+parameters:
+  content_version: v0.2.0
+result:
+  exit_code: <span class="m">0</span>
+  result: v0.2.0
+  stderr: <span class="s1">&#39;&#39;</span>
+  stdout: <span class="s1">&#39;v0.2.0</span>
+<span class="s1">    &#39;</span>
 </pre></div>
 </div>
-<p>With masking enabled (the default), it looks like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2017</span>-04-07 <span class="m">12</span>:20:09,368 INFO <span class="o">[</span>-<span class="o">]</span> User authenticated <span class="o">(</span><span class="nv">username</span><span class="o">=</span>dummy, <span class="nv">token</span><span class="o">=</span>********<span class="o">)</span>
-</pre></div>
 </div>
 </div>
 <div class="section" id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
-<p>API response and log message secret masking use a best-effort approach and as such, have multiple
-limitations.</p>
-<p>You are strongly encouraged to not rely on secret masking functionality alone, but use it in
-combination with other security related primitives available in StackStorm such as RBAC and encrypted
-datastore values (defense in depth principle).</p>
-<p>The best approach when dealing with secrets is to store secret and/or potentially sensitive values
-encrypted in a datastore. Then you should directly retrieve and decrypt those secret values only in
-the actions where you need to access them.</p>
-<p>Doing that instead of passing those values around as action parameters makes actions and workflows
-a bit more tightly coupled and harder to re-use and troubleshoot, but it decreases the surface area
-where those values could potentially be leaked/exposed and as such makes it more secure - you are
-trading readability and re-use for security.</p>
-<p>In addition to that, you should be careful to not use <code class="docutils literal"><span class="pre">DEBUG</span></code> log level or <code class="docutils literal"><span class="pre">debug</span></code> mode in
-production deployments. When debug mode is enabled, log verbosity is increased. This provides a lot
-of data which is helpful when debugging, but could also contain sensitive information. No masking
-is performed.</p>
+<p>Right now only the content (code, metadata) inside the pack directory which is a git repository is
+versioned. This means that for Python runner actions, virtual environments and requirements are
+not versioned and the latest version of the virtual environments which is installed is always used
+when running an action.</p>
 </div>
 </div>
 
@@ -591,10 +566,10 @@ is performed.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../troubleshooting/index.html" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="jinja.html" class="btn btn-neutral float-right" title="Jinja">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="history.html" class="btn btn-neutral" title="History and Audit"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="action_output_streaming.html" class="btn btn-neutral" title="Real-time Action Output Streaming"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

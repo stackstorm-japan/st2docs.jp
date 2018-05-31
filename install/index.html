@@ -15,7 +15,7 @@
   })(window,document,'script','dataLayer','GTM-NKZBMHZ');</script>
   <!-- End Google Tag Manager -->
   
-  <title>インストール &mdash; StackStorm 2.7dev documentation</title>
+  <title>インストール &mdash; StackStorm 2.8dev documentation</title>
   
 
   <link rel="shortcut icon" href="../_static/favicon.ico?v4"/>
@@ -44,7 +44,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="StackStorm 2.7dev documentation" href="../index.html"/>
+    <link rel="top" title="StackStorm 2.8dev documentation" href="../index.html"/>
         <link rel="next" title="Overview: Single-box Reference Deployment" href="overview.html"/>
         <link rel="prev" title="StackStorm 概要" href="../overview.html"/> 
 
@@ -109,7 +109,8 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">インストールと設定</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">システム要件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -269,6 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../reference/packs.html">Create and Contribute a Pack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/pack_management_transition.html">Pack Management Transition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/action_output_streaming.html">Real-time Action Output Streaming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference/content_version.html">Using a Specific Version of Pack Content When Running an Action</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/jinja.html">Jinja</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/policies.html">Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference/runners.html">Action Runners</a></li>
@@ -314,7 +316,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#in-development">in development</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-06-2018">2.7.0 - April 06, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#may-16-2018">2.7.2 - May 16, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-20-2018">2.7.1 - April 20, 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html#april-12-2018">2.7.0 - April 12, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#january-19-2018">2.6.0 - January 19, 2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#december-14-2017">2.5.1 - December 14, 2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../changelog.html#october-25-2017">2.5.0 - October 25, 2017</a></li>
@@ -426,7 +430,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs v2.7dev </a> &raquo;</li>
+      <li><a href="../index.html">Docs v2.8dev </a> &raquo;</li>
         
       <li>インストール</li>
     
@@ -450,7 +454,7 @@
             <div id="version-warning" class="admonition warning hide">
               <p class="first admonition-title">Note</p>
               <p class="last">
-                The documentation you're currently reading is for version 2.7dev.
+                The documentation you're currently reading is for version 2.8dev.
                 Click <a href="/">here</a> to view documentation for the latest stable version.
               </p>
             </div>
@@ -460,6 +464,8 @@
 <p>ここでは StackStorm をインストールする方法の全体像を示します。</p>
 <p>StackStorm は、RPM 及び deb パッケージによるインストールの他、Docker による環境構築に加え、インストールスクリプトによる自動インストールといった、様々なインストール方法を提供しています。以下に StackStorm がサポートするインストール方法の選択肢を示します。</p>
 <ul class="simple">
+<li><strong>Vagrant / Virtual Appliance:</strong>
+<cite>Vagrant のインストール &lt;/install/vagrant&gt;</cite> ができた環境であれば、コマンド <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">init</span> <span class="pre">stackstorm/st2</span> <span class="pre">&amp;&amp;</span> <span class="pre">vagrant</span> <span class="pre">up</span></code> だけで StackStorm がインストールされた環境を構築できます。動作確認済の StackStorm が既にインストールされているイメージを使うことで、インストールや設定の手間や時間を省けます。StackStorm の動作の確認や、pack の開発、デモなどの用途に最適です。</li>
 <li><strong>One-line Install:</strong>
 これはインストールスクリプトによって全てのコンポーネントを単一ホストにインストールする方法です。
 とりあえず StackStorm を使ってみたいといった場合には、こちらの方法がお勧めです。詳しくは後述の <a class="reference internal" href="#ref-one-line-install"><span class="std std-ref">Quick Install</span></a> をご覧ください。</li>
@@ -472,8 +478,6 @@
 Ansible によるインストールを行う場合には、<a class="reference internal" href="ansible.html"><span class="doc">Ansible Playbooks</span></a> をご覧ください。</li>
 <li><strong>Docker:</strong>
 StackStorm は Docker イメージを提供しています。詳しくは <a class="reference internal" href="docker.html"><span class="doc">Docker による環境構築</span></a> をご覧ください。</li>
-<li><strong>Vagrant:</strong>
-Vagrant を使えば、手っ取り早くテスト環境を構築できます。<a class="reference external" href="https://github.com/StackStorm/st2vagrant">st2vagrant</a> は VM を作成し、そこに StackStorm をインストールします。</li>
 </ul>
 <p>ニーズに合わせて最適な方法をお選びください。</p>
 <p>Extreme Workflow Composer にアップグレードしたい場合は、StackStorm がインストールされた環境にパッケージを追加する形でアップグレードできます (もちろん StackStorm と Extreme Workflow Composer を同時にイストールすることもできます)。
@@ -509,7 +513,8 @@ passwords in the config files - <code class="docutils literal"><span class="pre"
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">デプロイ後の構成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">システム要件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vagrant.html">Vagrant / OVA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deb.html">Ubuntu 14.04 / 16.04</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rhel7.html">RHEL 7 / CentOS 7</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rhel6.html">RHEL 6 / CentOS 6</a></li>
@@ -561,7 +566,7 @@ passwords in the config files - <code class="docutils literal"><span class="pre"
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'2.7dev',
+            VERSION:'2.8dev',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
