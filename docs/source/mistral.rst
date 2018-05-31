@@ -297,6 +297,7 @@ Check out this step-by-step tutorial on building a workflow in |st2| https://sta
 
 More details about Mistral can be found at https://docs.openstack.org/mistral/latest/.
 
+.. _mistral-workflows-completion-latency-and-performance:
 
 Mistral Workflows Completion, Latency, and Performance
 ------------------------------------------------------
@@ -336,7 +337,7 @@ basis in case |st2| or Mistral services is offline during a callback operation.
 .. code-block:: bash
 
     # Enable the results tracking for an individual workflow execution
-    st2-track-result <st2-action-execution-id>
+    st2-track-result <st2-action-execution-id> --config-dir /etc/st2
 
     # Disable the results tracking for an individual workflow execution
-    st2-track-result <st2-action-execution-id> --delete
+    st2-track-result <st2-action-execution-id> --config-dir /etc/st2 --delete
