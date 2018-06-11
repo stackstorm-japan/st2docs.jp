@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -469,16 +469,16 @@ how to write the tests, mock classes which can be used to make testing
 easier, etc.</p>
 <div class="section" id="test-file-locations-and-names">
 <h2>Test File Locations and Names<a class="headerlink" href="#test-file-locations-and-names" title="Permalink to this headline">¶</a></h2>
-<p>All the test files should go into <code class="docutils literal"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/tests/</span></code> directory. If tests
-include any fixtures, they should be put in the <code class="docutils literal"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/tests/fixtures/</span></code>
+<p>All the test files should go into <code class="docutils literal notranslate"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/tests/</span></code> directory. If tests
+include any fixtures, they should be put in the <code class="docutils literal notranslate"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/tests/fixtures/</span></code>
 directory.</p>
 <p>Test files should follow the following naming conventions:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">test_action_&lt;action</span> <span class="pre">name&gt;.py</span></code> for action tests. For example, if the action
-is named <code class="docutils literal"><span class="pre">parse_xml</span></code>, the file should be named <code class="docutils literal"><span class="pre">test_action_parse_xml.py</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">test_sensor_&lt;sensor</span> <span class="pre">name&gt;.py</span></code> for sensor tests. For example, if the sensor
-is named <code class="docutils literal"><span class="pre">GithubEvents</span></code>, the file should be named <code class="docutils literal"><span class="pre">test_sensor_github_events.py</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">test_action_aliases.py</span></code> for all the action aliases tests.</li>
+<li><code class="docutils literal notranslate"><span class="pre">test_action_&lt;action</span> <span class="pre">name&gt;.py</span></code> for action tests. For example, if the action
+is named <code class="docutils literal notranslate"><span class="pre">parse_xml</span></code>, the file should be named <code class="docutils literal notranslate"><span class="pre">test_action_parse_xml.py</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">test_sensor_&lt;sensor</span> <span class="pre">name&gt;.py</span></code> for sensor tests. For example, if the sensor
+is named <code class="docutils literal notranslate"><span class="pre">GithubEvents</span></code>, the file should be named <code class="docutils literal notranslate"><span class="pre">test_sensor_github_events.py</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">test_action_aliases.py</span></code> for all the action aliases tests.</li>
 </ul>
 </div>
 <div class="section" id="general-testing-conventions">
@@ -493,46 +493,46 @@ tests and mock the responses and method calls where necessary.</p>
 <div class="section" id="base-test-classes">
 <h3>Base Test Classes<a class="headerlink" href="#base-test-classes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">st2tests.base.BaseSensorTestCase</span></code> - Base class for all the sensor test cases. This class
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.base.BaseSensorTestCase</span></code> - Base class for all the sensor test cases. This class
 provides utility methods for making sensor testing easier, such as returning a sensor class
-instance with <code class="docutils literal"><span class="pre">sensor_service</span></code> correctly populated, a method for asserting that trigger
-has been dispatched (<code class="docutils literal"><span class="pre">assertTriggerDispatched</span></code>) and more.</li>
-<li><code class="docutils literal"><span class="pre">st2tests.base.BaseActionTestCase</span></code> - Base class for all the action test cases. This class
+instance with <code class="docutils literal notranslate"><span class="pre">sensor_service</span></code> correctly populated, a method for asserting that trigger
+has been dispatched (<code class="docutils literal notranslate"><span class="pre">assertTriggerDispatched</span></code>) and more.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.base.BaseActionTestCase</span></code> - Base class for all the action test cases. This class
 provides utility methods for making action testing easier such as returning an action class
-with <code class="docutils literal"><span class="pre">action_service</span></code> correctly populated, etc.</li>
-<li><code class="docutils literal"><span class="pre">st2tests.BaseActionAliasTestCase</span></code> - Base class for all the action aliases test cases. This
+with <code class="docutils literal notranslate"><span class="pre">action_service</span></code> correctly populated, etc.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.BaseActionAliasTestCase</span></code> - Base class for all the action aliases test cases. This
 class provides utility functions for testing the action alias.</li>
 </ul>
 </div>
 <div class="section" id="mock-classes">
 <h3>Mock Classes<a class="headerlink" href="#mock-classes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">st2tests.mocks.runner.MockActionRunner</span></code> - Mock action runner class which allows you to specify
-a mock status, result and context which is returned from the <code class="docutils literal"><span class="pre">run</span></code> method.</li>
-<li><code class="docutils literal"><span class="pre">st2tests.mocks.sensor.MockSensorWrapper</span></code> - Mock <code class="docutils literal"><span class="pre">SensorWrapper</span></code> class.</li>
-<li><code class="docutils literal"><span class="pre">st2tests.mocks.sensor.MockSensorService</span></code> - Mock <code class="docutils literal"><span class="pre">SensorService</span></code> class. This class mocks
-methods which operate on the datastore items (<code class="docutils literal"><span class="pre">get_logger</span></code>, <code class="docutils literal"><span class="pre">list_values</span></code>, <code class="docutils literal"><span class="pre">get_value</span></code>,
-<code class="docutils literal"><span class="pre">set_value</span></code>, <code class="docutils literal"><span class="pre">delete_value</span></code>).</li>
-<li><code class="docutils literal"><span class="pre">st2tests.mocks.action.MockActionWrapper</span></code> - Mock <code class="docutils literal"><span class="pre">PythonActionWrapper</span></code> class.</li>
-<li><code class="docutils literal"><span class="pre">st2tests.mocks.action.MockActionService</span></code> - Mock <code class="docutils literal"><span class="pre">ActionService</span></code> class. This class mocks
-methods which operate on the datastore items (<code class="docutils literal"><span class="pre">list_values</span></code>, <code class="docutils literal"><span class="pre">get_value</span></code>, <code class="docutils literal"><span class="pre">set_value</span></code>,
-<code class="docutils literal"><span class="pre">delete_value</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.mocks.runner.MockActionRunner</span></code> - Mock action runner class which allows you to specify
+a mock status, result and context which is returned from the <code class="docutils literal notranslate"><span class="pre">run</span></code> method.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.mocks.sensor.MockSensorWrapper</span></code> - Mock <code class="docutils literal notranslate"><span class="pre">SensorWrapper</span></code> class.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.mocks.sensor.MockSensorService</span></code> - Mock <code class="docutils literal notranslate"><span class="pre">SensorService</span></code> class. This class mocks
+methods which operate on the datastore items (<code class="docutils literal notranslate"><span class="pre">get_logger</span></code>, <code class="docutils literal notranslate"><span class="pre">list_values</span></code>, <code class="docutils literal notranslate"><span class="pre">get_value</span></code>,
+<code class="docutils literal notranslate"><span class="pre">set_value</span></code>, <code class="docutils literal notranslate"><span class="pre">delete_value</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.mocks.action.MockActionWrapper</span></code> - Mock <code class="docutils literal notranslate"><span class="pre">PythonActionWrapper</span></code> class.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2tests.mocks.action.MockActionService</span></code> - Mock <code class="docutils literal notranslate"><span class="pre">ActionService</span></code> class. This class mocks
+methods which operate on the datastore items (<code class="docutils literal notranslate"><span class="pre">list_values</span></code>, <code class="docutils literal notranslate"><span class="pre">get_value</span></code>, <code class="docutils literal notranslate"><span class="pre">set_value</span></code>,
+<code class="docutils literal notranslate"><span class="pre">delete_value</span></code>).</li>
 </ul>
 </div>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>In addition to the StackStorm and pack dependencies listed in <code class="docutils literal"><span class="pre">requirements.txt</span></code> and
-<code class="docutils literal"><span class="pre">requirements-tests.txt</span></code>, the following libraries are also available by default inside the tests:</p>
+<p>In addition to the StackStorm and pack dependencies listed in <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and
+<code class="docutils literal notranslate"><span class="pre">requirements-tests.txt</span></code>, the following libraries are also available by default inside the tests:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">unittest2</span></code></li>
-<li><code class="docutils literal"><span class="pre">mock</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">unittest2</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">mock</span></code></li>
 </ul>
-<p>The sensors (<code class="docutils literal"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/sensors/</span></code>) and actions (<code class="docutils literal"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/actions/</span></code>) directory is added
+<p>The sensors (<code class="docutils literal notranslate"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/sensors/</span></code>) and actions (<code class="docutils literal notranslate"><span class="pre">&lt;pack</span> <span class="pre">name&gt;/actions/</span></code>) directory is added
 to PYTHONPATH meaning you can import sensor and action modules directly in your code.</p>
-<p>For example, if you have an action file named <code class="docutils literal"><span class="pre">actions/parse_xml.py</span></code> you can do the following
+<p>For example, if you have an action file named <code class="docutils literal notranslate"><span class="pre">actions/parse_xml.py</span></code> you can do the following
 inside your test module:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">parse_xml</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">parse_xml</span>
 </pre></div>
 </div>
 <p>Keep in mind that both sensor and action modules are not namespaced which means sensor and action
@@ -541,19 +541,19 @@ module names need to be unique to avoid conflicts.</p>
 <div class="section" id="fixtures">
 <h2>Fixtures<a class="headerlink" href="#fixtures" title="Permalink to this headline">¶</a></h2>
 <p>All the fixture data such as raw HTTP responses and similar, should be stored in files in the
-<code class="docutils literal"><span class="pre">&lt;pack</span> <span class="pre">path&gt;/tests/fixtures</span></code> directory (e.g. <code class="docutils literal"><span class="pre">libcloud/tests/fixtures/list_zones.json</span></code>).</p>
-<p>To retrieve raw content of the fixture file you can use the <code class="docutils literal"><span class="pre">get_fixture_content</span></code> method
+<code class="docutils literal notranslate"><span class="pre">&lt;pack</span> <span class="pre">path&gt;/tests/fixtures</span></code> directory (e.g. <code class="docutils literal notranslate"><span class="pre">libcloud/tests/fixtures/list_zones.json</span></code>).</p>
+<p>To retrieve raw content of the fixture file you can use the <code class="docutils literal notranslate"><span class="pre">get_fixture_content</span></code> method
 available on the test class.</p>
 </div>
 <div class="section" id="instantiating-and-obtaining-class-instances">
 <h2>Instantiating and obtaining class instances<a class="headerlink" href="#instantiating-and-obtaining-class-instances" title="Permalink to this headline">¶</a></h2>
-<p>When obtaining a sensor or an action class instance you should use <code class="docutils literal"><span class="pre">get_sensor_instance</span></code> and
-<code class="docutils literal"><span class="pre">get_action_instance</span></code> methods provided on the base test class instead of directly instantiating
+<p>When obtaining a sensor or an action class instance you should use <code class="docutils literal notranslate"><span class="pre">get_sensor_instance</span></code> and
+<code class="docutils literal notranslate"><span class="pre">get_action_instance</span></code> methods provided on the base test class instead of directly instantiating
 the sensor/action class yourself.</p>
 <p>This is important because those two methods mimic the class initialization process which is
 otherwise performed inside the action/sensor wrapper.</p>
 <p>Sensor tests:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySensorSensorTestCase</span><span class="p">(</span><span class="n">BaseSensorTestCase</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySensorSensorTestCase</span><span class="p">(</span><span class="n">BaseSensorTestCase</span><span class="p">):</span>
     <span class="n">sensor_cls</span> <span class="o">=</span> <span class="n">MySensor</span>
 
     <span class="k">def</span> <span class="nf">test_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -563,7 +563,7 @@ otherwise performed inside the action/sensor wrapper.</p>
 </pre></div>
 </div>
 <p>Action tests:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyActionActionTestCase</span><span class="p">(</span><span class="n">BaseActionTestCase</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyActionActionTestCase</span><span class="p">(</span><span class="n">BaseActionTestCase</span><span class="p">):</span>
     <span class="n">action_cls</span> <span class="o">=</span> <span class="n">MyAction</span>
 
     <span class="k">def</span> <span class="nf">test_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -573,7 +573,7 @@ otherwise performed inside the action/sensor wrapper.</p>
 </pre></div>
 </div>
 <p>Action alias tests:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyActionAliasTestCase</span><span class="p">(</span><span class="n">BaseActionTestCase</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyActionAliasTestCase</span><span class="p">(</span><span class="n">BaseActionTestCase</span><span class="p">):</span>
     <span class="n">action_alias_name</span> <span class="o">=</span> <span class="s1">&#39;my_alias&#39;</span>
 
     <span class="k">def</span> <span class="nf">test_method</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -581,7 +581,7 @@ otherwise performed inside the action/sensor wrapper.</p>
 </pre></div>
 </div>
 <p>As you can see, when testing aliases you need to specify the name of the alias which is to be
-tested. This alias is automatically retrieved from disk and available via <code class="docutils literal"><span class="pre">self.action_alias_db</span></code>
+tested. This alias is automatically retrieved from disk and available via <code class="docutils literal notranslate"><span class="pre">self.action_alias_db</span></code>
 instance variable.</p>
 </div>
 <div class="section" id="sample-tests">
@@ -598,47 +598,47 @@ instance variable.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For this script to work correctly, all the StackStorm components need to be
-in <code class="docutils literal"><span class="pre">PYTHONPATH</span></code>. This is already the case when using <code class="docutils literal"><span class="pre">st2vagrant</span></code>
+in <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>. This is already the case when using <code class="docutils literal notranslate"><span class="pre">st2vagrant</span></code>
 Vagrant image or when StackStorm is installed on a system using deb/rpm
 packages.</p>
-<p>If that is not the case, you need to set <code class="docutils literal"><span class="pre">ST2_REPO_PATH</span></code> environment
+<p>If that is not the case, you need to set <code class="docutils literal notranslate"><span class="pre">ST2_REPO_PATH</span></code> environment
 variable to point to the git checkout of the StackStorm st2 repository as
 shown below:</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/st2.git /tmp/st2
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/st2.git /tmp/st2
 <span class="nv">ST2_REPO_PATH</span><span class="o">=</span>/tmp/st2 st2-run-pack-tests -p &lt;pack path&gt;
 </pre></div>
 </div>
 </div>
-<p>To run all the tests in a particular pack you can use the <code class="docutils literal"><span class="pre">st2-run-pack-tests</span></code> script
-(<code class="docutils literal"><span class="pre">st2common/bin/st2-run-pack-tests</span></code>) from the <code class="docutils literal"><span class="pre">st2</span></code> repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-run-pack-tests -p &lt;pack path&gt;
+<p>To run all the tests in a particular pack you can use the <code class="docutils literal notranslate"><span class="pre">st2-run-pack-tests</span></code> script
+(<code class="docutils literal notranslate"><span class="pre">st2common/bin/st2-run-pack-tests</span></code>) from the <code class="docutils literal notranslate"><span class="pre">st2</span></code> repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-run-pack-tests -p &lt;pack path&gt;
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-run-pack-tests -p /data/packs/docker/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-run-pack-tests -p /data/packs/docker/
 </pre></div>
 </div>
 <p>By default, this script will create and use a new temporary virtual environment for each pack test
 run and install all the dependencies which are required to run the tests inside this virtual
 environment.</p>
 <p>If you want to avoid virtual environment creation (e.g. the virtual environment already exists or
-you have created one manually), you can pass the <code class="docutils literal"><span class="pre">-x</span></code> flag to the script. This flag will tell it
+you have created one manually), you can pass the <code class="docutils literal notranslate"><span class="pre">-x</span></code> flag to the script. This flag will tell it
 to skip virtual environment creation, but all the necessary dependencies will still be installed.</p>
-<p>If you are running this script inside a development VM (st2vagrant), you can safely pass the <code class="docutils literal"><span class="pre">-x</span></code>
+<p>If you are running this script inside a development VM (st2vagrant), you can safely pass the <code class="docutils literal notranslate"><span class="pre">-x</span></code>
 flag to the script since a virtual environment should already be created and all the necessary
-StackStorm dependencies should be available in <code class="docutils literal"><span class="pre">PYTHONPATH</span></code>.</p>
+StackStorm dependencies should be available in <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.</p>
 <p>In addition to that, if all the pack dependencies are already installed and you want to skip
-installing and updating the dependencies, you can pass the <code class="docutils literal"><span class="pre">-j</span></code> flag to the script (this will
+installing and updating the dependencies, you can pass the <code class="docutils literal notranslate"><span class="pre">-j</span></code> flag to the script (this will
 cause the script to just run the pack tests directly):</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-run-pack-tests -p /data/packs/docker/ -x -j
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-run-pack-tests -p /data/packs/docker/ -x -j
 </pre></div>
 </div>
 <p>Alternatively, if a virtual environment for tests has already been created during previous tool
 invocation, you can skip updating of the virtual environment and just run the tests by using the
-<code class="docutils literal"><span class="pre">-j</span></code> flag (this will speed things up because the virtual environment will be used as-is and only
+<code class="docutils literal notranslate"><span class="pre">-j</span></code> flag (this will speed things up because the virtual environment will be used as-is and only
 tests will run):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># First run - create tests virtual environment and run the tests</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># First run - create tests virtual environment and run the tests</span>
 st2-run-pack-tests -p /data/packs/docker/
 
 <span class="c1"># Second (and subsequent) runs - just run the tests and re-use the existing</span>
@@ -649,16 +649,16 @@ st2-run-pack-tests -p /data/packs/docker/ -j
 </div>
 <p>As more tests are developed it is always a good idea to determine how much code has been covered by
 the tests and how much remains un-tested. Calculated test coverage can be printed out using the
-<code class="docutils literal"><span class="pre">-c</span></code> option.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-run-pack-tests -c -p /data/packs/docker/
+<code class="docutils literal notranslate"><span class="pre">-c</span></code> option.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-run-pack-tests -c -p /data/packs/docker/
 </pre></div>
 </div>
-<p>The command will print out test coverage to <code class="docutils literal"><span class="pre">stdout</span></code> along with generating a coverage report in
-<code class="docutils literal"><span class="pre">cover/index.html</span></code>.  This can be opened with any modern browser. The directory <code class="docutils literal"><span class="pre">cover</span></code> will be
-created in the current working directory when the command <code class="docutils literal"><span class="pre">st2-run-pack-tests</span></code> is invoked.</p>
+<p>The command will print out test coverage to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> along with generating a coverage report in
+<code class="docutils literal notranslate"><span class="pre">cover/index.html</span></code>.  This can be opened with any modern browser. The directory <code class="docutils literal notranslate"><span class="pre">cover</span></code> will be
+created in the current working directory when the command <code class="docutils literal notranslate"><span class="pre">st2-run-pack-tests</span></code> is invoked.</p>
 <p>Understanding how long a test takes to run is sometimes important. Timing metrics can be enabled
-via the <code class="docutils literal"><span class="pre">-t</span></code> option.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-run-pack-tests -t -p /data/packs/docker/
+via the <code class="docutils literal notranslate"><span class="pre">-t</span></code> option.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-run-pack-tests -t -p /data/packs/docker/
 </pre></div>
 </div>
 </div>
@@ -672,7 +672,7 @@ and lint scripts which allow you to catch common errors and typos automatically 
 <div class="section" id="continuous-integration">
 <h2>Continuous Integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">¶</a></h2>
 <p>By default, the lint scripts mentioned above and tests for all the packs run
-on every commit to <code class="docutils literal"><span class="pre">st2</span></code> and <code class="docutils literal"><span class="pre">StackStorm-Exchange</span></code>.</p>
+on every commit to <code class="docutils literal notranslate"><span class="pre">st2</span></code> and <code class="docutils literal notranslate"><span class="pre">StackStorm-Exchange</span></code>.</p>
 </div>
 </div>
 

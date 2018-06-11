@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -475,19 +475,19 @@ evaluation.</p>
 <p>Currently only string values are supported. This was done intentionally, to keep the feature
 simple and fully compatible with existing API and CLI commands.</p>
 <p>If you want to store a non-string value, you can store a JSON-serialized version, and then
-de-serialize it in your action/sensor code, or using the <code class="docutils literal"><span class="pre">from_json_string</span></code>
+de-serialize it in your action/sensor code, or using the <code class="docutils literal notranslate"><span class="pre">from_json_string</span></code>
 Jinja filter. See the <a class="reference internal" href="reference/jinja.html"><span class="doc">Jinja</span></a> documentation for more details.</p>
 <p class="last">This may change in future if there is sufficient interest.</p>
 </div>
 <div class="section" id="storing-and-retrieving-key-value-pairs-via-cli">
 <h2>Storing and Retrieving Key-Value Pairs via CLI<a class="headerlink" href="#storing-and-retrieving-key-value-pairs-via-cli" title="Permalink to this headline">¶</a></h2>
 <p>Set the value of a key-value pair:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> os_keystone_endpoint http://localhost:5000/v2.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> os_keystone_endpoint http://localhost:5000/v2.0
 st2 key <span class="nb">set</span> aws_cfn_endpoint https://cloudformation.us-west-1.amazonaws.com
 </pre></div>
 </div>
 <p>Get individual key-value pair or list all:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># To list first 50 key-value pairs (default)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># To list first 50 key-value pairs (default)</span>
 st2 key list
 <span class="c1"># To list all the key-value pairs in the datastore</span>
 st2 key list -n -1
@@ -499,11 +499,11 @@ st2 key get os_keystone_endpoint -j
 </pre></div>
 </div>
 <p>Update an existing key-value pair:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> os_keystone_endpoint http://localhost:5000/v3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> os_keystone_endpoint http://localhost:5000/v3
 </pre></div>
 </div>
 <p>Delete an existing key-value pair:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key delete os_keystone_endpoint
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key delete os_keystone_endpoint
 </pre></div>
 </div>
 </div>
@@ -511,7 +511,7 @@ st2 key get os_keystone_endpoint -j
 <h2>Loading Key-Value Pairs from a File<a class="headerlink" href="#loading-key-value-pairs-from-a-file" title="Permalink to this headline">¶</a></h2>
 <p>Load a list of key-value pairs from a JSON file. The following is a JSON example using the same
 keys from the examples above:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;os_keystone_endpoint&quot;</span><span class="p">,</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://localhost:5000/v2.0&quot;</span>
@@ -524,12 +524,12 @@ keys from the examples above:</p>
 </pre></div>
 </div>
 <p>Load this file using this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key load mydata.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key load mydata.json
 </pre></div>
 </div>
 <p>The load command can also accept a YAML file. The following example is YAML for the same
 key-value pairs as the JSON file above:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">os_keystone_endpoint</span>
   <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http://localhost:5000/v2.0</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">aws_cfn_endpoint</span>
@@ -537,14 +537,14 @@ key-value pairs as the JSON file above:</p>
 </pre></div>
 </div>
 <p>Load this file using this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key load mydata.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key load mydata.yaml
 </pre></div>
 </div>
-<p>The load command also allows you to directly load the output of the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-j</span></code> command.
-If you have more than 50 key-value pairs, use <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-n</span> <span class="pre">-1</span> <span class="pre">-j</span></code> to export all keys. This
+<p>The load command also allows you to directly load the output of the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-j</span></code> command.
+If you have more than 50 key-value pairs, use <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-n</span> <span class="pre">-1</span> <span class="pre">-j</span></code> to export all keys. This
 is useful if you want to migrate datastore items from a different cluster or if you want to
 version control the datastore items and load them from version controlled files:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># JSON</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># JSON</span>
 st2 key list -n -1 -j &gt; mydata.json
 st2 key load mydata.json
 
@@ -557,9 +557,9 @@ st2 key load mydata.yaml
 possible to set the value to any arbitrary data type supported by JSON/YAML
 (hash, array, int, boolean, etc) in the file and have StackStorm convert it to JSON before
 loading it into the datastore. To accomplish this, you need to explicity pass the
-<code class="docutils literal"><span class="pre">-c/--convert</span></code> flag: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">load</span> <span class="pre">-c</span> <span class="pre">mydata.json</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">-c/--convert</span></code> flag: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">load</span> <span class="pre">-c</span> <span class="pre">mydata.json</span></code></p>
 <p>Loading non-string content via JSON:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;managed_hosts&quot;</span><span class="p">,</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -584,7 +584,7 @@ loading it into the datastore. To accomplish this, you need to explicity pass th
 </pre></div>
 </div>
 <p>Load this file using this command (values will be converted into JSON strings):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 key load -c mydata.json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 key load -c mydata.json
 +---------------+-----------------------+--------+--------+------+-----+
 <span class="p">|</span> name          <span class="p">|</span> value                 <span class="p">|</span> secret <span class="p">|</span> scope  <span class="p">|</span> user <span class="p">|</span> ttl <span class="p">|</span>
 +---------------+-----------------------+--------+--------+------+-----+
@@ -603,7 +603,7 @@ loading it into the datastore. To accomplish this, you need to explicity pass th
 </pre></div>
 </div>
 <p>Loading non-string content via YAML:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">managed_hosts</span>
   <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ip_address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.1.1</span>
@@ -617,7 +617,7 @@ loading it into the datastore. To accomplish this, you need to explicity pass th
 </pre></div>
 </div>
 <p>Load this file using this command (values will be converted into JSON strings):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 key load -c mydata.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 key load -c mydata.yaml
 +---------------+-----------------------+--------+--------+------+-----+
 <span class="p">|</span> name          <span class="p">|</span> value                 <span class="p">|</span> secret <span class="p">|</span> scope  <span class="p">|</span> user <span class="p">|</span> ttl <span class="p">|</span>
 +---------------+-----------------------+--------+--------+------+-----+
@@ -638,41 +638,41 @@ loading it into the datastore. To accomplish this, you need to explicity pass th
 </div>
 <div class="section" id="scoping-datastore-items">
 <span id="datastore-scopes-in-key-value-store"></span><h2>Scoping Datastore Items<a class="headerlink" href="#scoping-datastore-items" title="Permalink to this headline">¶</a></h2>
-<p>By default, all items in the key-value store are stored in the <code class="docutils literal"><span class="pre">st2kv.system</span></code> scope. This means
-every user has access to these variables. Use the Jinja expression <code class="docutils literal"><span class="pre">{{st2kv.system.key_name}}</span></code>
+<p>By default, all items in the key-value store are stored in the <code class="docutils literal notranslate"><span class="pre">st2kv.system</span></code> scope. This means
+every user has access to these variables. Use the Jinja expression <code class="docutils literal notranslate"><span class="pre">{{st2kv.system.key_name}}</span></code>
 to refer to these variables in actions or workflows. Prior to v2.0.1, the scope was called
-<code class="docutils literal"><span class="pre">system</span></code> and therefore the Jinja expression was <code class="docutils literal"><span class="pre">{{system.key_name}}</span></code>. As of v2.2, this is no
+<code class="docutils literal notranslate"><span class="pre">system</span></code> and therefore the Jinja expression was <code class="docutils literal notranslate"><span class="pre">{{system.key_name}}</span></code>. As of v2.2, this is no
 longer supported.</p>
 <p>Variables can be scoped to a specific user. With authentication enabled, you can now control who
-can read or write into those variables. For example, to set the variable <code class="docutils literal"><span class="pre">date_cmd</span></code> for the
+can read or write into those variables. For example, to set the variable <code class="docutils literal notranslate"><span class="pre">date_cmd</span></code> for the
 currently authenticated user, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date -u&quot;</span> --scope<span class="o">=</span>user
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date -u&quot;</span> --scope<span class="o">=</span>user
 </pre></div>
 </div>
-<p>The name of the user is determined by the <code class="docutils literal"><span class="pre">X-Auth-Token</span></code> or <code class="docutils literal"><span class="pre">St2-Api-Key</span></code> header passed with
+<p>The name of the user is determined by the <code class="docutils literal notranslate"><span class="pre">X-Auth-Token</span></code> or <code class="docutils literal notranslate"><span class="pre">St2-Api-Key</span></code> header passed with
 the API call. From the API call authentication credentials, StackStorm will determine the user, and
 assign this variable to that particular user.</p>
 <p>To retrieve the key, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key get date_cmd --scope<span class="o">=</span>user
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key get date_cmd --scope<span class="o">=</span>user
 </pre></div>
 </div>
-<p>If you want a variable <code class="docutils literal"><span class="pre">date_cmd</span></code> as a system variable, you can use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date +%s&quot;</span> --scope<span class="o">=</span>system
+<p>If you want a variable <code class="docutils literal notranslate"><span class="pre">date_cmd</span></code> as a system variable, you can use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date +%s&quot;</span> --scope<span class="o">=</span>system
 </pre></div>
 </div>
 <p>or simply:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date +%s&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date +%s&quot;</span>
 </pre></div>
 </div>
 <p>This variable won’t clash with user variables with the same name. Also, you can refer to user
-variables in actions or workflows. The Jinja syntax to do so is <code class="docutils literal"><span class="pre">{{st2kv.user.date_cmd}}</span></code>.</p>
-<p>Note that the notion of <code class="docutils literal"><span class="pre">st2kv.user</span></code> is available only when actions or workflows are run
-manually. The notion of <code class="docutils literal"><span class="pre">st2kv.user</span></code> is non-existent when actions or workflows are kicked off
+variables in actions or workflows. The Jinja syntax to do so is <code class="docutils literal notranslate"><span class="pre">{{st2kv.user.date_cmd}}</span></code>.</p>
+<p>Note that the notion of <code class="docutils literal notranslate"><span class="pre">st2kv.user</span></code> is available only when actions or workflows are run
+manually. The notion of <code class="docutils literal notranslate"><span class="pre">st2kv.user</span></code> is non-existent when actions or workflows are kicked off
 via rules. So the use of user scoped variables is limited to manual execution of actions or
 workflows.</p>
-<p>Scope can be set in a JSON/YAML key file by adding the <code class="docutils literal"><span class="pre">scope</span></code> property:</p>
+<p>Scope can be set in a JSON/YAML key file by adding the <code class="docutils literal notranslate"><span class="pre">scope</span></code> property:</p>
 <p>JSON</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;date_cmd&quot;</span><span class="p">,</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;date -u&quot;</span><span class="p">,</span>
@@ -682,7 +682,7 @@ workflows.</p>
 </pre></div>
 </div>
 <p>YAML</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date_cmd</span>
   <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date -u</span>
   <span class="l l-Scalar l-Scalar-Plain">scope</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">user</span>
@@ -695,7 +695,7 @@ workflows.</p>
 manually deleted. You can set a TTL with key-value pairs, so they will be automatically deleted on
 expiry of the TTL.</p>
 <p>The TTL is set in seconds. To set a key-value pair for the next hour, use this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date +%s&quot;</span> --ttl<span class="o">=</span><span class="m">3600</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> date_cmd <span class="s2">&quot;date +%s&quot;</span> --ttl<span class="o">=</span><span class="m">3600</span>
 </pre></div>
 </div>
 <p>Use-cases for setting a TTL include limiting auto-remediation workflows from running too
@@ -704,9 +704,9 @@ workflow is triggered again, it could check if the value is still set, and if so
 the remediation action.</p>
 <p>Some users keep a count of executions in the key-value store to set a maximum number of executions
 in a time period.</p>
-<p>TTL can be set in a JSON/YAML key file by adding the <code class="docutils literal"><span class="pre">ttl</span></code> property with an integer value:</p>
+<p>TTL can be set in a JSON/YAML key file by adding the <code class="docutils literal notranslate"><span class="pre">ttl</span></code> property with an integer value:</p>
 <p>JSON</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;date_cmd&quot;</span><span class="p">,</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;date -u&quot;</span><span class="p">,</span>
@@ -716,7 +716,7 @@ in a time period.</p>
 </pre></div>
 </div>
 <p>YAML</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date_cmd</span>
   <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date -u</span>
   <span class="l l-Scalar l-Scalar-Plain">ttl</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">3600</span>
@@ -728,48 +728,48 @@ in a time period.</p>
 <p>Create new key-value pairs. The StackStorm API endpoint is set either via the Client init (base_url)
 or from the environment variable (ST2_BASE_URL). The default ports for the API servers are
 assumed:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">st2client.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">st2client.client</span> <span class="kn">import</span> <span class="n">Client</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">st2client.models</span> <span class="kn">import</span> <span class="n">KeyValuePair</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">KeyValuePair</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;http://localhost:5000/v2.0&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Get individual key-value pair or list all:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">keys</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">keys</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span><span class="o">.</span><span class="n">value</span>
 <span class="go">u&#39;http://localhost:5000/v2.0&#39;</span>
 </pre></div>
 </div>
 <p>Update an existing key-value pair:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;http://localhost:5000/v3&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">os_keystone_endpoint</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Delete an existing key-value pair:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_endpoint</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">os_keystone_endpoint</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Create an encrypted key-value pair:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">KeyValuePair</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_password&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;$uper$ecret!&#39;</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">KeyValuePair</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_password&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;$uper$ecret!&#39;</span><span class="p">,</span> <span class="n">secret</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Get and decrypt an encrypted key-value pair:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_password</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_password&#39;</span><span class="p">,</span> <span class="n">decrypt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_password</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_password&#39;</span><span class="p">,</span> <span class="n">decrypt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_password</span><span class="o">.</span><span class="n">value</span>
 <span class="go">u&#39;$uper$ecret!&#39;</span>
 </pre></div>
 </div>
 <p>Get all key-value pairs and decrypt any that are encrypted:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">keys</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;decrypt&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">keys</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;decrypt&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># or</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">keys</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">decrypt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Update an existing encrypted key-value pair:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_password</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_password&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_password</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_password&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os_keystone_password</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;New$ecret!&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">os_keystone_password</span><span class="o">.</span><span class="n">secret</span>
 <span class="go">True</span>
@@ -779,7 +779,7 @@ assumed:</p>
 </pre></div>
 </div>
 <p>Set the TTL when creating a key-value pair:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">st2client.client</span> <span class="kn">import</span> <span class="n">Client</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">st2client.client</span> <span class="kn">import</span> <span class="n">Client</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">st2client.models</span> <span class="kn">import</span> <span class="n">KeyValuePair</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">Client</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="s1">&#39;http://localhost&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">KeyValuePair</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;os_keystone_endpoint&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;http://localhost:5000/v2.0&#39;</span><span class="p">,</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">600</span><span class="p">))</span>
@@ -789,11 +789,11 @@ assumed:</p>
 <div class="section" id="referencing-key-value-pairs-in-rule-definitions">
 <h2>Referencing Key-Value Pairs in Rule Definitions<a class="headerlink" href="#referencing-key-value-pairs-in-rule-definitions" title="Permalink to this headline">¶</a></h2>
 <p>Key-value pairs are referenced via specific string substitution syntax in rules. In general, the
-variable for substitution is enclosed with double brackets (i.e. <code class="docutils literal"><span class="pre">{{var1}}</span></code>). To refer to a
-key-value pair, prefix the name with “st2kv.system”, e.g. <code class="docutils literal"><span class="pre">{{st2kv.system.os_keystone_endpoint}}</span></code>.</p>
+variable for substitution is enclosed with double brackets (i.e. <code class="docutils literal notranslate"><span class="pre">{{var1}}</span></code>). To refer to a
+key-value pair, prefix the name with “st2kv.system”, e.g. <code class="docutils literal notranslate"><span class="pre">{{st2kv.system.os_keystone_endpoint}}</span></code>.</p>
 <p>An example rule is provided below. Please refer to the <a class="reference internal" href="rules.html"><span class="doc">Rules</span></a> documentation for
 rule-related syntax.</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;daily_clean_up_rule&quot;</span><span class="p">,</span>
     <span class="nt">&quot;trigger&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;st2.timer.daily&quot;</span>
@@ -816,15 +816,15 @@ using AES-256 is used to encrypt secrets. The StackStorm administrator is respon
 symmetric key used for encryption/decryption. Note that the StackStorm operator and administrator
 (or anyone else who has access to the key) can decrypt the encrypted values.</p>
 <p>To generate a symmetric crypto key, please run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mkdir -p /etc/st2/keys/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo mkdir -p /etc/st2/keys/
 sudo st2-generate-symmetric-crypto-key --key-path /etc/st2/keys/datastore_key.json
 </pre></div>
 </div>
-<p>We recommend that the key is placed in a private location such as <code class="docutils literal"><span class="pre">/etc/st2/keys/</span></code> and
-permissions are set such that only the StackStorm API process owner (usually <code class="docutils literal"><span class="pre">st2</span></code>)
+<p>We recommend that the key is placed in a private location such as <code class="docutils literal notranslate"><span class="pre">/etc/st2/keys/</span></code> and
+permissions are set such that only the StackStorm API process owner (usually <code class="docutils literal notranslate"><span class="pre">st2</span></code>)
 can read the file, and only root can write to it.</p>
-<p>To make sure only <code class="docutils literal"><span class="pre">st2</span></code> and root can access the file on the box, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo usermod -a -G st2 st2                              <span class="c1"># Add user ``st2`` to ``st2`` group</span>
+<p>To make sure only <code class="docutils literal notranslate"><span class="pre">st2</span></code> and root can access the file on the box, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo usermod -a -G st2 st2                              <span class="c1"># Add user ``st2`` to ``st2`` group</span>
 sudo mkdir -p /etc/st2/keys/
 sudo chown -R st2:st2 /etc/st2/keys/                    <span class="c1"># Give user and group ``st2`` ownership for key</span>
 sudo chmod o-r /etc/st2/keys/                           <span class="c1"># Revoke read access for others</span>
@@ -832,20 +832,20 @@ sudo chmod o-r /etc/st2/keys/datastore_key.json         <span class="c1"># Revok
 </pre></div>
 </div>
 <p>Once the key is generated, StackStorm needs to be made aware of the key. To do this, edit the st2
-configuration file (<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>) and add the following lines:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[keyvalue]</span>
+configuration file (<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>) and add the following lines:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[keyvalue]</span>
 <span class="na">encryption_key_path</span> <span class="o">=</span> <span class="s">/etc/st2/keys/datastore_key.json</span>
 </pre></div>
 </div>
 <p>Once the config file changes are made, restart StackStorm:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl restart
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl restart
 </pre></div>
 </div>
 <p>Validate you are able to set an encrypted key-value in the datastore:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> test_key test_value --encrypt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> test_key test_value --encrypt
 </pre></div>
 </div>
-<p>If you see errors like <code class="docutils literal"><span class="pre">&quot;MESSAGE:</span> <span class="pre">Crypto</span> <span class="pre">key</span> <span class="pre">not</span> <span class="pre">found&quot;</span></code>, something has gone wrong with setting
+<p>If you see errors like <code class="docutils literal notranslate"><span class="pre">&quot;MESSAGE:</span> <span class="pre">Crypto</span> <span class="pre">key</span> <span class="pre">not</span> <span class="pre">found&quot;</span></code>, something has gone wrong with setting
 up the keys.</p>
 </div>
 <div class="section" id="storing-secrets">
@@ -854,32 +854,32 @@ up the keys.</p>
 secrets in the key-value store. Contact your StackStorm admin to setup encryption keys as per the
 section above.</p>
 <p>To save a secret in the key-value store:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> api_token SECRET_TOKEN --encrypt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> api_token SECRET_TOKEN --encrypt
 </pre></div>
 </div>
-<p>By default, getting a key tagged as secret (via <code class="docutils literal"><span class="pre">--encrypt</span></code>) will always return encrypted values
-only. To get plain text, please run the command with the <code class="docutils literal"><span class="pre">--decrypt</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key get api_token --decrypt
+<p>By default, getting a key tagged as secret (via <code class="docutils literal notranslate"><span class="pre">--encrypt</span></code>) will always return encrypted values
+only. To get plain text, please run the command with the <code class="docutils literal notranslate"><span class="pre">--decrypt</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key get api_token --decrypt
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Keep in mind that <code class="docutils literal"><span class="pre">--decrypt</span></code> flag can either be used by an administrator (administrator is
+<p class="last">Keep in mind that <code class="docutils literal notranslate"><span class="pre">--decrypt</span></code> flag can either be used by an administrator (administrator is
 able to decrypt every value) and by the user who set that value in case of the user-scoped
-datastore items (i.e. if <code class="docutils literal"><span class="pre">--scope=user</span></code> flag was passed when originally setting the value).</p>
+datastore items (i.e. if <code class="docutils literal notranslate"><span class="pre">--scope=user</span></code> flag was passed when originally setting the value).</p>
 </div>
-<p>If you are using system scoped variables (<code class="docutils literal"><span class="pre">st2kv.system</span></code>) to store secrets, you can decrypt them
-and use as parameter values in rules or actions. This is supported via Jinja filter <code class="docutils literal"><span class="pre">decrypt_kv</span></code>
+<p>If you are using system scoped variables (<code class="docutils literal notranslate"><span class="pre">st2kv.system</span></code>) to store secrets, you can decrypt them
+and use as parameter values in rules or actions. This is supported via Jinja filter <code class="docutils literal notranslate"><span class="pre">decrypt_kv</span></code>
 (read more about <a class="reference internal" href="reference/jinja.html#applying-filters-with-jinja"><span class="std std-ref">Jinja filters</span></a>). For example,
 to pass a decrypted password as a parameter, use:</p>
-<div class="highlight-YAML"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">aws_key</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{st2kv.system.aws_key</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">decrypt_kv}}&quot;</span>
+<div class="highlight-YAML notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">aws_key</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{st2kv.system.aws_key</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">decrypt_kv}}&quot;</span>
 </pre></div>
 </div>
 <p>Decrypting user scoped variables is currently unsupported.</p>
-<p>Secret keys can be loaded from a JSON/YAML key file by adding the <code class="docutils literal"><span class="pre">secret</span></code> property with
+<p>Secret keys can be loaded from a JSON/YAML key file by adding the <code class="docutils literal notranslate"><span class="pre">secret</span></code> property with
 a boolean value.</p>
 <p>JSON</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;api_token&quot;</span><span class="p">,</span>
         <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;SECRET_TOKEN&quot;</span><span class="p">,</span>
@@ -889,7 +889,7 @@ a boolean value.</p>
 </pre></div>
 </div>
 <p>YAML</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">api_token</span>
   <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SECRET_TOKEN</span>
   <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>

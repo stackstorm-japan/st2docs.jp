@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -464,20 +464,20 @@
             
   <div class="section" id="ssh-troubleshooting">
 <h1>SSH Troubleshooting<a class="headerlink" href="#ssh-troubleshooting" title="Permalink to this headline">¶</a></h1>
-<p>StackStorm remote actions use the <code class="docutils literal"><span class="pre">system_user</span></code> and <code class="docutils literal"><span class="pre">ssh_key_file</span></code> specified in the configuration
-file (<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>) to authenticate to remote boxes. The default username is <code class="docutils literal"><span class="pre">stanley</span></code>,
-and the default <code class="docutils literal"><span class="pre">ssh_key_file</span></code> is <code class="docutils literal"><span class="pre">/home/stanley/.ssh/stanley_rsa</span></code>.</p>
-<p>This can be changed by modifying these values in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>.</p>
-<p>In case of key compromise occurring, revoking the public key for <code class="docutils literal"><span class="pre">system_user</span></code> from target boxes will
+<p>StackStorm remote actions use the <code class="docutils literal notranslate"><span class="pre">system_user</span></code> and <code class="docutils literal notranslate"><span class="pre">ssh_key_file</span></code> specified in the configuration
+file (<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>) to authenticate to remote boxes. The default username is <code class="docutils literal notranslate"><span class="pre">stanley</span></code>,
+and the default <code class="docutils literal notranslate"><span class="pre">ssh_key_file</span></code> is <code class="docutils literal notranslate"><span class="pre">/home/stanley/.ssh/stanley_rsa</span></code>.</p>
+<p>This can be changed by modifying these values in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>.</p>
+<p>In case of key compromise occurring, revoking the public key for <code class="docutils literal notranslate"><span class="pre">system_user</span></code> from target boxes will
 revoke access for StackStorm.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you are changing <code class="docutils literal"><span class="pre">system_user</span></code> or <code class="docutils literal"><span class="pre">ssh_key_file</span></code> configuration values in
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>, you must restart StackStorm for your changes to take effect. You can just
-restart the st2actionrunner component, e.g. <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">st2actionrunner</span> <span class="pre">restart</span></code>.</p>
+<p class="last">If you are changing <code class="docutils literal notranslate"><span class="pre">system_user</span></code> or <code class="docutils literal notranslate"><span class="pre">ssh_key_file</span></code> configuration values in
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>, you must restart StackStorm for your changes to take effect. You can just
+restart the st2actionrunner component, e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">st2actionrunner</span> <span class="pre">restart</span></code>.</p>
 </div>
 <p>To validate remote actions are working correctly, you can use the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Default run</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Default run</span>
 <span class="nv">$st2</span> run core.remote <span class="nv">cmd</span><span class="o">=</span>whoami <span class="nv">hosts</span><span class="o">=</span>localhost
 id: 55dff0bd32ed356c736318b0
 status: succeeded
@@ -494,7 +494,7 @@ result:
 </pre></div>
 </div>
 <p>If you don’t have the right SSH key file, you will see an error and the action will fail:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">cmd</span><span class="o">=</span>whoami <span class="nv">hosts</span><span class="o">=</span>localhost
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">cmd</span><span class="o">=</span>whoami <span class="nv">hosts</span><span class="o">=</span>localhost
 id: 583e2282d9d7ed38c78b50eb
 status: failed
 parameters:
@@ -530,11 +530,11 @@ result:
 <p>By default, all actions that use remote commands or scripts will use this username and private_key
 combination.</p>
 <p>If you are not using the default SSH port 22, you can specify the port as part of the host string
-in the hosts list, e.g. <code class="docutils literal"><span class="pre">hosts=localhost:55,st2build001:56</span></code>. As of StackStorm version 2.1, you can also
+in the hosts list, e.g. <code class="docutils literal notranslate"><span class="pre">hosts=localhost:55,st2build001:56</span></code>. As of StackStorm version 2.1, you can also
 specify custom ports via an SSH config file.</p>
-<p>To use an SSH config file, setup <code class="docutils literal"><span class="pre">/home/stanley/.ssh/config</span></code> for user <code class="docutils literal"><span class="pre">stanley</span></code> on the StackStorm action
-runner boxes, and add the following configuration lines in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[ssh_runner]</span>
+<p>To use an SSH config file, setup <code class="docutils literal notranslate"><span class="pre">/home/stanley/.ssh/config</span></code> for user <code class="docutils literal notranslate"><span class="pre">stanley</span></code> on the StackStorm action
+runner boxes, and add the following configuration lines in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[ssh_runner]</span>
 <span class="na">use_ssh_config</span> <span class="o">=</span> <span class="s">True</span>
 <span class="na">ssh_config_file_path</span> <span class="o">=</span> <span class="s">/home/stanley/.ssh/config</span>
 </pre></div>
@@ -545,7 +545,7 @@ the public keys of the users in target boxes. This increases the risk surface ar
 is discouraged.</p>
 <p>However, if you have st2client installed and you want to run one-off commands on the remote
 boxes as a different user, you can use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$st2</span> run core.remote <span class="nv">cmd</span><span class="o">=</span>whoami <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">username</span><span class="o">=</span>test_user <span class="nv">private_key</span><span class="o">=</span>/home/stanley/ssh_keys/.ssh/id_rsa
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$st2</span> run core.remote <span class="nv">cmd</span><span class="o">=</span>whoami <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">username</span><span class="o">=</span>test_user <span class="nv">private_key</span><span class="o">=</span>/home/stanley/ssh_keys/.ssh/id_rsa
 .
 id: 55dff0de32ed356c736318b9
 status: succeeded
@@ -561,10 +561,10 @@ result:
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>For the above example to work, the key file <code class="docutils literal"><span class="pre">/home/stanley/ssh_keys/.ssh/id_rsa</span></code> has to be
-available on the action runner boxes. We also support <code class="docutils literal"><span class="pre">password</span></code> as a parameter. As of version 2.1,
+<p>For the above example to work, the key file <code class="docutils literal notranslate"><span class="pre">/home/stanley/ssh_keys/.ssh/id_rsa</span></code> has to be
+available on the action runner boxes. We also support <code class="docutils literal notranslate"><span class="pre">password</span></code> as a parameter. As of version 2.1,
 you can also specify custom keys for hosts via SSH config file. A sample SSH config is shown below:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">Host st2-ssh-test001</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">Host st2-ssh-test001</span>
   <span class="na">User lakshmi</span>
   <span class="na">IdentityFile /home/vagrant/.ssh/lakshmi_id_rsa</span>
 
@@ -572,9 +572,9 @@ you can also specify custom keys for hosts via SSH config file. A sample SSH con
   <span class="na">port 55</span>
 </pre></div>
 </div>
-<p>If you are running remote actions as <code class="docutils literal"><span class="pre">sudo</span></code>, pseudo tty is enabled by default. This means
-that <code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> streams get combined into one and reported as <code class="docutils literal"><span class="pre">stdout</span></code>.</p>
-<p>When using a bastion host for running remote actions, the bastion host must have <code class="docutils literal"><span class="pre">AllowTcpForwarding</span></code>
+<p>If you are running remote actions as <code class="docutils literal notranslate"><span class="pre">sudo</span></code>, pseudo tty is enabled by default. This means
+that <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> streams get combined into one and reported as <code class="docutils literal notranslate"><span class="pre">stdout</span></code>.</p>
+<p>When using a bastion host for running remote actions, the bastion host must have <code class="docutils literal notranslate"><span class="pre">AllowTcpForwarding</span></code>
 enabled. Additionally, the connection to the bastion host is made using the parameters provided for
 the connection being tunneled, so the bastion host will require the user to exist with the same
 name/password/private_key as the targeted remote box.</p>

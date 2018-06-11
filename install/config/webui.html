@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -473,7 +473,7 @@ explore workflow executions up to the results of individual tasks. All in real t
 <h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
 <p>st2web is installed via the st2web RPM or deb package. This is installed by default when using the
 one-line <a class="reference internal" href="../index.html"><span class="doc">install method</span></a>. You can access the UI by pointing your browser to
-<code class="docutils literal"><span class="pre">https://&lt;server</span> <span class="pre">hostname&gt;/</span></code>. If you are using st2vagrant, it would be <a class="reference external" href="https://192.168.16.20/">https://192.168.16.20/</a>.</p>
+<code class="docutils literal notranslate"><span class="pre">https://&lt;server</span> <span class="pre">hostname&gt;/</span></code>. If you are using st2vagrant, it would be <a class="reference external" href="https://192.168.16.20/">https://192.168.16.20/</a>.</p>
 <p>st2web is a pure HTML5 application and consists only of js scripts, html templates, css styles and
 static files including custom fonts and svg images. For the application to work correctly, all
 files should be served to the browser. By default they are served by nginx. For your custom
@@ -485,10 +485,10 @@ static content.</p>
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>For the UI to work properly, both the web client and StackStorm server side should be configured
 appropriately.</p>
-<p>On the web client side, the file <code class="docutils literal"><span class="pre">config.js</span></code> in the project contains the list of servers this UI
-can connect to. This is typically <code class="docutils literal"><span class="pre">/opt/stackstorm/static/webui/config.js</span></code>. The file consists of
-an array of objects, each with <code class="docutils literal"><span class="pre">name</span></code>, <code class="docutils literal"><span class="pre">url</span></code> and <code class="docutils literal"><span class="pre">auth</span></code> properties.</p>
-<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">hosts</span><span class="o">:</span> <span class="p">[{</span>
+<p>On the web client side, the file <code class="docutils literal notranslate"><span class="pre">config.js</span></code> in the project contains the list of servers this UI
+can connect to. This is typically <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/static/webui/config.js</span></code>. The file consists of
+an array of objects, each with <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">auth</span></code> properties.</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">hosts</span><span class="o">:</span> <span class="p">[{</span>
   <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Express Deployment&#39;</span><span class="p">,</span>
   <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;http://172.168.90.50/api&#39;</span><span class="p">,</span>
   <span class="nx">auth</span><span class="o">:</span> <span class="s1">&#39;http://172.168.90.50/auth&#39;</span>
@@ -502,11 +502,11 @@ an array of objects, each with <code class="docutils literal"><span class="pre">
 <p>Multiple servers can be configured for the user to pick from. To disconnect from the current server
 and return to login screen, pick ‘Disconnect’ from the drop down at the top right corner of the UI.</p>
 <p>On the StackStorm side, <a class="reference external" href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a> should
-also be configured. In <code class="docutils literal"><span class="pre">st2.conf</span></code>, the <code class="docutils literal"><span class="pre">allow_origin</span></code> property of the <code class="docutils literal"><span class="pre">[api]</span></code> section should
+also be configured. In <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code>, the <code class="docutils literal notranslate"><span class="pre">allow_origin</span></code> property of the <code class="docutils literal notranslate"><span class="pre">[api]</span></code> section should
 contain the Origin header the browser sends with every request. For example, if you have deployed
-the UI on its own server and are accessing it using <code class="docutils literal"><span class="pre">http://webui.example.com</span></code>, your config
+the UI on its own server and are accessing it using <code class="docutils literal notranslate"><span class="pre">http://webui.example.com</span></code>, your config
 should look like this:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[api]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[api]</span>
 <span class="c1"># Host and port to bind the API server.</span>
 <span class="na">host</span> <span class="o">=</span> <span class="s">0.0.0.0</span>
 <span class="na">port</span> <span class="o">=</span> <span class="s">9101</span>
@@ -521,18 +521,18 @@ should be omitted.</p>
 <p>Please note that some of the origins are already included by default and do not require additional
 configuration:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">http://localhost:3000</span></code> - development version of <code class="docutils literal"><span class="pre">gulp</span></code> running locally</li>
-<li><code class="docutils literal"><span class="pre">http://localhost:9101,http://127.0.0.1:9101</span></code> - <code class="docutils literal"><span class="pre">st2api</span></code> pecan deployment</li>
-<li><code class="docutils literal"><span class="pre">api_url</span></code> from <code class="docutils literal"><span class="pre">[auth]</span></code> section of <code class="docutils literal"><span class="pre">st2.conf</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">http://localhost:3000</span></code> - development version of <code class="docutils literal notranslate"><span class="pre">gulp</span></code> running locally</li>
+<li><code class="docutils literal notranslate"><span class="pre">http://localhost:9101,http://127.0.0.1:9101</span></code> - <code class="docutils literal notranslate"><span class="pre">st2api</span></code> pecan deployment</li>
+<li><code class="docutils literal notranslate"><span class="pre">api_url</span></code> from <code class="docutils literal notranslate"><span class="pre">[auth]</span></code> section of <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code></li>
 </ul>
 <p>Although this is not recommended and will undermine your security, you can allow every web UI
-deployment to connect to your server by setting <code class="docutils literal"><span class="pre">allow_origin</span> <span class="pre">=</span> <span class="pre">*</span></code>.</p>
+deployment to connect to your server by setting <code class="docutils literal notranslate"><span class="pre">allow_origin</span> <span class="pre">=</span> <span class="pre">*</span></code>.</p>
 </div>
 <div class="section" id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<p>To configure st2web to support authentication, edit <code class="docutils literal"><span class="pre">config.js</span></code> and add an <code class="docutils literal"><span class="pre">auth:</span></code> line for
+<p>To configure st2web to support authentication, edit <code class="docutils literal notranslate"><span class="pre">config.js</span></code> and add an <code class="docutils literal notranslate"><span class="pre">auth:</span></code> line for
 every server that supports authentication. This should specify the URL to the auth service - usually
-this will look something like <code class="docutils literal"><span class="pre">auth:</span> <span class="pre">'https://192.168.16.20/auth'</span></code>. To enable authentication on the
+this will look something like <code class="docutils literal notranslate"><span class="pre">auth:</span> <span class="pre">'https://192.168.16.20/auth'</span></code>. To enable authentication on the
 server side, please refer to <a class="reference internal" href="../../authentication.html"><span class="doc">Authentication</span></a>.</p>
 </div>
 </div>

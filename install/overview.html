@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -473,26 +473,26 @@ as shown below:</p>
 </div>
 <div class="section" id="st2-services">
 <h2>1. st2 services<a class="headerlink" href="#st2-services" title="Permalink to this headline">¶</a></h2>
-<p>“st2” services provide the main StackStorm functionality. They are located at <code class="docutils literal"><span class="pre">/opt/stackstorm/st2</span></code>,
-share a dedicated Python virtualenv, and are configured via <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>.</p>
+<p>“st2” services provide the main StackStorm functionality. They are located at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/st2</span></code>,
+share a dedicated Python virtualenv, and are configured via <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>.</p>
 <ul class="simple">
-<li><strong>st2sensorcontainer</strong> runs sensors from <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>. It manages the sensors to be
+<li><strong>st2sensorcontainer</strong> runs sensors from <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code>. It manages the sensors to be
 run on a node. It will start, stop and restart based on policy the sensors running on a node.</li>
 <li><strong>st2rulesengine</strong> evaluates rules when it sees TriggerInstances and decides if an
 ActionExecution is to be requested. It needs access to MongoDB to locate rules and RabbitMQ to
 listen for TriggerInstances and request ActionExecutions. The auxiliary purpose of this process
 is to run all the defined timers.</li>
-<li><strong>st2actionrunners</strong> run actions from packs under <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code> via a variety of
+<li><strong>st2actionrunners</strong> run actions from packs under <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code> via a variety of
 <a class="reference internal" href="../reference/runners.html"><span class="doc">Action Runners</span></a>. Runners may require some runner-specific configurations, e.g. SSH
-needs to be configured for running remote actions based on <code class="docutils literal"><span class="pre">remote-shell-runner</span></code> and
-<code class="docutils literal"><span class="pre">remote-command-runner</span></code>. Windows prerequisites must be in place to run Windows runners. See
+needs to be configured for running remote actions based on <code class="docutils literal notranslate"><span class="pre">remote-shell-runner</span></code> and
+<code class="docutils literal notranslate"><span class="pre">remote-command-runner</span></code>. Windows prerequisites must be in place to run Windows runners. See
 <a class="reference internal" href="../reference/runners.html"><span class="doc">Runners</span></a> for details.</li>
 <li><strong>st2resultstracker</strong> keeps track of long-running workflow executions, calling the Mistral API
 endpoint.</li>
-<li><strong>st2notifier</strong> generates <code class="docutils literal"><span class="pre">st2.core.actiontrigger</span></code> and <code class="docutils literal"><span class="pre">st2.core.notifytrigger</span></code>
+<li><strong>st2notifier</strong> generates <code class="docutils literal notranslate"><span class="pre">st2.core.actiontrigger</span></code> and <code class="docutils literal notranslate"><span class="pre">st2.core.notifytrigger</span></code>
 TriggerInstances on the completion of an ActionExecution. The auxiliary purpose is to act as a backup scheduler for actions that may not have been scheduled.</li>
 <li><strong>st2garbagecollector</strong> is an optional service to periodically delete old execution history data
-from the database, per settings in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>.</li>
+from the database, per settings in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>.</li>
 <li><strong>st2auth</strong> is an authentication service with a REST endpoint. A variety of authentication
 backends are available; see <a class="reference internal" href="../authentication.html"><span class="doc">Authentication</span></a> for more details. The reference deployment
 uses <a class="reference external" href="https://github.com/StackStorm/st2-auth-backend-flat-file">flat file auth backend</a>.</li>
@@ -504,19 +504,19 @@ posted. These events are consumed by WebUI and hubot i.e. ChatOps to update with
 </div>
 <div class="section" id="st2client">
 <h2>2. st2client<a class="headerlink" href="#st2client" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">st2client</span></code> is the CLI and Python bindings for the StackStorm API. To configure the CLI to point to
+<p><code class="docutils literal notranslate"><span class="pre">st2client</span></code> is the CLI and Python bindings for the StackStorm API. To configure the CLI to point to
 the right API, authentication options, suppress insecure warnings for self-signed certificates and
-other conveniences see the <a class="reference internal" href="../reference/cli.html"><span class="doc">CLI Reference</span></a>. <code class="docutils literal"><span class="pre">st2client</span></code> is packaged with <code class="docutils literal"><span class="pre">st2</span></code>, or can be
+other conveniences see the <a class="reference internal" href="../reference/cli.html"><span class="doc">CLI Reference</span></a>. <code class="docutils literal notranslate"><span class="pre">st2client</span></code> is packaged with <code class="docutils literal notranslate"><span class="pre">st2</span></code>, or can be
 installed independently.</p>
 </div>
 <div class="section" id="st2mistral">
 <h2>3. st2mistral<a class="headerlink" href="#st2mistral" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference internal" href="../mistral.html"><span class="doc">Mistral</span></a> is a workflow service component that StackStorm uses for long-running workflows. It
-is packaged as <code class="docutils literal"><span class="pre">st2mistral</span></code>, installed under <code class="docutils literal"><span class="pre">/opt/stackstorm/mistral</span></code>, runs in a dedicated
-Python virtualenv, and is configured via <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code>. <code class="docutils literal"><span class="pre">mistral-server</span></code> runs
+is packaged as <code class="docutils literal notranslate"><span class="pre">st2mistral</span></code>, installed under <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/mistral</span></code>, runs in a dedicated
+Python virtualenv, and is configured via <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code>. <code class="docutils literal notranslate"><span class="pre">mistral-server</span></code> runs
 workflow logic and calling actions, reaching out to st2api for action execution requests.
-<code class="docutils literal"><span class="pre">st2mistral</span></code> is a mistral plugin with stackstorm extensions. <code class="docutils literal"><span class="pre">mistral-api</span></code> is an internal
-end-point accessed by <code class="docutils literal"><span class="pre">st2actionrunner</span></code> and <code class="docutils literal"><span class="pre">st2notifier</span></code>. In a single-box deployment it is
+<code class="docutils literal notranslate"><span class="pre">st2mistral</span></code> is a mistral plugin with stackstorm extensions. <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> is an internal
+end-point accessed by <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> and <code class="docutils literal notranslate"><span class="pre">st2notifier</span></code>. In a single-box deployment it is
 restricted to localhost.</p>
 </div>
 <div class="section" id="nginx-for-webui-and-ssl-termination">
@@ -525,19 +525,19 @@ restricted to localhost.</p>
 <li><strong>nginx</strong> provides SSL termination, redirects HTTP to HTTPS, serves WebUI static components, and
 reverse-proxies REST API endpoints to st2* web services.</li>
 <li><strong>StackStorm WebUI</strong> (st2web, and Workflow Designer, for Extreme Workflow Composer) are
-installed at <code class="docutils literal"><span class="pre">/opt/stackstorm/static/webui</span></code> and configured via <code class="docutils literal"><span class="pre">webui/config.js</span></code>. <code class="docutils literal"><span class="pre">st2web</span></code>
-comes in its own <code class="docutils literal"><span class="pre">deb</span></code> and <code class="docutils literal"><span class="pre">rpm</span></code> package. Workflow Designer is deployed as part of the
-<code class="docutils literal"><span class="pre">bwc-enterprise</span></code> package. They are HTML5 applications, served as static HTML, and call StackStorm
-st2auth and st2api REST API endpoints. NGINX proxies inbound requests to <code class="docutils literal"><span class="pre">/api</span></code> and <code class="docutils literal"><span class="pre">/auth</span></code>
+installed at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/static/webui</span></code> and configured via <code class="docutils literal notranslate"><span class="pre">webui/config.js</span></code>. <code class="docutils literal notranslate"><span class="pre">st2web</span></code>
+comes in its own <code class="docutils literal notranslate"><span class="pre">deb</span></code> and <code class="docutils literal notranslate"><span class="pre">rpm</span></code> package. Workflow Designer is deployed as part of the
+<code class="docutils literal notranslate"><span class="pre">bwc-enterprise</span></code> package. They are HTML5 applications, served as static HTML, and call StackStorm
+st2auth and st2api REST API endpoints. NGINX proxies inbound requests to <code class="docutils literal notranslate"><span class="pre">/api</span></code> and <code class="docutils literal notranslate"><span class="pre">/auth</span></code>
 to the st2api and st2auth services respectively.</li>
 </ul>
 </div>
 <div class="section" id="st2chatops-chatops-components">
 <h2>5. st2chatops - ChatOps components<a class="headerlink" href="#st2chatops-chatops-components" title="Permalink to this headline">¶</a></h2>
 <p>StackStorm Chatops components are <a class="reference external" href="https://hubot.github.com/">Hubot</a>, <a class="reference external" href="https://github.com/StackStorm/hubot-stackstorm">|st2|’s Hubot adapter</a>, and plugins for connecting to <a class="reference external" href="https://hubot.github.com/docs/adapters/">different Chat
-services</a>. They are packaged as <code class="docutils literal"><span class="pre">st2chatops</span></code>,
-installed at <code class="docutils literal"><span class="pre">/opt/stackstorm/chatops/</span></code> and configured in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code>.</p>
+services</a>. They are packaged as <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code>,
+installed at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/chatops/</span></code> and configured in
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code>.</p>
 <p>ChatOps can be also enabled by installing <a class="reference external" href="https://github.com/StackStorm/hubot-stackstorm">hubot-stackstorm plugin</a> on your existing Hubot instance.</p>
 </div>
 <div class="section" id="dependencies">

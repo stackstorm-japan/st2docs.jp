@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -506,12 +506,12 @@ of the <a class="reference external" href="https://github.com/StackStorm/st2-pac
 <h2><a class="toc-backref" href="#id2">Minimal Installation</a><a class="headerlink" href="#minimal-installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-libffi-devel-package">
 <h3><a class="toc-backref" href="#id3">Install libffi-devel Package</a><a class="headerlink" href="#install-libffi-devel-package" title="Permalink to this headline">¶</a></h3>
-<p>RHEL 6 may not ship with <code class="docutils literal"><span class="pre">libffi-devel</span></code> package, which is a dependency for StackStorm. If that is the
-case, set up the <code class="docutils literal"><span class="pre">server-optional</span></code> repository, following the instructions at
+<p>RHEL 6 may not ship with <code class="docutils literal notranslate"><span class="pre">libffi-devel</span></code> package, which is a dependency for StackStorm. If that is the
+case, set up the <code class="docutils literal notranslate"><span class="pre">server-optional</span></code> repository, following the instructions at
 <a class="reference external" href="https://access.redhat.com/solutions/265523">https://access.redhat.com/solutions/265523</a>.
-Or, find a version of <code class="docutils literal"><span class="pre">libffi-devel</span></code> compatible with the <code class="docutils literal"><span class="pre">libffi</span></code> version installed. For
+Or, find a version of <code class="docutils literal notranslate"><span class="pre">libffi-devel</span></code> compatible with the <code class="docutils literal notranslate"><span class="pre">libffi</span></code> version installed. For
 example:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span>[ec2-user@ip-172-30-0-79 ~]$ rpm -qa libffi
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span>[ec2-user@ip-172-30-0-79 ~]$ rpm -qa libffi
 libffi-3.0.5-3.2.el6.x86_64
 
 sudo yum localinstall -y ftp://rpmfind.net/linux/centos/6.9/os/x86_64/Packages/libffi-devel-3.0.5-3.2.el6.x86_64.rpm
@@ -526,12 +526,12 @@ policies. This is needed for successful installation. If you are not happy with 
 you may want to tweak them according to your security practices.</p>
 <ul>
 <li><p class="first">First check if SELinux is in Enforcing mode:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>getenforce
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>getenforce
 </pre></div>
 </div>
 </li>
 <li><p class="first">If the previous command returns ‘Enforcing’, then run the following commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># SELINUX management tools, not available for some minimal installations</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># SELINUX management tools, not available for some minimal installations</span>
 sudo yum install -y policycoreutils-python
 
 <span class="c1"># Allow network access for nginx</span>
@@ -555,7 +555,7 @@ the installer script. MongoDB 3.6 does not currently work with StackStorm. Suppo
 for 3.6 will be added in a future version of StackStorm</p>
 </div>
 <p>Install MongoDB, RabbitMQ, and PostgreSQL:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 
 <span class="c1"># Add key and repo for the latest stable MongoDB (3.4)</span>
 sudo rpm --import https://www.mongodb.org/static/pgp/server-3.4.asc
@@ -601,21 +601,21 @@ sudo chkconfig postgresql-9.4 on
 <h3><a class="toc-backref" href="#id6">Setup Repositories</a><a class="headerlink" href="#setup-repositories" title="Permalink to this headline">¶</a></h3>
 <p>The following script will detect your platform and architecture and setup the appropriate StackStorm
 repository. It will also add the the GPG key used for package signing.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -s https://packagecloud.io/install/repositories/StackStorm/stable/script.rpm.sh <span class="p">|</span> sudo bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -s https://packagecloud.io/install/repositories/StackStorm/stable/script.rpm.sh <span class="p">|</span> sudo bash
 </pre></div>
 </div>
 </div>
 <div class="section" id="install-st2-components">
 <h3><a class="toc-backref" href="#id7">Install StackStorm Components</a><a class="headerlink" href="#install-st2-components" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum install -y st2 st2mistral
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum install -y st2 st2mistral
 </pre></div>
 </div>
 <p>If you are not running RabbitMQ, MongoDB or PostgreSQL on the same system, or have changed the
 defaults, please adjust these settings:</p>
 <ul class="simple">
-<li>RabbitMQ connection at <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code> and <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
-<li>MongoDB at <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code></li>
-<li>PostgreSQL at <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
+<li>RabbitMQ connection at <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
+<li>MongoDB at <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code></li>
+<li>PostgreSQL at <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
 </ul>
 <p>See the <a class="reference internal" href="config/config.html"><span class="doc">Configuration documentation</span></a> for more information.</p>
 </div>
@@ -623,7 +623,7 @@ defaults, please adjust these settings:</p>
 <h3><a class="toc-backref" href="#id8">Setup Datastore Encryption</a><a class="headerlink" href="#setup-datastore-encryption" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="../datastore.html"><span class="doc">Key-value store</span></a> allows users to store encrypted values (secrets). These are
 stored using symmetric encryption (AES256). To generate a crypto key, run these commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">DATASTORE_ENCRYPTION_KEYS_DIRECTORY</span><span class="o">=</span><span class="s2">&quot;/etc/st2/keys&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DATASTORE_ENCRYPTION_KEYS_DIRECTORY</span><span class="o">=</span><span class="s2">&quot;/etc/st2/keys&quot;</span>
 <span class="nv">DATASTORE_ENCRYPTION_KEY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DATASTORE_ENCRYPTION_KEYS_DIRECTORY</span><span class="si">}</span><span class="s2">/datastore_key.json&quot;</span>
 
 sudo mkdir -p <span class="si">${</span><span class="nv">DATASTORE_ENCRYPTION_KEYS_DIRECTORY</span><span class="si">}</span>
@@ -645,7 +645,7 @@ sudo st2ctl restart-component st2api
 <div class="section" id="setup-mistral-database">
 <h3><a class="toc-backref" href="#id9">Setup Mistral Database</a><a class="headerlink" href="#setup-mistral-database" title="Permalink to this headline">¶</a></h3>
 <p>Run these commands to set up the Mistral PostgreSQL database:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create Mistral DB in PostgreSQL</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Mistral DB in PostgreSQL</span>
 cat <span class="s">&lt;&lt; EHD | sudo -u postgres psql</span>
 <span class="s">CREATE ROLE mistral WITH CREATEDB LOGIN ENCRYPTED PASSWORD &#39;StackStorm&#39;;</span>
 <span class="s">CREATE DATABASE mistral OWNER mistral;</span>
@@ -660,14 +660,14 @@ cat <span class="s">&lt;&lt; EHD | sudo -u postgres psql</span>
 </div>
 <div class="section" id="configure-ssh-and-sudo">
 <h3><a class="toc-backref" href="#id10">Configure SSH and SUDO</a><a class="headerlink" href="#configure-ssh-and-sudo" title="Permalink to this headline">¶</a></h3>
-<p>To run local and remote shell actions, StackStorm uses a special system user (by default <code class="docutils literal"><span class="pre">stanley</span></code>).
+<p>To run local and remote shell actions, StackStorm uses a special system user (by default <code class="docutils literal notranslate"><span class="pre">stanley</span></code>).
 For remote Linux actions, SSH is used. We recommend configuring public key-based SSH access on all
 remote hosts. We also recommend configuring SSH access to localhost for running examples and
 testing.</p>
 <ul>
 <li><p class="first">Create StackStorm system user, enable passwordless sudo, and set up ssh access to “localhost” so
 that SSH-based actions can be tested locally. You will need elevated privileges to do this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create an SSH system user (default `stanley` user may already exist)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an SSH system user (default `stanley` user may already exist)</span>
 sudo useradd stanley
 sudo mkdir -p /home/stanley/.ssh
 sudo chmod <span class="m">0700</span> /home/stanley/.ssh
@@ -694,8 +694,8 @@ instructions at <a class="reference internal" href="config/config.html#config-co
 <a class="reference internal" href="config/windows_runners.html"><span class="doc">Windows runners</span></a>.</p>
 </li>
 <li><p class="first">If you are using a different user, or path to their SSH key, you will need to change this
-section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[system_user]</span>
+section in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[system_user]</span>
 <span class="na">user</span> <span class="o">=</span> <span class="s">stanley</span>
 <span class="na">ssh_key_file</span> <span class="o">=</span> <span class="s">/home/stanley/.ssh/stanley_rsa</span>
 </pre></div>
@@ -707,12 +707,12 @@ section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</s
 <h3><a class="toc-backref" href="#id11">Start Services</a><a class="headerlink" href="#start-services" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Start services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl start
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl start
 </pre></div>
 </div>
 </li>
 <li><p class="first">Register sensors, rules and actions:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl reload
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl reload
 </pre></div>
 </div>
 </li>
@@ -721,7 +721,7 @@ section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</s
 <div class="section" id="verify">
 <h3><a class="toc-backref" href="#id12">Verify</a><a class="headerlink" href="#verify" title="Permalink to this headline">¶</a></h3>
 <p>The following commands will test your StackStorm installation. They should all complete successfully:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --version
 
 st2 -h
 
@@ -742,7 +742,7 @@ st2 pack install st2
 </pre></div>
 </div>
 <p>Use the supervisor script to manage StackStorm services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl start<span class="p">|</span>stop<span class="p">|</span>status<span class="p">|</span>restart<span class="p">|</span>restart-component<span class="p">|</span>reload<span class="p">|</span>clean
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl start<span class="p">|</span>stop<span class="p">|</span>status<span class="p">|</span>restart<span class="p">|</span>restart-component<span class="p">|</span>reload<span class="p">|</span>clean
 </pre></div>
 </div>
 <p>At this point you have a minimal working installation, and can happily play with StackStorm: follow the
@@ -759,7 +759,7 @@ ChatOps, and no money without Extreme Workflow Composer. Read on!</p>
 <p>To set up authentication with file-based provider:</p>
 <ul>
 <li><p class="first">Create a user with a password:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Install htpasswd utility if you don&#39;t have it</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install htpasswd utility if you don&#39;t have it</span>
 sudo yum -y install httpd-tools
 <span class="c1"># Create a user record in a password file.</span>
 sudo htpasswd -bs /etc/st2/htpasswd st2admin <span class="s1">&#39;Ch@ngeMe&#39;</span>
@@ -768,8 +768,8 @@ sudo htpasswd -bs /etc/st2/htpasswd st2admin <span class="s1">&#39;Ch@ngeMe&#39;
 </li>
 </ul>
 <ul>
-<li><p class="first">Enable and configure authentication in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
+<li><p class="first">Enable and configure authentication in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
 <span class="c1"># ...</span>
 <span class="na">enable</span> <span class="o">=</span> <span class="s">True</span>
 <span class="na">backend</span> <span class="o">=</span> <span class="s">flat_file</span>
@@ -779,12 +779,12 @@ sudo htpasswd -bs /etc/st2/htpasswd st2admin <span class="s1">&#39;Ch@ngeMe&#39;
 </div>
 </li>
 <li><p class="first">Restart the st2api service:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl restart-component st2api
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl restart-component st2api
 </pre></div>
 </div>
 </li>
 <li><p class="first">Authenticate, set the token environment variable, and check that it works:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Get an auth token to use in CLI or API</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get an auth token to use in CLI or API</span>
 st2 auth st2admin
 
 <span class="c1"># A shortcut to authenticate and export the token</span>
@@ -802,11 +802,11 @@ st2 action list
 <h2><a class="toc-backref" href="#id14">Install WebUI and Setup SSL Termination</a><a class="headerlink" href="#install-webui-and-setup-ssl-termination" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://nginx.org/">NGINX</a> is used to serve WebUI static files, redirect HTTP to HTTPS, provide
 SSL termination, and reverse-proxy st2auth and st2api API endpoints. To set it up: install the
-<code class="docutils literal"><span class="pre">st2web</span></code> and <code class="docutils literal"><span class="pre">nginx</span></code> packages, generate certificates or place your existing certificates under
-<code class="docutils literal"><span class="pre">/etc/ssl/st2</span></code>, and configure nginx with StackStorm’s supplied <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/nginx/st2.conf">site config file st2.conf</a>.</p>
+<code class="docutils literal notranslate"><span class="pre">st2web</span></code> and <code class="docutils literal notranslate"><span class="pre">nginx</span></code> packages, generate certificates or place your existing certificates under
+<code class="docutils literal notranslate"><span class="pre">/etc/ssl/st2</span></code>, and configure nginx with StackStorm’s supplied <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/nginx/st2.conf">site config file st2.conf</a>.</p>
 <p>StackStorm depends on Nginx version &gt;=1.7.5. RHEL has an older version in the package repositories, so
 you will need to add the official Nginx repository:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Add key and repo for the latest stable nginx</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add key and repo for the latest stable nginx</span>
 sudo rpm --import http://nginx.org/keys/nginx_signing.key
 sudo sh -c <span class="s2">&quot;cat &lt;&lt;EOT &gt; /etc/yum.repos.d/nginx.repo</span>
 <span class="s2">[nginx]</span>
@@ -840,19 +840,19 @@ sudo chkconfig nginx on
 </pre></div>
 </div>
 <p>If you modify ports, or url paths in the nginx configuration, make the corresponding changes in
-the st2web configuration at <code class="docutils literal"><span class="pre">/opt/stackstorm/static/webui/config.js</span></code>.</p>
-<p>Use your browser to connect to <code class="docutils literal"><span class="pre">https://${ST2_HOSTNAME}</span></code> and login to the WebUI.</p>
+the st2web configuration at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/static/webui/config.js</span></code>.</p>
+<p>Use your browser to connect to <code class="docutils literal notranslate"><span class="pre">https://${ST2_HOSTNAME}</span></code> and login to the WebUI.</p>
 <p>If you are trying to access the API from outside the box and you have configured nginx according to
-these instructions, use <code class="docutils literal"><span class="pre">https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</span></code>.</p>
+these instructions, use <code class="docutils literal notranslate"><span class="pre">https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</span></code>.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;User-Agent: manual/curl&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;User-Agent: manual/curl&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
 </pre></div>
 </div>
-<p>Similarly, you can connect to auth REST endpoints with <code class="docutils literal"><span class="pre">https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</span></code>.</p>
-<p>You can see the actual REST endpoint for a resource by adding a <code class="docutils literal"><span class="pre">--debug</span></code> option to the CLI
+<p>Similarly, you can connect to auth REST endpoints with <code class="docutils literal notranslate"><span class="pre">https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</span></code>.</p>
+<p>You can see the actual REST endpoint for a resource by adding a <code class="docutils literal notranslate"><span class="pre">--debug</span></code> option to the CLI
 command for the appropriate resource.</p>
 <p>For example, to see the endpoint for getting actions, invoke:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug action list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug action list
 </pre></div>
 </div>
 </div>
@@ -862,8 +862,8 @@ command for the appropriate resource.</p>
 described below. Otherwise, the easiest way to enable <a class="reference internal" href="../chatops/index.html"><span class="doc">StackStorm ChatOps</span></a>
 is to use the <a class="reference external" href="https://github.com/stackstorm/st2chatops/">st2chatops</a> package.</p>
 <ul>
-<li><p class="first">Validate that the <code class="docutils literal"><span class="pre">chatops</span></code> pack is installed, and a notification rule is enabled:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Ensure chatops pack is in place</span>
+<li><p class="first">Validate that the <code class="docutils literal notranslate"><span class="pre">chatops</span></code> pack is installed, and a notification rule is enabled:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure chatops pack is in place</span>
 ls /opt/stackstorm/packs/chatops
 <span class="c1"># Create notification rule if not yet enabled</span>
 st2 rule get chatops.notify <span class="o">||</span> st2 rule create /opt/stackstorm/packs/chatops/rules/notify_hubot.yaml
@@ -871,27 +871,27 @@ st2 rule get chatops.notify <span class="o">||</span> st2 rule create /opt/stack
 </div>
 </li>
 <li><p class="first">Add <a class="reference external" href="https://nodejs.org/en/download/package-manager/">NodeJS v6 repository</a>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sL https://rpm.nodesource.com/setup_6.x <span class="p">|</span> sudo -E bash -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sL https://rpm.nodesource.com/setup_6.x <span class="p">|</span> sudo -E bash -
 </pre></div>
 </div>
 </li>
-<li><p class="first">Install the <code class="docutils literal"><span class="pre">st2chatops</span></code> package:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum install -y st2chatops
+<li><p class="first">Install the <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum install -y st2chatops
 </pre></div>
 </div>
 </li>
 </ul>
 <ul>
-<li><p class="first">Review and edit the <code class="docutils literal"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code> configuration file to point it to
+<li><p class="first">Review and edit the <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code> configuration file to point it to
 your StackStorm installation and the Chat Service you are using. At a minimum, you should generate an
-<a class="reference internal" href="../authentication.html#authentication-apikeys"><span class="std std-ref">API key</span></a> and set the <code class="docutils literal"><span class="pre">ST2_API_KEY</span></code> variable. By default
-<code class="docutils literal"><span class="pre">st2api</span></code> and <code class="docutils literal"><span class="pre">st2auth</span></code> are expected to be on the same host. If that is not the case, please
-update the <code class="docutils literal"><span class="pre">ST2_API</span></code> and <code class="docutils literal"><span class="pre">ST2_AUTH_URL</span></code> variables or just point to the correct host with
-<code class="docutils literal"><span class="pre">ST2_HOSTNAME</span></code>.</p>
+<a class="reference internal" href="../authentication.html#authentication-apikeys"><span class="std std-ref">API key</span></a> and set the <code class="docutils literal notranslate"><span class="pre">ST2_API_KEY</span></code> variable. By default
+<code class="docutils literal notranslate"><span class="pre">st2api</span></code> and <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> are expected to be on the same host. If that is not the case, please
+update the <code class="docutils literal notranslate"><span class="pre">ST2_API</span></code> and <code class="docutils literal notranslate"><span class="pre">ST2_AUTH_URL</span></code> variables or just point to the correct host with
+<code class="docutils literal notranslate"><span class="pre">ST2_HOSTNAME</span></code>.</p>
 <p>The example configuration uses Slack. To set this up, go to the Slack web admin interface, create
-a Bot, and copy the authentication token into <code class="docutils literal"><span class="pre">HUBOT_SLACK_TOKEN</span></code>.</p>
+a Bot, and copy the authentication token into <code class="docutils literal notranslate"><span class="pre">HUBOT_SLACK_TOKEN</span></code>.</p>
 <p>If you are using a different Chat Service, set the corresponding environment variables under the
-<code class="docutils literal"><span class="pre">Chat</span> <span class="pre">service</span> <span class="pre">adapter</span> <span class="pre">settings</span></code> section in <code class="docutils literal"><span class="pre">st2chatops.env</span></code>:
+<code class="docutils literal notranslate"><span class="pre">Chat</span> <span class="pre">service</span> <span class="pre">adapter</span> <span class="pre">settings</span></code> section in <code class="docutils literal notranslate"><span class="pre">st2chatops.env</span></code>:
 <a class="reference external" href="https://github.com/slackhq/hubot-slack">Slack</a>,
 <a class="reference external" href="https://github.com/hipchat/hubot-hipchat">HipChat</a>,
 <a class="reference external" href="https://github.com/athieriot/hubot-yammer">Yammer</a>,
@@ -900,15 +900,15 @@ a Bot, and copy the authentication token into <code class="docutils literal"><sp
 <a class="reference external" href="https://github.com/markstory/hubot-xmpp">XMPP</a>.</p>
 </li>
 <li><p class="first">Start the service:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service st2chatops start
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo service st2chatops start
 
 <span class="c1"># Ensure it will start on boot</span>
 sudo chkconfig st2chatops on
 </pre></div>
 </div>
 </li>
-<li><p class="first">Reload st2 packs to make sure the <code class="docutils literal"><span class="pre">chatops.notify</span></code> rule is registered:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-all
+<li><p class="first">Reload st2 packs to make sure the <code class="docutils literal notranslate"><span class="pre">chatops.notify</span></code> rule is registered:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-all
 </pre></div>
 </div>
 </li>
@@ -934,22 +934,22 @@ documentation. For more information refer to the links below:</p>
 services to use the new settings.</p>
 <p>This means editing the following configuration options:</p>
 <ol class="arabic simple">
-<li>StackStorm - <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code></li>
+<li>StackStorm - <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">database.username</span></code> - MongoDB database username.</li>
-<li><code class="docutils literal"><span class="pre">database.password</span></code> - MongoDB database password.</li>
-<li><code class="docutils literal"><span class="pre">messaging.url</span></code> - RabbitMQ transport url (<code class="docutils literal"><span class="pre">amqp://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">database.username</span></code> - MongoDB database username.</li>
+<li><code class="docutils literal notranslate"><span class="pre">database.password</span></code> - MongoDB database password.</li>
+<li><code class="docutils literal notranslate"><span class="pre">messaging.url</span></code> - RabbitMQ transport url (<code class="docutils literal notranslate"><span class="pre">amqp://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Mistral - <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
+<li>Mistral - <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">database.connection</span></code> - PostgreSQL database connection string (<code class="docutils literal"><span class="pre">postgresql+psycopg2://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;/mistral</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">transport_url</span></code> - RabbitMQ transport url (<code class="docutils literal"><span class="pre">rabbit://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">database.connection</span></code> - PostgreSQL database connection string (<code class="docutils literal notranslate"><span class="pre">postgresql+psycopg2://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;/mistral</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">transport_url</span></code> - RabbitMQ transport url (<code class="docutils literal notranslate"><span class="pre">rabbit://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
 </ul>
 </div></blockquote>
 <p>In addition, you are strongly encouraged to follow these best practices for running network
@@ -978,9 +978,9 @@ StackStorm. It is deployed as a set of additional packages on top of StackStorm.
 Extreme Workflow Composer subscription, and a license key to access Extreme Workflow Composer repositories.</p>
 <p>To learn more about Extreme Workflow Composer, request a quote, or get an evaluation license go to
 <a class="reference external" href="https://stackstorm.com/product/#enterprise/">stackstorm.com/product</a>.</p>
-<p>To install Extreme Workflow Composer, replace <code class="docutils literal"><span class="pre">${EWC_LICENSE_KEY}</span></code> in the command below with the key you received
+<p>To install Extreme Workflow Composer, replace <code class="docutils literal notranslate"><span class="pre">${EWC_LICENSE_KEY}</span></code> in the command below with the key you received
 when registering or purchasing, and run these commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Set up Extreme Workflow Composer repository access</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Extreme Workflow Composer repository access</span>
 curl -s https://<span class="si">${</span><span class="nv">EWC_LICENSE_KEY</span><span class="si">}</span>:@packagecloud.io/install/repositories/StackStorm/enterprise/script.rpm.sh <span class="p">|</span> sudo bash
 <span class="c1"># Install Extreme Workflow Composer</span>
 sudo yum install -y bwc-enterprise

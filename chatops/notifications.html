@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -468,15 +468,15 @@
 without ChatOps, notifications can be used to post messages to external systems like Chat clients,
 send emails etc. Notifications require an action that is registered with StackStorm (e.g., the
 <a class="reference external" href="https://github.com/StackStorm-Exchange/stackstorm-slack/tree/master/actions/post_message.yaml">post_message</a>
-action in the <code class="docutils literal"><span class="pre">slack</span></code> pack) and a notification rule to go with it. Notifications are
-implemented as triggers, rules, and actions. A special <code class="docutils literal"><span class="pre">core.st2.notifytrigger</span></code> is emitted by the
+action in the <code class="docutils literal notranslate"><span class="pre">slack</span></code> pack) and a notification rule to go with it. Notifications are
+implemented as triggers, rules, and actions. A special <code class="docutils literal notranslate"><span class="pre">core.st2.notifytrigger</span></code> is emitted by the
 system on completion of every action. A rule to match the trigger to a notify action results in
 notifications being sent out.</p>
 <div class="section" id="how-do-i-setup-a-notification-for-an-action">
 <h2>How Do I Setup a Notification for an Action?<a class="headerlink" href="#how-do-i-setup-a-notification-for-an-action" title="Permalink to this headline">¶</a></h2>
-<p>This is the easiest case. You can do this by specifying a <code class="docutils literal"><span class="pre">notify</span></code> section in the YAML metadata
+<p>This is the easiest case. You can do this by specifying a <code class="docutils literal notranslate"><span class="pre">notify</span></code> section in the YAML metadata
 while registering the action. For example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Action that executes an arbitrary Linux command on the localhost.</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">entry_point</span><span class="p p-Indicator">:</span> <span class="s">&#39;&#39;</span>
@@ -496,12 +496,12 @@ while registering the action. For example:</p>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;local-shell-cmd&quot;</span>
 </pre></div>
 </div>
-<p>Above is the same action as a <code class="docutils literal"><span class="pre">local-shell-cmd</span></code> action but with notify. As you can see, there
-is a notify section with <code class="docutils literal"><span class="pre">on-complete</span></code> section. You can also specify <code class="docutils literal"><span class="pre">on-success</span></code> and
-<code class="docutils literal"><span class="pre">on-failure</span></code> sections with different messages. These subsections are all optional but at
-least one is required for any meaningful notification. For the sake of clarity, an <code class="docutils literal"><span class="pre">on-success</span></code>
+<p>Above is the same action as a <code class="docutils literal notranslate"><span class="pre">local-shell-cmd</span></code> action but with notify. As you can see, there
+is a notify section with <code class="docutils literal notranslate"><span class="pre">on-complete</span></code> section. You can also specify <code class="docutils literal notranslate"><span class="pre">on-success</span></code> and
+<code class="docutils literal notranslate"><span class="pre">on-failure</span></code> sections with different messages. These subsections are all optional but at
+least one is required for any meaningful notification. For the sake of clarity, an <code class="docutils literal notranslate"><span class="pre">on-success</span></code>
 case is presented below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">notify</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">notify</span><span class="p p-Indicator">:</span>
    <span class="l l-Scalar l-Scalar-Plain">on-complete</span><span class="p p-Indicator">:</span>
      <span class="l l-Scalar l-Scalar-Plain">routes</span><span class="p p-Indicator">:</span>
      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slack</span>
@@ -512,14 +512,14 @@ case is presented below:</p>
      <span class="l l-Scalar l-Scalar-Plain">message</span><span class="p p-Indicator">:</span> <span class="s">&#39;&quot;@channel:</span><span class="nv"> </span><span class="s">Woohoo!&quot;&#39;</span>
 </pre></div>
 </div>
-<p>When the notification triggers are sent out, the message is supplied along with a <code class="docutils literal"><span class="pre">data</span></code>
-field containing the results of the execution. The rule can use these two fields (<code class="docutils literal"><span class="pre">message</span></code> and
-<code class="docutils literal"><span class="pre">data</span></code>), and send it out as part of the action.</p>
+<p>When the notification triggers are sent out, the message is supplied along with a <code class="docutils literal notranslate"><span class="pre">data</span></code>
+field containing the results of the execution. The rule can use these two fields (<code class="docutils literal notranslate"><span class="pre">message</span></code> and
+<code class="docutils literal notranslate"><span class="pre">data</span></code>), and send it out as part of the action.</p>
 </div>
 <div class="section" id="how-do-i-write-a-notification-rule">
 <h2>How Do I Write a Notification Rule?<a class="headerlink" href="#how-do-i-write-a-notification-rule" title="Permalink to this headline">¶</a></h2>
 <p>This resembles the notify rule you are familiar with when you setup ChatOps. An example is below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;notify_slack&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;examples&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Sample</span><span class="nv"> </span><span class="s">rule</span><span class="nv"> </span><span class="s">firing</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">action</span><span class="nv"> </span><span class="s">completion.&quot;</span>
@@ -538,20 +538,20 @@ field containing the results of the execution. The rule can use these two fields
     <span class="l l-Scalar l-Scalar-Plain">message</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{trigger.message}}&quot;</span>
 </pre></div>
 </div>
-<p>As you can see, this rule is setup for notification route <code class="docutils literal"><span class="pre">slack</span></code>. The action section shows
-that <code class="docutils literal"><span class="pre">slack.post_message</span></code> is the one what would be kicked off. We are skipping the <code class="docutils literal"><span class="pre">data</span></code> part
+<p>As you can see, this rule is setup for notification route <code class="docutils literal notranslate"><span class="pre">slack</span></code>. The action section shows
+that <code class="docutils literal notranslate"><span class="pre">slack.post_message</span></code> is the one what would be kicked off. We are skipping the <code class="docutils literal notranslate"><span class="pre">data</span></code> part
 of the trigger for brevity. If you had a slack action that also consumed some data as JSON string,
-you could pass <code class="docutils literal"><span class="pre">data:</span> <span class="pre">&quot;{{data}}&quot;</span></code> as a parameter.</p>
+you could pass <code class="docutils literal notranslate"><span class="pre">data:</span> <span class="pre">&quot;{{data}}&quot;</span></code> as a parameter.</p>
 </div>
 <div class="section" id="jinja-templating-in-message-and-data">
-<h2>Jinja Templating in <code class="docutils literal"><span class="pre">message</span></code> and <code class="docutils literal"><span class="pre">data</span></code><a class="headerlink" href="#jinja-templating-in-message-and-data" title="Permalink to this headline">¶</a></h2>
-<p>Jinja templating is supported for both <code class="docutils literal"><span class="pre">message</span></code> and <code class="docutils literal"><span class="pre">data</span></code>. The Jinja contexts available for
-use are parameters of the action and runner (<code class="docutils literal"><span class="pre">{{action_parameters.cmd}}</span></code>),
-keys in execution results (for example, <code class="docutils literal"><span class="pre">{{action_results.stdout}}</span></code>,
-<code class="docutils literal"><span class="pre">{{action_results.stderr}}</span></code>), anything in the action context (<code class="docutils literal"><span class="pre">{{action_context.user}}</span></code>) and
-anything in the key-value store (<code class="docutils literal"><span class="pre">{{st2kv.system.foo}}</span></code>).</p>
+<h2>Jinja Templating in <code class="docutils literal notranslate"><span class="pre">message</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code><a class="headerlink" href="#jinja-templating-in-message-and-data" title="Permalink to this headline">¶</a></h2>
+<p>Jinja templating is supported for both <code class="docutils literal notranslate"><span class="pre">message</span></code> and <code class="docutils literal notranslate"><span class="pre">data</span></code>. The Jinja contexts available for
+use are parameters of the action and runner (<code class="docutils literal notranslate"><span class="pre">{{action_parameters.cmd}}</span></code>),
+keys in execution results (for example, <code class="docutils literal notranslate"><span class="pre">{{action_results.stdout}}</span></code>,
+<code class="docutils literal notranslate"><span class="pre">{{action_results.stderr}}</span></code>), anything in the action context (<code class="docutils literal notranslate"><span class="pre">{{action_context.user}}</span></code>) and
+anything in the key-value store (<code class="docutils literal notranslate"><span class="pre">{{st2kv.system.foo}}</span></code>).</p>
 <p>Some examples are shown below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">routes</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">slack</span>
   <span class="l l-Scalar l-Scalar-Plain">message</span><span class="p p-Indicator">:</span> <span class="s">&#39;&quot;@channel:</span><span class="nv"> </span><span class="s">Woohoo!&quot;.</span><span class="nv"> </span><span class="s">Action</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">user</span><span class="nv"> </span><span class="s">{{action_context.user}}</span><span class="nv"> </span><span class="s">succeeded.&#39;</span>
@@ -570,7 +570,7 @@ anything in the key-value store (<code class="docutils literal"><span class="pre
 <h2>How Do I Setup Notifications in an ActionChain?<a class="headerlink" href="#how-do-i-setup-notifications-in-an-actionchain" title="Permalink to this headline">¶</a></h2>
 <p>The procedure here is the same if you want the same notification for all tasks in the chain.
 Register an action metadata with a notify section. For example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="c1"># Action definition metadata</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;echochain&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Simple</span><span class="nv"> </span><span class="s">Action</span><span class="nv"> </span><span class="s">Chain</span><span class="nv"> </span><span class="s">workflow&quot;</span>
@@ -596,11 +596,11 @@ section below for how to do that.</p>
 </div>
 <div class="section" id="how-can-i-have-different-notifications-for-each-task">
 <h2>How Can I Have Different Notifications for Each Task?<a class="headerlink" href="#how-can-i-have-different-notifications-for-each-task" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">notify</span></code> subsection is the same format as seen in examples above. Place the subsection in
+<p>The <code class="docutils literal notranslate"><span class="pre">notify</span></code> subsection is the same format as seen in examples above. Place the subsection in
 ActionChain tasks. If there is a notify section for the action metadata, and a notify section in
 the task, the task section will override the default. The relevant section of an ActionChain with
 task notify is shown below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span>
   <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;make_reqmnts&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.remote&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
@@ -634,10 +634,10 @@ This will be added in later releases.</p>
 </div>
 <div class="section" id="how-do-i-skip-notifications-for-tasks-in-a-workflow">
 <h2>How do I Skip Notifications for Tasks in a Workflow?<a class="headerlink" href="#how-do-i-skip-notifications-for-tasks-in-a-workflow" title="Permalink to this headline">¶</a></h2>
-<p>This is implemented as a runner parameter <code class="docutils literal"><span class="pre">skip_notify</span></code>. If your chain or workflow contains
+<p>This is implemented as a runner parameter <code class="docutils literal notranslate"><span class="pre">skip_notify</span></code>. If your chain or workflow contains
 multiple tasks and you want some tasks to be “muted”, you can do so by specifying skip_notify
 and call out tasks to mute. For example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mistral-basic-two-tasks-with-notifications</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">examples</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Run mistral workflow with two tasks.</span>
@@ -669,12 +669,12 @@ and call out tasks to mute. For example:</p>
 </div>
 <p>In the above example, notifications for “task2” will not be sent out. This feature is particularly
 useful in combination with ChatOps where you don’t want noisy tasks to pollute the Chat client.</p>
-<p>Note that it is not currently possible to have a default <code class="docutils literal"><span class="pre">skip_notify</span></code> policy.</p>
+<p>Note that it is not currently possible to have a default <code class="docutils literal notranslate"><span class="pre">skip_notify</span></code> policy.</p>
 </div>
 <div class="section" id="chatops-and-notifications">
 <h2>ChatOps and Notifications<a class="headerlink" href="#chatops-and-notifications" title="Permalink to this headline">¶</a></h2>
 <p>If you enabled ChatOps, you get all the things wired for you. You don’t have to edit action
-metadata etc. You can still use <code class="docutils literal"><span class="pre">skip_notify</span></code> to skip notifications for certain tasks in a chain
+metadata etc. You can still use <code class="docutils literal notranslate"><span class="pre">skip_notify</span></code> to skip notifications for certain tasks in a chain
 or workflow. If you specified a notify section in metadata or in tasks, those notification routes
 will override ChatOps. Therefore, you might not see notifications in the chat client.
 See <a class="reference external" href="https://github.com/StackStorm/st2/issues/2018">this issue</a> for an example.</p>

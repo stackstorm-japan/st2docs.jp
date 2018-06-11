@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,7 +467,7 @@ rule that triggers an action on an external event.</p>
 <div class="section" id="explore-st2-with-cli">
 <h2>Explore StackStorm with CLI<a class="headerlink" href="#explore-st2-with-cli" title="Permalink to this headline">¶</a></h2>
 <p>The best way to explore StackStorm is to use the CLI. Start by running a few commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --version
 
 <span class="c1"># Get help. It&#39;s a lot. Explore.</span>
 st2 -h
@@ -495,13 +495,13 @@ st2 run core.remote <span class="nv">hosts</span><span class="o">=</span><span c
 <p>All StackStorm operations are also available via REST API, Python, and JavaScript
 bindings. Check the <a class="reference internal" href="reference/cli.html"><span class="doc">CLI and Python Client</span></a> reference for details.</p>
 <p>You can also do a lot through the Web UI: Check the history, run actions, configure rules, install
-packs…check it out at <a class="reference external" href="https:/">https:/</a>/{YOUR_ST2_IP}. Login is the same as via the <code class="docutils literal"><span class="pre">st2</span></code> CLI. Default is
-<code class="docutils literal"><span class="pre">st2admin</span></code>/<code class="docutils literal"><span class="pre">Ch&#64;ngeMe</span></code>.</p>
+packs…check it out at <a class="reference external" href="https:/">https:/</a>/{YOUR_ST2_IP}. Login is the same as via the <code class="docutils literal notranslate"><span class="pre">st2</span></code> CLI. Default is
+<code class="docutils literal notranslate"><span class="pre">st2admin</span></code>/<code class="docutils literal notranslate"><span class="pre">Ch&#64;ngeMe</span></code>.</p>
 </div>
 <div class="section" id="authenticate">
 <h2>Authenticate<a class="headerlink" href="#authenticate" title="Permalink to this headline">¶</a></h2>
 <p>You will almost certainly have authentication enabled. To easiest way to login via CLI is this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 login st2admin --password <span class="s1">&#39;Ch@ngeMe&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 login st2admin --password <span class="s1">&#39;Ch@ngeMe&#39;</span>
 </pre></div>
 </div>
 <p>This will obtain an authentication token, and cache it.</p>
@@ -512,12 +512,12 @@ packs…check it out at <a class="reference external" href="https:/">https:/</a>
 <p>StackStorm comes with several generic actions out of the box. The catalog of actions can be easily
 extended by getting actions from the community or consuming your existing scripts (more on that
 later).</p>
-<p>Browse the catalog with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">list</span></code>. Actions are referred to by a <code class="docutils literal"><span class="pre">ref</span></code>. This takes the
-form <code class="docutils literal"><span class="pre">pack.action_name</span></code> (e.g. <code class="docutils literal"><span class="pre">core.local</span></code>).</p>
-<p>Learn about an action by running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">get</span> <span class="pre">&lt;action&gt;</span></code>, or <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;action&gt;</span> <span class="pre">--help</span></code>. This
+<p>Browse the catalog with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">list</span></code>. Actions are referred to by a <code class="docutils literal notranslate"><span class="pre">ref</span></code>. This takes the
+form <code class="docutils literal notranslate"><span class="pre">pack.action_name</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">core.local</span></code>).</p>
+<p>Learn about an action by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">get</span> <span class="pre">&lt;action&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;action&gt;</span> <span class="pre">--help</span></code>. This
 will give you the description, along with the action parameters. This tells you how to run it from
 the CLI, or use it in rules and workflows.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List all the actions in the library</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all the actions in the library</span>
 st2 action list
 
 <span class="c1"># Get action metadata</span>
@@ -527,31 +527,31 @@ st2 action get core.http
 st2 run core.http --help
 </pre></div>
 </div>
-<p>To run an action from the CLI, use <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;action&gt;</span> <span class="pre">key=value</span> <span class="pre">positional</span> <span class="pre">arguments</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Run a local command</span>
+<p>To run an action from the CLI, use <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;action&gt;</span> <span class="pre">key=value</span> <span class="pre">positional</span> <span class="pre">arguments</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run a local command</span>
 st2 run core.local -- uname -a
 
 <span class="c1"># HTTP REST call to st2 action endpoint</span>
 st2 run -j core.http <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://docs.stackstorm.com&quot;</span> <span class="nv">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span>
 </pre></div>
 </div>
-<p>Use the <code class="docutils literal"><span class="pre">core.remote</span></code> action to run Linux commands on multiple hosts via SSH. This assumes that
+<p>Use the <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> action to run Linux commands on multiple hosts via SSH. This assumes that
 passwordless SSH access is configured for the hosts, as described in the
 <a class="reference internal" href="install/config/config.html#config-configure-ssh"><span class="std std-ref">Configure SSH</span></a> section.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span><span class="s1">&#39;abc.example.com, cde.example.com&#39;</span> <span class="nv">username</span><span class="o">=</span><span class="s1">&#39;mysshuser&#39;</span> -- ls -l
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span><span class="s1">&#39;abc.example.com, cde.example.com&#39;</span> <span class="nv">username</span><span class="o">=</span><span class="s1">&#39;mysshuser&#39;</span> -- ls -l
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>For <code class="docutils literal"><span class="pre">core.local</span></code> and <code class="docutils literal"><span class="pre">core.remote</span></code> actions, we use <code class="docutils literal"><span class="pre">--</span></code> to separate action parameters
-to ensure that options keys, like <code class="docutils literal"><span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">-a</span></code> are properly passed to the action.
-Alternatively, <code class="docutils literal"><span class="pre">core.local</span></code> and <code class="docutils literal"><span class="pre">core.remote</span></code> actions take the <code class="docutils literal"><span class="pre">cmd</span></code> parameter to pass
+<p>For <code class="docutils literal notranslate"><span class="pre">core.local</span></code> and <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> actions, we use <code class="docutils literal notranslate"><span class="pre">--</span></code> to separate action parameters
+to ensure that options keys, like <code class="docutils literal notranslate"><span class="pre">-l</span></code> or <code class="docutils literal notranslate"><span class="pre">-a</span></code> are properly passed to the action.
+Alternatively, <code class="docutils literal notranslate"><span class="pre">core.local</span></code> and <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> actions take the <code class="docutils literal notranslate"><span class="pre">cmd</span></code> parameter to pass
 crazily complex commands.</p>
 <p class="last">When specifying a command using the command line tool, you also need to escape all variables,
 otherwise the variables will get interpolated locally by a shell. Variables are escaped using
-a backslash (<code class="docutils literal"><span class="pre">\</span></code>) - e.g. <code class="docutils literal"><span class="pre">\$user</span></code>.</p>
+a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) - e.g. <code class="docutils literal notranslate"><span class="pre">\$user</span></code>.</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Using `--` to separate arguments</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using `--` to separate arguments</span>
 st2 run core.local -- ls -al
 
 <span class="c1"># Equivalent using `cmd` parameter</span>
@@ -561,9 +561,9 @@ st2 run core.local <span class="nv">cmd</span><span class="o">=</span><span clas
 st2 run core.remote <span class="nv">hosts</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;for u in bob phill luke; do echo \&quot;Logins by \$u per day:\&quot;; grep \$u /var/log/secure | grep opened | awk &#39;{print \$1 \&quot;-\&quot; \$2}&#39; | uniq -c | sort; done;&quot;</span>
 </pre></div>
 </div>
-<p>Check the action execution history and details of action executions with the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span></code>
+<p>Check the action execution history and details of action executions with the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span></code>
 command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List of executions (most recent at the bottom)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List of executions (most recent at the bottom)</span>
 st2 execution list
 
 <span class="c1"># Get execution by ID</span>
@@ -582,7 +582,7 @@ with rules.</p>
 by sensors. When a sensor catches an event, it fires a trigger. Trigger trips the rule, the rule
 checks the criteria and if it matches, it runs an action. Easy enough. Let’s look at an example.</p>
 <p>Sample rule: <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/rules/sample_rule_with_webhook.yaml">sample_rule_with_webhook.yaml</a> :</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;sample_rule_with_webhook&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;examples&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Sample</span><span class="nv"> </span><span class="s">rule</span><span class="nv"> </span><span class="s">dumping</span><span class="nv"> </span><span class="s">webhook</span><span class="nv"> </span><span class="s">payload</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">file.&quot;</span>
@@ -607,17 +607,17 @@ checks the criteria and if it matches, it runs an action. Easy enough. Let’s l
 <p>The rule definition is a YAML file with three sections: trigger, criteria, and action. This
 example is set up to react on a webhook trigger, and applies filtering criteria to the content of
 the trigger.</p>
-<p>The webhook in this example is setup to listen on the <code class="docutils literal"><span class="pre">sample</span></code> sub-url at
-<code class="docutils literal"><span class="pre">https://{host}/api/v1/webhooks/sample</span></code>. When a POST is made to this URL, the trigger
-fires. If the criteria matches (in this case the value in payload is <code class="docutils literal"><span class="pre">st2</span></code>), the payload will be
-appended to the file <code class="docutils literal"><span class="pre">st2.webhook_sample.out</span></code> in the home directory of StackStorm system user. By default, this is <code class="docutils literal"><span class="pre">stanley</span></code>, so the file will be located at
-<code class="docutils literal"><span class="pre">/home/stanley/st2.webhook_sample.out</span></code>. See <a class="reference internal" href="rules.html"><span class="doc">Rules</span></a> for detailed rule anatomy.</p>
-<p>The trigger payload is referred to with <code class="docutils literal"><span class="pre">{{trigger}}</span></code>. If the trigger payload is a valid JSON
-object, it is parsed and can be accessed like <code class="docutils literal"><span class="pre">{{trigger.path.to.parameter}}</span></code>
+<p>The webhook in this example is setup to listen on the <code class="docutils literal notranslate"><span class="pre">sample</span></code> sub-url at
+<code class="docutils literal notranslate"><span class="pre">https://{host}/api/v1/webhooks/sample</span></code>. When a POST is made to this URL, the trigger
+fires. If the criteria matches (in this case the value in payload is <code class="docutils literal notranslate"><span class="pre">st2</span></code>), the payload will be
+appended to the file <code class="docutils literal notranslate"><span class="pre">st2.webhook_sample.out</span></code> in the home directory of StackStorm system user. By default, this is <code class="docutils literal notranslate"><span class="pre">stanley</span></code>, so the file will be located at
+<code class="docutils literal notranslate"><span class="pre">/home/stanley/st2.webhook_sample.out</span></code>. See <a class="reference internal" href="rules.html"><span class="doc">Rules</span></a> for detailed rule anatomy.</p>
+<p>The trigger payload is referred to with <code class="docutils literal notranslate"><span class="pre">{{trigger}}</span></code>. If the trigger payload is a valid JSON
+object, it is parsed and can be accessed like <code class="docutils literal notranslate"><span class="pre">{{trigger.path.to.parameter}}</span></code>
 (it’s <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/">Jinja template syntax</a>).</p>
 <p>What are the triggers available to use in rules? Just like with actions, use the CLI to browse
 triggers, learn what the trigger does, how to configure it, and what the payload structure is:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List all available triggers</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all available triggers</span>
 st2 trigger list
 
 <span class="c1"># Check details on Interval Timer trigger</span>
@@ -631,7 +631,7 @@ st2 trigger get core.st2.webhook
 <div class="section" id="deploy-a-rule">
 <h2>Deploy a Rule<a class="headerlink" href="#deploy-a-rule" title="Permalink to this headline">¶</a></h2>
 <p>StackStorm can be configured to auto-load the rules or rules can be deployed with API or CLI:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create the rule</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the rule</span>
 st2 rule create /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
 
 <span class="c1"># List the rules</span>
@@ -644,9 +644,9 @@ st2 rule list --pack<span class="o">=</span>examples
 st2 rule get examples.sample_rule_with_webhook
 </pre></div>
 </div>
-<p>Once the rule is created, the webhook begins to listen on <code class="docutils literal"><span class="pre">https://{host}/api/v1/webhooks/{url}</span></code>.
+<p>Once the rule is created, the webhook begins to listen on <code class="docutils literal notranslate"><span class="pre">https://{host}/api/v1/webhooks/{url}</span></code>.
 Fire the POST, check out the file and see that it appends the payload if the name=Joe.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Post to the webhook</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Post to the webhook</span>
 curl -k https://localhost/api/v1/webhooks/sample -d <span class="s1">&#39;{&quot;foo&quot;: &quot;bar&quot;, &quot;name&quot;: &quot;st2&quot;}&#39;</span> -H <span class="s1">&#39;Content-Type: application/json&#39;</span> -H <span class="s1">&#39;X-Auth-Token: put_token_here&#39;</span>
 
 <span class="c1"># Check if the action was executed (this shows the last action)</span>
@@ -673,8 +673,8 @@ sudo tail /home/stanley/st2.webhook_sample.out
 <span id="start-deploy-examples"></span><h2>Deploy Examples<a class="headerlink" href="#deploy-examples" title="Permalink to this headline">¶</a></h2>
 <p>Examples of rules, custom sensors, actions, and workflows are installed with StackStorm and located
 at <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/">/usr/share/doc/st2/examples</a>. To deploy, copy them to
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/</span></code>, setup, and reload the content:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Copy examples to st2 content directory</span>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/</span></code>, setup, and reload the content:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy examples to st2 content directory</span>
 sudo cp -r /usr/share/doc/st2/examples/ /opt/stackstorm/packs/
 
 <span class="c1"># Run setup</span>
@@ -690,9 +690,9 @@ st2ctl reload --register-all
 <h2>Datastore<a class="headerlink" href="#datastore" title="Permalink to this headline">¶</a></h2>
 <p>While most data are retrieved as needed by StackStorm, you may need to store and share some common
 variables. Use the StackStorm datastore service to store the values and reference them in rules and
-workflows as <code class="docutils literal"><span class="pre">{{st2kv.system.my_parameter}}</span></code>.</p>
-<p>This creates <code class="docutils literal"><span class="pre">user=stanley</span></code> key-value pair:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create a new key value pair</span>
+workflows as <code class="docutils literal notranslate"><span class="pre">{{st2kv.system.my_parameter}}</span></code>.</p>
+<p>This creates <code class="docutils literal notranslate"><span class="pre">user=stanley</span></code> key-value pair:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new key value pair</span>
 st2 key <span class="nb">set</span> user stanley
 
 <span class="c1"># List the key value pairs in the datastore</span>

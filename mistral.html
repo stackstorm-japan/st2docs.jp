@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -488,19 +488,19 @@ workflow can be traced back to the original parent action that invoked the workf
 <div class="section" id="basic-workflow">
 <h2>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">¶</a></h2>
 <p>Similarly to ActionChains, Mistral workflows have an action metadata file in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/actions</span></code>, and the workflow definition itself in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/actions/workflows</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/actions</span></code>, and the workflow definition itself in
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/actions/workflows</span></code>.</p>
 <p>Let’s start with a very basic workflow that calls a StackStorm action and notifies StackStorm when the
 workflow is done. The files used in this example are also located under
 <a class="reference external" href="https://github.com/StackStorm/st2/tree/master//contrib/examples">/usr/share/doc/st2/examples</a> if StackStorm is already installed (see
 also <a class="reference internal" href="start.html#start-deploy-examples"><span class="std std-ref">deploy examples</span></a>).</p>
-<p>The first task is named <code class="docutils literal"><span class="pre">run-cmd</span></code>. It executes a shell command on the server where StackStorm is
+<p>The first task is named <code class="docutils literal notranslate"><span class="pre">run-cmd</span></code>. It executes a shell command on the server where StackStorm is
 installed. A task can reference any registered StackStorm action directly. In this example, the
-<code class="docutils literal"><span class="pre">run-cmd</span></code> task calls <code class="docutils literal"><span class="pre">core.local</span></code> and passing the cmd as input. <code class="docutils literal"><span class="pre">core.local</span></code> is an action
+<code class="docutils literal notranslate"><span class="pre">run-cmd</span></code> task calls <code class="docutils literal notranslate"><span class="pre">core.local</span></code> and passing the cmd as input. <code class="docutils literal notranslate"><span class="pre">core.local</span></code> is an action
 that comes installed with StackStorm. When the workflow is invoked, StackStorm will translate the workflow
 definition appropriately before sending it to Mistral. Let’s save this as
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/examples/actions/workflows/mistral-basic.yaml</span></code> on our StackStorm server.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/examples/actions/workflows/mistral-basic.yaml</span></code> on our StackStorm server.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.mistral-basic</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">A basic workflow that runs an arbitrary linux command.</span>
@@ -520,10 +520,10 @@ definition appropriately before sending it to Mistral. Let’s save this as
 </div>
 <p>This is the corresponding StackStorm action metadata for the example above. The StackStorm pack for this
 workflow action is named “examples”. Note that the workflow is named fully qualified as
-<code class="docutils literal"><span class="pre">&lt;pack&gt;.&lt;action</span></code> in the definition above. The StackStorm action runner is <code class="docutils literal"><span class="pre">mistral-v2</span></code>. The entry
+<code class="docutils literal notranslate"><span class="pre">&lt;pack&gt;.&lt;action</span></code> in the definition above. The StackStorm action runner is <code class="docutils literal notranslate"><span class="pre">mistral-v2</span></code>. The entry
 point for the StackStorm action refers to the YAML file of the workflow definition. Let’s save this
-metadata as <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/examples/actions/mistral-basic.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+metadata as <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/examples/actions/mistral-basic.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Run a local linux command</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mistral-v2</span>
@@ -568,15 +568,15 @@ parameters.</td>
 </tr>
 </tbody>
 </table>
-<p>Next, run <code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">create</span> <span class="pre">/opt/stackstorm/packs/examples/actions/mistral-basic.yaml</span></code> to
-create this workflow action. This will register the workflow as <code class="docutils literal"><span class="pre">examples.mistral-basic</span></code> in
-StackStorm. To execute the workflow, run <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">examples.mistral-basic</span> <span class="pre">cmd=date</span> <span class="pre">-a</span></code> where <code class="docutils literal"><span class="pre">-a</span></code>
+<p>Next, run <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">create</span> <span class="pre">/opt/stackstorm/packs/examples/actions/mistral-basic.yaml</span></code> to
+create this workflow action. This will register the workflow as <code class="docutils literal notranslate"><span class="pre">examples.mistral-basic</span></code> in
+StackStorm. To execute the workflow, run <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">examples.mistral-basic</span> <span class="pre">cmd=date</span> <span class="pre">-a</span></code> where <code class="docutils literal notranslate"><span class="pre">-a</span></code>
 tells the command to return and not wait for the workflow to complete.</p>
-<p>If the workflow completed successfully, both the workflow <code class="docutils literal"><span class="pre">examples.mistral-basic</span></code> and the
-action <code class="docutils literal"><span class="pre">core.local</span></code> should have a <code class="docutils literal"><span class="pre">succeeded</span></code> status in the StackStorm action execution list. By
-default, <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">list</span></code> only returns top level executions. This means subtasks are not
+<p>If the workflow completed successfully, both the workflow <code class="docutils literal notranslate"><span class="pre">examples.mistral-basic</span></code> and the
+action <code class="docutils literal notranslate"><span class="pre">core.local</span></code> should have a <code class="docutils literal notranslate"><span class="pre">succeeded</span></code> status in the StackStorm action execution list. By
+default, <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">list</span></code> only returns top level executions. This means subtasks are not
 displayed.</p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>+--------------------------+--------------+--------------+-----------+-----------------+---------------+
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>+--------------------------+--------------+--------------+-----------+-----------------+---------------+
 <span class="p">|</span> id                       <span class="p">|</span> action.ref   <span class="p">|</span> context.user <span class="p">|</span> status    <span class="p">|</span> start_timestamp <span class="p">|</span> end_timestamp <span class="p">|</span>
 +--------------------------+--------------+--------------+-----------+-----------------+---------------+
 <span class="p">|</span> 54ee54c61e2e24152b769a47 <span class="p">|</span> examples     <span class="p">|</span> stanley      <span class="p">|</span> succeeded <span class="p">|</span> Wed, <span class="m">25</span> Feb     <span class="p">|</span> Wed, <span class="m">25</span> Feb   <span class="p">|</span>
@@ -585,8 +585,8 @@ displayed.</p>
 +--------------------------+--------------+--------------+-----------+-----------------+---------------+
 </pre></div>
 </div>
-<p>To display subtasks, run <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--show-tasks</span></code>:</p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>+--------------------------+------------+--------------+-----------+------------------------------+------------------------------+
+<p>To display subtasks, run <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--show-tasks</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>+--------------------------+------------+--------------+-----------+------------------------------+------------------------------+
 <span class="p">|</span> id                       <span class="p">|</span> action.ref <span class="p">|</span> context.user <span class="p">|</span> status    <span class="p">|</span> start_timestamp              <span class="p">|</span> end_timestamp                <span class="p">|</span>
 +--------------------------+------------+--------------+-----------+------------------------------+------------------------------+
 <span class="p">|</span> 54ee54c91e2e24152b769a49 <span class="p">|</span> core.local <span class="p">|</span> stanley      <span class="p">|</span> succeeded <span class="p">|</span> Wed, <span class="m">25</span> Feb <span class="m">2015</span> <span class="m">23</span>:03:37    <span class="p">|</span> Wed, <span class="m">25</span> Feb <span class="m">2015</span> <span class="m">23</span>:03:37    <span class="p">|</span>
@@ -596,11 +596,11 @@ displayed.</p>
 </div>
 <p>The following is a simple extension of the previous workflow definition. In this example, we have
 a second task named “task2”. It might be natural to think that “task2” will be executed after
-“task1”, i.e, in sequential order. However, when no tasks attributes like <code class="docutils literal"><span class="pre">on-complete</span></code>,
-<code class="docutils literal"><span class="pre">on-success</span></code> and <code class="docutils literal"><span class="pre">on-error</span></code> are defined, tasks are run in parallel. This is possible with
+“task1”, i.e, in sequential order. However, when no tasks attributes like <code class="docutils literal notranslate"><span class="pre">on-complete</span></code>,
+<code class="docutils literal notranslate"><span class="pre">on-success</span></code> and <code class="docutils literal notranslate"><span class="pre">on-error</span></code> are defined, tasks are run in parallel. This is possible with
 Mistral because it provides a join flow control which allows us to synchronize multiple parallel
 workflow branches and aggregate their data.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.mistral-basic-two-tasks-with-notifications</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">A basic workflow that runs two Linux commands (one in each task).</span>
@@ -623,22 +623,22 @@ workflow branches and aggregate their data.</p>
 </div>
 <div class="section" id="pausing-and-resuming-workflow-execution">
 <h2>Pausing and Resuming Workflow Execution<a class="headerlink" href="#pausing-and-resuming-workflow-execution" title="Permalink to this headline">¶</a></h2>
-<p>An execution of a Mistral workflow can be paused by running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">pause</span> <span class="pre">&lt;execution-id&gt;</span></code>.
+<p>An execution of a Mistral workflow can be paused by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">pause</span> <span class="pre">&lt;execution-id&gt;</span></code>.
 An execution must be in a running state in order for pause to be successful. The execution will
-initially go into a <code class="docutils literal"><span class="pre">pausing</span></code> state, and will go into a <code class="docutils literal"><span class="pre">paused</span></code> state when no more tasks are
-in an active state such as <code class="docutils literal"><span class="pre">running</span></code>, <code class="docutils literal"><span class="pre">pausing</span></code>, or <code class="docutils literal"><span class="pre">canceling</span></code>. When a workflow execution
-is paused, it can be resumed by running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">resume</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
-<p>The <code class="docutils literal"><span class="pre">pause</span></code> and <code class="docutils literal"><span class="pre">resume</span></code> operation will cascade down to subworkflows, whether it’s another
+initially go into a <code class="docutils literal notranslate"><span class="pre">pausing</span></code> state, and will go into a <code class="docutils literal notranslate"><span class="pre">paused</span></code> state when no more tasks are
+in an active state such as <code class="docutils literal notranslate"><span class="pre">running</span></code>, <code class="docutils literal notranslate"><span class="pre">pausing</span></code>, or <code class="docutils literal notranslate"><span class="pre">canceling</span></code>. When a workflow execution
+is paused, it can be resumed by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">resume</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pause</span></code> and <code class="docutils literal notranslate"><span class="pre">resume</span></code> operation will cascade down to subworkflows, whether it’s another
 workflow defined in a workbook or it’s another StackStorm action that is a Mistral workflow or Action
-Chain. If the <code class="docutils literal"><span class="pre">pause</span></code> operation is performed from a subworkflow or subchain, then the <code class="docutils literal"><span class="pre">pause</span></code>
-will cascade up to the parent workflow or parent chain. However, if the <code class="docutils literal"><span class="pre">resume</span></code> operation is
-performed from a subworkflow or subchain, the <code class="docutils literal"><span class="pre">resume</span></code> will not cascade up to the parent workflow
+Chain. If the <code class="docutils literal notranslate"><span class="pre">pause</span></code> operation is performed from a subworkflow or subchain, then the <code class="docutils literal notranslate"><span class="pre">pause</span></code>
+will cascade up to the parent workflow or parent chain. However, if the <code class="docutils literal notranslate"><span class="pre">resume</span></code> operation is
+performed from a subworkflow or subchain, the <code class="docutils literal notranslate"><span class="pre">resume</span></code> will not cascade up to the parent workflow
 or parent chain. This allows users to resume and troubleshoot branches individually.</p>
 </div>
 <div class="section" id="canceling-workflow-execution">
 <h2>Canceling Workflow Execution<a class="headerlink" href="#canceling-workflow-execution" title="Permalink to this headline">¶</a></h2>
 <p>An execution of a Mistral workflow can be cancelled by running
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">cancel</span> <span class="pre">&lt;execution-id&gt;</span></code>. Workflow tasks that are still running will not be
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">cancel</span> <span class="pre">&lt;execution-id&gt;</span></code>. Workflow tasks that are still running will not be
 canceled and will run to completion. No new tasks for the workflow will be scheduled.</p>
 </div>
 <div class="section" id="re-running-workflow-execution">
@@ -647,24 +647,24 @@ canceled and will run to completion. No new tasks for the workflow will be sched
 the beginning or from the task(s) that failed. The latter is useful for long running workflows with
 temporary service or network outages. Re-running the workflow execution from the beginning is
 exactly like re-running any StackStorm execution with the command
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
 <p>The re-run is a completely separate execution with a new execution ID in both StackStorm and Mistral.
 Re-running the workflow from where it errored is slightly different. To retain context, the
 original workflow execution is reused in Mistral but a new StackStorm execution will be created to stay
-consistent in StackStorm. The re-run command has a new <code class="docutils literal"><span class="pre">--tasks</span></code> option that takes a list of task
+consistent in StackStorm. The re-run command has a new <code class="docutils literal notranslate"><span class="pre">--tasks</span></code> option that takes a list of task
 names to re-run.</p>
 <p>For example, given a workflow that fails at task3 and task4 on separate parallel branches, the
-command <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--tasks</span> <span class="pre">task3</span> <span class="pre">task4</span></code> will resume the Mistral
+command <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--tasks</span> <span class="pre">task3</span> <span class="pre">task4</span></code> will resume the Mistral
 workflow execution and re-run both task3 and task4 using original inputs. Both the workflow and
-task execution in Mistral have to be in an <code class="docutils literal"><span class="pre">errored</span></code> state for re-run.</p>
+task execution in Mistral have to be in an <code class="docutils literal notranslate"><span class="pre">errored</span></code> state for re-run.</p>
 <p>If using a Mistral workbook, tasks of subworkflows can also be re-run. For example, if the main
 workflow has a task1 that calls subflow1, then to re-run subtask1 of subflow1, the syntax for the
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span></code> command would be
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--tasks</span> <span class="pre">task1.subtask1</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span></code> command would be
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--tasks</span> <span class="pre">task1.subtask1</span></code>.</p>
 <p>If the task to re-run is a “with-items” task, there is an option to re-run only failed iterations.
 For example, task1 is a with-items task with 5 items. Let’s say 2 of the items failed. By
-specifying the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">--tasks</span> <span class="pre">task1</span> <span class="pre">task2</span> <span class="pre">--no-reset</span> <span class="pre">task1</span></code> option, task1 will
-only re-run the 2 items that failed. If the <code class="docutils literal"><span class="pre">--no-reset</span></code> option is not provided, then all 5
+specifying the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">--tasks</span> <span class="pre">task1</span> <span class="pre">task2</span> <span class="pre">--no-reset</span> <span class="pre">task1</span></code> option, task1 will
+only re-run the 2 items that failed. If the <code class="docutils literal notranslate"><span class="pre">--no-reset</span></code> option is not provided, then all 5
 items will be re-run.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -676,7 +676,7 @@ in another StackStorm action is not currently supported.</p>
 <div class="section" id="publishing-variables-in-mistral-workflows">
 <h2>Publishing Variables in Mistral Workflows<a class="headerlink" href="#publishing-variables-in-mistral-workflows" title="Permalink to this headline">¶</a></h2>
 <p>A Mistral task can publish results from a task as variables that can be consumed in other tasks:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">get_hostname</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core.local</span>
         <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
@@ -685,14 +685,14 @@ in another StackStorm action is not currently supported.</p>
             <span class="l l-Scalar l-Scalar-Plain">hostname</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(get_hostname).result.stdout %&gt;</span>
 </pre></div>
 </div>
-<p>In the above example, <code class="docutils literal"><span class="pre">get_hostname</span></code> is a <code class="docutils literal"><span class="pre">core.local</span></code> action which runs the command
-<code class="docutils literal"><span class="pre">hostname</span></code>. The <code class="docutils literal"><span class="pre">core.local</span></code> action produces output consisting of the fields <code class="docutils literal"><span class="pre">stdout</span></code>,
-<code class="docutils literal"><span class="pre">stderr</span></code>, <code class="docutils literal"><span class="pre">exit_code</span></code> etc.</p>
-<p>We just want to publish the variable <code class="docutils literal"><span class="pre">stdout</span></code> from it, for the rest of tasks to consume. To
-reference the result of the task, use the <code class="docutils literal"><span class="pre">task</span></code> function, which returns a dictionary containing
+<p>In the above example, <code class="docutils literal notranslate"><span class="pre">get_hostname</span></code> is a <code class="docutils literal notranslate"><span class="pre">core.local</span></code> action which runs the command
+<code class="docutils literal notranslate"><span class="pre">hostname</span></code>. The <code class="docutils literal notranslate"><span class="pre">core.local</span></code> action produces output consisting of the fields <code class="docutils literal notranslate"><span class="pre">stdout</span></code>,
+<code class="docutils literal notranslate"><span class="pre">stderr</span></code>, <code class="docutils literal notranslate"><span class="pre">exit_code</span></code> etc.</p>
+<p>We just want to publish the variable <code class="docutils literal notranslate"><span class="pre">stdout</span></code> from it, for the rest of tasks to consume. To
+reference the result of the task, use the <code class="docutils literal notranslate"><span class="pre">task</span></code> function, which returns a dictionary containing
 attributes for the task such as id, state, result, and additional info.</p>
 <p>Another example is shown below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">create_new_node</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">rackspace.create_vm</span>
         <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
@@ -707,15 +707,15 @@ attributes for the task such as id, state, result, and additional info.</p>
           <span class="l l-Scalar l-Scalar-Plain">ipv6_address</span><span class="p p-Indicator">:</span> <span class="s">&#39;&lt;%</span><span class="nv"> </span><span class="s">task(create_new_node).result.result.public_ips[0]</span><span class="nv"> </span><span class="s">%&gt;&#39;</span>
 </pre></div>
 </div>
-<p>In the above example, the action <code class="docutils literal"><span class="pre">rackspace.create_vm</span></code> is a Python action that produces a result
-object. We just want to publish the IP addresses from the <code class="docutils literal"><span class="pre">public_ips</span></code> list field from the
+<p>In the above example, the action <code class="docutils literal notranslate"><span class="pre">rackspace.create_vm</span></code> is a Python action that produces a result
+object. We just want to publish the IP addresses from the <code class="docutils literal notranslate"><span class="pre">public_ips</span></code> list field from the
 result object.</p>
-<p>Please note that <code class="docutils literal"><span class="pre">result.result</span></code> is not a typo. The Python action posts output to a key named
-<code class="docutils literal"><span class="pre">result</span></code> for the st2 action execution and the Mistral task function puts the result of the Python
-action in <code class="docutils literal"><span class="pre">result</span></code> of its output dictionary.</p>
+<p>Please note that <code class="docutils literal notranslate"><span class="pre">result.result</span></code> is not a typo. The Python action posts output to a key named
+<code class="docutils literal notranslate"><span class="pre">result</span></code> for the st2 action execution and the Mistral task function puts the result of the Python
+action in <code class="docutils literal notranslate"><span class="pre">result</span></code> of its output dictionary.</p>
 <p>Such published variables are accessible as input parameters to other tasks in the workflow. An
-example of using <code class="docutils literal"><span class="pre">ipv4_address</span></code> from the above example in another task is shown below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+example of using <code class="docutils literal notranslate"><span class="pre">ipv4_address</span></code> from the above example in another task is shown below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="c1"># ... &lt;snap&gt;</span>
 
     <span class="l l-Scalar l-Scalar-Plain">setup_ipv4_dns</span><span class="p p-Indicator">:</span>
@@ -733,9 +733,9 @@ example of using <code class="docutils literal"><span class="pre">ipv4_address</
 </div>
 <div class="section" id="stitching-together-a-more-complex-workflow">
 <h2>Stitching Together a More Complex Workflow<a class="headerlink" href="#stitching-together-a-more-complex-workflow" title="Permalink to this headline">¶</a></h2>
-<p>The following is a mock up of a more complex workflow. In this mock up running simple <code class="docutils literal"><span class="pre">printf</span></code>
-and <code class="docutils literal"><span class="pre">sleep</span></code> commands, the workflow demonstrates nested workflows, fork, and join:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.0&quot;</span>
+<p>The following is a mock up of a more complex workflow. In this mock up running simple <code class="docutils literal notranslate"><span class="pre">printf</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sleep</span></code> commands, the workflow demonstrates nested workflows, fork, and join:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.0&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">examples.mistral-workbook-complex</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">A sample workflow that demonstrates nested workflows, forks, and join.</span>
 
@@ -833,7 +833,7 @@ and <code class="docutils literal"><span class="pre">sleep</span></code> command
 </pre></div>
 </div>
 <p>Since there are multiple workflows defined in this workbook, the workflow author has to specify which workflow to execute in the metadata:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Run a series of simulated actions.</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">entry_point</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">workflows/mistral-workbook-complex.yaml</span>
@@ -856,17 +856,17 @@ and <code class="docutils literal"><span class="pre">sleep</span></code> command
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mistral-v2</span>
 </pre></div>
 </div>
-<p>To test out this workflow, save the metadata file to <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/examples/actions/</span></code>
-and the workflow file to <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/examples/actions/workflows</span></code>. Run
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">create</span> <span class="pre">/opt/stackstorm/packs/examples/actions/mistral-workbook-complex.yaml</span></code> to
-create the action and run <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">examples.mistral-workbook-complex</span> <span class="pre">vm_name=&quot;vmtest1&quot;</span> <span class="pre">-a</span></code> to
+<p>To test out this workflow, save the metadata file to <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/examples/actions/</span></code>
+and the workflow file to <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/examples/actions/workflows</span></code>. Run
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">create</span> <span class="pre">/opt/stackstorm/packs/examples/actions/mistral-workbook-complex.yaml</span></code> to
+create the action and run <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">examples.mistral-workbook-complex</span> <span class="pre">vm_name=&quot;vmtest1&quot;</span> <span class="pre">-a</span></code> to
 test.</p>
 </div>
 <div class="section" id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
 <p>The Mistral CLI includes tools for performing high-level sanity checks of Mistral workflow YAML
 files:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Validate a workflow</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Validate a workflow</span>
 mistral workflow-validate /path/to/workflow.yaml
 
 <span class="c1"># Validate a workbook</span>
@@ -895,7 +895,7 @@ section about how to fine-tune the Mistral workflows completion time opposed to 
 <p>Since v2.7, the results tracking mechanism is replaced with a callback mechanism from Mistral. Instead of StackStorm
 querying Mistral at regular interval, Mistral is configured to callback StackStorm on task and workflow completion.
 With the callback mechanism, it is possible to trace the events sent to StackStorm.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Identify the Mistral workflow execution ID which is different</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identify the Mistral workflow execution ID which is different</span>
 st2 execution get &lt;st2-action-execution-id&gt; -dj <span class="p">|</span> grep workflow_execution_id
 
 <span class="c1"># Grep the log entries from the Mistral log, typically at /var/log/mistral/mistral-server.log</span>
@@ -903,7 +903,7 @@ sudo tail -n <span class="m">1000</span> /var/log/mistral/mistral-server.log <sp
 </pre></div>
 </div>
 <p>The returned list of log entries would look something similar to the following.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">,</span><span class="mi">811</span> <span class="mi">140124959618704</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_LAUNCHED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="n">will</span> <span class="n">be</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">,</span><span class="mi">811</span> <span class="mi">140124959618704</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_LAUNCHED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="n">will</span> <span class="n">be</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
 <span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">,</span><span class="mi">844</span> <span class="mi">140124959618704</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_LAUNCHED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="ow">is</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
 <span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">06</span><span class="p">,</span><span class="mi">492</span> <span class="mi">140124958584912</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">task</span> <span class="n">event</span> <span class="n">TASK_SUCCEEDED</span> <span class="k">for</span> <span class="n">c8731e6a</span><span class="o">-</span><span class="mi">2464</span><span class="o">-</span><span class="mi">4</span><span class="n">a59</span><span class="o">-</span><span class="n">bf46</span><span class="o">-</span><span class="mi">501</span><span class="n">a80215298</span> <span class="n">will</span> <span class="n">be</span> <span class="n">processed</span> <span class="k">for</span> <span class="n">st2</span><span class="o">.</span>
 <span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">06</span><span class="p">,</span><span class="mi">492</span> <span class="mi">140124958584912</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">task</span> <span class="n">event</span> <span class="n">TASK_SUCCEEDED</span> <span class="k">for</span> <span class="n">c8731e6a</span><span class="o">-</span><span class="mi">2464</span><span class="o">-</span><span class="mi">4</span><span class="n">a59</span><span class="o">-</span><span class="n">bf46</span><span class="o">-</span><span class="mi">501</span><span class="n">a80215298</span> <span class="ow">is</span> <span class="n">processed</span> <span class="k">for</span> <span class="n">st2</span><span class="o">.</span>
@@ -913,7 +913,7 @@ sudo tail -n <span class="m">1000</span> /var/log/mistral/mistral-server.log <sp
 </div>
 <p>The results tracking mechanism is still available for manual intervention and can be enabled on an individual workflow
 basis in case StackStorm or Mistral services is offline during a callback operation.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Enable the results tracking for an individual workflow execution</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable the results tracking for an individual workflow execution</span>
 st2-track-result &lt;st2-action-execution-id&gt; --config-dir /etc/st2
 
 <span class="c1"># Disable the results tracking for an individual workflow execution</span>

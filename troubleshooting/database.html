@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,19 +467,19 @@
 <p>This section contains information on how to troubleshoot MongoDB database-related issues.</p>
 <div class="section" id="mongodb-authentication">
 <h2>MongoDB Authentication<a class="headerlink" href="#mongodb-authentication" title="Permalink to this headline">¶</a></h2>
-<p>The StackStorm installation script automatically creates two new MongoDB users, <code class="docutils literal"><span class="pre">stackstorm</span></code> and <code class="docutils literal"><span class="pre">admin</span></code>.
-The user <code class="docutils literal"><span class="pre">stackstorm</span></code> is granted the <a class="reference external" href="https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite">readWrite</a>
-role on the <code class="docutils literal"><span class="pre">st2</span></code> database. The user <code class="docutils literal"><span class="pre">admin</span></code> is granted the
+<p>The StackStorm installation script automatically creates two new MongoDB users, <code class="docutils literal notranslate"><span class="pre">stackstorm</span></code> and <code class="docutils literal notranslate"><span class="pre">admin</span></code>.
+The user <code class="docutils literal notranslate"><span class="pre">stackstorm</span></code> is granted the <a class="reference external" href="https://docs.mongodb.com/manual/reference/built-in-roles/#readWrite">readWrite</a>
+role on the <code class="docutils literal notranslate"><span class="pre">st2</span></code> database. The user <code class="docutils literal notranslate"><span class="pre">admin</span></code> is granted the
 <a class="reference external" href="https://docs.mongodb.com/manual/reference/built-in-roles/#dbAdmin">dbAdmin</a> role on the admin db.</p>
 <p>The script generates a random password, and assigns it to both users. The password is stored in the
-<code class="docutils literal"><span class="pre">[database]</span></code> section of <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>, e.g.:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
+<code class="docutils literal notranslate"><span class="pre">[database]</span></code> section of <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>, e.g.:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">username</span> <span class="o">=</span> <span class="s">stackstorm</span>
 <span class="na">password</span> <span class="o">=</span> <span class="s">ZXqvqSRejrY6gKO9wvYgJFdh</span>
 </pre></div>
 </div>
 <p>Here’s an example of using that username and password to authenticate using the Mongo CLI:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span>vagrant@st2vagrant ~<span class="o">]</span>$ mongo -u stackstorm -p ZXqvqSRejrY6gKO9wvYgJFdh st2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>vagrant@st2vagrant ~<span class="o">]</span>$ mongo -u stackstorm -p ZXqvqSRejrY6gKO9wvYgJFdh st2
 MongoDB shell version: <span class="m">3</span>.2.16
 connecting to: st2
 &gt;
@@ -490,8 +490,8 @@ connecting to: st2
 <h2>Troubleshooting Performance and Missing Index-related Issues<a class="headerlink" href="#troubleshooting-performance-and-missing-index-related-issues" title="Permalink to this headline">¶</a></h2>
 <p>If some of the API requests are slow, or you receive a “too much data” error, this could be caused
 by an inefficient database query or a missing index.</p>
-<p>To troubleshoot this issue, you should start the service that has an issue (e.g. <code class="docutils literal"><span class="pre">st2api</span></code>) with the
-<code class="docutils literal"><span class="pre">--debug</span></code> and <code class="docutils literal"><span class="pre">--profile</span></code> flag.</p>
+<p>To troubleshoot this issue, you should start the service that has an issue (e.g. <code class="docutils literal notranslate"><span class="pre">st2api</span></code>) with the
+<code class="docutils literal notranslate"><span class="pre">--debug</span></code> and <code class="docutils literal notranslate"><span class="pre">--profile</span></code> flag.</p>
 <p>When this flag is used, the service runs in profiling mode. All the executed MongoDB queries and
 related profiling information (i.e. which indexes were used, how many records/rows were scanned, how
 long the query took, etc.) will be logged in the service log under the DEBUG log level.</p>

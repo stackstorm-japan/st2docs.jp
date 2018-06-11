@@ -253,8 +253,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -458,16 +458,16 @@
             </div>
             
   <p>If you are trying to access the API from outside the box and you have configured nginx according to
-these instructions, use <code class="docutils literal"><span class="pre">https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</span></code>.</p>
+these instructions, use <code class="docutils literal notranslate"><span class="pre">https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</span></code>.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;User-Agent: manual/curl&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;User-Agent: manual/curl&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
 </pre></div>
 </div>
-<p>Similarly, you can connect to auth REST endpoints with <code class="docutils literal"><span class="pre">https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</span></code>.</p>
-<p>You can see the actual REST endpoint for a resource by adding a <code class="docutils literal"><span class="pre">--debug</span></code> option to the CLI
+<p>Similarly, you can connect to auth REST endpoints with <code class="docutils literal notranslate"><span class="pre">https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</span></code>.</p>
+<p>You can see the actual REST endpoint for a resource by adding a <code class="docutils literal notranslate"><span class="pre">--debug</span></code> option to the CLI
 command for the appropriate resource.</p>
 <p>For example, to see the endpoint for getting actions, invoke:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug action list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug action list
 </pre></div>
 </div>
 

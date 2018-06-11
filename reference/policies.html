@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -465,11 +465,11 @@
   <div class="section" id="policies">
 <h1>Policies<a class="headerlink" href="#policies" title="Permalink to this headline">¶</a></h1>
 <p>Policies allows users to enforce different rules regarding action executions.</p>
-<p>To list the types of policy that are available, run: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">policy-type</span> <span class="pre">list</span></code>.</p>
-<p>Policy configuration files should be stored in the <code class="docutils literal"><span class="pre">policies</span></code> folder in their respective packs,
+<p>To list the types of policy that are available, run: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">policy-type</span> <span class="pre">list</span></code>.</p>
+<p>Policy configuration files should be stored in the <code class="docutils literal notranslate"><span class="pre">policies</span></code> folder in their respective packs,
 similar to actions and rules. Policies can be loaded into StackStorm via
-<code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-policies</span></code>. Once policies are loaded into StackStorm, run the command
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">policy</span> <span class="pre">list</span></code> to view the list of policies in effect.</p>
+<code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-policies</span></code>. Once policies are loaded into StackStorm, run the command
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">policy</span> <span class="pre">list</span></code> to view the list of policies in effect.</p>
 <div class="section" id="concurrency">
 <h2>Concurrency<a class="headerlink" href="#concurrency" title="Permalink to this headline">¶</a></h2>
 <p>The concurrency policy enforces the number of executions that can run simultaneously for a
@@ -477,16 +477,16 @@ specified action.</p>
 <p>By default when a threshold is reached, action execution is delayed until the number of
 concurrent executions of a particular actions falls below the threshold. As an alternative, users
 can specify that new executions are canceled, rather than delayed.</p>
-<p>There are two forms of concurrency policy: <code class="docutils literal"><span class="pre">action.concurrency</span></code> and <code class="docutils literal"><span class="pre">action.concurrency.attr</span></code>.</p>
+<p>There are two forms of concurrency policy: <code class="docutils literal notranslate"><span class="pre">action.concurrency</span></code> and <code class="docutils literal notranslate"><span class="pre">action.concurrency.attr</span></code>.</p>
 <div class="section" id="action-concurrency">
 <h3>action.concurrency<a class="headerlink" href="#action-concurrency" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">action.concurrency</span></code> policy limits the concurrent executions for the action. The following
-is an example of a policy file with concurrency defined for <code class="docutils literal"><span class="pre">demo.my_action</span></code>. Please note that
-the <code class="docutils literal"><span class="pre">resource_ref</span></code> and <code class="docutils literal"><span class="pre">policy_type</span></code> are the fully qualified name for the action and policy
-type respectively. The <code class="docutils literal"><span class="pre">threshold</span></code> parameter defines how many concurrent instances are allowed.</p>
-<p>In this example, no more than 10 instances of <code class="docutils literal"><span class="pre">demo.my_action</span></code> can be run simultaneously. Any
+<p>The <code class="docutils literal notranslate"><span class="pre">action.concurrency</span></code> policy limits the concurrent executions for the action. The following
+is an example of a policy file with concurrency defined for <code class="docutils literal notranslate"><span class="pre">demo.my_action</span></code>. Please note that
+the <code class="docutils literal notranslate"><span class="pre">resource_ref</span></code> and <code class="docutils literal notranslate"><span class="pre">policy_type</span></code> are the fully qualified name for the action and policy
+type respectively. The <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter defines how many concurrent instances are allowed.</p>
+<p>In this example, no more than 10 instances of <code class="docutils literal notranslate"><span class="pre">demo.my_action</span></code> can be run simultaneously. Any
 execution requests above this threshold will be postponed.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_action.concurrency</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_action.concurrency</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Limits the concurrent executions for my action.</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">resource_ref</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">demo.my_action</span>
@@ -496,9 +496,9 @@ execution requests above this threshold will be postponed.</p>
     <span class="l l-Scalar l-Scalar-Plain">threshold</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
 </pre></div>
 </div>
-<p>If you want further actions to be canceled instead of delayed, <code class="docutils literal"><span class="pre">action</span></code> attribute should be
-changed to <code class="docutils literal"><span class="pre">cancel</span></code> as shown below.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_action.concurrency</span>
+<p>If you want further actions to be canceled instead of delayed, <code class="docutils literal notranslate"><span class="pre">action</span></code> attribute should be
+changed to <code class="docutils literal notranslate"><span class="pre">cancel</span></code> as shown below.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_action.concurrency</span>
  <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Limits the concurrent executions for my action.</span>
  <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
  <span class="l l-Scalar l-Scalar-Plain">resource_ref</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">demo.my_action</span>
@@ -511,13 +511,13 @@ changed to <code class="docutils literal"><span class="pre">cancel</span></code>
 </div>
 <div class="section" id="action-concurrency-attr">
 <h3>action.concurrency.attr<a class="headerlink" href="#action-concurrency-attr" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">action.concurrency.attr</span></code> policy limits the executions for the action by input arguments.
-Let’s say <code class="docutils literal"><span class="pre">demo.my_remote_action</span></code> has an input argument called <code class="docutils literal"><span class="pre">hostname</span></code>. This is the name of
+<p>The <code class="docutils literal notranslate"><span class="pre">action.concurrency.attr</span></code> policy limits the executions for the action by input arguments.
+Let’s say <code class="docutils literal notranslate"><span class="pre">demo.my_remote_action</span></code> has an input argument called <code class="docutils literal notranslate"><span class="pre">hostname</span></code>. This is the name of
 the host where the remote command or script runs. By using the policy type
-<code class="docutils literal"><span class="pre">action.concurrency.attr</span></code> and specifying <code class="docutils literal"><span class="pre">hostname</span></code> as one of the attributes in the policy,
-we can limit the number of concurrent <code class="docutils literal"><span class="pre">demo.my_remote_action</span></code> actions running for a given remote
+<code class="docutils literal notranslate"><span class="pre">action.concurrency.attr</span></code> and specifying <code class="docutils literal notranslate"><span class="pre">hostname</span></code> as one of the attributes in the policy,
+we can limit the number of concurrent <code class="docutils literal notranslate"><span class="pre">demo.my_remote_action</span></code> actions running for a given remote
 host.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_remote_action.concurrency</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">my_remote_action.concurrency</span>
  <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Limits the concurrent executions for my action.</span>
  <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
  <span class="l l-Scalar l-Scalar-Plain">resource_ref</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">demo.my_remote_action</span>
@@ -535,16 +535,16 @@ host.</p>
 service such as ZooKeeper or Redis to work.</p>
 </div>
 <p>If you have installed a coordination service in your network, you need to configure StackStorm to
-connect to that backend service. This is done in the <code class="docutils literal"><span class="pre">coordination</span></code> section of
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>.</p>
+connect to that backend service. This is done in the <code class="docutils literal notranslate"><span class="pre">coordination</span></code> section of
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>.</p>
 <p>The following are examples for ZooKeeper and Redis:</p>
 <p>ZooKeeper:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[coordination]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[coordination]</span>
 <span class="na">url</span> <span class="o">=</span> <span class="s">kazoo://username:password@host:port</span>
 </pre></div>
 </div>
 <p>Redis:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[coordination]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[coordination]</span>
 <span class="na">url</span> <span class="o">=</span> <span class="s">redis://:password@host:port</span>
 </pre></div>
 </div>
@@ -556,9 +556,9 @@ connect to that backend service. This is done in the <code class="docutils liter
 <li>PostgreSQL</li>
 <li>file (for testing when all the services are running on a single host)</li>
 </ul>
-<p>StackStorm utilizes the <code class="docutils literal"><span class="pre">OpenStack</span> <span class="pre">Tooz</span></code> library for communicating with the
-coordination backend. The coordination backend must support the <code class="docutils literal"><span class="pre">Locking</span></code>
-functionality as defined by the <code class="docutils literal"><span class="pre">Tooz</span></code> interface. Please refrence the
+<p>StackStorm utilizes the <code class="docutils literal notranslate"><span class="pre">OpenStack</span> <span class="pre">Tooz</span></code> library for communicating with the
+coordination backend. The coordination backend must support the <code class="docutils literal notranslate"><span class="pre">Locking</span></code>
+functionality as defined by the <code class="docutils literal notranslate"><span class="pre">Tooz</span></code> interface. Please refrence the
 <a class="reference external" href="https://docs.openstack.org/tooz/latest/user/compatibility.html">OpenStack Tooz compatability page</a>
 for more information what interfaces are implemented by various backends.</p>
 <p>For the full list of the supported backends and how to configure them, please visit
@@ -566,7 +566,7 @@ for more information what interfaces are implemented by various backends.</p>
 <p>Some of these coordination backends also require corresponding client libraries to be installed
 in StackStorm virtualenv. We do not ship these libraries by default. As an example, to install the client
 library in StackStorm virtualenv, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo su
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
 
 <span class="c1"># Example when using redis backend</span>
 /opt/stackstorm/st2/bin/pip install redis
@@ -581,12 +581,12 @@ library in StackStorm virtualenv, run:</p>
 <h2>Retry<a class="headerlink" href="#retry" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="action-retry-in-st2-actions">
 <h3>action.retry in st2 actions<a class="headerlink" href="#action-retry-in-st2-actions" title="Permalink to this headline">¶</a></h3>
-<p>Retry policy (<code class="docutils literal"><span class="pre">action.retry</span></code>) allows you to automatically retry (re-run) an action when a
+<p>Retry policy (<code class="docutils literal notranslate"><span class="pre">action.retry</span></code>) allows you to automatically retry (re-run) an action when a
 particular failure condition is met. Right now we support retrying actions which have failed or
 timed out.</p>
-<p>The example below shows how to automatically retry the <code class="docutils literal"><span class="pre">core.http</span></code> action up to two times if it
+<p>The example below shows how to automatically retry the <code class="docutils literal notranslate"><span class="pre">core.http</span></code> action up to two times if it
 times out:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">http.retry</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Retry core.http action on timeout.</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -600,9 +600,9 @@ times out:</p>
 </div>
 <p>Keep in mind that retrying an execution results in a new execution which shares all the attributes
 from the retried execution (parameters, context, etc).</p>
-<p>Maximum value of the <code class="docutils literal"><span class="pre">delay</span></code> parameter is <code class="docutils literal"><span class="pre">120</span></code> seconds. Keep in mind that right now, retry
-functionality is not <code class="docutils literal"><span class="pre">st2notifier</span></code> service restart safe. This means if there are any pending
-executions to be retried and <code class="docutils literal"><span class="pre">st2notifier</span></code> is restarted, those executions will be lost.</p>
+<p>Maximum value of the <code class="docutils literal notranslate"><span class="pre">delay</span></code> parameter is <code class="docutils literal notranslate"><span class="pre">120</span></code> seconds. Keep in mind that right now, retry
+functionality is not <code class="docutils literal notranslate"><span class="pre">st2notifier</span></code> service restart safe. This means if there are any pending
+executions to be retried and <code class="docutils literal notranslate"><span class="pre">st2notifier</span></code> is restarted, those executions will be lost.</p>
 </div>
 <div class="section" id="action-retry-in-workflows">
 <h3>action.retry in workflows<a class="headerlink" href="#action-retry-in-workflows" title="Permalink to this headline">¶</a></h3>

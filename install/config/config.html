@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -468,10 +468,10 @@
 <h1>Nginx and WSGI<a class="headerlink" href="#nginx-and-wsgi" title="Permalink to this headline">¶</a></h1>
 <p>Production StackStorm installations use <a class="reference external" href="http://nginx.org/en/">nginx</a> for SSL termination, serving
 Web UI static content, and running st2auth and st2api as WSGI apps via gunicorn/uwsgi. StackStorm nginx
-configurations can be found at <code class="docutils literal"><span class="pre">/etc/nginx/sites-enabled/st2*.conf</span></code>.</p>
-<p><code class="docutils literal"><span class="pre">st2auth</span></code> and <code class="docutils literal"><span class="pre">st2api</span></code> can also run using a built-in simple Python server. This is used for
+configurations can be found at <code class="docutils literal notranslate"><span class="pre">/etc/nginx/sites-enabled/st2*.conf</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">st2auth</span></code> and <code class="docutils literal notranslate"><span class="pre">st2api</span></code> can also run using a built-in simple Python server. This is used for
 development and strongly discouraged for any production. Be aware that some settings in
-<code class="docutils literal"><span class="pre">/etc/st2.conf</span></code> are only effective when running in development mode, and don’t apply when
+<code class="docutils literal notranslate"><span class="pre">/etc/st2.conf</span></code> are only effective when running in development mode, and don’t apply when
 running under WSGI servers. Refer to the comments in
 <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.conf.sample">st2.conf.sample</a>.</p>
 </div>
@@ -479,7 +479,7 @@ running under WSGI servers. Refer to the comments in
 <h1>Configure MongoDB<a class="headerlink" href="#configure-mongodb" title="Permalink to this headline">¶</a></h1>
 <p>StackStorm requires a connection to MongoDB to operate.</p>
 <p>In <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">/etc/st2/st2.conf</a> include the following section:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">host</span> <span class="o">=</span> <span class="s">&lt;MongoDB host&gt;</span>
 <span class="na">port</span> <span class="o">=</span> <span class="s">&lt;MongoDB server port&gt;</span>
 <span class="na">db_name</span> <span class="o">=</span> <span class="s">&lt;User define database name, usually st2&gt;</span>
@@ -487,10 +487,10 @@ running under WSGI servers. Refer to the comments in
 <span class="na">password</span> <span class="o">=</span> <span class="s">&lt;password for db login&gt;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> properties are optional.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> properties are optional.</p>
 <p id="ref-mongo-ha-config">StackStorm also supports <a class="reference external" href="https://docs.mongodb.com/v3.4/core/replication-introduction/">MongoDB replica sets</a> using <a class="reference external" href="https://docs.mongodb.com/v3.4/reference/connection-string/">MongoDB URI string</a>.</p>
 <p>In <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">/etc/st2/st2.conf</a> include the following section:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">host</span> <span class="o">=</span> <span class="s">mongodb://&lt;#MDB_NODE_1&gt;,&lt;#MDB_NODE_2&gt;,&lt;#MDB_NODE_3&gt;/?replicaSet=&lt;#MDB_REPLICA_SET_NAME&gt;</span>
 </pre></div>
 </div>
@@ -503,7 +503,7 @@ running under WSGI servers. Refer to the comments in
 <p>StackStorm also supports SSL/TLS to encrypt connections. A few extra properties need be added to the
 configuration apart from the ones outlined above.</p>
 <p>In <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">/etc/st2/st2.conf</a> include the following section:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[database]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[database]</span>
 <span class="na">...</span>
 <span class="na">ssl</span> <span class="o">=</span> <span class="s">&lt;True or False&gt;</span>
 <span class="na">ssl_keyfile</span> <span class="o">=</span> <span class="s">&lt;Path to key file&gt;</span>
@@ -514,16 +514,16 @@ configuration apart from the ones outlined above.</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ssl</span></code> - Enable or disable connection over TLS/SSL or not. Default is False.</li>
-<li><code class="docutils literal"><span class="pre">ssl_keyfile</span></code> - Private keyfile used to identify the local connection against MongoDB. If
+<li><code class="docutils literal notranslate"><span class="pre">ssl</span></code> - Enable or disable connection over TLS/SSL or not. Default is False.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ssl_keyfile</span></code> - Private keyfile used to identify the local connection against MongoDB. If
 specified ssl is assumed to be True.</li>
-<li><code class="docutils literal"><span class="pre">ssl_certfile</span></code> - Certificate file used to identify the local connection. If specified ssl is
+<li><code class="docutils literal notranslate"><span class="pre">ssl_certfile</span></code> - Certificate file used to identify the local connection. If specified ssl is
 assumed to be True.</li>
-<li><code class="docutils literal"><span class="pre">ssl_cert_reqs</span></code> - Specifies whether a certificate is required from the other side of the
+<li><code class="docutils literal notranslate"><span class="pre">ssl_cert_reqs</span></code> - Specifies whether a certificate is required from the other side of the
 connection, and whether it will be validated if provided.</li>
-<li><code class="docutils literal"><span class="pre">ssl_ca_certs</span></code> - Certificates file containing a set of concatenated CA certificates, which are
+<li><code class="docutils literal notranslate"><span class="pre">ssl_ca_certs</span></code> - Certificates file containing a set of concatenated CA certificates, which are
 used to validate certificates passed from MongoDB.</li>
-<li><code class="docutils literal"><span class="pre">ssl_match_hostname</span></code> - Enable or disable hostname matching. Not recommended to disable and
+<li><code class="docutils literal notranslate"><span class="pre">ssl_match_hostname</span></code> - Enable or disable hostname matching. Not recommended to disable and
 defaults to True.</li>
 </ul>
 <div class="admonition note">
@@ -540,14 +540,14 @@ defaults to True.</li>
 <h1>Configure RabbitMQ<a class="headerlink" href="#configure-rabbitmq" title="Permalink to this headline">¶</a></h1>
 <p>StackStorm uses RabbitMQ for messaging between its services.</p>
 <p>In <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">/etc/st2/st2.conf</a> include the following section:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[messaging]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[messaging]</span>
 <span class="na">url</span> <span class="o">=</span> <span class="s">amqp://#RMQ_USER:#RMQ_PASSWD@#RMQ_HOST:#RMQ_PORT/#RMQ_VHOST</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">#RMQ_VHOST</span></code> property is optional and can be left blank.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#RMQ_VHOST</span></code> property is optional and can be left blank.</p>
 <p id="ref-rabbitmq-cluster-config">StackStorm also supports <a class="reference external" href="https://www.rabbitmq.com/clustering.html">RabbitMQ cluster</a>.</p>
 <p>In <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">/etc/st2/st2.conf</a> include the following section:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[messaging]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[messaging]</span>
 <span class="na">cluster_urls</span> <span class="o">=</span> <span class="s">amqp://#RMQ_USER:#RMQ_PASSWD@#RMQ_NODE_1:#RMQ_PORT/#RMQ_VHOST,</span>
 <span class="s">               amqp://#RMQ_USER:#RMQ_PASSWD@#RMQ_NODE_2:#RMQ_PORT/#RMQ_VHOST,</span>
 <span class="s">               amqp://#RMQ_USER:#RMQ_PASSWD@#RMQ_NODE_3:#RMQ_PORT/#RMQ_VHOST</span>
@@ -563,10 +563,10 @@ defaults to True.</li>
 <span id="config-configure-ssh"></span><h1>Configure SSH<a class="headerlink" href="#configure-ssh" title="Permalink to this headline">¶</a></h1>
 <p>To run actions on remote hosts, StackStorm uses SSH. We recommend using public key-based based SSH
 access on all remote hosts.</p>
-<p>The StackStorm ssh user and path to SSH key are set in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>. During installation,, the
-one-line install script configures ssh on the local box for the user <code class="docutils literal"><span class="pre">stanley</span></code>.</p>
-<p>Follow these steps to configure a <code class="docutils literal"><span class="pre">stanley</span></code> user on remote sytems:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>useradd stanley
+<p>The StackStorm ssh user and path to SSH key are set in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>. During installation,, the
+one-line install script configures ssh on the local box for the user <code class="docutils literal notranslate"><span class="pre">stanley</span></code>.</p>
+<p>Follow these steps to configure a <code class="docutils literal notranslate"><span class="pre">stanley</span></code> user on remote sytems:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>useradd stanley
 mkdir -p /home/stanley/.ssh
 chmod <span class="m">0700</span> /home/stanley/.ssh
 
@@ -585,7 +585,7 @@ sudo sed -i -r <span class="s2">&quot;s/^Defaults\s+\+requiretty/# Defaults +req
 </pre></div>
 </div>
 <p>To verify, run this from your StackStorm system:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># ssh should not require a password since the key is already provided</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ssh should not require a password since the key is already provided</span>
 ssh -i /home/stanley/.ssh/stanley_rsa stanely@host.example.com
 
 <span class="c1"># make sure that no password is required</span>
@@ -596,8 +596,8 @@ sudo su
 <h2>SSH Troubleshooting<a class="headerlink" href="#ssh-troubleshooting" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Validate that passwordless SSH configuration works for the destination. Assuming the default
-user <code class="docutils literal"><span class="pre">stanley</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo ssh -i /home/stanley/.ssh/stanley_rsa -t stanley@host.example.com uname -a
+user <code class="docutils literal notranslate"><span class="pre">stanley</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ssh -i /home/stanley/.ssh/stanley_rsa -t stanley@host.example.com uname -a
 </pre></div>
 </div>
 </li>
@@ -606,8 +606,8 @@ user <code class="docutils literal"><span class="pre">stanley</span></code>:</p>
 <div class="section" id="using-ssh-config">
 <h2>Using SSH config<a class="headerlink" href="#using-ssh-config" title="Permalink to this headline">¶</a></h2>
 <p>StackStorm allows loading an SSH config file local to the system user. This is a configurable option. To
-enable, add the following to <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code></p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[ssh_runner]</span>
+enable, add the following to <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code></p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[ssh_runner]</span>
 <span class="na">use_ssh_config</span> <span class="o">=</span> <span class="s">True</span>
 <span class="na">...</span>
 </pre></div>
@@ -616,12 +616,12 @@ enable, add the following to <code class="docutils literal"><span class="pre">/e
 </div>
 <div class="section" id="sudo-access">
 <h1>SUDO Access<a class="headerlink" href="#sudo-access" title="Permalink to this headline">¶</a></h1>
-<p>StackStorm’s <code class="docutils literal"><span class="pre">shell</span></code> actions -  <code class="docutils literal"><span class="pre">local-shell-cmd</span></code>, <code class="docutils literal"><span class="pre">local-shell-script</span></code>, <code class="docutils literal"><span class="pre">remote-shell-cmd</span></code>,
-<code class="docutils literal"><span class="pre">remote-shell-script</span></code>- are performed by a special user. By default, this user is named
-<code class="docutils literal"><span class="pre">stanley</span></code>. This is configurable via <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">st2.conf</a>.</p>
+<p>StackStorm’s <code class="docutils literal notranslate"><span class="pre">shell</span></code> actions -  <code class="docutils literal notranslate"><span class="pre">local-shell-cmd</span></code>, <code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>, <code class="docutils literal notranslate"><span class="pre">remote-shell-cmd</span></code>,
+<code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code>- are performed by a special user. By default, this user is named
+<code class="docutils literal notranslate"><span class="pre">stanley</span></code>. This is configurable via <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">st2.conf</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>the <code class="docutils literal"><span class="pre">stanley</span></code> user requires the following access:</p>
+<p>the <code class="docutils literal notranslate"><span class="pre">stanley</span></code> user requires the following access:</p>
 <ul class="last simple">
 <li>Sudo access to all boxes on which the script action will run.</li>
 <li>SETENV option needs to be set for all the commands. This way environment variables which are
@@ -631,35 +631,35 @@ runner actions under a different user or with root privileges.</li>
 </ul>
 </div>
 <p>One way of setting up passwordless sudo is perform the below operation on each remote box:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;stanley    ALL=(ALL)       NOPASSWD: SETENV: ALL&quot;</span> &gt;&gt; /etc/sudoers.d/st2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;stanley    ALL=(ALL)       NOPASSWD: SETENV: ALL&quot;</span> &gt;&gt; /etc/sudoers.d/st2
 </pre></div>
 </div>
 </div>
 <div class="section" id="configure-logging">
 <span id="config-logging"></span><h1>Configure Logging<a class="headerlink" href="#configure-logging" title="Permalink to this headline">¶</a></h1>
-<p>By default, the logs can be found in <code class="docutils literal"><span class="pre">/var/log/st2</span></code>.</p>
+<p>By default, the logs can be found in <code class="docutils literal notranslate"><span class="pre">/var/log/st2</span></code>.</p>
 <ul>
-<li><p class="first">With the standard logging setup you will see files like <code class="docutils literal"><span class="pre">st2*.log</span></code> and <code class="docutils literal"><span class="pre">st2*.audit.log</span></code> in
+<li><p class="first">With the standard logging setup you will see files like <code class="docutils literal notranslate"><span class="pre">st2*.log</span></code> and <code class="docutils literal notranslate"><span class="pre">st2*.audit.log</span></code> in
 the log folder.</p>
 </li>
-<li><p class="first">Per-component logging configuration can be found in <code class="docutils literal"><span class="pre">/etc/st2/logging.&lt;component&gt;.conf</span></code>.
+<li><p class="first">Per-component logging configuration can be found in <code class="docutils literal notranslate"><span class="pre">/etc/st2/logging.&lt;component&gt;.conf</span></code>.
 Those files use <a class="reference external" href="https://docs.python.org/2/library/logging.config.html#configuration-file-format">Python logging configuration format</a>.
 Log file location and other settings can be modified in these configuration files, e.g. to
 change the output to use syslog instead.</p>
 </li>
 <li><p class="first">StackStorm ships with example configuration files to show how to use syslog - these are at
-<code class="docutils literal"><span class="pre">/etc/st2/syslog.&lt;component&gt;.conf</span></code>. To use them, edit <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>, and change the
-<code class="docutils literal"><span class="pre">logging</span> <span class="pre">=</span></code> lines to point to the syslog configuration file. You can also see more
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/syslog.&lt;component&gt;.conf</span></code>. To use them, edit <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>, and change the
+<code class="docutils literal notranslate"><span class="pre">logging</span> <span class="pre">=</span></code> lines to point to the syslog configuration file. You can also see more
 instructions and example configurations at <a class="reference external" href="https://github.com/StackStorm-Exchange/exchange-misc/tree/master/syslog">exchange-misc/syslog</a>.</p>
 </li>
 <li><p class="first">By default, log rotation is handled via logrotate. Default log rotation config
 (<a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/logrotate.conf">logrotate.conf</a>) is included with all package-based
-installations. Note that <code class="docutils literal"><span class="pre">handlers.RotatingFileHandler</span></code> is used by default in
-<code class="docutils literal"><span class="pre">/etc/st2/logging.*.conf</span></code>, but the <code class="docutils literal"><span class="pre">maxBytes</span></code> and <code class="docutils literal"><span class="pre">backupCount</span></code> args are not specified so
+installations. Note that <code class="docutils literal notranslate"><span class="pre">handlers.RotatingFileHandler</span></code> is used by default in
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/logging.*.conf</span></code>, but the <code class="docutils literal notranslate"><span class="pre">maxBytes</span></code> and <code class="docutils literal notranslate"><span class="pre">backupCount</span></code> args are not specified so
 no rotation is performed by default which then lets logrotate handle the rotation. If you want
 Python services instead of logrotate to handle the log rotation, update the logging configs as
 shown below:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[handler_fileHandler]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[handler_fileHandler]</span>
 <span class="na">class</span><span class="o">=</span><span class="s">handlers.RotatingFileHandler</span>
 <span class="na">level</span><span class="o">=</span><span class="s">DEBUG</span>
 <span class="na">formatter</span><span class="o">=</span><span class="s">verboseConsoleFormatter</span>
@@ -668,13 +668,13 @@ shown below:</p>
 </div>
 <p>In this case the log file will be rotated when it reaches 100000000 bytes (100MB) and a maximum
 of 5 old log files will be kept. For more information, see <a class="reference external" href="https://docs.python.org/2/library/logging.handlers.html#rotatingfilehandler">RotatingFileHandler</a> docs.</p>
-<p>Keep in mind that log level names need to be uppercase (e.g. <code class="docutils literal"><span class="pre">DEBUG</span></code>, <code class="docutils literal"><span class="pre">INFO</span></code>, etc.).</p>
+<p>Keep in mind that log level names need to be uppercase (e.g. <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, etc.).</p>
 </li>
 <li><p class="first">Sensors run in their own process so it is recommended to not allow sensors to share the same
-<code class="docutils literal"><span class="pre">RotatingFileHandler</span></code>. To configure a separate handler per sensor
-<code class="docutils literal"><span class="pre">/etc/st2/logging.sensorcontainer.conf</span></code> can be updated as follows, where <code class="docutils literal"><span class="pre">MySensor</span></code> is
-the sensor in the <code class="docutils literal"><span class="pre">mypack</span></code> pack that will have its own log file:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[loggers]</span>
+<code class="docutils literal notranslate"><span class="pre">RotatingFileHandler</span></code>. To configure a separate handler per sensor
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/logging.sensorcontainer.conf</span></code> can be updated as follows, where <code class="docutils literal notranslate"><span class="pre">MySensor</span></code> is
+the sensor in the <code class="docutils literal notranslate"><span class="pre">mypack</span></code> pack that will have its own log file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[loggers]</span>
 <span class="na">keys</span><span class="o">=</span><span class="s">root,MySensor</span>
 
 <span class="k">[handlers]</span>
@@ -708,7 +708,7 @@ the sensor in the <code class="docutils literal"><span class="pre">mypack</span>
 <div class="section" id="configure-mistral">
 <h1>Configure Mistral<a class="headerlink" href="#configure-mistral" title="Permalink to this headline">¶</a></h1>
 <p>There are a number of configurable options available under the mistral section in
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>. If the mistral section is not provided, default values will be used. By
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>. If the mistral section is not provided, default values will be used. By
 default, all Keystone related options are unset and StackStorm will not pass any credentials for
 authentication to Mistral. Please refer to OpenStack and Mistral documentation for Keystone setup.</p>
 <table border="1" class="docutils">
@@ -748,7 +748,7 @@ authentication to Mistral. Please refer to OpenStack and Mistral documentation f
 </tr>
 </tbody>
 </table>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Example with basic options. The v2_base_url is set to http://workflow.example.com:8989/v2.</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example with basic options. The v2_base_url is set to http://workflow.example.com:8989/v2.</span>
 <span class="c1"># On connection error, the following configuration sets up the action runner to retry</span>
 <span class="c1"># connecting to Mistral for up to 10 minutes. The retries is setup to be exponential for</span>
 <span class="c1"># 5 minutes. So in this case, there will be two sets of exponential retries during</span>
@@ -761,7 +761,7 @@ authentication to Mistral. Please refer to OpenStack and Mistral documentation f
 <span class="na">retry_stop_max_msec</span> <span class="o">=</span> <span class="s">600000</span>
 </pre></div>
 </div>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Example with auth options.</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example with auth options.</span>
 
 <span class="k">[mistral]</span>
 <span class="na">v2_base_url</span> <span class="o">=</span> <span class="s">http://workflow.example.com:8989/v2</span>
@@ -786,21 +786,21 @@ various identity providers, and managing API tokens.</p>
 </div>
 <div class="section" id="configure-secrets-masking">
 <span id="mask-secrets"></span><h1>Configure secrets masking<a class="headerlink" href="#configure-secrets-masking" title="Permalink to this headline">¶</a></h1>
-<p>In order to manage secrets masking on a system-wide basis you can also modify <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>
+<p>In order to manage secrets masking on a system-wide basis you can also modify <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>
 and control secrets masking at 2 levels i.e. API and logs. Note that this feature only controls
 external visibility of secrets and does not control how secrets are stored as well as managed by
 StackStorm.</p>
 <ul>
 <li><p class="first">To mask secrets in API response. This is enabled on a per API basis and only available to admin
 users.</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[api]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[api]</span>
 <span class="na">...</span>
 <span class="na">mask_secrets</span> <span class="o">=</span> <span class="s">True</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">To mask secrets in logs:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[log]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[log]</span>
 <span class="na">...</span>
 <span class="na">mask_secrets</span> <span class="o">=</span> <span class="s">True</span>
 </pre></div>

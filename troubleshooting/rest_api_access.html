@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -464,37 +464,37 @@
             
   <div class="section" id="rest-api-access">
 <h1>REST API access<a class="headerlink" href="#rest-api-access" title="Permalink to this headline">¶</a></h1>
-<p>To see the REST endpoints used by the StackStorm CLI, add the <code class="docutils literal"><span class="pre">--debug</span></code> flag to your CLI command. This
-will display the equivalent <code class="docutils literal"><span class="pre">curl</span></code> commands.</p>
+<p>To see the REST endpoints used by the StackStorm CLI, add the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag to your CLI command. This
+will display the equivalent <code class="docutils literal notranslate"><span class="pre">curl</span></code> commands.</p>
 <p>For example, to see the endpoint for listing actions, invoke</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug action list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug action list
 </pre></div>
 </div>
-<p>You will see the list of endpoints we hit as well as a <code class="docutils literal"><span class="pre">curl</span></code> command for you to try them manually.</p>
+<p>You will see the list of endpoints we hit as well as a <code class="docutils literal notranslate"><span class="pre">curl</span></code> command for you to try them manually.</p>
 <p>If you are trying to access the API from outside the server, note that the URL will look like:
-<code class="docutils literal"><span class="pre">https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</span></code>.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.9.1&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.9.1&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
 </pre></div>
 </div>
-<p>Similarly, you can connect to the auth REST endpoints using: <code class="docutils literal"><span class="pre">https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</span></code>.</p>
-<p>From the server itself, you can use <code class="docutils literal"><span class="pre">localhost</span></code> instead of ${EXTERNAL_IP}.</p>
+<p>Similarly, you can connect to the auth REST endpoints using: <code class="docutils literal notranslate"><span class="pre">https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</span></code>.</p>
+<p>From the server itself, you can use <code class="docutils literal notranslate"><span class="pre">localhost</span></code> instead of ${EXTERNAL_IP}.</p>
 <p>You can see a full API reference at <a class="reference external" href="https://api.stackstorm.com">api.stackstorm.com</a>.</p>
 <div class="section" id="unable-to-access-rest-apis">
 <h2>Unable to access REST APIs<a class="headerlink" href="#unable-to-access-rest-apis" title="Permalink to this headline">¶</a></h2>
 <p>If you are unable to access the API, perform the following steps:</p>
 <ol class="arabic simple">
 <li>Verify nginx is installed on the StackStorm box. Based on the OS, commands will be
-<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-cache</span> <span class="pre">policy</span> <span class="pre">nginx</span></code> or <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">list</span> <span class="pre">installed</span> <span class="pre">nginx</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-cache</span> <span class="pre">policy</span> <span class="pre">nginx</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">list</span> <span class="pre">installed</span> <span class="pre">nginx</span></code>.</li>
 <li>Verify nginx process is up and running. Based on the OS, it might just be
-<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">nginx</span> <span class="pre">status</span></code> or <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">nginx</span> <span class="pre">status</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">nginx</span> <span class="pre">status</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">nginx</span> <span class="pre">status</span></code>.</li>
 <li>Verify if you have StackStorm-specific nginx configuration. This is usually in
-<code class="docutils literal"><span class="pre">/etc/nginx/conf.d/</span></code>.</li>
-<li>Verify that no firewall is blocking the ports on the box. It’s usually <code class="docutils literal"><span class="pre">ufw</span></code> for ubuntu
-or <code class="docutils literal"><span class="pre">firewall-cmd</span></code> in RHEL/CentOS.</li>
-<li>Verify nginx is listening on port 443. You can use <code class="docutils literal"><span class="pre">netstat</span> <span class="pre">-tupln</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">443</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">/etc/nginx/conf.d/</span></code>.</li>
+<li>Verify that no firewall is blocking the ports on the box. It’s usually <code class="docutils literal notranslate"><span class="pre">ufw</span></code> for ubuntu
+or <code class="docutils literal notranslate"><span class="pre">firewall-cmd</span></code> in RHEL/CentOS.</li>
+<li>Verify nginx is listening on port 443. You can use <code class="docutils literal notranslate"><span class="pre">netstat</span> <span class="pre">-tupln</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">443</span></code>.</li>
 </ol>
-<p>If none of these steps work, have the <code class="docutils literal"><span class="pre">curl</span></code> command and the information you collected for the above
+<p>If none of these steps work, have the <code class="docutils literal notranslate"><span class="pre">curl</span></code> command and the information you collected for the above
 steps available before engaging our technical support.</p>
 </div>
 </div>

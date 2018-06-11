@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -507,7 +507,7 @@ information, refer to the <a class="reference external" href="https://libcloud.r
 <li>Make sure that all the source files contain an Apache 2.0 license header. For an example, see one
 of the existing Python files.</li>
 <li>You can verify that your modifications don’t break any rules by running the lint script -
-<code class="docutils literal"><span class="pre">make</span> <span class="pre">flake8</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">flake8</span></code></li>
 </ul>
 <p>Most StackStorm repositories use shared Flake8 and PyLint configuration files, which you can get from
 the <a class="reference external" href="https://github.com/StackStorm/lint-configs">lint-configs repo</a>.</p>
@@ -524,11 +524,11 @@ before a feature is removed.</p>
 <ul class="simple">
 <li><strong>2.0:</strong> New configuration format introduced. Documentation updated to refer to both old and new
 versions, with information on migration.</li>
-<li><strong>2.1:</strong> <code class="docutils literal"><span class="pre">WARNING</span></code> logs generated on use of old-style configuration, e.g. at time of pack
+<li><strong>2.1:</strong> <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> logs generated on use of old-style configuration, e.g. at time of pack
 registration. Changelog to include note in “Deprecated” section. Documentation should focus on
 new style, with reference information on migration. Users can keep using the older configuration.</li>
-<li><strong>2.2:</strong> Continue with previous <code class="docutils literal"><span class="pre">WARNING</span></code> logs. Users may still keep the older configuration.</li>
-<li><strong>2.3:</strong> Fatal <code class="docutils literal"><span class="pre">ERROR</span></code> logs generated on use of old-style configuration. Documentation should
+<li><strong>2.2:</strong> Continue with previous <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> logs. Users may still keep the older configuration.</li>
+<li><strong>2.3:</strong> Fatal <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> logs generated on use of old-style configuration. Documentation should
 only refer to new style. Changelog entry added in “Removed” section. At this point the feature
 is no longer supported, and users <strong>must</strong> migrate.</li>
 </ul>
@@ -544,7 +544,7 @@ and support.</p>
 <p>You are encouraged to generously use the log statements across the code base. You should log every
 event which increases the visibility and/or makes the product easier to debug and support.</p>
 <p>Every log statement should also include as much as useful additional context as possible. This
-context should be included in the dictionary which is passed via the <code class="docutils literal"><span class="pre">extra</span></code> keyword argument
+context should be included in the dictionary which is passed via the <code class="docutils literal notranslate"><span class="pre">extra</span></code> keyword argument
 to the logger method as shown below.</p>
 <p>Default log formatters we use include this additional context as part of the message which makes
 it easier for users to find the relevant information.</p>
@@ -553,13 +553,13 @@ log formatters which outputs log messages in GELF format (structured JSON). This
 used to ship structured logs to Graylog2, loggly, logstash or a similar service.</p>
 <div class="section" id="obtaining-a-reference-to-the-logger-object">
 <h4>Obtaining a Reference to the Logger Object<a class="headerlink" href="#obtaining-a-reference-to-the-logger-object" title="Permalink to this headline">¶</a></h4>
-<p>To obtain a reference to the logger instance you should use the <code class="docutils literal"><span class="pre">st2common.log.getLogger</span></code>
-function as shown below. You should use this function, and not the one from the <code class="docutils literal"><span class="pre">stdlib</span></code> logging
+<p>To obtain a reference to the logger instance you should use the <code class="docutils literal notranslate"><span class="pre">st2common.log.getLogger</span></code>
+function as shown below. You should use this function, and not the one from the <code class="docutils literal notranslate"><span class="pre">stdlib</span></code> logging
 module because we declare a custom log level and do a couple of other things which are only
-available on loggers which are obtained through our version of <code class="docutils literal"><span class="pre">getLogger</span></code>.</p>
+available on loggers which are obtained through our version of <code class="docutils literal notranslate"><span class="pre">getLogger</span></code>.</p>
 <p>In most cases, you should do this at the top of the module after the imports
 and reuse this logger throughout that module:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2common</span> <span class="kn">import</span> <span class="n">log</span> <span class="k">as</span> <span class="n">logging</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2common</span> <span class="kn">import</span> <span class="n">log</span> <span class="k">as</span> <span class="n">logging</span>
 
 <span class="n">LOG</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="n">LOG</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;....&#39;</span><span class="p">)</span>
@@ -569,16 +569,16 @@ and reuse this logger throughout that module:</p>
 <div class="section" id="passing-context-to-the-logger">
 <h4>Passing Context to the Logger<a class="headerlink" href="#passing-context-to-the-logger" title="Permalink to this headline">¶</a></h4>
 <p>As noted above, you should always include as much context as possible in the log messages.
-Context is provided by passing a dictionary via the <code class="docutils literal"><span class="pre">extra</span></code> keyword argument to the logger
+Context is provided by passing a dictionary via the <code class="docutils literal notranslate"><span class="pre">extra</span></code> keyword argument to the logger
 method.</p>
 <p>This dictionary should contain values which are relevant to the log message in question
 (e.g. created/modified database object, user who performed the action, etc.).</p>
-<p>If you are passing an instance of a custom class as a value, you should implement the <code class="docutils literal"><span class="pre">to_dict</span></code>
+<p>If you are passing an instance of a custom class as a value, you should implement the <code class="docutils literal notranslate"><span class="pre">to_dict</span></code>
 method on that class. This method is responsible for returning a dictionary representation of
 this object which can be serialized as JSON.</p>
 <p>Keep in mind that this method is already implemented for all of the StackStorm
-database objects (<code class="docutils literal"><span class="pre">ActionDB</span></code>, <code class="docutils literal"><span class="pre">RunnerTypeDB</span></code>, etc.).</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">action_db</span> <span class="o">=</span> <span class="o">...</span>
+database objects (<code class="docutils literal notranslate"><span class="pre">ActionDB</span></code>, <code class="docutils literal notranslate"><span class="pre">RunnerTypeDB</span></code>, etc.).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action_db</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">user_db</span> <span class="o">=</span> <span class="o">...</span>
 <span class="n">remote_addr</span> <span class="o">=</span> <span class="o">...</span>
 
@@ -590,37 +590,37 @@ database objects (<code class="docutils literal"><span class="pre">ActionDB</spa
 </div>
 <div class="section" id="using-the-audit-log-level">
 <h4>Using the AUDIT Log Level<a class="headerlink" href="#using-the-audit-log-level" title="Permalink to this headline">¶</a></h4>
-<p>StackStorm code declares a custom <code class="docutils literal"><span class="pre">AUDIT</span></code> log level. This log level is to be used when recording
+<p>StackStorm code declares a custom <code class="docutils literal notranslate"><span class="pre">AUDIT</span></code> log level. This log level is to be used when recording
 CRUD operations on resources and when performing other actions that need to be logged in the audit
 log.</p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;KeyValuePair updated. KeyValuePair.id=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">kvp_db</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">extra</span><span class="o">=</span><span class="n">extra</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;KeyValuePair updated. KeyValuePair.id=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">kvp_db</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">extra</span><span class="o">=</span><span class="n">extra</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="dealing-with-dates-and-datetime-objects">
 <h3>Dealing with Dates and Datetime Objects<a class="headerlink" href="#dealing-with-dates-and-datetime-objects" title="Permalink to this headline">¶</a></h3>
-<p>All the <code class="docutils literal"><span class="pre">datetime</span></code> objects used in the codebase should be timezone-aware and represented in UTC.
+<p>All the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects used in the codebase should be timezone-aware and represented in UTC.
 The same applies to storing dates in the database - timestamps are preferred, but if you can’t use
 a timestamp, stored dates should be represented in UTC.</p>
 <p>If you want to store a timestamp with microsecond precision you should use the
-<code class="docutils literal"><span class="pre">st2common.fields.ComplexDateTimeField</span></code> field class.</p>
-<p>If you want to retrieve a <code class="docutils literal"><span class="pre">datetime</span></code> object for the current time, you should use
-<code class="docutils literal"><span class="pre">st2common.util.date.get_datetime_utc_now</span></code> which returns a timezone-aware <code class="docutils literal"><span class="pre">datetime</span></code> object
-in UTC. <code class="docutils literal"><span class="pre">st2common.util.date</span></code> also contains other date- and time-related utility functions.</p>
+<code class="docutils literal notranslate"><span class="pre">st2common.fields.ComplexDateTimeField</span></code> field class.</p>
+<p>If you want to retrieve a <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object for the current time, you should use
+<code class="docutils literal notranslate"><span class="pre">st2common.util.date.get_datetime_utc_now</span></code> which returns a timezone-aware <code class="docutils literal notranslate"><span class="pre">datetime</span></code> object
+in UTC. <code class="docutils literal notranslate"><span class="pre">st2common.util.date</span></code> also contains other date- and time-related utility functions.</p>
 </div>
 <div class="section" id="instantiating-model-classes">
 <h3>Instantiating Model Classes<a class="headerlink" href="#instantiating-model-classes" title="Permalink to this headline">¶</a></h3>
-<p>When instantiating <code class="docutils literal"><span class="pre">mongoengine</span></code> model classes (e.g. <code class="docutils literal"><span class="pre">ActionDB</span></code>, <code class="docutils literal"><span class="pre">RuleDB</span></code>, <code class="docutils literal"><span class="pre">SensorTypeDB</span></code>,
+<p>When instantiating <code class="docutils literal notranslate"><span class="pre">mongoengine</span></code> model classes (e.g. <code class="docutils literal notranslate"><span class="pre">ActionDB</span></code>, <code class="docutils literal notranslate"><span class="pre">RuleDB</span></code>, <code class="docutils literal notranslate"><span class="pre">SensorTypeDB</span></code>,
 etc.), make sure to pass all the field values as arguments to the model constructor, instead of
 performing a late assignment of variables on the class instance.</p>
 <p>Good:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">action_db</span> <span class="o">=</span> <span class="n">ActionDB</span><span class="p">(</span><span class="n">pack</span><span class="o">=</span><span class="s1">&#39;mypack&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;myaction&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action_db</span> <span class="o">=</span> <span class="n">ActionDB</span><span class="p">(</span><span class="n">pack</span><span class="o">=</span><span class="s1">&#39;mypack&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;myaction&#39;</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Bad:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">action_db</span> <span class="o">=</span> <span class="n">ActionDB</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">action_db</span> <span class="o">=</span> <span class="n">ActionDB</span><span class="p">()</span>
 <span class="n">action_db</span><span class="o">.</span><span class="n">pack</span> <span class="o">=</span> <span class="s1">&#39;mypack&#39;</span>
 <span class="n">action_db</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;myaction&#39;</span>
 <span class="n">action_db</span><span class="o">.</span><span class="n">enabled</span> <span class="o">=</span> <span class="bp">True</span>

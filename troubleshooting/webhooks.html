@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -466,10 +466,10 @@
 <h1>Troubleshooting Webhooks<a class="headerlink" href="#troubleshooting-webhooks" title="Permalink to this headline">¶</a></h1>
 <p>You may run into some issues with getting StackStorm to respond to <a class="reference internal" href="../webhooks.html"><span class="doc">Webhooks</span></a> the way you want. A common problem
 that community members run into is that StackStorm doesn’t seem to recognize or respond to incoming webhooks,
-even if a manual test using <code class="docutils literal"><span class="pre">curl</span></code> results in a successful HTTP status.</p>
+even if a manual test using <code class="docutils literal notranslate"><span class="pre">curl</span></code> results in a successful HTTP status.</p>
 <p>The first thing to do is confirm that the webhook request is indeed getting to StackStorm. When webhooks successfully
-hit the StackStorm API, you will see messages similar to below in the <code class="docutils literal"><span class="pre">st2api</span></code> log (<code class="docutils literal"><span class="pre">/var/log/st2/st2api.log</span></code>):</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>2017-11-09 21:21:00,563 140040790988752 INFO logging [-] 651897d7-2aed-4a11-9c14-4c56152230cc - POST /v1/webhooks/st2 with query={} (remote_addr=&#39;127.0.0.1&#39;,method=&#39;POST&#39;,request_id=&#39;651897d7-2aed-4a11-9c14-4c56152230cc&#39;,query={},path=&#39;/v1/webhooks/st2&#39;)
+hit the StackStorm API, you will see messages similar to below in the <code class="docutils literal notranslate"><span class="pre">st2api</span></code> log (<code class="docutils literal notranslate"><span class="pre">/var/log/st2/st2api.log</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2017-11-09 21:21:00,563 140040790988752 INFO logging [-] 651897d7-2aed-4a11-9c14-4c56152230cc - POST /v1/webhooks/st2 with query={} (remote_addr=&#39;127.0.0.1&#39;,method=&#39;POST&#39;,request_id=&#39;651897d7-2aed-4a11-9c14-4c56152230cc&#39;,query={},path=&#39;/v1/webhooks/st2&#39;)
 2017-11-09 21:21:00,566 140040790988752 AUDIT auth [-] Token with id &quot;5a04be6bc4da5f0d1fe22ca1&quot; is validated.
 2017-11-09 21:21:00,572 140040790988752 INFO logging [-] 651897d7-2aed-4a11-9c14-4c56152230cc - 202 94 8.623ms (content_length=94,request_id=&#39;651897d7-2aed-4a11-9c14-4c56152230cc&#39;,runtime=8.623,remote_addr=&#39;127.0.0.1&#39;,status=202,method=&#39;POST&#39;,path=&#39;/v1/webhooks/st2&#39;)
 </pre></div>
@@ -481,12 +481,12 @@ normal setup.</p>
 <p>You may also be running StackStorm with a self-signed certificate. Be sure that the webhook sender isn’t rejecting
 the connection because of this, as that will prevent the webhook from ever being sent. In this case, you won’t
 even see a successful connection in the nginx logs.</p>
-<p>However, if you <strong>are</strong> seeing successful <code class="docutils literal"><span class="pre">POST</span></code> requests showing up in the <code class="docutils literal"><span class="pre">st2api</span></code> log but you still aren’t
-seeing the resulting trigger instances in the output of <code class="docutils literal"><span class="pre">st2</span> <span class="pre">trigger-instance</span> <span class="pre">list</span></code>, there’s likely a problem
-with the webhook payload. The best place to look for more information on this is the <code class="docutils literal"><span class="pre">st2rulesengine</span></code>
-log (<code class="docutils literal"><span class="pre">/var/log/st2/st2rulesengine.log</span></code>). For instance, if you’re using the built-in <code class="docutils literal"><span class="pre">st2</span></code> webhook, this
+<p>However, if you <strong>are</strong> seeing successful <code class="docutils literal notranslate"><span class="pre">POST</span></code> requests showing up in the <code class="docutils literal notranslate"><span class="pre">st2api</span></code> log but you still aren’t
+seeing the resulting trigger instances in the output of <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">trigger-instance</span> <span class="pre">list</span></code>, there’s likely a problem
+with the webhook payload. The best place to look for more information on this is the <code class="docutils literal notranslate"><span class="pre">st2rulesengine</span></code>
+log (<code class="docutils literal notranslate"><span class="pre">/var/log/st2/st2rulesengine.log</span></code>). For instance, if you’re using the built-in <code class="docutils literal notranslate"><span class="pre">st2</span></code> webhook, this
 log message will show if the specified trigger doesn’t exist:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>2017-11-09 20:45:52,006 140146899259632 ERROR consumers [-] StagedQueueConsumer failed to process message: {&#39;trace_context&#39;: &lt;st2common.models.api.trace.TraceContext object at 0x7f767ded7290&gt;, &#39;trigger&#39;: u&#39;default.badtrigger&#39;, &#39;payl
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2017-11-09 20:45:52,006 140146899259632 ERROR consumers [-] StagedQueueConsumer failed to process message: {&#39;trace_context&#39;: &lt;st2common.models.api.trace.TraceContext object at 0x7f767ded7290&gt;, &#39;trigger&#39;: u&#39;default.badtrigger&#39;, &#39;payl
 oad&#39;: {u&#39;attribute1&#39;: u&#39;value1&#39;}}
 Traceback (most recent call last):
   File &quot;/opt/stackstorm/st2/local/lib/python2.7/site-packages/st2common/transport/consumers.py&quot;, line 85, in process

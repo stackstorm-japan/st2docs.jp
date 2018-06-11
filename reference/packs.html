@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -479,7 +479,7 @@ own pack. It is also helpful to know while debugging issues with packs.</p>
 <div class="section" id="anatomy-of-a-pack">
 <h2><a class="toc-backref" href="#id1">Anatomy of a Pack</a><a class="headerlink" href="#anatomy-of-a-pack" title="Permalink to this headline">¶</a></h2>
 <p>The canonical pack filesystem layout looks like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># contents of a pack folder</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># contents of a pack folder</span>
 actions/                 <span class="c1">#</span>
 rules/                   <span class="c1">#</span>
 sensors/                 <span class="c1">#</span>
@@ -495,19 +495,19 @@ requirements-tests.txt   <span class="c1"># requirements for python tests</span>
 icon.png                 <span class="c1"># 64x64 .png icon</span>
 </pre></div>
 </div>
-<p>At the topmost level are the main folders <code class="docutils literal"><span class="pre">actions</span></code>, <code class="docutils literal"><span class="pre">rules</span></code>, <code class="docutils literal"><span class="pre">sensors</span></code>, <code class="docutils literal"><span class="pre">aliases</span></code> and
-<code class="docutils literal"><span class="pre">policies</span></code>, as well as some shared files:</p>
+<p>At the topmost level are the main folders <code class="docutils literal notranslate"><span class="pre">actions</span></code>, <code class="docutils literal notranslate"><span class="pre">rules</span></code>, <code class="docutils literal notranslate"><span class="pre">sensors</span></code>, <code class="docutils literal notranslate"><span class="pre">aliases</span></code> and
+<code class="docutils literal notranslate"><span class="pre">policies</span></code>, as well as some shared files:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">pack.yaml</span></code> - Metadata file that describes and identifies the folder as a pack.</li>
-<li><code class="docutils literal"><span class="pre">config.schema.yaml</span></code> - Schema that defines configuration elements used by a pack.</li>
-<li><code class="docutils literal"><span class="pre">requirements.txt</span></code> - File containing a list of Python dependencies. If your pack uses Python
+<li><code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> - Metadata file that describes and identifies the folder as a pack.</li>
+<li><code class="docutils literal notranslate"><span class="pre">config.schema.yaml</span></code> - Schema that defines configuration elements used by a pack.</li>
+<li><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> - File containing a list of Python dependencies. If your pack uses Python
 actions and/or sensors, you can specify any Python libraries you need here. They will
 automatically be installed in a pack-specific virtualenv when you install the pack.</li>
 </ul>
-<p>Site-specific pack configuration files are stored at <code class="docutils literal"><span class="pre">/opt/stackstorm/configs/</span></code>. See
+<p>Site-specific pack configuration files are stored at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/</span></code>. See
 <a class="reference internal" href="pack_configs.html"><span class="doc">configuration schema</span></a> for more information.</p>
 <p><strong>Actions:</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># contents of actions/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># contents of actions/</span>
 actions/
    lib/
    action1.yaml
@@ -521,21 +521,21 @@ actions/
      workflow2.yaml
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">actions</span></code> folder contains action script files and action metadata files. See
+<p>The <code class="docutils literal notranslate"><span class="pre">actions</span></code> folder contains action script files and action metadata files. See
 <a class="reference internal" href="../actions.html"><span class="doc">Actions</span></a> and <a class="reference internal" href="../workflows.html"><span class="doc">Workflows</span></a> for specifics on writing actions. Since
 metadata files and workflow definitions can both be written as YAML, it’s good practice to put the
-workflow definitions in a separate directory. Note that the <code class="docutils literal"><span class="pre">lib</span></code> sub-folder is often used for
+workflow definitions in a separate directory. Note that the <code class="docutils literal notranslate"><span class="pre">lib</span></code> sub-folder is often used for
 storing common Python code used by pack actions.</p>
 <p><strong>Rules</strong>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># contents of rules/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># contents of rules/</span>
 rules/
    rule1.yaml
    rule2.yaml
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">rules</span></code> folder contains rules. See <a class="reference internal" href="../rules.html"><span class="doc">Rules</span></a> for specifics on writing rules.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rules</span></code> folder contains rules. See <a class="reference internal" href="../rules.html"><span class="doc">Rules</span></a> for specifics on writing rules.</p>
 <p><strong>Sensors:</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># contents of sensors/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># contents of sensors/</span>
 sensors/
    common/
    sensor1.py
@@ -544,25 +544,25 @@ sensors/
    sensor2.yaml
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">sensors</span></code> folder contains sensors. See <a class="reference internal" href="../sensors.html"><span class="doc">Sensors</span></a> for specifics on writing
+<p>The <code class="docutils literal notranslate"><span class="pre">sensors</span></code> folder contains sensors. See <a class="reference internal" href="../sensors.html"><span class="doc">Sensors</span></a> for specifics on writing
 sensors and registering TriggerTypes.</p>
 <p><strong>Aliases:</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># contents of aliases/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># contents of aliases/</span>
 aliases/
    alias1.yaml
    alias2.yaml
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">aliases</span></code> folder contains Action Aliases. See <a class="reference internal" href="../chatops/aliases.html"><span class="doc">Action Aliases</span></a> for
+<p>The <code class="docutils literal notranslate"><span class="pre">aliases</span></code> folder contains Action Aliases. See <a class="reference internal" href="../chatops/aliases.html"><span class="doc">Action Aliases</span></a> for
 specifics on writing Action Aliases.</p>
 <p><strong>Policies:</strong></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># contents of policies/</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># contents of policies/</span>
 policies/
    policy1.yaml
    policy2.yaml
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">policies</span></code> folder contains Policies. See <a class="reference internal" href="policies.html"><span class="doc">Policies</span></a> for specifics
+<p>The <code class="docutils literal notranslate"><span class="pre">policies</span></code> folder contains Policies. See <a class="reference internal" href="policies.html"><span class="doc">Policies</span></a> for specifics
 on writing Policies.</p>
 </div>
 <div class="section" id="creating-your-first-pack">
@@ -571,10 +571,10 @@ on writing Policies.</p>
 available at <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/hello_st2">st2/contrib/hello_st2</a>.</p>
 <ol class="arabic simple">
 <li>Create the pack folder structure and related files. Let’s keep the metadata files such as
-<code class="docutils literal"><span class="pre">pack.yaml</span></code>, <code class="docutils literal"><span class="pre">config.schema.yaml</span></code>, and <code class="docutils literal"><span class="pre">requirements.txt</span></code> empty for now:</li>
+<code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">config.schema.yaml</span></code>, and <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> empty for now:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Use the name of the pack for the folder name.</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the name of the pack for the folder name.</span>
 mkdir hello_st2
 <span class="nb">cd</span> hello_st2
 mkdir actions
@@ -587,13 +587,13 @@ touch requirements.txt
 </pre></div>
 </div>
 <p>Note: All folders are optional. It is safe to skip a folder or keep it empty. Only create the
-<code class="docutils literal"><span class="pre">config.schema.yaml</span></code> file if it is required. An empty schema file is not valid.</p>
+<code class="docutils literal notranslate"><span class="pre">config.schema.yaml</span></code> file if it is required. An empty schema file is not valid.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Create the pack definition file, <code class="docutils literal"><span class="pre">pack.yaml</span></code>:</li>
+<li>Create the pack definition file, <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_st2</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello StackStorm</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Simple pack containing examples of sensor, rule, and action.</span>
@@ -607,11 +607,11 @@ touch requirements.txt
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">A note on metadata: StackStorm enforces certain rules about metadata. The <code class="docutils literal"><span class="pre">version</span></code> value in
-<code class="docutils literal"><span class="pre">pack.yaml</span></code> must conform to <a class="reference external" href="http://semver.org/">semver</a>:<code class="docutils literal"><span class="pre">0.2.5</span></code>, not <code class="docutils literal"><span class="pre">0.2</span></code>. The
-<code class="docutils literal"><span class="pre">name</span></code> value in <code class="docutils literal"><span class="pre">pack.yaml</span></code> must only contain letters, digits, and underscores, unless you
-set the <code class="docutils literal"><span class="pre">ref</span></code> value explicitly in <code class="docutils literal"><span class="pre">pack.yaml</span></code>. Finally the email attribute in
-<code class="docutils literal"><span class="pre">pack.yaml</span></code> must contain a properly formatted email address.</p>
+<p class="last">A note on metadata: StackStorm enforces certain rules about metadata. The <code class="docutils literal notranslate"><span class="pre">version</span></code> value in
+<code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> must conform to <a class="reference external" href="http://semver.org/">semver</a>:<code class="docutils literal notranslate"><span class="pre">0.2.5</span></code>, not <code class="docutils literal notranslate"><span class="pre">0.2</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">name</span></code> value in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> must only contain letters, digits, and underscores, unless you
+set the <code class="docutils literal notranslate"><span class="pre">ref</span></code> value explicitly in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>. Finally the email attribute in
+<code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> must contain a properly formatted email address.</p>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="3">
@@ -619,8 +619,8 @@ set the <code class="docutils literal"><span class="pre">ref</span></code> value
 example simply echoes a greeting.</li>
 </ol>
 <blockquote>
-<div><p>Copy the following content to <code class="docutils literal"><span class="pre">actions/greet.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div><p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">actions/greet.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">greet</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_st2</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;local-shell-cmd&quot;</span>
@@ -635,8 +635,8 @@ example simply echoes a greeting.</li>
         <span class="l l-Scalar l-Scalar-Plain">position</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 </pre></div>
 </div>
-<p>Copy the following content to <code class="docutils literal"><span class="pre">actions/greet.sh</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">actions/greet.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">, StackStorm!&quot;</span>
 </pre></div>
 </div>
@@ -645,8 +645,8 @@ example simply echoes a greeting.</li>
 <li>Create a sensor. The sample sensor below publishes an event to StackStorm every 60 seconds.</li>
 </ol>
 <blockquote>
-<div><p>Copy the following content to <code class="docutils literal"><span class="pre">sensors/sensor1.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div><p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">sensors/sensor1.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">class_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;HelloSensor&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">entry_point</span><span class="p p-Indicator">:</span> <span class="s">&quot;sensor1.py&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Test</span><span class="nv"> </span><span class="s">sensor</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">emits</span><span class="nv"> </span><span class="s">triggers.&quot;</span>
@@ -658,8 +658,8 @@ example simply echoes a greeting.</li>
       <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;object&quot;</span>
 </pre></div>
 </div>
-<p>Copy the following content to <code class="docutils literal"><span class="pre">sensors/sensor1.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventlet</span>
+<p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">sensors/sensor1.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventlet</span>
 
 <span class="kn">from</span> <span class="nn">st2reactor.sensor.base</span> <span class="kn">import</span> <span class="n">Sensor</span>
 
@@ -702,8 +702,8 @@ example simply echoes a greeting.</li>
 action from the samples above.</li>
 </ol>
 <blockquote>
-<div><p>Copy the following content to <code class="docutils literal"><span class="pre">rules/rule1.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div><p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">rules/rule1.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">on_hello_event1</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_st2</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample rule firing on hello_st2.event1.</span>
@@ -718,12 +718,12 @@ action from the samples above.</li>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="6">
-<li>Create an action alias. The sample action alias below aliases the <code class="docutils literal"><span class="pre">greet</span></code> action and makes it
+<li>Create an action alias. The sample action alias below aliases the <code class="docutils literal notranslate"><span class="pre">greet</span></code> action and makes it
 accessible from ChatOps.</li>
 </ol>
 <blockquote>
-<div><p>Copy the following content to <code class="docutils literal"><span class="pre">aliases/alias1.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div><p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">aliases/alias1.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">greet</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_st2</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Greet</span><span class="nv"> </span><span class="s">StackStorm&quot;</span>
@@ -734,11 +734,11 @@ accessible from ChatOps.</li>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="7">
-<li>Create a policy. The sample policy below limits concurrent operation of the <code class="docutils literal"><span class="pre">greet</span></code> action.</li>
+<li>Create a policy. The sample policy below limits concurrent operation of the <code class="docutils literal notranslate"><span class="pre">greet</span></code> action.</li>
 </ol>
 <blockquote>
-<div><p>Copy the following content to <code class="docutils literal"><span class="pre">policies/policy1.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div><p>Copy the following content to <code class="docutils literal notranslate"><span class="pre">policies/policy1.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">greet.concurrency</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_st2</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Limits the concurrent executions of the greet action.</span>
@@ -751,35 +751,35 @@ accessible from ChatOps.</li>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="8">
-<li>Install the pack. We encourage using <code class="docutils literal"><span class="pre">git</span></code>. If you do so, <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span></code> will greatly simplify
+<li>Install the pack. We encourage using <code class="docutils literal notranslate"><span class="pre">git</span></code>. If you do so, <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span></code> will greatly simplify
 your pack management. Of course, you can define your own tools and workflow for editing and
-versioning packs. You’ll need to place the files in <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code> and [re-]load the
+versioning packs. You’ll need to place the files in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code> and [re-]load the
 content.</li>
 </ol>
 <blockquote>
-<div><p>8.1 Use git and <code class="docutils literal"><span class="pre">pack</span> <span class="pre">install</span></code> (<strong>recommended</strong>):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Get the code under git</span>
+<div><p>8.1 Use git and <code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">install</span></code> (<strong>recommended</strong>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the code under git</span>
 <span class="nb">cd</span> hello_st2
 git init <span class="o">&amp;&amp;</span> git add ./* <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&quot;Initial commit&quot;</span>
 <span class="c1"># Install from local git repo</span>
 st2 pack install file:///<span class="nv">$PWD</span>
 </pre></div>
 </div>
-<p>When you make code changes, <code class="docutils literal"><span class="pre">run</span> <span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> again: it will do the upgrade.
+<p>When you make code changes, <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> again: it will do the upgrade.
 Once you push it to GitHub, you will install and update it right from there:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 pack install https://github.com/MY/PACK
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 pack install https://github.com/MY/PACK
 </pre></div>
 </div>
 <p>8.2 Copy over and register (if you have special needs and know what you’re doing).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>mv ./hello_st2 /opt/stackstorm/packs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mv ./hello_st2 /opt/stackstorm/packs
 st2ctl reload
 </pre></div>
 </div>
 </div></blockquote>
-<p>Congratulate yourself: you have created your first pack. Commands like <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">list</span></code>,
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">st2</span> <span class="pre">trigger</span> <span class="pre">list</span></code> will show you the loaded content. To
-check if the sensor triggering action is working, run <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">list</span></code>, there should be an
-entry for executing <code class="docutils literal"><span class="pre">hello_st2.greet</span></code> every minute.</p>
+<p>Congratulate yourself: you have created your first pack. Commands like <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">list</span></code>,
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">trigger</span> <span class="pre">list</span></code> will show you the loaded content. To
+check if the sensor triggering action is working, run <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">list</span></code>, there should be an
+entry for executing <code class="docutils literal notranslate"><span class="pre">hello_st2.greet</span></code> every minute.</p>
 <p>Take it from there. Write an awesome automation, or an inspiring integration pack with your
 favorite tool. Happy hacking!</p>
 </div>

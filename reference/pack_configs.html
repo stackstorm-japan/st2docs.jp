@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,11 +467,11 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>All information on this page refers to the config files in the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/configs/</span></code> directory.</p>
-<p><code class="docutils literal"><span class="pre">config.yaml</span></code> files inside the pack directory were deprecated in StackStorm
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/</span></code> directory.</p>
+<p><code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> files inside the pack directory were deprecated in StackStorm
 v1.5. As of version 2.4, pack registration will fail with ERROR logs if
-the pack contains <code class="docutils literal"><span class="pre">config.yaml</span></code>.</p>
-<p class="last">If you are still using <code class="docutils literal"><span class="pre">config.yaml</span></code>, you <strong>MUST</strong> migrate to the new
+the pack contains <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>.</p>
+<p class="last">If you are still using <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>, you <strong>MUST</strong> migrate to the new
 style.</p>
 </div>
 <p>Packs can use a configuration file to set values that are common to resources in the pack, e.g.
@@ -482,7 +482,7 @@ contains values which are common to all the resources in the pack, and rarely ch
 parameters are dynamically provided with each action invocation, and may change - e.g. they may
 come from a rule mapping some input event.</p>
 <p>Pack configuration follows an infrastructure as code approach, and is stored in a YAML format file
-in a special directory (by default <code class="docutils literal"><span class="pre">/opt/stackstorm/configs</span></code>). Each pack defines its own schema
+in a special directory (by default <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs</span></code>). Each pack defines its own schema
 for this configuration file.</p>
 <div class="section" id="basic-concepts-and-terminology">
 <h2>Basic Concepts and Terminology<a class="headerlink" href="#basic-concepts-and-terminology" title="Permalink to this headline">¶</a></h2>
@@ -491,10 +491,10 @@ for this configuration file.</p>
 <p>The configuration schema is a YAML formatted file which defines the schema for that pack’s
 configuration file. This schema is written by the pack author and contains information about every
 available configuration item (name, type, is value a secret, etc). The file is named
-<code class="docutils literal"><span class="pre">config.schema.yaml</span></code> and is located in the root of the pack directory
-(<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/</span></code>).</p>
+<code class="docutils literal notranslate"><span class="pre">config.schema.yaml</span></code> and is located in the root of the pack directory
+(<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/</span></code>).</p>
 <p>Here is an example schema file:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">api_key</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">key&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
@@ -515,12 +515,12 @@ available configuration item (name, type, is value a secret, etc). The file is n
     <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
-<p>In this example, the configuration consists of 4 items (<code class="docutils literal"><span class="pre">api_key</span></code>, <code class="docutils literal"><span class="pre">api_secret</span></code>, <code class="docutils literal"><span class="pre">region</span></code>
-and <code class="docutils literal"><span class="pre">private_key_path</span></code>).</p>
-<p>Note that <code class="docutils literal"><span class="pre">api_secret</span></code> value is marked as <strong>secret</strong> which means this value will be stored
+<p>In this example, the configuration consists of 4 items (<code class="docutils literal notranslate"><span class="pre">api_key</span></code>, <code class="docutils literal notranslate"><span class="pre">api_secret</span></code>, <code class="docutils literal notranslate"><span class="pre">region</span></code>
+and <code class="docutils literal notranslate"><span class="pre">private_key_path</span></code>).</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">api_secret</span></code> value is marked as <strong>secret</strong> which means this value will be stored
 encrypted in the datastore if a dynamic value is used (more on dynamic values can be found below).</p>
 <p>In addition to ‘flat’ configs as shown above, schemas also support nested objects. For example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">consumer_key</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Your</span><span class="nv"> </span><span class="s">consumer</span><span class="nv"> </span><span class="s">key.&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
@@ -555,19 +555,19 @@ encrypted in the datastore if a dynamic value is used (more on dynamic values ca
         <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
-<p>In this example, the config file can contain a <code class="docutils literal"><span class="pre">sensor</span></code> item which is an object with a single
-<code class="docutils literal"><span class="pre">device_uuids</span></code> attribute.</p>
+<p>In this example, the config file can contain a <code class="docutils literal notranslate"><span class="pre">sensor</span></code> item which is an object with a single
+<code class="docutils literal notranslate"><span class="pre">device_uuids</span></code> attribute.</p>
 </div>
 <div class="section" id="configuration-file">
 <h3>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h3>
 <p>The configuration file is a YAML formatted file which contains site-specific configuration values.
 This file can contain ‘static’ or ‘dynamic’ values. The configuration file is named
-<code class="docutils literal"><span class="pre">&lt;pack</span> <span class="pre">name&gt;.yaml</span></code> and located in the <code class="docutils literal"><span class="pre">/opt/stackstorm/configs/</span></code> directory. File ownership
-should be <code class="docutils literal"><span class="pre">st2:st2</span></code>.</p>
-<p>For example, for a pack named <code class="docutils literal"><span class="pre">libcloud</span></code>, the configuration file is located at
-<code class="docutils literal"><span class="pre">/opt/stackstorm/configs/libcloud.yaml</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">&lt;pack</span> <span class="pre">name&gt;.yaml</span></code> and located in the <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/</span></code> directory. File ownership
+should be <code class="docutils literal notranslate"><span class="pre">st2:st2</span></code>.</p>
+<p>For example, for a pack named <code class="docutils literal notranslate"><span class="pre">libcloud</span></code>, the configuration file is located at
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/libcloud.yaml</span></code>.</p>
 <p>This example configuration matches the configuration schema above:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">api_key</span><span class="p p-Indicator">:</span> <span class="s">&quot;some_api_key&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">api_secret</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{st2kv.user.api_secret}}&quot;</span>  <span class="c1"># user-scoped configuration value which is also a secret as declared in config schema</span>
   <span class="l l-Scalar l-Scalar-Plain">region</span><span class="p p-Indicator">:</span> <span class="s">&quot;us-west-1&quot;</span>
@@ -576,13 +576,13 @@ should be <code class="docutils literal"><span class="pre">st2:st2</span></code>
 </div>
 <p>Configuration files are <strong>not</strong> read dynamically at run-time. Instead, they must be registered, and
 values are then loaded into the StackStorm DB. They are registered in the same way as other resources by
-running <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span></code>/<code class="docutils literal"><span class="pre">st2-register-content</span></code> script. For configs, you need to run this script
-with the <code class="docutils literal"><span class="pre">--register-configs</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-configs
+running <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span></code>/<code class="docutils literal notranslate"><span class="pre">st2-register-content</span></code> script. For configs, you need to run this script
+with the <code class="docutils literal notranslate"><span class="pre">--register-configs</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-configs
 </pre></div>
 </div>
 <p>Or:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2-register-content --register-configs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2-register-content --register-configs
 </pre></div>
 </div>
 <p>When loading and registering configs using the commands described above, static values in the
@@ -608,25 +608,25 @@ value. This datastore value is then used as the configuration value.</p>
 datastore values. This is useful when you want to use different configuration values, based upon
 the user who invoked the action.</p>
 <p>In the config, dynamic configuration values are referred to as shown below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">api_secret</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{st2kv.user.api_secret}}&quot;</span>  <span class="c1"># user-scoped configuration value which is also a secret as declared in config schema</span>
   <span class="l l-Scalar l-Scalar-Plain">private_key_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{st2kv.system.private_key_path}}&quot;</span>  <span class="c1"># global datastore value</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">api_secret</span></code> is a user-scoped dynamic configuration value which means that the <code class="docutils literal"><span class="pre">user</span></code> part will
+<p><code class="docutils literal notranslate"><span class="pre">api_secret</span></code> is a user-scoped dynamic configuration value which means that the <code class="docutils literal notranslate"><span class="pre">user</span></code> part will
 be replaced by the username of the user who triggered the action execution.</p>
 <p>Dynamic configuration values are stored in the datastore and are configured using the CLI or API.</p>
 <p>If a value is marked as secret in the config schema, it will need to be stored encrypted in the
-datastore. When setting the value, the <code class="docutils literal"><span class="pre">--encrypt</span></code> flag should be used, as shown below:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> api_secret <span class="s2">&quot;my super secret api secret&quot;</span> --scope<span class="o">=</span>user --encrypt
+datastore. When setting the value, the <code class="docutils literal notranslate"><span class="pre">--encrypt</span></code> flag should be used, as shown below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> api_secret <span class="s2">&quot;my super secret api secret&quot;</span> --scope<span class="o">=</span>user --encrypt
 </pre></div>
 </div>
 <p>See more about <a class="reference internal" href="../datastore.html#datastore-storing-secrets-in-key-value-store"><span class="std std-ref">storing secrets in datastore here</span></a>.</p>
-<p>In the above example, <code class="docutils literal"><span class="pre">private_key_path</span></code> is a regular dynamic configuration value, which means
-that a datastore item corresponding to this key (<code class="docutils literal"><span class="pre">private_key_path</span></code>) will be loaded from the
+<p>In the above example, <code class="docutils literal notranslate"><span class="pre">private_key_path</span></code> is a regular dynamic configuration value, which means
+that a datastore item corresponding to this key (<code class="docutils literal notranslate"><span class="pre">private_key_path</span></code>) will be loaded from the
 datastore.</p>
 <p>In this case, using the CLI, the value would be set as displayed below:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> private_key_path <span class="s2">&quot;/home/myuser/.ssh/my_private_rsa_key&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> private_key_path <span class="s2">&quot;/home/myuser/.ssh/my_private_rsa_key&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -642,19 +642,19 @@ the action execution is used for the context when resolving the value.</p>
 <div class="section" id="configuring-dynamic-configuration-values-using-the-cli">
 <h2>Configuring Dynamic Configuration Values Using the CLI<a class="headerlink" href="#configuring-dynamic-configuration-values-using-the-cli" title="Permalink to this headline">¶</a></h2>
 <p>Dynamic pack configuration values can be manipulated in the same way as any other datastore item
-using the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span></code> set of CLI commands.</p>
+using the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span></code> set of CLI commands.</p>
 <div class="section" id="configuring-a-regular-non-user-scoped-dynamic-configuration-value">
 <h3>Configuring a Regular (non user-scoped) Dynamic Configuration Value<a class="headerlink" href="#configuring-a-regular-non-user-scoped-dynamic-configuration-value" title="Permalink to this headline">¶</a></h3>
 <p>Regular dynamic configuration values can be configured by an administrator or
 any user:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> &lt;key name&gt; &lt;key value&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> &lt;key name&gt; &lt;key value&gt;
 
 <span class="c1"># For example</span>
 st2 key <span class="nb">set</span> private_key_path <span class="s2">&quot;/home/myuser/.ssh/my_private_rsa_key&quot;</span>
 </pre></div>
 </div>
-<p>To view a value, use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">get</span></code> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key get &lt;key name&gt;
+<p>To view a value, use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">get</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key get &lt;key name&gt;
 
 <span class="c1"># For example</span>
 st2 key get private_key_path
@@ -666,7 +666,7 @@ st2 key get private_key_path
 <h3>Configuring a User-scoped Dynamic Configuration Value<a class="headerlink" href="#configuring-a-user-scoped-dynamic-configuration-value" title="Permalink to this headline">¶</a></h3>
 <p>Dynamic configuration values can be configured by each user themselves or by an administrator for
 any available system user:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> --scope<span class="o">=</span>user <span class="o">[</span>--encrypt<span class="o">]</span> &lt;key name&gt; &lt;key value&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 key <span class="nb">set</span> --scope<span class="o">=</span>user <span class="o">[</span>--encrypt<span class="o">]</span> &lt;key name&gt; &lt;key value&gt;
 
 <span class="c1"># For example (authenticated as &quot;user1&quot;)</span>
 st2 key <span class="nb">set</span> --scope<span class="o">=</span>user default_region <span class="s2">&quot;us-west-1&quot;</span>
@@ -681,18 +681,18 @@ st2 key <span class="nb">set</span> --scope<span class="o">=</span>user --user<s
 st2 key <span class="nb">set</span> --scope<span class="o">=</span>user --user<span class="o">=</span>user2 default_region <span class="s2">&quot;us-east-1&quot;</span>
 </pre></div>
 </div>
-<p>Similarly to above, you can use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">get</span></code> command to view values. The same rules which
-apply to <code class="docutils literal"><span class="pre">set</span></code> also apply to <code class="docutils literal"><span class="pre">get</span></code> (users can only see values which are local to them,
+<p>Similarly to above, you can use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">get</span></code> command to view values. The same rules which
+apply to <code class="docutils literal notranslate"><span class="pre">set</span></code> also apply to <code class="docutils literal notranslate"><span class="pre">get</span></code> (users can only see values which are local to them,
 administrators can see all the values, secrets are masked by default).</p>
 </div>
 </div>
 <div class="section" id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
-<p>There are some limitation with dynamic config values and the <code class="docutils literal"><span class="pre">{{st2kv.user.key_name}}</span></code> context
+<p>There are some limitation with dynamic config values and the <code class="docutils literal notranslate"><span class="pre">{{st2kv.user.key_name}}</span></code> context
 you should be aware of.</p>
 <div class="section" id="dynamic-config-values">
 <h3>Dynamic Config Values<a class="headerlink" href="#dynamic-config-values" title="Permalink to this headline">¶</a></h3>
-<p>Right now only the <code class="docutils literal"><span class="pre">string</span></code> type is supported for dynamic config values. This was done
+<p>Right now only the <code class="docutils literal notranslate"><span class="pre">string</span></code> type is supported for dynamic config values. This was done
 intentionally to keep the feature simple and fully compatible with the existing datastore
 operations (this means you can re-use the same API, CLI commands, etc.).</p>
 <p>To work around this (in case you want to use a non-string value) you can store a JSON serialized
@@ -704,11 +704,11 @@ commands for managing dynamic config values. That’s something we want to avoid
 <div class="section" id="user-context">
 <h3>User Context<a class="headerlink" href="#user-context" title="Permalink to this headline">¶</a></h3>
 <p>User context is right now only available for actions which are triggered via the StackStorm API.</p>
-<p>This means that dynamic config values which utilize <code class="docutils literal"><span class="pre">{{st2kv.user.some_value}}</span></code> notation will
+<p>This means that dynamic config values which utilize <code class="docutils literal notranslate"><span class="pre">{{st2kv.user.some_value}}</span></code> notation will
 only resolve to the correct user when an action is triggered through the API.</p>
 <p>The reason for that is that the user context is currently only available in the API. If an action
-is triggered via a rule, user context is not available. In this case, <code class="docutils literal"><span class="pre">{{st2kv.user}}</span></code> will
-resolve to the system user (by default, <code class="docutils literal"><span class="pre">stanley</span></code>).</p>
+is triggered via a rule, user context is not available. In this case, <code class="docutils literal notranslate"><span class="pre">{{st2kv.user}}</span></code> will
+resolve to the system user (by default, <code class="docutils literal notranslate"><span class="pre">stanley</span></code>).</p>
 <p>We plan to address this in a future release, but we haven’t decided on the best approach yet, so
 your feedback is welcome. Whatever approach we go with, carrying the user context with a trigger
 and mapping this external user to the StackStorm user will require some additional work on the user

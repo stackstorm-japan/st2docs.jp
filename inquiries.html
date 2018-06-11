@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#securing-inquiries">Securing Inquiries</a></li>
@@ -462,7 +462,7 @@
   <div class="section" id="inquiries">
 <h1>Inquiries<a class="headerlink" href="#inquiries" title="Permalink to this headline">¶</a></h1>
 <p>StackStorm 2.5 introduced a new feature that allows you to pause a workflow to wait for additional
-information. This is done by using a new action: <code class="docutils literal"><span class="pre">core.ask</span></code>. These are called “Inquiries”, and
+information. This is done by using a new action: <code class="docutils literal notranslate"><span class="pre">core.ask</span></code>. These are called “Inquiries”, and
 the idea is to allow you to “ask a question” in the middle of a workflow. This could be a question
 like “do I have approval to continue?” or “what is the second factor I should provide to this
 authentication service?”</p>
@@ -477,11 +477,11 @@ point. Please consider using this feature in your test/dev deployments, and send
 feedback.</p>
 </div>
 <div class="section" id="new-core-ask-action">
-<h2>New <code class="docutils literal"><span class="pre">core.ask</span></code> Action<a class="headerlink" href="#new-core-ask-action" title="Permalink to this headline">¶</a></h2>
-<p>The best way to get started using Inquiries is to check out the new core action - <code class="docutils literal"><span class="pre">core.ask</span></code> -
-and start using it in your workflows. This action is built on a new runner type: <code class="docutils literal"><span class="pre">inquirer</span></code>,
+<h2>New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action<a class="headerlink" href="#new-core-ask-action" title="Permalink to this headline">¶</a></h2>
+<p>The best way to get started using Inquiries is to check out the new core action - <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> -
+and start using it in your workflows. This action is built on a new runner type: <code class="docutils literal notranslate"><span class="pre">inquirer</span></code>,
 which performs the bulk of the logic required to pause workflows and wait for a response.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 action get core.ask
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 action get core.ask
 +-------------+----------------------------------------------------------+
 <span class="p">|</span> Property    <span class="p">|</span> Value                                                    <span class="p">|</span>
 +-------------+----------------------------------------------------------+
@@ -500,8 +500,8 @@ which performs the bulk of the logic required to pause workflows and wait for a 
 +-------------+----------------------------------------------------------+
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">inquirer</span></code> runner imposes a number of parameters that are, in turn, required by the
-<code class="docutils literal"><span class="pre">core.ask</span></code> action:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">inquirer</span></code> runner imposes a number of parameters that are, in turn, required by the
+<code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="19%" />
@@ -549,18 +549,18 @@ more info.</td>
 </table>
 </div>
 <div class="section" id="using-core-ask-in-a-workflow">
-<h2>Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow<a class="headerlink" href="#using-core-ask-in-a-workflow" title="Permalink to this headline">¶</a></h2>
-<p>While you can use this action on its own (i.e. with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span></code>), the real value comes from using
+<h2>Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow<a class="headerlink" href="#using-core-ask-in-a-workflow" title="Permalink to this headline">¶</a></h2>
+<p>While you can use this action on its own (i.e. with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span></code>), the real value comes from using
 it in a <a class="reference internal" href="workflows.html"><span class="doc">Workflow</span></a>.</p>
-<p>The <code class="docutils literal"><span class="pre">core.ask</span></code> action supports a number of parameters, but the most important one by far is the
-<code class="docutils literal"><span class="pre">schema</span></code> parameter. This parameter defines exactly what kind of responses will satisfy the
+<p>The <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action supports a number of parameters, but the most important one by far is the
+<code class="docutils literal notranslate"><span class="pre">schema</span></code> parameter. This parameter defines exactly what kind of responses will satisfy the
 Inquiry, and allow the workflow to continue. When users respond to this Inquiry, their response
 must come in the form of a JSON payload that will satisfy this schema. We cover responses in
-<a class="reference internal" href="#ref-responding-inquiry"><span class="std std-ref">Responding to an Inquiry</span></a> below - the <code class="docutils literal"><span class="pre">st2</span></code> client makes this
+<a class="reference internal" href="#ref-responding-inquiry"><span class="std std-ref">Responding to an Inquiry</span></a> below - the <code class="docutils literal notranslate"><span class="pre">st2</span></code> client makes this
 pretty easy.</p>
 <p>Now we’ll use this action in an example workflow. The following example shows a simple ActionChain
-with two tasks. <code class="docutils literal"><span class="pre">task1</span></code> executes the <code class="docutils literal"><span class="pre">core.ask</span></code> action and passes in a few parameters:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
+with two tasks. <code class="docutils literal notranslate"><span class="pre">task1</span></code> executes the <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action and passes in a few parameters:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">task1</span>
     <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core.ask</span>
@@ -581,12 +581,12 @@ with two tasks. <code class="docutils literal"><span class="pre">task1</span></c
       <span class="l l-Scalar l-Scalar-Plain">cmd</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;We can now authenticate to &quot;foo&quot; service with {{ task1.result.response.secondfactor }}&quot;</span>
 </pre></div>
 </div>
-<p>Note that we’re using a Jinja snippet in <code class="docutils literal"><span class="pre">task2</span></code> to access and make use of the value that we’re
+<p>Note that we’re using a Jinja snippet in <code class="docutils literal notranslate"><span class="pre">task2</span></code> to access and make use of the value that we’re
 asking for. In this example we’re simply printing this to the screen, but the
-<code class="docutils literal"><span class="pre">&lt;task&gt;.result.response</span></code> dictionary will contain all of the values that satisfy our schema. More
+<code class="docutils literal notranslate"><span class="pre">&lt;task&gt;.result.response</span></code> dictionary will contain all of the values that satisfy our schema. More
 on this later.</p>
 <p>We can run this workflow to see its execution:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 run examples.chain-test-inquiry
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 run examples.chain-test-inquiry
 .
 id: 59d1ecb632ed353f1f340898
 action.ref: examples.chain-test-inquiry
@@ -614,12 +614,12 @@ end_timestamp: None
 +--------------------------+---------+-------+----------+-------------------------------+
 </pre></div>
 </div>
-<p>As you can see, the status of our ActionChain is <code class="docutils literal"><span class="pre">paused</span></code>. Note that <code class="docutils literal"><span class="pre">task2</span></code> hasn’t even been
-scheduled, because the use of the <code class="docutils literal"><span class="pre">core.ask</span></code> action prevented further tasks from running. You’ll
-also notice that the status for <code class="docutils literal"><span class="pre">task1</span></code> is <code class="docutils literal"><span class="pre">pending</span></code>. This indicates to us that this particular
+<p>As you can see, the status of our ActionChain is <code class="docutils literal notranslate"><span class="pre">paused</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">task2</span></code> hasn’t even been
+scheduled, because the use of the <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action prevented further tasks from running. You’ll
+also notice that the status for <code class="docutils literal notranslate"><span class="pre">task1</span></code> is <code class="docutils literal notranslate"><span class="pre">pending</span></code>. This indicates to us that this particular
 Inquiry has not yet received a valid response, and is currently blocking the Workflow execution.</p>
-<p>You can also use <code class="docutils literal"><span class="pre">core.ask</span></code> to ask a question within Mistral workflows:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> to ask a question within Mistral workflows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.mistral-ask-basic</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">A basic Mistral workflow illustrating the use of Inquiries</span>
@@ -652,11 +652,11 @@ workflow, just like we saw previously with ActionChains:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Due to the latency involved with sending a pause request to Mistral, you may temporarily see a
-<code class="docutils literal"><span class="pre">pausing</span></code> status in your Mistral workflows - especially if running directly with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span></code>.
-This is nothing to be concerned about; the status will quickly change to <code class="docutils literal"><span class="pre">paused</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">pausing</span></code> status in your Mistral workflows - especially if running directly with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span></code>.
+This is nothing to be concerned about; the status will quickly change to <code class="docutils literal notranslate"><span class="pre">paused</span></code>, and
 further tasks will not execute.</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 run examples.mistral-ask-basic
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 run examples.mistral-ask-basic
 .
 id: 59a9c99032ed3553fb738c83
 action.ref: examples.mistral-ask-basic
@@ -675,15 +675,15 @@ end_timestamp: None
 <p class="first admonition-title">Note</p>
 <p class="last">At the time of this writing, the Inquiry ID is the same as the action execution ID that raised
 it. So if you’re curious which workflow a given Inquiry is part of, use the same ID with the
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span></code> command.</p>
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span></code> command.</p>
 </div>
 </div>
 <div class="section" id="notifying-users-of-inquiries-using-rules">
 <h2>Notifying Users of Inquiries using Rules<a class="headerlink" href="#notifying-users-of-inquiries-using-rules" title="Permalink to this headline">¶</a></h2>
-<p>When a new Inquiry is raised, a dedicated trigger - <code class="docutils literal"><span class="pre">core.st2.generic.inquiry</span></code> - is used. This
+<p>When a new Inquiry is raised, a dedicated trigger - <code class="docutils literal notranslate"><span class="pre">core.st2.generic.inquiry</span></code> - is used. This
 trigger can be consumed in Rules, and you can use an action or a workflow to provide notification
 to the relevant party. For instance, using Slack:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;notify_inquiry&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;examples&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Notify relevant users of an Inquiry action</span>
@@ -699,9 +699,9 @@ to the relevant party. For instance, using Slack:</p>
     <span class="l l-Scalar l-Scalar-Plain">message</span><span class="p p-Indicator">:</span> <span class="s">&#39;Inquiry</span><span class="nv"> </span><span class="s">{{trigger.id}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">awaiting</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">approval</span><span class="nv"> </span><span class="s">action&#39;</span>
 </pre></div>
 </div>
-<p>Note how this Rule uses the <code class="docutils literal"><span class="pre">route</span></code> field to determine to which Slack channel the notification
+<p>Note how this Rule uses the <code class="docutils literal notranslate"><span class="pre">route</span></code> field to determine to which Slack channel the notification
 should be sent. You could also use this in the Rule criteria as well, and set up different
-notification actions depending on the value of <code class="docutils literal"><span class="pre">route</span></code>.</p>
+notification actions depending on the value of <code class="docutils literal notranslate"><span class="pre">route</span></code>.</p>
 </div>
 <div class="section" id="responding-to-an-inquiry">
 <span id="ref-responding-inquiry"></span><h2>Responding to an Inquiry<a class="headerlink" href="#responding-to-an-inquiry" title="Permalink to this headline">¶</a></h2>
@@ -709,9 +709,9 @@ notification actions depending on the value of <code class="docutils literal"><s
 that Inquiry, and the response must come in the form of JSON data that validates against the
 schema in use by that particular Inquiry instance.</p>
 <p>In order to respond to an Inquiry, we need its ID. We would already have this if we wrote a Rule
-like shown in the previous section, but we could also use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">inquiry</span> <span class="pre">list</span></code> command to view
+like shown in the previous section, but we could also use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">inquiry</span> <span class="pre">list</span></code> command to view
 all outstanding inquiries:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry list
 +--------------------------+-------+-------+------------+------+
 <span class="p">|</span> id                       <span class="p">|</span> roles <span class="p">|</span> users <span class="p">|</span> route      <span class="p">|</span> ttl  <span class="p">|</span>
 +--------------------------+-------+-------+------------+------+
@@ -719,9 +719,9 @@ all outstanding inquiries:</p>
 +--------------------------+-------+-------+------------+------+
 </pre></div>
 </div>
-<p>Like most other resources in StackStorm, we can use the <code class="docutils literal"><span class="pre">get</span></code> subcommand to retrieve details
+<p>Like most other resources in StackStorm, we can use the <code class="docutils literal notranslate"><span class="pre">get</span></code> subcommand to retrieve details
 about this Inquiry, using its ID provided in the previous output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry get 59d1ecb732ed353ec4aa9a5a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry get 59d1ecb732ed353ec4aa9a5a
 +----------+--------------------------------------------------------------+
 <span class="p">|</span> Property <span class="p">|</span> Value                                                        <span class="p">|</span>
 +----------+--------------------------------------------------------------+
@@ -744,20 +744,20 @@ about this Inquiry, using its ID provided in the previous output:</p>
 +----------+--------------------------------------------------------------+
 </pre></div>
 </div>
-<p>In this view, we see the schema in use requires a single key: <code class="docutils literal"><span class="pre">secondfactor</span></code>, whose value must
+<p>In this view, we see the schema in use requires a single key: <code class="docutils literal notranslate"><span class="pre">secondfactor</span></code>, whose value must
 be a string.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can omit the <code class="docutils literal"><span class="pre">schema</span></code> parameter when using <code class="docutils literal"><span class="pre">core.ask</span></code>, and a basic schema will be used
+<p class="last">You can omit the <code class="docutils literal notranslate"><span class="pre">schema</span></code> parameter when using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code>, and a basic schema will be used
 as default - only requiring a single boolean value to continue the workflow. In this example,
 we’ve provided our own schema that allows us to use the retrieved value in a later task of the
 workflow. This allows you to “inject” data into a workflow mid-execution, rather than rely
 solely on parameters.</p>
 </div>
-<p>Fortunately, the <code class="docutils literal"><span class="pre">st2</span></code> client makes it easy to provide a valid response; when you run the
-command <code class="docutils literal"><span class="pre">st2</span> <span class="pre">inquiry</span> <span class="pre">respond</span> <span class="pre">&lt;inquiry</span> <span class="pre">id&gt;</span></code>, it will step through each of these values, prompting
+<p>Fortunately, the <code class="docutils literal notranslate"><span class="pre">st2</span></code> client makes it easy to provide a valid response; when you run the
+command <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">inquiry</span> <span class="pre">respond</span> <span class="pre">&lt;inquiry</span> <span class="pre">id&gt;</span></code>, it will step through each of these values, prompting
 you with the provided description. You simply respond to each prompt:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry respond 59d1ecb732ed353ec4aa9a5a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry respond 59d1ecb732ed353ec4aa9a5a
 secondfactor: bar
 Please enter second factor <span class="k">for</span> authenticating to <span class="s2">&quot;foo&quot;</span> service
 
@@ -775,10 +775,10 @@ Please enter second factor <span class="k">for</span> authenticating to <span cl
 <p>It’s very important that each property in the response schema has a proper description, as shown
 in the default example, as this is what prompts the user for required values when it’s time to
 respond.</p>
-<p>Since the <code class="docutils literal"><span class="pre">st2</span></code> client has a handle on the schema being used for an Inquiry, it can guide you to
+<p>Since the <code class="docutils literal notranslate"><span class="pre">st2</span></code> client has a handle on the schema being used for an Inquiry, it can guide you to
 provide the right datatypes for each attribute, and won’t continue until you do. For instance, if
-our schema required a <code class="docutils literal"><span class="pre">boolean</span></code> value, an integer would be rejected client-side:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry respond 59ab26af32ed35752062d2dc
+our schema required a <code class="docutils literal notranslate"><span class="pre">boolean</span></code> value, an integer would be rejected client-side:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry respond 59ab26af32ed35752062d2dc
 <span class="k">continue</span> <span class="o">(</span>boolean<span class="o">)</span>: <span class="m">123</span>
 Does not look like boolean. Pick from <span class="o">[</span>false, no, nope, nah, n, <span class="m">1</span>, <span class="m">0</span>, y, yes, true<span class="o">]</span>
 Should we <span class="k">continue</span>?
@@ -786,8 +786,8 @@ Should we <span class="k">continue</span>?
 </div>
 <p>However, not every response can be done interactively. You may even want to script some or all of
 your Inquiry responses, and may be using tools like <cite>jq</cite> to craft your own JSON payload for a
-response and wish to simply provide this to the CLI. The <code class="docutils literal"><span class="pre">-r</span></code> flag can be used for this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry respond -r <span class="s1">&#39;{&quot;secondfactor&quot;: &quot;bar&quot;}&#39;</span> 59d1ecb732ed353ec4aa9a5a
+response and wish to simply provide this to the CLI. The <code class="docutils literal notranslate"><span class="pre">-r</span></code> flag can be used for this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry respond -r <span class="s1">&#39;{&quot;secondfactor&quot;: &quot;bar&quot;}&#39;</span> 59d1ecb732ed353ec4aa9a5a
 
  Response accepted. Successful response data to follow...
 +----------+---------------------------+
@@ -803,13 +803,13 @@ response and wish to simply provide this to the CLI. The <code class="docutils l
 <p>Note that this effectively bypasses any client-side validation, so it’s possible to send a JSON
 payload that doesn’t validate against the schema. However, the API is the ultimate authority on
 validating an Inquiry response, so in this case, you’ll still get an error in return:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry respond -r <span class="s1">&#39;{&quot;secondfactor&quot;: 123}&#39;</span> 59d1ecb732ed353ec4aa9a5a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry respond -r <span class="s1">&#39;{&quot;secondfactor&quot;: 123}&#39;</span> 59d1ecb732ed353ec4aa9a5a
 ERROR: <span class="m">400</span> Client Error: Bad Request
 MESSAGE: Response did not pass schema validation. <span class="k">for</span> url: http://127.0.0.1:9101/exp/inquiries/59ab26af32ed35752062d2dc
 </pre></div>
 </div>
 <p>Once an acceptable response is provided, the workflow resumes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 execution get 59d1ecb632ed353f1f340898
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 execution get 59d1ecb632ed353f1f340898
 id: 59d1ecb632ed353f1f340898
 action.ref: examples.chain-test-inquiry
 parameters: None
@@ -831,14 +831,14 @@ end_timestamp: <span class="m">2017</span>-10-02T07:45:14.123405Z
 +--------------------------+------------------------+-------+------------+-------------------------------+
 </pre></div>
 </div>
-<p>Note that the <code class="docutils literal"><span class="pre">stdout</span></code> for <code class="docutils literal"><span class="pre">task2</span></code> (and subsequently, this ActionChain) is “We can now
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">stdout</span></code> for <code class="docutils literal notranslate"><span class="pre">task2</span></code> (and subsequently, this ActionChain) is “We can now
 authenticate to foo service with bar”. If you recall, this was because we were using a Jinja
-snippet to print the value of <code class="docutils literal"><span class="pre">secondfactor</span></code> in our response. We just printed the phrase to the
+snippet to print the value of <code class="docutils literal notranslate"><span class="pre">secondfactor</span></code> in our response. We just printed the phrase to the
 screen in this example, but you can just as easily use this to pass a value into another action in
 your workflow.</p>
-<p>The <code class="docutils literal"><span class="pre">st2</span></code> pack also now contains an <code class="docutils literal"><span class="pre">inquiry.respond</span></code> action, which may be useful for
+<p>The <code class="docutils literal notranslate"><span class="pre">st2</span></code> pack also now contains an <code class="docutils literal notranslate"><span class="pre">inquiry.respond</span></code> action, which may be useful for
 responding to inquiries within another workflow:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>~$ st2 inquiry get 5a1f4411c4da5f4486b09364
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ st2 inquiry get 5a1f4411c4da5f4486b09364
 +----------+--------------------------------------------------------------+
 <span class="p">|</span> Property <span class="p">|</span> Value                                                        <span class="p">|</span>
 +----------+--------------------------------------------------------------+
@@ -876,31 +876,31 @@ stdout: <span class="s1">&#39;&#39;</span>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You’ll notice that the value for the key <code class="docutils literal"><span class="pre">secondfactor</span></code> is masked within  the response body
-in the execution output for this action. The <code class="docutils literal"><span class="pre">st2.inquiry.respond</span></code> action doesn’t actually
+<p class="last">You’ll notice that the value for the key <code class="docutils literal notranslate"><span class="pre">secondfactor</span></code> is masked within  the response body
+in the execution output for this action. The <code class="docutils literal notranslate"><span class="pre">st2.inquiry.respond</span></code> action doesn’t actually
 know the inquiry response schema at all - it is merely a thin layer on top of the StackStorm
-client. As a result, it doesn’t know which fields are marked with the <code class="docutils literal"><span class="pre">secret</span></code> attribute.
+client. As a result, it doesn’t know which fields are marked with the <code class="docutils literal notranslate"><span class="pre">secret</span></code> attribute.
 To avoid potentially leaking secrets, all field values are masked in this way for the output
 of this action, regardless of whether or not the schema has declared them as secrets.</p>
 </div>
-<p>The <code class="docutils literal"><span class="pre">st2</span></code> pack also contains an action alias for responding to Inquiries via ChatOps. Using this
+<p>The <code class="docutils literal notranslate"><span class="pre">st2</span></code> pack also contains an action alias for responding to Inquiries via ChatOps. Using this
 alias, you can respond to an Inquiry within Slack, as an example:</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>!st2 respond to inquiry 5a1f4860c4da5f4486b093bf with {“secondfactor”: “supersecret”}
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>!st2 respond to inquiry 5a1f4860c4da5f4486b093bf with {“secondfactor”: “supersecret”}
 </pre></div>
 </div>
 </div>
 <div class="section" id="securing-inquiries">
 <span id="ref-securing-inquiries"></span><h2>Securing Inquiries<a class="headerlink" href="#securing-inquiries" title="Permalink to this headline">¶</a></h2>
 <p>At initial release, Inquiries work a little differently from other system resources with it comes
-to granting permissions to them via <a class="reference internal" href="rbac.html"><span class="doc">RBAC</span></a>. The <code class="docutils literal"><span class="pre">users</span></code> and <code class="docutils literal"><span class="pre">roles</span></code> parameters for
-the <code class="docutils literal"><span class="pre">core.ask</span></code> action allows you to control who can respond to a specific inquiry, right in the
+to granting permissions to them via <a class="reference internal" href="rbac.html"><span class="doc">RBAC</span></a>. The <code class="docutils literal notranslate"><span class="pre">users</span></code> and <code class="docutils literal notranslate"><span class="pre">roles</span></code> parameters for
+the <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action allows you to control who can respond to a specific inquiry, right in the
 workflow. With this granularity being offered in parameters, RBAC for Inquiries is a bit simpler,
 focusing broadly on who has access to Inquiries in general, leaving specific access control to the
 action parameters.</p>
 <p>For example, rather than specifying a particular Inquiry when constructing a role, all Inquiry
-UIDs should be specified as <code class="docutils literal"><span class="pre">inquiry:</span></code>. Whatever permissions are granted in the role are granted
+UIDs should be specified as <code class="docutils literal notranslate"><span class="pre">inquiry:</span></code>. Whatever permissions are granted in the role are granted
 to all inquiries:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;inquiry_role_respond&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">inquiry</span><span class="nv"> </span><span class="s">powers&quot;</span>
 
@@ -912,13 +912,13 @@ to all inquiries:</p>
 </pre></div>
 </div>
 <p>Inquiries also honor execution permissions for the workflow they were generated from. For
-instance, if user``inherit`` has <code class="docutils literal"><span class="pre">action_execute</span></code> permissions on the workflow
-<code class="docutils literal"><span class="pre">examples.mistral-ask-basic</span></code>, they don’t need to be explicitly granted <code class="docutils literal"><span class="pre">inquiry_respond</span></code>
+instance, if user``inherit`` has <code class="docutils literal notranslate"><span class="pre">action_execute</span></code> permissions on the workflow
+<code class="docutils literal notranslate"><span class="pre">examples.mistral-ask-basic</span></code>, they don’t need to be explicitly granted <code class="docutils literal notranslate"><span class="pre">inquiry_respond</span></code>
 permissions - this is done automatically.</p>
 <p>The following is an example role that only grants permissions to execute a workflow that contains
-a <code class="docutils literal"><span class="pre">core.ask</span></code> action, but doesn’t explicitly grant <code class="docutils literal"><span class="pre">inquiry_respond</span></code> permissions. However, any
+a <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action, but doesn’t explicitly grant <code class="docutils literal notranslate"><span class="pre">inquiry_respond</span></code> permissions. However, any
 user that’s been assigned to this role will still be permitted to respond.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;inquiry_role_inherit&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">action</span><span class="nv"> </span><span class="s">powers</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">will</span><span class="nv"> </span><span class="s">inherit</span><span class="nv"> </span><span class="s">inquiry_respond&quot;</span>
 
@@ -943,16 +943,16 @@ user that’s been assigned to this role will still be permitted to respond.</p>
 </pre></div>
 </div>
 <p>To lock down a specific Inquiry to a set of users or RBAC roles (the latter of which is only
-available with <a class="reference internal" href="install/bwc.html"><span class="doc">enterprise features</span></a>), the <code class="docutils literal"><span class="pre">users</span></code> and <code class="docutils literal"><span class="pre">roles</span></code> parameters
+available with <a class="reference internal" href="install/bwc.html"><span class="doc">enterprise features</span></a>), the <code class="docutils literal notranslate"><span class="pre">users</span></code> and <code class="docutils literal notranslate"><span class="pre">roles</span></code> parameters
 should be used. These offer additional restriction on a per-Inquiry basis, but they don’t remove
 any restrictions imposed on the aforementioned RBAC settings, if any. These parameter-based
 restrictions are cumulative with any existing RBAC restrictions.</p>
-<p>The <code class="docutils literal"><span class="pre">users</span></code> parameter is a list of users that are permitted to respond to this specific instance
-of an Inquiry. Similarly, <code class="docutils literal"><span class="pre">roles</span></code> controls which RBAC roles (assuming enterprise features) are
+<p>The <code class="docutils literal notranslate"><span class="pre">users</span></code> parameter is a list of users that are permitted to respond to this specific instance
+of an Inquiry. Similarly, <code class="docutils literal notranslate"><span class="pre">roles</span></code> controls which RBAC roles (assuming enterprise features) are
 allowed to respond to this specific Inquiry. The default value for both of these parameters is an
-empty list, which permits all. The following ActionChain invokes a <code class="docutils literal"><span class="pre">core.local</span></code> action, passing
-a list into the <code class="docutils literal"><span class="pre">users</span></code> parameter that specifies only <code class="docutils literal"><span class="pre">st2responduser</span></code> is able to respond:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
+empty list, which permits all. The following ActionChain invokes a <code class="docutils literal notranslate"><span class="pre">core.local</span></code> action, passing
+a list into the <code class="docutils literal notranslate"><span class="pre">users</span></code> parameter that specifies only <code class="docutils literal notranslate"><span class="pre">st2responduser</span></code> is able to respond:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">task1</span>
     <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">core.ask</span>
@@ -976,13 +976,13 @@ a list into the <code class="docutils literal"><span class="pre">users</span></c
 </pre></div>
 </div>
 <p>All other users attempting to respond will be rejected, even if they are granted
-<code class="docutils literal"><span class="pre">inquiry_respond</span></code> RBAC permissions.</p>
+<code class="docutils literal notranslate"><span class="pre">inquiry_respond</span></code> RBAC permissions.</p>
 </div>
 <div class="section" id="garbage-collection-for-inquiries">
 <h2>Garbage Collection for Inquiries<a class="headerlink" href="#garbage-collection-for-inquiries" title="Permalink to this headline">¶</a></h2>
 <p>As alluded to in <a class="reference internal" href="troubleshooting/purging_old_data.html"><span class="doc">Purging Old Operational Data</span></a>, the
-<code class="docutils literal"><span class="pre">st2garbagecollector</span></code> service is also responsible for cleaning up old Inquiries. This is done by
-comparing the <code class="docutils literal"><span class="pre">ttl</span></code> parameter of an Inquiry with its start time. The <code class="docutils literal"><span class="pre">ttl</span></code> field is the number
+<code class="docutils literal notranslate"><span class="pre">st2garbagecollector</span></code> service is also responsible for cleaning up old Inquiries. This is done by
+comparing the <code class="docutils literal notranslate"><span class="pre">ttl</span></code> parameter of an Inquiry with its start time. The <code class="docutils literal notranslate"><span class="pre">ttl</span></code> field is the number
 of minutes since the start time the Inquiry will be allowed to receive responses, before it is
 cleaned up.</p>
 <p>Unlike garbage collection for trigger-instances, or action executions, Inquiries are not deleted
@@ -992,16 +992,16 @@ TTL expired waiting for a response.</p>
 <p>To configure garbage collection for Inquiries, you first need to enable this globally. Unlike
 trigger-instances and action executions, the configuration file only requires a single boolean
 parameter to enable Inquiry garbage colllection:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[garbagecollector]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[garbagecollector]</span>
 
 <span class="c1"># By default, this value is False</span>
 <span class="na">purge_inquiries</span> <span class="o">=</span> <span class="s">True</span>
 </pre></div>
 </div>
-<p>Once done, each Inquiry has its own <code class="docutils literal"><span class="pre">ttl</span></code> configured via parameters. The default is 1440 - 24
-hours. However, this can be easily overridden for a inquiry by specifying the <code class="docutils literal"><span class="pre">ttl</span></code> in a
-parameter for the <code class="docutils literal"><span class="pre">core.ask</span></code> action, like in the following Mistral workflow:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<p>Once done, each Inquiry has its own <code class="docutils literal notranslate"><span class="pre">ttl</span></code> configured via parameters. The default is 1440 - 24
+hours. However, this can be easily overridden for a inquiry by specifying the <code class="docutils literal notranslate"><span class="pre">ttl</span></code> in a
+parameter for the <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action, like in the following Mistral workflow:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.mistral-ask-basic</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">A basic Mistral workflow illustrating the use of Inquiries</span>
@@ -1026,11 +1026,11 @@ parameter for the <code class="docutils literal"><span class="pre">core.ask</spa
 <p class="last">Even if Inquiry garbage collection is enabled globally in the st2 config, you can use a TTL
 value of 0 to disable garbage collection for a specific Inquiry.</p>
 </div>
-<p>Once this option has been enabled, and the <code class="docutils literal"><span class="pre">st2garbagecollector</span></code> service is started, it will
-begin periodically looking for Inquiries that have been in a <code class="docutils literal"><span class="pre">pending</span></code> state beyond their
-configured <code class="docutils literal"><span class="pre">ttl</span></code>. If we didn’t respond to the above inquiry within 60 minutes, then <code class="docutils literal"><span class="pre">task</span></code>
-would be marked “timeout”, and the workflow would fail (since <code class="docutils literal"><span class="pre">task2</span></code> is listed under
-<code class="docutils literal"><span class="pre">on-success</span></code>).</p>
+<p>Once this option has been enabled, and the <code class="docutils literal notranslate"><span class="pre">st2garbagecollector</span></code> service is started, it will
+begin periodically looking for Inquiries that have been in a <code class="docutils literal notranslate"><span class="pre">pending</span></code> state beyond their
+configured <code class="docutils literal notranslate"><span class="pre">ttl</span></code>. If we didn’t respond to the above inquiry within 60 minutes, then <code class="docutils literal notranslate"><span class="pre">task</span></code>
+would be marked “timeout”, and the workflow would fail (since <code class="docutils literal notranslate"><span class="pre">task2</span></code> is listed under
+<code class="docutils literal notranslate"><span class="pre">on-success</span></code>).</p>
 </div>
 </div>
 

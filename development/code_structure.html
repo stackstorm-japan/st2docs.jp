@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,33 +467,33 @@
 <p>You might be tempted to contribute to StackStorm by this point. Let us walk you through the code a bit.</p>
 <div class="section" id="stackstorm-st2-repo">
 <h2>StackStorm/st2 Repo<a class="headerlink" href="#stackstorm-st2-repo" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm is made up of individual services: <code class="docutils literal"><span class="pre">st2auth</span></code>, <code class="docutils literal"><span class="pre">st2api</span></code>, <code class="docutils literal"><span class="pre">st2rulesengine</span></code>,
-<code class="docutils literal"><span class="pre">st2sensorcontainer</span></code>, <code class="docutils literal"><span class="pre">st2actionrunner</span></code>, <code class="docutils literal"><span class="pre">st2notifier</span></code>.</p>
+<p>StackStorm is made up of individual services: <code class="docutils literal notranslate"><span class="pre">st2auth</span></code>, <code class="docutils literal notranslate"><span class="pre">st2api</span></code>, <code class="docutils literal notranslate"><span class="pre">st2rulesengine</span></code>,
+<code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code>, <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code>, <code class="docutils literal notranslate"><span class="pre">st2notifier</span></code>.</p>
 <p>StackStorm also has a CLI and client library. Code for all these services and components are laid out in
 different folders in the repo root.</p>
 </div>
 <div class="section" id="st2common">
 <h2>st2common<a class="headerlink" href="#st2common" title="Permalink to this headline">¶</a></h2>
 <p>Common code that contains DB and API data models, utility functions and common service code
-that all of StackStorm needs. Each service package (deb/rpm) has a dependency on the <code class="docutils literal"><span class="pre">st2common</span></code>
+that all of StackStorm needs. Each service package (deb/rpm) has a dependency on the <code class="docutils literal notranslate"><span class="pre">st2common</span></code>
 package. So if you want common code that should be shared amongst components written, you’d add
 them here.</p>
 </div>
 <div class="section" id="st2api">
 <h2>st2api<a class="headerlink" href="#st2api" title="Permalink to this headline">¶</a></h2>
 <p>This folder contains code for API controllers in StackStorm. APIs are versioned and so are controllers.
-Experimental controllers are added to <code class="docutils literal"><span class="pre">exp</span></code> folder inside <code class="docutils literal"><span class="pre">st2api</span></code> and when they mature, they are
+Experimental controllers are added to <code class="docutils literal notranslate"><span class="pre">exp</span></code> folder inside <code class="docutils literal notranslate"><span class="pre">st2api</span></code> and when they mature, they are
 moved to folders containing versioned controllers.</p>
 </div>
 <div class="section" id="st2auth">
 <h2>st2auth<a class="headerlink" href="#st2auth" title="Permalink to this headline">¶</a></h2>
-<p>Contains code for <code class="docutils literal"><span class="pre">st2auth</span></code> endpoint. Since this endpoint needs to deployed separately than
-<code class="docutils literal"><span class="pre">st2api</span></code>, it is available as a separate app.</p>
+<p>Contains code for <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> endpoint. Since this endpoint needs to deployed separately than
+<code class="docutils literal notranslate"><span class="pre">st2api</span></code>, it is available as a separate app.</p>
 </div>
 <div class="section" id="st2actions">
 <h2>st2actions<a class="headerlink" href="#st2actions" title="Permalink to this headline">¶</a></h2>
 <p>Contains code for action runners. A new runner written for StackStorm would be added to
-<code class="docutils literal"><span class="pre">st2actions/st2actions/runners</span></code>. Also, this folder contains the code for worker node that scans
+<code class="docutils literal notranslate"><span class="pre">st2actions/st2actions/runners</span></code>. Also, this folder contains the code for worker node that scans
 RabbitMQ for incoming executions.</p>
 <p>Notifier and results tracker are also part of this code base. Notifier is the component that
 sends notification triggers and action triggers at the end of action execution. Results tracker
@@ -507,7 +507,7 @@ eventually split them.</p>
 </div>
 <div class="section" id="st2debug">
 <h2>st2debug<a class="headerlink" href="#st2debug" title="Permalink to this headline">¶</a></h2>
-<p>If you are familiar with <code class="docutils literal"><span class="pre">st2-submit-debug-info</span></code> tool, the code for that is present in this folder.
+<p>If you are familiar with <code class="docutils literal notranslate"><span class="pre">st2-submit-debug-info</span></code> tool, the code for that is present in this folder.
 This tool provides a way to share logs and other info with a StackStorm engineer for troubleshooting.</p>
 </div>
 <div class="section" id="st2reactor">

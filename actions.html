@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -480,19 +480,19 @@ actions can be strung together into a <a class="reference internal" href="workfl
 directly from the clients via CLI, API, or UI.</p>
 <div class="section" id="managing-and-running-actions">
 <h2>Managing and Running Actions<a class="headerlink" href="#managing-and-running-actions" title="Permalink to this headline">¶</a></h2>
-<p>The CLI provides access to action management commands using the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">&lt;command&gt;</span></code> format.
+<p>The CLI provides access to action management commands using the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">&lt;command&gt;</span></code> format.
 To see a list of available commands and their description, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action --help
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action --help
 </pre></div>
 </div>
-<p>To get more information on a particular action command, run: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">&lt;command&gt;</span> <span class="pre">-h</span></code>. For
+<p>To get more information on a particular action command, run: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">&lt;command&gt;</span> <span class="pre">-h</span></code>. For
 example, the following will provide help for the action list command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action list -h
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action list -h
 </pre></div>
 </div>
 <p>The following commands show examples of how to obtain information on available actions and their
 arguments:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List all available actions (note that output may be lengthy)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all available actions (note that output may be lengthy)</span>
 st2 action list
 
 <span class="c1"># List all actions in &quot;linux&quot; pack</span>
@@ -505,9 +505,9 @@ st2 action get linux.check_loadavg
 st2 run linux.check_loadavg -h
 </pre></div>
 </div>
-<p>To execute an action manually, you can use <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;action</span> <span class="pre">with</span> <span class="pre">parameters&gt;</span></code> or
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">execute</span> <span class="pre">&lt;action</span> <span class="pre">with</span> <span class="pre">parameters&gt;</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Execute action immediately and display the results</span>
+<p>To execute an action manually, you can use <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;action</span> <span class="pre">with</span> <span class="pre">parameters&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">execute</span> <span class="pre">&lt;action</span> <span class="pre">with</span> <span class="pre">parameters&gt;</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Execute action immediately and display the results</span>
 st2 run core.http <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://httpbin.org/get&quot;</span>
 
 <span class="c1"># Schedule action execution</span>
@@ -533,43 +533,43 @@ up the environment.</p>
 <p>The environment in which the action runs is specified by the runner. Currently the system provides
 the following runners:</p>
 <ol class="arabic">
-<li><p class="first"><code class="docutils literal"><span class="pre">local-shell-cmd</span></code> - This is the local runner. This runner executes a Linux command on the
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">local-shell-cmd</span></code> - This is the local runner. This runner executes a Linux command on the
 host where StackStorm is running.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">local-shell-script</span></code> - This is the local runner. Actions are implemented as scripts. They are
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code> - This is the local runner. Actions are implemented as scripts. They are
 executed on the hosts where StackStorm is running.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">remote-shell-cmd</span></code> - This is a remote runner. This runner executes a Linux command on one or
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">remote-shell-cmd</span></code> - This is a remote runner. This runner executes a Linux command on one or
 more remote hosts provided by the user.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">remote-shell-script</span></code> - This is a remote runner. Actions are implemented as scripts. They run
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code> - This is a remote runner. Actions are implemented as scripts. They run
 on one or more remote hosts provided by the user.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">python-script</span></code> - This is a Python runner. Actions are implemented as Python classes with a
-<code class="docutils literal"><span class="pre">run()</span></code> method. They run locally on the same machine where StackStorm components are running. The
-return value from the action <code class="docutils literal"><span class="pre">run()</span></code> method is either a tuple of success status flag and the
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">python-script</span></code> - This is a Python runner. Actions are implemented as Python classes with a
+<code class="docutils literal notranslate"><span class="pre">run()</span></code> method. They run locally on the same machine where StackStorm components are running. The
+return value from the action <code class="docutils literal notranslate"><span class="pre">run()</span></code> method is either a tuple of success status flag and the
 result object respectively or it is just the result object. For more information, please refer
 to the <a class="reference internal" href="reference/runners.html"><span class="doc">Action Runners</span></a> section in the documentation.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">http-request</span></code> - HTTP client which performs HTTP requests for running HTTP actions.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">http-request</span></code> - HTTP client which performs HTTP requests for running HTTP actions.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">action-chain</span></code> - This runner supports executing simple linear work-flows. For more
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">action-chain</span></code> - This runner supports executing simple linear work-flows. For more
 information, please refer to the <a class="reference internal" href="workflows.html"><span class="doc">Workflows</span></a> and
 <a class="reference internal" href="actionchain.html"><span class="doc">ActionChain</span></a> documentation.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">mistral-v2</span></code> - This runner is built on top of the Mistral OpenStack project and supports
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">mistral-v2</span></code> - This runner is built on top of the Mistral OpenStack project and supports
 executing complex work-flows. For more information, please refer to the
 <a class="reference internal" href="workflows.html"><span class="doc">Workflows</span></a> and <a class="reference internal" href="mistral.html"><span class="doc">Mistral</span></a> documentation.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">cloudslang</span></code> - This runner is built on top of the CloudSlang project and supports executing
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">cloudslang</span></code> - This runner is built on top of the CloudSlang project and supports executing
 complex workflows. For more information, please refer to the <a class="reference internal" href="workflows.html"><span class="doc">Workflows</span></a> and
 <a class="reference internal" href="cloudslang.html"><span class="doc">CloudSlang</span></a> documentation.</p>
 <p>Note: This runner is currently in an experimental phase which means that there might be
 bugs and the external user-facing API might change.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">inquirer</span></code> - This runner provides the core logic of the <a class="reference internal" href="inquiries.html"><span class="doc">Inquiries</span></a>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">inquirer</span></code> - This runner provides the core logic of the <a class="reference internal" href="inquiries.html"><span class="doc">Inquiries</span></a>
 feature.</p>
-<p>Note: This runner is an implementation detail for the <code class="docutils literal"><span class="pre">core.ask</span></code> action, and in most cases
+<p>Note: This runner is an implementation detail for the <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> action, and in most cases
 should not be referenced in other actions.</p>
 </li>
 </ol>
@@ -587,8 +587,8 @@ runner parameters, in addition to its own parameters.</p>
 <p>As noted above, an action script can be written in an arbitrary programming language, as long as
 it follows these conventions:</p>
 <ol class="arabic simple">
-<li>Script should exit with <code class="docutils literal"><span class="pre">0</span></code> status code on success and non-zero on error
-(e.g. <code class="docutils literal"><span class="pre">1</span></code>)</li>
+<li>Script should exit with <code class="docutils literal notranslate"><span class="pre">0</span></code> status code on success and non-zero on error
+(e.g. <code class="docutils literal notranslate"><span class="pre">1</span></code>)</li>
 <li>All log messages should be printed to standard error</li>
 </ol>
 <div class="section" id="action-metadata">
@@ -596,20 +596,20 @@ it follows these conventions:</p>
 <p>Action metadata is used to describe the action and is defined as YAML. These attributes can be
 present in the metadata file:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">name</span></code> - Name of the action.</li>
-<li><code class="docutils literal"><span class="pre">runner_type</span></code> - The type of runner to execute the action.</li>
-<li><code class="docutils literal"><span class="pre">enabled</span></code> - Action cannot be invoked when disabled.</li>
-<li><code class="docutils literal"><span class="pre">entry_point</span></code> - Location of the action launch script relative to the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/${pack_name}/actions/</span></code> directory.</li>
-<li><code class="docutils literal"><span class="pre">parameters</span></code> - A dictionary of parameters and optional metadata describing type and default.
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code> - Name of the action.</li>
+<li><code class="docutils literal notranslate"><span class="pre">runner_type</span></code> - The type of runner to execute the action.</li>
+<li><code class="docutils literal notranslate"><span class="pre">enabled</span></code> - Action cannot be invoked when disabled.</li>
+<li><code class="docutils literal notranslate"><span class="pre">entry_point</span></code> - Location of the action launch script relative to the
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/${pack_name}/actions/</span></code> directory.</li>
+<li><code class="docutils literal notranslate"><span class="pre">parameters</span></code> - A dictionary of parameters and optional metadata describing type and default.
 The metadata is structured data following the <a class="reference external" href="http://json-schema.org/documentation.html">JSON Schema</a> specification draft 4. The common
-parameter types allowed are <code class="docutils literal"><span class="pre">string</span></code>, <code class="docutils literal"><span class="pre">boolean</span></code>, <code class="docutils literal"><span class="pre">number</span></code> (whole numbers and decimal
-numbers - e.g. <code class="docutils literal"><span class="pre">1.0</span></code>, <code class="docutils literal"><span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">3.3333</span></code>, etc.), <code class="docutils literal"><span class="pre">object</span></code>, <code class="docutils literal"><span class="pre">integer</span></code> (whole numbers only -
-<code class="docutils literal"><span class="pre">1</span></code>, <code class="docutils literal"><span class="pre">1000</span></code>, etc.) and <code class="docutils literal"><span class="pre">array</span></code>. If metadata is provided, input args are validated on
+parameter types allowed are <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">boolean</span></code>, <code class="docutils literal notranslate"><span class="pre">number</span></code> (whole numbers and decimal
+numbers - e.g. <code class="docutils literal notranslate"><span class="pre">1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">3.3333</span></code>, etc.), <code class="docutils literal notranslate"><span class="pre">object</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code> (whole numbers only -
+<code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">1000</span></code>, etc.) and <code class="docutils literal notranslate"><span class="pre">array</span></code>. If metadata is provided, input args are validated on
 action execution. Otherwise, validation is skipped.</li>
 </ul>
 <p>This is a sample metadata file for a Python action which sends an SMS via the Twilio web service:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;send_sms&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;python-script&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">sends</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">SMS</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">twilio.&quot;</span>
@@ -635,19 +635,19 @@ action execution. Otherwise, validation is skipped.</li>
         <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">{%</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">system.user</span><span class="nv"> </span><span class="s">%}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">st2kv.system.user</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">{%</span><span class="nv"> </span><span class="s">else</span><span class="nv"> </span><span class="s">%}</span><span class="nv"> </span><span class="s">dude</span><span class="nv"> </span><span class="s">{%</span><span class="nv"> </span><span class="s">endif</span><span class="nv"> </span><span class="s">%}!&quot;</span>
 </pre></div>
 </div>
-<p>This action is using a Python runner (<code class="docutils literal"><span class="pre">python-script</span></code>). The class that implements a <code class="docutils literal"><span class="pre">run</span></code>
-method is contained in a file called <code class="docutils literal"><span class="pre">send_sms.py</span></code> which is located in the same directory as the
-metadata file. The action takes three parameters (<code class="docutils literal"><span class="pre">from_number</span></code>, <code class="docutils literal"><span class="pre">to_number</span></code>, <code class="docutils literal"><span class="pre">body</span></code>).</p>
-<p>In the example above, the <code class="docutils literal"><span class="pre">to_number</span></code> parameter contains the attribute <code class="docutils literal"><span class="pre">secret</span></code> with value:
-<code class="docutils literal"><span class="pre">true</span></code>. If an attribute is marked as a secret, the value of that attribute will be masked in the
+<p>This action is using a Python runner (<code class="docutils literal notranslate"><span class="pre">python-script</span></code>). The class that implements a <code class="docutils literal notranslate"><span class="pre">run</span></code>
+method is contained in a file called <code class="docutils literal notranslate"><span class="pre">send_sms.py</span></code> which is located in the same directory as the
+metadata file. The action takes three parameters (<code class="docutils literal notranslate"><span class="pre">from_number</span></code>, <code class="docutils literal notranslate"><span class="pre">to_number</span></code>, <code class="docutils literal notranslate"><span class="pre">body</span></code>).</p>
+<p>In the example above, the <code class="docutils literal notranslate"><span class="pre">to_number</span></code> parameter contains the attribute <code class="docutils literal notranslate"><span class="pre">secret</span></code> with value:
+<code class="docutils literal notranslate"><span class="pre">true</span></code>. If an attribute is marked as a secret, the value of that attribute will be masked in the
 StackStorm service logs.</p>
 </div>
 <div class="section" id="parameters-in-actions">
 <h3>Parameters in Actions<a class="headerlink" href="#parameters-in-actions" title="Permalink to this headline">¶</a></h3>
 <p>In the previous example, you probably noticed how you can access parameters from the key-value
-store by using the <code class="docutils literal"><span class="pre">st2kv.system</span></code> prefix in the template. You can also get access to variables
+store by using the <code class="docutils literal notranslate"><span class="pre">st2kv.system</span></code> prefix in the template. You can also get access to variables
 from the context of the execution. For example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;User</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">action.&quot;</span>
@@ -655,18 +655,18 @@ from the context of the execution. For example:</p>
     <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{action_context.api_user}}&quot;</span>
 </pre></div>
 </div>
-<p>The prefix <code class="docutils literal"><span class="pre">action_context</span></code> is used to refer to variables in action context. Depending on how
+<p>The prefix <code class="docutils literal notranslate"><span class="pre">action_context</span></code> is used to refer to variables in action context. Depending on how
 the execution is executed and nature of action (simple vs workflow), variables in
-<code class="docutils literal"><span class="pre">action_context</span></code> change.</p>
-<p>A simple execution via the API will only contain the variables <code class="docutils literal"><span class="pre">user</span></code> and <code class="docutils literal"><span class="pre">pack</span></code>. An execution
-triggered  via ChatOps will contain variables such as <code class="docutils literal"><span class="pre">api_user</span></code>, <code class="docutils literal"><span class="pre">user</span></code>, <code class="docutils literal"><span class="pre">pack</span></code>, and
-<code class="docutils literal"><span class="pre">source_channel</span></code>. In the ChatOps case, <code class="docutils literal"><span class="pre">api_user</span></code> is the user who entered the ChatOps command
-from the Chat client and <code class="docutils literal"><span class="pre">user</span></code> is the StackStorm user configured in hubot. <code class="docutils literal"><span class="pre">source_channel</span></code> is the
+<code class="docutils literal notranslate"><span class="pre">action_context</span></code> change.</p>
+<p>A simple execution via the API will only contain the variables <code class="docutils literal notranslate"><span class="pre">user</span></code> and <code class="docutils literal notranslate"><span class="pre">pack</span></code>. An execution
+triggered  via ChatOps will contain variables such as <code class="docutils literal notranslate"><span class="pre">api_user</span></code>, <code class="docutils literal notranslate"><span class="pre">user</span></code>, <code class="docutils literal notranslate"><span class="pre">pack</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">source_channel</span></code>. In the ChatOps case, <code class="docutils literal notranslate"><span class="pre">api_user</span></code> is the user who entered the ChatOps command
+from the Chat client and <code class="docutils literal notranslate"><span class="pre">user</span></code> is the StackStorm user configured in hubot. <code class="docutils literal notranslate"><span class="pre">source_channel</span></code> is the
 channel in which the ChatOps command was entered.</p>
-<p>In addition to <code class="docutils literal"><span class="pre">action_context</span></code> you can also access <code class="docutils literal"><span class="pre">config_context</span></code> which contains the
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">action_context</span></code> you can also access <code class="docutils literal notranslate"><span class="pre">config_context</span></code> which contains the
 key-value contents of your <a class="reference internal" href="reference/pack_configs.html"><span class="doc">pack configuration</span></a>. The example below
 shows how you could use this for the default value for a parameter:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;send_sms&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;python-script&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">sends</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">SMS</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">twilio.&quot;</span>
@@ -694,8 +694,8 @@ shows how you could use this for the default value for a parameter:</p>
 </pre></div>
 </div>
 <p>In ActionChains and workflows (see <a class="reference internal" href="workflows.html"><span class="doc">Workflow</span></a>), every task in the workflow can
-access the parent’s <code class="docutils literal"><span class="pre">execution_id</span></code>. For example, a task in an action chain is shown below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">...</span>
+access the parent’s <code class="docutils literal notranslate"><span class="pre">execution_id</span></code>. For example, a task in an action chain is shown below:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="p p-Indicator">-</span>
   <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;c2&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.local&quot;</span>
@@ -714,12 +714,12 @@ access the parent’s <code class="docutils literal"><span class="pre">execution
 <li>Place it into the content location.</li>
 <li>Tell the system that the action is available.</li>
 </ol>
-<p>The actions are grouped in <a class="reference internal" href="packs.html"><span class="doc">packs</span></a> and located at <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code></p>
-<p>For hacking one-off actions, the convention is to use the <code class="docutils literal"><span class="pre">default</span></code> pack - just
-create your action in <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/default/actions</span></code>. Once you have tested it out, you
+<p>The actions are grouped in <a class="reference internal" href="packs.html"><span class="doc">packs</span></a> and located at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code></p>
+<p>For hacking one-off actions, the convention is to use the <code class="docutils literal notranslate"><span class="pre">default</span></code> pack - just
+create your action in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/default/actions</span></code>. Once you have tested it out, you
 should move it to a dedicated pack.</p>
-<p>Register an individual action by calling <code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">create</span> <span class="pre">my_action_metadata.yaml</span></code>.
-To reload all actions, use <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-actions</span></code></p>
+<p>Register an individual action by calling <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">create</span> <span class="pre">my_action_metadata.yaml</span></code>.
+To reload all actions, use <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-actions</span></code></p>
 </div>
 </div>
 <div class="section" id="built-in-parameters">
@@ -727,29 +727,29 @@ To reload all actions, use <code class="docutils literal"><span class="pre">st2c
 <p>When configuring the metadata, there are several built-in parameters that can be used and
 overwritten to change the default functionality of the various runners:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">args</span></code> - (<code class="docutils literal"><span class="pre">local-shell-script</span></code>, <code class="docutils literal"><span class="pre">remote-shell-script</span></code>) By default, StackStorm will assemble
+<li><code class="docutils literal notranslate"><span class="pre">args</span></code> - (<code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>, <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code>) By default, StackStorm will assemble
 arguments based on whether a user defines named or positional arguments. Adjusts the format of
-arguments passed to <code class="docutils literal"><span class="pre">cmd</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">cmd</span></code>  - (<code class="docutils literal"><span class="pre">local-shell-script</span></code>, <code class="docutils literal"><span class="pre">remote-shell-script</span></code>) Configure the command to be run
+arguments passed to <code class="docutils literal notranslate"><span class="pre">cmd</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cmd</span></code>  - (<code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>, <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code>) Configure the command to be run
 on the target system.</li>
-<li><code class="docutils literal"><span class="pre">cwd</span></code>  - (<code class="docutils literal"><span class="pre">local-shell-script</span></code>, <code class="docutils literal"><span class="pre">remote-shell-script</span></code>) Configure the directory where
+<li><code class="docutils literal notranslate"><span class="pre">cwd</span></code>  - (<code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>, <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code>) Configure the directory where
 remote commands will be executed from.</li>
-<li><code class="docutils literal"><span class="pre">env</span></code>  - (<code class="docutils literal"><span class="pre">local-shell-script</span></code>, <code class="docutils literal"><span class="pre">local-shell-script-script</span></code>, <code class="docutils literal"><span class="pre">remote-shell-script</span></code>,
-<code class="docutils literal"><span class="pre">remote-shell-script-script</span></code>, <code class="docutils literal"><span class="pre">python-script</span></code>) Environment variables which will be
+<li><code class="docutils literal notranslate"><span class="pre">env</span></code>  - (<code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>, <code class="docutils literal notranslate"><span class="pre">local-shell-script-script</span></code>, <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code>,
+<code class="docutils literal notranslate"><span class="pre">remote-shell-script-script</span></code>, <code class="docutils literal notranslate"><span class="pre">python-script</span></code>) Environment variables which will be
 available to the executed command/script.</li>
-<li><code class="docutils literal"><span class="pre">dir</span></code>  - (<code class="docutils literal"><span class="pre">local-shell-script</span></code>, <code class="docutils literal"><span class="pre">remote-shell-script</span></code>) Configure the directory where
+<li><code class="docutils literal notranslate"><span class="pre">dir</span></code>  - (<code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>, <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code>) Configure the directory where
 scripts are copied from a pack to the target machine prior to execution.
-Defaults to <code class="docutils literal"><span class="pre">/tmp</span></code>.</li>
+Defaults to <code class="docutils literal notranslate"><span class="pre">/tmp</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="overriding-runner-parameters">
 <h2>Overriding Runner Parameters<a class="headerlink" href="#overriding-runner-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Parameters of runners can be overridden. Sometimes it’s necessary to customize and simplify an
-action. Take the following <code class="docutils literal"><span class="pre">linux.rsync</span></code> action that is included in the linux pack.</p>
-<p>The <code class="docutils literal"><span class="pre">linux.rsync</span></code> action overrides the <code class="docutils literal"><span class="pre">cmd</span></code> parameter in the <code class="docutils literal"><span class="pre">remote-shell-cmd</span></code> runner with
-the <code class="docutils literal"><span class="pre">rsync</span></code> command with appropriate args passed from the action parameters defined for the
-<code class="docutils literal"><span class="pre">linux.rsync</span></code> action:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+action. Take the following <code class="docutils literal notranslate"><span class="pre">linux.rsync</span></code> action that is included in the linux pack.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">linux.rsync</span></code> action overrides the <code class="docutils literal notranslate"><span class="pre">cmd</span></code> parameter in the <code class="docutils literal notranslate"><span class="pre">remote-shell-cmd</span></code> runner with
+the <code class="docutils literal notranslate"><span class="pre">rsync</span></code> command with appropriate args passed from the action parameters defined for the
+<code class="docutils literal notranslate"><span class="pre">linux.rsync</span></code> action:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&#39;rsync&#39;</span>
     <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&#39;remote-shell-cmd&#39;</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&#39;Copy</span><span class="nv"> </span><span class="s">file(s)</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">one</span><span class="nv"> </span><span class="s">place</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">another</span><span class="nv"> </span><span class="s">w/</span><span class="nv"> </span><span class="s">rsync&#39;</span>
@@ -789,7 +789,7 @@ overriden is included below:</p>
 <li>immutable</li>
 <li>required</li>
 </ul>
-<p>Overriding attributes such as <code class="docutils literal"><span class="pre">type</span></code> and <code class="docutils literal"><span class="pre">position</span></code> are not allowed because overriding them can
+<p>Overriding attributes such as <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">position</span></code> are not allowed because overriding them can
 potentially break the action since the runner will not be able to consume the type of value being
 passed (e.g. runner parameter is expecting an integer but a string is passed).</p>
 </div>
@@ -798,15 +798,15 @@ passed (e.g. runner parameter is expecting an integer but a string is passed).</
 <p>By default, local, remote and Python runners make the following environment variables available
 to the actions:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ST2_ACTION_PACK_NAME</span></code> - Name of the pack to which the currently executed action belongs to.</li>
-<li><code class="docutils literal"><span class="pre">ST2_ACTION_EXECUTION_ID</span></code> - Execution ID of the action being currently executed.</li>
-<li><code class="docutils literal"><span class="pre">ST2_ACTION_API_URL</span></code> - Full URL to the public API endpoint.</li>
-<li><code class="docutils literal"><span class="pre">ST2_ACTION_AUTH_TOKEN</span></code> - Auth token which is available to the action until it completes.
+<li><code class="docutils literal notranslate"><span class="pre">ST2_ACTION_PACK_NAME</span></code> - Name of the pack to which the currently executed action belongs to.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ST2_ACTION_EXECUTION_ID</span></code> - Execution ID of the action being currently executed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ST2_ACTION_API_URL</span></code> - Full URL to the public API endpoint.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ST2_ACTION_AUTH_TOKEN</span></code> - Auth token which is available to the action until it completes.
 When the action completes, the token gets revoked.</li>
 </ul>
 <p>Here is an example of how you can use these environment variables inside a local shell script
 action.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="c1"># Retrieve a list of actions by hitting the API using cURL and the information provided</span>
 <span class="c1"># via environment variables</span>
@@ -831,8 +831,8 @@ finished successfully.</p>
 <h3>2. Create a metadata file<a class="headerlink" href="#create-a-metadata-file" title="Permalink to this headline">¶</a></h3>
 <p>You need to create a metadata file which describes the script name, description, entry point,
 which runner to use and script parameters (if any).</p>
-<p>When converting an existing script, you will want to use either the <code class="docutils literal"><span class="pre">local-shell-script</span></code>
-or <code class="docutils literal"><span class="pre">remote-shell-script</span></code> runner.</p>
+<p>When converting an existing script, you will want to use either the <code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code>
+or <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code> runner.</p>
 </div>
 <div class="section" id="update-argument-parsing-in-the-script">
 <h3>2. Update argument parsing in the script<a class="headerlink" href="#update-argument-parsing-in-the-script" title="Permalink to this headline">¶</a></h3>
@@ -842,19 +842,19 @@ or <code class="docutils literal"><span class="pre">remote-shell-script</span></
 </div>
 <p>Local and remote script runners recognize two types of parameters:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">named</span></code> - those parameters do not include the <code class="docutils literal"><span class="pre">position</span></code> attribute.</li>
-<li><code class="docutils literal"><span class="pre">positional</span></code> - those parameters include the <code class="docutils literal"><span class="pre">position</span></code> attribute.</li>
+<li><code class="docutils literal notranslate"><span class="pre">named</span></code> - those parameters do not include the <code class="docutils literal notranslate"><span class="pre">position</span></code> attribute.</li>
+<li><code class="docutils literal notranslate"><span class="pre">positional</span></code> - those parameters include the <code class="docutils literal notranslate"><span class="pre">position</span></code> attribute.</li>
 </ol>
 <p>All parameters are passed to the script via command-line arguments.</p>
 <p>Named argument are passed to the script in the following format:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>script.sh --param1<span class="o">=</span>value --param2<span class="o">=</span>value --param3<span class="o">=</span>value
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>script.sh --param1<span class="o">=</span>value --param2<span class="o">=</span>value --param3<span class="o">=</span>value
 </pre></div>
 </div>
-<p>By default, each parameter is prefixed with two dashes (<code class="docutils literal"><span class="pre">--</span></code>). If you want to use a single dash
-(<code class="docutils literal"><span class="pre">-</span></code>), some other prefix or no prefix at all, you can configure that using the <code class="docutils literal"><span class="pre">kwarg_op</span></code>
+<p>By default, each parameter is prefixed with two dashes (<code class="docutils literal notranslate"><span class="pre">--</span></code>). If you want to use a single dash
+(<code class="docutils literal notranslate"><span class="pre">-</span></code>), some other prefix or no prefix at all, you can configure that using the <code class="docutils literal notranslate"><span class="pre">kwarg_op</span></code>
 parameter in the metadata file.</p>
 <p>For example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;my_script&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;remote-shell-script&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Script</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">prints</span><span class="nv"> </span><span class="s">arguments</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">stdout.&quot;</span>
@@ -877,47 +877,47 @@ parameter in the metadata file.</p>
 </pre></div>
 </div>
 <p>In this case, arguments are passed to the script in the following format:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>script.sh -key1<span class="o">=</span>value1 -key2<span class="o">=</span>value2 -key3<span class="o">=</span>value3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>script.sh -key1<span class="o">=</span>value1 -key2<span class="o">=</span>value2 -key3<span class="o">=</span>value3
 </pre></div>
 </div>
-<p>Positional arguments are passed to the script ordered by the <code class="docutils literal"><span class="pre">position</span></code> value in the following
+<p>Positional arguments are passed to the script ordered by the <code class="docutils literal notranslate"><span class="pre">position</span></code> value in the following
 format:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>script.sh value2 value1 value3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>script.sh value2 value1 value3
 </pre></div>
 </div>
 <p id="ref-positional-parameters-serialization">If your script only uses positional arguments (which is often the case for existing scripts), you
-simply need to declare parameters with the correct value for the <code class="docutils literal"><span class="pre">position</span></code> attribute in the metadata file. Positional arguments are serialized based on the simple rules described below:</p>
+simply need to declare parameters with the correct value for the <code class="docutils literal notranslate"><span class="pre">position</span></code> attribute in the metadata file. Positional arguments are serialized based on the simple rules described below:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">string</span></code>, <code class="docutils literal"><span class="pre">integer</span></code>, <code class="docutils literal"><span class="pre">float</span></code> - Serialized as a string.</li>
-<li><code class="docutils literal"><span class="pre">boolean</span></code> - Serialized as a string <code class="docutils literal"><span class="pre">1</span></code> (true) or <code class="docutils literal"><span class="pre">0</span></code> (false).</li>
-<li><code class="docutils literal"><span class="pre">array</span></code> - Serialized as a comma delimited string (e.g. <code class="docutils literal"><span class="pre">foo,bar,baz</span></code>).</li>
-<li><code class="docutils literal"><span class="pre">object</span></code> - Serialized as JSON.</li>
+<li><code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">integer</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code> - Serialized as a string.</li>
+<li><code class="docutils literal notranslate"><span class="pre">boolean</span></code> - Serialized as a string <code class="docutils literal notranslate"><span class="pre">1</span></code> (true) or <code class="docutils literal notranslate"><span class="pre">0</span></code> (false).</li>
+<li><code class="docutils literal notranslate"><span class="pre">array</span></code> - Serialized as a comma delimited string (e.g. <code class="docutils literal notranslate"><span class="pre">foo,bar,baz</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">object</span></code> - Serialized as JSON.</li>
 </ol>
 <p>Using this simple serialization format allows users to easily utilize those values in their
-scripts by using standard Bash functionality (<code class="docutils literal"><span class="pre">-z</span></code> for check if a value is provided, <code class="docutils literal"><span class="pre">-eq</span></code> for
-comparison to 1/0 and <code class="docutils literal"><span class="pre">IFS</span></code> for splitting a string into an array). For working with objects, you
+scripts by using standard Bash functionality (<code class="docutils literal notranslate"><span class="pre">-z</span></code> for check if a value is provided, <code class="docutils literal notranslate"><span class="pre">-eq</span></code> for
+comparison to 1/0 and <code class="docutils literal notranslate"><span class="pre">IFS</span></code> for splitting a string into an array). For working with objects, you
 can use a tool such as <a class="reference external" href="https://stedolan.github.io/jq/">jq</a>.</p>
 <p>If no value is provided for a particular positional parameter, StackStorm will pass an empty string
-<code class="docutils literal"><span class="pre">&quot;&quot;</span></code> as a value for that parameter to the script.</p>
+<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> as a value for that parameter to the script.</p>
 <p>For example, if a second positional parameter is optional and user provides no value, the script
 will be called like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>script.sh value1 <span class="s2">&quot;&quot;</span> value3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>script.sh value1 <span class="s2">&quot;&quot;</span> value3
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">immutable</span></code> value defines whether the default value of a parameter can be overridden. This
+<p>The <code class="docutils literal notranslate"><span class="pre">immutable</span></code> value defines whether the default value of a parameter can be overridden. This
 is particularly important if you expose commands via ChatOps and do not like security related
 parameters to be manipulated by user input.</p>
 </div>
 <div class="section" id="example-1-existing-bash-script-with-positional-arguments">
 <h3>Example 1 - existing Bash script with positional arguments<a class="headerlink" href="#example-1-existing-bash-script-with-positional-arguments" title="Permalink to this headline">¶</a></h3>
-<p>Let’s say we have a simple Bash script named <code class="docutils literal"><span class="pre">send_to_syslog.sh</span></code> which writes the message
+<p>Let’s say we have a simple Bash script named <code class="docutils literal notranslate"><span class="pre">send_to_syslog.sh</span></code> which writes the message
 provided via the command line argument to syslog.</p>
 <p>The script takes two arguments:</p>
 <ol class="arabic simple">
 <li>The address of the syslog server</li>
 <li>The message to write</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
 
 <span class="nv">SERVER</span><span class="o">=</span><span class="nv">$1</span>
 <span class="nv">MESSAGE</span><span class="o">=</span><span class="nv">$2</span>
@@ -925,7 +925,7 @@ logger -n <span class="si">${</span><span class="nv">SERVER</span><span class="s
 </pre></div>
 </div>
 <p>Since this script is using positional arguments, you only need to define them in the metadata file:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;send_to_syslog.log&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;remote-shell-script&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Send</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">provided</span><span class="nv"> </span><span class="s">syslog</span><span class="nv"> </span><span class="s">server.&quot;</span>
@@ -944,19 +944,19 @@ logger -n <span class="si">${</span><span class="nv">SERVER</span><span class="s
         <span class="l l-Scalar l-Scalar-Plain">position</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 </pre></div>
 </div>
-<p>As you can see above, we declare two parameters - <code class="docutils literal"><span class="pre">server</span></code> and <code class="docutils literal"><span class="pre">message</span></code>. Both of them declare
-a <code class="docutils literal"><span class="pre">position</span></code> attribute (0 for server and 1 for message), which means they will be passed to the
+<p>As you can see above, we declare two parameters - <code class="docutils literal notranslate"><span class="pre">server</span></code> and <code class="docutils literal notranslate"><span class="pre">message</span></code>. Both of them declare
+a <code class="docutils literal notranslate"><span class="pre">position</span></code> attribute (0 for server and 1 for message), which means they will be passed to the
 action script as positional arguments, so your script doesn’t require any changes.</p>
 </div>
 </div>
 <div class="section" id="writing-custom-python-actions">
 <h2>Writing Custom Python Actions<a class="headerlink" href="#writing-custom-python-actions" title="Permalink to this headline">¶</a></h2>
 <p>In the simplest form, a Python action is a module which exposes a class which inherits from
-<code class="xref py py-class docutils literal"><span class="pre">st2common.runners.base_action.Action</span></code> and implements a <code class="docutils literal"><span class="pre">run</span></code> method.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">st2common.runners.base_action.Action</span></code> and implements a <code class="docutils literal notranslate"><span class="pre">run</span></code> method.</p>
 <div class="section" id="sample-python-action">
 <h3>Sample Python Action<a class="headerlink" href="#sample-python-action" title="Permalink to this headline">¶</a></h3>
-<p>Metadata file (<code class="docutils literal"><span class="pre">my_echo_action.yaml</span></code>):</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p>Metadata file (<code class="docutils literal notranslate"><span class="pre">my_echo_action.yaml</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;echo_action&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;python-script&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Print</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">standard</span><span class="nv"> </span><span class="s">output.&quot;</span>
@@ -970,8 +970,8 @@ action script as positional arguments, so your script doesn’t require any chan
         <span class="l l-Scalar l-Scalar-Plain">position</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
-<p>Action script file (<code class="docutils literal"><span class="pre">my_echo_action.py</span></code>):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<p>Action script file (<code class="docutils literal notranslate"><span class="pre">my_echo_action.py</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">st2common.runners.base_action</span> <span class="kn">import</span> <span class="n">Action</span>
 
@@ -984,20 +984,20 @@ action script as positional arguments, so your script doesn’t require any chan
         <span class="k">return</span> <span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This Python action prints text provided via the <code class="docutils literal"><span class="pre">message</span></code> parameter to the standard output. As
-you can see, user-supplied action parameters are passed to the <code class="docutils literal"><span class="pre">run</span></code> method as keyword arguments.</p>
-<p>If the <code class="docutils literal"><span class="pre">run</span></code> method finishes without exceptions, the execution is successful, and the value
+<p>This Python action prints text provided via the <code class="docutils literal notranslate"><span class="pre">message</span></code> parameter to the standard output. As
+you can see, user-supplied action parameters are passed to the <code class="docutils literal notranslate"><span class="pre">run</span></code> method as keyword arguments.</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">run</span></code> method finishes without exceptions, the execution is successful, and the value
 returned by the method (any value: boolean, string, list, dict, etc.) is considered its result.
 Raising an exception will report the execution as failed.</p>
 <p>Another way to specify the status of an execution is returning a tuple with two items: the first
 item is a boolean indicating status, the second item is the result itself.</p>
-<p>For example, <code class="docutils literal"><span class="pre">return</span> <span class="pre">False</span></code> will result in a successful execution with the result being
-<code class="docutils literal"><span class="pre">False</span></code>, and <code class="docutils literal"><span class="pre">return</span> <span class="pre">(False,</span> <span class="pre">&quot;Failed!&quot;)</span></code> is a failed execution with <code class="docutils literal"><span class="pre">&quot;Failed!&quot;</span></code> as its
+<p>For example, <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">False</span></code> will result in a successful execution with the result being
+<code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">(False,</span> <span class="pre">&quot;Failed!&quot;)</span></code> is a failed execution with <code class="docutils literal notranslate"><span class="pre">&quot;Failed!&quot;</span></code> as its
 result.</p>
-<p>In the example above, if the <code class="docutils literal"><span class="pre">message</span></code> parameter passed to the action is <code class="docutils literal"><span class="pre">working</span></code>, the action
-will be considered as succeeded (first flag in the result indicating action status is <code class="docutils literal"><span class="pre">True</span></code>).
+<p>In the example above, if the <code class="docutils literal notranslate"><span class="pre">message</span></code> parameter passed to the action is <code class="docutils literal notranslate"><span class="pre">working</span></code>, the action
+will be considered as succeeded (first flag in the result indicating action status is <code class="docutils literal notranslate"><span class="pre">True</span></code>).
 If another message is passed in, action will be considered as failed (first flag in the result
-tuple indicating action status is <code class="docutils literal"><span class="pre">False</span></code>).</p>
+tuple indicating action status is <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
 <p>For a more complex example, please refer to the <a class="reference external" href="https://github.com/StackStorm-Exchange/libcloud/tree/master/actions">actions in the Libcloud pack in
 StackStorm Exchange</a>.</p>
 </div>
@@ -1010,19 +1010,19 @@ change between the action runs (e.g. service credentials, different constants, e
 <p class="last">For options/parameters which are user defined or change often, you should use action
 parameters which are defined in the metadata file.</p>
 </div>
-<p>Python actions can store arbitrary configuration in the configuration file which is global to the whole pack. The configuration is stored in a file named <code class="docutils literal"><span class="pre">&lt;pack_name&gt;.yaml</span></code>, in the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/configs/</span></code> directory.</p>
-<p>The configuration file format is YAML. Configuration is automatically parsed and passed to the action class constructor via the <code class="docutils literal"><span class="pre">config</span></code> argument.  See the
+<p>Python actions can store arbitrary configuration in the configuration file which is global to the whole pack. The configuration is stored in a file named <code class="docutils literal notranslate"><span class="pre">&lt;pack_name&gt;.yaml</span></code>, in the
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/</span></code> directory.</p>
+<p>The configuration file format is YAML. Configuration is automatically parsed and passed to the action class constructor via the <code class="docutils literal notranslate"><span class="pre">config</span></code> argument.  See the
 <a class="reference internal" href="reference/pack_configs.html"><span class="doc">pack configuration doc</span></a> for more details.</p>
 </div>
 <div class="section" id="logging">
 <h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
 <p>All logging inside the action should be performed via the logger which is specific to this action
-and available via the <code class="docutils literal"><span class="pre">self.logger</span></code> class attribute.</p>
-<p>This logger is a standard Python logger from the <code class="docutils literal"><span class="pre">logging</span></code> module so all the logger methods work
-as expected (e.g. <code class="docutils literal"><span class="pre">logger.debug</span></code>, <code class="docutils literal"><span class="pre">logger.info</span></code>, etc).</p>
+and available via the <code class="docutils literal notranslate"><span class="pre">self.logger</span></code> class attribute.</p>
+<p>This logger is a standard Python logger from the <code class="docutils literal notranslate"><span class="pre">logging</span></code> module so all the logger methods work
+as expected (e.g. <code class="docutils literal notranslate"><span class="pre">logger.debug</span></code>, <code class="docutils literal notranslate"><span class="pre">logger.info</span></code>, etc).</p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="o">...</span>
     <span class="n">success</span> <span class="o">=</span> <span class="n">call_some_method</span><span class="p">()</span>
 
@@ -1035,7 +1035,7 @@ as expected (e.g. <code class="docutils literal"><span class="pre">logger.debug<
 </div>
 <div class="section" id="action-service">
 <h3>Action Service<a class="headerlink" href="#action-service" title="Permalink to this headline">¶</a></h3>
-<p>Similar to sensors, <code class="docutils literal"><span class="pre">action_service</span></code> is available on each action instance after instantiation.</p>
+<p>Similar to sensors, <code class="docutils literal notranslate"><span class="pre">action_service</span></code> is available on each action instance after instantiation.</p>
 <p>Action service provides different services to the action via public methods. Right now it supports
 datastore management methods. This allows actions to utilize the datastore to store arbitrary data
 between executions.</p>
@@ -1043,7 +1043,7 @@ between executions.</p>
 sensor service. You can find more details in the
 <a class="reference internal" href="sensors.html#ref-sensors-datastore-management-operations"><span class="std std-ref">sensor datastore management documentation</span></a>.</p>
 <p>Example storing a dict as JSON:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
   <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;somedata&#39;</span><span class="p">:</span> <span class="s1">&#39;foobar&#39;</span><span class="p">}</span>
 
   <span class="c1"># Add a value to the datastore</span>
@@ -1070,35 +1070,35 @@ between python actions and sensors.</p>
 </div>
 <div class="section" id="pre-defined-actions">
 <h2>Pre-defined Actions<a class="headerlink" href="#pre-defined-actions" title="Permalink to this headline">¶</a></h2>
-<p>There are several predefined actions that come out of the box with StackStorm. These are in the <code class="docutils literal"><span class="pre">core</span></code>
+<p>There are several predefined actions that come out of the box with StackStorm. These are in the <code class="docutils literal notranslate"><span class="pre">core</span></code>
 pack:</p>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">core.local</span></code> : This action allows execution of arbitrary *nix/shell commands locally. You can
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">core.local</span></code> : This action allows execution of arbitrary *nix/shell commands locally. You can
 execute this command via the CLI using:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.local <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.local <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">core.remote</span></code> : This action allows execution of arbitrary *nix/shell commands on a set of
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">core.remote</span></code> : This action allows execution of arbitrary *nix/shell commands on a set of
 boxes. Execute this command via the CLI with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span> <span class="nv">hosts</span><span class="o">=</span><span class="s1">&#39;host1,host2&#39;</span> <span class="nv">username</span><span class="o">=</span><span class="s1">&#39;user1&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;ls -l&#39;</span> <span class="nv">hosts</span><span class="o">=</span><span class="s1">&#39;host1,host2&#39;</span> <span class="nv">username</span><span class="o">=</span><span class="s1">&#39;user1&#39;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">core.http</span></code> : This action allows execution of http requests. Think <code class="docutils literal"><span class="pre">curl</span></code> executed from the
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">core.http</span></code> : This action allows execution of http requests. Think <code class="docutils literal notranslate"><span class="pre">curl</span></code> executed from the
 StackStorm box:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.http <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://httpbin.org/get&quot;</span> <span class="nv">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.http <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://httpbin.org/get&quot;</span> <span class="nv">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span>
 </pre></div>
 </div>
-<p>Similar to <code class="docutils literal"><span class="pre">curl</span></code>, this action supports basic authentication when provided a username and
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">curl</span></code>, this action supports basic authentication when provided a username and
 password:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.http <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://httpbin.org/get&quot;</span> <span class="nv">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span> <span class="nv">username</span><span class="o">=</span>user1 <span class="nv">password</span><span class="o">=</span>pass1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.http <span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://httpbin.org/get&quot;</span> <span class="nv">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span> <span class="nv">username</span><span class="o">=</span>user1 <span class="nv">password</span><span class="o">=</span>pass1
 </pre></div>
 </div>
 </li>
 </ul>
-<p>To see all actions in the <code class="docutils literal"><span class="pre">core</span></code> pack:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action list --pack<span class="o">=</span>core
+<p>To see all actions in the <code class="docutils literal notranslate"><span class="pre">core</span></code> pack:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action list --pack<span class="o">=</span>core
 </pre></div>
 </div>
 <p class="rubric">What’s Next?</p>

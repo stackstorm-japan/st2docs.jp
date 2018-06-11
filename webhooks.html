@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -481,21 +481,21 @@ service that already offers webhook integration - e.g. GitHub.</p>
 </div>
 <div class="section" id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<p>All requests to the <code class="docutils literal"><span class="pre">/api/v1/webhooks</span></code> endpoints need to be authenticated in the same way as other
+<p>All requests to the <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks</span></code> endpoints need to be authenticated in the same way as other
 API requests. There are two possible authentication approaches - <a class="reference internal" href="authentication.html#authentication-apikeys"><span class="std std-ref">API keys</span></a> and tokens. API keys are recommended for webhooks, as they do not
 expire. Tokens have a fixed expiry.</p>
 <div class="section" id="api-key-based">
 <h3>API key-based<a class="headerlink" href="#api-key-based" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>Header</cite> : <code class="docutils literal"><span class="pre">St2-Api-Key</span></code></li>
-<li><cite>Query parameter</cite> : <code class="docutils literal"><span class="pre">?st2-api-key</span></code></li>
+<li><cite>Header</cite> : <code class="docutils literal notranslate"><span class="pre">St2-Api-Key</span></code></li>
+<li><cite>Query parameter</cite> : <code class="docutils literal notranslate"><span class="pre">?st2-api-key</span></code></li>
 </ul>
 </div>
 <div class="section" id="token-based">
 <h3>Token-based<a class="headerlink" href="#token-based" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>Header</cite> : <code class="docutils literal"><span class="pre">X-Auth-Token</span></code></li>
-<li><cite>Query parameter</cite> : <code class="docutils literal"><span class="pre">?x-auth-token</span></code></li>
+<li><cite>Header</cite> : <code class="docutils literal notranslate"><span class="pre">X-Auth-Token</span></code></li>
+<li><cite>Query parameter</cite> : <code class="docutils literal notranslate"><span class="pre">?x-auth-token</span></code></li>
 </ul>
 <p>Both methods above support providing the authentication material as a header or query parameter.
 A header is usually used with your scripts where you can control request headers while query
@@ -505,17 +505,17 @@ parameters are used with 3rd party services such as GitHub where you can only sp
 <div class="section" id="request-body">
 <h2>Request Body<a class="headerlink" href="#request-body" title="Permalink to this headline">¶</a></h2>
 <p>The request body or so called trigger payload can be either JSON or URL encoded form data. The
-body type is determined based on the value of the <code class="docutils literal"><span class="pre">Content-Type</span></code> header (<code class="docutils literal"><span class="pre">application/json</span></code>
-for JSON and <code class="docutils literal"><span class="pre">application/x-www-form-urlencoded</span></code> for URL encoded form data).</p>
-<p>All the examples below assume JSON and as such, provide <code class="docutils literal"><span class="pre">application/json</span></code> for the
-<code class="docutils literal"><span class="pre">Content-Type</span></code> header value.</p>
+body type is determined based on the value of the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header (<code class="docutils literal notranslate"><span class="pre">application/json</span></code>
+for JSON and <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> for URL encoded form data).</p>
+<p>All the examples below assume JSON and as such, provide <code class="docutils literal notranslate"><span class="pre">application/json</span></code> for the
+<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header value.</p>
 </div>
 <div class="section" id="registering-a-webhook">
 <h2>Registering a Webhook<a class="headerlink" href="#registering-a-webhook" title="Permalink to this headline">¶</a></h2>
-<p>You can register a webhook in StackStorm by specifying the <code class="docutils literal"><span class="pre">core.st2.webhook</span></code> trigger inside a rule
+<p>You can register a webhook in StackStorm by specifying the <code class="docutils literal notranslate"><span class="pre">core.st2.webhook</span></code> trigger inside a rule
 definition.</p>
-<p>Here is an excerpt from a rule which registers a new webhook named <code class="docutils literal"><span class="pre">sample</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<p>Here is an excerpt from a rule which registers a new webhook named <code class="docutils literal notranslate"><span class="pre">sample</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.st2.webhook&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
@@ -523,28 +523,28 @@ definition.</p>
 <span class="nn">...</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">url:</span></code> parameter above is added as a suffix to <code class="docutils literal"><span class="pre">/api/v1/webhooks/</span></code> to create the URL to
+<p>The <code class="docutils literal notranslate"><span class="pre">url:</span></code> parameter above is added as a suffix to <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks/</span></code> to create the URL to
 POST data to. So once you have created the rule above, you can use this webhook by POST-ing data
-to your StackStorm server at <code class="docutils literal"><span class="pre">https://{$ST2_IP}/api/v1/webhooks/sample</span></code>.</p>
+to your StackStorm server at <code class="docutils literal notranslate"><span class="pre">https://{$ST2_IP}/api/v1/webhooks/sample</span></code>.</p>
 <p>The request body needs to be JSON and may contain arbitrary data which you can match against in
 the rule criteria.</p>
-<p>Note that all trailing and leading <code class="docutils literal"><span class="pre">/</span></code> of the <code class="docutils literal"><span class="pre">url</span></code> parameter are ignored by StackStorm. e.g. a
-value of <code class="docutils literal"><span class="pre">/sample</span></code>, <code class="docutils literal"><span class="pre">sample/</span></code>, <code class="docutils literal"><span class="pre">/sample/</span></code> and <code class="docutils literal"><span class="pre">sample</span></code> are all treated the same, i.e.
-considered identical. They all result in an effective URL of <code class="docutils literal"><span class="pre">/api/v1/webhooks/sample</span></code>.</p>
+<p>Note that all trailing and leading <code class="docutils literal notranslate"><span class="pre">/</span></code> of the <code class="docutils literal notranslate"><span class="pre">url</span></code> parameter are ignored by StackStorm. e.g. a
+value of <code class="docutils literal notranslate"><span class="pre">/sample</span></code>, <code class="docutils literal notranslate"><span class="pre">sample/</span></code>, <code class="docutils literal notranslate"><span class="pre">/sample/</span></code> and <code class="docutils literal notranslate"><span class="pre">sample</span></code> are all treated the same, i.e.
+considered identical. They all result in an effective URL of <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks/sample</span></code>.</p>
 <p>POST-ing data to a custom webhook will cause a trigger with the following attributes to be
 dispatched:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">trigger</span></code> - Trigger name.</li>
-<li><code class="docutils literal"><span class="pre">trigger.headers</span></code> - Dictionary containing the request headers.</li>
-<li><code class="docutils literal"><span class="pre">trigger.body</span></code> - Dictionary containing the request body.</li>
+<li><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Trigger name.</li>
+<li><code class="docutils literal notranslate"><span class="pre">trigger.headers</span></code> - Dictionary containing the request headers.</li>
+<li><code class="docutils literal notranslate"><span class="pre">trigger.body</span></code> - Dictionary containing the request body.</li>
 </ul>
-<p>This example shows how to send data to a custom webhook using <code class="docutils literal"><span class="pre">curl</span></code> and how to match on this
+<p>This example shows how to send data to a custom webhook using <code class="docutils literal notranslate"><span class="pre">curl</span></code> and how to match on this
 data using rule criteria:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X POST https://localhost/api/v1/webhooks/sample -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> --data <span class="s1">&#39;{&quot;key1&quot;: &quot;value1&quot;}&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST https://localhost/api/v1/webhooks/sample -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> --data <span class="s1">&#39;{&quot;key1&quot;: &quot;value1&quot;}&#39;</span>
 </pre></div>
 </div>
 <p>Rule:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.st2.webhook&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
@@ -564,22 +564,22 @@ data using rule criteria:</p>
 </div>
 <div class="section" id="using-a-generic-webhook">
 <h2>Using a Generic Webhook<a class="headerlink" href="#using-a-generic-webhook" title="Permalink to this headline">¶</a></h2>
-<p>By default, a special-purpose webhook with the name <code class="docutils literal"><span class="pre">st2</span></code> is already registered. Instead of
-using <code class="docutils literal"><span class="pre">st2.core.webhook</span></code>, it allows you to specify any trigger that is known to StackStorm (either by
+<p>By default, a special-purpose webhook with the name <code class="docutils literal notranslate"><span class="pre">st2</span></code> is already registered. Instead of
+using <code class="docutils literal notranslate"><span class="pre">st2.core.webhook</span></code>, it allows you to specify any trigger that is known to StackStorm (either by
 default or from custom sensors and triggers in packs), so you can use it to trigger rules that
 aren’t explicitly set up to be triggered by webhooks.</p>
 <p>The body of this request needs to be JSON and must contain the following attributes:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">trigger</span></code> - Name of the trigger (e.g. <code class="docutils literal"><span class="pre">mypack.mytrigger</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">payload</span></code> - Object with a trigger payload.</li>
+<li><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Name of the trigger (e.g. <code class="docutils literal notranslate"><span class="pre">mypack.mytrigger</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">payload</span></code> - Object with a trigger payload.</li>
 </ul>
-<p>This example shows how to send data to the generic webhook using <code class="docutils literal"><span class="pre">curl</span></code>, and how to match this
-data using rule criteria (replace <code class="docutils literal"><span class="pre">localhost</span></code> with your st2 host if called remotely):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X POST https://localhost/api/v1/webhooks/st2 -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> --data <span class="s1">&#39;{&quot;trigger&quot;: &quot;mypack.mytrigger&quot;, &quot;payload&quot;: {&quot;attribute1&quot;: &quot;value1&quot;}}&#39;</span>
+<p>This example shows how to send data to the generic webhook using <code class="docutils literal notranslate"><span class="pre">curl</span></code>, and how to match this
+data using rule criteria (replace <code class="docutils literal notranslate"><span class="pre">localhost</span></code> with your st2 host if called remotely):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST https://localhost/api/v1/webhooks/st2 -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> --data <span class="s1">&#39;{&quot;trigger&quot;: &quot;mypack.mytrigger&quot;, &quot;payload&quot;: {&quot;attribute1&quot;: &quot;value1&quot;}}&#39;</span>
 </pre></div>
 </div>
 <p>Rule:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;mypack.mytrigger&quot;</span>
 
@@ -594,13 +594,13 @@ data using rule criteria (replace <code class="docutils literal"><span class="pr
 <span class="nn">...</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">trigger.type</span></code> attribute in the rule definition needs to be the same as the trigger name
+<p>The <code class="docutils literal notranslate"><span class="pre">trigger.type</span></code> attribute in the rule definition needs to be the same as the trigger name
 defined in the webhook payload body.</p>
 </div>
 <div class="section" id="listing-registered-webhooks">
 <h2>Listing Registered Webhooks<a class="headerlink" href="#listing-registered-webhooks" title="Permalink to this headline">¶</a></h2>
 <p>To list all registered webhooks, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 webhook list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 webhook list
 </pre></div>
 </div>
 </div>
@@ -620,10 +620,10 @@ the rule configuration. Based upon the webhook contents, it may not execute any 
 execute multiple actions.</li>
 </ul>
 <p>If you always want to execute a specific action or workflow, and/or you’re looking for a
-guaranteed response, you can use the <code class="docutils literal"><span class="pre">/v1/executions</span></code> API. This is the same as explicitly
-running an action from the CLI with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;mypack&gt;.&lt;myaction&gt;</span></code>.</p>
-<p>We can get a little insight into how this work using the <code class="docutils literal"><span class="pre">--debug</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug run core.local <span class="s2">&quot;date&quot;</span>
+guaranteed response, you can use the <code class="docutils literal notranslate"><span class="pre">/v1/executions</span></code> API. This is the same as explicitly
+running an action from the CLI with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;mypack&gt;.&lt;myaction&gt;</span></code>.</p>
+<p>We can get a little insight into how this work using the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug run core.local <span class="s2">&quot;date&quot;</span>
 <span class="m">2017</span>-03-31 <span class="m">08</span>:21:18,706  DEBUG - Using cached token from file <span class="s2">&quot;/home/ubuntu/.st2/token-st2admin&quot;</span>
 <span class="c1"># -------- begin 140183979680208 request ----------</span>
 curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.11.1&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: da5ecf3b0ab841008d663052fe95cddd&#39;</span> http://127.0.0.1:9101/v1/actions/core.local
@@ -661,13 +661,13 @@ result:
   succeeded: <span class="nb">true</span>
 </pre></div>
 </div>
-<p>In addition to the “usual” output that shows the result of the execution, the <code class="docutils literal"><span class="pre">--debug</span></code> flag also
-shows all the API calls made during the course of the entire interaction, in the form of <code class="docutils literal"><span class="pre">curl</span></code>
+<p>In addition to the “usual” output that shows the result of the execution, the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag also
+shows all the API calls made during the course of the entire interaction, in the form of <code class="docutils literal notranslate"><span class="pre">curl</span></code>
 commands.</p>
 <p>That output shows the API calls made when executing the command from the StackStorm host. If you are
-accessing the API from a remote system, it will be proxied through nginx, using the <code class="docutils literal"><span class="pre">/api</span></code> URI.
+accessing the API from a remote system, it will be proxied through nginx, using the <code class="docutils literal notranslate"><span class="pre">/api</span></code> URI.
 So remote calls will take this form:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X POST https://<span class="o">[</span>ST2_IP<span class="o">]</span>/v1/executions -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.11.1&#39;</span> -H  <span class="s1">&#39;content-type: application/json&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: matoken&#39;</span> -H  <span class="s1">&#39;Content-Length: 69&#39;</span> --data-binary <span class="s1">&#39;{&quot;action&quot;: &quot;core.local&quot;, &quot;user&quot;: null, &quot;parameters&quot;: {&quot;cmd&quot;: &quot;date&quot;}}&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST https://<span class="o">[</span>ST2_IP<span class="o">]</span>/v1/executions -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.11.1&#39;</span> -H  <span class="s1">&#39;content-type: application/json&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: matoken&#39;</span> -H  <span class="s1">&#39;Content-Length: 69&#39;</span> --data-binary <span class="s1">&#39;{&quot;action&quot;: &quot;core.local&quot;, &quot;user&quot;: null, &quot;parameters&quot;: {&quot;cmd&quot;: &quot;date&quot;}}&#39;</span>
 </pre></div>
 </div>
 </div>

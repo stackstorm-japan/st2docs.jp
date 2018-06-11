@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -466,8 +466,8 @@
 <h1>Tuning Action Runner Dispatcher Pool Size<a class="headerlink" href="#tuning-action-runner-dispatcher-pool-size" title="Permalink to this headline">¶</a></h1>
 <p>When the action runner executes actions it uses two internal green thread pools -
 one for regular actions and one for workflows. Both of those pools have a hard
-limit on the maximum size. By default, it is <code class="docutils literal"><span class="pre">40</span></code> green threads for workflows
-and <code class="docutils literal"><span class="pre">60</span></code> green threads for non-workflow actions.</p>
+limit on the maximum size. By default, it is <code class="docutils literal notranslate"><span class="pre">40</span></code> green threads for workflows
+and <code class="docutils literal notranslate"><span class="pre">60</span></code> green threads for non-workflow actions.</p>
 <p>This hard limit is there to prevent resource exhaustion and to allow for a fair
 distribution across multiple action runner processes.</p>
 <p>In some situations, such as if you have a lot of action-chain workflows with a
@@ -489,8 +489,8 @@ parameters:</p>
 utilization and workloads, you can increase resource utilization and prevent
 deadlocks by tuning pool sizes and/or increasing/decreasing the number of
 action runner processes.</p>
-<p>You can tune pool sizes by changing these settings in <code class="docutils literal"><span class="pre">st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[actionrunner]</span>
+<p>You can tune pool sizes by changing these settings in <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[actionrunner]</span>
 <span class="c1"># Internal pool size for dispatcher used by workflow actions.</span>
 <span class="na">workflows_pool_size</span> <span class="o">=</span> <span class="s">40</span>
 

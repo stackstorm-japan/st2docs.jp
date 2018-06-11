@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -473,18 +473,18 @@ learn more about Extreme Workflow Composer, get an evaluation license, or reques
 <a class="reference external" href="https://ewc-docs.extremenetworks.com/solutions/overview.html">ewc-docs.extremenetworks.com/solutions/overview.html</a>
 to learn more.</p>
 <p>To install Extreme Workflow Composer for a quick evaluation, run the commands below on a clean 64-bit Linux box that
-meets the <a class="reference internal" href="system_requirements.html"><span class="doc">System Requirements</span></a>. Replace <code class="docutils literal"><span class="pre">${EWC_LICENSE_KEY}</span></code> with the key you
+meets the <a class="reference internal" href="system_requirements.html"><span class="doc">System Requirements</span></a>. Replace <code class="docutils literal notranslate"><span class="pre">${EWC_LICENSE_KEY}</span></code> with the key you
 received when registering for evaluation or purchasing EWC.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sSL -O https://stackstorm.com/bwc/install.sh <span class="o">&amp;&amp;</span> chmod +x install.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSL -O https://stackstorm.com/bwc/install.sh <span class="o">&amp;&amp;</span> chmod +x install.sh
 ./install.sh --user<span class="o">=</span>st2admin --password<span class="o">=</span><span class="s1">&#39;Ch@ngeMe&#39;</span> --license<span class="o">=</span><span class="si">${</span><span class="nv">EWC_LICENSE_KEY</span><span class="si">}</span>
 </pre></div>
 </div>
 <p>Already have a working StackStorm system, and want to add Extreme Workflow Composer? No problem! No need to install a
 new system. You can install Extreme Workflow Composer on top of your existing system. Just run these commands, again
-replacing <code class="docutils literal"><span class="pre">${EWC_LICENSE_KEY}</span></code> with the license key you received when registering:</p>
+replacing <code class="docutils literal notranslate"><span class="pre">${EWC_LICENSE_KEY}</span></code> with the license key you received when registering:</p>
 <ul>
 <li><p class="first">On Ubuntu systems:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Set up Extreme Workflow Composer repository access</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Extreme Workflow Composer repository access</span>
 curl -s https://<span class="si">${</span><span class="nv">EWC_LICENSE_KEY</span><span class="si">}</span>:@packagecloud.io/install/repositories/StackStorm/enterprise/script.deb.sh <span class="p">|</span> sudo bash
 <span class="c1"># Install Extreme Workflow Composer</span>
 sudo apt-get install -y bwc-enterprise
@@ -492,7 +492,7 @@ sudo apt-get install -y bwc-enterprise
 </div>
 </li>
 <li><p class="first">On RedHat/CentOS systems:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Set up Extreme Workflow Composer repository access</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up Extreme Workflow Composer repository access</span>
 curl -s https://<span class="si">${</span><span class="nv">EWC_LICENSE_KEY</span><span class="si">}</span>:@packagecloud.io/install/repositories/StackStorm/enterprise/script.rpm.sh <span class="p">|</span> sudo bash
 <span class="c1"># Install Extreme Workflow Composer</span>
 sudo yum install -y bwc-enterprise

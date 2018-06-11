@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -471,12 +471,12 @@ of how to use StackStorm with Docker.</p>
 <div class="section" id="host-requirements">
 <h2>Host Requirements<a class="headerlink" href="#host-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">Install the latest versions of Docker engine, and optionally <code class="docutils literal"><span class="pre">docker-compose</span></code>. Installation
+<li><p class="first">Install the latest versions of Docker engine, and optionally <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code>. Installation
 instructions are at <a class="reference external" href="https://www.docker.com/community-edition">https://www.docker.com/community-edition</a> and
 <a class="reference external" href="https://docs.docker.com/compose/install">https://docs.docker.com/compose/install</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">We require at least version 1.13.0 of Docker engine. If you choose to use <code class="docutils literal"><span class="pre">docker-compose</span></code>
+<p class="last">We require at least version 1.13.0 of Docker engine. If you choose to use <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code>
 it must also be at least version 1.13.0.</p>
 </div>
 </li>
@@ -487,31 +487,31 @@ for more information.</p>
 </div>
 <div class="section" id="docker-images">
 <h2>Docker Images<a class="headerlink" href="#docker-images" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">stackstorm/stackstorm</span></code> image comes pre-installed with the <code class="docutils literal"><span class="pre">st2</span></code>, <code class="docutils literal"><span class="pre">st2web</span></code>,
-<code class="docutils literal"><span class="pre">st2mistral</span></code> and <code class="docutils literal"><span class="pre">st2chatops</span></code> packages.</p>
-<p>We use version tags, so if you install the image <code class="docutils literal"><span class="pre">stackstorm/stackstorm:2.3.2</span></code>, then it has the
-StackStorm 2.3.2 release packages. Similarly, if you install image <code class="docutils literal"><span class="pre">stackstorm/stackstorm:2.2.1</span></code>,
-then it has the StackStorm 2.2.1 release packages. The <code class="docutils literal"><span class="pre">stackstorm/stackstorm:latest</span></code> image simply
+<p>The <code class="docutils literal notranslate"><span class="pre">stackstorm/stackstorm</span></code> image comes pre-installed with the <code class="docutils literal notranslate"><span class="pre">st2</span></code>, <code class="docutils literal notranslate"><span class="pre">st2web</span></code>,
+<code class="docutils literal notranslate"><span class="pre">st2mistral</span></code> and <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> packages.</p>
+<p>We use version tags, so if you install the image <code class="docutils literal notranslate"><span class="pre">stackstorm/stackstorm:2.3.2</span></code>, then it has the
+StackStorm 2.3.2 release packages. Similarly, if you install image <code class="docutils literal notranslate"><span class="pre">stackstorm/stackstorm:2.2.1</span></code>,
+then it has the StackStorm 2.2.1 release packages. The <code class="docutils literal notranslate"><span class="pre">stackstorm/stackstorm:latest</span></code> image simply
 references the image with the highest version number. Don’t worry, this will still be a stable GA
 release, not a nightly build.</p>
 <p>The mongo, rabbitmq, postgres and redis containers store their data on persistent storage.
-Additionally, the stackstorm container persists the contents of <code class="docutils literal"><span class="pre">/var/log</span></code>. If you do not wish to
-persist this data, then remove the appropriate entries from <code class="docutils literal"><span class="pre">docker-compose.yml</span></code>.</p>
+Additionally, the stackstorm container persists the contents of <code class="docutils literal notranslate"><span class="pre">/var/log</span></code>. If you do not wish to
+persist this data, then remove the appropriate entries from <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<p>Assuming Docker engine and <code class="docutils literal"><span class="pre">docker-compose</span></code> are properly installed, getting started is easy.</p>
-<p>First, clone the <code class="docutils literal"><span class="pre">st2-docker</span></code> repository and change directory to <code class="docutils literal"><span class="pre">st2-docker</span></code>. Unless specified
-otherwise, all subsequent commands assume they are run within <code class="docutils literal"><span class="pre">st2-docker</span></code> directory:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/stackstorm/st2-docker
+<p>Assuming Docker engine and <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> are properly installed, getting started is easy.</p>
+<p>First, clone the <code class="docutils literal notranslate"><span class="pre">st2-docker</span></code> repository and change directory to <code class="docutils literal notranslate"><span class="pre">st2-docker</span></code>. Unless specified
+otherwise, all subsequent commands assume they are run within <code class="docutils literal notranslate"><span class="pre">st2-docker</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/stackstorm/st2-docker
 <span class="nb">cd</span> st2-docker
 </pre></div>
 </div>
 <p>Second, execute:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>make env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make env
 </pre></div>
 </div>
-<p>to create the environment files under <code class="docutils literal"><span class="pre">conf/</span></code> used by <code class="docutils literal"><span class="pre">docker-compose</span></code>. Prior to doing so, you
+<p>to create the environment files under <code class="docutils literal notranslate"><span class="pre">conf/</span></code> used by <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code>. Prior to doing so, you
 may want to change some variables as necessary. The defaults should be okay if you are not using
 any off-cluster services (e.g. mongo, redis, postgres, rabbitmq).</p>
 <p>Below is the complete list of available options that can be used to customize your container:</p>
@@ -526,72 +526,72 @@ any off-cluster services (e.g. mongo, redis, postgres, rabbitmq).</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ST2_USER</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ST2_USER</span></code></td>
 <td>StackStorm account username</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ST2_PASSWORD</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ST2_PASSWORD</span></code></td>
 <td>StackStorm account password</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">MONGO_HOST</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MONGO_HOST</span></code></td>
 <td>MongoDB server hostname</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">MONGO_PORT</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MONGO_PORT</span></code></td>
 <td>MongoDB server port (typically <cite>27017</cite>)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">MONGO_DB</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MONGO_DB</span></code></td>
 <td><em>(Optional)</em> MongoDB dbname (will use <cite>st2</cite> if not specified)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">MONGO_USER</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">MONGO_USER</span></code></td>
 <td><em>(Optional)</em> MongoDB username (will connect without credentials if this and <cite>MONGO_PASS</cite> are not specified)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">MONGO_PASS</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">MONGO_PASS</span></code></td>
 <td><em>(Optional)</em> MongoDB password</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RABBITMQ_HOST</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RABBITMQ_HOST</span></code></td>
 <td>RabbitMQ server hostname</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RABBITMQ_PORT</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RABBITMQ_PORT</span></code></td>
 <td>RabbitMQ server port (typically <cite>5672</cite>)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">RABBITMQ_DEFAULT_USER</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">RABBITMQ_DEFAULT_USER</span></code></td>
 <td>RabbitMQ username</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">RABBITMQ_DEFAULT_PASS</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">RABBITMQ_DEFAULT_PASS</span></code></td>
 <td>RabbitMQ password</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">POSTGRES_HOST</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">POSTGRES_HOST</span></code></td>
 <td>PostgreSQL server hostname</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">POSTGRES_PORT</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">POSTGRES_PORT</span></code></td>
 <td>PostgreSQL server port (typically <cite>5432</cite>)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">POSTGRES_DB</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">POSTGRES_DB</span></code></td>
 <td>PostgreSQL database</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">POSTGRES_USER</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">POSTGRES_USER</span></code></td>
 <td>PostgreSQL username</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">POSTGRES_PASSWORD</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">POSTGRES_PASSWORD</span></code></td>
 <td>PostgreSQL password</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">REDIS_HOST</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">REDIS_HOST</span></code></td>
 <td>Redis server hostname</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">REDIS_PORT</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">REDIS_PORT</span></code></td>
 <td>Redis server port</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">REDIS_PASSWORD</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">REDIS_PASSWORD</span></code></td>
 <td><em>(Optional)</em> Redis password</td>
 </tr>
 </tbody>
 </table>
 <p>Third, start the containers:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>docker-compose up -d
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose up -d
 </pre></div>
 </div>
 <p>This will pull the required images from Docker Hub, and then start them.</p>
 <p>To stop the containers, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>docker-compose down
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose down
 </pre></div>
 </div>
 </div>

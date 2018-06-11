@@ -253,8 +253,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -472,22 +472,22 @@ documentation. For more information refer to the links below:</p>
 services to use the new settings.</p>
 <p>This means editing the following configuration options:</p>
 <ol class="arabic simple">
-<li>StackStorm - <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code></li>
+<li>StackStorm - <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">database.username</span></code> - MongoDB database username.</li>
-<li><code class="docutils literal"><span class="pre">database.password</span></code> - MongoDB database password.</li>
-<li><code class="docutils literal"><span class="pre">messaging.url</span></code> - RabbitMQ transport url (<code class="docutils literal"><span class="pre">amqp://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">database.username</span></code> - MongoDB database username.</li>
+<li><code class="docutils literal notranslate"><span class="pre">database.password</span></code> - MongoDB database password.</li>
+<li><code class="docutils literal notranslate"><span class="pre">messaging.url</span></code> - RabbitMQ transport url (<code class="docutils literal notranslate"><span class="pre">amqp://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Mistral - <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
+<li>Mistral - <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code></li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">database.connection</span></code> - PostgreSQL database connection string (<code class="docutils literal"><span class="pre">postgresql+psycopg2://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;/mistral</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">transport_url</span></code> - RabbitMQ transport url (<code class="docutils literal"><span class="pre">rabbit://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">database.connection</span></code> - PostgreSQL database connection string (<code class="docutils literal notranslate"><span class="pre">postgresql+psycopg2://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;/mistral</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">transport_url</span></code> - RabbitMQ transport url (<code class="docutils literal notranslate"><span class="pre">rabbit://&lt;username&gt;:&lt;password&gt;&#64;&lt;hostname&gt;:5672</span></code>)</li>
 </ul>
 </div></blockquote>
 <p>In addition, you are strongly encouraged to follow these best practices for running network

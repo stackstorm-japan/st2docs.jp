@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -479,11 +479,11 @@ follow the debugging procedure below:</p>
 <div class="section" id="validate-if-the-rule-was-enforced">
 <h2>1. Validate If the Rule Was Enforced<a class="headerlink" href="#validate-if-the-rule-was-enforced" title="Permalink to this headline">¶</a></h2>
 <p>You can use the CLI to list all enforcements for a rule, using the CLI command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule-enforcement list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule-enforcement list
 </pre></div>
 </div>
 <p>To filter rule enforcements by rule:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule-enforcement list --rule<span class="o">=</span>git.st2.webhook.github.pulls.merge.sample
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule-enforcement list --rule<span class="o">=</span>git.st2.webhook.github.pulls.merge.sample
 
 +--------------------------+----------------------+----------------------+----------------------+----------------------+
 <span class="p">|</span> id                       <span class="p">|</span> rule_ref             <span class="p">|</span> trigger_instance_id  <span class="p">|</span> execution_id         <span class="p">|</span> enforced_at          <span class="p">|</span>
@@ -502,28 +502,28 @@ follow the debugging procedure below:</p>
 </div>
 <p>You will see above the trigger instance and the execution for a rule enforcement if
 there were any. If no execution was kicked off, there is no execution id. This means that
-st2 had issues running the action (invalid parameters, <code class="docutils literal"><span class="pre">action_ref</span></code> not present etc). You will need
-to check the rules engine logs for exceptions. You can <code class="docutils literal"><span class="pre">grep</span></code> using trigger instance id.
+st2 had issues running the action (invalid parameters, <code class="docutils literal notranslate"><span class="pre">action_ref</span></code> not present etc). You will need
+to check the rules engine logs for exceptions. You can <code class="docutils literal notranslate"><span class="pre">grep</span></code> using trigger instance id.
 If you do not see a rule enforcement, check if there was a trigger emitted using the next procedure.</p>
 </div>
 <div class="section" id="validate-if-a-trigger-was-emitted">
 <h2>2. Validate If a Trigger was Emitted<a class="headerlink" href="#validate-if-a-trigger-was-emitted" title="Permalink to this headline">¶</a></h2>
 <p>Here, you will check if a trigger is being emitted and flowing to the rules engine. The easiest way to check is to use the CLI command that will list all the trigger instances ever seen in the system:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance list
 </pre></div>
 </div>
 <p>You can also filter trigger instances by trigger reference:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span>test_pack.test_trigger
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span>test_pack.test_trigger
 </pre></div>
 </div>
-<p>You can also filter trigger instances by timestamp using <code class="docutils literal"><span class="pre">timestamp-lt</span></code> and <code class="docutils literal"><span class="pre">timestamp-gt</span></code> flags:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span>test_pack.test_trigger --timestamp-lt<span class="o">=</span><span class="s2">&quot;2015-12-04T12:00:01.000000Z&quot;</span> --timestamp-gt<span class="o">=</span><span class="s2">&quot;2015-12-03T12:00:01.000000Z&quot;</span>
+<p>You can also filter trigger instances by timestamp using <code class="docutils literal notranslate"><span class="pre">timestamp-lt</span></code> and <code class="docutils literal notranslate"><span class="pre">timestamp-gt</span></code> flags:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span>test_pack.test_trigger --timestamp-lt<span class="o">=</span><span class="s2">&quot;2015-12-04T12:00:01.000000Z&quot;</span> --timestamp-gt<span class="o">=</span><span class="s2">&quot;2015-12-03T12:00:01.000000Z&quot;</span>
 </pre></div>
 </div>
 <p>It is possible that a trigger-instance is present in the list but it does not have a status of
-<code class="docutils literal"><span class="pre">processed</span></code>. This will also tell you that the RulesEngine tried to process the TriggerInstance
-but failed. Other possible trigger-instance states are <code class="docutils literal"><span class="pre">processing</span></code> and <code class="docutils literal"><span class="pre">pending</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trigger-instance get 57228f31d9d7ed0becb34e06
+<code class="docutils literal notranslate"><span class="pre">processed</span></code>. This will also tell you that the RulesEngine tried to process the TriggerInstance
+but failed. Other possible trigger-instance states are <code class="docutils literal notranslate"><span class="pre">processing</span></code> and <code class="docutils literal notranslate"><span class="pre">pending</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trigger-instance get 57228f31d9d7ed0becb34e06
 +-----------------+---------------------------------------------------------+
 <span class="p">|</span> Property        <span class="p">|</span> Value                                                   <span class="p">|</span>
 +-----------------+---------------------------------------------------------+
@@ -539,7 +539,7 @@ but failed. Other possible trigger-instance states are <code class="docutils lit
 </pre></div>
 </div>
 <p>If you do not see any trigger instances for your trigger, then check the sensor container logs.
-You can check the sensor container service log (<code class="docutils literal"><span class="pre">/var/log/st2/st2sensorcontainer.*.log</span></code>)
+You can check the sensor container service log (<code class="docutils literal notranslate"><span class="pre">/var/log/st2/st2sensorcontainer.*.log</span></code>)
 to see if triggers were emitted.</p>
 <p>This approach only works for triggers being emitted by sensors and will not work for incoming webhook
 generated triggers and timer generated triggers.</p>
@@ -554,29 +554,29 @@ the rules engine.</p>
 <p>Start by looking at the loaded rules and validate that there are rules that apply
 to the Trigger.</p>
 <p>The following CLI command will list all the rules for a specific trigger:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule list --trigger<span class="o">=</span>test_pack.test_trigger
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule list --trigger<span class="o">=</span>test_pack.test_trigger
 </pre></div>
 </div>
 <p>If there are rules in this list, then it means that there are rules in the system that actually
 match a given Trigger.</p>
 <p>In case no rules are returned and the list result is unexpected, then look into the rules
-engine logs. By default, rules engine logs are stored in the <code class="docutils literal"><span class="pre">/var/log/st2/st2rulesengine.log</span></code>
-file. You should inspect this file (<code class="docutils literal"><span class="pre">cat</span></code>, <code class="docutils literal"><span class="pre">grep</span></code> and <code class="docutils literal"><span class="pre">tail</span></code> are your friends) and look for
+engine logs. By default, rules engine logs are stored in the <code class="docutils literal notranslate"><span class="pre">/var/log/st2/st2rulesengine.log</span></code>
+file. You should inspect this file (<code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">grep</span></code> and <code class="docutils literal notranslate"><span class="pre">tail</span></code> are your friends) and look for
 a line similar to this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:13:51,250 INFO <span class="o">[</span>-<span class="o">]</span> Found &lt;n&gt; rules defined <span class="k">for</span> trigger &lt;trigger name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:13:51,250 INFO <span class="o">[</span>-<span class="o">]</span> Found &lt;n&gt; rules defined <span class="k">for</span> trigger &lt;trigger name&gt;
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:13:51,250 INFO <span class="o">[</span>-<span class="o">]</span> Found <span class="m">1</span> rules defined <span class="k">for</span> trigger st2.generic.actiontrigger
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:13:51,250 INFO <span class="o">[</span>-<span class="o">]</span> Found <span class="m">1</span> rules defined <span class="k">for</span> trigger st2.generic.actiontrigger
 </pre></div>
 </div>
 <p>If you do not see any rules being loaded, there is a mismatch in the rule definition w.r.t trigger.
 See <a class="reference internal" href="../rules.html#ref-rule-tester-post-mortem-debug"><span class="std std-ref">st2-rule-tester</span></a> usage for this specific case to see
-how to confirm the mismatch failure between rule and triggerinstance. The CLI command <code class="docutils literal"><span class="pre">st2-rule-tester</span></code> will be
-able to validate both <code class="docutils literal"><span class="pre">trigger</span> <span class="pre">ref</span></code> and rule criteria.</p>
+how to confirm the mismatch failure between rule and triggerinstance. The CLI command <code class="docutils literal notranslate"><span class="pre">st2-rule-tester</span></code> will be
+able to validate both <code class="docutils literal notranslate"><span class="pre">trigger</span> <span class="pre">ref</span></code> and rule criteria.</p>
 <p>If this does not work, then you can also use the CLI command to check the rule and validate the
-<code class="docutils literal"><span class="pre">trigger</span> <span class="pre">ref</span></code> is indeed right by visual inspection:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule get test_pack.test_rule
+<code class="docutils literal notranslate"><span class="pre">trigger</span> <span class="pre">ref</span></code> is indeed right by visual inspection:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule get test_pack.test_rule
 </pre></div>
 </div>
 <p>If you have validated that rules are being loaded, then it is time to validate the rule criteria.</p>
@@ -587,15 +587,15 @@ able to validate both <code class="docutils literal"><span class="pre">trigger</
 criteria.</p>
 <p>We will again use the rules engine service logs since this is where the rules are matched against triggers and then evaluated.</p>
 <p>If your criteria matches the emitted trigger, you should see a message similar to this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:24:11,324 INFO <span class="o">[</span>-<span class="o">]</span> Matched <span class="m">1</span> rule<span class="o">(</span>s<span class="o">)</span> <span class="k">for</span> trigger_instance st2.generic.actiontrigger
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:24:11,324 INFO <span class="o">[</span>-<span class="o">]</span> Matched <span class="m">1</span> rule<span class="o">(</span>s<span class="o">)</span> <span class="k">for</span> trigger_instance st2.generic.actiontrigger
 </pre></div>
 </div>
-<p>If the message says <code class="docutils literal"><span class="pre">Matched</span> <span class="pre">0</span> <span class="pre">rule(s)</span></code> this means that the emitted trigger does not match the
+<p>If the message says <code class="docutils literal notranslate"><span class="pre">Matched</span> <span class="pre">0</span> <span class="pre">rule(s)</span></code> this means that the emitted trigger does not match the
 defined rule criteria. Usually this is simply a feature - that the trigger which was emitted is not the
 one you are interested in. For this reason, an enforcement object is not written to db when the rule
 criteria does not match incoming payload.  If you believe the rule should indeed match the defined
 trigger, the next step is to debug the rule criteria and make sure it is configured correctly.</p>
-<p>For information on how to use the <code class="docutils literal"><span class="pre">st2-rule-tester</span></code> tool to do the above, please refer
+<p>For information on how to use the <code class="docutils literal notranslate"><span class="pre">st2-rule-tester</span></code> tool to do the above, please refer
 to the <a class="reference internal" href="../rules.html#testing-rules"><span class="std std-ref">Testing Rules</span></a> section.</p>
 <p>If you see the rule criteria matched and there is an enforcement object, but no execution was kicked
 off, then validate if action runners are up and running.</p>
@@ -607,28 +607,28 @@ reason, the action runner service is still not being fired/executed.</p>
 <p>If you see a message similar to the one below in your rules engine service log, this means that
 everything is working as expected - the trigger is successfully matched against the rule
 criteria, and an action execution is scheduled.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:32:21,694 INFO <span class="o">[</span>-<span class="o">]</span> Invoking action core.local <span class="k">for</span> trigger_instance 54eb48050640fd32c2d34034 with data <span class="o">{</span><span class="s2">&quot;cmd&quot;</span>: <span class="s2">&quot;echo \&quot;2015-02-23 15:32:21.663471\&quot;&quot;</span><span class="o">}</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-02-23 <span class="m">15</span>:32:21,694 INFO <span class="o">[</span>-<span class="o">]</span> Invoking action core.local <span class="k">for</span> trigger_instance 54eb48050640fd32c2d34034 with data <span class="o">{</span><span class="s2">&quot;cmd&quot;</span>: <span class="s2">&quot;echo \&quot;2015-02-23 15:32:21.663471\&quot;&quot;</span><span class="o">}</span>.
 <span class="m">2015</span>-02-23 <span class="m">15</span>:32:21,788 AUDIT <span class="o">[</span>-<span class="o">]</span> Action execution scheduled. <span class="nv">LiveAction</span><span class="o">=</span>LiveActionDB<span class="o">(</span><span class="nv">action</span><span class="o">=</span><span class="s2">&quot;core.local&quot;</span>, ...
 </pre></div>
 </div>
 <p>If you see this message, and the action is still not being executed, this usually simply means
 that the action runner, the service which is responsible for running actions is not running.</p>
-<p>The easiest way to check if the action runner service is running is to use the CLI command <code class="docutils literal"><span class="pre">st2ctl</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl status
+<p>The easiest way to check if the action runner service is running is to use the CLI command <code class="docutils literal notranslate"><span class="pre">st2ctl</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl status
 </pre></div>
 </div>
-<p>If for some reason the action runner service is not running, you can use the <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">start</span></code> command to try
+<p>If for some reason the action runner service is not running, you can use the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">start</span></code> command to try
 to start all the services again. If the service still does not start after running the command, this
 usually means a configuration error (e.g. invalid database information or credentials). The best
 way to debug this is to look into the action runner service logs -
-<code class="docutils literal"><span class="pre">/var/log/st2/logs/st2actionrunner.*.log</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">/var/log/st2/logs/st2actionrunner.*.log</span></code>.</p>
 </div>
 <div class="section" id="ask-for-help">
 <h2>6. Ask for Help!<a class="headerlink" href="#ask-for-help" title="Permalink to this headline">¶</a></h2>
 <p>You have exhausted the self help directions. Contact us using the <a class="reference internal" href="ask_for_support.html#ref-ask-for-help"><span class="std std-ref">ask for help</span></a>
 section. Please have the output of
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule-enforcement</span> <span class="pre">list</span> <span class="pre">--rule=&lt;rule_being_debugged&gt;</span></code>,
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">trigger-instance</span> <span class="pre">list</span> <span class="pre">--trigger=&lt;trigger&gt;</span></code> and the rule YAML ready so we can help you debug
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule-enforcement</span> <span class="pre">list</span> <span class="pre">--rule=&lt;rule_being_debugged&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">trigger-instance</span> <span class="pre">list</span> <span class="pre">--trigger=&lt;trigger&gt;</span></code> and the rule YAML ready so we can help you debug
 faster!</p>
 </div>
 </div>

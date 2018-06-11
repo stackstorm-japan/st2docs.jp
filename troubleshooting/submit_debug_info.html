@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -471,10 +471,10 @@ which allows you to easily and securely send us the information we need to
 help us debug or troubleshoot your issue.</p>
 <p>By default, this utility sends us the following information:</p>
 <ul class="simple">
-<li>All the StackStorm services log files from <code class="docutils literal"><span class="pre">/var/log/st2</span></code></li>
-<li>Mistral service log file from <code class="docutils literal"><span class="pre">/var/log/mistral.log</span></code></li>
-<li>StackStorm and Mistral config file (<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>,
-<code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code>). Prior to sending the config files we strip
+<li>All the StackStorm services log files from <code class="docutils literal notranslate"><span class="pre">/var/log/st2</span></code></li>
+<li>Mistral service log file from <code class="docutils literal notranslate"><span class="pre">/var/log/mistral.log</span></code></li>
+<li>StackStorm and Mistral config file (<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>,
+<code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code>). Prior to sending the config files we strip
 sensitive information such as database and queue access information.</li>
 <li>StackStorm content (integration packs) minus the pack configs.</li>
 </ul>
@@ -483,7 +483,7 @@ public key via public-key cryptography. Once submitted, this bundled information
 is only accessible to Extreme Networks employees and it is used solely for
 debugging purposes.</p>
 <p>To send debug information to Extreme Networks, run this CLI command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info
 
 This will submit the following information to Extreme Networks: logs, configs, content, system_info
 Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</span> y
@@ -495,8 +495,8 @@ Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</
 </div>
 <p>By default, the command will run in an interactive mode. If you want to run it in a
 non-interactive mode and assuming “yes” as the answer to all the questions, you
-can use the <code class="docutils literal"><span class="pre">--yes</span></code> flag. For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --yes
+can use the <code class="docutils literal notranslate"><span class="pre">--yes</span></code> flag. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --yes
 
 <span class="m">2015</span>-02-10 <span class="m">16</span>:45:36,074  INFO - Collecting files...
 <span class="m">2015</span>-02-10 <span class="m">16</span>:45:36,988  INFO - Creating tarball...
@@ -505,33 +505,33 @@ can use the <code class="docutils literal"><span class="pre">--yes</span></code>
 </pre></div>
 </div>
 <p>If you want to only send specific information, or exclude particular information
-you can use the <code class="docutils literal"><span class="pre">--exclude-&lt;content&gt;</span></code> flag. For example, to only send us the log files:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --exclude-configs --exclude-content --exclude-system-info
+you can use the <code class="docutils literal notranslate"><span class="pre">--exclude-&lt;content&gt;</span></code> flag. For example, to only send us the log files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --exclude-configs --exclude-content --exclude-system-info
 </pre></div>
 </div>
 <div class="section" id="reviewing-the-debug-information">
 <h2>Reviewing the Debug Information<a class="headerlink" href="#reviewing-the-debug-information" title="Permalink to this headline">¶</a></h2>
 <p>If you want to review and/or manipulate the information (e.g. remove log lines
-which you might find sensitive), you can do that using the <code class="docutils literal"><span class="pre">--review</span></code> flag.</p>
+which you might find sensitive), you can do that using the <code class="docutils literal notranslate"><span class="pre">--review</span></code> flag.</p>
 <p>When this flag is used, the archive will not be encrypted and uploaded:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --review
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --review
 
 <span class="m">2015</span>-02-10 <span class="m">17</span>:43:49,016  INFO - Collecting files...
 <span class="m">2015</span>-02-10 <span class="m">17</span>:43:49,770  INFO - Creating tarball...
 <span class="m">2015</span>-02-10 <span class="m">17</span>:43:49,912  INFO - Debug tarball successfully generated and can be reviewed at: /tmp/st2-debug-output-vagrant-ubuntu-trusty-64-2015-02-10-174349.tar.gz
 </pre></div>
 </div>
-<p>By default, the archive will be written to the <code class="docutils literal"><span class="pre">/tmp</span></code> directory. This can be controlled by using
-the <code class="docutils literal"><span class="pre">--output</span></code> option to specify the location/filename of the archive:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --review --output my-st2-debug-file.tar.gz
+<p>By default, the archive will be written to the <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> directory. This can be controlled by using
+the <code class="docutils literal notranslate"><span class="pre">--output</span></code> option to specify the location/filename of the archive:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --review --output my-st2-debug-file.tar.gz
 
 <span class="m">2016</span>-02-24 <span class="m">23</span>:53:25,779  INFO - Collecting files...
 <span class="m">2016</span>-02-24 <span class="m">23</span>:53:26,423  INFO - Creating tarball...
 <span class="m">2016</span>-02-24 <span class="m">23</span>:53:26,526  INFO - Debug tarball successfully generated and can be reviewed at: my-st2-debug-file.tar.gz
 </pre></div>
 </div>
-<p>After review, the archive can be uploaded using the <code class="docutils literal"><span class="pre">--existing-file</span></code> option:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --config /etc/st2debug/submit-debug-info.yaml --existing-file my-st2-debug-file.tar.gz
+<p>After review, the archive can be uploaded using the <code class="docutils literal notranslate"><span class="pre">--existing-file</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --config /etc/st2debug/submit-debug-info.yaml --existing-file my-st2-debug-file.tar.gz
 
 <span class="m">2016</span>-02-24 <span class="m">23</span>:56:13,019  INFO - Encrypting tarball...
 <span class="m">2016</span>-02-24 <span class="m">23</span>:56:13,814  INFO - Debug tarball successfully uploaded to Extreme Networks <span class="o">(</span><span class="nv">name</span><span class="o">=</span>my-st2-debug-file.tar.gz.asc<span class="o">)</span>
@@ -541,20 +541,20 @@ the <code class="docutils literal"><span class="pre">--output</span></code> opti
 </div>
 <div class="section" id="customizing-the-debug-information-gathered">
 <h2>Customizing the Debug Information Gathered<a class="headerlink" href="#customizing-the-debug-information-gathered" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">st2-submit-debug-info</span></code> can be customized for specific deployments by loading a set of overrides
+<p><code class="docutils literal notranslate"><span class="pre">st2-submit-debug-info</span></code> can be customized for specific deployments by loading a set of overrides
 from a YAML file. The following config options are supported:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">log_file_paths</span></code> - an additional set of log files to gather</li>
-<li><code class="docutils literal"><span class="pre">st2_config_file_path</span></code> - path to st2.conf</li>
-<li><code class="docutils literal"><span class="pre">mistral_config_file_path</span></code> - path to mistral.conf</li>
-<li><code class="docutils literal"><span class="pre">s3_bucket_url</span></code> - the S3 bucket to upload the archive to</li>
-<li><code class="docutils literal"><span class="pre">gpg_key_fingerprint</span></code> - gpg fingerprint to use when encrypting the archive</li>
-<li><code class="docutils literal"><span class="pre">gpg_key</span></code> - gpg key to use when encrypting the archive</li>
-<li><code class="docutils literal"><span class="pre">shell_commands</span></code> - a list of shell commands to execute and capture the output from</li>
-<li><code class="docutils literal"><span class="pre">company_name</span></code> - the company name to show in the interactive prompts and log messages</li>
+<li><code class="docutils literal notranslate"><span class="pre">log_file_paths</span></code> - an additional set of log files to gather</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2_config_file_path</span></code> - path to st2.conf</li>
+<li><code class="docutils literal notranslate"><span class="pre">mistral_config_file_path</span></code> - path to mistral.conf</li>
+<li><code class="docutils literal notranslate"><span class="pre">s3_bucket_url</span></code> - the S3 bucket to upload the archive to</li>
+<li><code class="docutils literal notranslate"><span class="pre">gpg_key_fingerprint</span></code> - gpg fingerprint to use when encrypting the archive</li>
+<li><code class="docutils literal notranslate"><span class="pre">gpg_key</span></code> - gpg key to use when encrypting the archive</li>
+<li><code class="docutils literal notranslate"><span class="pre">shell_commands</span></code> - a list of shell commands to execute and capture the output from</li>
+<li><code class="docutils literal notranslate"><span class="pre">company_name</span></code> - the company name to show in the interactive prompts and log messages</li>
 </ul>
 <p>Sample config yaml file:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">log_file_paths</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/var/log/st2/*.log</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">/var/log/mistral*.log</span>
@@ -622,7 +622,7 @@ from a YAML file. The following config options are supported:</p>
 </div>
 <p>To send debug information, simply invoke the CLI command shown below passing it the path to
 the YAML config file:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --config &lt;path to config file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --config &lt;path to config file&gt;
 
 This will submit the following information to Extreme Networks: logs, configs, content, system_info, shell_commands
 Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</span> y
@@ -633,11 +633,11 @@ Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</
 <span class="m">2016</span>-01-19 <span class="m">06</span>:12:43,949  INFO - When communicating with support, please <span class="nb">let</span> them know the tarball name - st2-debug-output-70386ae8e4fe-2016-01-19-06:12:18.tar.gz.asc
 </pre></div>
 </div>
-<p>We can pass through any command line arguments provided to <code class="docutils literal"><span class="pre">st2-submit-debug-info</span></code>.</p>
+<p>We can pass through any command line arguments provided to <code class="docutils literal notranslate"><span class="pre">st2-submit-debug-info</span></code>.</p>
 <p>For example:</p>
 <ul>
 <li><p class="first">To run it in a non-interactive mode use the ‘–yes’ option:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --yes --config &lt;path to config file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --yes --config &lt;path to config file&gt;
 
 <span class="m">2016</span>-01-19 <span class="m">06</span>:25:09,024  INFO - Collecting files...
 <span class="m">2016</span>-01-19 <span class="m">06</span>:25:09,617  INFO - Creating tarball...
@@ -648,8 +648,8 @@ Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</
 </div>
 </li>
 <li><p class="first">To send specific information or to exclude particular information, use the
-<code class="docutils literal"><span class="pre">--exclude-&lt;content&gt;</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --exclude-shell-commands --config &lt;path to config file&gt;
+<code class="docutils literal notranslate"><span class="pre">--exclude-&lt;content&gt;</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --exclude-shell-commands --config &lt;path to config file&gt;
 
 This will submit the following information to Extreme Networks: logs, configs, content, system_info
 Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</span> y
@@ -662,7 +662,7 @@ Are you sure you want to proceed? <span class="o">[</span>y/n<span class="o">]</
 </div>
 </li>
 <li><p class="first">To review the debugging information without encrypting and uploading:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-submit-debug-info --review --config &lt;path to config file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-submit-debug-info --review --config &lt;path to config file&gt;
 
 <span class="m">2016</span>-01-19 <span class="m">06</span>:19:04,911  INFO - Collecting files...
 <span class="m">2016</span>-01-19 <span class="m">06</span>:19:05,531  INFO - Creating tarball...

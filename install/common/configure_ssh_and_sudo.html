@@ -253,8 +253,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -457,14 +457,14 @@
               </p>
             </div>
             
-  <p>To run local and remote shell actions, StackStorm uses a special system user (by default <code class="docutils literal"><span class="pre">stanley</span></code>).
+  <p>To run local and remote shell actions, StackStorm uses a special system user (by default <code class="docutils literal notranslate"><span class="pre">stanley</span></code>).
 For remote Linux actions, SSH is used. We recommend configuring public key-based SSH access on all
 remote hosts. We also recommend configuring SSH access to localhost for running examples and
 testing.</p>
 <ul>
 <li><p class="first">Create StackStorm system user, enable passwordless sudo, and set up ssh access to “localhost” so
 that SSH-based actions can be tested locally. You will need elevated privileges to do this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create an SSH system user (default `stanley` user may already exist)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an SSH system user (default `stanley` user may already exist)</span>
 sudo useradd stanley
 sudo mkdir -p /home/stanley/.ssh
 sudo chmod <span class="m">0700</span> /home/stanley/.ssh
@@ -491,8 +491,8 @@ instructions at <a class="reference internal" href="../config/config.html#config
 <a class="reference internal" href="../config/windows_runners.html"><span class="doc">Windows runners</span></a>.</p>
 </li>
 <li><p class="first">If you are using a different user, or path to their SSH key, you will need to change this
-section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[system_user]</span>
+section in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[system_user]</span>
 <span class="na">user</span> <span class="o">=</span> <span class="s">stanley</span>
 <span class="na">ssh_key_file</span> <span class="o">=</span> <span class="s">/home/stanley/.ssh/stanley_rsa</span>
 </pre></div>

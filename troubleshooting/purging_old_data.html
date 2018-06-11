@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -473,9 +473,9 @@ disk space issues for busy systems.</p>
 live action, action execution output, and trigger instance database objects).</p>
 <p>The actual collection threshold is very user-specific because it depends on your requirements and
 policies. Therefore garbage collection is disabled by default.</p>
-<p>To enable it, configure a TTL (in days) for action executions and trigger instances in <code class="docutils literal"><span class="pre">st2.conf</span></code>
+<p>To enable it, configure a TTL (in days) for action executions and trigger instances in <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code>
 as shown below:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[garbagecollector]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[garbagecollector]</span>
 <span class="na">logging</span> <span class="o">=</span> <span class="s">st2reactor/conf/logging.garbagecollector.conf</span>
 
 <span class="na">action_executions_ttl</span> <span class="o">=</span> <span class="s">30</span>
@@ -498,38 +498,38 @@ for Inquiries.</p>
 <p>If you need to manually purge data, you can use the scripts here.</p>
 <div class="section" id="purging-executions-older-than-some-timestamp">
 <h3>Purging Executions Older than Some Timestamp<a class="headerlink" href="#purging-executions-older-than-some-timestamp" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
 </pre></div>
 </div>
 <p>The timestamp provided is interpreted as a UTC timestamp. Please perform all necessary timezone
 conversions and specify time in UTC.</p>
-<p>You can also delete executions for a particular <code class="docutils literal"><span class="pre">action_ref</span></code> by specifying an <code class="docutils literal"><span class="pre">action_ref</span></code>
+<p>You can also delete executions for a particular <code class="docutils literal notranslate"><span class="pre">action_ref</span></code> by specifying an <code class="docutils literal notranslate"><span class="pre">action_ref</span></code>
 parameter:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span> --action-ref<span class="o">=</span><span class="s2">&quot;core.localzz&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span> --action-ref<span class="o">=</span><span class="s2">&quot;core.localzz&quot;</span>
 </pre></div>
 </div>
-<p>By default, only executions in completed state are deleted - i.e. <code class="docutils literal"><span class="pre">succeeded</span></code>, <code class="docutils literal"><span class="pre">failed</span></code>,
-<code class="docutils literal"><span class="pre">canceled</span></code>, <code class="docutils literal"><span class="pre">timeout</span></code> and <code class="docutils literal"><span class="pre">abandoned</span></code>. To delete all models irrespective of status, use the
-<code class="docutils literal"><span class="pre">--purge-incomplete</span></code> option:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span> --purge-incomplete
+<p>By default, only executions in completed state are deleted - i.e. <code class="docutils literal notranslate"><span class="pre">succeeded</span></code>, <code class="docutils literal notranslate"><span class="pre">failed</span></code>,
+<code class="docutils literal notranslate"><span class="pre">canceled</span></code>, <code class="docutils literal notranslate"><span class="pre">timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">abandoned</span></code>. To delete all models irrespective of status, use the
+<code class="docutils literal notranslate"><span class="pre">--purge-incomplete</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span> --purge-incomplete
 </pre></div>
 </div>
 <p>This script may take some time to complete, depending on data volumes. We recommend running it
 inside a screen/tmux session. For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>screen -d -m -S purge-execs /opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>screen -d -m -S purge-execs /opt/stackstorm/st2/bin/st2-purge-executions --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="purging-trigger-instances-older-than-some-timestamp">
 <h3>Purging Trigger Instances Older than Some Timestamp<a class="headerlink" href="#purging-trigger-instances-older-than-some-timestamp" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-trigger-instances --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-purge-trigger-instances --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
 </pre></div>
 </div>
 <p>Again, the timestamp provided is interpreted as a UTC timestamp. Please perform all necessary
 timezone conversions and specify time in UTC.</p>
 <p>This script may take some time to complete, depending on data volumes. We recommend running it
 inside a screen/tmux session. For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>screen -d -m -S purge-instances /opt/stackstorm/st2/bin/st2-purge-trigger-instances --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>screen -d -m -S purge-instances /opt/stackstorm/st2/bin/st2-purge-trigger-instances --config-file /etc/st2/st2.conf --timestamp<span class="o">=</span><span class="s2">&quot;2015-11-25T21:45:00.000000Z&quot;</span>
 </pre></div>
 </div>
 </div>

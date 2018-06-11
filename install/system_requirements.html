@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -509,7 +509,7 @@ be automatically added when you install StackStorm.</p>
 </tbody>
 </table>
 <p>Alternatively, you can use the StackStorm Docker image. You will need at least version 1.13.0 of Docker
-engine, and optionally <code class="docutils literal"><span class="pre">docker-compose</span></code>. See our <a class="reference internal" href="docker.html"><span class="doc">Docker</span></a> guide for more
+engine, and optionally <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code>. See our <a class="reference internal" href="docker.html"><span class="doc">Docker</span></a> guide for more
 information.</p>
 <p>This is the recommended minimum sizing for testing and deploying StackStorm:</p>
 <table border="1" class="docutils">
@@ -546,7 +546,7 @@ information.</p>
 to your system later, you will need additional RAM. Check the <a class="reference external" href="https://ewc-docs.extremenetworks.com/solutions/dcfabric/install.html#system-requirements">DC Fabric Automation Suite System Requirements</a></p>
 </div>
 <p>If you split your filesystem into multiple partitions and mount points, ensure you have at least
-1GB of free space in <code class="docutils literal"><span class="pre">/var</span></code> and <code class="docutils literal"><span class="pre">/opt</span></code>. RabbitMQ and MongoDB may not operate correctly without
+1GB of free space in <code class="docutils literal notranslate"><span class="pre">/var</span></code> and <code class="docutils literal notranslate"><span class="pre">/opt</span></code>. RabbitMQ and MongoDB may not operate correctly without
 sufficient free space.</p>
 <p>By default, StackStorm and related services use these TCP ports:</p>
 <ul class="simple">
@@ -564,17 +564,17 @@ sufficient free space.</p>
 <p>StackStorm only support Ubuntu and RHEL/CentOS Linux distributions. In general, it is supported
 on the two most recent major supported releases for those distributions. Specifically:</p>
 <ul>
-<li><p class="first"><strong>Ubuntu</strong>: All current LTS releases are supported, from the time of their first <code class="docutils literal"><span class="pre">.1</span></code> release
-- e.g. <code class="docutils literal"><span class="pre">16.04.1</span></code> - until the Ubuntu end of life date. Currently we support Ubuntu <code class="docutils literal"><span class="pre">14.04</span></code> and
-<code class="docutils literal"><span class="pre">16.04</span></code>. We aim to test and validate Ubuntu <code class="docutils literal"><span class="pre">18.04</span></code>, when it is released later in 2018.</p>
-<p>At that point, Ubuntu <code class="docutils literal"><span class="pre">14.04</span></code> will be considered deprecated. It will continue to be supported until
+<li><p class="first"><strong>Ubuntu</strong>: All current LTS releases are supported, from the time of their first <code class="docutils literal notranslate"><span class="pre">.1</span></code> release
+- e.g. <code class="docutils literal notranslate"><span class="pre">16.04.1</span></code> - until the Ubuntu end of life date. Currently we support Ubuntu <code class="docutils literal notranslate"><span class="pre">14.04</span></code> and
+<code class="docutils literal notranslate"><span class="pre">16.04</span></code>. We aim to test and validate Ubuntu <code class="docutils literal notranslate"><span class="pre">18.04</span></code>, when it is released later in 2018.</p>
+<p>At that point, Ubuntu <code class="docutils literal notranslate"><span class="pre">14.04</span></code> will be considered deprecated. It will continue to be supported until
 April 2019, when it goes end of life. No ongoing testing will be done with Ubuntu 14 after April 2019.</p>
 </li>
-<li><p class="first"><strong>RHEL/CentOS</strong>: We currently support RHEL/CentOS <code class="docutils literal"><span class="pre">6.x</span></code> and <code class="docutils literal"><span class="pre">7.x</span></code>. In general, we recommend using
-the most recent version in that series, but any version may be used. When RHEL <code class="docutils literal"><span class="pre">8.0</span></code> is released,
+<li><p class="first"><strong>RHEL/CentOS</strong>: We currently support RHEL/CentOS <code class="docutils literal notranslate"><span class="pre">6.x</span></code> and <code class="docutils literal notranslate"><span class="pre">7.x</span></code>. In general, we recommend using
+the most recent version in that series, but any version may be used. When RHEL <code class="docutils literal notranslate"><span class="pre">8.0</span></code> is released,
 we will test and validate it. At that point, RHEL 6.x should be considered deprecated.</p>
-<p>When RHEL <code class="docutils literal"><span class="pre">8.1</span></code> is released, StackStorm support for RHEL <code class="docutils literal"><span class="pre">6.x</span></code> will finish. No ongoing testing will be
-done with RHEL <code class="docutils literal"><span class="pre">6.x</span></code> after that date.</p>
+<p>When RHEL <code class="docutils literal notranslate"><span class="pre">8.1</span></code> is released, StackStorm support for RHEL <code class="docutils literal notranslate"><span class="pre">6.x</span></code> will finish. No ongoing testing will be
+done with RHEL <code class="docutils literal notranslate"><span class="pre">6.x</span></code> after that date.</p>
 </li>
 </ul>
 </div>

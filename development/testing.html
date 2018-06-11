@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -466,25 +466,25 @@
 <h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
 <p>StackStorm has multiple types of tests. To run a particular test suite we use Makefile targets.
 Underneath, those make targets create a virtual environment, install the required Python
-dependencies and use <code class="docutils literal"><span class="pre">nose</span></code> Python test runner to run the tests.</p>
+dependencies and use <code class="docutils literal notranslate"><span class="pre">nose</span></code> Python test runner to run the tests.</p>
 <div class="section" id="unit-tests">
 <h2>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h2>
 <p>Unit tests exercise small units/pieces of code (usually those are functions) and don’t require
 any services or 3rd party dependencies to run. Besides manipulating the state in memory, they
 usually have no other side affects.</p>
-<p>In cases where a unit you are testing requires a service to run, you should use the <code class="docutils literal"><span class="pre">mock</span></code>
+<p>In cases where a unit you are testing requires a service to run, you should use the <code class="docutils literal notranslate"><span class="pre">mock</span></code>
 library to mock the service and the result.</p>
 <p>Note: Currently some of the unit tests require database (MongoDB) and message bus (RabbitMQ) to
 run. We are in process of moving those tests to the integration test suite.</p>
-<p>Unit tests are located in <code class="docutils literal"><span class="pre">&lt;component&gt;/tests/unit/</span></code>, e.g. <code class="docutils literal"><span class="pre">st2api/tests/unit/</span></code>.</p>
+<p>Unit tests are located in <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;/tests/unit/</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">st2api/tests/unit/</span></code>.</p>
 </div>
 <div class="section" id="integration-tests">
 <h2>Integration tests<a class="headerlink" href="#integration-tests" title="Permalink to this headline">¶</a></h2>
 <p>Integration tests exercise small pieces of code which require some StackStorm services such as a
 database and message bus to run. Usually they have side affects (e.g. changing the state in
 the db, etc.).</p>
-<p>Integration tests are located in <code class="docutils literal"><span class="pre">&lt;component&gt;/tests/integration</span></code>, e.g.
-<code class="docutils literal"><span class="pre">st2actions/tests/integration/</span></code>.</p>
+<p>Integration tests are located in <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;/tests/integration</span></code>, e.g.
+<code class="docutils literal notranslate"><span class="pre">st2actions/tests/integration/</span></code>.</p>
 </div>
 <div class="section" id="end-to-end-tests">
 <h2>End-to-end tests<a class="headerlink" href="#end-to-end-tests" title="Permalink to this headline">¶</a></h2>
@@ -496,21 +496,21 @@ API client.</p>
 <div class="section" id="running-all-tests">
 <h2>Running all Tests<a class="headerlink" href="#running-all-tests" title="Permalink to this headline">¶</a></h2>
 <p>To run all tests, run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>make pytests
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make pytests
 </pre></div>
 </div>
 </div>
 <div class="section" id="running-all-unit-tests">
 <h2>Running all Unit Tests<a class="headerlink" href="#running-all-unit-tests" title="Permalink to this headline">¶</a></h2>
 <p>To run all unit tests, run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>make unit-tests
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make unit-tests
 </pre></div>
 </div>
 </div>
 <div class="section" id="running-all-integration-tests">
 <h2>Running all Integration Tests<a class="headerlink" href="#running-all-integration-tests" title="Permalink to this headline">¶</a></h2>
 <p>To run all integration tests, run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>make itests
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make itests
 </pre></div>
 </div>
 </div>
@@ -518,14 +518,14 @@ API client.</p>
 <h2>Running all Tests in a Test File<a class="headerlink" href="#running-all-tests-in-a-test-file" title="Permalink to this headline">¶</a></h2>
 <p>To run all the tests located in a single test file, move to the root of the
 repository and run the following command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nosetests --nocapture &lt;path to the <span class="nb">test</span> file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nosetests --nocapture &lt;path to the <span class="nb">test</span> file&gt;
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nosetests --nocapture st2reactor/tests/unit/test_enforce.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nosetests --nocapture st2reactor/tests/unit/test_enforce.py
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">--nocapture</span></code> flag tells the nose test runner to directly output any stdout and stderr
+<p>The <code class="docutils literal notranslate"><span class="pre">--nocapture</span></code> flag tells the nose test runner to directly output any stdout and stderr
 generated during the test execution instead of capturing and ignoring it.</p>
 </div>
 </div>

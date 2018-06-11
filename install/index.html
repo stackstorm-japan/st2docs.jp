@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -465,7 +465,7 @@
 <p>StackStorm は、RPM 及び deb パッケージによるインストールの他、Docker による環境構築に加え、インストールスクリプトによる自動インストールといった、様々なインストール方法を提供しています。以下に StackStorm がサポートするインストール方法の選択肢を示します。</p>
 <ul class="simple">
 <li><strong>Vagrant / Virtual Appliance:</strong>
-<cite>Vagrant のインストール &lt;/install/vagrant&gt;</cite> ができた環境であれば、コマンド <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">init</span> <span class="pre">stackstorm/st2</span> <span class="pre">&amp;&amp;</span> <span class="pre">vagrant</span> <span class="pre">up</span></code> だけで StackStorm がインストールされた環境を構築できます。動作確認済の StackStorm が既にインストールされているイメージを使うことで、インストールや設定の手間や時間を省けます。StackStorm の動作の確認や、pack の開発、デモなどの用途に最適です。</li>
+<cite>Vagrant のインストール &lt;/install/vagrant&gt;</cite> ができた環境であれば、コマンド <code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">init</span> <span class="pre">stackstorm/st2</span> <span class="pre">&amp;&amp;</span> <span class="pre">vagrant</span> <span class="pre">up</span></code> だけで StackStorm がインストールされた環境を構築できます。動作確認済の StackStorm が既にインストールされているイメージを使うことで、インストールや設定の手間や時間を省けます。StackStorm の動作の確認や、pack の開発、デモなどの用途に最適です。</li>
 <li><strong>One-line Install:</strong>
 これはインストールスクリプトによって全てのコンポーネントを単一ホストにインストールする方法です。
 とりあえず StackStorm を使ってみたいといった場合には、こちらの方法がお勧めです。詳しくは後述の <a class="reference internal" href="#ref-one-line-install"><span class="std std-ref">Quick Install</span></a> をご覧ください。</li>
@@ -484,29 +484,29 @@ StackStorm は Docker イメージを提供しています。詳しくは <a cla
 Extreme Workflow Composer を使うことで Network Automation Suites を利用できるようになります。詳しくは <a class="reference internal" href="bwc.html"><span class="doc">Installing Extreme Workflow Composer</span></a> をご覧ください。</p>
 <p class="rubric" id="ref-one-line-install">クイックスタート</p>
 <p><a class="reference internal" href="system_requirements.html"><span class="doc">システム要求</span></a> を満たす <strong>まっさらな</strong> 64-bit GNU/Linux 環境が用意できたら、
-<code class="docutils literal"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">curl</span></code>  や <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">curl</span> <span class="pre">nss</span></code> を実行し <code class="docutils literal"><span class="pre">curl</span></code> が最新版であることを確認したうえで、
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">curl</span></code>  や <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">curl</span> <span class="pre">nss</span></code> を実行し <code class="docutils literal notranslate"><span class="pre">curl</span></code> が最新版であることを確認したうえで、
 以下コマンドを実行してください。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sSL https://stackstorm.com/packages/install.sh <span class="p">|</span> bash -s -- --user<span class="o">=</span>st2admin --password<span class="o">=</span><span class="s1">&#39;Ch@ngeMe&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sSL https://stackstorm.com/packages/install.sh <span class="p">|</span> bash -s -- --user<span class="o">=</span>st2admin --password<span class="o">=</span><span class="s1">&#39;Ch@ngeMe&#39;</span>
 </pre></div>
 </div>
 <p>このコマンドは <a class="reference internal" href="overview.html"><span class="doc">シングルホストへのデプロイ後の構成</span></a> で示す通り、全てのコンポーネントをコマンドを実行したホストにインストールします。</p>
 <p>上記コマンドは OS インストール直後のまっさらな環境で実行してください。そうでない場合、インストールに失敗する可能性があります。その場合は、手動で問題解決と残りのインストール作業を行う必要があります。
 上記インストールスクリプトは冪等性がないため、インストール処理に失敗した場合には OS 環境をまっさらにし直した上で再実行してください。</p>
 <p>またプロキシ経由でインストールする場合、上記インストールコマンドを実行する前に、以下の環境変数を設定してください。</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>http://proxy.server.io:port
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">http_proxy</span><span class="o">=</span>http://proxy.server.io:port
 <span class="nb">export</span> <span class="nv">https_proxy</span><span class="o">=</span>http://proxy.server.io:port
 <span class="nb">export</span> <span class="nv">no_proxy</span><span class="o">=</span>localhost,127.0.0.1
 </pre></div>
 </div>
-<p>もし MITM プロキシを利用する場合は、上記に加え環境変数 <code class="docutils literal"><span class="pre">proxy_ca_bundle_path</span></code> も設定する必要があります (c.f. <a class="reference internal" href="../packs.html#packs-behind-proxy"><span class="std std-ref">Installing Packs from Behind a Proxy</span></a>)。</p>
+<p>もし MITM プロキシを利用する場合は、上記に加え環境変数 <code class="docutils literal notranslate"><span class="pre">proxy_ca_bundle_path</span></code> も設定する必要があります (c.f. <a class="reference internal" href="../packs.html#packs-behind-proxy"><span class="std std-ref">Installing Packs from Behind a Proxy</span></a>)。</p>
 <p>また RHEL 7 もしくは CentOS 7 の環境における Web UI アクセスで問題が生じる場合は、<a class="reference internal" href="rhel7.html#ref-rhel7-firewall"><span class="std std-ref">system firewall settings</span></a> をご参照ください。</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>For security reasons, the installer script enables authentication and generates random
 passwords for dependent services such as MongoDB and PostgreSQL.</p>
 <p class="last">If for some reason (e.g. debugging), you need to access those services directly you can find
-passwords in the config files - <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code> for MongoDB and RabbitMQ password and
-<code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code> for PostgreSQL password.</p>
+passwords in the config files - <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> for MongoDB and RabbitMQ password and
+<code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code> for PostgreSQL password.</p>
 </div>
 <p class="rubric">Other Installation Options</p>
 <p>デプロイ後のサービス構成や、その他のインストール方法については以下をご覧ください。</p>

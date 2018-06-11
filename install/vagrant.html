@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -498,35 +498,35 @@ when it’s used. If you’re not familiar with Vagrant, we recommend looking at
 <div class="section" id="vagrant-quick-start">
 <h2><a class="toc-backref" href="#id3">Vagrant Quick Start</a><a class="headerlink" href="#vagrant-quick-start" title="Permalink to this headline">¶</a></h2>
 <p>Starting a StackStorm Vagrant VM is easy:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant init stackstorm/st2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant init stackstorm/st2
 vagrant up
 vagrant ssh
 </pre></div>
 </div>
 <p>This will boot up a fresh StackStorm installation along with the Mistral workflow engine on Ubuntu 16.04 LTS.
-You can access Web UI at <code class="docutils literal"><span class="pre">https://10.10.10.10/</span></code> or SSH to the box <code class="docutils literal"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> if you prefer st2 CLI.</p>
+You can access Web UI at <code class="docutils literal notranslate"><span class="pre">https://10.10.10.10/</span></code> or SSH to the box <code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> if you prefer st2 CLI.</p>
 </div>
 <div class="section" id="virtual-appliance-ova">
 <h2><a class="toc-backref" href="#id4">Virtual Appliance / OVA</a><a class="headerlink" href="#virtual-appliance-ova" title="Permalink to this headline">¶</a></h2>
-<p>As alternative to Vagrant box is Virtual appliance which is available for download as <code class="docutils literal"><span class="pre">.OVA</span></code>
+<p>As alternative to Vagrant box is Virtual appliance which is available for download as <code class="docutils literal notranslate"><span class="pre">.OVA</span></code>
 image from the <a class="reference external" href="https://github.com/StackStorm/packer-st2/releases">StackStorm/packer-st2 Github Releases</a>
 page. It might be especially helpful for the isolated from the internet air-gapped environments.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <div class="last line-block">
 <div class="line"><em>Linux login credentials:</em></div>
-<div class="line">Username: <code class="docutils literal"><span class="pre">vagrant</span></code></div>
-<div class="line">Password: <code class="docutils literal"><span class="pre">vagrant</span></code></div>
+<div class="line">Username: <code class="docutils literal notranslate"><span class="pre">vagrant</span></code></div>
+<div class="line">Password: <code class="docutils literal notranslate"><span class="pre">vagrant</span></code></div>
 <div class="line"><br /></div>
 <div class="line"><em>StackStorm login details:</em></div>
-<div class="line">Username: <code class="docutils literal"><span class="pre">st2admin</span></code></div>
-<div class="line">Password: <code class="docutils literal"><span class="pre">Ch&#64;ngeMe</span></code></div>
+<div class="line">Username: <code class="docutils literal notranslate"><span class="pre">st2admin</span></code></div>
+<div class="line">Password: <code class="docutils literal notranslate"><span class="pre">Ch&#64;ngeMe</span></code></div>
 </div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">If using OVA in production environment, don’t forget to change the default credentials
-and delete SSH authorized keys for <code class="docutils literal"><span class="pre">vagrant</span></code> linux user.</p>
+and delete SSH authorized keys for <code class="docutils literal notranslate"><span class="pre">vagrant</span></code> linux user.</p>
 </div>
 <p>At the moment only Virtualbox provider is supported. VMWare-compatible virtual appliance is
 available with <a class="reference external" href="https://stackstorm.com/#product">StackStorm Enterprise (EWC)</a> image.
@@ -538,7 +538,7 @@ Ask <a class="reference external" href="mailto:support&#37;&#52;&#48;stackstorm&
 <h3><a class="toc-backref" href="#id6">Updating the Vagrant box</a><a class="headerlink" href="#updating-the-vagrant-box" title="Permalink to this headline">¶</a></h3>
 <p>Once the newer box version is released, Vagrant will warn you about the available update.
 To update the box:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant box outdated
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant box outdated
 vagrant box remove stackstorm/st2
 vagrant up
 </pre></div>
@@ -548,12 +548,12 @@ vagrant up
 <h3><a class="toc-backref" href="#id7">Pinning the Vagrant box version</a><a class="headerlink" href="#pinning-the-vagrant-box-version" title="Permalink to this headline">¶</a></h3>
 <p>Whether you want to pin StackStorm, it’s possible to use specific box version.
 While adding the box for the first time:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant init stackstorm/st2 --box-version <span class="m">2</span>.7.1-20180507
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant init stackstorm/st2 --box-version <span class="m">2</span>.7.1-20180507
 vagrant up
 </pre></div>
 </div>
-<p>Or directly in <code class="docutils literal"><span class="pre">Vagrantfile</span></code>:</p>
-<div class="highlight-ruby"><div class="highlight"><pre><span></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<p>Or directly in <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code>:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;stackstorm/st2&quot;</span>
   <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_version</span> <span class="o">=</span> <span class="s2">&quot;2.7.1-20180507&quot;</span>
 <span class="k">end</span>
@@ -567,10 +567,10 @@ vagrant up
 <div class="section" id="st2-integration-tests">
 <h3><a class="toc-backref" href="#id9">st2-integration-tests</a><a class="headerlink" href="#st2-integration-tests" title="Permalink to this headline">¶</a></h3>
 <p>Sometimes StackStorm does not run properly for some reason.</p>
-<p>Discovering why at a infra level is the responsibility of <code class="docutils literal"><span class="pre">st2-integration-tests</span></code> which will
+<p>Discovering why at a infra level is the responsibility of <code class="docutils literal notranslate"><span class="pre">st2-integration-tests</span></code> which will
 perform StackStorm infrastructure/integration tests and report back with more detailed info.
 This can save time for both you &amp; community to avoid extensive troubleshooting steps.</p>
-<p>If something went wrong, - just run <code class="docutils literal"><span class="pre">st2-integration-tests</span></code></p>
+<p>If something went wrong, - just run <code class="docutils literal notranslate"><span class="pre">st2-integration-tests</span></code></p>
 </div>
 </div>
 <div class="section" id="bugs-issues-contributions">

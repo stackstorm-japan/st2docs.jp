@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -477,20 +477,20 @@ break.</p>
 <p>The server which is running the action runner service used for executing Windows runners actions
 needs to have the following dependencies installed:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">smbclient</span></code> &gt;= 4.1 - Command line Samba client (<code class="docutils literal"><span class="pre">smbclient</span></code> package on
-Ubuntu and <code class="docutils literal"><span class="pre">samba-client</span></code> package on Fedora).</li>
-<li><code class="docutils literal"><span class="pre">winexe</span></code> &gt;= 1.1 - Command line tool for executing commands remotely on
+<li><code class="docutils literal notranslate"><span class="pre">smbclient</span></code> &gt;= 4.1 - Command line Samba client (<code class="docutils literal notranslate"><span class="pre">smbclient</span></code> package on
+Ubuntu and <code class="docutils literal notranslate"><span class="pre">samba-client</span></code> package on Fedora).</li>
+<li><code class="docutils literal notranslate"><span class="pre">winexe</span></code> &gt;= 1.1 - Command line tool for executing commands remotely on
 Windows hosts.</li>
 </ul>
 <p>Samba client is available in standard APT and Yum repositories. To install it on Ubuntu, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install smbclient
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install smbclient
 </pre></div>
 </div>
 <p>To install on RHEL/CentOS, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum install samba-client
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum install samba-client
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">winexe</span></code> is not distributed in normal RHEL/Ubuntu package repositories. You will need to compile it yourself,
+<p><code class="docutils literal notranslate"><span class="pre">winexe</span></code> is not distributed in normal RHEL/Ubuntu package repositories. You will need to compile it yourself,
 or obtain a pre-built binary.</p>
 <ul class="simple">
 <li><strong>Ubuntu</strong>: Instructions and binary packages for 14.04 and 16.04 are available <a class="reference external" href="https://doublefault0.wordpress.com/2017/02/21/winexe-1-1-ubuntu-16-04/">here</a>.</li>
@@ -518,14 +518,14 @@ described below.</p>
 from the server where StackStorm components (notably action runner service) are running.</p>
 <p>For safety reasons, you are encouraged to only allow traffic from your StackStorm server, but if you
 want to allow traffic from all IPs, you can run this command:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>netsh firewall set service RemoteAdmin enable
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>netsh firewall set service RemoteAdmin enable
 </pre></div>
 </div>
 </div>
 <div class="section" id="configuring-the-administrator-user-account">
 <h3>Configuring the Administrator User Account<a class="headerlink" href="#configuring-the-administrator-user-account" title="Permalink to this headline">¶</a></h3>
 <p>StackStorm requires an administrator account on the Windows host where the actions are executed to be
-able to upload and run the scripts there. By default, it tries to use <code class="docutils literal"><span class="pre">Administrator</span></code> account to
+able to upload and run the scripts there. By default, it tries to use <code class="docutils literal notranslate"><span class="pre">Administrator</span></code> account to
 log in to your server.</p>
 </div>
 <div class="section" id="configuring-the-file-share">
@@ -534,8 +534,8 @@ log in to your server.</p>
 run it. For this to work, file sharing service (SMB - Samba) needs to be enabled and you need to
 configure your firewall to allow traffic from the StackStorm IPs to the file sharing service ports.</p>
 <p>In addition to that, you need to create a share where StackStorm can upload the script files. By
-default, StackStorm tries to upload files to a share named <code class="docutils literal"><span class="pre">C$</span></code>. If this share is not available or
-you want to use a different share, you need to specify the <code class="docutils literal"><span class="pre">share</span></code> parameter when running a
+default, StackStorm tries to upload files to a share named <code class="docutils literal notranslate"><span class="pre">C$</span></code>. If this share is not available or
+you want to use a different share, you need to specify the <code class="docutils literal notranslate"><span class="pre">share</span></code> parameter when running a
 Windows script runner action.</p>
 </div>
 <div class="section" id="configuring-powershell">
@@ -543,10 +543,10 @@ Windows script runner action.</p>
 <ul class="simple">
 <li>Set the PowerShell execution policy to allow execution of the scripts. See
 &lt;<a class="reference external" href="https://technet.microsoft.com/en-us/library/ee176961.aspx">https://technet.microsoft.com/en-us/library/ee176961.aspx</a>&gt;</li>
-<li>Ensure that default <code class="docutils literal"><span class="pre">powershell.exe</span></code> is compatible with the script you are planning to run. To
+<li>Ensure that default <code class="docutils literal notranslate"><span class="pre">powershell.exe</span></code> is compatible with the script you are planning to run. To
 do so, open PowerShell and run this command:</li>
 </ul>
-<div class="highlight-none"><div class="highlight"><pre><span></span>PS C:\&gt; $PSVersionTable
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; $PSVersionTable
 Name                           Value
 ----                           -----
 PSVersion                      4.0

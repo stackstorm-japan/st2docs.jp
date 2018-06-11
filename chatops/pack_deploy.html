@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -468,20 +468,20 @@
 <h2>Installing Packs with ChatOps<a class="headerlink" href="#installing-packs-with-chatops" title="Permalink to this headline">¶</a></h2>
 <p>When you have the bot listening for ChatOps commands in a channel, installing extra packs from
 StackStorm Exchange can be done with a single command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>!pack install github,slack,trello
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pack install github,slack,trello
 bot: Installing the requested pack<span class="o">(</span>s<span class="o">)</span> <span class="k">for</span> you.
 @my_user:
 &gt; Successful deployment of *github*, *slack*, *trello* packs!
 </pre></div>
 </div>
 <p>You can install a pack from any GitHub repository just as easily: supply the full URL to the bot.
-The pack name is unnecessary, as it will be read from <code class="docutils literal"><span class="pre">pack.yaml</span></code> later:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>!pack install https://github.com/stackstorm/openstack
+The pack name is unnecessary, as it will be read from <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> later:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pack install https://github.com/stackstorm/openstack
 bot: Installing the requested pack<span class="o">(</span>s<span class="o">)</span> <span class="k">for</span> you.
 </pre></div>
 </div>
 <p>You can even mix the two formats in one string:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>!pack install github,slack,trello,https://github.com/stackstorm/openstack
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pack install github,slack,trello,https://github.com/stackstorm/openstack
 </pre></div>
 </div>
 <div class="figure align-center">
@@ -490,8 +490,8 @@ bot: Installing the requested pack<span class="o">(</span>s<span class="o">)</sp
 </div>
 <div class="section" id="getting-information-about-an-installed-pack">
 <h2>Getting Information About an Installed Pack<a class="headerlink" href="#getting-information-about-an-installed-pack" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">!pack</span> <span class="pre">get</span> <span class="pre">&lt;pack&gt;</span></code> command shows you information about an installed pack. There are two
-sections in the output: the first is pack metadata from <code class="docutils literal"><span class="pre">pack.yaml</span></code>, and the optional second is
+<p>The <code class="docutils literal notranslate"><span class="pre">!pack</span> <span class="pre">get</span> <span class="pre">&lt;pack&gt;</span></code> command shows you information about an installed pack. There are two
+sections in the output: the first is pack metadata from <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>, and the optional second is
 git information, if your pack has been installed from a git source like StackStorm Exchange or a
 single repo.</p>
 <p>Git status will tell you if there’s a difference between your local pack version and the latest
@@ -504,7 +504,7 @@ install it:</p>
 </div>
 <div class="section" id="getting-information-about-an-available-pack">
 <h2>Getting Information About an Available Pack<a class="headerlink" href="#getting-information-about-an-available-pack" title="Permalink to this headline">¶</a></h2>
-<p>The remote counterpart to <code class="docutils literal"><span class="pre">pack</span> <span class="pre">get</span></code> is <code class="docutils literal"><span class="pre">pack</span> <span class="pre">show</span></code>: it will show an entry from the StackStorm
+<p>The remote counterpart to <code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">get</span></code> is <code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">show</span></code>: it will show an entry from the StackStorm
 Exchange, our pack directory, if a pack with the given name is available.</p>
 <div class="figure align-center">
 <img alt="../_images/packs-chatops-show.png" src="../_images/packs-chatops-show.png" />
@@ -512,15 +512,15 @@ Exchange, our pack directory, if a pack with the given name is available.</p>
 </div>
 <div class="section" id="searching-for-a-pack">
 <h2>Searching for a Pack<a class="headerlink" href="#searching-for-a-pack" title="Permalink to this headline">¶</a></h2>
-<p>To search for a pack in StackStorm Exchange, use <code class="docutils literal"><span class="pre">!pack</span> <span class="pre">search</span> <span class="pre">&lt;query&gt;</span></code>. Note that your query
+<p>To search for a pack in StackStorm Exchange, use <code class="docutils literal notranslate"><span class="pre">!pack</span> <span class="pre">search</span> <span class="pre">&lt;query&gt;</span></code>. Note that your query
 will match results in all pack parameters: for example, you can search for an author or a keyword,
 not just name and description. The results are ordered by relevance: if you search for “cloud”,
 first you will get packs with “cloud” in their name — because they are the most likely to be what
 you were looking for - and then packs with “cloud” in keywords or description. And then packs
 authored by “Mr. Cloud”, if any.</p>
 <p><strong>Pro-tip:</strong> if you configure an additional pack index (see “Working with pack indexes” in
-<a class="reference internal" href="../packs.html"><span class="doc">Packs</span></a>), it will be queried alongside StackStorm Exchange by commands like <code class="docutils literal"><span class="pre">show</span></code> or
-<code class="docutils literal"><span class="pre">search</span></code>.</p>
+<a class="reference internal" href="../packs.html"><span class="doc">Packs</span></a>), it will be queried alongside StackStorm Exchange by commands like <code class="docutils literal notranslate"><span class="pre">show</span></code> or
+<code class="docutils literal notranslate"><span class="pre">search</span></code>.</p>
 <div class="figure align-center">
 <img alt="../_images/packs-chatops-search.png" src="../_images/packs-chatops-search.png" />
 </div>

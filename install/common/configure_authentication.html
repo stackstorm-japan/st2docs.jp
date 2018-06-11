@@ -253,8 +253,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -458,8 +458,8 @@
             </div>
             
   <ul>
-<li><p class="first">Enable and configure authentication in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
+<li><p class="first">Enable and configure authentication in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
 <span class="c1"># ...</span>
 <span class="na">enable</span> <span class="o">=</span> <span class="s">True</span>
 <span class="na">backend</span> <span class="o">=</span> <span class="s">flat_file</span>
@@ -469,12 +469,12 @@
 </div>
 </li>
 <li><p class="first">Restart the st2api service:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl restart-component st2api
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl restart-component st2api
 </pre></div>
 </div>
 </li>
 <li><p class="first">Authenticate, set the token environment variable, and check that it works:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Get an auth token to use in CLI or API</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get an auth token to use in CLI or API</span>
 st2 auth st2admin
 
 <span class="c1"># A shortcut to authenticate and export the token</span>

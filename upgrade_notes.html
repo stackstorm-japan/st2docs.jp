@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -466,11 +466,11 @@
 <ul>
 <li><p class="first">Update output (result) object returned by the Windows runner so it’s consistent with and matches
 the format returned by the local and remote runners.</p>
-<p><code class="docutils literal"><span class="pre">result</span></code> attribute has been removed (same information is available in the <code class="docutils literal"><span class="pre">stdout</span></code>
-attribute), <code class="docutils literal"><span class="pre">exit_code</span></code> renamed to <code class="docutils literal"><span class="pre">return_code</span></code> and two new attributes added -
-<code class="docutils literal"><span class="pre">succeeded</span></code> and <code class="docutils literal"><span class="pre">failed</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">result</span></code> attribute has been removed (same information is available in the <code class="docutils literal notranslate"><span class="pre">stdout</span></code>
+attribute), <code class="docutils literal notranslate"><span class="pre">exit_code</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">return_code</span></code> and two new attributes added -
+<code class="docutils literal notranslate"><span class="pre">succeeded</span></code> and <code class="docutils literal notranslate"><span class="pre">failed</span></code>.</p>
 <p>Before:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span> <span class="n">succeeded</span> <span class="p">(</span><span class="mi">1</span><span class="n">s</span> <span class="n">elapsed</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span> <span class="n">succeeded</span> <span class="p">(</span><span class="mi">1</span><span class="n">s</span> <span class="n">elapsed</span><span class="p">)</span>
 <span class="n">parameters</span><span class="p">:</span>
   <span class="n">host</span><span class="p">:</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.1</span>
   <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;********&#39;</span>
@@ -482,7 +482,7 @@ attribute), <code class="docutils literal"><span class="pre">exit_code</span></c
 </pre></div>
 </div>
 <p>After:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span> <span class="n">succeeded</span> <span class="p">(</span><span class="mi">1</span><span class="n">s</span> <span class="n">elapsed</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">status</span><span class="p">:</span> <span class="n">succeeded</span> <span class="p">(</span><span class="mi">1</span><span class="n">s</span> <span class="n">elapsed</span><span class="p">)</span>
 <span class="n">parameters</span><span class="p">:</span>
   <span class="n">host</span><span class="p">:</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.1</span>
   <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;********&#39;</span>
@@ -494,25 +494,25 @@ attribute), <code class="docutils literal"><span class="pre">exit_code</span></c
   <span class="n">failed</span><span class="p">:</span> <span class="n">false</span>
 </pre></div>
 </div>
-<p>Keep in mind that information contained in the <code class="docutils literal"><span class="pre">result</span></code> attribute which has been removed is
-also contained in <code class="docutils literal"><span class="pre">stdout</span></code> attribute so you only need to update your code if it relied on
-<code class="docutils literal"><span class="pre">result</span></code> and / or <code class="docutils literal"><span class="pre">exit_code</span></code> attribute being present.</p>
+<p>Keep in mind that information contained in the <code class="docutils literal notranslate"><span class="pre">result</span></code> attribute which has been removed is
+also contained in <code class="docutils literal notranslate"><span class="pre">stdout</span></code> attribute so you only need to update your code if it relied on
+<code class="docutils literal notranslate"><span class="pre">result</span></code> and / or <code class="docutils literal notranslate"><span class="pre">exit_code</span></code> attribute being present.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="st2-v2-6">
 <h2>StackStorm v2.6<a class="headerlink" href="#st2-v2-6" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">st2actions.runners.pythonrunner.Action</span></code> class path for base Python runner actions has been
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">st2actions.runners.pythonrunner.Action</span></code> class path for base Python runner actions has been
 deprecated since StackStorm v1.6.0 and will be fully removed in StackStorm v2.7.0. If you have
 any actions still using this path you are encouraged to update them to use
-<code class="docutils literal"><span class="pre">st2common.runners.base_action.Action</span></code> path.</p>
+<code class="docutils literal notranslate"><span class="pre">st2common.runners.base_action.Action</span></code> path.</p>
 <p>Old code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2actions.runners.pythonrunner</span> <span class="kn">import</span> <span class="n">Action</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2actions.runners.pythonrunner</span> <span class="kn">import</span> <span class="n">Action</span>
 </pre></div>
 </div>
 <p>New code</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2common.runners.base_action</span> <span class="kn">import</span> <span class="n">Action</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2common.runners.base_action</span> <span class="kn">import</span> <span class="n">Action</span>
 </pre></div>
 </div>
 </li>
@@ -521,14 +521,14 @@ any actions still using this path you are encouraged to update them to use
 <div class="section" id="st2-v2-5">
 <h2>StackStorm v2.5<a class="headerlink" href="#st2-v2-5" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/v1/actionalias/match</span></code> API endpoint now correctly returns a dictionary. Previously the
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/v1/actionalias/match</span></code> API endpoint now correctly returns a dictionary. Previously the
 code incorrectly returned an array with a single item (dictionary) on success. There is no need
 for this API endpoint to return an array since on success there will always only be a single
 item.</p>
 <p>If you have code which utilizes this API endpoint you need to update it to handle success
 response as a dictionary instead of an array with a single item (dictionary).</p>
 <p>Old response on a successful match:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span>
         <span class="nt">&quot;actionalias&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Execute a command on a remote host via SSH.&quot;</span><span class="p">,</span>
@@ -557,7 +557,7 @@ response as a dictionary instead of an array with a single item (dictionary).</p
 </pre></div>
 </div>
 <p>New response on a successful match:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;actionalias&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Execute a command on a remote host via SSH.&quot;</span><span class="p">,</span>
         <span class="nt">&quot;extra&quot;</span><span class="p">:</span> <span class="p">{},</span>
@@ -589,9 +589,9 @@ response as a dictionary instead of an array with a single item (dictionary).</p
 <div class="section" id="st2-v2-4">
 <h2>StackStorm v2.4<a class="headerlink" href="#st2-v2-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">st2kv</span></code> function has been changed so that it no longer attempts to decrypt stored values by
+<li>The <code class="docutils literal notranslate"><span class="pre">st2kv</span></code> function has been changed so that it no longer attempts to decrypt stored values by
 default. To return decrypted values, this must be explicitly enabled via parameter, e.g.:
-<code class="docutils literal"><span class="pre">st2kv('st2_key_id',</span> <span class="pre">decrypt=true)</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">st2kv('st2_key_id',</span> <span class="pre">decrypt=true)</span></code>.</li>
 <li>The installation script now installs MongoDB 3.4 by default (previously, 3.2 was installed).
 For information on how to upgrade MongoDB on existing installations, please refer to the official
 MongoDB documentation - <a class="reference external" href="https://docs.mongodb.com/v3.4/release-notes/3.4-upgrade-standalone/">https://docs.mongodb.com/v3.4/release-notes/3.4-upgrade-standalone/</a>,
@@ -602,30 +602,30 @@ MongoDB documentation - <a class="reference external" href="https://docs.mongodb
 <div class="section" id="st2-v2-3">
 <h2>StackStorm v2.3<a class="headerlink" href="#st2-v2-3" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">The <code class="docutils literal"><span class="pre">dest_server</span></code> parameter has been removed from the <code class="docutils literal"><span class="pre">linux.scp</span></code> action and replaced with
-the <code class="docutils literal"><span class="pre">destination</span></code> parameter.</p>
-<p>This offers more flexibility. <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">destination</span></code> parameters can now contain a
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">dest_server</span></code> parameter has been removed from the <code class="docutils literal notranslate"><span class="pre">linux.scp</span></code> action and replaced with
+the <code class="docutils literal notranslate"><span class="pre">destination</span></code> parameter.</p>
+<p>This offers more flexibility. <code class="docutils literal notranslate"><span class="pre">source</span></code> and <code class="docutils literal notranslate"><span class="pre">destination</span></code> parameters can now contain a
 local path or a full source/destination which includes the server part (e.g.
-<code class="docutils literal"><span class="pre">server.fqdn:/etc/hosts</span></code>).</p>
+<code class="docutils literal notranslate"><span class="pre">server.fqdn:/etc/hosts</span></code>).</p>
 </li>
 <li><p class="first">The API endpoint for searching or showing packs has been updated to return an empty list
-instead of <code class="docutils literal"><span class="pre">None</span></code> when the pack was not found in the index. This is technically a breaking
-change, but a necessary one because returning <code class="docutils literal"><span class="pre">None</span></code> caused the client to throw an exception.</p>
+instead of <code class="docutils literal notranslate"><span class="pre">None</span></code> when the pack was not found in the index. This is technically a breaking
+change, but a necessary one because returning <code class="docutils literal notranslate"><span class="pre">None</span></code> caused the client to throw an exception.</p>
 </li>
-<li><p class="first">Notifier now consumes the <code class="docutils literal"><span class="pre">ActionExecution</span></code> RabbitMQ exchange with queue name
-<code class="docutils literal"><span class="pre">st2.notifiers.execution.work</span></code>. Notifier used to scan the <code class="docutils literal"><span class="pre">LiveAction</span></code> exchange with
-<code class="docutils literal"><span class="pre">st2.notifiers.work</span></code> queue name. When you upgrade from StackStorm versions older than v2.3,
-make sure the <code class="docutils literal"><span class="pre">st2.notifiers.work</span></code> queue size is 0 before upgrading. If you upgrade when
-it’s non-empty, you might miss notifications. Post-upgrade, please delete the <code class="docutils literal"><span class="pre">st2.notifiers.work</span></code>
-queue manually using <code class="docutils literal"><span class="pre">rabbitmqadmin</span> <span class="pre">delete</span> <span class="pre">queue</span> <span class="pre">name=st2.notifiers.work</span></code>. If this is not done, the
+<li><p class="first">Notifier now consumes the <code class="docutils literal notranslate"><span class="pre">ActionExecution</span></code> RabbitMQ exchange with queue name
+<code class="docutils literal notranslate"><span class="pre">st2.notifiers.execution.work</span></code>. Notifier used to scan the <code class="docutils literal notranslate"><span class="pre">LiveAction</span></code> exchange with
+<code class="docutils literal notranslate"><span class="pre">st2.notifiers.work</span></code> queue name. When you upgrade from StackStorm versions older than v2.3,
+make sure the <code class="docutils literal notranslate"><span class="pre">st2.notifiers.work</span></code> queue size is 0 before upgrading. If you upgrade when
+it’s non-empty, you might miss notifications. Post-upgrade, please delete the <code class="docutils literal notranslate"><span class="pre">st2.notifiers.work</span></code>
+queue manually using <code class="docutils literal notranslate"><span class="pre">rabbitmqadmin</span> <span class="pre">delete</span> <span class="pre">queue</span> <span class="pre">name=st2.notifiers.work</span></code>. If this is not done, the
 queue will grow indefinitely and RabbitMQ will consume large amounts of disk space.
 See <a class="reference external" href="https://github.com/StackStorm/st2/issues/3622">issue 3622</a> for details.</p>
 </li>
 <li><p class="first">Introduced a backward incompatible change (<a class="reference external" href="https://github.com/StackStorm/st2/pull/3514">PR #3514</a>)
-in the st2client API <code class="docutils literal"><span class="pre">query()</span></code> method. It returns a tuple of <code class="docutils literal"><span class="pre">(result,</span> <span class="pre">total_number_of_items)</span></code>
-instead of <code class="docutils literal"><span class="pre">result</span></code>. This is fixed in v2.3.2. Upgrade to v2.3.2 if you are seeing errors
+in the st2client API <code class="docutils literal notranslate"><span class="pre">query()</span></code> method. It returns a tuple of <code class="docutils literal notranslate"><span class="pre">(result,</span> <span class="pre">total_number_of_items)</span></code>
+instead of <code class="docutils literal notranslate"><span class="pre">result</span></code>. This is fixed in v2.3.2. Upgrade to v2.3.2 if you are seeing errors
 similar to those in issue <a class="reference external" href="https://github.com/StackStorm/st2/issues/3606">#3606</a> or if you are
-using the st2client API’s <code class="docutils literal"><span class="pre">query()</span></code> method.</p>
+using the st2client API’s <code class="docutils literal notranslate"><span class="pre">query()</span></code> method.</p>
 </li>
 </ul>
 </div>
@@ -634,50 +634,50 @@ using the st2client API’s <code class="docutils literal"><span class="pre">que
 <ul>
 <li><p class="first">Additional validation has been introduced for triggers.</p>
 <ol class="arabic">
-<li><p class="first">Trigger payload is now validated against the trigger <code class="docutils literal"><span class="pre">payload_schema</span></code> schema when
+<li><p class="first">Trigger payload is now validated against the trigger <code class="docutils literal notranslate"><span class="pre">payload_schema</span></code> schema when
 dispatching a trigger inside the sensor.</p>
-<p>Validation is only performed if the <code class="docutils literal"><span class="pre">system.validate_trigger_payload</span></code> config option is
-enabled and if the trigger object defines a <code class="docutils literal"><span class="pre">payload_schema</span></code> attribute.</p>
+<p>Validation is only performed if the <code class="docutils literal notranslate"><span class="pre">system.validate_trigger_payload</span></code> config option is
+enabled and if the trigger object defines a <code class="docutils literal notranslate"><span class="pre">payload_schema</span></code> attribute.</p>
 </li>
 <li><p class="first">Trigger parameters are now validated for non-system (user-defined) triggers when creating
 a rule.</p>
-<p>Validation is only performed if the <code class="docutils literal"><span class="pre">system.validate_trigger_parameters</span></code> config option is
-enabled and if the trigger object defines <code class="docutils literal"><span class="pre">parameters_schema</span></code> attribute.</p>
+<p>Validation is only performed if the <code class="docutils literal notranslate"><span class="pre">system.validate_trigger_parameters</span></code> config option is
+enabled and if the trigger object defines <code class="docutils literal notranslate"><span class="pre">parameters_schema</span></code> attribute.</p>
 </li>
 </ol>
 <p>Both of these configuration options are disabled by default with v2.2. In future they will be
 enabled by default.</p>
 </li>
-<li><p class="first">The database schema for Mistral has changed. The <code class="docutils literal"><span class="pre">executions_v2</span></code> table is no longer used. The
-table has been broken down into <code class="docutils literal"><span class="pre">workflow_executions_v2</span></code>, <code class="docutils literal"><span class="pre">task_executions_v2</span></code>, and
-<code class="docutils literal"><span class="pre">action_executions_v2</span></code>. After upgrade, using the Mistral CLI commands such as
-<code class="docutils literal"><span class="pre">mistral</span> <span class="pre">execution-list</span></code> will return an empty table. The records in <code class="docutils literal"><span class="pre">executions_v2</span></code> have not
+<li><p class="first">The database schema for Mistral has changed. The <code class="docutils literal notranslate"><span class="pre">executions_v2</span></code> table is no longer used. The
+table has been broken down into <code class="docutils literal notranslate"><span class="pre">workflow_executions_v2</span></code>, <code class="docutils literal notranslate"><span class="pre">task_executions_v2</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">action_executions_v2</span></code>. After upgrade, using the Mistral CLI commands such as
+<code class="docutils literal notranslate"><span class="pre">mistral</span> <span class="pre">execution-list</span></code> will return an empty table. The records in <code class="docutils literal notranslate"><span class="pre">executions_v2</span></code> have not
 been deleted. The commands are reading from the new tables. There is currently no migration
-script to move existing records from <code class="docutils literal"><span class="pre">executions_v2</span></code> into the new tables. To read from
-<code class="docutils literal"><span class="pre">executions_v2</span></code>, either use <code class="docutils literal"><span class="pre">psql</span></code> or install an older version of the python-mistralclient in a
+script to move existing records from <code class="docutils literal notranslate"><span class="pre">executions_v2</span></code> into the new tables. To read from
+<code class="docutils literal notranslate"><span class="pre">executions_v2</span></code>, either use <code class="docutils literal notranslate"><span class="pre">psql</span></code> or install an older version of the python-mistralclient in a
 separate Python virtual environment.</p>
 </li>
-<li><p class="first">If you’re seeing an error <code class="docutils literal"><span class="pre">event_triggers_v2</span> <span class="pre">already</span> <span class="pre">exists</span></code> when running
-<code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code>, this means the mistral services started before the
-<code class="docutils literal"><span class="pre">mistral-db-manage</span></code> commands were run. Refer to this <a class="reference internal" href="install/upgrades.html#mistral-db-recover"><span class="std std-ref">procedure</span></a> to
+<li><p class="first">If you’re seeing an error <code class="docutils literal notranslate"><span class="pre">event_triggers_v2</span> <span class="pre">already</span> <span class="pre">exists</span></code> when running
+<code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code>, this means the mistral services started before the
+<code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span></code> commands were run. Refer to this <a class="reference internal" href="install/upgrades.html#mistral-db-recover"><span class="std std-ref">procedure</span></a> to
 recover the system.</p>
 </li>
-<li><p class="first">Jinja notations <code class="docutils literal"><span class="pre">{{user.key}}</span></code> and <code class="docutils literal"><span class="pre">{{system.key}}</span></code> to access datastore items under
-<code class="docutils literal"><span class="pre">user</span></code> and <code class="docutils literal"><span class="pre">system</span></code> scopes are now unsupported. Please use <code class="docutils literal"><span class="pre">{{st2kv.user.key}}</span></code> and
-<code class="docutils literal"><span class="pre">{{st2kv.system.key}}</span></code> notations instead. Also, please update your StackStorm content
+<li><p class="first">Jinja notations <code class="docutils literal notranslate"><span class="pre">{{user.key}}</span></code> and <code class="docutils literal notranslate"><span class="pre">{{system.key}}</span></code> to access datastore items under
+<code class="docutils literal notranslate"><span class="pre">user</span></code> and <code class="docutils literal notranslate"><span class="pre">system</span></code> scopes are now unsupported. Please use <code class="docutils literal notranslate"><span class="pre">{{st2kv.user.key}}</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{{st2kv.system.key}}</span></code> notations instead. Also, please update your StackStorm content
 (actions, rules and workflows) to use the new notation.</p>
 </li>
 <li><p class="first">When installing StackStorm using the installer script a random password is generated for MongoDB
-and PostgreSQL. This means you now need to explicitly pass the <code class="docutils literal"><span class="pre">--config-file</span> <span class="pre">/etc/st2/st2.conf</span></code>
-argument to all <code class="docutils literal"><span class="pre">st2</span></code> CLI scripts (e.g. <code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code>) which need access
+and PostgreSQL. This means you now need to explicitly pass the <code class="docutils literal notranslate"><span class="pre">--config-file</span> <span class="pre">/etc/st2/st2.conf</span></code>
+argument to all <code class="docutils literal notranslate"><span class="pre">st2</span></code> CLI scripts (e.g. <code class="docutils literal notranslate"><span class="pre">st2-apply-rbac-definitions</span></code>) which need access
 to the database (MongoDB). If you don’t do that, “access denied” error will be returned, because
 it will try to use a default password when connecting to the database.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file /etc/st2/st2.conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file /etc/st2/st2.conf
 </pre></div>
 </div>
 <p>If you need access to the plain-text version of the password used by StackStorm
-services to talk to MongoDB and PostgreSQL, you can find it in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>
-(<code class="docutils literal"><span class="pre">[database]</span></code> section) <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code> (<code class="docutils literal"><span class="pre">[database]</span></code> section) files.</p>
+services to talk to MongoDB and PostgreSQL, you can find it in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>
+(<code class="docutils literal notranslate"><span class="pre">[database]</span></code> section) <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code> (<code class="docutils literal notranslate"><span class="pre">[database]</span></code> section) files.</p>
 </li>
 </ul>
 </div>
@@ -686,20 +686,20 @@ services to talk to MongoDB and PostgreSQL, you can find it in <code class="docu
 <ul>
 <li><p class="first"><strong>WARNING:</strong> The following changes may require you to update your custom packs during the upgrade.</p>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">version</span></code> attribute in <code class="docutils literal"><span class="pre">pack.yaml</span></code> metadata must now contain a valid <code class="docutils literal"><span class="pre">semver</span></code> version
-string (<code class="docutils literal"><span class="pre">&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</span></code>, e.g. <code class="docutils literal"><span class="pre">1.0.1</span></code>). In addition, the <code class="docutils literal"><span class="pre">email</span></code> attribute must
+<li>The <code class="docutils literal notranslate"><span class="pre">version</span></code> attribute in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> metadata must now contain a valid <code class="docutils literal notranslate"><span class="pre">semver</span></code> version
+string (<code class="docutils literal notranslate"><span class="pre">&lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">1.0.1</span></code>). In addition, the <code class="docutils literal notranslate"><span class="pre">email</span></code> attribute must
 be a valid email address.</li>
-<li>Pack <code class="docutils literal"><span class="pre">ref</span></code> and action parameter names can now only contain valid word characters (<code class="docutils literal"><span class="pre">a-z</span></code>,
-<code class="docutils literal"><span class="pre">0-9</span></code> and <code class="docutils literal"><span class="pre">_</span></code>). No dashes! <code class="docutils literal"><span class="pre">hpe_icsp</span></code> is ok, but <code class="docutils literal"><span class="pre">hpe-icsp</span></code> is not.</li>
+<li>Pack <code class="docutils literal notranslate"><span class="pre">ref</span></code> and action parameter names can now only contain valid word characters (<code class="docutils literal notranslate"><span class="pre">a-z</span></code>,
+<code class="docutils literal notranslate"><span class="pre">0-9</span></code> and <code class="docutils literal notranslate"><span class="pre">_</span></code>). No dashes! <code class="docutils literal notranslate"><span class="pre">hpe_icsp</span></code> is ok, but <code class="docutils literal notranslate"><span class="pre">hpe-icsp</span></code> is not.</li>
 </ul>
-<p>The <code class="docutils literal"><span class="pre">st2ctl</span></code> and <code class="docutils literal"><span class="pre">st2-register-content</span></code> scripts are now doing additional validation. If you
+<p>The <code class="docutils literal notranslate"><span class="pre">st2ctl</span></code> and <code class="docutils literal notranslate"><span class="pre">st2-register-content</span></code> scripts are now doing additional validation. If you
 happen to have a pack which doesn’t satisfy these new validation criteria, it will fail to load.
 Therefore, to upgrade StackStorm from v2.0.* to 2.1.*, follow these steps:</p>
 <ol class="arabic simple">
-<li>Use <code class="docutils literal"><span class="pre">yum</span></code> or <code class="docutils literal"><span class="pre">apt-get</span></code> to upgrade to the newest version.</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">yum</span></code> or <code class="docutils literal notranslate"><span class="pre">apt-get</span></code> to upgrade to the newest version.</li>
 <li>Update community packs to the latest version from
-<a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack&gt;</span></code>.</li>
-<li>Reload the content with <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</li>
+<a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack&gt;</span></code>.</li>
+<li>Reload the content with <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</li>
 <li>If you have packs that don’t satisfy the rules above, validation fails and the pack load will
 throw errors. Fix the packs to conform to the rules above, and reload the content again.</li>
 </ol>
@@ -711,34 +711,34 @@ In a future release this auto-correction will be removed. Please update your pac
 <a class="reference external" href="https://github.com/stackstorm/st2contrib">st2contrib</a> have been migrated to StackStorm Exchange.
 For more information see <a class="reference internal" href="reference/pack_management_transition.html"><span class="doc">Pack Management Transition</span></a>.</p>
 </li>
-<li><p class="first">Pack “subtree” repositories (repositories containing multiple packs inside the <code class="docutils literal"><span class="pre">packs/</span></code> subdir)
-are no longer supported. The subtree parameter in <code class="docutils literal"><span class="pre">packs.install</span></code> is removed. The new convention is
+<li><p class="first">Pack “subtree” repositories (repositories containing multiple packs inside the <code class="docutils literal notranslate"><span class="pre">packs/</span></code> subdir)
+are no longer supported. The subtree parameter in <code class="docutils literal notranslate"><span class="pre">packs.install</span></code> is removed. The new convention is
 one pack per git/GitHub repo. If you happen to use subtrees with your private packs, they will
-have to be split into multiple single-pack repositories in order for <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> to be able
+have to be split into multiple single-pack repositories in order for <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> to be able
 to install the packs.</p>
 </li>
-<li><p class="first">The <code class="docutils literal"><span class="pre">packs</span></code> pack is deprecated starting from 2.1; in future versions it will be completely
-replaced with the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">&lt;...&gt;</span></code> commands and API endpoints.</p>
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">packs</span></code> pack is deprecated starting from 2.1; in future versions it will be completely
+replaced with the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">&lt;...&gt;</span></code> commands and API endpoints.</p>
 </li>
-<li><p class="first">Pack metadata file (<code class="docutils literal"><span class="pre">pack.yaml</span></code>) can now contain a new <code class="docutils literal"><span class="pre">ref</span></code> attribute, in addition to <code class="docutils literal"><span class="pre">name</span></code>.
-<code class="docutils literal"><span class="pre">ref</span></code> acts as a unique identifier; it offers for a more readable <code class="docutils literal"><span class="pre">name</span></code>. For example, if a
-pack name is <code class="docutils literal"><span class="pre">Travis</span> <span class="pre">CI</span></code>, a repo containing it is stackstorm-travis_ci, and <code class="docutils literal"><span class="pre">ref</span></code> is <code class="docutils literal"><span class="pre">travis_ci</span></code>.
-Previously the pack files would live in <code class="docutils literal"><span class="pre">travis_ci/</span></code> directory and pack directory name served
+<li><p class="first">Pack metadata file (<code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>) can now contain a new <code class="docutils literal notranslate"><span class="pre">ref</span></code> attribute, in addition to <code class="docutils literal notranslate"><span class="pre">name</span></code>.
+<code class="docutils literal notranslate"><span class="pre">ref</span></code> acts as a unique identifier; it offers for a more readable <code class="docutils literal notranslate"><span class="pre">name</span></code>. For example, if a
+pack name is <code class="docutils literal notranslate"><span class="pre">Travis</span> <span class="pre">CI</span></code>, a repo containing it is stackstorm-travis_ci, and <code class="docutils literal notranslate"><span class="pre">ref</span></code> is <code class="docutils literal notranslate"><span class="pre">travis_ci</span></code>.
+Previously the pack files would live in <code class="docutils literal notranslate"><span class="pre">travis_ci/</span></code> directory and pack directory name served
 as a unique identifier for a pack.</p>
 </li>
-<li><p class="first">Support for <code class="docutils literal"><span class="pre">.gitinfo</span></code> file has been removed and as such the <code class="docutils literal"><span class="pre">packs.info</span></code> action has also been
-removed. All the pack directories at <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code> are now direct git checkouts of the
+<li><p class="first">Support for <code class="docutils literal notranslate"><span class="pre">.gitinfo</span></code> file has been removed and as such the <code class="docutils literal notranslate"><span class="pre">packs.info</span></code> action has also been
+removed. All the pack directories at <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code> are now direct git checkouts of the
 corresponding pack repositories from Exchange or your own origin, so this file is not needed anymore.</p>
 </li>
-<li><p class="first">Datastore scopes are now <code class="docutils literal"><span class="pre">st2kv.system</span></code> and <code class="docutils literal"><span class="pre">st2kv.user</span></code> as opposed to <code class="docutils literal"><span class="pre">system</span></code> and <code class="docutils literal"><span class="pre">user</span></code>.
+<li><p class="first">Datastore scopes are now <code class="docutils literal notranslate"><span class="pre">st2kv.system</span></code> and <code class="docutils literal notranslate"><span class="pre">st2kv.user</span></code> as opposed to <code class="docutils literal notranslate"><span class="pre">system</span></code> and <code class="docutils literal notranslate"><span class="pre">user</span></code>.
 If you are accessing datastore items in your content, you should now use the Jinja expressions
-<code class="docutils literal"><span class="pre">{{st2kv.system.foo}}</span></code> and <code class="docutils literal"><span class="pre">{{st2kv.user.foo}}</span></code>. The older Jinja expressions <code class="docutils literal"><span class="pre">{{system.foo}}</span></code>
-and <code class="docutils literal"><span class="pre">{{user.foo}}</span></code> are still supported for backward compatibility but will be removed in future
+<code class="docutils literal notranslate"><span class="pre">{{st2kv.system.foo}}</span></code> and <code class="docutils literal notranslate"><span class="pre">{{st2kv.user.foo}}</span></code>. The older Jinja expressions <code class="docutils literal notranslate"><span class="pre">{{system.foo}}</span></code>
+and <code class="docutils literal notranslate"><span class="pre">{{user.foo}}</span></code> are still supported for backward compatibility but will be removed in future
 releases.</p>
 </li>
 <li><p class="first">Runners are now <cite>pluggable</cite>. With this version, we are piloting an ability to register
 runners just like other StackStorm content. You can register runners by simply running
-<code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-runners</span></code>. This feature is in beta. No backward compatibility is
+<code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-runners</span></code>. This feature is in beta. No backward compatibility is
 guaranteed. Please wait for a release note indicating general availability of this feature.</p>
 </li>
 <li><p class="first">Config schemas now also support nested objects. Previously config schema and configuration files
@@ -747,7 +747,7 @@ configuration values.</p>
 <p>The config schema file can now contain arbitrary levels of nesting of the attributes and it will
 still work as expected.</p>
 <p>Old approach (flat schema):</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">api_server_host</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">host.&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;string&quot;</span>
@@ -774,7 +774,7 @@ still work as expected.</p>
 </pre></div>
 </div>
 <p>New approach (nested schemas are supported):</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">api_settings</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">related</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">options.&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;object&quot;</span>
@@ -818,7 +818,7 @@ still work as expected.</p>
 <div class="section" id="st2-v2-0">
 <h2>StackStorm v2.0<a class="headerlink" href="#st2-v2-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> now also registers rules by default. Prior to this release actions, aliases,
+<li><code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> now also registers rules by default. Prior to this release actions, aliases,
 sensors, triggers and configs were registered. Now rules are also registered by default.</li>
 </ul>
 </div>
@@ -826,9 +826,9 @@ sensors, triggers and configs were registered. Now rules are also registered by 
 <h2>StackStorm v1.6<a class="headerlink" href="#st2-v1-6" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Python runner actions can now return execution status (success, failure) by returning a tuple
-from the Python action class <code class="docutils literal"><span class="pre">run()</span></code> method. The first item in this tuple is a boolean flag
+from the Python action class <code class="docutils literal notranslate"><span class="pre">run()</span></code> method. The first item in this tuple is a boolean flag
 indicating success or failure and the second one is the result. For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="c1">#</span>
     <span class="c1"># Code to do something awesome</span>
     <span class="c1">#</span>
@@ -846,27 +846,27 @@ returns a tuple with two items.</p>
 is considered successful unless it throws an exception or exits with a non-zero exit code.</p>
 <p>If you have an existing action which returns a tuple with two items such as the one shown in the
 example below, you have two options:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 <ol class="arabic">
 <li><p class="first">Update action to return a list instead of a tuple.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Update action to also return a status.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
 </pre></div>
@@ -880,39 +880,39 @@ example below, you have two options:</p>
 <h2>StackStorm v1.5<a class="headerlink" href="#st2-v1-5" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">The previously deprecated Fabric-based remote runner has been removed. This means
-<code class="docutils literal"><span class="pre">ssh_runner.use_paramiko_ssh_runner</span></code> config option is now obsolete.</p>
+<code class="docutils literal notranslate"><span class="pre">ssh_runner.use_paramiko_ssh_runner</span></code> config option is now obsolete.</p>
 </li>
-<li><p class="first">Underscore (<code class="docutils literal"><span class="pre">_</span></code>) prefix has been removed from the <code class="docutils literal"><span class="pre">sensor_service</span></code> and <code class="docutils literal"><span class="pre">config</span></code> variable
-available on the <code class="docutils literal"><span class="pre">Sensor</span></code> and <code class="docutils literal"><span class="pre">PollingSensor</span></code> class. Those variables are now available via
-<code class="docutils literal"><span class="pre">self.sensor_service</span></code> and <code class="docutils literal"><span class="pre">self.config</span></code> respectively.</p>
+<li><p class="first">Underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>) prefix has been removed from the <code class="docutils literal notranslate"><span class="pre">sensor_service</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> variable
+available on the <code class="docutils literal notranslate"><span class="pre">Sensor</span></code> and <code class="docutils literal notranslate"><span class="pre">PollingSensor</span></code> class. Those variables are now available via
+<code class="docutils literal notranslate"><span class="pre">self.sensor_service</span></code> and <code class="docutils literal notranslate"><span class="pre">self.config</span></code> respectively.</p>
 <p>For backward compatibility reasons and ease of migration, the old approach will still work, but
 you are encouraged to upgrade your sensors to use the new way of referencing those variables.</p>
 </li>
-<li><p class="first">Support for loading content (sensors, actions and rules) from <code class="docutils literal"><span class="pre">.json</span></code> files has been removed.
+<li><p class="first">Support for loading content (sensors, actions and rules) from <code class="docutils literal notranslate"><span class="pre">.json</span></code> files has been removed.
 Support for JSON was deprecated a long time ago and now the only supported format is YAML
-files with <code class="docutils literal"><span class="pre">.yaml</span></code> extension).</p>
+files with <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> extension).</p>
 <p>If you want to directly save content which you retrieve from the API using CLI on disk, you can
-now use the <code class="docutils literal"><span class="pre">--yaml</span></code> flag with the <code class="docutils literal"><span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">get</span></code> CLI commands (e.g.
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">get</span> <span class="pre">&lt;rule</span> <span class="pre">ref&gt;</span> <span class="pre">--yaml</span> <span class="pre">&gt;</span> <span class="pre">packs/&lt;my</span> <span class="pre">pack&gt;/my_rule.yaml</span></code>).</p>
+now use the <code class="docutils literal notranslate"><span class="pre">--yaml</span></code> flag with the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">get</span></code> CLI commands (e.g.
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">get</span> <span class="pre">&lt;rule</span> <span class="pre">ref&gt;</span> <span class="pre">--yaml</span> <span class="pre">&gt;</span> <span class="pre">packs/&lt;my</span> <span class="pre">pack&gt;/my_rule.yaml</span></code>).</p>
 </li>
-<li><p class="first">Pack config files located inside the pack directory (<code class="docutils literal"><span class="pre">config.yaml</span></code>) have been deprecated in
+<li><p class="first">Pack config files located inside the pack directory (<code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>) have been deprecated in
 favor of the new pack configuration v2. This new configuration approach offers more flexibility.
 In addition, those new config files are located outside the pack directory, in the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/configs/</span></code> directory. This makes it easier to follow an infrastructure as code
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/</span></code> directory. This makes it easier to follow an infrastructure as code
 approach. Updating packs is also easier, as users don’t need to directly manipulate
 pack content anymore.</p>
 <p>For more information about the new pack configuration, please see <a class="reference internal" href="reference/pack_configs.html"><span class="doc">Pack Configuration</span></a>.</p>
 </li>
-<li><p class="first">New <code class="docutils literal"><span class="pre">log</span></code> attribute has been added to the action execution object. This attribute is a list
+<li><p class="first">New <code class="docutils literal notranslate"><span class="pre">log</span></code> attribute has been added to the action execution object. This attribute is a list
 and contains all the state (status) transitions for executions (e.g. requested -&gt; scheduled
 -&gt; running -&gt; complete, etc.).</p>
 <p>Keep in mind that this attribute will only be populated for new execution objects (those created
 after the upgrade to v1.5).</p>
 </li>
-<li><p class="first">The datastore data model has changed. We’ve introduced the notion of <code class="docutils literal"><span class="pre">scope</span></code> and
-<code class="docutils literal"><span class="pre">secret</span></code>. See <a class="reference internal" href="datastore.html#datastore-scopes-in-key-value-store"><span class="std std-ref">Scoping items in datastore</span></a> and
+<li><p class="first">The datastore data model has changed. We’ve introduced the notion of <code class="docutils literal notranslate"><span class="pre">scope</span></code> and
+<code class="docutils literal notranslate"><span class="pre">secret</span></code>. See <a class="reference internal" href="datastore.html#datastore-scopes-in-key-value-store"><span class="std std-ref">Scoping items in datastore</span></a> and
 <a class="reference internal" href="datastore.html#datastore-storing-secrets-in-key-value-store"><span class="std std-ref">storing secrets in datastore</span></a> for details.</p>
-<p>A migration tool is provided (<code class="docutils literal"><span class="pre">/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py</span></code>)
+<p>A migration tool is provided (<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py</span></code>)
 if you are upgrading from older versions.</p>
 </li>
 </ul>
@@ -920,26 +920,26 @@ if you are upgrading from older versions.</p>
 <div class="section" id="st2-v1-4">
 <h2>StackStorm v1.4<a class="headerlink" href="#st2-v1-4" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">matchregex</span></code> rule criteria operator has been updated so now the dot character (<code class="docutils literal"><span class="pre">.</span></code>) also
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">matchregex</span></code> rule criteria operator has been updated so now the dot character (<code class="docutils literal notranslate"><span class="pre">.</span></code>) also
 matches a new line. This makes the existing criteria patterns which use dot character more greedy.
-Previously, it didn’t match new lines so some of the existing <code class="docutils literal"><span class="pre">matchregex</span></code> criteria patterns
+Previously, it didn’t match new lines so some of the existing <code class="docutils literal notranslate"><span class="pre">matchregex</span></code> criteria patterns
 which operate on multi line strings might be affected.</p>
-<p>For example, let’s say we have the following criteria pattern - <code class="docutils literal"><span class="pre">.*stackstorm.*</span></code>. Previously,
-the following string - <code class="docutils literal"><span class="pre">test\nstackstorm\ntest</span></code> would not match, but now it does.</p>
+<p>For example, let’s say we have the following criteria pattern - <code class="docutils literal notranslate"><span class="pre">.*stackstorm.*</span></code>. Previously,
+the following string - <code class="docutils literal notranslate"><span class="pre">test\nstackstorm\ntest</span></code> would not match, but now it does.</p>
 <p>If you are affected and you want to revert to the old behavior (less greedy matches), you can do
-so by modifying the criteria pattern regular expression so it’s less greedy (e.g. by adding <code class="docutils literal"><span class="pre">^</span></code>
-and/or <code class="docutils literal"><span class="pre">$</span></code> character or similar).</p>
-<p><code class="docutils literal"><span class="pre">matchregex</span></code> is now deprecated in favor of <code class="docutils literal"><span class="pre">regex</span></code> and <code class="docutils literal"><span class="pre">iregex</span></code> operators.</p>
+so by modifying the criteria pattern regular expression so it’s less greedy (e.g. by adding <code class="docutils literal notranslate"><span class="pre">^</span></code>
+and/or <code class="docutils literal notranslate"><span class="pre">$</span></code> character or similar).</p>
+<p><code class="docutils literal notranslate"><span class="pre">matchregex</span></code> is now deprecated in favor of <code class="docutils literal notranslate"><span class="pre">regex</span></code> and <code class="docutils literal notranslate"><span class="pre">iregex</span></code> operators.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">regex</span></code> and <code class="docutils literal"><span class="pre">iregex</span></code> been added to the rule criteria operators list. These behave like
-<code class="docutils literal"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value)</span></code> and <code class="docutils literal"><span class="pre">re.search('pattern',trigger_value,</span> <span class="pre">re.IGNORECASE)</span></code>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">regex</span></code> and <code class="docutils literal notranslate"><span class="pre">iregex</span></code> been added to the rule criteria operators list. These behave like
+<code class="docutils literal notranslate"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value)</span></code> and <code class="docutils literal notranslate"><span class="pre">re.search('pattern',trigger_value,</span> <span class="pre">re.IGNORECASE)</span></code>
 in Python.  They do not have the DOTALL modifier. To match newline characters, they must be
 explicit in the search pattern.</p>
 </li>
 <li><p class="first">To make working with non-string positional parameters in the local and remote runner script
 actions easier, simple new rules for parameter value serialization have been established.
 Previously all the values were serialized as Python literals which made all the parameters
-with type other than <code class="docutils literal"><span class="pre">string</span></code> very hard to parse and use in the script actions.</p>
+with type other than <code class="docutils literal notranslate"><span class="pre">string</span></code> very hard to parse and use in the script actions.</p>
 <p>More information about new positional parameter serialization rules can be found in the
 <a class="reference internal" href="actions.html#ref-positional-parameters-serialization"><span class="std std-ref">documentation</span></a>.</p>
 </li>
@@ -947,82 +947,82 @@ with type other than <code class="docutils literal"><span class="pre">string</sp
 changed. The LDAP authentication backend supports other login name such as sAMAccountName. This
 requires a separate service account for the LDAP backend to query for the DN related to the login
 name for bind to validate the user password. Also, users must be in one or more groups specified
-in <code class="docutils literal"><span class="pre">group_dns</span></code> to be granted access.</p>
+in <code class="docutils literal notranslate"><span class="pre">group_dns</span></code> to be granted access.</p>
 </li>
-<li><p class="first">Mistral has deprecated the use of task name (i.e. <code class="docutils literal"><span class="pre">$.task1</span></code>) to reference task result. It is
-replaced with a <code class="docutils literal"><span class="pre">task</span></code> function that returns attributes of the task such as id, state, result,
-and additional information (i.e. <code class="docutils literal"><span class="pre">task(task1).result</span></code>).</p>
+<li><p class="first">Mistral has deprecated the use of task name (i.e. <code class="docutils literal notranslate"><span class="pre">$.task1</span></code>) to reference task result. It is
+replaced with a <code class="docutils literal notranslate"><span class="pre">task</span></code> function that returns attributes of the task such as id, state, result,
+and additional information (i.e. <code class="docutils literal notranslate"><span class="pre">task(task1).result</span></code>).</p>
 </li>
 </ul>
 </div>
 <div class="section" id="st2-v1-3">
 <h2>StackStorm v1.3<a class="headerlink" href="#st2-v1-3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>New <code class="docutils literal"><span class="pre">abandoned</span></code> action execution status has been introduced. State is applied to action execution
+<li>New <code class="docutils literal notranslate"><span class="pre">abandoned</span></code> action execution status has been introduced. State is applied to action execution
 when an actionrunner currently running some executions quits or is killed via TERM. This is therefore
 effectively a failure state as StackStorm can no longer validate the state of this execution. Being a
-failure state, any code that checks for an action failure should be updated to check for <code class="docutils literal"><span class="pre">abandoned</span></code>
-state in addition to <code class="docutils literal"><span class="pre">failed</span></code> and <code class="docutils literal"><span class="pre">timeout</span></code>.</li>
+failure state, any code that checks for an action failure should be updated to check for <code class="docutils literal notranslate"><span class="pre">abandoned</span></code>
+state in addition to <code class="docutils literal notranslate"><span class="pre">failed</span></code> and <code class="docutils literal notranslate"><span class="pre">timeout</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="st2-v1-2">
 <h2>StackStorm v1.2<a class="headerlink" href="#st2-v1-2" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Refactor retries in the Mistral action runner to use exponential backoff. Configuration options
-for Mistral have changed. The options <code class="docutils literal"><span class="pre">max_attempts</span></code> and <code class="docutils literal"><span class="pre">retry_wait</span></code> are deprecated. Please
+for Mistral have changed. The options <code class="docutils literal notranslate"><span class="pre">max_attempts</span></code> and <code class="docutils literal notranslate"><span class="pre">retry_wait</span></code> are deprecated. Please
 refer to the configuration section of docs for more details.</p>
 </li>
-<li><p class="first">Change <code class="docutils literal"><span class="pre">headers</span></code> and <code class="docutils literal"><span class="pre">params</span></code> parameters in the <code class="docutils literal"><span class="pre">core.http</span></code> action from <code class="docutils literal"><span class="pre">string</span></code> to
-<code class="docutils literal"><span class="pre">object</span></code>. If you have any code or rules that call this action, you need to update it to
+<li><p class="first">Change <code class="docutils literal notranslate"><span class="pre">headers</span></code> and <code class="docutils literal notranslate"><span class="pre">params</span></code> parameters in the <code class="docutils literal notranslate"><span class="pre">core.http</span></code> action from <code class="docutils literal notranslate"><span class="pre">string</span></code> to
+<code class="docutils literal notranslate"><span class="pre">object</span></code>. If you have any code or rules that call this action, you need to update it to
 pass in a new and correct type.</p>
 </li>
 <li><p class="first">Local runner has been updated so all the commands which are executed as a different user and
-result in using <code class="docutils literal"><span class="pre">sudo</span></code> set <code class="docutils literal"><span class="pre">$HOME</span></code> variable to the home directory of the target user.
-Previously, the <code class="docutils literal"><span class="pre">$HOME</span></code> variable reflected the home directory of the user which executed
-<code class="docutils literal"><span class="pre">sudo</span></code> and under which action runner is running.</p>
+result in using <code class="docutils literal notranslate"><span class="pre">sudo</span></code> set <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> variable to the home directory of the target user.
+Previously, the <code class="docutils literal notranslate"><span class="pre">$HOME</span></code> variable reflected the home directory of the user which executed
+<code class="docutils literal notranslate"><span class="pre">sudo</span></code> and under which action runner is running.</p>
 <p>Keep in mind that this condition is only met if action runner is running as root and/or if
 action runner is running a system user (stanley) and a different user is requested when running
-a command using <code class="docutils literal"><span class="pre">user</span></code> parameter.</p>
+a command using <code class="docutils literal notranslate"><span class="pre">user</span></code> parameter.</p>
 </li>
 <li><p class="first">Support of default values is added to the API model. As a result, input parameters defined in
-the action metadata that is of type <code class="docutils literal"><span class="pre">string</span></code> no longer supports None or null.</p>
+the action metadata that is of type <code class="docutils literal notranslate"><span class="pre">string</span></code> no longer supports None or null.</p>
 </li>
-<li><p class="first">New <code class="docutils literal"><span class="pre">timeout</span></code> action execution status has been introduced. This status is a special type of
+<li><p class="first">New <code class="docutils literal notranslate"><span class="pre">timeout</span></code> action execution status has been introduced. This status is a special type of
 a failure and implies an action timeout.</p>
 </li>
 </ul>
 <blockquote>
 <div><p>All the existing runners (local, remote, python, http, action chain) have been updated to utilize
-this new status when applicable. Previously, if an action timed out, status was set to <code class="docutils literal"><span class="pre">failed</span></code>
+this new status when applicable. Previously, if an action timed out, status was set to <code class="docutils literal notranslate"><span class="pre">failed</span></code>
 and the timeout could only be inferred from the error message in the result object.</p>
 <p>If you have code which checks for an action failure you need to update it to also check for
-<code class="docutils literal"><span class="pre">timeout</span></code> in addition to <code class="docutils literal"><span class="pre">failed</span></code> status.</p>
+<code class="docutils literal notranslate"><span class="pre">timeout</span></code> in addition to <code class="docutils literal notranslate"><span class="pre">failed</span></code> status.</p>
 </div></blockquote>
 <div class="section" id="upgrading-from-1-1">
 <h3>Upgrading from 1.1<a class="headerlink" href="#upgrading-from-1-1" title="Permalink to this headline">¶</a></h3>
 <p>To upgrade a pre-1.2.0 StackStorm instance provisioned with the <a class="reference internal" href="install/all_in_one.html"><span class="doc">All-in-one Installer</span></a>, you will
 need to perform the following steps:</p>
 <ol class="arabic simple">
-<li>Back up <code class="docutils literal"><span class="pre">/opt/puppet/hieradata/answers.json</span></code>.</li>
-<li>Update (or insert) the following lines in <code class="docutils literal"><span class="pre">/opt/puppet/hieradata/answers.yaml</span></code>:</li>
+<li>Back up <code class="docutils literal notranslate"><span class="pre">/opt/puppet/hieradata/answers.json</span></code>.</li>
+<li>Update (or insert) the following lines in <code class="docutils literal notranslate"><span class="pre">/opt/puppet/hieradata/answers.yaml</span></code>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-puppet"><div class="highlight"><pre><span></span><span class="na">st2</span><span class="p">::</span><span class="na">version</span><span class="p">:</span> <span class="mf">1.2.0</span>
+<div><div class="highlight-puppet notranslate"><div class="highlight"><pre><span></span><span class="na">st2</span><span class="p">::</span><span class="na">version</span><span class="p">:</span> <span class="mf">1.2.0</span>
 <span class="na">st2</span><span class="p">::</span><span class="na">revision</span><span class="p">:</span> <span class="mi">8</span>
 <span class="na">st2</span><span class="p">::</span><span class="na">mistral_git_branch</span><span class="p">:</span> <span class="na">st2</span><span class="o">-</span><span class="mf">1.2.0</span>
 <span class="na">hubot</span><span class="p">::</span><span class="na">docker</span><span class="p">:</span> <span class="k">true</span>
 </pre></div>
 </div>
-<p>If <code class="docutils literal"><span class="pre">answers.yaml</span></code> does not exist, create it. If you changed any install parameters manually
-(e.g. password, ChatOps token, SSH user), put these values into <code class="docutils literal"><span class="pre">answers.yaml</span></code> as well,
+<p>If <code class="docutils literal notranslate"><span class="pre">answers.yaml</span></code> does not exist, create it. If you changed any install parameters manually
+(e.g. password, ChatOps token, SSH user), put these values into <code class="docutils literal notranslate"><span class="pre">answers.yaml</span></code> as well,
 otherwise they’ll be overwritten.</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li>If you’re running ChatOps, stop the Hubot service with <code class="docutils literal"><span class="pre">service</span> <span class="pre">hubot</span> <span class="pre">stop</span></code>.</li>
-<li>Remove <code class="docutils literal"><span class="pre">/etc/facter/facts.d/st2web_bootstrapped.txt</span></code> and execute <code class="docutils literal"><span class="pre">update-system</span></code>:</li>
+<li>If you’re running ChatOps, stop the Hubot service with <code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">hubot</span> <span class="pre">stop</span></code>.</li>
+<li>Remove <code class="docutils literal notranslate"><span class="pre">/etc/facter/facts.d/st2web_bootstrapped.txt</span></code> and execute <code class="docutils literal notranslate"><span class="pre">update-system</span></code>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm /etc/facter/facts.d/st2web_bootstrapped.txt
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm /etc/facter/facts.d/st2web_bootstrapped.txt
 sudo update-system
 </pre></div>
 </div>
@@ -1031,7 +1031,7 @@ sudo update-system
 <li>After the update is done, restart StackStorm and hubot:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl restart
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl restart
 sudo service docker-hubot restart
 </pre></div>
 </div>
@@ -1043,15 +1043,15 @@ sudo service docker-hubot restart
 <h2>StackStorm v1.1<a class="headerlink" href="#st2-v1-1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="migrating-to-v1">
 <h3>Migrating to v1<a class="headerlink" href="#migrating-to-v1" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">st2_deploy</span> <span class="pre">scripted</span> <span class="pre">installer</span></code> will upgrade v0.13 to v1.1. However we encourage you to switch
+<p>The <code class="docutils literal notranslate"><span class="pre">st2_deploy</span> <span class="pre">scripted</span> <span class="pre">installer</span></code> will upgrade v0.13 to v1.1. However we encourage you to switch
 to <a class="reference internal" href="install/all_in_one.html"><span class="doc">All-in-one Installer</span></a>. To migrate to new All-in-one deployment from existing pre-v1.1
 installations:</p>
 <ol class="arabic simple">
 <li>Install StackStorm on a new clean box with <a class="reference internal" href="install/all_in_one.html"><span class="doc">All-in-one Installer</span></a>.</li>
-<li>Copy the content from the previous installation to <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>
-and reload it with <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</li>
+<li>Copy the content from the previous installation to <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code>
+and reload it with <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</li>
 <li>Adjust the content according to upgrade notes below. Test and ensure your automations work.</li>
-<li>Save the audit log files from <code class="docutils literal"><span class="pre">/var/log/st2/*.audit.log</span></code> for future reference.
+<li>Save the audit log files from <code class="docutils literal notranslate"><span class="pre">/var/log/st2/*.audit.log</span></code> for future reference.
 We do not migrate execution history to the new installation, but all the execution data is
 kept in these structured logs for audit purpose.</li>
 </ol>
@@ -1063,29 +1063,29 @@ kept in these structured logs for audit purpose.</li>
 <div class="section" id="changes">
 <h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Triggers now have a <code class="docutils literal"><span class="pre">ref_count</span></code> property which must be included in Trigger objects
+<li><p class="first">Triggers now have a <code class="docutils literal notranslate"><span class="pre">ref_count</span></code> property which must be included in Trigger objects
 created in previous versions of StackStorm. A migration script is provided at
-<code class="docutils literal"><span class="pre">${dist_packages}/st2common/bin/migrate_triggers_to_include_ref_count.py</span></code>.
-The migration script is run as part of <code class="docutils literal"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &gt;= 0.13
+<code class="docutils literal notranslate"><span class="pre">${dist_packages}/st2common/bin/migrate_triggers_to_include_ref_count.py</span></code>.
+The migration script is run as part of <code class="docutils literal notranslate"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &gt;= 0.13
 to v1.1.</p>
 </li>
 <li><p class="first">Messaging queues are now exclusive and in some cases renamed from previous versions. To
 remove old queues run the migration script
-<code class="docutils literal"><span class="pre">${dist_packages}/st2common/bin/migrate_messaging_setup.py</span></code> after installation. The migration
-script is run as part of <code class="docutils literal"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &gt;= 0.13 to v1.1.</p>
+<code class="docutils literal notranslate"><span class="pre">${dist_packages}/st2common/bin/migrate_messaging_setup.py</span></code> after installation. The migration
+script is run as part of <code class="docutils literal notranslate"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &gt;= 0.13 to v1.1.</p>
 </li>
 <li><p class="first">Mistral is updated to YAQL v1.0. Earlier versions of YAQL are deprecated. Expect some minor
 syntax changes to YAQL expressions.</p>
 </li>
 <li><p class="first">Mistral has implemented new YAQL function for referencing environment variables in the data
-context. The <code class="docutils literal"><span class="pre">env()</span></code> function replaces <code class="docutils literal"><span class="pre">$.__env</span></code> when referencing the environment variables.
-For example, <code class="docutils literal"><span class="pre">$.__env.st2_execution_id</span></code> becomes <code class="docutils literal"><span class="pre">env().st2_execution_id</span></code>.</p>
-<p><strong>WARNING</strong>: Referencing <code class="docutils literal"><span class="pre">$.__env</span></code> will lead to YAQL evaluation errors! Please update your workflows
+context. The <code class="docutils literal notranslate"><span class="pre">env()</span></code> function replaces <code class="docutils literal notranslate"><span class="pre">$.__env</span></code> when referencing the environment variables.
+For example, <code class="docutils literal notranslate"><span class="pre">$.__env.st2_execution_id</span></code> becomes <code class="docutils literal notranslate"><span class="pre">env().st2_execution_id</span></code>.</p>
+<p><strong>WARNING</strong>: Referencing <code class="docutils literal notranslate"><span class="pre">$.__env</span></code> will lead to YAQL evaluation errors! Please update your workflows
 accordingly.</p>
 </li>
-<li><p class="first">Mistral has implemented new YAQL function for referencing task result. Given <code class="docutils literal"><span class="pre">task1</span></code>,
-the function call <code class="docutils literal"><span class="pre">task(task1).result</span></code>, replaces <code class="docutils literal"><span class="pre">$.task1</span></code> when referencing the result of
-<code class="docutils literal"><span class="pre">task1</span></code>. The old reference style will be fully deprecated in the next major release of Mistral
+<li><p class="first">Mistral has implemented new YAQL function for referencing task result. Given <code class="docutils literal notranslate"><span class="pre">task1</span></code>,
+the function call <code class="docutils literal notranslate"><span class="pre">task(task1).result</span></code>, replaces <code class="docutils literal notranslate"><span class="pre">$.task1</span></code> when referencing the result of
+<code class="docutils literal notranslate"><span class="pre">task1</span></code>. The old reference style will be fully deprecated in the next major release of Mistral
 (the OpenStack Mitaka release cycle).</p>
 </li>
 </ul>
@@ -1095,33 +1095,33 @@ the function call <code class="docutils literal"><span class="pre">task(task1).r
 <h2>StackStorm v 0.11<a class="headerlink" href="#st2-v-0-11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Rules now have to be part of a pack. If you don’t specify a pack, the pack name is assumed to be
-<code class="docutils literal"><span class="pre">default</span></code>. A migration script is installed at
-<code class="docutils literal"><span class="pre">${dist_packages}/st2common/bin/migrate_rules_to_include_pack.py</span></code>. This migration script
-is run as part of <code class="docutils literal"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &lt; 0.9 to 0.11.</li>
+<code class="docutils literal notranslate"><span class="pre">default</span></code>. A migration script is installed at
+<code class="docutils literal notranslate"><span class="pre">${dist_packages}/st2common/bin/migrate_rules_to_include_pack.py</span></code>. This migration script
+is run as part of <code class="docutils literal notranslate"><span class="pre">st2_deploy.sh</span></code> when you upgrade from versions &lt; 0.9 to 0.11.</li>
 </ul>
 </div>
 <div class="section" id="st2-v0-9">
 <h2>StackStorm v0.9<a class="headerlink" href="#st2-v0-9" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">Process names for all StackStorm services now start with <code class="docutils literal"><span class="pre">st2</span></code>. <code class="docutils literal"><span class="pre">sensor_container</span></code> now runs as
-<code class="docutils literal"><span class="pre">st2sensorcontainer</span></code>, <code class="docutils literal"><span class="pre">rules_engine</span></code> runs as <code class="docutils literal"><span class="pre">st2rulesengine</span></code>, <code class="docutils literal"><span class="pre">actionrunner</span></code> now runs as
-<code class="docutils literal"><span class="pre">st2actionrunner</span></code>. <code class="docutils literal"><span class="pre">st2ctl</span></code> has been updated to handle the name change seamlessly. If you
+<li><p class="first">Process names for all StackStorm services now start with <code class="docutils literal notranslate"><span class="pre">st2</span></code>. <code class="docutils literal notranslate"><span class="pre">sensor_container</span></code> now runs as
+<code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code>, <code class="docutils literal notranslate"><span class="pre">rules_engine</span></code> runs as <code class="docutils literal notranslate"><span class="pre">st2rulesengine</span></code>, <code class="docutils literal notranslate"><span class="pre">actionrunner</span></code> now runs as
+<code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code>. <code class="docutils literal notranslate"><span class="pre">st2ctl</span></code> has been updated to handle the name change seamlessly. If you
 have tools that rely on the old process names, upgrade them to use the new names.</p>
 </li>
-<li><p class="first">All StackStorm tools now use the <code class="docutils literal"><span class="pre">st2</span></code> prefix as well. <code class="docutils literal"><span class="pre">rule_tester</span></code> is now <code class="docutils literal"><span class="pre">st2-rule-tester</span></code>,
-registercontent is now <code class="docutils literal"><span class="pre">st2-register-content</span></code>.</p>
+<li><p class="first">All StackStorm tools now use the <code class="docutils literal notranslate"><span class="pre">st2</span></code> prefix as well. <code class="docutils literal notranslate"><span class="pre">rule_tester</span></code> is now <code class="docutils literal notranslate"><span class="pre">st2-rule-tester</span></code>,
+registercontent is now <code class="docutils literal notranslate"><span class="pre">st2-register-content</span></code>.</p>
 </li>
 <li><p class="first">Authentication is now enabled by default for production (package based) deployments. For
 information on how to configure this, see <a class="reference internal" href="authentication.html"><span class="doc">Authentication</span></a>.</p>
 </li>
 <li><p class="first">For consistency reasons, the runners have been renamed:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">run-local</span></code> -&gt; <code class="docutils literal"><span class="pre">local-shell-cmd</span></code></li>
-<li><code class="docutils literal"><span class="pre">run-local-script</span></code> -&gt; <code class="docutils literal"><span class="pre">local-shell-script</span></code></li>
-<li><code class="docutils literal"><span class="pre">run-remote</span></code> -&gt; <code class="docutils literal"><span class="pre">remote-shell-cmd</span></code></li>
-<li><code class="docutils literal"><span class="pre">run-remote-script</span></code> -&gt; <code class="docutils literal"><span class="pre">remote-shell-script</span></code></li>
-<li><code class="docutils literal"><span class="pre">run-python</span></code> -&gt; <code class="docutils literal"><span class="pre">python-script</span></code></li>
-<li><code class="docutils literal"><span class="pre">run-http</span></code> -&gt; <code class="docutils literal"><span class="pre">http-request</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">run-local</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">local-shell-cmd</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">run-local-script</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">local-shell-script</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">run-remote</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">remote-shell-cmd</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">run-remote-script</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">remote-shell-script</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">run-python</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">python-script</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">run-http</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">http-request</span></code></li>
 </ul>
 <p>Note: For backward compatibility reasons, those runners are still available and can be referenced
 through their old names, but you are encouraged to update your actions to use the new names.</p>

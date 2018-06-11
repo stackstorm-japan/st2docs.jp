@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -464,13 +464,13 @@
             
   <div class="section" id="cli-reference">
 <h1>CLI Reference<a class="headerlink" href="#cli-reference" title="Permalink to this headline">¶</a></h1>
-<p>The StackStorm command line client (CLI) <code class="docutils literal"><span class="pre">st2</span></code> allows you to operate your StackStorm system using the
+<p>The StackStorm command line client (CLI) <code class="docutils literal notranslate"><span class="pre">st2</span></code> allows you to operate your StackStorm system using the
 command line. It communicates with the StackStorm processes using public APIs.</p>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>The CLI client is installed by default on your StackStorm system. It can also be installed on a client
-system using <code class="docutils literal"><span class="pre">pip</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install st2client
+system using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install st2client
 </pre></div>
 </div>
 </div>
@@ -479,33 +479,33 @@ system using <code class="docutils literal"><span class="pre">pip</span></code>:
 <p>The command line client can be configured using one or more of the approaches
 listed below:</p>
 <ul class="simple">
-<li>Configuration file (<code class="docutils literal"><span class="pre">~/.st2/config</span></code>)</li>
-<li>Environment variables (<code class="docutils literal"><span class="pre">ST2_API_URL</span></code>, etc.)</li>
-<li>Command line arguments (<code class="docutils literal"><span class="pre">st2</span> <span class="pre">--cacert=...</span> <span class="pre">action</span> <span class="pre">list</span></code>, etc.)</li>
+<li>Configuration file (<code class="docutils literal notranslate"><span class="pre">~/.st2/config</span></code>)</li>
+<li>Environment variables (<code class="docutils literal notranslate"><span class="pre">ST2_API_URL</span></code>, etc.)</li>
+<li>Command line arguments (<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">--cacert=...</span> <span class="pre">action</span> <span class="pre">list</span></code>, etc.)</li>
 </ul>
 <p>Command line arguments have highest precedence, followed by environment variables, and then
 configuration file values.</p>
 <p>If the same value is specified in multiple places, the value with the highest precedence will be
-used. For example, if <code class="docutils literal"><span class="pre">api_url</span></code> is specified in the configuration file and in an environment
-variable (<code class="docutils literal"><span class="pre">$ST2_API_URL</span></code>), the environment variable will be used.</p>
+used. For example, if <code class="docutils literal notranslate"><span class="pre">api_url</span></code> is specified in the configuration file and in an environment
+variable (<code class="docutils literal notranslate"><span class="pre">$ST2_API_URL</span></code>), the environment variable will be used.</p>
 <div class="section" id="configuration-file">
 <h3>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h3>
-<p>The CLI can be configured through an ini-style configuration file. By default, <code class="docutils literal"><span class="pre">st2</span></code> will
-use the file at <code class="docutils literal"><span class="pre">~/.st2/config</span></code>.</p>
+<p>The CLI can be configured through an ini-style configuration file. By default, <code class="docutils literal notranslate"><span class="pre">st2</span></code> will
+use the file at <code class="docutils literal notranslate"><span class="pre">~/.st2/config</span></code>.</p>
 <p>If you want to use configuration from a different file (e.g. you have one config per deployment
-or environment), you can select which file to use using the <code class="docutils literal"><span class="pre">ST2_CONFIG_FILE</span></code> environment
-variable or the <code class="docutils literal"><span class="pre">--config-file</span></code> command line argument.</p>
+or environment), you can select which file to use using the <code class="docutils literal notranslate"><span class="pre">ST2_CONFIG_FILE</span></code> environment
+variable or the <code class="docutils literal notranslate"><span class="pre">--config-file</span></code> command line argument.</p>
 <p>For example (environment variable):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">ST2_CONFIG_FILE</span><span class="o">=</span>~/.st2/prod-config st2 action list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ST2_CONFIG_FILE</span><span class="o">=</span>~/.st2/prod-config st2 action list
 </pre></div>
 </div>
 <p>For example (command line argument):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --config-file<span class="o">=</span>~/.st2/prod-config action list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --config-file<span class="o">=</span>~/.st2/prod-config action list
 </pre></div>
 </div>
 <p>An example configuration file with all the options and the corresponding explanations is
 included below:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for the StackStorm CLI</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuration file for the StackStorm CLI</span>
 <span class="k">[general]</span>
 <span class="na">base_url</span> <span class="o">=</span> <span class="s">http://127.0.0.1</span>
 <span class="na">api_version</span> <span class="o">=</span> <span class="s">v1</span>
@@ -535,74 +535,74 @@ included below:</p>
 </pre></div>
 </div>
 <p>If you want the CLI to skip parsing of the configuration file, you can do that by passing the
-<code class="docutils literal"><span class="pre">--skip-config</span></code> flag to the CLI:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --skip-config action list
+<code class="docutils literal notranslate"><span class="pre">--skip-config</span></code> flag to the CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --skip-config action list
 </pre></div>
 </div>
 </div>
 <div class="section" id="authentication-and-auth-token-caching">
 <span id="cli-auth-token-caching"></span><h3>Authentication and Auth Token Caching<a class="headerlink" href="#authentication-and-auth-token-caching" title="Permalink to this headline">¶</a></h3>
 <p>The previous section showed an option for storing your password in plaintext in your configuration
-file. The <code class="docutils literal"><span class="pre">st2</span> <span class="pre">login</span></code> command offers an alternative that does not store the password in plaintext.
-Similar to <code class="docutils literal"><span class="pre">st2</span> <span class="pre">auth</span></code>, you must provide your username and password:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 login st2admin --password <span class="s1">&#39;Password1!&#39;</span>
+file. The <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">login</span></code> command offers an alternative that does not store the password in plaintext.
+Similar to <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">auth</span></code>, you must provide your username and password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 login st2admin --password <span class="s1">&#39;Password1!&#39;</span>
 </pre></div>
 </div>
 <p>This command caches your authentication token, but also modifies the CLI configuration to include
 the referenced username. This way, future commands will know which cached token to use for
-authentication, since tokens are cached using the <code class="docutils literal"><span class="pre">token-&lt;username&gt;</span></code> format. The password itself
+authentication, since tokens are cached using the <code class="docutils literal notranslate"><span class="pre">token-&lt;username&gt;</span></code> format. The password itself
 does not need to be stored in the config file.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><code class="docutils literal"><span class="pre">st2</span> <span class="pre">login</span></code> will overwrite the “credentials” section of the configuration.
+<p class="last"><code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">login</span></code> will overwrite the “credentials” section of the configuration.
 It will overwrite the configured username and will remove any configured password.</p>
 </div>
-<p>These auth tokens are by default cached on the local filesystem (in the <code class="docutils literal"><span class="pre">~/.st2/token-&lt;username&gt;</span></code>
+<p>These auth tokens are by default cached on the local filesystem (in the <code class="docutils literal notranslate"><span class="pre">~/.st2/token-&lt;username&gt;</span></code>
 file) and re-used for subsequent requests to the API service. You will need to re-login once the
-generated token has expired, or use of the <code class="docutils literal"><span class="pre">--write-password</span></code> flag, which writes the password to
+generated token has expired, or use of the <code class="docutils literal notranslate"><span class="pre">--write-password</span></code> flag, which writes the password to
 the config.</p>
-<p>The <code class="docutils literal"><span class="pre">st2</span> <span class="pre">whoami</span></code> command will tell you who is the currently authenticated user.</p>
-<p>You can switch between users by re-running the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">login</span></code> command. Any existing users’ token
+<p>The <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">whoami</span></code> command will tell you who is the currently authenticated user.</p>
+<p>You can switch between users by re-running the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">login</span></code> command. Any existing users’ token
 cache files will remain, but the CLI configuration will be changed to point to the new username.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">As with many other <code class="docutils literal"><span class="pre">st2</span></code> commands, <code class="docutils literal"><span class="pre">st2</span> <span class="pre">login</span></code> will not create the configuration file
-for you. Keep this in mind especially if you’re leveraging the <code class="docutils literal"><span class="pre">--config-file</span></code> CLI option,
+<p class="last">As with many other <code class="docutils literal notranslate"><span class="pre">st2</span></code> commands, <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">login</span></code> will not create the configuration file
+for you. Keep this in mind especially if you’re leveraging the <code class="docutils literal notranslate"><span class="pre">--config-file</span></code> CLI option,
 or similar.</p>
 </div>
 <p>You can still use the “old” method of supplying both username and password in the configuration
 file. If both a username and password are present in the configuration, then the client will
 automatically try to authenticate with these credentials.</p>
 <p>If you want to disable auth token caching and want the CLI to retrieve a new auth token on each
-invocation, set <code class="docutils literal"><span class="pre">cache_token</span></code> to <code class="docutils literal"><span class="pre">False</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[cli]</span>
+invocation, set <code class="docutils literal notranslate"><span class="pre">cache_token</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[cli]</span>
 <span class="na">cache_token</span> <span class="o">=</span> <span class="s">False</span>
 </pre></div>
 </div>
 <p>The CLI will by default also try to retrieve a new token if an existing one has expired.</p>
 <p>If you have manually deleted or revoked a token before expiration you can clear the cached token
-by removing the <code class="docutils literal"><span class="pre">~/.st2/token</span></code> file.</p>
+by removing the <code class="docutils literal notranslate"><span class="pre">~/.st2/token</span></code> file.</p>
 <p>If the configuration file has an API key as authentication credentials, the CLI will use that as
 the primary method of authentication instead of auth token.</p>
 </div>
 </div>
 <div class="section" id="using-debug-mode">
 <h2>Using Debug Mode<a class="headerlink" href="#using-debug-mode" title="Permalink to this headline">¶</a></h2>
-<p>The command line tools accepts the <code class="docutils literal"><span class="pre">--debug</span></code> flag. When this flag is provided,
+<p>The command line tools accepts the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag. When this flag is provided,
 debug mode will be enabled. Debug mode consists of the following:</p>
 <ul class="simple">
 <li>On error/exception, full stack trace and client settings (API URL, auth URL, proxy information,
 etc.) are printed to the console.</li>
-<li>The equivalent <code class="docutils literal"><span class="pre">curl</span></code> command for each request is printed to the console. This makes it easy
-to reproduce actions performed by the CLI using <code class="docutils literal"><span class="pre">curl</span></code>.</li>
+<li>The equivalent <code class="docutils literal notranslate"><span class="pre">curl</span></code> command for each request is printed to the console. This makes it easy
+to reproduce actions performed by the CLI using <code class="docutils literal notranslate"><span class="pre">curl</span></code>.</li>
 <li>Raw API responses are printed to the console.</li>
 </ul>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug action list --pack<span class="o">=</span>core
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug action list --pack<span class="o">=</span>core
 </pre></div>
 </div>
 <p>Example output (no error):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug action list --pack<span class="o">=</span>core
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug action list --pack<span class="o">=</span>core
 <span class="c1"># -------- begin 140702450464272 request ----------</span>
 curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.5.1 CPython/2.7.6 Linux/3.13.0-36-generic&#39;</span> <span class="s1">&#39;http://localhost:9101/v1/actions?pack=core&#39;</span>
 <span class="c1"># -------- begin 140702450464272 response ----------</span>
@@ -615,7 +615,7 @@ curl -X GET -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <sp
 </pre></div>
 </div>
 <p>Example output (error):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --debug action list --pack<span class="o">=</span>core
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug action list --pack<span class="o">=</span>core
 ERROR: <span class="o">(</span><span class="s1">&#39;Connection aborted.&#39;</span>, error<span class="o">(</span><span class="m">111</span>, <span class="s1">&#39;Connection refused&#39;</span><span class="o">))</span>
 
 Client settings:
@@ -645,7 +645,7 @@ Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
 <p>The CLI returns a non-zero return code for any erroneous operation. You can capture
 the return code of CLI commands to check whether the command succeeded.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action get twilio.send_sms
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action get twilio.send_sms
 
 +-------------+--------------------------------------------------------------+
 <span class="p">|</span> Property    <span class="p">|</span> Value                                                        <span class="p">|</span>
@@ -657,19 +657,19 @@ the return code of CLI commands to check whether the command succeeded.</p>
 </pre></div>
 </div>
 <p>Now, let’s get the exit code of the previous command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$?</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$?</span>
 
 <span class="m">0</span>
 </pre></div>
 </div>
 <p>Now, let’s run a command that we know will fail:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action get twilio.make_call
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action get twilio.make_call
 
 Action <span class="s2">&quot;twilio.make_call&quot;</span> is not found.
 </pre></div>
 </div>
 <p>Let’s check the exit code of the last command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$?</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="nv">$?</span>
 
 <span class="m">2</span>
 </pre></div>
@@ -678,17 +678,17 @@ Action <span class="s2">&quot;twilio.make_call&quot;</span> is not found.
 <div class="section" id="obtaining-an-authentication-token-in-scripts">
 <h2>Obtaining an Authentication Token in Scripts<a class="headerlink" href="#obtaining-an-authentication-token-in-scripts" title="Permalink to this headline">¶</a></h2>
 <p>If you want to authenticate and obtain an authentication token inside your (shell) scripts, you can
-use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">auth</span></code> CLI command in combination with the <code class="docutils literal"><span class="pre">-t</span></code> flag.</p>
-<p>This flag will cause the command to only print the token to <code class="docutils literal"><span class="pre">stdout</span></code> on successful
+use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">auth</span></code> CLI command in combination with the <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag.</p>
+<p>This flag will cause the command to only print the token to <code class="docutils literal notranslate"><span class="pre">stdout</span></code> on successful
 authentication. This means you don’t need to deal with parsing JSON or CLI output format.</p>
 <p>Example usage:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 auth test1 -p <span class="s1">&#39;testpassword&#39;</span> -t
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 auth test1 -p <span class="s1">&#39;testpassword&#39;</span> -t
 
 0280826688c74bb9bd541c26631df298
 </pre></div>
 </div>
 <p>Example usage inside a Bash script:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>st2 auth test1 -p <span class="s1">&#39;testpassword&#39;</span> -t<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>st2 auth test1 -p <span class="s1">&#39;testpassword&#39;</span> -t<span class="k">)</span>
 
 <span class="c1"># Now you can use the token (e.g. pass it to other commands, set an</span>
 <span class="c1"># environment variable, etc.)</span>
@@ -700,7 +700,7 @@ authentication. This means you don’t need to deal with parsing JSON or CLI out
 <h2>Changing the CLI Output Format<a class="headerlink" href="#changing-the-cli-output-format" title="Permalink to this headline">¶</a></h2>
 <p>By default, the CLI returns and prints results in a user-friendly table-oriented
 format:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action list --pack<span class="o">=</span>slack
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action list --pack<span class="o">=</span>slack
 
 +--------------------+-------+--------------+-------------------------------+
 <span class="p">|</span> ref                <span class="p">|</span> pack  <span class="p">|</span> name         <span class="p">|</span> description                   <span class="p">|</span>
@@ -711,8 +711,8 @@ format:</p>
 </pre></div>
 </div>
 <p>If you want a raw JSON result as returned by the API (e.g. you are using the CLI as part of your
-script and you want the raw result which you can parse), you can pass the <code class="docutils literal"><span class="pre">-j</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action list -j --pack<span class="o">=</span>slack
+script and you want the raw result which you can parse), you can pass the <code class="docutils literal notranslate"><span class="pre">-j</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action list -j --pack<span class="o">=</span>slack
 
 <span class="o">[</span>
     <span class="o">{</span>
@@ -727,9 +727,9 @@ script and you want the raw result which you can parse), you can pass the <code 
 </div>
 <div class="section" id="only-displaying-a-particular-attribute">
 <h2>Only Displaying a Particular Attribute<a class="headerlink" href="#only-displaying-a-particular-attribute" title="Permalink to this headline">¶</a></h2>
-<p>By default, when retrieving the action execution result using <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span></code>,
+<p>By default, when retrieving the action execution result using <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">get</span></code>,
 the whole result object will be printed:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution get 54d8c52e0640fd1c87b9443f
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution get 54d8c52e0640fd1c87b9443f
 
 STATUS: succeeded
 RESULT:
@@ -742,23 +742,23 @@ RESULT:
 <span class="o">}</span>
 </pre></div>
 </div>
-<p>If you only want to retrieve a specific result attribute, use the <code class="docutils literal"><span class="pre">-k</span> <span class="pre">&lt;attribute</span> <span class="pre">name&gt;</span></code> flag:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution get -k stdout 54d8c52e0640fd1c87b9443f
+<p>If you only want to retrieve a specific result attribute, use the <code class="docutils literal notranslate"><span class="pre">-k</span> <span class="pre">&lt;attribute</span> <span class="pre">name&gt;</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution get -k stdout 54d8c52e0640fd1c87b9443f
 
 Mon Feb  <span class="m">9</span> <span class="m">14</span>:33:18 UTC <span class="m">2015</span>
 </pre></div>
 </div>
 <p>If you only want to retrieve and print out a specific attribute of the execution,
-you can do that using <code class="docutils literal"><span class="pre">--attr</span> <span class="pre">&lt;attribute</span> <span class="pre">name&gt;</span></code> flag.</p>
-<p>For example, if you only want to print <code class="docutils literal"><span class="pre">start_timestamp</span></code> attribute of the result
+you can do that using <code class="docutils literal notranslate"><span class="pre">--attr</span> <span class="pre">&lt;attribute</span> <span class="pre">name&gt;</span></code> flag.</p>
+<p>For example, if you only want to print <code class="docutils literal notranslate"><span class="pre">start_timestamp</span></code> attribute of the result
 object:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution get 54d8c52e0640fd1c87b9443f -a start_timestamp
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution get 54d8c52e0640fd1c87b9443f -a start_timestamp
 
 start_timestamp: <span class="m">2015</span>-02-24T23:01:15.088293Z
 </pre></div>
 </div>
 <p>You can also specify multiple attributes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution get 54d8c52e0640fd1c87b9443f --attr status result.stdout result.stderr
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution get 54d8c52e0640fd1c87b9443f --attr status result.stdout result.stderr
 
 status: succeeded
 result.stdout: Mon Feb  <span class="m">9</span> <span class="m">14</span>:33:18 UTC <span class="m">2015</span>
@@ -766,8 +766,8 @@ result.stdout: Mon Feb  <span class="m">9</span> <span class="m">14</span>:33:18
 result.stderr:
 </pre></div>
 </div>
-<p>Similarly for the <code class="docutils literal"><span class="pre">execution</span> <span class="pre">list</span></code> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution list -a id status result
+<p>Similarly for the <code class="docutils literal notranslate"><span class="pre">execution</span> <span class="pre">list</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution list -a id status result
 
 +--------------------------+-----------+---------------------------------+
 <span class="p">|</span> id                       <span class="p">|</span> status    <span class="p">|</span> result                          <span class="p">|</span>
@@ -787,56 +787,56 @@ result.stderr:
 </div>
 <div class="section" id="escaping-shell-variables">
 <h2>Escaping Shell Variables<a class="headerlink" href="#escaping-shell-variables" title="Permalink to this headline">¶</a></h2>
-<p>When you use local and remote actions (e.g. <code class="docutils literal"><span class="pre">core.local</span></code>, <code class="docutils literal"><span class="pre">core.remote</span></code>, etc.), you need to
-wrap <code class="docutils literal"><span class="pre">cmd</span></code> parameter values in a single quote or escape the variables. Otherwise, the shell
+<p>When you use local and remote actions (e.g. <code class="docutils literal notranslate"><span class="pre">core.local</span></code>, <code class="docutils literal notranslate"><span class="pre">core.remote</span></code>, etc.), you need to
+wrap <code class="docutils literal notranslate"><span class="pre">cmd</span></code> parameter values in a single quote or escape the variables. Otherwise, the shell
 variables will be expanded locally which is something you usually don’t want.</p>
 <p>Using single quotes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.local <span class="nv">env</span><span class="o">=</span><span class="s1">&#39;{&quot;key1&quot;: &quot;val1&quot;, &quot;key2&quot;: &quot;val2&quot;}&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;echo &quot;ponies ${key1} ${key2}&quot;&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.local <span class="nv">env</span><span class="o">=</span><span class="s1">&#39;{&quot;key1&quot;: &quot;val1&quot;, &quot;key2&quot;: &quot;val2&quot;}&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;echo &quot;ponies ${key1} ${key2}&quot;&#39;</span>
 </pre></div>
 </div>
 <p>Escaping the variables:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s1">&#39;{&quot;key1&quot;: &quot;val1&quot;, &quot;key2&quot;: &quot;val2&quot;}&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s1">&#39;{&quot;key1&quot;: &quot;val1&quot;, &quot;key2&quot;: &quot;val2&quot;}&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="specifying-parameters-with-type-array">
 <h2>Specifying Parameters with Type “array”<a class="headerlink" href="#specifying-parameters-with-type-array" title="Permalink to this headline">¶</a></h2>
-<p>When running an action using <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span></code> command, you specify the value of parameters with type
-<code class="docutils literal"><span class="pre">array</span></code> as a comma delimited string.</p>
+<p>When running an action using <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span></code> command, you specify the value of parameters with type
+<code class="docutils literal notranslate"><span class="pre">array</span></code> as a comma delimited string.</p>
 <p>Inside the CLI, this string gets split on commas and passed to the API as a list.</p>
 <div class="section" id="example-1-simple-case-array-of-strings">
 <h3>Example 1 - Simple Case (Array of Strings)<a class="headerlink" href="#example-1-simple-case-array-of-strings" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run mypack.myaction <span class="nv">parameter_name</span><span class="o">=</span><span class="s2">&quot;value 1,value2,value3&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run mypack.myaction <span class="nv">parameter_name</span><span class="o">=</span><span class="s2">&quot;value 1,value2,value3&quot;</span>
 </pre></div>
 </div>
-<p>In this case, the <code class="docutils literal"><span class="pre">parameter_name</span></code> value would get passed to the API as a list (JSON array) with
-three items - <code class="docutils literal"><span class="pre">[&quot;value</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;value2&quot;,</span> <span class="pre">&quot;value3&quot;]</span></code>.</p>
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">parameter_name</span></code> value would get passed to the API as a list (JSON array) with
+three items - <code class="docutils literal notranslate"><span class="pre">[&quot;value</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;value2&quot;,</span> <span class="pre">&quot;value3&quot;]</span></code>.</p>
 </div>
 <div class="section" id="example-2-complex-case-array-of-objects">
 <h3>Example 2 - Complex Case (Array of Objects)<a class="headerlink" href="#example-2-complex-case-array-of-objects" title="Permalink to this headline">¶</a></h3>
 <p>When you want to pass more complex type (e.g. arrays of objects) value to an action, you can do it
 like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run --auto-dict mypack.set_interfaces <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run --auto-dict mypack.set_interfaces <span class="se">\</span>
   <span class="nv">nic_info</span><span class="o">=</span><span class="s2">&quot;target:eth0,ipaddr:192.168.0.10,netmask:255.255.255.0,mtu:1454&quot;</span> <span class="se">\</span>
   <span class="nv">nic_info</span><span class="o">=</span><span class="s2">&quot;target:eth1,ipaddr:192.168.0.11,netmask:255.255.255.0,mtu:2000&quot;</span>
 </pre></div>
 </div>
-<p>In this case, the <code class="docutils literal"><span class="pre">nic_info</span></code> value passed to the <code class="docutils literal"><span class="pre">mypack.set_interfaces</span></code> action would be parsed
+<p>In this case, the <code class="docutils literal notranslate"><span class="pre">nic_info</span></code> value passed to the <code class="docutils literal notranslate"><span class="pre">mypack.set_interfaces</span></code> action would be parsed
 and look like this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[{</span><span class="s1">&#39;netmask&#39;</span>: <span class="s1">&#39;255.255.255.0&#39;</span>, <span class="s1">&#39;ipaddr&#39;</span>: <span class="s1">&#39;192.168.0.10&#39;</span>, <span class="s1">&#39;target&#39;</span>: <span class="s1">&#39;eth0&#39;</span>, <span class="s1">&#39;mtu&#39;</span>: <span class="m">1454</span><span class="o">}</span>,
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[{</span><span class="s1">&#39;netmask&#39;</span>: <span class="s1">&#39;255.255.255.0&#39;</span>, <span class="s1">&#39;ipaddr&#39;</span>: <span class="s1">&#39;192.168.0.10&#39;</span>, <span class="s1">&#39;target&#39;</span>: <span class="s1">&#39;eth0&#39;</span>, <span class="s1">&#39;mtu&#39;</span>: <span class="m">1454</span><span class="o">}</span>,
  <span class="o">{</span><span class="s1">&#39;netmask&#39;</span>: <span class="s1">&#39;255.255.255.0&#39;</span>, <span class="s1">&#39;ipaddr&#39;</span>: <span class="s1">&#39;192.168.0.11&#39;</span>, <span class="s1">&#39;target&#39;</span>: <span class="s1">&#39;eth1&#39;</span>, <span class="s1">&#39;mtu&#39;</span>: <span class="m">2000</span><span class="o">}]</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The st2 cli option <code class="docutils literal"><span class="pre">--auto-dict</span></code> is required to use this functionality. When you run action
+<p>The st2 cli option <code class="docutils literal notranslate"><span class="pre">--auto-dict</span></code> is required to use this functionality. When you run action
 without this option, each colon separated parameters are not parsed as dict object but just string.</p>
 <p class="last">And this option and its functionality will be deprecated in the next release in favor of a more
 robust conversion method.</p>
 </div>
 <p>To parse each value in the object as an expected type, you need to specify the type of each value
 in the action metadata, like this.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>parameters:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>parameters:
   nic_info:
     type: array
     properties:
@@ -851,67 +851,67 @@ in the action metadata, like this.</p>
 </pre></div>
 </div>
 <p>Or you can use JSON notation:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run mypack.myaction <span class="nv">parameter_name</span><span class="o">=</span><span class="s1">&#39;[{&quot;Name&quot;: &quot;MyVMName&quot;}]&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run mypack.myaction <span class="nv">parameter_name</span><span class="o">=</span><span class="s1">&#39;[{&quot;Name&quot;: &quot;MyVMName&quot;}]&#39;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">When using JSON string notation, parameter value needs to be wrapped inside single
-quotes (e.g. <code class="docutils literal"><span class="pre">parameter='{&quot;Key&quot;:</span> <span class="pre">&quot;Value&quot;}'</span></code>), otherwise quotes (<code class="docutils literal"><span class="pre">&quot;</span></code>) inside the JSON
-string need to be escaped with a backslash (<code class="docutils literal"><span class="pre">\</span></code> - e.g.
-<code class="docutils literal"><span class="pre">parameter=&quot;{\&quot;Key\&quot;:</span> <span class="pre">\&quot;Bar\&quot;}&quot;</span></code>).</p>
+quotes (e.g. <code class="docutils literal notranslate"><span class="pre">parameter='{&quot;Key&quot;:</span> <span class="pre">&quot;Value&quot;}'</span></code>), otherwise quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) inside the JSON
+string need to be escaped with a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code> - e.g.
+<code class="docutils literal notranslate"><span class="pre">parameter=&quot;{\&quot;Key\&quot;:</span> <span class="pre">\&quot;Bar\&quot;}&quot;</span></code>).</p>
 </div>
 </div>
 </div>
 <div class="section" id="specifying-parameters-with-type-object">
 <h2>Specifying Parameters with Type “object”<a class="headerlink" href="#specifying-parameters-with-type-object" title="Permalink to this headline">¶</a></h2>
-<p>When running an action using <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span></code> command, you can specify the value of parameters with type
-<code class="docutils literal"><span class="pre">object</span></code> using two different approaches:</p>
+<p>When running an action using <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span></code> command, you can specify the value of parameters with type
+<code class="docutils literal notranslate"><span class="pre">object</span></code> using two different approaches:</p>
 <div class="section" id="json-string-notation">
 <h3>JSON String Notation<a class="headerlink" href="#json-string-notation" title="Permalink to this headline">¶</a></h3>
 <p>For complex objects, you should use JSON notation:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s1">&#39;{&quot;key1&quot;: &quot;val1&quot;, &quot;key2&quot;: &quot;val2&quot;}&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s1">&#39;{&quot;key1&quot;: &quot;val1&quot;, &quot;key2&quot;: &quot;val2&quot;}&#39;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">When using JSON string notation, parameter value needs to be wrapped inside single
-quotes (e.g. <code class="docutils literal"><span class="pre">parameter='{&quot;Key&quot;:</span> <span class="pre">&quot;Value&quot;}'</span></code>), otherwise quotes (<code class="docutils literal"><span class="pre">&quot;</span></code>) inside the JSON
-string need to be escaped with a backslash (<code class="docutils literal"><span class="pre">\</span></code> - e.g.
-<code class="docutils literal"><span class="pre">parameter=&quot;{\&quot;Key\&quot;:</span> <span class="pre">\&quot;Bar\&quot;}&quot;</span></code>).</p>
+quotes (e.g. <code class="docutils literal notranslate"><span class="pre">parameter='{&quot;Key&quot;:</span> <span class="pre">&quot;Value&quot;}'</span></code>), otherwise quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) inside the JSON
+string need to be escaped with a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code> - e.g.
+<code class="docutils literal notranslate"><span class="pre">parameter=&quot;{\&quot;Key\&quot;:</span> <span class="pre">\&quot;Bar\&quot;}&quot;</span></code>).</p>
 </div>
 </div>
 <div class="section" id="comma-delimited-key-value-pairs-string-notation">
-<h3>Comma-delimited <code class="docutils literal"><span class="pre">key=value</span></code> Pairs String Notation<a class="headerlink" href="#comma-delimited-key-value-pairs-string-notation" title="Permalink to this headline">¶</a></h3>
+<h3>Comma-delimited <code class="docutils literal notranslate"><span class="pre">key=value</span></code> Pairs String Notation<a class="headerlink" href="#comma-delimited-key-value-pairs-string-notation" title="Permalink to this headline">¶</a></h3>
 <p>For simple objects (such as specifying a dictionary where both keys and values are simple strings),
 use this notation:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s2">&quot;key1=val1,key2=val2&quot;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s2">&quot;key1=val1,key2=val2&quot;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="reading-parameter-values-from-a-file">
 <h2>Reading Parameter Values From a File<a class="headerlink" href="#reading-parameter-values-from-a-file" title="Permalink to this headline">¶</a></h2>
-<p>The CLI also supports the special <code class="docutils literal"><span class="pre">&#64;parameter</span></code> notation which makes it read parameter
+<p>The CLI also supports the special <code class="docutils literal notranslate"><span class="pre">&#64;parameter</span></code> notation which makes it read parameter
 values from a file.</p>
 <p>An example of when this might be useful is when you are using http runner actions, or when you want
 to read information such a private SSH key content from a file.</p>
 <p>Example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>&lt;host&gt; <span class="nv">username</span><span class="o">=</span>&lt;username&gt; @private_key<span class="o">=</span>/home/myuser/.ssh/id_rsa <span class="nv">cmd</span><span class="o">=</span>&lt;cmd&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>&lt;host&gt; <span class="nv">username</span><span class="o">=</span>&lt;username&gt; @private_key<span class="o">=</span>/home/myuser/.ssh/id_rsa <span class="nv">cmd</span><span class="o">=</span>&lt;cmd&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="re-running-an-action">
 <h2>Re-running an Action<a class="headerlink" href="#re-running-an-action" title="Permalink to this headline">¶</a></h2>
-<p>To re-run a particular action, you can use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;existing</span>
+<p>To re-run a particular action, you can use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;existing</span>
 <span class="pre">execution</span> <span class="pre">id&gt;</span></code> command.</p>
 <p>By default, this command re-runs an action with the same set of input parameters
 which were used with the original action.</p>
-<p>The command takes the same arguments as the <code class="docutils literal"><span class="pre">run</span></code>/<code class="docutils literal"><span class="pre">action</span> <span class="pre">execute</span></code> command. This means you can
+<p>The command takes the same arguments as the <code class="docutils literal notranslate"><span class="pre">run</span></code>/<code class="docutils literal notranslate"><span class="pre">action</span> <span class="pre">execute</span></code> command. This means you can
 pass additional runner or action specific parameters to the command. Those parameters are then
 merged with the parameters from the original action and used to run a new action.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.local <span class="nv">env</span><span class="o">=</span><span class="s2">&quot;VAR=hello&quot;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;echo $VAR; date&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.local <span class="nv">env</span><span class="o">=</span><span class="s2">&quot;VAR=hello&quot;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;echo $VAR; date&#39;</span>
 .
 +-----------------+--------------------------------+
 <span class="p">|</span> Property        <span class="p">|</span> Value                          <span class="p">|</span>
@@ -1011,28 +1011,28 @@ st2 run re-run 7a3c0640fd0bd07b1930 <span class="nv">env</span><span class="o">=
 <p>When dealing with long running executions, you may want to cancel some of them before they have
 completed.</p>
 <p>To cancel an execution, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution cancel &lt;existing execution id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution cancel &lt;existing execution id&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="passing-environment-variables-to-runner-as-env-parameter">
-<h2>Passing Environment Variables to Runner as <code class="docutils literal"><span class="pre">env</span></code> Parameter<a class="headerlink" href="#passing-environment-variables-to-runner-as-env-parameter" title="Permalink to this headline">¶</a></h2>
-<p>Local, remote and Python runners support the <code class="docutils literal"><span class="pre">env</span></code> parameter. This parameter tells the runner
+<h2>Passing Environment Variables to Runner as <code class="docutils literal notranslate"><span class="pre">env</span></code> Parameter<a class="headerlink" href="#passing-environment-variables-to-runner-as-env-parameter" title="Permalink to this headline">¶</a></h2>
+<p>Local, remote and Python runners support the <code class="docutils literal notranslate"><span class="pre">env</span></code> parameter. This parameter tells the runner
 which environment variables should be accessible to the action which is being executed.</p>
-<p>User can specify environment variables manually using the <code class="docutils literal"><span class="pre">env</span></code> parameter in the same manner as
+<p>User can specify environment variables manually using the <code class="docutils literal notranslate"><span class="pre">env</span></code> parameter in the same manner as
 other parameters:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s2">&quot;key1=val1,key2=val2&quot;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run core.remote <span class="nv">hosts</span><span class="o">=</span>localhost <span class="nv">env</span><span class="o">=</span><span class="s2">&quot;key1=val1,key2=val2&quot;</span> <span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;echo ponies \${key1} \${key2}&quot;</span>
 </pre></div>
 </div>
-<p>In addition to that, users can pass the <code class="docutils literal"><span class="pre">-e</span></code>/<code class="docutils literal"><span class="pre">--inherit-env</span></code> flag to the <code class="docutils literal"><span class="pre">action</span> <span class="pre">run</span></code>
+<p>In addition to that, users can pass the <code class="docutils literal notranslate"><span class="pre">-e</span></code>/<code class="docutils literal notranslate"><span class="pre">--inherit-env</span></code> flag to the <code class="docutils literal notranslate"><span class="pre">action</span> <span class="pre">run</span></code>
 command.</p>
 <p>This flag will cause the command to inherit all the environment variables which are accessible to
-the CLI and send them as an <code class="docutils literal"><span class="pre">env</span></code> parameter to the action.</p>
-<p>Keep in mind that some global shell login variables such as <code class="docutils literal"><span class="pre">PWD</span></code>, <code class="docutils literal"><span class="pre">PATH</span></code> and others are
+the CLI and send them as an <code class="docutils literal notranslate"><span class="pre">env</span></code> parameter to the action.</p>
+<p>Keep in mind that some global shell login variables such as <code class="docutils literal notranslate"><span class="pre">PWD</span></code>, <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and others are
 ignored and not inherited. The full list of ignored variables can be found in the
 <a class="reference external" href="https://github.com/StackStorm/st2/blob/master/st2client/st2client/commands/action.py">action.py file</a>.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run --inherit-env core.remote <span class="nv">cmd</span><span class="o">=</span>...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run --inherit-env core.remote <span class="nv">cmd</span><span class="o">=</span>...
 </pre></div>
 </div>
 </div>

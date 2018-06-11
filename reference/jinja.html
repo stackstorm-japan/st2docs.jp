@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -470,14 +470,14 @@ or refer to system specific constructs (like datastore access). This document is
 with Jinja in the context of StackStorm. Please refer to the <a class="reference external" href="http://jinja.pocoo.org/docs/">Jinja docs</a> for Jinja-focused information.</p>
 <div class="section" id="referencing-datastore-keys-in-jinja">
 <span id="applying-filters-with-jinja"></span><h2>Referencing Datastore Keys in Jinja<a class="headerlink" href="#referencing-datastore-keys-in-jinja" title="Permalink to this headline">¶</a></h2>
-<p>You can use <code class="docutils literal"><span class="pre">{{</span> <span class="pre">st2kv.system.foo</span> <span class="pre">}}</span></code> to access key <code class="docutils literal"><span class="pre">foo</span></code> from the datastore. Note that prior to
-v2.1, the expression to access key <code class="docutils literal"><span class="pre">foo</span></code> from the datastore was <code class="docutils literal"><span class="pre">{{</span> <span class="pre">system.foo</span> <span class="pre">}}</span></code>. This is now
-deprecated, and the leading <code class="docutils literal"><span class="pre">st2kv.</span></code> namespace is required.</p>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">st2kv.system.foo</span> <span class="pre">}}</span></code> to access key <code class="docutils literal notranslate"><span class="pre">foo</span></code> from the datastore. Note that prior to
+v2.1, the expression to access key <code class="docutils literal notranslate"><span class="pre">foo</span></code> from the datastore was <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">system.foo</span> <span class="pre">}}</span></code>. This is now
+deprecated, and the leading <code class="docutils literal notranslate"><span class="pre">st2kv.</span></code> namespace is required.</p>
 <p>Currently, all data in the datastore is represented as strings. To represent
-complex data structures like <code class="docutils literal"><span class="pre">dicts</span></code> and <code class="docutils literal"><span class="pre">lists</span></code> the standard approach is to
+complex data structures like <code class="docutils literal notranslate"><span class="pre">dicts</span></code> and <code class="docutils literal notranslate"><span class="pre">lists</span></code> the standard approach is to
 convert the data structure into JSON when storing the data, then parse it when
 retrieving the data.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Pass the result of this expression to the action st2.kv.set</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass the result of this expression to the action st2.kv.set</span>
 <span class="o">{{</span> <span class="o">{</span><span class="s1">&#39;complex&#39;</span>: <span class="s1">&#39;structure&#39;</span>, <span class="s1">&#39;foo&#39;</span>: <span class="o">[</span><span class="s1">&#39;x&#39;</span>, True<span class="o">]}</span> <span class="p">|</span> to_json_string <span class="o">}}</span>
 
 <span class="c1"># Read the data back in using the st2kv and from_json_string filters</span>
@@ -487,11 +487,11 @@ retrieving the data.</p>
 </div>
 <div class="section" id="jinja-jinja-filters">
 <span id="id2"></span><h2>Applying Filters with Jinja<a class="headerlink" href="#jinja-jinja-filters" title="Permalink to this headline">¶</a></h2>
-<p>To use the filter <code class="docutils literal"><span class="pre">my_filter</span></code> on <code class="docutils literal"><span class="pre">foo</span></code>, you use the pipe operator, e.g.: <code class="docutils literal"><span class="pre">{{</span> <span class="pre">foo</span> <span class="pre">|</span> <span class="pre">my_filter</span> <span class="pre">}}</span></code>.
+<p>To use the filter <code class="docutils literal notranslate"><span class="pre">my_filter</span></code> on <code class="docutils literal notranslate"><span class="pre">foo</span></code>, you use the pipe operator, e.g.: <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">foo</span> <span class="pre">|</span> <span class="pre">my_filter</span> <span class="pre">}}</span></code>.
 Please pay attention to the data type and available filters for each data type. Since Jinja is a
 text templating language, all your input is converted to text and then manipulations happen on that
 value. The necessary casting at the end is done by StackStorm based on information you provide in YAML
-(for example, <code class="docutils literal"><span class="pre">type</span></code> field in action parameters). The casting is a best-effort casting.</p>
+(for example, <code class="docutils literal notranslate"><span class="pre">type</span></code> field in action parameters). The casting is a best-effort casting.</p>
 <p>StackStorm supports <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/#variables">Jinja variable templating</a>
 in Rules, Action Chains, and Actions etc. Jinja templates support
 <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/#list-of-builtin-filters">filters</a>
@@ -502,59 +502,59 @@ to allow some advanced capabilities in working with variables.</p>
 <p>In addition to the <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/#builtin-filters">standard filters</a> available in Jinja, StackStorm also comes with some custom filters.</p>
 <p><strong>For Developers:</strong> These filters are defined in
 <a class="reference external" href="https://github.com/StackStorm/st2/tree/master//st2common/st2common/jinja/filters/">st2/st2common/st2common/jinja/filters/</a>.
-The equivalent Mistral filters are located in the <code class="docutils literal"><span class="pre">st2mistral</span></code> repo at
+The equivalent Mistral filters are located in the <code class="docutils literal notranslate"><span class="pre">st2mistral</span></code> repo at
 <a class="reference external" href="https://github.com/StackStorm/st2mistral/tree/master//st2mistral/st2mistral/filters/">st2mistral/st2mistral/filters/</a>.
 To ensure filters maintain parity across StackStorm workflows, changes to one location must be
 replicated to the other in a separate PR.</p>
 <p>For brevity, only simple Jinja patterns for each filter are documented below. “Real-world” usage
 will depend on the type of content where the filters are being applied (sensors, triggers, rules,
 action and workflows) and their syntax. More detailed examples can be found in the ActionChains
-in the <code class="docutils literal"><span class="pre">examples</span></code> pack:
+in the <code class="docutils literal notranslate"><span class="pre">examples</span></code> pack:
 <a class="reference external" href="https://github.com/StackStorm/st2/tree/master//contrib/examples/actions/chains/">st2/contrib/examples/actions/chains/</a>.</p>
 <p>In StackStorm 2.4, all custom filters were made available to Mistral workflows as well, with one notable
-exception: the <code class="docutils literal"><span class="pre">decrypt_kv</span></code> filter. That filter is not necessary in Mistral, as the <code class="docutils literal"><span class="pre">st2kv</span></code>
-function in Mistral workflows natively supports decryption via the <code class="docutils literal"><span class="pre">decrypt</span></code> parameter.</p>
+exception: the <code class="docutils literal notranslate"><span class="pre">decrypt_kv</span></code> filter. That filter is not necessary in Mistral, as the <code class="docutils literal notranslate"><span class="pre">st2kv</span></code>
+function in Mistral workflows natively supports decryption via the <code class="docutils literal notranslate"><span class="pre">decrypt</span></code> parameter.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Because of a bug in Mistral, these filters do not currently support the “pipe” operator filter
-format (<cite>|</cite>) So, instead of <code class="docutils literal"><span class="pre">'{{</span> <span class="pre">_.input_str</span> <span class="pre">|</span> <span class="pre">regex_match(_.regex_pattern)</span> <span class="pre">}}'</span></code> you would
+format (<cite>|</cite>) So, instead of <code class="docutils literal notranslate"><span class="pre">'{{</span> <span class="pre">_.input_str</span> <span class="pre">|</span> <span class="pre">regex_match(_.regex_pattern)</span> <span class="pre">}}'</span></code> you would
 call the filter like a regular function, moving the previously input value into the first
-positional argument position: <code class="docutils literal"><span class="pre">'{{</span> <span class="pre">regex_match(_.input_str,</span> <span class="pre">_.regex_pattern)</span> <span class="pre">}}'</span></code>. This will
+positional argument position: <code class="docutils literal notranslate"><span class="pre">'{{</span> <span class="pre">regex_match(_.input_str,</span> <span class="pre">_.regex_pattern)</span> <span class="pre">}}'</span></code>. This will
 be addressed in a future release.</p>
 </div>
 <div class="section" id="from-json-string">
 <h3>from_json_string<a class="headerlink" href="#from-json-string" title="Permalink to this headline">¶</a></h3>
-<p>Converts a JSON string into an object or array (opposite of <code class="docutils literal"><span class="pre">to_json_string</span></code>).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> from_json_string <span class="o">}}</span>
+<p>Converts a JSON string into an object or array (opposite of <code class="docutils literal notranslate"><span class="pre">to_json_string</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> from_json_string <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="from-yaml-string">
 <h3>from_yaml_string<a class="headerlink" href="#from-yaml-string" title="Permalink to this headline">¶</a></h3>
-<p>Converts a YAML string into an object or array (opposite of <code class="docutils literal"><span class="pre">to_yaml_string</span></code>).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> from_yaml_string <span class="o">}}</span>
+<p>Converts a YAML string into an object or array (opposite of <code class="docutils literal notranslate"><span class="pre">to_yaml_string</span></code>).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> from_yaml_string <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="json-escape">
 <h3>json_escape<a class="headerlink" href="#json-escape" title="Permalink to this headline">¶</a></h3>
 <p>Adds escape characters to JSON strings.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> json_escape <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> json_escape <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="jsonpath-query">
 <h3>jsonpath_query<a class="headerlink" href="#jsonpath-query" title="Permalink to this headline">¶</a></h3>
-<p>Provides the ability to extract data from complex <code class="docutils literal"><span class="pre">object</span></code> data using the
+<p>Provides the ability to extract data from complex <code class="docutils literal notranslate"><span class="pre">object</span></code> data using the
 <cite>JSONPath &lt;http://goessner.net/articles/JsonPath/&gt;</cite> query language. More specifically
-we use the <code class="docutils literal"><span class="pre">jsonpath-rw</span></code> library that has its own extensions, details can be
+we use the <code class="docutils literal notranslate"><span class="pre">jsonpath-rw</span></code> library that has its own extensions, details can be
 found on the <cite>jsonpath-rw GitHub page &lt;https://github.com/kennknowles/python-jsonpath-rw/tree/master/jsonpath_rw&gt;</cite>.
-Data passed into this function should be of type <code class="docutils literal"><span class="pre">object</span></code> or <code class="docutils literal"><span class="pre">array</span></code>.
+Data passed into this function should be of type <code class="docutils literal notranslate"><span class="pre">object</span></code> or <code class="docutils literal notranslate"><span class="pre">array</span></code>.
 The result of this function will either be an array of results, or None if the
 query did not return any results.
 If you would like to test out your JSONPath queries prior to utilizing this filter
 an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Access an element in a data structure. Each level is delimited by a &#39;.&#39;.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access an element in a data structure. Each level is delimited by a &#39;.&#39;.</span>
 <span class="c1"># Each part of the query is the name of the field in the current level</span>
 <span class="c1"># of the data structure.</span>
 <span class="c1">#</span>
@@ -612,7 +612,7 @@ an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.
 <div class="section" id="regex-match">
 <h3>regex_match<a class="headerlink" href="#regex-match" title="Permalink to this headline">¶</a></h3>
 <p>Search for the pattern at beginning of the string. Returns True if found, False if not.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_match<span class="o">(</span><span class="s1">&#39;x&#39;</span><span class="o">)</span> <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_match<span class="o">(</span><span class="s1">&#39;x&#39;</span><span class="o">)</span> <span class="o">}}</span>
 <span class="o">{{</span> value_key <span class="p">|</span> regex_match<span class="o">(</span><span class="s2">&quot;^v(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)</span>$<span class="s2">&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
@@ -624,7 +624,7 @@ an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.
 <p class="first admonition-title">Note</p>
 <p class="last">When using backreferences you need to escape two 's in Jinja, hence the 4 's.</p>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_replace<span class="o">(</span><span class="s2">&quot;x&quot;</span>, <span class="s2">&quot;y&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_replace<span class="o">(</span><span class="s2">&quot;x&quot;</span>, <span class="s2">&quot;y&quot;</span><span class="o">)</span> <span class="o">}}</span>
 <span class="o">{{</span> value_key <span class="p">|</span> regex_replace<span class="o">(</span><span class="s2">&quot;(blue|white|red)&quot;</span>, <span class="s2">&quot;beautiful color \\\\1&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
@@ -632,7 +632,7 @@ an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.
 <div class="section" id="regex-search">
 <h3>regex_search<a class="headerlink" href="#regex-search" title="Permalink to this headline">¶</a></h3>
 <p>Search for pattern anywhere in the string. Returns True if found, False if not.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_search<span class="o">(</span><span class="s2">&quot;y&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_search<span class="o">(</span><span class="s2">&quot;y&quot;</span><span class="o">)</span> <span class="o">}}</span>
 <span class="o">{{</span> value_key <span class="p">|</span> regex_search<span class="o">(</span><span class="s2">&quot;^v(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)</span>$<span class="s2">&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
@@ -641,64 +641,64 @@ an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.
 <h3>regex_substring<a class="headerlink" href="#regex-substring" title="Permalink to this headline">¶</a></h3>
 <p>Searches for the provided pattern in a string, and returns the first matched regex group
 (alternatively, you can provide the desired index).</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_substring<span class="o">(</span><span class="s2">&quot;y&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> regex_substring<span class="o">(</span><span class="s2">&quot;y&quot;</span><span class="o">)</span> <span class="o">}}</span>
 <span class="o">{{</span> value_key <span class="p">|</span> regex_substring<span class="o">(</span><span class="s2">&quot;^v(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)</span>$<span class="s2">&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="to-complex">
 <h3>to_complex<a class="headerlink" href="#to-complex" title="Permalink to this headline">¶</a></h3>
-<p>Convert data to JSON string (see <code class="docutils literal"><span class="pre">to_json_string</span></code> for a more flexible option)</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_complex <span class="o">}}</span>
+<p>Convert data to JSON string (see <code class="docutils literal notranslate"><span class="pre">to_json_string</span></code> for a more flexible option)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_complex <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="to-human-time-from-seconds">
 <h3>to_human_time_from_seconds<a class="headerlink" href="#to-human-time-from-seconds" title="Permalink to this headline">¶</a></h3>
 <p>Given time elapsed in seconds, this filter converts it to human readable form like 3d5h6s.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_human_time_from_seconds <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_human_time_from_seconds <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="to-json-string">
 <h3>to_json_string<a class="headerlink" href="#to-json-string" title="Permalink to this headline">¶</a></h3>
 <p>Convert data to JSON string.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_json_string <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_json_string <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="to-yaml-string">
 <h3>to_yaml_string<a class="headerlink" href="#to-yaml-string" title="Permalink to this headline">¶</a></h3>
 <p>Convert data to YAML string.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_yaml_string <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> to_yaml_string <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="use-none">
 <h3>use_none<a class="headerlink" href="#use-none" title="Permalink to this headline">¶</a></h3>
-<p>If value being filtered is None, this filter will return the string <code class="docutils literal"><span class="pre">%*****__%NONE%__*****%</span></code></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> use_none <span class="o">}}</span>
+<p>If value being filtered is None, this filter will return the string <code class="docutils literal notranslate"><span class="pre">%*****__%NONE%__*****%</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> value_key <span class="p">|</span> use_none <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="version-bump-major">
 <h3>version_bump_major<a class="headerlink" href="#version-bump-major" title="Permalink to this headline">¶</a></h3>
 <p>Bumps up the major version of supplied version field.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_bump_major <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_bump_major <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="version-bump-minor">
 <h3>version_bump_minor<a class="headerlink" href="#version-bump-minor" title="Permalink to this headline">¶</a></h3>
 <p>Bumps up the minor version of supplied version field.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_bump_minor <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_bump_minor <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="version-bump-patch">
 <h3>version_bump_patch<a class="headerlink" href="#version-bump-patch" title="Permalink to this headline">¶</a></h3>
 <p>Bumps up the patch version of supplied version field.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_bump_patch <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_bump_patch <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
@@ -706,14 +706,14 @@ an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.
 <h3>version_compare<a class="headerlink" href="#version-compare" title="Permalink to this headline">¶</a></h3>
 <p>Compare a semantic version to another value. Returns 1 if LHS is greater or -1 if LHS is smaller or
 0 if equal.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_compare<span class="o">(</span><span class="s2">&quot;0.10.1&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_compare<span class="o">(</span><span class="s2">&quot;0.10.1&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="version-equal">
 <h3>version_equal<a class="headerlink" href="#version-equal" title="Permalink to this headline">¶</a></h3>
 <p>Returns True if LHS version is equal to RHS version.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_equal<span class="o">(</span><span class="s2">&quot;0.10.0&quot;</span><span class="o">)</span>  <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_equal<span class="o">(</span><span class="s2">&quot;0.10.0&quot;</span><span class="o">)</span>  <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
@@ -721,8 +721,8 @@ an online evaluator can be found <cite>here &lt;http://jsonpath.com/&gt;</cite>.
 <h3>version_less_than<a class="headerlink" href="#version-less-than" title="Permalink to this headline">¶</a></h3>
 <p>Returns True if LHS version is lesser than RHS version. Both inputs have to follow semantic version
 syntax.</p>
-<p>E.g. <code class="docutils literal"><span class="pre">{{</span> <span class="pre">“1.6.0”</span> <span class="pre">|</span> <span class="pre">version_less_than(&quot;1.7.0&quot;)</span> <span class="pre">}}</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_less_than<span class="o">(</span><span class="s2">&quot;0.9.2&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<p>E.g. <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">“1.6.0”</span> <span class="pre">|</span> <span class="pre">version_less_than(&quot;1.7.0&quot;)</span> <span class="pre">}}</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_less_than<span class="o">(</span><span class="s2">&quot;0.9.2&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
@@ -730,8 +730,8 @@ syntax.</p>
 <h3>version_match<a class="headerlink" href="#version-match" title="Permalink to this headline">¶</a></h3>
 <p>Returns True if the two provided versions are equivalent (i.e. “2.0.0” and “&gt;=1.0.0” are
 equivalent and will return True).</p>
-<p>Supports operators <code class="docutils literal"><span class="pre">&gt;</span></code>, <code class="docutils literal"><span class="pre">&lt;</span></code>, <code class="docutils literal"><span class="pre">==</span></code>, <code class="docutils literal"><span class="pre">&lt;=</span></code>, and <code class="docutils literal"><span class="pre">&gt;=</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_match<span class="o">(</span><span class="s2">&quot;&gt;0.10.0&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<p>Supports operators <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, and <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_match<span class="o">(</span><span class="s2">&quot;&gt;0.10.0&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
@@ -739,15 +739,15 @@ equivalent and will return True).</p>
 <h3>version_more_than<a class="headerlink" href="#version-more-than" title="Permalink to this headline">¶</a></h3>
 <p>Returns True if LHS version is greater than RHS version. Both inputs have to follow semantic
 version syntax.</p>
-<p>E.g. <code class="docutils literal"><span class="pre">{{</span> <span class="pre">&quot;1.6.0”</span> <span class="pre">|</span> <span class="pre">version_more_than(&quot;1.7.0&quot;)</span> <span class="pre">}}</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_more_than<span class="o">(</span><span class="s2">&quot;0.10.1&quot;</span><span class="o">)</span> <span class="o">}}</span>
+<p>E.g. <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">&quot;1.6.0”</span> <span class="pre">|</span> <span class="pre">version_more_than(&quot;1.7.0&quot;)</span> <span class="pre">}}</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_more_than<span class="o">(</span><span class="s2">&quot;0.10.1&quot;</span><span class="o">)</span> <span class="o">}}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="version-strip-patch">
 <h3>version_strip_patch<a class="headerlink" href="#version-strip-patch" title="Permalink to this headline">¶</a></h3>
 <p>Drops patch version of supplied version field.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_strip_patch <span class="o">}}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">{{</span> version <span class="p">|</span> version_strip_patch <span class="o">}}</span>
 </pre></div>
 </div>
 </div>

@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -480,56 +480,56 @@ within the specified timeout.</p>
 <p>This is the local runner. This runner executes a Linux command on the host where StackStorm is running.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> attributes in the runner result object have the last <code class="docutils literal"><span class="pre">\n</span></code> or <code class="docutils literal"><span class="pre">\r</span></code>
-or <code class="docutils literal"><span class="pre">\r\n</span></code> characters removed if present. This is done so you can re-use the result of common
-commands that include a trailing line break of carriage return, such as <code class="docutils literal"><span class="pre">uptime</span></code>, <code class="docutils literal"><span class="pre">whoami</span></code>,
+<p class="last"><code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> attributes in the runner result object have the last <code class="docutils literal notranslate"><span class="pre">\n</span></code> or <code class="docutils literal notranslate"><span class="pre">\r</span></code>
+or <code class="docutils literal notranslate"><span class="pre">\r\n</span></code> characters removed if present. This is done so you can re-use the result of common
+commands that include a trailing line break of carriage return, such as <code class="docutils literal notranslate"><span class="pre">uptime</span></code>, <code class="docutils literal notranslate"><span class="pre">whoami</span></code>,
 etc., in other actions and workflows. If you have an action which requires a trailing line
 break character to be present, you can add it explicitly to the result, e.g.
-<code class="docutils literal"><span class="pre">echo</span> <span class="pre">-e</span> <span class="pre">'test\n'</span></code> (this will result into two line break characters and only one of
+<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">-e</span> <span class="pre">'test\n'</span></code> (this will result into two line break characters and only one of
 them will be stripped/removed from the result).</p>
 </div>
 <div class="section" id="runner-parameters">
 <h3>Runner Parameters<a class="headerlink" href="#runner-parameters" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
-<li><code class="docutils literal"><span class="pre">cmd</span></code> (string) - Arbitrary Linux command to be executed on the host.</li>
-<li><code class="docutils literal"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
-<li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the command(e.g. key1=val1,key2=val2)</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
-<li><code class="docutils literal"><span class="pre">sudo</span></code> (boolean) - The command will be executed with sudo.</li>
-<li><code class="docutils literal"><span class="pre">cwd</span></code> (string) - Working directory where the command will be executed in</li>
+<li><code class="docutils literal notranslate"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cmd</span></code> (string) - Arbitrary Linux command to be executed on the host.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">env</span></code> (object) - Environment variables which will be available to the command(e.g. key1=val1,key2=val2)</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span></code> (boolean) - The command will be executed with sudo.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cwd</span></code> (string) - Working directory where the command will be executed in</li>
 </ul>
 </div>
 </div>
 <div class="section" id="local-script-runner-local-shell-script">
 <h2>Local script runner (local-shell-script)<a class="headerlink" href="#local-script-runner-local-shell-script" title="Permalink to this headline">¶</a></h2>
 <p>This is the local runner. Actions are implemented as scripts. They are executed on the host where
-StackStorm is running. The last newline character is stripped from <code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> fields in
+StackStorm is running. The last newline character is stripped from <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> fields in
 the output.</p>
 <div class="section" id="id1">
 <h3>Runner Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
-<li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script(e.g. key1=val1,key2=val2)</li>
-<li><code class="docutils literal"><span class="pre">sudo</span></code> (boolean) - The command will be executed with sudo.</li>
-<li><code class="docutils literal"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
-<li><code class="docutils literal"><span class="pre">debug</span></code> (boolean) - Enable runner debug mode.</li>
-<li><code class="docutils literal"><span class="pre">content_version</span></code> (string) - Git revision of the pack content to use for this action execution (git commit sha / tag / branch). Only applies to packs which are git repositories.</li>
-<li><code class="docutils literal"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script(e.g. key1=val1,key2=val2)</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span></code> (boolean) - The command will be executed with sudo.</li>
+<li><code class="docutils literal notranslate"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">debug</span></code> (boolean) - Enable runner debug mode.</li>
+<li><code class="docutils literal notranslate"><span class="pre">content_version</span></code> (string) - Git revision of the pack content to use for this action execution (git commit sha / tag / branch). Only applies to packs which are git repositories.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in</li>
 </ul>
 </div>
 </div>
 <div class="section" id="remote-command-runner-remote-shell-cmd">
 <h2>Remote Command Runner (remote-shell-cmd)<a class="headerlink" href="#remote-command-runner-remote-shell-cmd" title="Permalink to this headline">¶</a></h2>
 <p>This is a remote runner. This runner executes a Linux command on one or more remote hosts provided
-by the user. The last newline character is stripped from <code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> fields in the
+by the user. The last newline character is stripped from <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> fields in the
 output.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>By default StackStorm uses paswordless sudo for to execute commands on local and remote systems, using the
-system user (by default <code class="docutils literal"><span class="pre">stanley</span></code>). In addition to paswordless sudo, local and remote runners also
-support password protected sudo via the <code class="docutils literal"><span class="pre">sudo_password</span></code> runner parameter.</p>
+system user (by default <code class="docutils literal notranslate"><span class="pre">stanley</span></code>). In addition to paswordless sudo, local and remote runners also
+support password protected sudo via the <code class="docutils literal notranslate"><span class="pre">sudo_password</span></code> runner parameter.</p>
 <p class="last">With the remote runner, the sudo password is passed to the sudo command as a command line argument.
 This means it has some security implications - if bash history is enabled for the system user, the sudo
 password will be saved in bash history and any system user with access to that user bash history file
@@ -538,32 +538,32 @@ will be able to view it.</p>
 <div class="section" id="id2">
 <h3>Runner Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">username</span></code> (string) - Username used to log-in. If not provided, default username from config is used.</li>
-<li><code class="docutils literal"><span class="pre">private_key</span></code> (string) - Private key material or path to the private key file on disk used to log in.</li>
-<li><code class="docutils literal"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
-<li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the command(e.g. key1=val1,key2=val2)</li>
-<li><code class="docutils literal"><span class="pre">sudo</span></code> (boolean) - The remote command will be executed with sudo.</li>
-<li><code class="docutils literal"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
-<li><code class="docutils literal"><span class="pre">bastion_host</span></code> (string) - The host SSH connections will be proxied through. Note: This connection is made using the same parameters as the final connection, and is only used in ParamikoSSHRunner.</li>
-<li><code class="docutils literal"><span class="pre">passphrase</span></code> (string) - Passphrase for the private key, if needed.</li>
-<li><code class="docutils literal"><span class="pre">password</span></code> (string) - Password used to log in. If not provided, private key from the config file is used.</li>
-<li><code class="docutils literal"><span class="pre">port</span></code> (integer) - SSH port. Note: This parameter is used only in ParamikoSSHRunner.</li>
-<li><code class="docutils literal"><span class="pre">cmd</span></code> (string) - Arbitrary Linux command to be executed on the remote host(s).</li>
-<li><code class="docutils literal"><span class="pre">parallel</span></code> (boolean) - Default to parallel execution.</li>
-<li><code class="docutils literal"><span class="pre">hosts</span></code> (string) - A comma delimited string of a list of hosts where the remote command will be executed.</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
-<li><code class="docutils literal"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in</li>
-<li><code class="docutils literal"><span class="pre">dir</span></code> (string) - The working directory where the script will be copied to on the remote host.</li>
+<li><code class="docutils literal notranslate"><span class="pre">username</span></code> (string) - Username used to log-in. If not provided, default username from config is used.</li>
+<li><code class="docutils literal notranslate"><span class="pre">private_key</span></code> (string) - Private key material or path to the private key file on disk used to log in.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">env</span></code> (object) - Environment variables which will be available to the command(e.g. key1=val1,key2=val2)</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span></code> (boolean) - The remote command will be executed with sudo.</li>
+<li><code class="docutils literal notranslate"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
+<li><code class="docutils literal notranslate"><span class="pre">bastion_host</span></code> (string) - The host SSH connections will be proxied through. Note: This connection is made using the same parameters as the final connection, and is only used in ParamikoSSHRunner.</li>
+<li><code class="docutils literal notranslate"><span class="pre">passphrase</span></code> (string) - Passphrase for the private key, if needed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code> (string) - Password used to log in. If not provided, private key from the config file is used.</li>
+<li><code class="docutils literal notranslate"><span class="pre">port</span></code> (integer) - SSH port. Note: This parameter is used only in ParamikoSSHRunner.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cmd</span></code> (string) - Arbitrary Linux command to be executed on the remote host(s).</li>
+<li><code class="docutils literal notranslate"><span class="pre">parallel</span></code> (boolean) - Default to parallel execution.</li>
+<li><code class="docutils literal notranslate"><span class="pre">hosts</span></code> (string) - A comma delimited string of a list of hosts where the remote command will be executed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in</li>
+<li><code class="docutils literal notranslate"><span class="pre">dir</span></code> (string) - The working directory where the script will be copied to on the remote host.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>If a value you specify for the <code class="docutils literal"><span class="pre">private_key</span></code> parameter is a path to the private key file, you
-need to make sure that the user under which action runner process is running (<code class="docutils literal"><span class="pre">stanley</span></code> by
+<p>If a value you specify for the <code class="docutils literal notranslate"><span class="pre">private_key</span></code> parameter is a path to the private key file, you
+need to make sure that the user under which action runner process is running (<code class="docutils literal notranslate"><span class="pre">stanley</span></code> by
 default) has read access to this key file. This private key file also needs be deployed and
 present in the same location on all the servers where action runner component is running.</p>
 <p class="last">In addition to that, if you utilize path to the private key file functionality, you are strongly
 encouraged to disable local runner in the config. If you don’t do that, any StackStorm user which has
-access to <code class="docutils literal"><span class="pre">core.local</span></code> action will be able to read this key and this can pose a security risk.</p>
+access to <code class="docutils literal notranslate"><span class="pre">core.local</span></code> action will be able to read this key and this can pose a security risk.</p>
 </div>
 </div>
 </div>
@@ -571,52 +571,52 @@ access to <code class="docutils literal"><span class="pre">core.local</span></co
 <h2>Remote script runner (remote-shell-script)<a class="headerlink" href="#remote-script-runner-remote-shell-script" title="Permalink to this headline">¶</a></h2>
 <p>This is a remote runner. Actions are implemented as scripts. They run on one or
 more remote hosts provided by the user. The last newline character is stripped
-from <code class="docutils literal"><span class="pre">stdout</span></code> and <code class="docutils literal"><span class="pre">stderr</span></code> fields in the output.</p>
+from <code class="docutils literal notranslate"><span class="pre">stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">stderr</span></code> fields in the output.</p>
 <div class="section" id="id3">
 <h3>Runner Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">username</span></code> (string) - Username used to log-in. If not provided, default username from config is used.</li>
-<li><code class="docutils literal"><span class="pre">private_key</span></code> (string) - Private key material to log in. Note: This needs to be actual private key data and NOT path.</li>
-<li><code class="docutils literal"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
-<li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script(e.g. key1=val1,key2=val2)</li>
-<li><code class="docutils literal"><span class="pre">sudo</span></code> (boolean) - The remote command will be executed with sudo.</li>
-<li><code class="docutils literal"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in.</li>
-<li><code class="docutils literal"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
-<li><code class="docutils literal"><span class="pre">bastion_host</span></code> (string) - The host SSH connections will be proxied through. Note: This connection is made using the same parameters as the final connection, and is only used in ParamikoSSHRunner.</li>
-<li><code class="docutils literal"><span class="pre">hosts</span></code> (string) - A comma delimited string of a list of hosts where the remote command will be executed.</li>
-<li><code class="docutils literal"><span class="pre">passphrase</span></code> (string) - Passphrase for the private key, if needed.</li>
-<li><code class="docutils literal"><span class="pre">parallel</span></code> (boolean) - Default to parallel execution.</li>
-<li><code class="docutils literal"><span class="pre">password</span></code> (string) - Password used to log in. If not provided, private key from the config file is used.</li>
-<li><code class="docutils literal"><span class="pre">port</span></code> (integer) - SSH port. Note: This parameter is used only in ParamikoSSHRunner.</li>
-<li><code class="docutils literal"><span class="pre">dir</span></code> (string) - The working directory where the script will be copied to on the remote host.</li>
+<li><code class="docutils literal notranslate"><span class="pre">username</span></code> (string) - Username used to log-in. If not provided, default username from config is used.</li>
+<li><code class="docutils literal notranslate"><span class="pre">private_key</span></code> (string) - Private key material to log in. Note: This needs to be actual private key data and NOT path.</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo_password</span></code> (string) - Sudo password. To be used when paswordless sudo is not allowed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script(e.g. key1=val1,key2=val2)</li>
+<li><code class="docutils literal notranslate"><span class="pre">sudo</span></code> (boolean) - The remote command will be executed with sudo.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cwd</span></code> (string) - Working directory where the script will be executed in.</li>
+<li><code class="docutils literal notranslate"><span class="pre">kwarg_op</span></code> (string) - Operator to use in front of keyword args i.e. “–” or “-“.</li>
+<li><code class="docutils literal notranslate"><span class="pre">bastion_host</span></code> (string) - The host SSH connections will be proxied through. Note: This connection is made using the same parameters as the final connection, and is only used in ParamikoSSHRunner.</li>
+<li><code class="docutils literal notranslate"><span class="pre">hosts</span></code> (string) - A comma delimited string of a list of hosts where the remote command will be executed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">passphrase</span></code> (string) - Passphrase for the private key, if needed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">parallel</span></code> (boolean) - Default to parallel execution.</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code> (string) - Password used to log in. If not provided, private key from the config file is used.</li>
+<li><code class="docutils literal notranslate"><span class="pre">port</span></code> (integer) - SSH port. Note: This parameter is used only in ParamikoSSHRunner.</li>
+<li><code class="docutils literal notranslate"><span class="pre">dir</span></code> (string) - The working directory where the script will be copied to on the remote host.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>If a value you specify for the <code class="docutils literal"><span class="pre">private_key</span></code> parameter is a path to the private key file, you
-need to make sure that the user under which action runner process is running (<code class="docutils literal"><span class="pre">stanley</span></code> by
+<p>If a value you specify for the <code class="docutils literal notranslate"><span class="pre">private_key</span></code> parameter is a path to the private key file, you
+need to make sure that the user under which action runner process is running (<code class="docutils literal notranslate"><span class="pre">stanley</span></code> by
 default) has read access to this key file. This private key file also needs be deployed and
 present in the same location on all the servers where action runner component is running.</p>
 <p class="last">In addition to that, if you utilize path to the private key file functionality, you are strongly
 encouraged to disable local runner in the config. If you don’t do that, any StackStorm user which has
-access to <code class="docutils literal"><span class="pre">core.local</span></code> action will be able to read this key and this can pose a security risk.</p>
+access to <code class="docutils literal notranslate"><span class="pre">core.local</span></code> action will be able to read this key and this can pose a security risk.</p>
 </div>
 </div>
 </div>
 <div class="section" id="windows-command-runner-windows-cmd">
 <h2>Windows Command Runner (windows-cmd)<a class="headerlink" href="#windows-command-runner-windows-cmd" title="Permalink to this headline">¶</a></h2>
-<p>The Windows command runner allows you to run the command-line interpreter (<code class="docutils literal"><span class="pre">cmd</span></code>) and PowerShell
+<p>The Windows command runner allows you to run the command-line interpreter (<code class="docutils literal notranslate"><span class="pre">cmd</span></code>) and PowerShell
 commands on Windows hosts.</p>
 <p>For more information on enabling and setting up the Windows runner, please see the following
 section - <a class="reference internal" href="../install/config/windows_runners.html"><span class="doc">Windows Runners Configuration</span></a>.</p>
 <div class="section" id="id4">
 <h3>Runner Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">username</span></code> (string) - Username used to log-in.</li>
-<li><code class="docutils literal"><span class="pre">cmd</span></code> (string) - Arbitrary command to be executed on the remote host.</li>
-<li><code class="docutils literal"><span class="pre">host</span></code> (string) - Host to execute the command on</li>
-<li><code class="docutils literal"><span class="pre">password</span></code> (string) - Password used to log in.</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">username</span></code> (string) - Username used to log-in.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cmd</span></code> (string) - Arbitrary command to be executed on the remote host.</li>
+<li><code class="docutils literal notranslate"><span class="pre">host</span></code> (string) - Host to execute the command on</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code> (string) - Password used to log in.</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
 </ul>
 </div>
 </div>
@@ -628,11 +628,11 @@ section - <a class="reference internal" href="../install/config/windows_runners.
 <div class="section" id="id5">
 <h3>Runner Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">username</span></code> (string) - Username used to log-in.</li>
-<li><code class="docutils literal"><span class="pre">host</span></code> (string) - Host to execute the command on</li>
-<li><code class="docutils literal"><span class="pre">password</span></code> (string) - Password used to log in.</li>
-<li><code class="docutils literal"><span class="pre">share</span></code> (string) - Name of the Windows share where script files are uploaded</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">username</span></code> (string) - Username used to log-in.</li>
+<li><code class="docutils literal notranslate"><span class="pre">host</span></code> (string) - Host to execute the command on</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code> (string) - Password used to log in.</li>
+<li><code class="docutils literal notranslate"><span class="pre">share</span></code> (string) - Name of the Windows share where script files are uploaded</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
 </ul>
 </div>
 </div>
@@ -642,57 +642,57 @@ section - <a class="reference internal" href="../install/config/windows_runners.
 <div class="section" id="id6">
 <h3>Runner Parameters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">username</span></code> (string) - Username required by basic authentication.</li>
-<li><code class="docutils literal"><span class="pre">cookies</span></code> (object) - Optional cookies to send with the request.</li>
-<li><code class="docutils literal"><span class="pre">headers</span></code> (object) - HTTP headers for the request.</li>
-<li><code class="docutils literal"><span class="pre">url</span></code> (string) - URL to the HTTP endpoint.</li>
-<li><code class="docutils literal"><span class="pre">http_proxy</span></code> (string) - URL of HTTP proxy to use (e.g. <a class="reference external" href="http://10.10.1.10:3128">http://10.10.1.10:3128</a>).</li>
-<li><code class="docutils literal"><span class="pre">https_proxy</span></code> (string) - URL of HTTPS proxy to use (e.g. <a class="reference external" href="http://10.10.1.10:3128">http://10.10.1.10:3128</a>).</li>
-<li><code class="docutils literal"><span class="pre">allow_redirects</span></code> (boolean) - Set to True if POST/PUT/DELETE redirect following is allowed.</li>
-<li><code class="docutils literal"><span class="pre">password</span></code> (string) - Password required by basic authentication.</li>
-<li><code class="docutils literal"><span class="pre">verify_ssl_cert</span></code> (boolean) - Certificate for HTTPS request is verified by default using requests CA bundle which comes from Mozilla. Verification using a custom CA bundle is not yet supported. Set to False to skip verification.</li>
+<li><code class="docutils literal notranslate"><span class="pre">username</span></code> (string) - Username required by basic authentication.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cookies</span></code> (object) - Optional cookies to send with the request.</li>
+<li><code class="docutils literal notranslate"><span class="pre">headers</span></code> (object) - HTTP headers for the request.</li>
+<li><code class="docutils literal notranslate"><span class="pre">url</span></code> (string) - URL to the HTTP endpoint.</li>
+<li><code class="docutils literal notranslate"><span class="pre">http_proxy</span></code> (string) - URL of HTTP proxy to use (e.g. <a class="reference external" href="http://10.10.1.10:3128">http://10.10.1.10:3128</a>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">https_proxy</span></code> (string) - URL of HTTPS proxy to use (e.g. <a class="reference external" href="http://10.10.1.10:3128">http://10.10.1.10:3128</a>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">allow_redirects</span></code> (boolean) - Set to True if POST/PUT/DELETE redirect following is allowed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">password</span></code> (string) - Password required by basic authentication.</li>
+<li><code class="docutils literal notranslate"><span class="pre">verify_ssl_cert</span></code> (boolean) - Certificate for HTTPS request is verified by default using requests CA bundle which comes from Mozilla. Verification using a custom CA bundle is not yet supported. Set to False to skip verification.</li>
 </ul>
-<p>Keep in mind that other parameters such as <code class="docutils literal"><span class="pre">body</span></code>, <code class="docutils literal"><span class="pre">method</span></code>, <code class="docutils literal"><span class="pre">headers</span></code>, etc. are defined
-as part of the <code class="docutils literal"><span class="pre">core.http</span></code> action.</p>
+<p>Keep in mind that other parameters such as <code class="docutils literal notranslate"><span class="pre">body</span></code>, <code class="docutils literal notranslate"><span class="pre">method</span></code>, <code class="docutils literal notranslate"><span class="pre">headers</span></code>, etc. are defined
+as part of the <code class="docutils literal notranslate"><span class="pre">core.http</span></code> action.</p>
 <div class="section" id="runner-result">
 <h4>Runner Result<a class="headerlink" href="#runner-result" title="Permalink to this headline">¶</a></h4>
 <p>The result object from this runner contains the following keys:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">status_code</span></code> (integer) - Response status code (e.g. 200, 404, etc.)</li>
-<li><code class="docutils literal"><span class="pre">body</span></code> (string/object) - Response body. If the response body contains JSON and the response
-<code class="docutils literal"><span class="pre">Content-Type</span></code> header is <code class="docutils literal"><span class="pre">application/json</span></code>, the body will be automatically parsed as JSON.</li>
-<li><code class="docutils literal"><span class="pre">parsed</span></code> (boolean) - Flag which indicates if the response body has been parsed.</li>
-<li><code class="docutils literal"><span class="pre">headers</span></code> - Response headers.</li>
+<li><code class="docutils literal notranslate"><span class="pre">status_code</span></code> (integer) - Response status code (e.g. 200, 404, etc.)</li>
+<li><code class="docutils literal notranslate"><span class="pre">body</span></code> (string/object) - Response body. If the response body contains JSON and the response
+<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header is <code class="docutils literal notranslate"><span class="pre">application/json</span></code>, the body will be automatically parsed as JSON.</li>
+<li><code class="docutils literal notranslate"><span class="pre">parsed</span></code> (boolean) - Flag which indicates if the response body has been parsed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">headers</span></code> - Response headers.</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="section" id="python-runner-python-script">
 <h2>Python Runner (python-script)<a class="headerlink" href="#python-runner-python-script" title="Permalink to this headline">¶</a></h2>
-<p>This is a Python runner. Actions are implemented as Python classes with a <code class="docutils literal"><span class="pre">run</span></code> method. They run
-locally on the machine where <code class="docutils literal"><span class="pre">st2actionrunner</span></code> is running.</p>
+<p>This is a Python runner. Actions are implemented as Python classes with a <code class="docutils literal notranslate"><span class="pre">run</span></code> method. They run
+locally on the machine where <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> is running.</p>
 <p>Python runner actions return an execution status (success, failure) by returning a tuple
-from the Python action class <code class="docutils literal"><span class="pre">run()</span></code> method. The first item in this tuple is a boolean
+from the Python action class <code class="docutils literal notranslate"><span class="pre">run()</span></code> method. The first item in this tuple is a boolean
 flag indicating success/failure and the second one is the result. However, execution status is
 optional i.e. the return value from action runner can either be a tuple of success status
 and result or just the result object.</p>
 <div class="section" id="id7">
 <h3>Runner Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">debug</span></code> (boolean) - Enable runner debug mode.</li>
-<li><code class="docutils literal"><span class="pre">content_version</span></code> (string) - Git revision of the pack content to use for this action execution (git commit sha / tag / branch). Only applies to packs which are git repositories.</li>
-<li><code class="docutils literal"><span class="pre">log_level</span></code> (string) - Default log level for Python runner actions.</li>
-<li><code class="docutils literal"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script.</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">debug</span></code> (boolean) - Enable runner debug mode.</li>
+<li><code class="docutils literal notranslate"><span class="pre">content_version</span></code> (string) - Git revision of the pack content to use for this action execution (git commit sha / tag / branch). Only applies to packs which are git repositories.</li>
+<li><code class="docutils literal notranslate"><span class="pre">log_level</span></code> (string) - Default log level for Python runner actions.</li>
+<li><code class="docutils literal notranslate"><span class="pre">env</span></code> (object) - Environment variables which will be available to the script.</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
 </ul>
 <div class="section" id="id8">
 <h4>Runner Result<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <p>The return value from this action runner is a tuple consisting of a boolean flag indicating
 success/failure and the second one is the result:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">status</span></code> (boolean) - Flag indicating action’s success, i.e. Succeeded status is True/False.
+<li><code class="docutils literal notranslate"><span class="pre">status</span></code> (boolean) - Flag indicating action’s success, i.e. Succeeded status is True/False.
 Note: This is an optional flag.</li>
-<li><code class="docutils literal"><span class="pre">result</span></code> (object) - result returned by the action based on success or failure.</li>
+<li><code class="docutils literal notranslate"><span class="pre">result</span></code> (object) - result returned by the action based on success or failure.</li>
 </ul>
 <p>The status flag allows users to return a result from a failing action. When the status flag is
 not used the only way for action to be considered as failed is to throw an exception or exit
@@ -708,8 +708,8 @@ For more information, please refer to the <a class="reference internal" href="..
 <div class="section" id="id9">
 <h3>Runner Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">display_published</span></code> (boolean) - Intermediate published variables will be stored and displayed.</li>
-<li><code class="docutils literal"><span class="pre">skip_notify</span></code> (array) - List of tasks to skip notifications for.</li>
+<li><code class="docutils literal notranslate"><span class="pre">display_published</span></code> (boolean) - Intermediate published variables will be stored and displayed.</li>
+<li><code class="docutils literal notranslate"><span class="pre">skip_notify</span></code> (array) - List of tasks to skip notifications for.</li>
 </ul>
 </div>
 </div>
@@ -721,10 +721,10 @@ workflows. For more information, please refer to the <a class="reference interna
 <div class="section" id="id10">
 <h3>Runner Parameters<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">skip_notify</span></code> (array) - List of tasks to skip notifications for.</li>
-<li><code class="docutils literal"><span class="pre">task</span></code> (string) - The name of the task to run for reverse workflow.</li>
-<li><code class="docutils literal"><span class="pre">context</span></code> (object) - Additional workflow inputs.</li>
-<li><code class="docutils literal"><span class="pre">workflow</span></code> (string) - The name of the workflow to run if the entry_point is a workbook of many workflows. The name should be in the format “&lt;pack_name&gt;.&lt;action_name&gt;.&lt;workflow_name&gt;”. If entry point is a workflow or a workbook with a single workflow, the runner will identify the workflow automatically.</li>
+<li><code class="docutils literal notranslate"><span class="pre">skip_notify</span></code> (array) - List of tasks to skip notifications for.</li>
+<li><code class="docutils literal notranslate"><span class="pre">task</span></code> (string) - The name of the task to run for reverse workflow.</li>
+<li><code class="docutils literal notranslate"><span class="pre">context</span></code> (object) - Additional workflow inputs.</li>
+<li><code class="docutils literal notranslate"><span class="pre">workflow</span></code> (string) - The name of the workflow to run if the entry_point is a workbook of many workflows. The name should be in the format “&lt;pack_name&gt;.&lt;action_name&gt;.&lt;workflow_name&gt;”. If entry point is a workflow or a workbook with a single workflow, the runner will identify the workflow automatically.</li>
 </ul>
 </div>
 </div>
@@ -738,8 +738,8 @@ the external user-facing API might change.</p>
 <div class="section" id="id11">
 <h3>Runner Parameters<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">inputs</span></code> (object) - Inputs which will be available to CloudSlang flow execution(e.g. input1=val1,input2=val2)</li>
-<li><code class="docutils literal"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
+<li><code class="docutils literal notranslate"><span class="pre">inputs</span></code> (object) - Inputs which will be available to CloudSlang flow execution(e.g. input1=val1,input2=val2)</li>
+<li><code class="docutils literal notranslate"><span class="pre">timeout</span></code> (integer) - Action timeout in seconds. Action will get killed if it doesn’t finish in timeout seconds.</li>
 </ul>
 </div>
 </div>

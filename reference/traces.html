@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -480,12 +480,12 @@ of the following:</p>
 <p>Sensors dispatch TriggerInstances into StackStorm and Webhooks are also translated to TriggerInstances
 when posted to StackStorm. Rules are written to match specific Triggers and compared against
 TriggerInstances.</p>
-<p>In the canonical case, a TriggerInstance <code class="docutils literal"><span class="pre">ti1</span></code> is dispatched by Sensor to StackStorm, matches a Rule
-<code class="docutils literal"><span class="pre">r1</span></code> leading to an ActionExecution <code class="docutils literal"><span class="pre">ae1</span></code>. On completion of <code class="docutils literal"><span class="pre">ae1</span></code> an ActionTrigger
-TriggerInstance <code class="docutils literal"><span class="pre">ti2</span></code> is dispatched by StackStorm.</p>
+<p>In the canonical case, a TriggerInstance <code class="docutils literal notranslate"><span class="pre">ti1</span></code> is dispatched by Sensor to StackStorm, matches a Rule
+<code class="docutils literal notranslate"><span class="pre">r1</span></code> leading to an ActionExecution <code class="docutils literal notranslate"><span class="pre">ae1</span></code>. On completion of <code class="docutils literal notranslate"><span class="pre">ae1</span></code> an ActionTrigger
+TriggerInstance <code class="docutils literal notranslate"><span class="pre">ti2</span></code> is dispatched by StackStorm.</p>
 <p>The trace created in this case contains all the entities from above, since they originate from the
-same event i.e. TriggerInstance <code class="docutils literal"><span class="pre">ti1</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Trace
+same event i.e. TriggerInstance <code class="docutils literal notranslate"><span class="pre">ti1</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Trace
   <span class="p">|</span>- ti1
   <span class="p">|</span>- r1
   <span class="p">|</span>- ae1
@@ -497,12 +497,12 @@ same event i.e. TriggerInstance <code class="docutils literal"><span class="pre"
 <h3>Connected Flows<a class="headerlink" href="#connected-flows" title="Permalink to this headline">¶</a></h3>
 <p>StackStorm raises an internal Trigger called the ActionTrigger. Rules can be used in conjunction with
 those, on completion of executions.</p>
-<p>An ActionExecution <code class="docutils literal"><span class="pre">ae1</span></code> is started by a user. On completion of <code class="docutils literal"><span class="pre">ae1</span></code> an ActionTrigger
-TriggerInstance <code class="docutils literal"><span class="pre">ti1</span></code> is dispatched. Rule <code class="docutils literal"><span class="pre">r1</span></code> matches it, and leads to ActionExecution
-<code class="docutils literal"><span class="pre">ae2</span></code>. Another ActionTrigger TriggerInstance <code class="docutils literal"><span class="pre">ti2</span></code> is dispatched but no rule is matched.</p>
+<p>An ActionExecution <code class="docutils literal notranslate"><span class="pre">ae1</span></code> is started by a user. On completion of <code class="docutils literal notranslate"><span class="pre">ae1</span></code> an ActionTrigger
+TriggerInstance <code class="docutils literal notranslate"><span class="pre">ti1</span></code> is dispatched. Rule <code class="docutils literal notranslate"><span class="pre">r1</span></code> matches it, and leads to ActionExecution
+<code class="docutils literal notranslate"><span class="pre">ae2</span></code>. Another ActionTrigger TriggerInstance <code class="docutils literal notranslate"><span class="pre">ti2</span></code> is dispatched but no rule is matched.</p>
 <p>The trace created in this case contains all the entities from above since they cascade from the
-same origin i.e. ActionExecution <code class="docutils literal"><span class="pre">ae1</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Trace
+same origin i.e. ActionExecution <code class="docutils literal notranslate"><span class="pre">ae1</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Trace
   <span class="p">|</span>- ae1
   <span class="p">|</span>- ti1
   <span class="p">|</span>- r1
@@ -524,11 +524,11 @@ injection points for StackStorm where a Trace can start are:</p>
 <div class="section" id="what-is-trace-tag-and-trace-id">
 <h3>What is trace_tag and trace_id?<a class="headerlink" href="#what-is-trace-tag-and-trace-id" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">trace-tag</span></code>: User specified and therefore friendly way to tag or identify a Trace. There is no
+<li><code class="docutils literal notranslate"><span class="pre">trace-tag</span></code>: User specified and therefore friendly way to tag or identify a Trace. There is no
 requirement for this value to be unique, and StackStorm will not enforce this. Whenever only a
-<code class="docutils literal"><span class="pre">trace-tag</span></code> is provided at one of the injection points a new Trace is started if one does not
+<code class="docutils literal notranslate"><span class="pre">trace-tag</span></code> is provided at one of the injection points a new Trace is started if one does not
 already exist.</li>
-<li><code class="docutils literal"><span class="pre">trace-id</span></code>: This is a StackStorm-defined value and is guaranteed to be unique. Users can specify
+<li><code class="docutils literal notranslate"><span class="pre">trace-id</span></code>: This is a StackStorm-defined value and is guaranteed to be unique. Users can specify
 this value at the injection points as well, but a Trace with the specified trace-id must already
 exist.</li>
 </ul>
@@ -538,11 +538,11 @@ exist.</li>
 <p>TriggerInstance dispatch usually happens from a Sensor. The <a class="reference internal" href="../sensors.html#ref-sensors-authoring-a-sensor"><span class="std std-ref">authoring a
 sensor</span></a> page contains information on how to introduce a Trace.</p>
 <p>A brief snippet is included here to explain some trace-specific constructs. A sensor would inject
-such triggers by using the <code class="docutils literal"><span class="pre">sensor_service</span></code> passed into the sensor on instantiation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">trigger</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">trace_tag</span><span class="o">=</span><span class="n">trace_tag</span><span class="p">)</span>
+such triggers by using the <code class="docutils literal notranslate"><span class="pre">sensor_service</span></code> passed into the sensor on instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">trigger</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">trace_tag</span><span class="o">=</span><span class="n">trace_tag</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Here the Sensor is expected to supply a meaningful value for <code class="docutils literal"><span class="pre">trace_tag</span></code> e.g.:</p>
+<p>Here the Sensor is expected to supply a meaningful value for <code class="docutils literal notranslate"><span class="pre">trace_tag</span></code> e.g.:</p>
 <ul class="simple">
 <li>Commit SHA of a git commit for a git commit hook trigger.</li>
 <li>ID of the event from a monitoring system, e.g. Sensu or Nagios.</li>
@@ -551,9 +551,9 @@ such triggers by using the <code class="docutils literal"><span class="pre">sens
 <div class="section" id="webhook">
 <h3>Webhook<a class="headerlink" href="#webhook" title="Permalink to this headline">¶</a></h3>
 <p>Both custom webhooks and generic StackStorm webhooks support supplying a trace-tag via the optional
-header <code class="docutils literal"><span class="pre">St2-Trace-Tag</span></code>.</p>
-<p>For a custom webhook, the equivalent <code class="docutils literal"><span class="pre">curl</span></code> command is:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -X POST http://127.0.0.1:9101/v1/webhooks/sample -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -H <span class="s2">&quot;St2-Trace-Tag: webhook-1&quot;</span> --data <span class="s1">&#39;{&quot;key1&quot;: &quot;value1&quot;}&#39;</span>
+header <code class="docutils literal notranslate"><span class="pre">St2-Trace-Tag</span></code>.</p>
+<p>For a custom webhook, the equivalent <code class="docutils literal notranslate"><span class="pre">curl</span></code> command is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST http://127.0.0.1:9101/v1/webhooks/sample -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -H <span class="s2">&quot;St2-Trace-Tag: webhook-1&quot;</span> --data <span class="s1">&#39;{&quot;key1&quot;: &quot;value1&quot;}&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -561,13 +561,13 @@ header <code class="docutils literal"><span class="pre">St2-Trace-Tag</span></co
 <h3>Execute an Action<a class="headerlink" href="#execute-an-action" title="Permalink to this headline">¶</a></h3>
 <p>Execution of an Action can also be associated with a Trace. Here’s how to do that via CLI:</p>
 <ul>
-<li><p class="first">To start a new trace use <code class="docutils literal"><span class="pre">trace-tag</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 run core.local date --trace-tag TraceDateAction
+<li><p class="first">To start a new trace use <code class="docutils literal notranslate"><span class="pre">trace-tag</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 run core.local date --trace-tag TraceDateAction
 </pre></div>
 </div>
 </li>
-<li><p class="first">To associate with an existing trace use <code class="docutils literal"><span class="pre">trace-id</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 run core.local uname --trace-id 55d505fd32ed35711522c4c8
+<li><p class="first">To associate with an existing trace use <code class="docutils literal notranslate"><span class="pre">trace-id</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 run core.local uname --trace-id 55d505fd32ed35711522c4c8
 </pre></div>
 </div>
 </li>
@@ -581,27 +581,27 @@ header <code class="docutils literal"><span class="pre">St2-Trace-Tag</span></co
 <h3>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">All traces in the system:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace list
 </pre></div>
 </div>
 </li>
 <li><p class="first">Filter by trace-id:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace list --trace-tag &lt;trace-tag&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace list --trace-tag &lt;trace-tag&gt;
 </pre></div>
 </div>
 </li>
 <li><p class="first">Filter by execution:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace list --execution 55d505fd32ed35711522c4c7
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace list --execution 55d505fd32ed35711522c4c7
 </pre></div>
 </div>
 </li>
 <li><p class="first">Filter by rule:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace list --rule 55d5064432ed35711522c4ca
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace list --rule 55d5064432ed35711522c4ca
 </pre></div>
 </div>
 </li>
 <li><p class="first">Filter by trigger-instance:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace list --trigger-instance 55d5069832ed35711cc4b08e
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace list --trigger-instance 55d5069832ed35711cc4b08e
 </pre></div>
 </div>
 </li>
@@ -611,24 +611,24 @@ header <code class="docutils literal"><span class="pre">St2-Trace-Tag</span></co
 <h3>Get<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Get a specific trace:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt;
 </pre></div>
 </div>
 </li>
 <li><p class="first">View the causation chain in a trace for an action execution. Similarly for rule and
 trigger-instance:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt; -e
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt; -e
 </pre></div>
 </div>
 </li>
 <li><p class="first">View specific type in a trace:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt; --show-executions
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt; --show-executions
 </pre></div>
 </div>
 </li>
 <li><p class="first">Hide no-op trigger instances. These are trigger instances which do not lead to a rule
 enforcement:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt; --hide-noop-triggers
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 trace get &lt;trace-id&gt; --hide-noop-triggers
 </pre></div>
 </div>
 </li>
@@ -637,8 +637,8 @@ enforcement:</p>
 </div>
 <div class="section" id="is-everything-traced">
 <h2>Is Everything Traced?<a class="headerlink" href="#is-everything-traced" title="Permalink to this headline">¶</a></h2>
-<p>By default all ActionExecutions and TriggerInstances are traced. If no <code class="docutils literal"><span class="pre">trace-tag</span></code> is provided by
-a user then StackStorm automatically generate a <code class="docutils literal"><span class="pre">trace-tag</span></code> to provide tracking.</p>
+<p>By default all ActionExecutions and TriggerInstances are traced. If no <code class="docutils literal notranslate"><span class="pre">trace-tag</span></code> is provided by
+a user then StackStorm automatically generate a <code class="docutils literal notranslate"><span class="pre">trace-tag</span></code> to provide tracking.</p>
 </div>
 </div>
 

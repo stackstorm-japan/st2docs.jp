@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -505,39 +505,39 @@ about what ChatOps means to us, and how it provides real-world value to you.</p>
 <span id="chatops-configuration"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="package-based-install">
 <h2>Package-based Install<a class="headerlink" href="#package-based-install" title="Permalink to this headline">¶</a></h2>
-<p>If you installed StackStorm following the <a class="reference internal" href="../install/index.html"><span class="doc">install docs</span></a>, the <code class="docutils literal"><span class="pre">st2chatops</span></code>
+<p>If you installed StackStorm following the <a class="reference internal" href="../install/index.html"><span class="doc">install docs</span></a>, the <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code>
 package will take care of everything for you. Hubot with the necessary adapters is already bundled,
-and environment variables are sourced from <code class="docutils literal"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code>.</p>
+and environment variables are sourced from <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code>.</p>
 <p>Edit the file to specify your Chat service and bot credentials. If you need extra environment
-settings for Hubot, you should store them in <code class="docutils literal"><span class="pre">st2chatops.env</span></code> as well.</p>
+settings for Hubot, you should store them in <code class="docutils literal notranslate"><span class="pre">st2chatops.env</span></code> as well.</p>
 <p>If you want the ChatOps messages to include the right hyperlink to execution url for the action
 you kicked off via ChatOps, you have to point StackStorm to the external address for the host running
-the web UI. To do so, edit the <code class="docutils literal"><span class="pre">webui</span></code> section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>. For example:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[webui]</span>
+the web UI. To do so, edit the <code class="docutils literal notranslate"><span class="pre">webui</span></code> section in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[webui]</span>
 <span class="na">webui_base_url</span> <span class="o">=</span> <span class="s">https://st2web001.stackstorm.net</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="using-an-external-adapter">
 <h2>Using an External Adapter<a class="headerlink" href="#using-an-external-adapter" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">st2chatops</span></code> package has an extensive list of built-in adapters for chat services, but if an
+<p>The <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> package has an extensive list of built-in adapters for chat services, but if an
 adapter for a service you use isn’t bundled there, you can install it manually.</p>
-<p>For example, here’s how to connect StackStorm to Mattermost using the <code class="docutils literal"><span class="pre">hubot-mattermost</span></code> adapter:</p>
+<p>For example, here’s how to connect StackStorm to Mattermost using the <code class="docutils literal notranslate"><span class="pre">hubot-mattermost</span></code> adapter:</p>
 <ol class="arabic simple">
 <li>Install the adapter.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/chatops
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/chatops
 $ sudo npm install hubot-mattermost
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li>Modify <code class="docutils literal"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code> to include
+<li>Modify <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code> to include
 the necessary adapter settings.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">HUBOT_ADAPTER</span><span class="o">=</span>mattermost
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">HUBOT_ADAPTER</span><span class="o">=</span>mattermost
 <span class="nb">export</span> <span class="nv">MATTERMOST_ENDPOINT</span><span class="o">=</span>/hubot/incoming
 <span class="nb">export</span> <span class="nv">MATTERMOST_INCOME_URL</span><span class="o">=</span>http://mm:31337/hooks/ncwc66caqf8d7c4gnqby1196qo
 <span class="nb">export</span> <span class="nv">MATTERMOST_TOKEN</span><span class="o">=</span>oqwx9d4khjra8cw3zbis1w6fqy
@@ -548,13 +548,13 @@ the necessary adapter settings.</li>
 <li>Restart the service.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo service st2chatops restart
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo service st2chatops restart
 </pre></div>
 </div>
 </div></blockquote>
 <p>Hubot should now connect to your chat service. Congratulations!</p>
 <p>Please note that while we always try to help the best we can, we can’t support adapters that are
-not bundled into <code class="docutils literal"><span class="pre">st2chatops</span></code> since they are too numerous. If you run into trouble with an
+not bundled into <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> since they are too numerous. If you run into trouble with an
 external adapter, it’s usually best to open an issue in the adapter’s GitHub repo or contact the
 authors.</p>
 <p>Hubot developers maintain a list of adapters on the
@@ -562,25 +562,25 @@ authors.</p>
 </div>
 <div class="section" id="bring-your-own-hubot">
 <h2>Bring Your Own Hubot<a class="headerlink" href="#bring-your-own-hubot" title="Permalink to this headline">¶</a></h2>
-<p>If you already have a Hubot instance, you’ll need the <code class="docutils literal"><span class="pre">hubot-stackstorm</span></code> module installed and
+<p>If you already have a Hubot instance, you’ll need the <code class="docutils literal notranslate"><span class="pre">hubot-stackstorm</span></code> module installed and
 the following environment variables set up:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ST2_API</span></code> FQDN + port to StackStorm endpoint. Typically: <code class="docutils literal"><span class="pre">https://&lt;host&gt;:443/api</span></code></li>
-<li><code class="docutils literal"><span class="pre">ST2_AUTH_URL</span></code> FQDN + port to StackStorm Auth endpoint: <code class="docutils literal"><span class="pre">https://&lt;host&gt;:443/auth</span></code></li>
-<li><code class="docutils literal"><span class="pre">ST2_API_KEY</span></code> StackStorm API key</li>
+<li><code class="docutils literal notranslate"><span class="pre">ST2_API</span></code> FQDN + port to StackStorm endpoint. Typically: <code class="docutils literal notranslate"><span class="pre">https://&lt;host&gt;:443/api</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ST2_AUTH_URL</span></code> FQDN + port to StackStorm Auth endpoint: <code class="docutils literal notranslate"><span class="pre">https://&lt;host&gt;:443/auth</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ST2_API_KEY</span></code> StackStorm API key</li>
 </ul>
 <p>Once done, start your Hubot instance. Validate that things are working correctly and that Hubot
-is connecting to your client by issuing the default <code class="docutils literal"><span class="pre">help</span></code> command:</p>
+is connecting to your client by issuing the default <code class="docutils literal notranslate"><span class="pre">help</span></code> command:</p>
 <div class="figure">
 <img alt="../_images/chatops_demo.gif" src="../_images/chatops_demo.gif" />
 </div>
-<p>By default, commands from the <code class="docutils literal"><span class="pre">st2</span></code> pack are installed. They are useful for getting info from
+<p>By default, commands from the <code class="docutils literal notranslate"><span class="pre">st2</span></code> pack are installed. They are useful for getting info from
 your StackStorm instance.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>You can issue Hubot commands in channels by using either <code class="docutils literal"><span class="pre">!</span></code> or the bot’s nickname. If your
-bot is named <code class="docutils literal"><span class="pre">&#64;ellie</span></code> in Slack, you can use both <code class="docutils literal"><span class="pre">!help</span></code> and <code class="docutils literal"><span class="pre">&#64;ellie:</span> <span class="pre">help</span></code>.</p>
-<p class="last">Note that if you send your command as a private message, you should just write <code class="docutils literal"><span class="pre">help</span></code>
+<p>You can issue Hubot commands in channels by using either <code class="docutils literal notranslate"><span class="pre">!</span></code> or the bot’s nickname. If your
+bot is named <code class="docutils literal notranslate"><span class="pre">&#64;ellie</span></code> in Slack, you can use both <code class="docutils literal notranslate"><span class="pre">!help</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;ellie:</span> <span class="pre">help</span></code>.</p>
+<p class="last">Note that if you send your command as a private message, you should just write <code class="docutils literal notranslate"><span class="pre">help</span></code>
 without an alias or a nickname. Your bot already knows you’re talking to her and not someone
 else!</p>
 </div>
@@ -590,16 +590,16 @@ else!</p>
 <div class="section" id="adding-new-chatops-commands">
 <h1>Adding New ChatOps Commands<a class="headerlink" href="#adding-new-chatops-commands" title="Permalink to this headline">¶</a></h1>
 <p>ChatOps uses <a class="reference internal" href="aliases.html"><span class="doc">Action Aliases</span></a> to define new ChatOps commands.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/
 $ mkdir -p my-chatops/<span class="o">{</span>actions,rules,sensors,aliases<span class="o">}</span>
 </pre></div>
 </div>
 <p>Now, let’s setup an alias. For the purpose of this setup aliases are stored in the directory
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/my-chatops/aliases</span></code>. We have already created this directory in a previous
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/my-chatops/aliases</span></code>. We have already created this directory in a previous
 step.</p>
-<p>This alias will execute commands on hosts through SSH with the <code class="docutils literal"><span class="pre">core.remote</span></code> action. Create a
-new file called <code class="docutils literal"><span class="pre">remote.yaml</span></code>, and add the following contents:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># packs/my-chatops/aliases/remote.yaml</span>
+<p>This alias will execute commands on hosts through SSH with the <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> action. Create a
+new file called <code class="docutils literal notranslate"><span class="pre">remote.yaml</span></code>, and add the following contents:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># packs/my-chatops/aliases/remote.yaml</span>
 <span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;remote_shell_cmd&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">action_ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.remote&quot;</span>
@@ -609,13 +609,13 @@ new file called <code class="docutils literal"><span class="pre">remote.yaml</sp
 </pre></div>
 </div>
 <p>Once this is all done, register the new files we created and reload Hubot:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo st2ctl reload --register-aliases
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo st2ctl reload --register-aliases
 $ sudo service st2chatops restart
 </pre></div>
 </div>
 <p>This will register the aliases we created, and tell Hubot to go and refresh its command list.</p>
 <p>You should now be able to go into your chatroom, and execute the command
-<code class="docutils literal"><span class="pre">!run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">localhost</span></code>, and StackStorm will take care of the rest.</p>
+<code class="docutils literal notranslate"><span class="pre">!run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">localhost</span></code>, and StackStorm will take care of the rest.</p>
 <div class="figure">
 <img alt="../_images/chatops_command_out.png" src="../_images/chatops_command_out.png" />
 </div>
@@ -623,9 +623,9 @@ $ sudo service st2chatops restart
 </div>
 <div class="section" id="logging">
 <h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
-<p>ChatOps logs are written to <code class="docutils literal"><span class="pre">/var/log/st2/st2chatops.log</span></code> on non systemd-based distros. For
+<p>ChatOps logs are written to <code class="docutils literal notranslate"><span class="pre">/var/log/st2/st2chatops.log</span></code> on non systemd-based distros. For
 systemd-based distros (Ubuntu 16, RHEL/CentOS 7), you can access the logs via
-<code class="docutils literal"><span class="pre">journalctl</span> <span class="pre">--unit=st2chatops</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">--unit=st2chatops</span></code></p>
 </div>
 
 

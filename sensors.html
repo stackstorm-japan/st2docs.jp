@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -479,7 +479,7 @@ typically register triggers though this is not strictly required. For example, t
 <div class="section" id="internal-triggers">
 <h2>Internal Triggers<a class="headerlink" href="#internal-triggers" title="Permalink to this headline">¶</a></h2>
 <p>By default StackStorm emits some internal triggers which you can leverage in rules. Those triggers can
-be distinguished from non-system triggers since they are prefixed with <code class="docutils literal"><span class="pre">st2.</span></code>.</p>
+be distinguished from non-system triggers since they are prefixed with <code class="docutils literal notranslate"><span class="pre">st2.</span></code>.</p>
 <p>A list of available triggers for each resource is included below:</p>
 <div class="section" id="action">
 <h3>Action<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
@@ -580,7 +580,7 @@ be distinguished from non-system triggers since they are prefixed with <code cla
 <span id="ref-sensors-authoring-a-sensor"></span><h2>Creating a Sensor<a class="headerlink" href="#creating-a-sensor" title="Permalink to this headline">¶</a></h2>
 <p>Creating a sensor involves writing a Python file and a YAML metadata file that defines the sensor.
 Here’s a minimal skeleton example. This is the metadata file:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">class_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;SampleSensor&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">entry_point</span><span class="p p-Indicator">:</span> <span class="s">&quot;sample_sensor.py&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Sample</span><span class="nv"> </span><span class="s">sensor</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">emits</span><span class="nv"> </span><span class="s">triggers.&quot;</span>
@@ -598,7 +598,7 @@ Here’s a minimal skeleton example. This is the metadata file:</p>
 </pre></div>
 </div>
 <p>And this is the corresponding Python skeleton:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2reactor.sensor.base</span> <span class="kn">import</span> <span class="n">Sensor</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2reactor.sensor.base</span> <span class="kn">import</span> <span class="n">Sensor</span>
 
 
 <span class="k">class</span> <span class="nc">SampleSensor</span><span class="p">(</span><span class="n">Sensor</span><span class="p">):</span>
@@ -656,7 +656,7 @@ Here’s a minimal skeleton example. This is the metadata file:</p>
 a sensor that actually injects triggersinto the system, look at the <a class="reference external" href="#examples">examples</a>
 section below.</p>
 <p>Your sensor should generate triggers in Python dict form:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">trigger</span> <span class="o">=</span> <span class="s1">&#39;pack.name&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigger</span> <span class="o">=</span> <span class="s1">&#39;pack.name&#39;</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;executed_at&#39;</span><span class="p">:</span> <span class="s1">&#39;2014-08-01T00:00:00.000000Z&#39;</span>
 <span class="p">}</span>
@@ -665,12 +665,12 @@ section below.</p>
 </div>
 <p>The sensor injects such triggers by using the sensor_service passed into the sensor on
 instantiation.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">trigger</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">trace_tag</span><span class="o">=</span><span class="n">trace_tag</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">trigger</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">trace_tag</span><span class="o">=</span><span class="n">trace_tag</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If you want a sensor that polls an external system at regular intervals, you can use a
 PollingSensor instead of Sensor as the base class.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2reactor.sensor.base</span> <span class="kn">import</span> <span class="n">PollingSensor</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">st2reactor.sensor.base</span> <span class="kn">import</span> <span class="n">PollingSensor</span>
 
 
 <span class="k">class</span> <span class="nc">SamplePollingSensor</span><span class="p">(</span><span class="n">PollingSensor</span><span class="p">):</span>
@@ -729,22 +729,22 @@ PollingSensor instead of Sensor as the base class.</p>
         <span class="k">pass</span>
 </pre></div>
 </div>
-<p>Polling Sensors also require a <code class="docutils literal"><span class="pre">poll_interval</span></code> parameter in the metadata file. This defines
-(in seconds) how frequently the <code class="docutils literal"><span class="pre">poll()</span></code> method is called.</p>
+<p>Polling Sensors also require a <code class="docutils literal notranslate"><span class="pre">poll_interval</span></code> parameter in the metadata file. This defines
+(in seconds) how frequently the <code class="docutils literal notranslate"><span class="pre">poll()</span></code> method is called.</p>
 </div>
 <div class="section" id="how-sensors-are-run">
 <h2>How Sensors are Run<a class="headerlink" href="#how-sensors-are-run" title="Permalink to this headline">¶</a></h2>
-<p>Each sensor runs as a separate process. The <code class="docutils literal"><span class="pre">st2sensorcontainer</span></code> (see
-<a class="reference internal" href="install/overview.html"><span class="doc">Overview</span></a>) starts <code class="docutils literal"><span class="pre">sensor_wrapper.py</span></code> which wraps your Sensor class
-(such as <code class="docutils literal"><span class="pre">SampleSensor</span></code> or <code class="docutils literal"><span class="pre">SamplePollingSensor</span></code> above) in a
+<p>Each sensor runs as a separate process. The <code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code> (see
+<a class="reference internal" href="install/overview.html"><span class="doc">Overview</span></a>) starts <code class="docutils literal notranslate"><span class="pre">sensor_wrapper.py</span></code> which wraps your Sensor class
+(such as <code class="docutils literal notranslate"><span class="pre">SampleSensor</span></code> or <code class="docutils literal notranslate"><span class="pre">SamplePollingSensor</span></code> above) in a
 <a class="reference internal" href="#ref-sensors-authoring-a-sensor"><span class="std std-ref">st2reactor.container.sensor_wrapper.SensorWrapper</span></a>.</p>
 </div>
 <div class="section" id="sensor-service">
 <h2>Sensor Service<a class="headerlink" href="#sensor-service" title="Permalink to this headline">¶</a></h2>
-<p>As you can see in the example above, a <code class="docutils literal"><span class="pre">sensor_service</span></code> is passed to each sensor class
+<p>As you can see in the example above, a <code class="docutils literal notranslate"><span class="pre">sensor_service</span></code> is passed to each sensor class
 constructor on instantiation.</p>
 <p>The Sensor service provides different services to the sensor via public methods. The most
-important one is the <code class="docutils literal"><span class="pre">dispatch</span></code> method which allows sensors to inject triggers into the system.</p>
+important one is the <code class="docutils literal notranslate"><span class="pre">dispatch</span></code> method which allows sensors to inject triggers into the system.</p>
 <p>All public methods are described below:</p>
 </div>
 <div class="section" id="common-operations">
@@ -753,7 +753,7 @@ important one is the <code class="docutils literal"><span class="pre">dispatch</
 <h3>1. dispatch(trigger, payload, trace_tag)<a class="headerlink" href="#dispatch-trigger-payload-trace-tag" title="Permalink to this headline">¶</a></h3>
 <p>This method allows the sensor to inject triggers into the system.</p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">trigger</span> <span class="o">=</span> <span class="s1">&#39;pack.name&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trigger</span> <span class="o">=</span> <span class="s1">&#39;pack.name&#39;</span>
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;executed_at&#39;</span><span class="p">:</span> <span class="s1">&#39;2014-08-01T00:00:00.000000Z&#39;</span>
 <span class="p">}</span>
@@ -768,7 +768,7 @@ important one is the <code class="docutils literal"><span class="pre">dispatch</
 <p>This method allows the sensor instance to retrieve the logger instance which is specific
 to that sensor.</p>
 <p>For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">_logger</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">get_logger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Polling 3rd party system for information&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -780,10 +780,10 @@ to that sensor.</p>
 and manipulating the <a class="reference internal" href="datastore.html"><span class="doc">datastore</span></a>.</p>
 <p>Each sensor has a namespace which is local to it and by default, all the datastore operations
 operate on the keys in that sensor-local namespace. If you want to operate on a global namespace,
-you need to pass the <code class="docutils literal"><span class="pre">local=False</span></code> argument to the datastore manipulation method.</p>
+you need to pass the <code class="docutils literal notranslate"><span class="pre">local=False</span></code> argument to the datastore manipulation method.</p>
 <p>Among other reasons, this functionality is useful if you want to persist temporary data between
 sensor runs.</p>
-<p>A good example of this functionality in action is <code class="docutils literal"><span class="pre">TwitterSensor</span></code>. The Twitter sensor persists
+<p>A good example of this functionality in action is <code class="docutils literal notranslate"><span class="pre">TwitterSensor</span></code>. The Twitter sensor persists
 the ID of the last processed tweet after every poll in the datastore. This way if the sensor is
 restarted or if it crashes, the sensor can resume from where it left off without injecting
 duplicate triggers into the system.</p>
@@ -792,8 +792,8 @@ StackStorm Exchange</a></p>
 <div class="section" id="list-values-local-true-prefix-none">
 <h3>1. list_values(local=True, prefix=None)<a class="headerlink" href="#list-values-local-true-prefix-none" title="Permalink to this headline">¶</a></h3>
 <p>This method allows you to list the values in the datastore. You can also filter by key name prefix
-(key name starts with) by passing <code class="docutils literal"><span class="pre">prefix</span></code> argument to the method:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">kvps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">list_values</span><span class="p">(</span><span class="n">local</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;cmdb.&#39;</span><span class="p">)</span>
+(key name starts with) by passing <code class="docutils literal notranslate"><span class="pre">prefix</span></code> argument to the method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kvps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">list_values</span><span class="p">(</span><span class="n">local</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;cmdb.&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">kvp</span> <span class="ow">in</span> <span class="n">kvps</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">kvp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
@@ -804,12 +804,12 @@ StackStorm Exchange</a></p>
 <div class="section" id="get-value-name-local-true-decrypt-false">
 <h3>2. get_value(name, local=True, decrypt=False)<a class="headerlink" href="#get-value-name-local-true-decrypt-false" title="Permalink to this headline">¶</a></h3>
 <p>This method allows you to retrieve a single value from the datastore:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">kvp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;cmdb.api_host&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kvp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;cmdb.api_host&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">kvp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>If the value is encrypted, you can decrypt it with this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">kvp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;cmdb.api_password&#39;</span><span class="p">,</span> <span class="n">decrypt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kvp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">&#39;cmdb.api_password&#39;</span><span class="p">,</span> <span class="n">decrypt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">kvp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -818,12 +818,12 @@ StackStorm Exchange</a></p>
 <h3>3. set_value(name, value, ttl=None, local=True, encrypt=False)<a class="headerlink" href="#set-value-name-value-ttl-none-local-true-encrypt-false" title="Permalink to this headline">¶</a></h3>
 <p>This method allows you to store (set) a value in the datastore. Optionally you can also specify
 time to live (TTL) for the stored value:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">last_id</span> <span class="o">=</span> <span class="mi">12345</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_id</span> <span class="o">=</span> <span class="mi">12345</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;last_id&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">last_id</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Secret values can be encrypted in the datastore:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ma_password</span> <span class="o">=</span> <span class="s1">&#39;Sup3rS34et&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ma_password</span> <span class="o">=</span> <span class="s1">&#39;Sup3rS34et&#39;</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;ma_password&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">ma_password</span><span class="p">,</span> <span class="n">encrypt</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -831,8 +831,8 @@ time to live (TTL) for the stored value:</p>
 <div class="section" id="delete-value-name-local-true">
 <h3>4. delete_value(name, local=True)<a class="headerlink" href="#delete-value-name-local-true" title="Permalink to this headline">¶</a></h3>
 <p>This method allows you to delete an existing value from the datastore. If a value is not found this
-method will return <code class="docutils literal"><span class="pre">False</span></code>, <code class="docutils literal"><span class="pre">True</span></code> otherwise.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">delete_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_key&#39;</span><span class="p">)</span>
+method will return <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code> otherwise.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">sensor_service</span><span class="o">.</span><span class="n">delete_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_key&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -852,8 +852,8 @@ methods which can be called by the sensor.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>trigger</strong> (<code class="docutils literal"><span class="pre">str</span></code>) – Full name / reference of the trigger.</li>
-<li><strong>payload</strong> (<code class="docutils literal"><span class="pre">dict</span></code>) – Trigger payload.</li>
+<li><strong>trigger</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Full name / reference of the trigger.</li>
+<li><strong>payload</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) – Trigger payload.</li>
 <li><strong>trace_tag</strong> – Tracer to track the triggerinstance.</li>
 </ul>
 </td>
@@ -871,9 +871,9 @@ methods which can be called by the sensor.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>trigger</strong> (<code class="docutils literal"><span class="pre">str</span></code>) – Full name / reference of the trigger.</li>
-<li><strong>payload</strong> (<code class="docutils literal"><span class="pre">dict</span></code>) – Trigger payload.</li>
-<li><strong>trace_context</strong> (<code class="docutils literal"><span class="pre">st2common.api.models.api.trace.TraceContext</span></code>) – Trace context to associate with Trigger.</li>
+<li><strong>trigger</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – Full name / reference of the trigger.</li>
+<li><strong>payload</strong> (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) – Trigger payload.</li>
+<li><strong>trace_context</strong> (<code class="docutils literal notranslate"><span class="pre">st2common.api.models.api.trace.TraceContext</span></code>) – Trace context to associate with Trigger.</li>
 </ul>
 </td>
 </tr>
@@ -896,30 +896,30 @@ methods which can be called by the sensor.</p>
 <p>Once you write your own sensor, the following steps can be used to run your sensor for the first
 time:</p>
 <ol class="arabic">
-<li><p class="first">Place the sensor Python file and YAML metadata in the <code class="docutils literal"><span class="pre">default</span></code> pack in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/default/sensors/</span></code>. Alternatively, you can create a custom
-pack in <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/</span></code> with the appropriate pack structure (see
+<li><p class="first">Place the sensor Python file and YAML metadata in the <code class="docutils literal notranslate"><span class="pre">default</span></code> pack in
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/default/sensors/</span></code>. Alternatively, you can create a custom
+pack in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/</span></code> with the appropriate pack structure (see
 <a class="reference internal" href="reference/packs.html"><span class="doc">Create and Contribute a Pack</span></a>) and place the sensor artifacts there.</p>
 </li>
-<li><p class="first">Register the sensor with <code class="docutils literal"><span class="pre">st2ctl</span></code>. Watch for any errors in sensor registration:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2ctl reload --register-all
+<li><p class="first">Register the sensor with <code class="docutils literal notranslate"><span class="pre">st2ctl</span></code>. Watch for any errors in sensor registration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2ctl reload --register-all
 </pre></div>
 </div>
 <p>If there are errors in registration, fix the errors and re-register them using
-<code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code>.</p>
 </li>
 <li><p class="first">If registration is successful, the sensor will run automatically.</p>
 </li>
 </ol>
 <p>Once you like your sensor, you can promote it to a pack (if required) by creating a pack in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/${pack_name}</span></code> and moving the sensor artifacts (YAML and Python) to
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/${pack_name}/sensors/</span></code>. See <a class="reference internal" href="reference/packs.html"><span class="doc">Create and Contribute a Pack</span></a> for how to create a pack.</p>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/${pack_name}</span></code> and moving the sensor artifacts (YAML and Python) to
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/${pack_name}/sensors/</span></code>. See <a class="reference internal" href="reference/packs.html"><span class="doc">Create and Contribute a Pack</span></a> for how to create a pack.</p>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>This is a working example of a simple sensor that injects a trigger every 10 seconds.</p>
 <p>Metadata:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">class_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;HelloSensor&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">entry_point</span><span class="p p-Indicator">:</span> <span class="s">&quot;sensor1.py&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Test</span><span class="nv"> </span><span class="s">sensor</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">emits</span><span class="nv"> </span><span class="s">triggers.&quot;</span>
@@ -932,7 +932,7 @@ pack in <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/<
 </pre></div>
 </div>
 <p>Python code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventlet</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eventlet</span>
 
 <span class="kn">from</span> <span class="nn">st2reactor.sensor.base</span> <span class="kn">import</span> <span class="n">Sensor</span>
 
@@ -991,12 +991,12 @@ Here’s just a few:</p>
 <div class="section" id="debugging-a-sensor-from-a-pack">
 <h2>Debugging a Sensor From a Pack<a class="headerlink" href="#debugging-a-sensor-from-a-pack" title="Permalink to this headline">¶</a></h2>
 <p>If you just want to run a single sensor from a pack and the sensor is already registered, you can
-use the <code class="docutils literal"><span class="pre">st2sensorcontainer</span></code> to run just that single sensor:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2sensorcontainer --config-file<span class="o">=</span>/etc/st2/st2.conf --sensor-ref<span class="o">=</span>pack.SensorClassName
+use the <code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code> to run just that single sensor:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2sensorcontainer --config-file<span class="o">=</span>/etc/st2/st2.conf --sensor-ref<span class="o">=</span>pack.SensorClassName
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2sensorcontainer --config-file<span class="o">=</span>/etc/st2/st2.conf --sensor-ref<span class="o">=</span>git.GitCommitSensor
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2sensorcontainer --config-file<span class="o">=</span>/etc/st2/st2.conf --sensor-ref<span class="o">=</span>git.GitCommitSensor
 </pre></div>
 </div>
 <div class="section" id="sharing-code-between-python-sensors-and-actions">

@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,8 +467,8 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This feature was adding in StackStorm v2.5.0 and above. Initially it was disabled by default. From v2.6.0,
-it is enabled by default. This can be changed with the <code class="docutils literal"><span class="pre">actionrunner.stream_output</span></code> config option
-in <code class="docutils literal"><span class="pre">st2.conf</span></code>.</p>
+it is enabled by default. This can be changed with the <code class="docutils literal notranslate"><span class="pre">actionrunner.stream_output</span></code> config option
+in <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code>.</p>
 </div>
 <div class="section" id="how-it-works">
 <h2>How it Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
@@ -488,10 +488,10 @@ scenarios where you want to see the output in an incremental manner as soon as i
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>Output streaming only works with the remote runner when you run the command/script on a single host
-at once (when you pass a single host for the <code class="docutils literal"><span class="pre">host</span></code> parameter - one host per action execution).</p>
+at once (when you pass a single host for the <code class="docutils literal notranslate"><span class="pre">host</span></code> parameter - one host per action execution).</p>
 <p>If you want to run a command/script on multiple hosts and you want real-time action output, you
 should create one execution per host as shown below:</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span></span>st2 run examples.my_remote_action <span class="nv">host</span><span class="o">=</span>host1
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run examples.my_remote_action <span class="nv">host</span><span class="o">=</span>host1
 st2 run examples.my_remote_action <span class="nv">host</span><span class="o">=</span>host2
 st2 run examples.my_remote_action <span class="nv">host</span><span class="o">=</span>host3
 
@@ -510,8 +510,8 @@ delayed, depending on the size of the buffer used by the underlying script/progr
 after an execution has been scheduled.</p>
 <div class="section" id="via-cli">
 <h3>1. Via CLI<a class="headerlink" href="#via-cli" title="Permalink to this headline">¶</a></h3>
-<p>The easiest way to access the output is to use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">tail</span> <span class="pre">&lt;execution</span> <span class="pre">id&gt;</span></code> command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 execution tail &lt;execution id&gt; <span class="o">[</span>--type<span class="o">=</span>stdout/stderr/other<span class="o">]</span>
+<p>The easiest way to access the output is to use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">tail</span> <span class="pre">&lt;execution</span> <span class="pre">id&gt;</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 execution tail &lt;execution id&gt; <span class="o">[</span>--type<span class="o">=</span>stdout/stderr/other<span class="o">]</span>
 st2 execution tail last  <span class="c1"># &quot;last&quot; is a special convenience keyword which will automatically</span>
                          <span class="c1"># retrieve and use ID of the last execution which has been scheduled.</span>
 </pre></div>
@@ -520,7 +520,7 @@ st2 execution tail last  <span class="c1"># &quot;last&quot; is a special conven
 available.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">tail</span></code> Only displays output for simple actions and workflows which are not
+<p><code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">tail</span></code> Only displays output for simple actions and workflows which are not
 nested (e.g. workflow which calls a simple action).</p>
 <p class="last">If you have multiple levels of nested workflows (e.g. workflow which calls a workflow which
 calls an action) and you want to see output of an action which is called by a nested workflow,
@@ -530,8 +530,8 @@ you need to directly tail execution of a nested workflow.</p>
 which comes in after you ran the command.</p>
 <p>If you want to view output of an execution which has completed, you can use the execution output
 API endpoint (see below) or use the executions API endpoint
-(<code class="docutils literal"><span class="pre">GET</span> <span class="pre">/v1/executions/&lt;execution</span> <span class="pre">id&gt;</span></code>) and access the <code class="docutils literal"><span class="pre">result</span></code> attribute on the returned object.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Tailing running execution</span>
+(<code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/v1/executions/&lt;execution</span> <span class="pre">id&gt;</span></code>) and access the <code class="docutils literal notranslate"><span class="pre">result</span></code> attribute on the returned object.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tailing running execution</span>
 $ st2 execution tail last
 stderr -&gt; Line: <span class="m">7</span>
 stdout -&gt; Line: <span class="m">8</span>
@@ -556,9 +556,9 @@ Execution 59a7f8260640fd686303e628 has completed.
 <h3>2. Via the StackStorm API<a class="headerlink" href="#via-the-stackstorm-api" title="Permalink to this headline">¶</a></h3>
 <p>Output can also be accessed in real-time using the StackStorm API:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/v1/executions/&lt;execution</span> <span class="pre">id&gt;/output[?type=stdout/stderr/other]</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/v1/executions/&lt;execution</span> <span class="pre">id&gt;/output[?type=stdout/stderr/other]</span></code></li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl <span class="s2">&quot;http://127.0.0.1:9101/v1/executions/last/output&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl <span class="s2">&quot;http://127.0.0.1:9101/v1/executions/last/output&quot;</span>
 stderr -&gt; Line: <span class="m">1</span>
 stdout -&gt; Line: <span class="m">2</span>
 stderr -&gt; Line: <span class="m">3</span>
@@ -575,16 +575,16 @@ stdout -&gt; Line: <span class="m">10</span>
 closes the connection.</p>
 <p>Once requested, the API endpoint returns any data which has been produced so far and after that,
 any new data as it becomes available.</p>
-<p>Similar to the CLI command, you can also use <code class="docutils literal"><span class="pre">last</span></code> for the execution id, and the ID of the
+<p>Similar to the CLI command, you can also use <code class="docutils literal notranslate"><span class="pre">last</span></code> for the execution id, and the ID of the
 execution which has been scheduled last will be used.</p>
 </div>
 <div class="section" id="via-the-stackstorm-stream-api">
 <h3>3. Via the StackStorm Stream API<a class="headerlink" href="#via-the-stackstorm-stream-api" title="Permalink to this headline">¶</a></h3>
 <p>In addition to the StackStorm API above, output can also be accessed using the event stream API.</p>
 <p>This API endpoint follows the server-sent event specification (JSON messages delimited by a new line
-- <code class="docutils literal"><span class="pre">\n</span></code>) and is also used for other events. The name of the event is
-<code class="docutils literal"><span class="pre">st2.execution.output__create</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:9102/v1/stream?events<span class="o">=</span>st2.execution.output__create
+- <code class="docutils literal notranslate"><span class="pre">\n</span></code>) and is also used for other events. The name of the event is
+<code class="docutils literal notranslate"><span class="pre">st2.execution.output__create</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl http://127.0.0.1:9102/v1/stream?events<span class="o">=</span>st2.execution.output__create
 
 event: st2.execution.output__create
 data: <span class="o">{</span><span class="s2">&quot;timestamp&quot;</span>: <span class="s2">&quot;2017-09-12T13:31:28.608095Z&quot;</span>, <span class="s2">&quot;runner_ref&quot;</span>: <span class="s2">&quot;remote-shell-cmd&quot;</span>, <span class="s2">&quot;output_type&quot;</span>: <span class="s2">&quot;stderr&quot;</span>, <span class="s2">&quot;action_ref&quot;</span>: <span class="s2">&quot;examples.remote_command_runner_print_to_stdout_and_stderr&quot;</span>, <span class="s2">&quot;data&quot;</span>: <span class="s2">&quot;stderr line 1\n&quot;</span>, <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;59b7e1b00640fd119d798359&quot;</span>, <span class="s2">&quot;execution_id&quot;</span>: <span class="s2">&quot;59b7e1ae0640fd0f72fdc746&quot;</span><span class="o">}</span>
@@ -600,14 +600,14 @@ data: <span class="o">{</span><span class="s2">&quot;timestamp&quot;</span>: <sp
 </pre></div>
 </div>
 <p>Keep in mind that this feature is still behind a feature flag and that’s why you need to explicitly
-pass <code class="docutils literal"><span class="pre">?events=st2.execution.output__create</span></code> query param to the API endpoint to make sure you also
+pass <code class="docutils literal notranslate"><span class="pre">?events=st2.execution.output__create</span></code> query param to the API endpoint to make sure you also
 receive these events.</p>
 </div>
 </div>
 <div class="section" id="security-implications">
 <h2>Security Implications<a class="headerlink" href="#security-implications" title="Permalink to this headline">¶</a></h2>
 <p>This functionality can be restricted via RBAC. To access the execution stdout and stderr API
-endpoint, <code class="docutils literal"><span class="pre">EXECUTION_VIEW</span></code> permission type is required.</p>
+endpoint, <code class="docutils literal notranslate"><span class="pre">EXECUTION_VIEW</span></code> permission type is required.</p>
 <p>Depending on your actions and what kind of output they produce, the output may contain sensitive
 data. Because of that you are strongly encouraged to only grant this permission to users who explicitly
 require it. In addition to that, you are also strongly encouraged to modify your actions to mask/hide
@@ -616,20 +616,20 @@ processing inside StackStorm.</p>
 <p>For more information about masking and securely passing secrets between the actions, please see
 <a class="reference internal" href="secrets_masking.html"><span class="doc">Secrets Masking</span></a> page.</p>
 <p>Keep in mind that action output data is the same data which is available via execution
-<code class="docutils literal"><span class="pre">result</span></code> attribute through <code class="docutils literal"><span class="pre">/v1/executions/&lt;execution</span> <span class="pre">id&gt;</span></code> API endpoint (this API endpoint
-also requires <code class="docutils literal"><span class="pre">EXECUTION_VIEW</span></code> RBAC permission).</p>
+<code class="docutils literal notranslate"><span class="pre">result</span></code> attribute through <code class="docutils literal notranslate"><span class="pre">/v1/executions/&lt;execution</span> <span class="pre">id&gt;</span></code> API endpoint (this API endpoint
+also requires <code class="docutils literal notranslate"><span class="pre">EXECUTION_VIEW</span></code> RBAC permission).</p>
 </div>
 <div class="section" id="garbage-collection">
 <h2>Garbage Collection<a class="headerlink" href="#garbage-collection" title="Permalink to this headline">¶</a></h2>
 <p>If your actions produce a lot of output, enabling real-time output streaming for each action execution
 can result large amounts of data being passed around and stored in the database. This data is stored
-in the special write ahead database collections (<code class="docutils literal"><span class="pre">action_execution_stdout_output_d_b</span></code>,
-<code class="docutils literal"><span class="pre">action_execution_stderr_output_d_b</span></code>).</p>
+in the special write ahead database collections (<code class="docutils literal notranslate"><span class="pre">action_execution_stdout_output_d_b</span></code>,
+<code class="docutils literal notranslate"><span class="pre">action_execution_stderr_output_d_b</span></code>).</p>
 <p>Because of that, garbage collection is enabled by default for execution stdout and stderr objects
 - they are deleted automatically after 7 days.</p>
 <p>If you want to disable garbage collection for those objects (unwise) or change the default TTL, you can
-do that by setting the <code class="docutils literal"><span class="pre">garbagecollector.action_executions_ttl</span></code> config option. This option is the TTL
-in days. Setting it to <code class="docutils literal"><span class="pre">0</span></code> disables garbage collection.</p>
+do that by setting the <code class="docutils literal notranslate"><span class="pre">garbagecollector.action_executions_ttl</span></code> config option. This option is the TTL
+in days. Setting it to <code class="docutils literal notranslate"><span class="pre">0</span></code> disables garbage collection.</p>
 <p>For more information on setting up garbage collection, please refer to the
 <a class="reference internal" href="../troubleshooting/purging_old_data.html"><span class="doc">Purging Old Operational Data</span></a> documentation page.</p>
 </div>

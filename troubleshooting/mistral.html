@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,17 +467,17 @@
 <p>This section contains information on how to troubleshoot Mistral-related issues.</p>
 <div class="section" id="troubleshooting-mistral-database-upgrade">
 <h2>Troubleshooting Mistral Database Upgrade<a class="headerlink" href="#troubleshooting-mistral-database-upgrade" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">mistral</span></code> and <code class="docutils literal"><span class="pre">mistral-api</span></code> services must not be running at time of upgrading the st2mistral
+<p>The <code class="docutils literal notranslate"><span class="pre">mistral</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> services must not be running at time of upgrading the st2mistral
 package and the Mistral database schema. If the st2mistral package has been upgraded and the
-services are started before the <code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> CLI command is executed, then the
-<code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command may fail.</p>
-<p>When the <code class="docutils literal"><span class="pre">mistral</span></code> and <code class="docutils literal"><span class="pre">mistral-api</span></code> services run, SQLAlchemy automatically creates tables,
+services are started before the <code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> CLI command is executed, then the
+<code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command may fail.</p>
+<p>When the <code class="docutils literal notranslate"><span class="pre">mistral</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> services run, SQLAlchemy automatically creates tables,
 relationships, and indices that do not exist. If there are new database objects in the upgraded
-database schema, the <code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command will fail because the actual schema
+database schema, the <code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command will fail because the actual schema
 in the database is now different than its specifications, and it no longer can create the new database
 objects.</p>
 <p>When that happens, the new database tables, relationships, and indices must be deleted before the
-<code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command can be re-run. For more details, review the version-specific
+<code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command can be re-run. For more details, review the version-specific
 notes in the <a class="reference internal" href="../install/upgrades.html"><span class="doc">Upgrades</span></a> documentation, for the version of Mistral and StackStorm you are upgrading
 too.</p>
 </div>
@@ -487,24 +487,24 @@ too.</p>
 querying Mistral at regular intervals, Mistral is configured to callback StackStorm on task and workflow completion.
 See <a class="reference internal" href="../mistral.html#mistral-workflows-completion-latency-and-performance"><span class="std std-ref">Mistral Workflows Completion, Latency, and Performance</span></a></p>
 <p>Prior to v2.7, StackStorm queries Mistral to check on workflow execution status and the status of individual tasks
-via st2resultstracker. This <code class="docutils literal"><span class="pre">st2resultstracker</span></code> process saves the state of outstanding workflow executions
+via st2resultstracker. This <code class="docutils literal notranslate"><span class="pre">st2resultstracker</span></code> process saves the state of outstanding workflow executions
 in the database, and once a workflow is complete, deletes the state from the database. The process uses
 eventlets to simultaneously query multiple workflow results. This can consume significant CPU cycles.</p>
-<p>There are two configurable values for controlling this. These are <code class="docutils literal"><span class="pre">thread_pool_size</span></code> (number of eventlets)
-and <code class="docutils literal"><span class="pre">query_interval</span></code> (interval to space out the subsequent queries to Mistral for a single execution). You
-can configure these values by editing the <code class="docutils literal"><span class="pre">results_tracker</span></code> section in <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[resultstracker]</span>
+<p>There are two configurable values for controlling this. These are <code class="docutils literal notranslate"><span class="pre">thread_pool_size</span></code> (number of eventlets)
+and <code class="docutils literal notranslate"><span class="pre">query_interval</span></code> (interval to space out the subsequent queries to Mistral for a single execution). You
+can configure these values by editing the <code class="docutils literal notranslate"><span class="pre">results_tracker</span></code> section in <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[resultstracker]</span>
 <span class="na">query_interval</span> <span class="o">=</span> <span class="s">5 # in seconds</span>
 <span class="na">thread_pool_size</span> <span class="o">=</span> <span class="s">10</span>
 </pre></div>
 </div>
 <p>These values are subject to load conditions in your infrastructure and the number of workflows
-you are running. The default value for <code class="docutils literal"><span class="pre">query_interval</span></code> is set to <code class="docutils literal"><span class="pre">5</span></code> (seconds) which is a balance
-between the workflow speed and the CPU overhead. With StackStorm 2.2 and earlier, this value was <code class="docutils literal"><span class="pre">0.1</span></code>.
-We have now set the default value to <code class="docutils literal"><span class="pre">5</span></code> seconds to be conservative. This also means the time to detect
+you are running. The default value for <code class="docutils literal notranslate"><span class="pre">query_interval</span></code> is set to <code class="docutils literal notranslate"><span class="pre">5</span></code> (seconds) which is a balance
+between the workflow speed and the CPU overhead. With StackStorm 2.2 and earlier, this value was <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.
+We have now set the default value to <code class="docutils literal notranslate"><span class="pre">5</span></code> seconds to be conservative. This also means the time to detect
 a completed workflow in Mistral by StackStorm could take as long as 5 seconds.</p>
-<p>If this is unacceptable for you, you can reduce the <code class="docutils literal"><span class="pre">query_interval</span></code> and also
-simultaneously check CPU usage for the <code class="docutils literal"><span class="pre">st2resultstracker</span></code> process.</p>
+<p>If this is unacceptable for you, you can reduce the <code class="docutils literal notranslate"><span class="pre">query_interval</span></code> and also
+simultaneously check CPU usage for the <code class="docutils literal notranslate"><span class="pre">st2resultstracker</span></code> process.</p>
 </div>
 </div>
 

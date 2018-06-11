@@ -253,8 +253,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -471,7 +471,7 @@
 </ul>
 <div class="section" id="ubuntu">
 <h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>apt-get install python-pip python-virtualenv python-dev gcc git make realpath screen libffi-dev libssl-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install python-pip python-virtualenv python-dev gcc git make realpath screen libffi-dev libssl-dev
 apt-get install mongodb mongodb-server
 apt-get install rabbitmq-server
 </pre></div>
@@ -479,7 +479,7 @@ apt-get install rabbitmq-server
 </div>
 <div class="section" id="fedora">
 <h3>Fedora<a class="headerlink" href="#fedora" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>yum install python-pip python-virtualenv python-tox gcc-c++ git-all screen icu libicu libicu-devel openssl-devel
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install python-pip python-virtualenv python-tox gcc-c++ git-all screen icu libicu libicu-devel openssl-devel
 
 yum install mongodb mongodb-server
 systemctl <span class="nb">enable</span> mongod
@@ -505,7 +505,7 @@ systemctl restart rabbitmq-server
 <p>Once the environment is setup, clone the git repo, and make the project. This will create the
 Python virtual environment under StackStorm, download and install required dependencies, and run
 tests:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/st2.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/st2.git
 <span class="nb">cd</span> st2
 <span class="c1"># Note: Some of the tests rely on the submodules so you need to check them</span>
 <span class="c1"># out to make sure all the tests will pass locally</span>
@@ -517,15 +517,15 @@ make requirements
 <div class="section" id="configure-system-user">
 <h2>Configure System User<a class="headerlink" href="#configure-system-user" title="Permalink to this headline">¶</a></h2>
 <p>Create a system user for executing SSH actions:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>useradd -d /home/stanley stanley
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>useradd -d /home/stanley stanley
 su stanley
 ssh-keygen -f /home/stanley/.ssh/stanley_rsa -t rsa -b <span class="m">4096</span> -C <span class="s2">&quot;stanley@stackstorm.com&quot;</span> -N <span class="s1">&#39;&#39;</span>
 <span class="nb">exit</span>
 </pre></div>
 </div>
 <p>Specify a user for running local and remote SSH actions. See <a class="reference internal" href="../install/config/config.html#config-configure-ssh"><span class="std std-ref">Configure SSH</span></a>. In
-<code class="docutils literal"><span class="pre">st2/conf/st2.dev.conf</span></code>, change <code class="docutils literal"><span class="pre">ssh_key_file</span></code> to point to the user’s key file:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[system_user]</span>
+<code class="docutils literal notranslate"><span class="pre">st2/conf/st2.dev.conf</span></code>, change <code class="docutils literal notranslate"><span class="pre">ssh_key_file</span></code> to point to the user’s key file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[system_user]</span>
 <span class="na">user</span> <span class="o">=</span> <span class="s">stanley</span>
 <span class="na">ssh_key_file</span> <span class="o">=</span> <span class="s">/home/[current user]/.ssh/stanley_rsa</span>
 </pre></div>
@@ -534,16 +534,16 @@ ssh-keygen -f /home/stanley/.ssh/stanley_rsa -t rsa -b <span class="m">4096</spa
 <div class="section" id="running">
 <h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
 <p>Activate the virtualenv before starting the services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> virtualenv/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> virtualenv/bin/activate
 </pre></div>
 </div>
 <p>Run the following to start StackStorm:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>./tools/launchdev.sh start
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./tools/launchdev.sh start
 </pre></div>
 </div>
-<p>It will start StackStorm components in <code class="docutils literal"><span class="pre">screen</span></code> sessions.</p>
+<p>It will start StackStorm components in <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions.</p>
 <p>Additional commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">source</span> virtualenv/bin/activate  <span class="c1"># Activates the Python virtual environment</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> virtualenv/bin/activate  <span class="c1"># Activates the Python virtual environment</span>
 tools/launchdev.sh startclean    <span class="c1"># Reset and launches all StackStorm services in screen sessions</span>
 tools/launchdev.sh start         <span class="c1"># Launches all StackStorm services in screen sessions</span>
 tools/launchdev.sh stop          <span class="c1"># Stops all StackStorm screen sessions and services</span>
@@ -551,7 +551,7 @@ tools/launchdev.sh stop          <span class="c1"># Stops all StackStorm screen 
 </div>
 <p>If the services are started successfully, you will see the following
 output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Starting all st2 servers...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Starting all st2 servers...
 Changing working directory to /home/vagrant/st2/./tools/.....
 Using st2 config file: /home/vagrant/st2/./tools/../conf/st2.dev.conf
 Using content packs base dir: /opt/stackstorm/packs
@@ -576,7 +576,7 @@ Registering sensors, actions, rules and aliases...
 <span id="setup-st2-cli"></span><h2>Install StackStorm CLI<a class="headerlink" href="#install-st2-cli" title="Permalink to this headline">¶</a></h2>
 <p>The StackStorm CLI client needs to be installed. It is not necessary to install this into the
 virtualenv. However, the client may need to be installed with sudo if not in the virtualenv:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> ./st2client
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ./st2client
 python setup.py develop
 </pre></div>
 </div>
@@ -584,7 +584,7 @@ python setup.py develop
 <div class="section" id="verify-installation">
 <h2>Verify Installation<a class="headerlink" href="#verify-installation" title="Permalink to this headline">¶</a></h2>
 <p>To make sure all the components are installed correctly:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --version
 st2 --help
 st2 action list
 st2 run core.local uname
@@ -595,26 +595,26 @@ st2 run core.local uname
 <h2>Additional Makefile targets<a class="headerlink" href="#additional-makefile-targets" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><ul class="simple">
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">all</span></code> creates virtualenv, installs dependencies, and runs tests</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">tests</span></code> runs all the tests</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">lint</span></code> runs lint tasks (<code class="docutils literal"><span class="pre">flake8</span></code>, <code class="docutils literal"><span class="pre">pylint</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">docs</span></code> compiles this documentation</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></code> clears .pyc’s and docs</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">distclean</span></code> runs <code class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></code> target and also drops virtualenv</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">requirements</span></code> installs Python requirements</li>
-<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">virtualenv</span></code> creates an empty virtual environment</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">all</span></code> creates virtualenv, installs dependencies, and runs tests</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">tests</span></code> runs all the tests</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lint</span></code> runs lint tasks (<code class="docutils literal notranslate"><span class="pre">flake8</span></code>, <code class="docutils literal notranslate"><span class="pre">pylint</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">docs</span></code> compiles this documentation</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> clears .pyc’s and docs</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">distclean</span></code> runs <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> target and also drops virtualenv</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">requirements</span></code> installs Python requirements</li>
+<li><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">virtualenv</span></code> creates an empty virtual environment</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="manual-testing">
 <h2>Manual Testing<a class="headerlink" href="#manual-testing" title="Permalink to this headline">¶</a></h2>
-<p>If you only need to test a specific module, it might be reasonable to call <code class="docutils literal"><span class="pre">nosetests</span></code> directly.
+<p>If you only need to test a specific module, it might be reasonable to call <code class="docutils literal notranslate"><span class="pre">nosetests</span></code> directly.
 Make sure your virtualenv is active then run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nosetests -v <span class="o">{</span>project_name<span class="o">}</span>/tests
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nosetests -v <span class="o">{</span>project_name<span class="o">}</span>/tests
 </pre></div>
 </div>
 <p>or if you only want to run a test for specific file or even class or method, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>nosetests -v <span class="o">{</span>project_name<span class="o">}</span>/tests/<span class="o">{</span>path_to_test_file<span class="o">}</span>/<span class="o">{</span>test_file<span class="o">}</span>.py:<span class="o">{</span>Classname<span class="o">}</span>.<span class="o">{</span>method_name<span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nosetests -v <span class="o">{</span>project_name<span class="o">}</span>/tests/<span class="o">{</span>path_to_test_file<span class="o">}</span>/<span class="o">{</span>test_file<span class="o">}</span>.py:<span class="o">{</span>Classname<span class="o">}</span>.<span class="o">{</span>method_name<span class="o">}</span>
 </pre></div>
 </div>
 <p class="rubric">What’s Next?</p>

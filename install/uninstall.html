@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -501,7 +501,7 @@ below. Only execute the instructions for your distribution.</p>
 <h2>1. Stop Services<a class="headerlink" href="#stop-services" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Ubuntu systems:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl stop
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl stop
 sudo service nginx stop
 sudo service postgresql stop
 sudo service mongod stop
@@ -510,7 +510,7 @@ sudo service rabbitmq-server stop
 </div>
 </li>
 <li><p class="first">RHEL/CentOS 6.x:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl stop
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl stop
 sudo service nginx stop
 sudo service postgresql-9.4 stop
 sudo service mongod stop
@@ -518,7 +518,7 @@ sudo service mongod stop
 </div>
 </li>
 <li><p class="first">RHEL/CentOS 7.x:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl stop
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl stop
 sudo systemctl stop nginx
 sudo systemctl stop postgresql
 sudo systemctl stop mongod
@@ -533,21 +533,21 @@ sudo systemctl stop rabbitmq-server
 <ul>
 <li><p class="first">Ubuntu:</p>
 <p>If you are using StackStorm only:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get purge st2 st2mistral st2chatops st2web
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get purge st2 st2mistral st2chatops st2web
 </pre></div>
 </div>
 <p>If you have Extreme Workflow Composer installed, instead use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get purge st2 st2mistral st2chatops st2web bwc-ui st2flow
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get purge st2 st2mistral st2chatops st2web bwc-ui st2flow
 </pre></div>
 </div>
 </li>
 <li><p class="first">RHEL/CentOS:</p>
 <p>If you are using StackStorm only:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum erase st2 st2mistral st2chatops st2web st2python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum erase st2 st2mistral st2chatops st2web st2python
 </pre></div>
 </div>
 <p>If you have Extreme Workflow Composer installed, instead use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum erase st2 st2mistral st2chatops st2web st2python bwc-ui st2flow
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum erase st2 st2mistral st2chatops st2web st2python bwc-ui st2flow
 </pre></div>
 </div>
 </li>
@@ -557,7 +557,7 @@ sudo systemctl stop rabbitmq-server
 <h2>3. Remove StackStorm System User<a class="headerlink" href="#remove-st2-system-user" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Ubuntu/RHEL/CentOS:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo userdel -r stanley
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo userdel -r stanley
 sudo rm -f /etc/sudoers.d/st2
 </pre></div>
 </div>
@@ -568,12 +568,12 @@ sudo rm -f /etc/sudoers.d/st2
 <h2>4. Remove Databases and Other Dependencies<a class="headerlink" href="#remove-databases-and-other-dependencies" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Ubuntu:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get purge mongodb-org* postgresql* rabbitmq-server erlang* nginx nodejs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get purge mongodb-org* postgresql* rabbitmq-server erlang* nginx nodejs
 </pre></div>
 </div>
 </li>
 <li><p class="first">RHEL/CentOS:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum erase mongodb-org* postgresql* rabbitmq-server erlang* nginx nodejs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum erase mongodb-org* postgresql* rabbitmq-server erlang* nginx nodejs
 </pre></div>
 </div>
 </li>
@@ -583,13 +583,13 @@ sudo rm -f /etc/sudoers.d/st2
 <h2>5. Remove Repositories<a class="headerlink" href="#remove-repositories" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Ubuntu:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm -f /etc/apt/sources.list.d/mongo* /etc/apt/sources.list.d/nginx.list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm -f /etc/apt/sources.list.d/mongo* /etc/apt/sources.list.d/nginx.list
 sudo rm -f /etc/apt/sources.list.d/StackStorm* /etc/apt/sources.list.d/nodesource*
 </pre></div>
 </div>
 </li>
 <li><p class="first">RHEL/CentOS:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm -f /etc/yum.repos.d/mongodb-org* /etc/yum.repos.d/StackStorm*
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm -f /etc/yum.repos.d/mongodb-org* /etc/yum.repos.d/StackStorm*
 sudo rm -f /etc/yum.repos.d/pgdg-94* /etc/yum.repos.d/nginx* /etc/yum.repos.d/nodesource*
 </pre></div>
 </div>
@@ -602,14 +602,14 @@ sudo rm -f /etc/yum.repos.d/pgdg-94* /etc/yum.repos.d/nginx* /etc/yum.repos.d/no
 last pieces.</p>
 <ul>
 <li><p class="first">Ubuntu:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm -rf /etc/st2 /opt/stackstorm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm -rf /etc/st2 /opt/stackstorm
 sudo rm -rf /var/log/st2 /var/log/mistral /var/log/mongodb
 sudo rm -rf /var/lib/mongodb /var/run/mongodb.pid
 </pre></div>
 </div>
 </li>
 <li><p class="first">RHEL/CentOS:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rm -rf /etc/st2 /etc/mongod* /etc/rabbitmq /etc/nginx /opt/stackstorm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo rm -rf /etc/st2 /etc/mongod* /etc/rabbitmq /etc/nginx /opt/stackstorm
 sudo rm -rf /var/log/st2 /var/log/mistral /var/log/mongodb /var/log/rabbitmq /var/log/nginx
 sudo rm -rf /var/lib/pgsql /var/lib/rabbitmq /var/lib/mongo
 </pre></div>

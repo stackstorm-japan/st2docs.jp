@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -514,7 +514,7 @@ in OpenStack YAQL documentation.</p>
 <li>workflow output</li>
 </ul>
 <p>Each of the statements can take a string with one or more YAQL expressions. Each expression in the
-string should be encapsulated with <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">%&gt;</span></code>.</p>
+string should be encapsulated with <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">%&gt;</span></code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Mixing of both YAQL and Jinja expressions in a single statement is not supported.</p>
@@ -522,11 +522,11 @@ string should be encapsulated with <code class="docutils literal"><span class="p
 <p>When evaluating a YAQL expression, Mistral also passes a JSON dictionary (aka context) to the YAQL
 engine. The context contains all the workflow inputs, published variables, and result of completed
 tasks up to this point of workflow execution, including the current task. The YAQL expression can
-refer to one or more variables in the context. The reserved symbol <code class="docutils literal"><span class="pre">$</span></code> is used to reference the
-context. For example, given the context <code class="docutils literal"><span class="pre">{&quot;ip&quot;:</span> <span class="pre">&quot;127.0.0.1&quot;,</span> <span class="pre">&quot;port&quot;:</span> <span class="pre">8080}</span></code>, the string
-<code class="docutils literal"><span class="pre">https://&lt;%</span> <span class="pre">$.ip</span> <span class="pre">%&gt;:&lt;%</span> <span class="pre">$.port&gt;/api</span></code> returns <code class="docutils literal"><span class="pre">https://127.0.0.1:8080/api</span></code>. The following is the
+refer to one or more variables in the context. The reserved symbol <code class="docutils literal notranslate"><span class="pre">$</span></code> is used to reference the
+context. For example, given the context <code class="docutils literal notranslate"><span class="pre">{&quot;ip&quot;:</span> <span class="pre">&quot;127.0.0.1&quot;,</span> <span class="pre">&quot;port&quot;:</span> <span class="pre">8080}</span></code>, the string
+<code class="docutils literal notranslate"><span class="pre">https://&lt;%</span> <span class="pre">$.ip</span> <span class="pre">%&gt;:&lt;%</span> <span class="pre">$.port&gt;/api</span></code> returns <code class="docutils literal notranslate"><span class="pre">https://127.0.0.1:8080/api</span></code>. The following is the
 same example used in a workflow:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.yaql-basic</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">direct</span>
@@ -541,13 +541,13 @@ same example used in a workflow:</p>
 </pre></div>
 </div>
 <p>Certain statements in Mistral such as on-success and on-error can evaluate boolean logic. The
-<code class="docutils literal"><span class="pre">on-condition</span></code> related statements are used for transition from one task to another. If a
+<code class="docutils literal notranslate"><span class="pre">on-condition</span></code> related statements are used for transition from one task to another. If a
 boolean logic is defined with these statements, it can be used to evaluate whether the transition
-should continue or not. Complex boolean logic using a combination of <code class="docutils literal"><span class="pre">not</span></code>, <code class="docutils literal"><span class="pre">and</span></code>, <code class="docutils literal"><span class="pre">or</span></code>, and
+should continue or not. Complex boolean logic using a combination of <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and
 parentheses is possible. Take the following workflow as an example: Execution of certain branch
-in the workflow depends on the value of <code class="docutils literal"><span class="pre">$.path</span></code>. If <code class="docutils literal"><span class="pre">$.path</span> <span class="pre">=</span> <span class="pre">a</span></code>, then task <code class="docutils literal"><span class="pre">a</span></code> is executed.
-If <code class="docutils literal"><span class="pre">$.path</span> <span class="pre">=</span> <span class="pre">b</span></code>, then task <code class="docutils literal"><span class="pre">b</span></code>. Finally task <code class="docutils literal"><span class="pre">c</span></code> is executed if neither.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+in the workflow depends on the value of <code class="docutils literal notranslate"><span class="pre">$.path</span></code>. If <code class="docutils literal notranslate"><span class="pre">$.path</span> <span class="pre">=</span> <span class="pre">a</span></code>, then task <code class="docutils literal notranslate"><span class="pre">a</span></code> is executed.
+If <code class="docutils literal notranslate"><span class="pre">$.path</span> <span class="pre">=</span> <span class="pre">b</span></code>, then task <code class="docutils literal notranslate"><span class="pre">b</span></code>. Finally task <code class="docutils literal notranslate"><span class="pre">c</span></code> is executed if neither.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.mistral-branching</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">&gt;</span>
@@ -587,10 +587,10 @@ If <code class="docutils literal"><span class="pre">$.path</span> <span class="p
                 <span class="l l-Scalar l-Scalar-Plain">stdout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(c).result.stdout %&gt;</span> 
 </pre></div>
 </div>
-<p>The statement <code class="docutils literal"><span class="pre">with-items</span></code> in Mistral is used to execute an action over iteration of one or more
+<p>The statement <code class="docutils literal notranslate"><span class="pre">with-items</span></code> in Mistral is used to execute an action over iteration of one or more
 list of items. The following is a sample Mistral workflow that iterates over the list of given names
 to invoke the action to create individual VM.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.create-vms</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">direct</span>
@@ -604,9 +604,9 @@ to invoke the action to create individual VM.</p>
                 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.name %&gt;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">with-items</span></code> can take more than one list as the following example illustrates. In this case,
+<p><code class="docutils literal notranslate"><span class="pre">with-items</span></code> can take more than one list as the following example illustrates. In this case,
 a list of VMs and IP addresses are passed as inputs and then iterated through step by step together.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
 
 <span class="l l-Scalar l-Scalar-Plain">examples.create-vms</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">direct</span>
@@ -625,32 +625,32 @@ a list of VMs and IP addresses are passed as inputs and then iterated through st
 </pre></div>
 </div>
 <p>The sections below contain additional YAQL examples of how to work with lists and dictionaries,
-that can be used in more advanced <code class="docutils literal"><span class="pre">with-items</span></code> use-cases.</p>
+that can be used in more advanced <code class="docutils literal notranslate"><span class="pre">with-items</span></code> use-cases.</p>
 </div>
 <div class="section" id="dictionaries">
 <h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h2>
-<p>To create a dictionary, use the <code class="docutils literal"><span class="pre">dict</span></code> function. For example, <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">dict(a=&gt;123,</span> <span class="pre">b=&gt;true)</span> <span class="pre">%&gt;</span></code>
-returns <code class="docutils literal"><span class="pre">{'a':</span> <span class="pre">123,</span> <span class="pre">'b':</span> <span class="pre">True}</span></code>. Let’s say this dictionary is published to the context as
-<code class="docutils literal"><span class="pre">dict1</span></code>. The keys function <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.dict1.keys()</span> <span class="pre">%&gt;</span></code> returns <code class="docutils literal"><span class="pre">['a',</span> <span class="pre">'b']</span></code> and
-<code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.dict1.values()</span> <span class="pre">%&gt;</span></code> returns the values <code class="docutils literal"><span class="pre">[123,</span> <span class="pre">true]</span></code>. Concatenating dictionaries can be
-done as <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">dict(a=&gt;123,</span> <span class="pre">b=&gt;true)</span> <span class="pre">+</span> <span class="pre">dict(c=&gt;xyz)</span> <span class="pre">%&gt;</span></code> which returns
-<code class="docutils literal"><span class="pre">{'a':</span> <span class="pre">123,</span> <span class="pre">'b':</span> <span class="pre">True,</span> <span class="pre">'c':</span> <span class="pre">'xyz'}</span></code>.</p>
-<p>A specific key-value pair can be accessed by key name such as <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.dict1.get(b)</span> <span class="pre">%&gt;</span></code> which
-returns <code class="docutils literal"><span class="pre">True</span></code>. Given the alternative <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.dict1.get(b,</span> <span class="pre">false)</span> <span class="pre">%&gt;</span></code>, if the key <code class="docutils literal"><span class="pre">b</span></code> does not
-exist, then <code class="docutils literal"><span class="pre">False</span></code> will be returned by default.</p>
+<p>To create a dictionary, use the <code class="docutils literal notranslate"><span class="pre">dict</span></code> function. For example, <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">dict(a=&gt;123,</span> <span class="pre">b=&gt;true)</span> <span class="pre">%&gt;</span></code>
+returns <code class="docutils literal notranslate"><span class="pre">{'a':</span> <span class="pre">123,</span> <span class="pre">'b':</span> <span class="pre">True}</span></code>. Let’s say this dictionary is published to the context as
+<code class="docutils literal notranslate"><span class="pre">dict1</span></code>. The keys function <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.dict1.keys()</span> <span class="pre">%&gt;</span></code> returns <code class="docutils literal notranslate"><span class="pre">['a',</span> <span class="pre">'b']</span></code> and
+<code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.dict1.values()</span> <span class="pre">%&gt;</span></code> returns the values <code class="docutils literal notranslate"><span class="pre">[123,</span> <span class="pre">true]</span></code>. Concatenating dictionaries can be
+done as <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">dict(a=&gt;123,</span> <span class="pre">b=&gt;true)</span> <span class="pre">+</span> <span class="pre">dict(c=&gt;xyz)</span> <span class="pre">%&gt;</span></code> which returns
+<code class="docutils literal notranslate"><span class="pre">{'a':</span> <span class="pre">123,</span> <span class="pre">'b':</span> <span class="pre">True,</span> <span class="pre">'c':</span> <span class="pre">'xyz'}</span></code>.</p>
+<p>A specific key-value pair can be accessed by key name such as <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.dict1.get(b)</span> <span class="pre">%&gt;</span></code> which
+returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. Given the alternative <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.dict1.get(b,</span> <span class="pre">false)</span> <span class="pre">%&gt;</span></code>, if the key <code class="docutils literal notranslate"><span class="pre">b</span></code> does not
+exist, then <code class="docutils literal notranslate"><span class="pre">False</span></code> will be returned by default.</p>
 </div>
 <div class="section" id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
-<p>To create a list, use the <code class="docutils literal"><span class="pre">list</span></code> functions. For example, <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">list(1,</span> <span class="pre">2,</span> <span class="pre">3)</span> <span class="pre">%&gt;</span></code> returns
-<code class="docutils literal"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> and <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">list(abc,</span> <span class="pre">def)</span> <span class="pre">%&gt;</span></code> returns <code class="docutils literal"><span class="pre">['abc',</span> <span class="pre">'def']</span></code>. List concatenation can be
-done as <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">list(abc,</span> <span class="pre">def)</span> <span class="pre">+</span> <span class="pre">list(ijk,</span> <span class="pre">xyz)</span> <span class="pre">%&gt;</span></code> which returns <code class="docutils literal"><span class="pre">['abc',</span> <span class="pre">'def',</span> <span class="pre">'ijk',</span> <span class="pre">'xyz']</span></code>.
-If this list is published to the context as <code class="docutils literal"><span class="pre">list1</span></code>, items can also be accessed via index such
-as <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.list1[0]</span> <span class="pre">%&gt;</span></code>, which returns <code class="docutils literal"><span class="pre">abc</span></code>.</p>
+<p>To create a list, use the <code class="docutils literal notranslate"><span class="pre">list</span></code> functions. For example, <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">list(1,</span> <span class="pre">2,</span> <span class="pre">3)</span> <span class="pre">%&gt;</span></code> returns
+<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">list(abc,</span> <span class="pre">def)</span> <span class="pre">%&gt;</span></code> returns <code class="docutils literal notranslate"><span class="pre">['abc',</span> <span class="pre">'def']</span></code>. List concatenation can be
+done as <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">list(abc,</span> <span class="pre">def)</span> <span class="pre">+</span> <span class="pre">list(ijk,</span> <span class="pre">xyz)</span> <span class="pre">%&gt;</span></code> which returns <code class="docutils literal notranslate"><span class="pre">['abc',</span> <span class="pre">'def',</span> <span class="pre">'ijk',</span> <span class="pre">'xyz']</span></code>.
+If this list is published to the context as <code class="docutils literal notranslate"><span class="pre">list1</span></code>, items can also be accessed via index such
+as <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.list1[0]</span> <span class="pre">%&gt;</span></code>, which returns <code class="docutils literal notranslate"><span class="pre">abc</span></code>.</p>
 </div>
 <div class="section" id="queries">
 <h2>Queries<a class="headerlink" href="#queries" title="Permalink to this headline">¶</a></h2>
 <p>Let’s take the following context as an example:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;vms&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;vmweb1&quot;</span><span class="p">,</span>
@@ -678,18 +678,18 @@ as <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pr
 </div>
 <p>The following YAQL expressions are some sample queries that YAQL is capable of:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.vms.select($.name)</span> <span class="pre">%&gt;</span></code> returns the list of VM names
-<code class="docutils literal"><span class="pre">['vmweb1',</span> <span class="pre">'vmdb1',</span> <span class="pre">'vmweb2',</span> <span class="pre">'vmdb2']</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.vms.select([$.name,</span> <span class="pre">$.role])</span> <span class="pre">%&gt;</span></code> returns a list of names and roles as
-<code class="docutils literal"><span class="pre">[['vmweb1',</span> <span class="pre">'web'],</span> <span class="pre">['vmdb1',</span> <span class="pre">'db'],</span> <span class="pre">['vmweb2',</span> <span class="pre">'web'],</span> <span class="pre">['vmdb2',</span> <span class="pre">'db']]</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.vms.select($.region).distinct()</span> <span class="pre">%&gt;</span></code> returns the distinct list of regions
-<code class="docutils literal"><span class="pre">['us-east',</span> <span class="pre">'us-west']</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.vms.where($.region</span> <span class="pre">=</span> <span class="pre">'us-east').select($.name)</span> <span class="pre">%&gt;</span></code> selects only the VMs in us-east
-<code class="docutils literal"><span class="pre">['vmweb1',</span> <span class="pre">'vmdb1']</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">$.vms.where($.region</span> <span class="pre">=</span> <span class="pre">'us-east'</span> <span class="pre">and</span> <span class="pre">$.role</span> <span class="pre">=</span> <span class="pre">'web').select($.name)</span> <span class="pre">%&gt;</span></code> selects only the
-web server in us-east <code class="docutils literal"><span class="pre">['vmweb1']</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">let(myregion</span> <span class="pre">=&gt;</span> <span class="pre">'us-east',</span> <span class="pre">myrole</span> <span class="pre">=&gt;</span> <span class="pre">'web')</span> <span class="pre">-&gt;</span> <span class="pre">$.vms.where($.region</span> <span class="pre">=</span> <span class="pre">$myregion</span> <span class="pre">and</span> <span class="pre">$.role</span> <span class="pre">=</span> <span class="pre">$myrole).select($.name)</span> <span class="pre">%&gt;</span></code>
-selects only the web server in us-east <code class="docutils literal"><span class="pre">['vmweb1']</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.vms.select($.name)</span> <span class="pre">%&gt;</span></code> returns the list of VM names
+<code class="docutils literal notranslate"><span class="pre">['vmweb1',</span> <span class="pre">'vmdb1',</span> <span class="pre">'vmweb2',</span> <span class="pre">'vmdb2']</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.vms.select([$.name,</span> <span class="pre">$.role])</span> <span class="pre">%&gt;</span></code> returns a list of names and roles as
+<code class="docutils literal notranslate"><span class="pre">[['vmweb1',</span> <span class="pre">'web'],</span> <span class="pre">['vmdb1',</span> <span class="pre">'db'],</span> <span class="pre">['vmweb2',</span> <span class="pre">'web'],</span> <span class="pre">['vmdb2',</span> <span class="pre">'db']]</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.vms.select($.region).distinct()</span> <span class="pre">%&gt;</span></code> returns the distinct list of regions
+<code class="docutils literal notranslate"><span class="pre">['us-east',</span> <span class="pre">'us-west']</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.vms.where($.region</span> <span class="pre">=</span> <span class="pre">'us-east').select($.name)</span> <span class="pre">%&gt;</span></code> selects only the VMs in us-east
+<code class="docutils literal notranslate"><span class="pre">['vmweb1',</span> <span class="pre">'vmdb1']</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">$.vms.where($.region</span> <span class="pre">=</span> <span class="pre">'us-east'</span> <span class="pre">and</span> <span class="pre">$.role</span> <span class="pre">=</span> <span class="pre">'web').select($.name)</span> <span class="pre">%&gt;</span></code> selects only the
+web server in us-east <code class="docutils literal notranslate"><span class="pre">['vmweb1']</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">let(myregion</span> <span class="pre">=&gt;</span> <span class="pre">'us-east',</span> <span class="pre">myrole</span> <span class="pre">=&gt;</span> <span class="pre">'web')</span> <span class="pre">-&gt;</span> <span class="pre">$.vms.where($.region</span> <span class="pre">=</span> <span class="pre">$myregion</span> <span class="pre">and</span> <span class="pre">$.role</span> <span class="pre">=</span> <span class="pre">$myrole).select($.name)</span> <span class="pre">%&gt;</span></code>
+selects only the web server in us-east <code class="docutils literal notranslate"><span class="pre">['vmweb1']</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="list-to-dictionary">
@@ -698,9 +698,9 @@ selects only the web server in us-east <code class="docutils literal"><span clas
 of a value with the key). Let’s take the same list of VM records from above and convert it to a
 dictionary where VM name is the key and the value is the record.</p>
 <p>YAQL can convert a list of lists to a dictionary where each list contains the key and value. For
-example, the expression <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">dict(vms=&gt;dict($.vms.select([$.name,</span> <span class="pre">$])))</span> <span class="pre">%&gt;</span></code> returns the following
+example, the expression <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">dict(vms=&gt;dict($.vms.select([$.name,</span> <span class="pre">$])))</span> <span class="pre">%&gt;</span></code> returns the following
 dictionary:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;vms&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;vmweb1&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;vmweb1&quot;</span><span class="p">,</span>
@@ -726,70 +726,70 @@ dictionary:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In this expression, we took the original <code class="docutils literal"><span class="pre">vms</span></code> list, returned a list of <code class="docutils literal"><span class="pre">[name,</span> <span class="pre">record]</span></code>, and then converted it to a dictionary.</p>
+<p>In this expression, we took the original <code class="docutils literal notranslate"><span class="pre">vms</span></code> list, returned a list of <code class="docutils literal notranslate"><span class="pre">[name,</span> <span class="pre">record]</span></code>, and then converted it to a dictionary.</p>
 </div>
 <div class="section" id="other-yaql-functions">
 <h2>Other YAQL Functions<a class="headerlink" href="#other-yaql-functions" title="Permalink to this headline">¶</a></h2>
 <p>YAQL has a list of built-in functions to work with strings, dictionaries, lists, etc. Some of
 these are passed through to Python built-in functions (i.e. int, float, pow, regex, round, etc.).</p>
 <p>Mistral adds additional workflow-related functions to the list. For example, the call to function
-<code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">len(foobar)</span> <span class="pre">%&gt;</span></code> to get the length of the string <code class="docutils literal"><span class="pre">foobar</span></code> returns the value <code class="docutils literal"><span class="pre">6</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">len(foobar)</span> <span class="pre">%&gt;</span></code> to get the length of the string <code class="docutils literal notranslate"><span class="pre">foobar</span></code> returns the value <code class="docutils literal notranslate"><span class="pre">6</span></code>. The
 following is a curated list of commonly used functions. Please visit the YAQL documentation and
 GitHub repo to explore more options.</p>
 <div class="section" id="built-in">
 <h3>Built-in<a class="headerlink" href="#built-in" title="Permalink to this headline">¶</a></h3>
 <p>For the full list of built-in functions, see the <a class="reference external" href="https://yaql.readthedocs.io/en/latest/standard_library.html">Standard Library section in YAQL docs</a>. Some notable examples:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">float(value)</span></code> converts value to float.</li>
-<li><code class="docutils literal"><span class="pre">int(value)</span></code> converts value to integer.</li>
-<li><code class="docutils literal"><span class="pre">str(number)</span></code> converts number to a string.</li>
-<li><code class="docutils literal"><span class="pre">len(list)</span></code> and <code class="docutils literal"><span class="pre">len(string)</span></code> returns the length of the list and string respectively.</li>
-<li><code class="docutils literal"><span class="pre">max(a,</span> <span class="pre">b)</span></code> returns the larger value between a and b.</li>
-<li><code class="docutils literal"><span class="pre">min(a,</span> <span class="pre">b)</span></code> returns the smaller value between a and b.</li>
-<li><code class="docutils literal"><span class="pre">regex(expression).match(pattern)</span></code> returns True if expression matches pattern.</li>
-<li><code class="docutils literal"><span class="pre">regex(expresssion).search(pattern)</span></code> returns the first instance that matches the pattern.</li>
-<li><code class="docutils literal"><span class="pre">'some</span> <span class="pre">string'.toUpper()</span></code> converts the string to all upper case.</li>
-<li><code class="docutils literal"><span class="pre">'some</span> <span class="pre">string'.toLower()</span></code> converts the string to all lower case.</li>
-<li><code class="docutils literal"><span class="pre">['some',</span> <span class="pre">'list'].contains(value)</span></code> returns True if list contains value.</li>
-<li><code class="docutils literal"><span class="pre">&quot;one,</span> <span class="pre">two,</span> <span class="pre">three,</span> <span class="pre">four&quot;.split(',').select(str($).trim())</span></code> converts a comma separated string
+<li><code class="docutils literal notranslate"><span class="pre">float(value)</span></code> converts value to float.</li>
+<li><code class="docutils literal notranslate"><span class="pre">int(value)</span></code> converts value to integer.</li>
+<li><code class="docutils literal notranslate"><span class="pre">str(number)</span></code> converts number to a string.</li>
+<li><code class="docutils literal notranslate"><span class="pre">len(list)</span></code> and <code class="docutils literal notranslate"><span class="pre">len(string)</span></code> returns the length of the list and string respectively.</li>
+<li><code class="docutils literal notranslate"><span class="pre">max(a,</span> <span class="pre">b)</span></code> returns the larger value between a and b.</li>
+<li><code class="docutils literal notranslate"><span class="pre">min(a,</span> <span class="pre">b)</span></code> returns the smaller value between a and b.</li>
+<li><code class="docutils literal notranslate"><span class="pre">regex(expression).match(pattern)</span></code> returns True if expression matches pattern.</li>
+<li><code class="docutils literal notranslate"><span class="pre">regex(expresssion).search(pattern)</span></code> returns the first instance that matches the pattern.</li>
+<li><code class="docutils literal notranslate"><span class="pre">'some</span> <span class="pre">string'.toUpper()</span></code> converts the string to all upper case.</li>
+<li><code class="docutils literal notranslate"><span class="pre">'some</span> <span class="pre">string'.toLower()</span></code> converts the string to all lower case.</li>
+<li><code class="docutils literal notranslate"><span class="pre">['some',</span> <span class="pre">'list'].contains(value)</span></code> returns True if list contains value.</li>
+<li><code class="docutils literal notranslate"><span class="pre">&quot;one,</span> <span class="pre">two,</span> <span class="pre">three,</span> <span class="pre">four&quot;.split(',').select(str($).trim())</span></code> converts a comma separated string
 to an array, trimming each element.</li>
 </ul>
 </div>
 <div class="section" id="mistral">
 <h3>Mistral<a class="headerlink" href="#mistral" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">env()</span></code> returns the environment variables passed to the workflow execution on invocation such
-as the StackStorm Action Execution ID <code class="docutils literal"><span class="pre">st2_execution_id</span></code>.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">env()</span></code> returns the environment variables passed to the workflow execution on invocation such
+as the StackStorm Action Execution ID <code class="docutils literal notranslate"><span class="pre">st2_execution_id</span></code>.</p>
 <p>For example, the expression
-<code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">env().st2_action_api_url</span> <span class="pre">%&gt;/actionexecutions/&lt;%</span> <span class="pre">env().st2_execution_id</span> <span class="pre">%&gt;</span></code> returns the API
+<code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">env().st2_action_api_url</span> <span class="pre">%&gt;/actionexecutions/&lt;%</span> <span class="pre">env().st2_execution_id</span> <span class="pre">%&gt;</span></code> returns the API
 endpoint for the current workflow execution in StackStorm as something like
-<code class="docutils literal"><span class="pre">https://127.0.0.1:9101/v1/actionexecutions/874d3d5b3f024c1aa93225ef0bcfcf3a</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">https://127.0.0.1:9101/v1/actionexecutions/874d3d5b3f024c1aa93225ef0bcfcf3a</span></code>.</p>
 </li>
 <li><p class="first">To access information about the parent action, the following expressions can be used
-<code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">env().get('__actions').get('st2.action').st2_context.parent.api_user</span> <span class="pre">%&gt;</span></code>,
-<code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">env().get('__actions').get('st2.action').st2_context.parent.source_channel</span> <span class="pre">%&gt;</span></code> or
-<code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">env().get('__actions').get('st2.action').st2_context.parent.user</span> <span class="pre">%&gt;</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">env().get('__actions').get('st2.action').st2_context.parent.api_user</span> <span class="pre">%&gt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">env().get('__actions').get('st2.action').st2_context.parent.source_channel</span> <span class="pre">%&gt;</span></code> or
+<code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">env().get('__actions').get('st2.action').st2_context.parent.user</span> <span class="pre">%&gt;</span></code>.</p>
 <p>Note that this similar to the ActionChain expressions
-<code class="docutils literal"><span class="pre">{{action_context.parent.source_channel}}</span></code>, <code class="docutils literal"><span class="pre">{{action_context.parent.user}}</span></code> or
-<code class="docutils literal"><span class="pre">{{action_context.parent.api_user}}</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">{{action_context.parent.source_channel}}</span></code>, <code class="docutils literal notranslate"><span class="pre">{{action_context.parent.user}}</span></code> or
+<code class="docutils literal notranslate"><span class="pre">{{action_context.parent.api_user}}</span></code>.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">task(task_name)</span></code> returns the state, state_info, and the result of the given task_name.</p>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">task(task_name)</span></code> returns the state, state_info, and the result of the given task_name.</p>
 </li>
 </ul>
 </div>
 <div class="section" id="st2">
 <h3>StackStorm<a class="headerlink" href="#st2" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">st2kv('st2_key_id')</span></code> queries StackStorm’s datastore and returns the value for the given key. For
-example, the expression <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">st2kv('system.shared_key_x')</span> <span class="pre">%&gt;</span></code> returns the value for a system
-scoped key named <code class="docutils literal"><span class="pre">shared_key_x</span></code> while the expression <code class="docutils literal"><span class="pre">&lt;%</span> <span class="pre">st2kv('my_key_y')</span> <span class="pre">%&gt;</span></code> returns the
-value for the user scoped key named <code class="docutils literal"><span class="pre">my_key_y</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">st2kv('st2_key_id')</span></code> queries StackStorm’s datastore and returns the value for the given key. For
+example, the expression <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">st2kv('system.shared_key_x')</span> <span class="pre">%&gt;</span></code> returns the value for a system
+scoped key named <code class="docutils literal notranslate"><span class="pre">shared_key_x</span></code> while the expression <code class="docutils literal notranslate"><span class="pre">&lt;%</span> <span class="pre">st2kv('my_key_y')</span> <span class="pre">%&gt;</span></code> returns the
+value for the user scoped key named <code class="docutils literal notranslate"><span class="pre">my_key_y</span></code>.</p>
 <p>Please note that the key name should be in quotes otherwise YAQL treats a key name with a dot like
-<code class="docutils literal"><span class="pre">system.shared_key_x</span></code> as a dict access.</p>
+<code class="docutils literal notranslate"><span class="pre">system.shared_key_x</span></code> as a dict access.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If the retrieved value was stored encrypted, <code class="docutils literal"><span class="pre">st2kv</span></code> no longer attempts decryption by default
+<p class="last">If the retrieved value was stored encrypted, <code class="docutils literal notranslate"><span class="pre">st2kv</span></code> no longer attempts decryption by default
 (as of version 2.4). To decrypt the retrieved value, you must explicitly enable it through the
-<code class="docutils literal"><span class="pre">decrypt</span></code> parameter: <code class="docutils literal"><span class="pre">st2kv('st2_key_id',</span> <span class="pre">decrypt=true)</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">decrypt</span></code> parameter: <code class="docutils literal notranslate"><span class="pre">st2kv('st2_key_id',</span> <span class="pre">decrypt=true)</span></code>.</p>
 </div>
 </div>
 </div>

@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -512,43 +512,43 @@ deleted).</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td><strong>Administrator</strong></td>
-<td><code class="docutils literal"><span class="pre">admin</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">admin</span></code></td>
 <td>All permissions on all the resources</td>
 </tr>
 <tr class="row-odd"><td><strong>System Administrator</strong></td>
-<td><code class="docutils literal"><span class="pre">system_admin</span></code></td>
-<td>Same as <code class="docutils literal"><span class="pre">admin</span></code>, but this role is assigned to the first user in the system and can’t be revoked</td>
+<td><code class="docutils literal notranslate"><span class="pre">system_admin</span></code></td>
+<td>Same as <code class="docutils literal notranslate"><span class="pre">admin</span></code>, but this role is assigned to the first user in the system and can’t be revoked</td>
 </tr>
 <tr class="row-even"><td><strong>Observer</strong></td>
-<td><code class="docutils literal"><span class="pre">observer</span></code></td>
-<td><code class="docutils literal"><span class="pre">view</span></code> permission on all the resources</td>
+<td><code class="docutils literal notranslate"><span class="pre">observer</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">view</span></code> permission on all the resources</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="permission-grant">
 <h3>Permission Grant<a class="headerlink" href="#permission-grant" title="Permalink to this headline">¶</a></h3>
 <p>Permission grant grants a particular permission (permission type) to a particular resource. For
-example, you could grant an execute/run permission (<code class="docutils literal"><span class="pre">action_execute</span></code>) to an action
-<code class="docutils literal"><span class="pre">core.local</span></code>.</p>
+example, you could grant an execute/run permission (<code class="docutils literal notranslate"><span class="pre">action_execute</span></code>) to an action
+<code class="docutils literal notranslate"><span class="pre">core.local</span></code>.</p>
 <p>In general, there are five permission types available for each supported resource type:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">view</span></code> - Ability to view a specific resource or ability to list all the
+<li><code class="docutils literal notranslate"><span class="pre">view</span></code> - Ability to view a specific resource or ability to list all the
 resources of a specific type.</li>
-<li><code class="docutils literal"><span class="pre">create</span></code> - Ability to create a new resource.</li>
-<li><code class="docutils literal"><span class="pre">modify</span></code> - Ability to modify (update) an existing resource.</li>
-<li><code class="docutils literal"><span class="pre">delete</span></code> - Ability to delete a specific resource.</li>
-<li><code class="docutils literal"><span class="pre">all</span></code> - Ability to perform all the supported operations on a specific resource. For example,
-if you grant <code class="docutils literal"><span class="pre">action_all</span></code> on a particular action this implies the following permissions:
-<code class="docutils literal"><span class="pre">action_view</span></code>, <code class="docutils literal"><span class="pre">action_create</span></code>, <code class="docutils literal"><span class="pre">action_modify</span></code>, <code class="docutils literal"><span class="pre">action_delete</span></code> and <code class="docutils literal"><span class="pre">action_execute</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">create</span></code> - Ability to create a new resource.</li>
+<li><code class="docutils literal notranslate"><span class="pre">modify</span></code> - Ability to modify (update) an existing resource.</li>
+<li><code class="docutils literal notranslate"><span class="pre">delete</span></code> - Ability to delete a specific resource.</li>
+<li><code class="docutils literal notranslate"><span class="pre">all</span></code> - Ability to perform all the supported operations on a specific resource. For example,
+if you grant <code class="docutils literal notranslate"><span class="pre">action_all</span></code> on a particular action this implies the following permissions:
+<code class="docutils literal notranslate"><span class="pre">action_view</span></code>, <code class="docutils literal notranslate"><span class="pre">action_create</span></code>, <code class="docutils literal notranslate"><span class="pre">action_modify</span></code>, <code class="docutils literal notranslate"><span class="pre">action_delete</span></code> and <code class="docutils literal notranslate"><span class="pre">action_execute</span></code>.</li>
 </ul>
-<p>In addition to that, there is also a special <code class="docutils literal"><span class="pre">execute</span></code> (<code class="docutils literal"><span class="pre">action_execute</span></code>) permission type
+<p>In addition to that, there is also a special <code class="docutils literal notranslate"><span class="pre">execute</span></code> (<code class="docutils literal notranslate"><span class="pre">action_execute</span></code>) permission type
 available for actions. This permission allows users to execute (run) a particular action.</p>
 <p>Keep in mind that in StackStorm a workflow is just an action so if you want someone to be able to
-execute a particular workflow, you simply need to grant them <code class="docutils literal"><span class="pre">action_execute</span></code> permission on that
+execute a particular workflow, you simply need to grant them <code class="docutils literal notranslate"><span class="pre">action_execute</span></code> permission on that
 workflow.</p>
-<p>As described in the table below, <code class="docutils literal"><span class="pre">create</span></code>, <code class="docutils literal"><span class="pre">modify</span></code>, <code class="docutils literal"><span class="pre">delete</span></code> and <code class="docutils literal"><span class="pre">execute</span></code> permissions
-also implicitly grant corresponding <code class="docutils literal"><span class="pre">view</span></code> permission. This means that, for example, if you
-grant <code class="docutils literal"><span class="pre">action_execute</span></code> permission on a particular action, the user will also be able to view and
+<p>As described in the table below, <code class="docutils literal notranslate"><span class="pre">create</span></code>, <code class="docutils literal notranslate"><span class="pre">modify</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code> and <code class="docutils literal notranslate"><span class="pre">execute</span></code> permissions
+also implicitly grant corresponding <code class="docutils literal notranslate"><span class="pre">view</span></code> permission. This means that, for example, if you
+grant <code class="docutils literal notranslate"><span class="pre">action_execute</span></code> permission on a particular action, the user will also be able to view and
 retrieve details for this particular action.</p>
 </div>
 <div class="section" id="available-permission-types">
@@ -1007,14 +1007,14 @@ retrieve details for this particular action.</p>
 </tr>
 </tbody>
 </table>
-<p>This list can also be retrieved using the RBAC meta API (<code class="docutils literal"><span class="pre">GET</span> <span class="pre">/v1.0/rbac/permission_types</span></code>).</p>
+<p>This list can also be retrieved using the RBAC meta API (<code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/v1.0/rbac/permission_types</span></code>).</p>
 </div>
 <div class="section" id="user-permissions">
 <h3>User Permissions<a class="headerlink" href="#user-permissions" title="Permalink to this headline">¶</a></h3>
 <p>User permissions (also called effective user permission set) are represented as a union of all
 the permission grants which are assigned to the user roles.</p>
 <p>For example, if a user has the following two roles assigned to it:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;role_five&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">execute</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">my_action_1&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">permission_grants</span><span class="p p-Indicator">:</span>
@@ -1024,7 +1024,7 @@ the permission grants which are assigned to the user roles.</p>
                <span class="p p-Indicator">-</span> <span class="s">&quot;action_execute&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;role_six&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">execute</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">my_action_2&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">permission_grants</span><span class="p p-Indicator">:</span>
@@ -1036,8 +1036,8 @@ the permission grants which are assigned to the user roles.</p>
 </div>
 <p>The effective user permission set is:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">action_execute</span></code> on <code class="docutils literal"><span class="pre">action:dummy_pack_1:my_action_1</span></code></li>
-<li><code class="docutils literal"><span class="pre">action_execute</span></code> on <code class="docutils literal"><span class="pre">action:dummy_pack_1:my_action_2</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">action_execute</span></code> on <code class="docutils literal notranslate"><span class="pre">action:dummy_pack_1:my_action_1</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">action_execute</span></code> on <code class="docutils literal notranslate"><span class="pre">action:dummy_pack_1:my_action_2</span></code></li>
 </ul>
 <p>RBAC system uses a whitelist approach which means there is no possibility of conflicting and
 contradictory permission grants in different roles (e.g. one role granting a particular
@@ -1057,14 +1057,14 @@ Permission grants can be applied to the following resource types:</p>
 <li>webhooks</li>
 <li>inquiries</li>
 </ul>
-<p>A resource is identified by a <code class="docutils literal"><span class="pre">uid</span></code>, and referenced as such in permission grants. UID is an
+<p>A resource is identified by a <code class="docutils literal notranslate"><span class="pre">uid</span></code>, and referenced as such in permission grants. UID is an
 identifier which is unique for each resource in the StackStorm installation. UIDs follow this format:
-<code class="docutils literal"><span class="pre">&lt;resource</span> <span class="pre">type&gt;:&lt;resource</span> <span class="pre">specific</span> <span class="pre">identifier</span> <span class="pre">value&gt;</span></code> (e.g. <code class="docutils literal"><span class="pre">pack:libcloud</span></code>,
-<code class="docutils literal"><span class="pre">action:libcloud:list_vms</span></code>, etc.).</p>
+<code class="docutils literal notranslate"><span class="pre">&lt;resource</span> <span class="pre">type&gt;:&lt;resource</span> <span class="pre">specific</span> <span class="pre">identifier</span> <span class="pre">value&gt;</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">pack:libcloud</span></code>,
+<code class="docutils literal notranslate"><span class="pre">action:libcloud:list_vms</span></code>, etc.).</p>
 <p>You can retrieve the UID of a particular resource by listing all the resources of a particular
 type or by retrieving details of a single resource using either API or CLI.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action list
 +-------------------------+-------------------------+-----------+-------------------------+-------------------------+
 <span class="p">|</span> uid                     <span class="p">|</span> ref                     <span class="p">|</span> pack      <span class="p">|</span> name                    <span class="p">|</span> description             <span class="p">|</span>
 +-------------------------+-------------------------+-----------+-------------------------+-------------------------+
@@ -1085,71 +1085,71 @@ returned and the error is logged in the audit log.</p>
 <h3>Permission Inheritance<a class="headerlink" href="#permission-inheritance" title="Permalink to this headline">¶</a></h3>
 <p><strong>Pack resources</strong></p>
 <p>Pack resources inherit all the permissions from a pack. This means that if you grant
-<code class="docutils literal"><span class="pre">action_execute</span></code> permission to a pack, the user will be able to execute all the actions inside
-that pack. Similarly, if you grant <code class="docutils literal"><span class="pre">rule_create</span></code> permission to a pack, the user will be able to
+<code class="docutils literal notranslate"><span class="pre">action_execute</span></code> permission to a pack, the user will be able to execute all the actions inside
+that pack. Similarly, if you grant <code class="docutils literal notranslate"><span class="pre">rule_create</span></code> permission to a pack, the user will be able to
 create new rules in that pack.</p>
 <p><strong>Executions</strong></p>
 <p>Executions inherit permissions from the action they belong to and from the action’s parent pack. This
-means that if you grant <code class="docutils literal"><span class="pre">action_view</span></code> permission on a particular action, the user will be able to
-view all the executions which belong to that action. Similarly, if you grant <code class="docutils literal"><span class="pre">action_view</span></code> to the
+means that if you grant <code class="docutils literal notranslate"><span class="pre">action_view</span></code> permission on a particular action, the user will be able to
+view all the executions which belong to that action. Similarly, if you grant <code class="docutils literal notranslate"><span class="pre">action_view</span></code> to the
 parent pack which the action execution belongs to, the user will be able to view all the executions
 which belong to the action with that parent pack.</p>
-<p>On top of that, granting <code class="docutils literal"><span class="pre">action_execute</span></code> on a particular pack or action also grants
-<code class="docutils literal"><span class="pre">execution_rerun</span></code> and <code class="docutils literal"><span class="pre">execution_stop</span></code> to all the executions which belong to that action.</p>
+<p>On top of that, granting <code class="docutils literal notranslate"><span class="pre">action_execute</span></code> on a particular pack or action also grants
+<code class="docutils literal notranslate"><span class="pre">execution_rerun</span></code> and <code class="docutils literal notranslate"><span class="pre">execution_stop</span></code> to all the executions which belong to that action.</p>
 <p><strong>Rule enforcements</strong></p>
 <p>Rule enforcements (models that represent when a rule evaluated actually resulted in an action)
 inherit permissions from the rule they belong to and from the rule’s parent pack. This means, if
-a user has a <code class="docutils literal"><span class="pre">rule_view</span></code> permission on a particular rule, then they also have permissions to
-view the rule enforcement model for the rule. Similarly, if you grant <code class="docutils literal"><span class="pre">rule_view</span></code> to the
+a user has a <code class="docutils literal notranslate"><span class="pre">rule_view</span></code> permission on a particular rule, then they also have permissions to
+view the rule enforcement model for the rule. Similarly, if you grant <code class="docutils literal notranslate"><span class="pre">rule_view</span></code> to the
 parent pack of the rule, users will be able to see all enforcements of rules belonging to that
 pack.</p>
-<p>Note that rule enforcements are <code class="docutils literal"><span class="pre">operational</span> <span class="pre">models</span></code>. You cannot create/modify/delete them
-via API. So permissions other than <code class="docutils literal"><span class="pre">view</span></code> and <code class="docutils literal"><span class="pre">list</span></code> do not make sense.</p>
+<p>Note that rule enforcements are <code class="docutils literal notranslate"><span class="pre">operational</span> <span class="pre">models</span></code>. You cannot create/modify/delete them
+via API. So permissions other than <code class="docutils literal notranslate"><span class="pre">view</span></code> and <code class="docutils literal notranslate"><span class="pre">list</span></code> do not make sense.</p>
 <p><strong>Inquiries</strong></p>
 <p>Inquiries inherit response permissions based on execution permissions of the workflow
 that generated them. This is useful for ensuring that anyone that has rights to execute a
 workflow that generates an Inquiry is also automatically granted permissions to respond to
 that Inquiry.</p>
-<p>Specifically, granting <code class="docutils literal"><span class="pre">action_execute</span></code> on a workflow action, or its parent pack, also grants
-<code class="docutils literal"><span class="pre">inquiry_respond</span></code> permissions for any Inquiries generated from that Workflow.</p>
+<p>Specifically, granting <code class="docutils literal notranslate"><span class="pre">action_execute</span></code> on a workflow action, or its parent pack, also grants
+<code class="docutils literal notranslate"><span class="pre">inquiry_respond</span></code> permissions for any Inquiries generated from that Workflow.</p>
 <p>For detailed examples, see <a class="reference internal" href="inquiries.html#ref-securing-inquiries"><span class="std std-ref">Securing Inquiries</span></a>.</p>
 </div>
 <div class="section" id="permissions-and-executions-which-are-not-triggered-via-the-api">
 <h3>Permissions and Executions Which Are Not Triggered via the API<a class="headerlink" href="#permissions-and-executions-which-are-not-triggered-via-the-api" title="Permalink to this headline">¶</a></h3>
-<p>Normally when an execution is triggered via the API (POST to <code class="docutils literal"><span class="pre">/actionexecutions/</span></code>), the
+<p>Normally when an execution is triggered via the API (POST to <code class="docutils literal notranslate"><span class="pre">/actionexecutions/</span></code>), the
 authenticated StackStorm user who triggered the execution is the effective user for RBAC purposes.
 There are some exceptions, described below:</p>
 <p><strong>Rules</strong> - Effective user for executions which are triggered by a rule is the system user
-(by default, <code class="docutils literal"><span class="pre">stanley</span></code>).</p>
+(by default, <code class="docutils literal notranslate"><span class="pre">stanley</span></code>).</p>
 <p><strong>ChatOps</strong> - Effective user for executions which are triggered via ChatOps (POST to
-<code class="docutils literal"><span class="pre">/aliasexecutions/</span></code>) using hubot is the StackStorm user that is configured in hubot
-(<code class="docutils literal"><span class="pre">ST2_AUTH_USERNAME</span></code> - by default that is <code class="docutils literal"><span class="pre">chatops_bot</span></code>).</p>
+<code class="docutils literal notranslate"><span class="pre">/aliasexecutions/</span></code>) using hubot is the StackStorm user that is configured in hubot
+(<code class="docutils literal notranslate"><span class="pre">ST2_AUTH_USERNAME</span></code> - by default that is <code class="docutils literal notranslate"><span class="pre">chatops_bot</span></code>).</p>
 </div>
 </div>
 <div class="section" id="enabling-rbac">
 <h2>Enabling RBAC<a class="headerlink" href="#enabling-rbac" title="Permalink to this headline">¶</a></h2>
 <p>If you installed Extreme Workflow Composer using the <a class="reference internal" href="install/bwc.html"><span class="doc">one-line install</span></a>, RBAC will be automatically
-enabled. It will assign the <code class="docutils literal"><span class="pre">admin</span></code> role to <code class="docutils literal"><span class="pre">stanley</span></code> and <code class="docutils literal"><span class="pre">st2admin</span></code>.</p>
-<p>If you installed Extreme Workflow Composer separately, by installing the <code class="docutils literal"><span class="pre">bwc-enterprise</span></code> package on top of StackStorm, you
-will need to manually enable RBAC, and assign <code class="docutils literal"><span class="pre">admin</span></code> privileges to <code class="docutils literal"><span class="pre">stanley</span></code>. It is not
-enabled by default. To enable it, add this section to <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[rbac]</span>
+enabled. It will assign the <code class="docutils literal notranslate"><span class="pre">admin</span></code> role to <code class="docutils literal notranslate"><span class="pre">stanley</span></code> and <code class="docutils literal notranslate"><span class="pre">st2admin</span></code>.</p>
+<p>If you installed Extreme Workflow Composer separately, by installing the <code class="docutils literal notranslate"><span class="pre">bwc-enterprise</span></code> package on top of StackStorm, you
+will need to manually enable RBAC, and assign <code class="docutils literal notranslate"><span class="pre">admin</span></code> privileges to <code class="docutils literal notranslate"><span class="pre">stanley</span></code>. It is not
+enabled by default. To enable it, add this section to <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[rbac]</span>
 <span class="na">enable</span> <span class="o">=</span> <span class="s">True</span>
 </pre></div>
 </div>
-<p>Run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">restart-component</span> <span class="pre">st2api</span></code> to apply that change.</p>
-<p>To assign <code class="docutils literal"><span class="pre">admin</span></code> privileges to <code class="docutils literal"><span class="pre">stanley</span></code> and <code class="docutils literal"><span class="pre">st2admin</span></code>, create these two files:</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">restart-component</span> <span class="pre">st2api</span></code> to apply that change.</p>
+<p>To assign <code class="docutils literal notranslate"><span class="pre">admin</span></code> privileges to <code class="docutils literal notranslate"><span class="pre">stanley</span></code> and <code class="docutils literal notranslate"><span class="pre">st2admin</span></code>, create these two files:</p>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/stanley.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/assignments/stanley.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;stanley&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;admin&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/st2admin.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/assignments/st2admin.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;st2admin&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;admin&quot;</span>
@@ -1157,24 +1157,24 @@ enabled by default. To enable it, add this section to <code class="docutils lite
 </div>
 </li>
 </ul>
-<p>Run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2-apply-rbac-definitions</span> <span class="pre">--config-file</span> <span class="pre">/etc/st2/st2.conf</span></code> to apply those changes.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">st2-apply-rbac-definitions</span> <span class="pre">--config-file</span> <span class="pre">/etc/st2/st2.conf</span></code> to apply those changes.</p>
 </div>
 <div class="section" id="defining-roles-and-assignments">
 <h2>Defining Roles and Assignments<a class="headerlink" href="#defining-roles-and-assignments" title="Permalink to this headline">¶</a></h2>
 <p>To follow the infrastructure as code approach, roles and user role assignments are defined in YAML
-files which are stored in <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/</span></code>.</p>
+files which are stored in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/</span></code>.</p>
 <p>Those definitions are simple YAML files means you can (and should) version control and manage
 them in the same way you version control and manage other source code and infrastructure artifacts.</p>
 <p>Both roles and user role assignments are loaded in lexicographical order based on the filename.
-For example, if you have two role definitions in the files named <code class="docutils literal"><span class="pre">role_b.yaml</span></code> and
-<code class="docutils literal"><span class="pre">role_a.yaml</span></code>, <code class="docutils literal"><span class="pre">role_a.yaml</span></code> will be loaded before <code class="docutils literal"><span class="pre">role_b.yaml</span></code>.</p>
+For example, if you have two role definitions in the files named <code class="docutils literal notranslate"><span class="pre">role_b.yaml</span></code> and
+<code class="docutils literal notranslate"><span class="pre">role_a.yaml</span></code>, <code class="docutils literal notranslate"><span class="pre">role_a.yaml</span></code> will be loaded before <code class="docutils literal notranslate"><span class="pre">role_b.yaml</span></code>.</p>
 <div class="section" id="defining-roles-and-permission-grants">
 <h3>Defining Roles and Permission Grants<a class="headerlink" href="#defining-roles-and-permission-grants" title="Permalink to this headline">¶</a></h3>
 <p>Roles and permission grants are defined in YAML files which are stored in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/roles/</span></code>. Each file defines role information and associated permission
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/roles/</span></code>. Each file defines role information and associated permission
 grants for a single role which means that if you want to define <strong>n</strong> roles you will need <strong>n</strong> files.</p>
-<p>Example role definition (<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/roles/role_sample.yaml</span></code>):</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p>Example role definition (<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/roles/role_sample.yaml</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;sample&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Role</span><span class="nv"> </span><span class="s">which</span><span class="nv"> </span><span class="s">contains</span><span class="nv"> </span><span class="s">many</span><span class="nv"> </span><span class="s">different</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">grants</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">serves</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">demonstration</span><span class="nv"> </span><span class="s">purposes&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -1259,31 +1259,31 @@ grants for a single role which means that if you want to define <strong>n</stron
 <div class="section" id="defining-user-role-assignments">
 <h3>Defining User Role Assignments<a class="headerlink" href="#defining-user-role-assignments" title="Permalink to this headline">¶</a></h3>
 <p>User role assignments are defined in YAML files which are located in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/</span></code>. Each file defines assignments for a single user
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/assignments/</span></code>. Each file defines assignments for a single user
 which means that if you want to define assignments for <strong>n</strong> users, you will need <strong>n</strong> files.</p>
-<p>Example role definition (<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/user4.yaml</span></code>):</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p>Example role definition (<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/assignments/user4.yaml</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;user4&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span> <span class="s">&quot;role_one&quot;</span>
         <span class="p p-Indicator">-</span> <span class="s">&quot;observer&quot;</span>
 </pre></div>
 </div>
-<p>In the example above we assign two roles to the user named <code class="docutils literal"><span class="pre">user4</span></code>:</p>
+<p>In the example above we assign two roles to the user named <code class="docutils literal notranslate"><span class="pre">user4</span></code>:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">role_one</span></code> (a custom role which needs to be defined as described above) and</li>
-<li><code class="docutils literal"><span class="pre">observer</span></code> (system role).</li>
+<li><code class="docutils literal notranslate"><span class="pre">role_one</span></code> (a custom role which needs to be defined as described above) and</li>
+<li><code class="docutils literal notranslate"><span class="pre">observer</span></code> (system role).</li>
 </ul>
 </div>
 </div>
 <div class="section" id="applying-rbac-definitions">
 <h2>Applying RBAC Definitions<a class="headerlink" href="#applying-rbac-definitions" title="Permalink to this headline">¶</a></h2>
 <p>As described above, RBAC definitions are defined in YAML files located in the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/</span></code> directory. For those definitions to take effect, you need to apply them
-using the <code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code> script.</p>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/</span></code> directory. For those definitions to take effect, you need to apply them
+using the <code class="docutils literal notranslate"><span class="pre">st2-apply-rbac-definitions</span></code> script.</p>
 <p>Usually, you will want to run this script every time you modify the RBAC definitions.</p>
 <p>For example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file<span class="o">=</span>/etc/st2/st2.conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file<span class="o">=</span>/etc/st2/st2.conf
 
 <span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,439 - INFO - Synchronizing roles...
 <span class="m">2015</span>-08-12 <span class="m">22</span>:30:18,441 - DEBUG - New roles: set<span class="o">([])</span>
@@ -1312,41 +1312,41 @@ using the <code class="docutils literal"><span class="pre">st2-apply-rbac-defini
 used for authentication.</p>
 </div>
 <p>In addition to manually assigning roles to the users based on the definitions in the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/</span></code> directory, StackStorm also supports automatically granting roles
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/assignments/</span></code> directory, StackStorm also supports automatically granting roles
 to users upon authentication, based on LDAP groups membership.</p>
 <p>This comes handy in enterprise environments and makes StackStorm user provisioning easier and faster.
 It means administrators don’t need to manually write and manage RBAC role assignment files on disk,
 because roles are automatically granted to the users based on their LDAP group membership and
-mappings files in <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/</span></code> directory.</p>
-<p>To be able to utilize this feature it first needs to be enabled in <code class="docutils literal"><span class="pre">st2.conf</span></code> by setting
-<code class="docutils literal"><span class="pre">rbac.sync_remote_groups</span></code> option to <code class="docutils literal"><span class="pre">True</span></code>.</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[rbac]</span>
+mappings files in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/mappings/</span></code> directory.</p>
+<p>To be able to utilize this feature it first needs to be enabled in <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code> by setting
+<code class="docutils literal notranslate"><span class="pre">rbac.sync_remote_groups</span></code> option to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[rbac]</span>
 <span class="na">sync_remote_groups</span> <span class="o">=</span> <span class="s">True</span>
 </pre></div>
 </div>
 <p>After this feature is enabled, the StackStorm administrator needs to write mapping files that tell StackStorm
 which roles to automatically grant to users, based upon LDAP group membership.</p>
-<p>Mapping files are located in the <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/</span></code> directory and map an LDAP group
+<p>Mapping files are located in the <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/mappings/</span></code> directory and map an LDAP group
 to one or more StackStorm roles.</p>
 <p>Two examples of such mapping files can be found below:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">LDAP group names referenced in the <code class="docutils literal"><span class="pre">group</span></code> attribute are case-sensitive.</p>
+<p class="last">LDAP group names referenced in the <code class="docutils literal notranslate"><span class="pre">group</span></code> attribute are case-sensitive.</p>
 </div>
 <ul>
-<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/stormers.yaml</span></code></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/mappings/stormers.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="s">&quot;CN=stormers,OU=groups,DC=stackstorm,DC=net&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Automatically</span><span class="nv"> </span><span class="s">grant</span><span class="nv"> </span><span class="s">admin</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">stormers</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">members.&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="s">&quot;admin&quot;</span>
 </pre></div>
 </div>
-<p>Each user who is a member of the <code class="docutils literal"><span class="pre">CN=stormers,OU=groups,DC=stackstorm,DC=net</span></code> LDAP group will
-automatically be granted <code class="docutils literal"><span class="pre">admin</span></code> StackStorm role when they successfully authenticate with StackStorm.</p>
+<p>Each user who is a member of the <code class="docutils literal notranslate"><span class="pre">CN=stormers,OU=groups,DC=stackstorm,DC=net</span></code> LDAP group will
+automatically be granted <code class="docutils literal notranslate"><span class="pre">admin</span></code> StackStorm role when they successfully authenticate with StackStorm.</p>
 </li>
-<li><p class="first"><code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/mappings/testers.yaml</span></code></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/mappings/testers.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="s">&quot;CN=testers,OU=groups,DC=stackstorm,DC=net&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Automatically</span><span class="nv"> </span><span class="s">grant</span><span class="nv"> </span><span class="s">observer</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">qa_admin</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">testers</span><span class="nv"> </span><span class="s">group</span><span class="nv"> </span><span class="s">members.&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
@@ -1354,13 +1354,13 @@ automatically be granted <code class="docutils literal"><span class="pre">admin<
     <span class="p p-Indicator">-</span> <span class="s">&quot;qa_admin&quot;</span>
 </pre></div>
 </div>
-<p>Each user who is a member of the <code class="docutils literal"><span class="pre">CN=testers,OU=groups,DC=stackstorm,DC=net</span></code> LDAP group will
-automatically be granted <code class="docutils literal"><span class="pre">observer</span></code> and <code class="docutils literal"><span class="pre">qa_admin</span></code> StackStorm roles when they successfully
+<p>Each user who is a member of the <code class="docutils literal notranslate"><span class="pre">CN=testers,OU=groups,DC=stackstorm,DC=net</span></code> LDAP group will
+automatically be granted <code class="docutils literal notranslate"><span class="pre">observer</span></code> and <code class="docutils literal notranslate"><span class="pre">qa_admin</span></code> StackStorm roles when they successfully
 authenticate with StackStorm.</p>
 </li>
 </ul>
 <p>Once the mapping definitions files are written, the StackStorm administrator needs to run the
-<code class="docutils literal"><span class="pre">st2-apply-rbac-definitions</span></code> tool to store those definitions in the database. This tool also
+<code class="docutils literal notranslate"><span class="pre">st2-apply-rbac-definitions</span></code> tool to store those definitions in the database. This tool also
 needs to be run after any change or removal of mappings files.</p>
 <div class="section" id="how-ldap-group-based-role-assignments-work">
 <h3>How LDAP Group-Based Role Assignments Work<a class="headerlink" href="#how-ldap-group-based-role-assignments-work" title="Permalink to this headline">¶</a></h3>
@@ -1395,12 +1395,12 @@ identity providers.</p>
 <p>For sake of this example let us assume that the identity provider is managed by the OS on which
 StackStorm runs.</p>
 <p>On most Linux systems, to create a user and set their password, run this:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ useradd rbac_user1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ useradd rbac_user1
 $ passwd rbac_user1
 </pre></div>
 </div>
 <p>Once this user is created StackStorm will allow access to this user. (Optional) To validate, try:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 auth rbac_user1 -p <span class="s1">&#39;&lt;RBACU1_PASSWORD&gt;&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 auth rbac_user1 -p <span class="s1">&#39;&lt;RBACU1_PASSWORD&gt;&#39;</span>
 $ <span class="nb">export</span> <span class="nv">ST2_AUTH_TOKEN</span><span class="o">=</span>&lt;USER_SCOPED_AUTH_TOKEN&gt;
 $ st2 action list
 </pre></div>
@@ -1411,8 +1411,8 @@ $ st2 action list
 <p>A newly created user has no assigned permissions. Each permission must be explicitly assigned to a
 user. To assign permission grants requires creation of a role and then associating this role
 with a user. In this case we are trying to create a pack owner role.</p>
-<p>Lets first make sure there is a pack <code class="docutils literal"><span class="pre">example</span></code> we can use to experiment.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/
+<p>Lets first make sure there is a pack <code class="docutils literal notranslate"><span class="pre">example</span></code> we can use to experiment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/
 $ mkdir example
 $ mkdir example/actions example/rules example/sensors
 $ touch pack.yaml
@@ -1421,9 +1421,9 @@ $ touch requirements.txt
 $ cp core/icon.png example/icon.png
 </pre></div>
 </div>
-<p>Now we setup a role. Create <code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/roles/example_pack_owner.yaml</span></code> with the
+<p>Now we setup a role. Create <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/roles/example_pack_owner.yaml</span></code> with the
 following content:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;example_pack_owner&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Owner</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">pack</span><span class="nv"> </span><span class="s">example&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -1437,16 +1437,16 @@ following content:</p>
            <span class="p p-Indicator">-</span> <span class="s">&quot;action_all&quot;</span>
 </pre></div>
 </div>
-<p>A <code class="docutils literal"><span class="pre">pack</span> <span class="pre">owner</span></code> role would require the user to be able to view, create, modify and delete all
-contents of a pack. Again, let’s pick the pack <code class="docutils literal"><span class="pre">example</span></code> as the target of ownership.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">owner</span></code> role would require the user to be able to view, create, modify and delete all
+contents of a pack. Again, let’s pick the pack <code class="docutils literal notranslate"><span class="pre">example</span></code> as the target of ownership.</p>
 <p>See <a class="reference internal" href="#ref-rbac-available-permission-types"><span class="std std-ref">available permission types</span></a> for a full list of
 permission types.</p>
 </div>
 <div class="section" id="role-assignment">
 <h3>Role Assignment<a class="headerlink" href="#role-assignment" title="Permalink to this headline">¶</a></h3>
 <p>Creation of a role is followed by assignment of a role to the user. Create the file
-<code class="docutils literal"><span class="pre">/opt/stackstorm/rbac/assignments/rbac_user1.yaml</span></code> with the following content:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/rbac/assignments/rbac_user1.yaml</span></code> with the following content:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;rbac_user1&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Grant</span><span class="nv"> </span><span class="s">example_pack_owner</span><span class="nv"> </span><span class="s">role</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">rbac_user1</span><span class="nv"> </span><span class="s">user.&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -1458,7 +1458,7 @@ permission types.</p>
 <div class="section" id="applying-rbac">
 <h3>Applying RBAC<a class="headerlink" href="#applying-rbac" title="Permalink to this headline">¶</a></h3>
 <p>As a StackStorm administrator, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file<span class="o">=</span>/etc/st2/st2.conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-apply-rbac-definitions --config-file<span class="o">=</span>/etc/st2/st2.conf
 </pre></div>
 </div>
 <p>This command will sync the StackStorm RBAC state with the filesystem state. Only after running this
@@ -1471,7 +1471,7 @@ command does StackStorm know of the latest changes to RBAC permission grants.</p
 <li>Setup Authentication token:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 auth rbac_user1 -p <span class="s1">&#39;&lt;RBACU1_PASSWORD&gt;&#39;</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 auth rbac_user1 -p <span class="s1">&#39;&lt;RBACU1_PASSWORD&gt;&#39;</span>
 $ <span class="nb">export</span> <span class="nv">ST2_AUTH_TOKEN</span><span class="o">=</span>&lt;USER_SCOPED_AUTH_TOKEN&gt;
 $ st2 action list
 </pre></div>
@@ -1481,7 +1481,7 @@ $ st2 action list
 <li>Validate rule visibility and creation:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/example
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/example
 $ cp /usr/share/doc/st2/examples/rules/sample_rule_with_timer.yaml rules/
 $ sed -i <span class="s1">&#39;s/pack: &quot;examples&quot;/pack: &quot;example&quot;/g&#39;</span> rules/sample_rule_with_timer.yaml
 $ st2 rule create rules/sample_rule_with_timer.yaml
@@ -1497,7 +1497,7 @@ $ st2 rule get &lt;EXISTING_RULE_REF&gt;
 <li>Validation action visibility, creation and execute:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/example
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/stackstorm/packs/example
 $ cp /usr/share/doc/st2/examples/actions/local.yaml actions/
 $ <span class="nb">echo</span> <span class="s2">&quot;pack: example&quot;</span> &gt;&gt; actions/local.yaml
 $ st2 action create actions/local.yaml

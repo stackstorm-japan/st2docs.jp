@@ -253,8 +253,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -458,16 +458,16 @@
             </div>
             
   <ul>
-<li><p class="first">Review and edit the <code class="docutils literal"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code> configuration file to point it to
+<li><p class="first">Review and edit the <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/chatops/st2chatops.env</span></code> configuration file to point it to
 your StackStorm installation and the Chat Service you are using. At a minimum, you should generate an
-<a class="reference internal" href="../../authentication.html#authentication-apikeys"><span class="std std-ref">API key</span></a> and set the <code class="docutils literal"><span class="pre">ST2_API_KEY</span></code> variable. By default
-<code class="docutils literal"><span class="pre">st2api</span></code> and <code class="docutils literal"><span class="pre">st2auth</span></code> are expected to be on the same host. If that is not the case, please
-update the <code class="docutils literal"><span class="pre">ST2_API</span></code> and <code class="docutils literal"><span class="pre">ST2_AUTH_URL</span></code> variables or just point to the correct host with
-<code class="docutils literal"><span class="pre">ST2_HOSTNAME</span></code>.</p>
+<a class="reference internal" href="../../authentication.html#authentication-apikeys"><span class="std std-ref">API key</span></a> and set the <code class="docutils literal notranslate"><span class="pre">ST2_API_KEY</span></code> variable. By default
+<code class="docutils literal notranslate"><span class="pre">st2api</span></code> and <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> are expected to be on the same host. If that is not the case, please
+update the <code class="docutils literal notranslate"><span class="pre">ST2_API</span></code> and <code class="docutils literal notranslate"><span class="pre">ST2_AUTH_URL</span></code> variables or just point to the correct host with
+<code class="docutils literal notranslate"><span class="pre">ST2_HOSTNAME</span></code>.</p>
 <p>The example configuration uses Slack. To set this up, go to the Slack web admin interface, create
-a Bot, and copy the authentication token into <code class="docutils literal"><span class="pre">HUBOT_SLACK_TOKEN</span></code>.</p>
+a Bot, and copy the authentication token into <code class="docutils literal notranslate"><span class="pre">HUBOT_SLACK_TOKEN</span></code>.</p>
 <p>If you are using a different Chat Service, set the corresponding environment variables under the
-<code class="docutils literal"><span class="pre">Chat</span> <span class="pre">service</span> <span class="pre">adapter</span> <span class="pre">settings</span></code> section in <code class="docutils literal"><span class="pre">st2chatops.env</span></code>:
+<code class="docutils literal notranslate"><span class="pre">Chat</span> <span class="pre">service</span> <span class="pre">adapter</span> <span class="pre">settings</span></code> section in <code class="docutils literal notranslate"><span class="pre">st2chatops.env</span></code>:
 <a class="reference external" href="https://github.com/slackhq/hubot-slack">Slack</a>,
 <a class="reference external" href="https://github.com/hipchat/hubot-hipchat">HipChat</a>,
 <a class="reference external" href="https://github.com/athieriot/hubot-yammer">Yammer</a>,

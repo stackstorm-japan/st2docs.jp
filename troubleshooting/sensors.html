@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -471,16 +471,16 @@ triggers are not emitted) follow these steps to debug it:</p>
 <p>The first step is verifying that the sensor is registered in the database. You can
 do that by inspecting the output of the CLI command below and making sure that your
 sensor is present:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 sensor list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 sensor list
 </pre></div>
 </div>
 <p>If your sensor is not listed, this means it is not registered. You can
-register it by running the <code class="docutils literal"><span class="pre">st2ctl</span></code> script:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-sensors --register-fail-on-failure --verbose
+register it by running the <code class="docutils literal notranslate"><span class="pre">st2ctl</span></code> script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-sensors --register-fail-on-failure --verbose
 </pre></div>
 </div>
 <p>This will register sensors for all the packs which are available on the file
-system. As you can see, we also use <code class="docutils literal"><span class="pre">--register-fail-on-failure</span></code> and <code class="docutils literal"><span class="pre">--verbose</span></code>
+system. As you can see, we also use <code class="docutils literal notranslate"><span class="pre">--register-fail-on-failure</span></code> and <code class="docutils literal notranslate"><span class="pre">--verbose</span></code>
 flags.</p>
 <p>This will cause the register script to exit with a non-zero exit code, and print a failure
 in case registration of a particular sensor fails (e.g. typo in sensor metadata
@@ -491,9 +491,9 @@ file, invalid YAML, etc).</p>
 <p>After confirming that the sensor has been registered, you should check that a
 virtual environment has been created for that sensor’s pack.</p>
 <p>You can check this by confirming the existence of the
-<code class="docutils literal"><span class="pre">/opt/stackstorm/virtualenvs/&lt;pack</span> <span class="pre">name&gt;</span></code> directory. If the directory and
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/virtualenvs/&lt;pack</span> <span class="pre">name&gt;</span></code> directory. If the directory and
 virtual environment does not exist, you can create it using this command:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 run packs.setup_virtualenv <span class="nv">packs</span><span class="o">=</span>&lt;pack name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 run packs.setup_virtualenv <span class="nv">packs</span><span class="o">=</span>&lt;pack name&gt;
 </pre></div>
 </div>
 </div>
@@ -503,7 +503,7 @@ virtual environment does not exist, you can create it using this command:</p>
 container service in the foreground in debug and single sensor mode. In this mode the sensor
 container will only run the sensor you specified and all log messages with level DEBUG and
 higher will be printed directly to the console.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2sensorcontainer --config-file<span class="o">=</span>/etc/st2/st2.conf --debug --sensor-ref<span class="o">=</span>pack.SensorClassName
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2sensorcontainer --config-file<span class="o">=</span>/etc/st2/st2.conf --debug --sensor-ref<span class="o">=</span>pack.SensorClassName
 </pre></div>
 </div>
 <p>The log output will usually give you a clue as to what is going on. Common issues include typos and

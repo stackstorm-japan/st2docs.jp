@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -483,9 +483,9 @@ a reference to layer on some HA deployment-specific details.</p>
 <p>This process hosts the REST API endpoints that serve requests from WebUI, CLI and ChatOps. It
 maintains connections to MongoDB to store and retrieve information. It also connects to RabbitMQ
 to push messages onto the message bus. It is a Python WSGI app running under a gunicorn-managed
-process which by default listens on port <code class="docutils literal"><span class="pre">9101</span></code>. It is front-ended by Nginx, acting as a reverse
+process which by default listens on port <code class="docutils literal notranslate"><span class="pre">9101</span></code>. It is front-ended by Nginx, acting as a reverse
 proxy.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2api</span></code> processes can be behind a load balancer in an active-active configuration.
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2api</span></code> processes can be behind a load balancer in an active-active configuration.
 Each of these processes can be deployed on separate compute instances.</p>
 </div>
 <div class="section" id="st2auth">
@@ -493,37 +493,37 @@ Each of these processes can be deployed on separate compute instances.</p>
 <p>All authentication is managed by this process. This process needs a connection to MongoDB and an
 authentication backend. See <a class="reference internal" href="../authentication.html#ref-auth-backends"><span class="std std-ref">authentication backends</span></a> for more
 information. It is a Python WSGI app running under a gunicorn-managed process which by default
-listens on port <code class="docutils literal"><span class="pre">9100</span></code>. It is front-ended by Nginx acting as a reverse proxy.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2auth</span></code> processes can be behind a load balancer in an active-active configuration.
+listens on port <code class="docutils literal notranslate"><span class="pre">9100</span></code>. It is front-ended by Nginx acting as a reverse proxy.</p>
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> processes can be behind a load balancer in an active-active configuration.
 Each of these processes can be deployed on separate compute instances. If using the PAM
 authentication backend, special care has to be taken to guarantee that all boxes on which an
-instance of <code class="docutils literal"><span class="pre">st2auth</span></code> runs should have the same users. Generally, all <code class="docutils literal"><span class="pre">st2auth</span></code> process should
+instance of <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> runs should have the same users. Generally, all <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> process should
 see the same identities, via some provider if applicable, for the system to work predictably.</p>
 </div>
 <div class="section" id="st2stream">
 <h3>st2stream<a class="headerlink" href="#st2stream" title="Permalink to this headline">¶</a></h3>
 <p>This process exposes a server-sent event stream. It requires access to both MongoDB and RabbitMQ.
-It is also a gunicorn-managed process, listening on port <code class="docutils literal"><span class="pre">9102</span></code> by default. It is front-ended by
+It is also a gunicorn-managed process, listening on port <code class="docutils literal notranslate"><span class="pre">9102</span></code> by default. It is front-ended by
 Nginx acting as a reverse proxy. Clients like WebUI and ChatOps maintain a persistent connection
-with an <code class="docutils literal"><span class="pre">st2stream</span></code> process and receive update from the <code class="docutils literal"><span class="pre">st2stream</span></code> server.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2stream</span></code> process can be behind a load balancer in an active-active configuration.
+with an <code class="docutils literal notranslate"><span class="pre">st2stream</span></code> process and receive update from the <code class="docutils literal notranslate"><span class="pre">st2stream</span></code> server.</p>
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2stream</span></code> process can be behind a load balancer in an active-active configuration.
 Since clients maintain a persistent connection with a specific instance the client will briefly
-lose events if an <code class="docutils literal"><span class="pre">st2stream</span></code> process goes down. It is the responsibility of the client to
+lose events if an <code class="docutils literal notranslate"><span class="pre">st2stream</span></code> process goes down. It is the responsibility of the client to
 reconnect to an alternate stream connection via the load balancer. Note that this is in contrast
-with <code class="docutils literal"><span class="pre">st2api</span></code> where each connection from a client is short-lived. Take the long-lived nature of
+with <code class="docutils literal notranslate"><span class="pre">st2api</span></code> where each connection from a client is short-lived. Take the long-lived nature of
 connections made to this process when configuring appropriate timeouts for load balancers, wsgi
 app servers like gunicorn etc.</p>
 </div>
 <div class="section" id="st2sensorcontainer">
 <h3>st2sensorcontainer<a class="headerlink" href="#st2sensorcontainer" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">st2sensorcontainer</span></code> manages the sensors to be run on a node. It will start, stop and restart
+<p><code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code> manages the sensors to be run on a node. It will start, stop and restart
 sensors running on a node. In this case a node is the same as a compute instance i.e. a Virtual
 Machine. In future this could be a container.</p>
-<p>It is possible to run <code class="docutils literal"><span class="pre">st2sensorcontainer</span></code> in HA mode by running one process on each compute
+<p>It is possible to run <code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code> in HA mode by running one process on each compute
 instance. Each sensor node needs to be provided with proper partition information to share work
 with other sensor nodes so that the same sensor does not run on different nodes.
 See <a class="reference internal" href="sensor_partitioning.html"><span class="doc">Partitioning Sensors</span></a> for information on how to partition sensors. Currently
-<code class="docutils literal"><span class="pre">st2sensorcontainer</span></code> processes do not form a cluster and distribute work or take over
+<code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code> processes do not form a cluster and distribute work or take over
 new work if some nodes in the cluster disappear. It is possible for a sensor itself to be
 implemented with HA in mind so that the same sensor can be deployed on multiple nodes with the
 sensor managing active-active or active-passive. Providing some platform level HA support for
@@ -536,20 +536,20 @@ TriggerInstances and decide if an ActionExecution is to be requested. It needs a
 locate rules and RabbitMQ to listen for TriggerInstances and request ActionExecutions. The
 auxiliary purpose of this process is to run all the defined timers. See
 <a class="reference internal" href="../rules.html#ref-rule-timers"><span class="std std-ref">timers</span></a> for the specifics on setting up timers via rules.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2rulesengine</span></code> processes can run in active-active with only connections to MongoDB and
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2rulesengine</span></code> processes can run in active-active with only connections to MongoDB and
 RabbitMQ. All these will share the TriggerInstance load and naturally pick up more work if one or
 more of the processes becomes unavailable. The timer function in each of the RulesEngine is not HA
 compatible. In the interim it is possible to disable the timer in all but one of the
-<code class="docutils literal"><span class="pre">st2rulesengine</span></code> to avoid duplicate timer events. Expect this to be fixed in a future StackStorm
+<code class="docutils literal notranslate"><span class="pre">st2rulesengine</span></code> to avoid duplicate timer events. Expect this to be fixed in a future StackStorm
 release.</p>
 </div>
 <div class="section" id="st2actionrunner">
 <h3>st2actionrunner<a class="headerlink" href="#st2actionrunner" title="Permalink to this headline">¶</a></h3>
-<p>All ActionExecutions are handled for execution by <code class="docutils literal"><span class="pre">st2actionrunner</span></code>. It manages the full
+<p>All ActionExecutions are handled for execution by <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code>. It manages the full
 life-cycle of an execution from scheduling to one of the terminal states.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2actionrunner</span></code> processes can run in active-active with only connections to MongoDB
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> processes can run in active-active with only connections to MongoDB
 and RabbitMQ. Work gets naturally distributed across runners via RabbitMQ. Adding more
-<code class="docutils literal"><span class="pre">st2actionrunner</span></code> processes increases the ability of StackStorm to execute actions.</p>
+<code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> processes increases the ability of StackStorm to execute actions.</p>
 <p>In a proper distributed setup it is recommended to setup Zookeeper or Redis to provide a
 distributed co-ordination layer. See <a class="reference internal" href="policies.html"><span class="doc">Policies</span></a>. Using the default
 file-based co-ordination backend will not work as it would in a single box deployment.</p>
@@ -558,23 +558,23 @@ file-based co-ordination backend will not work as it would in a single box deplo
 <h3>st2resultstracker<a class="headerlink" href="#st2resultstracker" title="Permalink to this headline">¶</a></h3>
 <p>Tracks results of execution handed over to Mistral. It requires access to MongoDB and RabbitMQ to
 perform its function.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2resultstracker</span></code> processes will co-operate with each other to perform work. At
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2resultstracker</span></code> processes will co-operate with each other to perform work. At
 startup there is a possibility of extra work however there are no negative consequences of this
 duplication. Specifically the jobs to track results also get stored in the DB in case there are no
 workers to take over the work. This pattern makes all result trackers pick up the same work set on
 startup. Once this work set is exhausted all subsequent tasks are round-robined. If needed
-<code class="docutils literal"><span class="pre">st2resultstracker</span></code> processes could be started in a staggered manner to avoid extra work.</p>
+<code class="docutils literal notranslate"><span class="pre">st2resultstracker</span></code> processes could be started in a staggered manner to avoid extra work.</p>
 </div>
 <div class="section" id="st2notifier">
 <h3>st2notifier<a class="headerlink" href="#st2notifier" title="Permalink to this headline">¶</a></h3>
-<p>This is a dual purpose process - its main function is to generate <code class="docutils literal"><span class="pre">st2.core.actiontrigger</span></code> and
-<code class="docutils literal"><span class="pre">st2.core.notifytrigger</span></code> based on the completion of ActionExecution. The auxiliary purpose is to
+<p>This is a dual purpose process - its main function is to generate <code class="docutils literal notranslate"><span class="pre">st2.core.actiontrigger</span></code> and
+<code class="docutils literal notranslate"><span class="pre">st2.core.notifytrigger</span></code> based on the completion of ActionExecution. The auxiliary purpose is to
 act as a backup scheduler for actions that may not have been scheduled.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">st2notifier</span></code> processes can run in active-active mode, using connections to RabbitMQ
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">st2notifier</span></code> processes can run in active-active mode, using connections to RabbitMQ
 and MongoDB. For the auxiliary purpose to function in an HA deployment when more than one
-<code class="docutils literal"><span class="pre">st2notifier</span></code> is running, either Zookeeper or Redis is required to provide co-ordination. It is
-also possible to designate a single <code class="docutils literal"><span class="pre">st2notifier</span></code> as provider of auxiliary functions by disabling
-the scheduler in all but one <code class="docutils literal"><span class="pre">st2notifiers</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">st2notifier</span></code> is running, either Zookeeper or Redis is required to provide co-ordination. It is
+also possible to designate a single <code class="docutils literal notranslate"><span class="pre">st2notifier</span></code> as provider of auxiliary functions by disabling
+the scheduler in all but one <code class="docutils literal notranslate"><span class="pre">st2notifiers</span></code>.</p>
 </div>
 <div class="section" id="st2garbagecollector">
 <h3>st2garbagecollector<a class="headerlink" href="#st2garbagecollector" title="Permalink to this headline">¶</a></h3>
@@ -587,18 +587,18 @@ does not provide the ability to run this in active-passive.</p>
 <div class="section" id="mistral-api">
 <h3>mistral-api<a class="headerlink" href="#mistral-api" title="Permalink to this headline">¶</a></h3>
 <p>Mistral API is served by this aptly named process. It needs access to PostgreSQL and RabbitMQ.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">mistral-api</span></code> processes can run in an active-active configuration by using a load
-balancer to distribute at its front end. This is similar to <code class="docutils literal"><span class="pre">st2api</span></code>. In a typical single box
-deployment <code class="docutils literal"><span class="pre">mistral-api</span></code> is local to the box and StackStorm communicates via a direct HTTP connection.
-For HA setup we recommend putting <code class="docutils literal"><span class="pre">mistral-api</span></code> behind a load balancer and setting up StackStorm to
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> processes can run in an active-active configuration by using a load
+balancer to distribute at its front end. This is similar to <code class="docutils literal notranslate"><span class="pre">st2api</span></code>. In a typical single box
+deployment <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> is local to the box and StackStorm communicates via a direct HTTP connection.
+For HA setup we recommend putting <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> behind a load balancer and setting up StackStorm to
 communicate via the load balancer.</p>
 </div>
 <div class="section" id="mistral-server">
 <h3>mistral-server<a class="headerlink" href="#mistral-server" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal"><span class="pre">mistral-server</span></code> is the worker engine for mistral i.e. the process which actually manages
-executions. The StackStorm plugin to mistral (<code class="docutils literal"><span class="pre">st2mistral</span></code>) communicates back to the StackStorm API. This
+<p><code class="docutils literal notranslate"><span class="pre">mistral-server</span></code> is the worker engine for mistral i.e. the process which actually manages
+executions. The StackStorm plugin to mistral (<code class="docutils literal notranslate"><span class="pre">st2mistral</span></code>) communicates back to the StackStorm API. This
 process needs access to PostgreSQL and RabbitMQ.</p>
-<p>Multiple <code class="docutils literal"><span class="pre">mistral-server</span></code> processes can run and co-ordinate work in an active-active
+<p>Multiple <code class="docutils literal notranslate"><span class="pre">mistral-server</span></code> processes can run and co-ordinate work in an active-active
 configuration. In an HA deployment all communication with the StackStorm API must be via the configured
 load balancer.</p>
 </div>
@@ -618,13 +618,13 @@ provide safe failover. See <a class="reference internal" href="../install/config
 to MongoDB replica sets.</p>
 <p>Loss of connectivity to a MongoDB cluster will cause downtime for StackStorm. However, once a replica
 MongoDB is brought back it should be possible to bring StackStorm back to operational state by
-simply loading the content (through <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code> and <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">load</span></code>. Easy
+simply loading the content (through <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code> and <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">load</span></code>. Easy
 access to old ActionExecutions will be lost but all the data of old ActionExecutions will still
 be available in audit logs.</p>
 </div>
 <div class="section" id="postgresql">
 <h3>PostgreSQL<a class="headerlink" href="#postgresql" title="Permalink to this headline">¶</a></h3>
-<p>Used primarily by <code class="docutils literal"><span class="pre">mistral-api</span></code> and <code class="docutils literal"><span class="pre">mistral-server</span></code>. To deploy PostgreSQL in HA please see
+<p>Used primarily by <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral-server</span></code>. To deploy PostgreSQL in HA please see
 <a class="reference external" href="http://www.postgresql.org/docs/9.4/static/high-availability.html">the PostgreSQL documentation</a>.</p>
 <p>The data stored in PostgreSQL is operational for Mistral, therefore starting from a brand new
 PostgreSQL in case of loss of a cluster will bring automation services back instantly. There will
@@ -650,8 +650,8 @@ understand Redis deployments using sentinel.</p>
 </div>
 <div class="section" id="nginx-and-load-balancing">
 <h3>Nginx and Load Balancing<a class="headerlink" href="#nginx-and-load-balancing" title="Permalink to this headline">¶</a></h3>
-<p>An load balancer is required to reverse proxy each instance of <code class="docutils literal"><span class="pre">st2api</span></code>, <code class="docutils literal"><span class="pre">st2auth</span></code>,
-<code class="docutils literal"><span class="pre">st2stream</span></code> and <code class="docutils literal"><span class="pre">mistral-api</span></code>. In the reference setup, Nginx is used for this. This server
+<p>An load balancer is required to reverse proxy each instance of <code class="docutils literal notranslate"><span class="pre">st2api</span></code>, <code class="docutils literal notranslate"><span class="pre">st2auth</span></code>,
+<code class="docutils literal notranslate"><span class="pre">st2stream</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code>. In the reference setup, Nginx is used for this. This server
 terminates SSL connections, shields clients from internal port numbers of various services
 and only require ports 80 and 443 to be open on containers.</p>
 <p>Often it is best to deploy one set of all these services on a compute instance and share an Nginx
@@ -664,17 +664,17 @@ not provide any specific recommendations.</p>
 </div>
 <div class="section" id="sharing-content">
 <h2>Sharing Content<a class="headerlink" href="#sharing-content" title="Permalink to this headline">¶</a></h2>
-<p>In an HA setup with <code class="docutils literal"><span class="pre">st2api</span></code>, <code class="docutils literal"><span class="pre">st2actionrunner</span></code> and <code class="docutils literal"><span class="pre">st2sensorcontainer</span></code> each running on
+<p>In an HA setup with <code class="docutils literal notranslate"><span class="pre">st2api</span></code>, <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> and <code class="docutils literal notranslate"><span class="pre">st2sensorcontainer</span></code> each running on
 multiple boxes the question of managing distributed content is crucial. StackStorm does not provide a
 built-in solution to distributing content on various boxes. Instead it relies on external
 management of StackStorm content. Here are a few strategies:</p>
 <div class="section" id="read-write-nfs-mounts">
 <h3>Read-Write NFS mounts<a class="headerlink" href="#read-write-nfs-mounts" title="Permalink to this headline">¶</a></h3>
-<p>If the content folders i.e. <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code> and <code class="docutils literal"><span class="pre">/opt/stackstorm/virtualenvs</span></code> are
+<p>If the content folders i.e. <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code> and <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/virtualenvs</span></code> are
 placed on read-write NFS mounts then writes from any StackStorm node will be visible to other nodes.
-Special care needs to be taken with <code class="docutils literal"><span class="pre">/opt/stackstorm/virtualenvs</span></code> since that has symlinks to
+Special care needs to be taken with <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/virtualenvs</span></code> since that has symlinks to
 system libraries. If care is not taken to provision all host boxes in an identical manner it could
-lead to unpredictable behavior. Managing the <code class="docutils literal"><span class="pre">virtualenvs</span></code> on every host box individually would
+lead to unpredictable behavior. Managing the <code class="docutils literal notranslate"><span class="pre">virtualenvs</span></code> on every host box individually would
 be a more robust approach.</p>
 </div>
 <div class="section" id="content-management">
@@ -689,8 +689,8 @@ This is perhaps the better of the two approaches to end up with a predictable HA
 <h2>Reference HA setup<a class="headerlink" href="#reference-ha-setup" title="Permalink to this headline">¶</a></h2>
 <p>In this section we provide a highly opinionated and therefore prescriptive approach to deploying
 StackStorm in HA. This deployment has 3 independent boxes which we categorize as “controller box” and
-“blueprint box.” We’ll call these boxes <code class="docutils literal"><span class="pre">st2-multi-node-cntl</span></code>, <code class="docutils literal"><span class="pre">st2-multi-node-1</span></code> and
-<code class="docutils literal"><span class="pre">st2-multi-node-2</span></code>. For the sake of reference we will be using Ubuntu 14.04 as the base OS.
+“blueprint box.” We’ll call these boxes <code class="docutils literal notranslate"><span class="pre">st2-multi-node-cntl</span></code>, <code class="docutils literal notranslate"><span class="pre">st2-multi-node-1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">st2-multi-node-2</span></code>. For the sake of reference we will be using Ubuntu 14.04 as the base OS.
 Obviously you can also use RedHat/CentOS.</p>
 <div class="figure align-center" id="id1">
 <img alt="../_images/st2-deployment-multi-node.png" src="../_images/st2-deployment-multi-node.png" />
@@ -707,45 +707,45 @@ Obviously you can also use RedHat/CentOS.</p>
 <li>st2chatops</li>
 <li>st2web</li>
 </ul>
-<p>In practice <code class="docutils literal"><span class="pre">MongoDB</span></code>, <code class="docutils literal"><span class="pre">PostgreSQL</span></code> and <code class="docutils literal"><span class="pre">RabbitMQ</span></code> will usually be on standalone clusters
-managed outside of StackStorm. The two shared components (<code class="docutils literal"><span class="pre">st2chatops</span></code> and <code class="docutils literal"><span class="pre">st2web</span></code>) are placed here
+<p>In practice <code class="docutils literal notranslate"><span class="pre">MongoDB</span></code>, <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span></code> and <code class="docutils literal notranslate"><span class="pre">RabbitMQ</span></code> will usually be on standalone clusters
+managed outside of StackStorm. The two shared components (<code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> and <code class="docutils literal notranslate"><span class="pre">st2web</span></code>) are placed here
 for the sake of convenience. They could be placed anywhere with the right configuration.</p>
 <p>The Nginx load balancer can easily be switched out for Amazon ELB, HAProxy or any other of your
-choosing. In that case <code class="docutils literal"><span class="pre">st2web</span></code> which is being served off this Nginx instance will also need a
+choosing. In that case <code class="docutils literal notranslate"><span class="pre">st2web</span></code> which is being served off this Nginx instance will also need a
 new home.</p>
-<p><code class="docutils literal"><span class="pre">st2chatops</span></code> which uses <code class="docutils literal"><span class="pre">hubot</span></code> is not easily deployed in HA. Using something like
-<a class="reference external" href="http://www.keepalived.org/">keepalived</a> to maintain <code class="docutils literal"><span class="pre">st2chatops</span></code> in active-passive
+<p><code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> which uses <code class="docutils literal notranslate"><span class="pre">hubot</span></code> is not easily deployed in HA. Using something like
+<a class="reference external" href="http://www.keepalived.org/">keepalived</a> to maintain <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> in active-passive
 configuration is an option.</p>
 <p>Follow these steps to provision a controller box on Ubuntu 14.04:</p>
 <div class="section" id="install-required-dependencies">
 <h4>Install Required Dependencies<a class="headerlink" href="#install-required-dependencies" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
-<li>Install <code class="docutils literal"><span class="pre">MongoDB</span></code>, <code class="docutils literal"><span class="pre">PostgreSQL</span></code> and <code class="docutils literal"><span class="pre">RabbitMQ</span></code>:</li>
+<li>Install <code class="docutils literal notranslate"><span class="pre">MongoDB</span></code>, <code class="docutils literal notranslate"><span class="pre">PostgreSQL</span></code> and <code class="docutils literal notranslate"><span class="pre">RabbitMQ</span></code>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install -y mongodb-server rabbitmq-server postgresql
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y mongodb-server rabbitmq-server postgresql
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic" start="2">
-<li><p class="first">Fix the listen address in <code class="docutils literal"><span class="pre">/etc/postgresql/9.3/main/postgresql.conf</span></code> and have PostgreSQL
-listen on an interface that has an IP address reachable from <code class="docutils literal"><span class="pre">st2-multi-node-1</span></code> and
-<code class="docutils literal"><span class="pre">st2-multi-node-2</span></code>.</p>
+<li><p class="first">Fix the listen address in <code class="docutils literal notranslate"><span class="pre">/etc/postgresql/9.3/main/postgresql.conf</span></code> and have PostgreSQL
+listen on an interface that has an IP address reachable from <code class="docutils literal notranslate"><span class="pre">st2-multi-node-1</span></code> and
+<code class="docutils literal notranslate"><span class="pre">st2-multi-node-2</span></code>.</p>
 </li>
-<li><p class="first">Fix <code class="docutils literal"><span class="pre">bind_ip</span></code> in <code class="docutils literal"><span class="pre">/etc/mongodb.conf</span></code> to bind MongoDB to an interface that has an IP address
-reachable from <code class="docutils literal"><span class="pre">st2-multi-node-1</span></code> and <code class="docutils literal"><span class="pre">st2-multi-node-2</span></code>.</p>
+<li><p class="first">Fix <code class="docutils literal notranslate"><span class="pre">bind_ip</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/mongodb.conf</span></code> to bind MongoDB to an interface that has an IP address
+reachable from <code class="docutils literal notranslate"><span class="pre">st2-multi-node-1</span></code> and <code class="docutils literal notranslate"><span class="pre">st2-multi-node-2</span></code>.</p>
 </li>
 <li><p class="first">Restart MongoDB:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo service mongodb restart
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo service mongodb restart
 </pre></div>
 </div>
 </li>
-<li><p class="first">Add an ACL rule to <code class="docutils literal"><span class="pre">/etc/postgresql/9.3/main/pg_hba.conf</span></code>. In this example we’re allowing
-access from the subnet <code class="docutils literal"><span class="pre">10.0.3.0/24</span></code></p>
+<li><p class="first">Add an ACL rule to <code class="docutils literal notranslate"><span class="pre">/etc/postgresql/9.3/main/pg_hba.conf</span></code>. In this example we’re allowing
+access from the subnet <code class="docutils literal notranslate"><span class="pre">10.0.3.0/24</span></code></p>
 </li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>host       all  all  <span class="m">10</span>.0.3.0/24  trust
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>host       all  all  <span class="m">10</span>.0.3.0/24  trust
 </pre></div>
 </div>
 </div></blockquote>
@@ -753,7 +753,7 @@ access from the subnet <code class="docutils literal"><span class="pre">10.0.3.0
 <li>Restart PostgreSQL:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo service postgresql restart
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo service postgresql restart
 </pre></div>
 </div>
 </div></blockquote>
@@ -761,7 +761,7 @@ access from the subnet <code class="docutils literal"><span class="pre">10.0.3.0
 <li>Create Mistral DB in PostgreSQL:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ cat <span class="s">&lt;&lt; EHD | sudo -u postgres psql</span>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat <span class="s">&lt;&lt; EHD | sudo -u postgres psql</span>
 <span class="s">CREATE ROLE mistral WITH CREATEDB LOGIN ENCRYPTED PASSWORD &#39;StackStorm&#39;;</span>
 <span class="s">CREATE DATABASE mistral OWNER mistral;</span>
 <span class="s">EHD</span>
@@ -772,21 +772,21 @@ access from the subnet <code class="docutils literal"><span class="pre">10.0.3.0
 <li>Add stable StackStorm repos:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -s https://packagecloud.io/install/repositories/StackStorm/staging-stable/script.deb.sh <span class="p">|</span> sudo bash
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -s https://packagecloud.io/install/repositories/StackStorm/staging-stable/script.deb.sh <span class="p">|</span> sudo bash
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="9">
-<li>Setup <code class="docutils literal"><span class="pre">st2web</span></code> and SSL termination. Follow <a class="reference internal" href="../install/deb.html#ref-install-webui-ssl-deb"><span class="std std-ref">install webui and setup
+<li>Setup <code class="docutils literal notranslate"><span class="pre">st2web</span></code> and SSL termination. Follow <a class="reference internal" href="../install/deb.html#ref-install-webui-ssl-deb"><span class="std std-ref">install webui and setup
 ssl</span></a>. You will need to stop after removing the default Nginx config
 file.</li>
 <li>A sample configuration for Nginx as load balancer for the controller box is provided below.
 With this configuration Nginx will load balance all requests between the two blueprint boxes
-<code class="docutils literal"><span class="pre">st2-multi-node-1</span></code> and <code class="docutils literal"><span class="pre">st2-multi-node-2</span></code>. This includes requests to <code class="docutils literal"><span class="pre">st2api</span></code>,
-<code class="docutils literal"><span class="pre">st2auth</span></code> and <code class="docutils literal"><span class="pre">mistral-api</span></code>. Nginx also serves as the webserver for <code class="docutils literal"><span class="pre">st2web</span></code>.</li>
+<code class="docutils literal notranslate"><span class="pre">st2-multi-node-1</span></code> and <code class="docutils literal notranslate"><span class="pre">st2-multi-node-2</span></code>. This includes requests to <code class="docutils literal notranslate"><span class="pre">st2api</span></code>,
+<code class="docutils literal notranslate"><span class="pre">st2auth</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code>. Nginx also serves as the webserver for <code class="docutils literal notranslate"><span class="pre">st2web</span></code>.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<div><div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># nginx configuration to expose st2 webui, redirect HTTP-&gt;HTTPS,</span>
 <span class="c1"># provide SSL termination, and reverse-proxy st2api and st2auth API endpoint.</span>
 <span class="c1"># To enable:</span>
@@ -907,13 +907,13 @@ With this configuration Nginx will load balance all requests between the two blu
 <li>Create the st2 logs directory and the st2 user:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>mkdir -p /var/log/st2
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p /var/log/st2
 useradd st2
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="12">
-<li>Install <code class="docutils literal"><span class="pre">st2chatops</span></code> following <a class="reference internal" href="../install/deb.html#ref-setup-chatops-deb"><span class="std std-ref">setup chatops</span></a>.</li>
+<li>Install <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> following <a class="reference internal" href="../install/deb.html#ref-setup-chatops-deb"><span class="std std-ref">setup chatops</span></a>.</li>
 </ol>
 </div>
 </div>
@@ -927,7 +927,7 @@ also be made to offer different services.</p>
 <li>Add stable StackStorm repos:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -s https://packagecloud.io/install/repositories/StackStorm/staging-stable/script.deb.sh <span class="p">|</span> sudo bash
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -s https://packagecloud.io/install/repositories/StackStorm/staging-stable/script.deb.sh <span class="p">|</span> sudo bash
 </pre></div>
 </div>
 </div></blockquote>
@@ -935,7 +935,7 @@ also be made to offer different services.</p>
 <li>Install all StackStorm components and mistral:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install -y st2 st2mistral
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y st2 st2mistral
 </pre></div>
 </div>
 </div></blockquote>
@@ -943,19 +943,19 @@ also be made to offer different services.</p>
 <li>Install Nginx:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install -y nginx
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y nginx
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li>Update Mistral connection to PostgreSQL in <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code> by changing the
-<code class="docutils literal"><span class="pre">database.connection</span></code> property.</li>
-<li>Update Mistral connection to RabbitMQ in <code class="docutils literal"><span class="pre">/etc/mistral/mistral.conf</span></code> by changing  the
-<code class="docutils literal"><span class="pre">default.transport_url</span></code> property.</li>
+<li>Update Mistral connection to PostgreSQL in <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code> by changing the
+<code class="docutils literal notranslate"><span class="pre">database.connection</span></code> property.</li>
+<li>Update Mistral connection to RabbitMQ in <code class="docutils literal notranslate"><span class="pre">/etc/mistral/mistral.conf</span></code> by changing  the
+<code class="docutils literal notranslate"><span class="pre">default.transport_url</span></code> property.</li>
 <li>Setup Mistral database:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
 </pre></div>
 </div>
 </div></blockquote>
@@ -963,16 +963,16 @@ also be made to offer different services.</p>
 <li>Register mistral actions:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v -e openstack -e keystone
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v -e openstack -e keystone
 </pre></div>
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="8">
-<li>Replace <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code> with the sample <code class="docutils literal"><span class="pre">st2.conf</span></code> provided below. This config points to
-the controller node or configuration values of <code class="docutils literal"><span class="pre">database</span></code>, <code class="docutils literal"><span class="pre">messaging</span></code> and <code class="docutils literal"><span class="pre">mistral</span></code>.</li>
+<li>Replace <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> with the sample <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code> provided below. This config points to
+the controller node or configuration values of <code class="docutils literal notranslate"><span class="pre">database</span></code>, <code class="docutils literal notranslate"><span class="pre">messaging</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral</span></code>.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-ini"><div class="highlight"><pre><span></span><span class="c1"># System-wide configuration</span>
+<div><div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># System-wide configuration</span>
 
 <span class="k">[api]</span>
 <span class="c1"># Host and port to bind the API server.</span>
@@ -1060,7 +1060,7 @@ the controller node or configuration values of <code class="docutils literal"><s
 <li>Generate a certificate:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo mkdir -p /etc/ssl/st2
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir -p /etc/ssl/st2
 $ sudo openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/st2/st2.key -out /etc/ssl/st2/st2.crt <span class="se">\</span>
   -days XXX -nodes -subj <span class="s2">&quot;/C=US/ST=California/L=Palo Alto/O=StackStorm/OU=Information \</span>
 <span class="s2">  Technology/CN=</span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">&quot;</span>
@@ -1068,18 +1068,18 @@ $ sudo openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/st2/st2.key -out /etc
 </div>
 </div></blockquote>
 <ol class="arabic simple" start="10">
-<li>If you are using self-signed certificates you will need to add <code class="docutils literal"><span class="pre">insecure</span> <span class="pre">=</span> <span class="pre">true</span></code> to the
-<code class="docutils literal"><span class="pre">mistral</span></code> section of <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>.</li>
+<li>If you are using self-signed certificates you will need to add <code class="docutils literal notranslate"><span class="pre">insecure</span> <span class="pre">=</span> <span class="pre">true</span></code> to the
+<code class="docutils literal notranslate"><span class="pre">mistral</span></code> section of <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>.</li>
 <li>Configure users &amp; authentication as per <a class="reference internal" href="../install/deb.html#ref-config-auth-deb"><span class="std std-ref">this documentation</span></a>. Make
-sure that user configuration on all boxes running <code class="docutils literal"><span class="pre">st2auth</span></code> is identical. This ensures
+sure that user configuration on all boxes running <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> is identical. This ensures
 consistent authentication from the entire StackStorm install since the request to authenticate a
-user can be forwarded by the load balancer to any of the <code class="docutils literal"><span class="pre">st2auth</span></code> processes.</li>
+user can be forwarded by the load balancer to any of the <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> processes.</li>
 <li>Use the sample Nginx config that is provided below for the blueprint boxes. In this config
 Nginx will act as the SSL termination endpoint for all the REST endpoints exposed by
-<code class="docutils literal"><span class="pre">st2api</span></code>, <code class="docutils literal"><span class="pre">st2auth</span></code> and <code class="docutils literal"><span class="pre">mistral-api</span></code>:</li>
+<code class="docutils literal notranslate"><span class="pre">st2api</span></code>, <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> and <code class="docutils literal notranslate"><span class="pre">mistral-api</span></code>:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<div><div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># nginx configuration to expose st2 webui, redirect HTTP-&gt;HTTPS,</span>
 <span class="c1"># provide SSL termination, and reverse-proxy st2api and st2auth API endpoint.</span>
 <span class="c1"># To enable:</span>
@@ -1258,8 +1258,8 @@ Nginx will act as the SSL termination endpoint for all the REST endpoints expose
 </div></blockquote>
 <ol class="arabic" start="13">
 <li><p class="first">To use Timer triggers with Mistral, enable them on only one server. Make this change in
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">timer</span><span class="p p-Indicator">]</span>
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">timer</span><span class="p p-Indicator">]</span>
 <span class="l l-Scalar l-Scalar-Plain">enable = False</span>
 </pre></div>
 </div>

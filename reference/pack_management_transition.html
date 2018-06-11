@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -466,7 +466,7 @@
 <h1>Pack Management Transition<a class="headerlink" href="#pack-management-transition" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>In 2.1, with the introduction of the new pack management and <a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a>, StackStorm validates pack metadata in <code class="docutils literal"><span class="pre">pack.yaml</span></code> and
+<p>In 2.1, with the introduction of the new pack management and <a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a>, StackStorm validates pack metadata in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> and
 enforces certain versioning and naming conventions. These changes may require users to update
 their custom <a class="reference internal" href="../packs.html"><span class="doc">Packs</span></a>.</p>
 <p class="last">All packs in StackStorm Exchange have been updated to work with StackStorm 2.1 and
@@ -481,15 +481,15 @@ especially if you’re upgrading from an earlier version. Installing packs, cont
 handling pack versions, sharing and discovering — nearly everything about StackStorm packs is
 better than before.</p>
 <p>Some of the changes require special attention: if you create your own packs or deploy packs from
-<code class="docutils literal"><span class="pre">st2contrib</span></code> — either through configuration management or by running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">packs.install</span></code> as
+<code class="docutils literal notranslate"><span class="pre">st2contrib</span></code> — either through configuration management or by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">packs.install</span></code> as
 a part of your deployment — please read this section carefully.</p>
 <div class="section" id="stackstorm-exchange">
 <h2>StackStorm Exchange<a class="headerlink" href="#stackstorm-exchange" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> is a new pack directory maintained by
-the StackStorm team. Any pack from the Exchange can be installed with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack&gt;</span></code>.</p>
+the StackStorm team. Any pack from the Exchange can be installed with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack&gt;</span></code>.</p>
 <p>Exchange packs are hosted in the
 <a class="reference external" href="https://github.com/stackstorm-exchange">StackStorm-Exchange organization</a>
-on GitHub, and you can open PRs against them just as you would open PRs to <code class="docutils literal"><span class="pre">st2contrib</span></code>
+on GitHub, and you can open PRs against them just as you would open PRs to <code class="docutils literal notranslate"><span class="pre">st2contrib</span></code>
 before. To submit a new pack, follow the instructions in
 <a class="reference external" href="https://github.com/stackstorm-exchange/exchange-incubator">exchange-incubator</a>.</p>
 <p>All packs from <a class="reference external" href="https://github.com/stackstorm/st2contrib">st2contrib</a>  have been transferred to
@@ -501,17 +501,17 @@ content from multiple indexes. See “Advanced topics” in <a class="reference 
 <div class="section" id="using-stackstorm-exchange-with-pre-2-1-st2">
 <h3>Using StackStorm Exchange with pre-2.1 StackStorm<a class="headerlink" href="#using-stackstorm-exchange-with-pre-2-1-st2" title="Permalink to this headline">¶</a></h3>
 <p>If you use StackStorm 2.0 or earlier, you can still get packs from
-<a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> with the old <code class="docutils literal"><span class="pre">packs.install</span></code> action:
-use <code class="docutils literal"><span class="pre">stackstorm-exchange/&lt;pack</span> <span class="pre">name&gt;</span></code> as <code class="docutils literal"><span class="pre">repo_url</span></code>, and repeat the pack name in <code class="docutils literal"><span class="pre">packs</span></code>.
+<a class="reference external" href="https://exchange.stackstorm.org/">StackStorm Exchange</a> with the old <code class="docutils literal notranslate"><span class="pre">packs.install</span></code> action:
+use <code class="docutils literal notranslate"><span class="pre">stackstorm-exchange/&lt;pack</span> <span class="pre">name&gt;</span></code> as <code class="docutils literal notranslate"><span class="pre">repo_url</span></code>, and repeat the pack name in <code class="docutils literal notranslate"><span class="pre">packs</span></code>.
 As an example, for the Cloudflare pack, the full CLI command would be:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 --version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 --version
 st2 <span class="m">2</span>.0.1
 $ st2 run packs.install <span class="nv">packs</span><span class="o">=</span>cloudflare <span class="nv">repo_url</span><span class="o">=</span>stackstorm-exchange/cloudflare
 </pre></div>
 </div>
-<p>Alternatively, you can just <code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span></code> the packs, making sure that the pack directory name
-matches the pack <code class="docutils literal"><span class="pre">ref</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/stackstorm/packs
+<p>Alternatively, you can just <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> the packs, making sure that the pack directory name
+matches the pack <code class="docutils literal notranslate"><span class="pre">ref</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/stackstorm/packs
 git clone https://github.com/StackStorm-Exchange/stackstorm-cloudflare.git cloudflare
 chown -R root:st2packs cloudflare
 st2 run packs.setup_virtualenv <span class="nv">packs</span><span class="o">=</span>cloudflare
@@ -524,33 +524,33 @@ st2ctl reload
 <h2>Deprecation Warnings<a class="headerlink" href="#deprecation-warnings" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="validation-rules">
 <h3>Validation Rules<a class="headerlink" href="#validation-rules" title="Permalink to this headline">¶</a></h3>
-<p>Starting from 2.1, StackStorm enforces validation on <code class="docutils literal"><span class="pre">pack.yaml</span></code>.
+<p>Starting from 2.1, StackStorm enforces validation on <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>.
 If you create your own packs, please validate them against these rules:</p>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">version</span></code> value in <code class="docutils literal"><span class="pre">pack.yaml</span></code> must conform to <a class="reference external" href="http://semver.org/">semver</a>:
-<code class="docutils literal"><span class="pre">0.2.5</span></code>, not <code class="docutils literal"><span class="pre">0.2</span></code>. Pack loading will fail if the version is not in semver format.</li>
-<li>The <code class="docutils literal"><span class="pre">name</span></code> value in <code class="docutils literal"><span class="pre">pack.yaml</span></code> must only contain letters, digits, and underscores,
-since it is also used as a ref (UID) for the pack. You can set the <code class="docutils literal"><span class="pre">ref</span></code> value explicitly
-in <code class="docutils literal"><span class="pre">pack.yaml</span></code>: in this case, <code class="docutils literal"><span class="pre">ref</span></code> is going to be validated against the rule above,
-and <code class="docutils literal"><span class="pre">name</span></code> is going to be used for display only and can contain any characters.</li>
-<li>The email attribute in <code class="docutils literal"><span class="pre">pack.yaml</span></code> must contain a properly formatted email address.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">version</span></code> value in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> must conform to <a class="reference external" href="http://semver.org/">semver</a>:
+<code class="docutils literal notranslate"><span class="pre">0.2.5</span></code>, not <code class="docutils literal notranslate"><span class="pre">0.2</span></code>. Pack loading will fail if the version is not in semver format.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">name</span></code> value in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> must only contain letters, digits, and underscores,
+since it is also used as a ref (UID) for the pack. You can set the <code class="docutils literal notranslate"><span class="pre">ref</span></code> value explicitly
+in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>: in this case, <code class="docutils literal notranslate"><span class="pre">ref</span></code> is going to be validated against the rule above,
+and <code class="docutils literal notranslate"><span class="pre">name</span></code> is going to be used for display only and can contain any characters.</li>
+<li>The email attribute in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> must contain a properly formatted email address.</li>
 </ul>
 <p>Make sure your custom packs are compatible, then follow the steps in <a class="reference internal" href="../upgrade_notes.html"><span class="doc">Upgrade Notes</span></a> to
 upgrade to 2.1. All packs in the Exchange have been updated to reflect these changes.</p>
 </div>
 <div class="section" id="git-repositories-for-packs">
 <h3>Git Repositories for Packs<a class="headerlink" href="#git-repositories-for-packs" title="Permalink to this headline">¶</a></h3>
-<p>When using <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;URL&gt;</span></code>, the URL is assumed to be a valid git repository containing
+<p>When using <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;URL&gt;</span></code>, the URL is assumed to be a valid git repository containing
 your pack in its root (see <a class="reference external" href="https://github.com/stackstorm-exchange">StackStorm-Exchange on GitHub</a>).</p>
 <p>This structure is required to support most of the newer pack management features, and we strongly
 encourage pack developers to follow it. However, if your deployment is different (maybe you don’t
-use <code class="docutils literal"><span class="pre">git</span></code>, or place multiple packs in a repository, or install packs through a configuration
-management tool), you aren’t required to use the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span></code> subcommands at all: refer to the
+use <code class="docutils literal notranslate"><span class="pre">git</span></code>, or place multiple packs in a repository, or install packs through a configuration
+management tool), you aren’t required to use the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span></code> subcommands at all: refer to the
 “Under the Hood: Pack Basics” section of the <a class="reference internal" href="../packs.html"><span class="doc">pack documentation</span></a>.</p>
-<p>Subtree repositories (repositories containing multiple packs inside the <code class="docutils literal"><span class="pre">packs/</span></code> subdir) are no
-longer supported, and the <code class="docutils literal"><span class="pre">subtree</span></code> parameter in <code class="docutils literal"><span class="pre">packs.install</span></code> is removed. If you happen to
+<p>Subtree repositories (repositories containing multiple packs inside the <code class="docutils literal notranslate"><span class="pre">packs/</span></code> subdir) are no
+longer supported, and the <code class="docutils literal notranslate"><span class="pre">subtree</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">packs.install</span></code> is removed. If you happen to
 use a single repository to host multiple packs, it will have to be split into multiple single-pack
-repositories in order for <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> to be able to install the packs. Alternatively,
+repositories in order for <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> to be able to install the packs. Alternatively,
 deploy them manually as described above.</p>
 </div>
 </div>
@@ -559,21 +559,21 @@ deploy them manually as described above.</p>
 <p>Read the <a class="reference internal" href="../packs.html"><span class="doc">Pack management</span></a> doc to learn more about the new pack management.</p>
 <p>Some highlights:</p>
 <ul class="simple">
-<li>A new <code class="docutils literal"><span class="pre">pack</span> <span class="pre">install</span></code> command supports getting the specific version, hash, branch, or tag of a
+<li>A new <code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">install</span></code> command supports getting the specific version, hash, branch, or tag of a
 pack.</li>
-<li>A new <code class="docutils literal"><span class="pre">pack</span> <span class="pre">config</span></code> helps create, validate, and load pack configurations conforming to new
+<li>A new <code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">config</span></code> helps create, validate, and load pack configurations conforming to new
 <a class="reference internal" href="pack_configs.html"><span class="doc">Pack Configuration</span></a>.</li>
 <li>CLI and API for pack discovery: you can search the pack directory right from the CLI.</li>
-<li>You can specify <code class="docutils literal"><span class="pre">stackstorm_version</span></code> in <code class="docutils literal"><span class="pre">pack.yaml</span></code>: it should contain a version range to
-determine if the installed version of StackStorm is compatible with your pack (e.g. <code class="docutils literal"><span class="pre">&gt;=1.6.0,</span>
-<span class="pre">&lt;2.0.0</span></code>, or just <code class="docutils literal"><span class="pre">&gt;1.6.0</span></code>). If your pack relies on functionality which is only available in
+<li>You can specify <code class="docutils literal notranslate"><span class="pre">stackstorm_version</span></code> in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>: it should contain a version range to
+determine if the installed version of StackStorm is compatible with your pack (e.g. <code class="docutils literal notranslate"><span class="pre">&gt;=1.6.0,</span>
+<span class="pre">&lt;2.0.0</span></code>, or just <code class="docutils literal notranslate"><span class="pre">&gt;1.6.0</span></code>). If your pack relies on functionality which is only available in
 newer versions of StackStorm, we encourage you to specify the correct range.</li>
-<li>You can specify <code class="docutils literal"><span class="pre">contributors</span></code> in <code class="docutils literal"><span class="pre">pack.yaml</span></code>: it is an array that should contain a list of
+<li>You can specify <code class="docutils literal notranslate"><span class="pre">contributors</span></code> in <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code>: it is an array that should contain a list of
 people who have contributed to the pack. These days most of the packs have more than one
-contributor, and the <code class="docutils literal"><span class="pre">author</span></code> field just isn’t enough to give credit where credit is due.</li>
-<li>A pack is no longer named and referenced by its parent directory or git source: the <code class="docutils literal"><span class="pre">name</span></code> (or
-<code class="docutils literal"><span class="pre">ref</span></code>, if specified) field from <code class="docutils literal"><span class="pre">pack.yaml</span></code> will be used. The repository name is entirely up
-to you (a convention we use in StackStorm Exchange is <code class="docutils literal"><span class="pre">stackstorm-&lt;pack</span> <span class="pre">name&gt;</span></code>).</li>
+contributor, and the <code class="docutils literal notranslate"><span class="pre">author</span></code> field just isn’t enough to give credit where credit is due.</li>
+<li>A pack is no longer named and referenced by its parent directory or git source: the <code class="docutils literal notranslate"><span class="pre">name</span></code> (or
+<code class="docutils literal notranslate"><span class="pre">ref</span></code>, if specified) field from <code class="docutils literal notranslate"><span class="pre">pack.yaml</span></code> will be used. The repository name is entirely up
+to you (a convention we use in StackStorm Exchange is <code class="docutils literal notranslate"><span class="pre">stackstorm-&lt;pack</span> <span class="pre">name&gt;</span></code>).</li>
 </ul>
 </div>
 </div>

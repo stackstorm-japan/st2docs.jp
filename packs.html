@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -483,12 +483,12 @@ company; they are usually shared internally.</p>
 </div>
 <div class="section" id="managing-packs">
 <h2>Managing Packs<a class="headerlink" href="#managing-packs" title="Permalink to this headline">¶</a></h2>
-<p>StackStorm packs are managed through <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">&lt;...&gt;</span></code> commands: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">-h</span></code> will give you a useful
+<p>StackStorm packs are managed through <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">&lt;...&gt;</span></code> commands: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">-h</span></code> will give you a useful
 overview.</p>
-<p>Some (such as the <code class="docutils literal"><span class="pre">core</span></code> pack for basic StackStorm actions) come pre-installed with StackStorm. All
+<p>Some (such as the <code class="docutils literal notranslate"><span class="pre">core</span></code> pack for basic StackStorm actions) come pre-installed with StackStorm. All
 other packs need to be installed by you. Luckily this is pretty easy!</p>
-<p><code class="docutils literal"><span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">get</span></code> are the primary commands to get information about local packs:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># List all installed packs</span>
+<p><code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">get</span></code> are the primary commands to get information about local packs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List all installed packs</span>
 st2 pack list
 
 <span class="c1"># Get detailed information about an installed pack</span>
@@ -496,18 +496,18 @@ st2 pack get core
 </pre></div>
 </div>
 <p>When using StackStorm and pack management actions, all packs are installed into the system packs
-directory, which defaults to <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>.</p>
+directory, which defaults to <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code>.</p>
 </div>
 <div class="section" id="discovering-packs">
 <h2>Discovering Packs<a class="headerlink" href="#discovering-packs" title="Permalink to this headline">¶</a></h2>
 <p>There’s over a hundred StackStorm packs already available to you!
 <a class="reference external" href="https://exchange.stackstorm.org">StackStorm Exchange</a>  is a collection of ready-made packs
 submitted and maintained by the StackStorm community. There are packs for most of the popular
-cloud providers and DevOps tools, as well as more peculiar integrations (hello, <code class="docutils literal"><span class="pre">tesla</span></code> and
-<code class="docutils literal"><span class="pre">hue</span></code>).</p>
+cloud providers and DevOps tools, as well as more peculiar integrations (hello, <code class="docutils literal notranslate"><span class="pre">tesla</span></code> and
+<code class="docutils literal notranslate"><span class="pre">hue</span></code>).</p>
 <p>You can browse the pack listing at <a class="reference external" href="https://exchange.stackstorm.org">exchange.stackstorm.org</a>,
-or search the pack index via CLI with <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">search</span></code> and <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">show</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Search query is applied across all pack parameters.</span>
+or search the pack index via CLI with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">show</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search query is applied across all pack parameters.</span>
 
 <span class="c1"># It will search through pack names:</span>
 st2 pack search sensu
@@ -528,24 +528,24 @@ st2 pack show sensu
 <div class="section" id="installing-a-pack">
 <h2>Installing a Pack<a class="headerlink" href="#installing-a-pack" title="Permalink to this headline">¶</a></h2>
 <p>Installing a pack is simple:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Install from the Exchange by pack name</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install from the Exchange by pack name</span>
 st2 pack install sensu
 
 <span class="c1"># You can also install multiple packs:</span>
 st2 pack install datadog github
 </pre></div>
 </div>
-<p>This command will download packs from the <a class="reference external" href="https://github.com/StackStorm-Exchange">StackStorm Exchange organization on GitHub</a>, place them under <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>, and
+<p>This command will download packs from the <a class="reference external" href="https://github.com/StackStorm-Exchange">StackStorm Exchange organization on GitHub</a>, place them under <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code>, and
 register them with StackStorm.</p>
-<p>Essentially, <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> works with git repositories: there is one for every pack in the
+<p>Essentially, <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> works with git repositories: there is one for every pack in the
 Exchange, and you can install your own packs from git just as easily.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Install your own pack from git</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install your own pack from git</span>
 st2 pack install https://github.com/emedvedev/chatops_tutorial
 </pre></div>
 </div>
 <p>By default, the latest version of a pack will be installed, but you can specify a particular
 version, branch, tag, or even a commit hash. Just use <cite>=</cite>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Fetch a specific commit</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch a specific commit</span>
 st2 pack install <span class="nv">cloudflare</span><span class="o">=</span>776b9a4
 
 <span class="c1"># Or a version tag</span>
@@ -555,12 +555,12 @@ st2 pack install <span class="nv">cloudflare</span><span class="o">=</span><span
 st2 pack install https://github.com/emedvedev/chatops_tutorial<span class="o">=</span>testing
 </pre></div>
 </div>
-<p>Running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> on an already installed pack will <strong>replace</strong> it with the requested
+<p>Running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span></code> on an already installed pack will <strong>replace</strong> it with the requested
 version or <strong>upgrade to latest</strong> if the version is not specified. Your config file will not be
 overwritten, so you can revert to an older version just as easily, but for production deployments
-we recommend to always specify versions in case there are major changes in <code class="docutils literal"><span class="pre">latest</span></code>.</p>
-<p>To uninstall a pack, use <code class="docutils literal"><span class="pre">remove</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 pack remove sensu
+we recommend to always specify versions in case there are major changes in <code class="docutils literal notranslate"><span class="pre">latest</span></code>.</p>
+<p>To uninstall a pack, use <code class="docutils literal notranslate"><span class="pre">remove</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 pack remove sensu
 </pre></div>
 </div>
 </div>
@@ -570,20 +570,20 @@ we recommend to always specify versions in case there are major changes in <code
 specify an SMTP server to use the email pack, a puppet master URL to use the Puppet pack, or a
 Keystone endpoint and tenant credentials for OpenStack.</p>
 <p>Most packs that require configuration can be configured interactively:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 pack config cloudflare
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 pack config cloudflare
 </pre></div>
 </div>
 <p>You will be prompted for configuration parameters in an interactive tool with descriptions,
 suggestions, and defaults. You will also be asked to verify your final config file in a text editor
 before saving it; it’s optional, and most packs don’t require more than two or three fields, but we
 have to comply with Health and Safety. The generated file will be placed in
-<code class="docutils literal"><span class="pre">/opt/stackstorm/configs/&lt;pack&gt;.yaml</span></code> and loaded.</p>
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/&lt;pack&gt;.yaml</span></code> and loaded.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>NB: StackStorm loads pack configuration into MongoDB. This is automatically loaded when you use
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">config</span></code>. But if you manually edit your pack configuration, or use configuration
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">config</span></code>. But if you manually edit your pack configuration, or use configuration
 management tools to manage those files, you <strong>must</strong> tell StackStorm to load the updated config.</p>
-<p>You can do this with: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-configs</span></code>. Otherwise there will be much
+<p>You can do this with: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-configs</span></code>. Otherwise there will be much
 head-scratching as you wonder why StackStorm seems to be completely ignoring your updated configuration.</p>
 <p class="last">Trust us. We’ve all been there.</p>
 </div>
@@ -610,29 +610,29 @@ much easier!</p>
 <h2>Advanced Topics<a class="headerlink" href="#advanced-topics" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="under-the-hood-pack-basics">
 <h3>Under the Hood: Pack Basics<a class="headerlink" href="#under-the-hood-pack-basics" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span></code> commands described above are a convenience layer on top of pack basics. Once you
+<p>The <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span></code> commands described above are a convenience layer on top of pack basics. Once you
 understand the basics, you can work with the pack content directly, which might be preferred if
 you work with configuration management or have a very specific deployment workflow.</p>
-<p>Packs are placed in the system pack directory - by default <code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>. A
-<code class="docutils literal"><span class="pre">virtualenv</span></code> needs to be created for each pack containing Python actions/sensors under
-<code class="docutils literal"><span class="pre">/opt/stackstorm/virtualenv</span></code>. Python dependencies are installed inside the virtualenv with
-<code class="docutils literal"><span class="pre">pip</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>. Normally this is done automatically for you at pack install time.</p>
-<p>When StackStorm loads the content, it looks into the system packs directory (<code class="docutils literal"><span class="pre">/opt/stackstorm/packs</span></code>)
-and any additional directories listed in <code class="docutils literal"><span class="pre">packs_base_paths</span></code> in <code class="docutils literal"><span class="pre">st2.conf</span></code>
+<p>Packs are placed in the system pack directory - by default <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code>. A
+<code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> needs to be created for each pack containing Python actions/sensors under
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/virtualenv</span></code>. Python dependencies are installed inside the virtualenv with
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>. Normally this is done automatically for you at pack install time.</p>
+<p>When StackStorm loads the content, it looks into the system packs directory (<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs</span></code>)
+and any additional directories listed in <code class="docutils literal notranslate"><span class="pre">packs_base_paths</span></code> in <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code>
 (typically in <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/conf/st2.prod.conf">/etc/st2/st2.conf</a>).
-The value must be a string of directory paths, separated by a colon (think <code class="docutils literal"><span class="pre">$PATH</span></code>). For example:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[content]</span>
+The value must be a string of directory paths, separated by a colon (think <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>). For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[content]</span>
 <span class="na">packs_base_paths</span><span class="o">=</span><span class="s">/home/myuser1/packs:/home/myuser2/packs</span>
 </pre></div>
 </div>
 <p>Directories are always searched from left to right in the order they are specified, with the
 system packs directory always searched first.</p>
-<p>A pack configuration file must be stored as <code class="docutils literal"><span class="pre">/opt/stackstorm/configs/&lt;pack_ref&gt;.yaml</span></code> and follow
-a schema defined in <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/&lt;pack_dir&gt;/config.schema.yaml</span></code>. See the
+<p>A pack configuration file must be stored as <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/configs/&lt;pack_ref&gt;.yaml</span></code> and follow
+a schema defined in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;pack_dir&gt;/config.schema.yaml</span></code>. See the
 <a class="reference internal" href="reference/pack_configs.html"><span class="doc">Pack Configuration</span></a> section for details.</p>
 <p>When the pack content changes, it has to be registered again (reloaded). To register individual
-packs, use <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">register</span> <span class="pre">--packs=pack1,pack2</span></code>. To register everything at once, use
-<code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> (run it with <code class="docutils literal"><span class="pre">-h</span></code> to explore the fine-tuning flags).</p>
+packs, use <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">register</span> <span class="pre">--packs=pack1,pack2</span></code>. To register everything at once, use
+<code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> (run it with <code class="docutils literal notranslate"><span class="pre">-h</span></code> to explore the fine-tuning flags).</p>
 </div>
 <div class="section" id="installing-packs-from-private-repositories">
 <h3>Installing Packs from Private Repositories<a class="headerlink" href="#installing-packs-from-private-repositories" title="Permalink to this headline">¶</a></h3>
@@ -640,13 +640,13 @@ packs, use <code class="docutils literal"><span class="pre">st2</span> <span cla
 with a <a class="reference external" href="https://help.github.com/articles/creating-an-access-token-for-command-line-use/">personal access token</a>,
 or create a <a class="reference external" href="https://github.com/blog/2024-read-only-deploy-keys">deploy key</a> to use SSH.</p>
 <p>Access tokens are used with HTTPS URLs, for example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 pack install https://&lt;user&gt;:&lt;token&gt;@github.com/username/repo.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 pack install https://&lt;user&gt;:&lt;token&gt;@github.com/username/repo.git
 </pre></div>
 </div>
 <p>Be advised that your token will be logged in StackStorm, git, your shell history, and probably
 some other log files, including git error logs if anything fails. Using SSH auth is a much better
 idea most of the time.</p>
-<p>For SSH (URLs starting with <code class="docutils literal"><span class="pre">git&#64;</span></code>) auth you have to create a <a class="reference external" href="https://github.com/blog/2024-read-only-deploy-keys">deploy key</a>, and require the system user running the
+<p>For SSH (URLs starting with <code class="docutils literal notranslate"><span class="pre">git&#64;</span></code>) auth you have to create a <a class="reference external" href="https://github.com/blog/2024-read-only-deploy-keys">deploy key</a>, and require the system user running the
 command (usually root, depending on your configuration) to have a private key. Deploy keys are
 more secure than personal access tokens and can be configured on a per-repo basis.</p>
 <p>Other git hosting services should also support either SSH or HTTPS auth, and would be configured
@@ -655,62 +655,62 @@ in a similar fashion.</p>
 <div class="section" id="installing-packs-from-behind-a-proxy">
 <span id="packs-behind-proxy"></span><h3>Installing Packs from Behind a Proxy<a class="headerlink" href="#installing-packs-from-behind-a-proxy" title="Permalink to this headline">¶</a></h3>
 <p>If your network uses a proxy to connect to the Internet, you must configure StackStorm to use that proxy
-for pack installation. This is done by setting the <code class="docutils literal"><span class="pre">https_proxy</span></code> or <code class="docutils literal"><span class="pre">http_proxy</span></code> environment
-variables for the <code class="docutils literal"><span class="pre">st2actionrunner</span></code> and <code class="docutils literal"><span class="pre">st2api</span></code> processes.</p>
+for pack installation. This is done by setting the <code class="docutils literal notranslate"><span class="pre">https_proxy</span></code> or <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code> environment
+variables for the <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> and <code class="docutils literal notranslate"><span class="pre">st2api</span></code> processes.</p>
 <p>If your proxy is performing SSL <a class="reference external" href="http://docs.mitmproxy.org/en/stable/howmitmproxy.html#the-mitm-in-mitmproxy">MITM</a>,
 decryption/encryption, you may need to pass in the path to the proxy CA cert, using the
-<code class="docutils literal"><span class="pre">proxy_ca_bundle_path</span></code> environment variable.</p>
-<p>If you are using a Python version &lt; <code class="docutils literal"><span class="pre">2.7.9</span></code>, then a MiTM proxy won’t work. This is the case with
+<code class="docutils literal notranslate"><span class="pre">proxy_ca_bundle_path</span></code> environment variable.</p>
+<p>If you are using a Python version &lt; <code class="docutils literal notranslate"><span class="pre">2.7.9</span></code>, then a MiTM proxy won’t work. This is the case with
 Ubuntu 14.04. See <a class="reference external" href="http://people.canonical.com/~ubuntu-security/cve/2014/CVE-2014-9365.html">CVE-2014-9365</a> for
 more info. You will need to use <a class="reference external" href="http://wiki.squid-cache.org/Features/HTTPS#CONNECT_tunnel">CONNECT SSL tunnel</a>.</p>
 <div class="section" id="proxy-configuration-via-environment-variables">
 <h4>Proxy Configuration via Environment Variables<a class="headerlink" href="#proxy-configuration-via-environment-variables" title="Permalink to this headline">¶</a></h4>
-<p>On Ubuntu systems, edit <code class="docutils literal"><span class="pre">/etc/default/st2actionrunner</span></code> and <code class="docutils literal"><span class="pre">/etc/default/st2api</span></code> to set the
+<p>On Ubuntu systems, edit <code class="docutils literal notranslate"><span class="pre">/etc/default/st2actionrunner</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/default/st2api</span></code> to set the
 proxy configuration environment variables.
-For RHEL/CentOS systems, edit <code class="docutils literal"><span class="pre">/etc/sysconfig/st2actionrunner</span></code> and <code class="docutils literal"><span class="pre">/etc/sysconfig/st2api</span></code>.</p>
+For RHEL/CentOS systems, edit <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/st2actionrunner</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/st2api</span></code>.</p>
 <p>StackStorm will use these environment variables for pack installation.
 The file contents should look as follows:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">http_proxy</span><span class="o">=</span><span class="s">http://proxy.server.io:port</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">http_proxy</span><span class="o">=</span><span class="s">http://proxy.server.io:port</span>
 <span class="na">https_proxy</span><span class="o">=</span><span class="s">http://proxy.server.io:port</span>
 <span class="na">no_proxy</span><span class="o">=</span><span class="s">localhost,127.0.0.1</span>
 </pre></div>
 </div>
-<p>For HTTPS proxy with cert specify additional <code class="docutils literal"><span class="pre">proxy_ca_bundle_path</span></code> ENV:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">http_proxy</span><span class="o">=</span><span class="s">http://proxy.server.io:port</span>
+<p>For HTTPS proxy with cert specify additional <code class="docutils literal notranslate"><span class="pre">proxy_ca_bundle_path</span></code> ENV:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">http_proxy</span><span class="o">=</span><span class="s">http://proxy.server.io:port</span>
 <span class="na">https_proxy</span><span class="o">=</span><span class="s">http://proxy.server.io:port</span>
 <span class="na">proxy_ca_bundle_path</span><span class="o">=</span><span class="s">/etc/ssl/certs/proxy-ca.pem</span>
 <span class="na">no_proxy</span><span class="o">=</span><span class="s">localhost,127.0.0.1</span>
 </pre></div>
 </div>
-<p>After editing these files, restart the <code class="docutils literal"><span class="pre">st2api</span></code> and <code class="docutils literal"><span class="pre">st2actionrunner</span></code> services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo st2ctl restart-component st2api
+<p>After editing these files, restart the <code class="docutils literal notranslate"><span class="pre">st2api</span></code> and <code class="docutils literal notranslate"><span class="pre">st2actionrunner</span></code> services:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo st2ctl restart-component st2api
 $ sudo st2ctl restart-component st2actionrunner
 </pre></div>
 </div>
 <p>When using HTTPS proxy with CA bundle (MITM), you must make sure the proxy CA bundle is an accepted
 root CA in your OS. Please refer to your OS instructions to register the proxy CA certificate.</p>
-<p>This is required for tools like <code class="docutils literal"><span class="pre">git</span></code>, <code class="docutils literal"><span class="pre">curl</span></code> etc to function with a proxy. Some packs
+<p>This is required for tools like <code class="docutils literal notranslate"><span class="pre">git</span></code>, <code class="docutils literal notranslate"><span class="pre">curl</span></code> etc to function with a proxy. Some packs
 use those tools under the hood and therefore proxy CA registration step is critical for those
 packs to work.</p>
 </div>
 </div>
 <div class="section" id="hosting-your-own-pack-index">
 <h3>Hosting Your Own Pack Index<a class="headerlink" href="#hosting-your-own-pack-index" title="Permalink to this headline">¶</a></h3>
-<p>When you run pack management commands like <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">sensu</span></code> or <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">search</span> <span class="pre">git</span></code>,
+<p>When you run pack management commands like <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">sensu</span></code> or <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">search</span> <span class="pre">git</span></code>,
 StackStorm uses a pack index file to resolve short names and perform searches. A pack index is,
 essentially, a JSON object: it contains metadata and URLs for all available packs.</p>
 <p><a class="reference external" href="https://index.stackstorm.org/v1/index.json">The StackStorm Exchange index file</a>
 is a default file used by all StackStorm instances, and a good example of the index format. The file is
 hosted on GitHub (<a class="reference external" href="https://github.com/stackstorm-exchange/index">StackStorm-Exchange/index</a>)
 and proxied through CloudFlare CDN.</p>
-<p>The index path is specified in <code class="docutils literal"><span class="pre">st2.conf</span></code> as <code class="docutils literal"><span class="pre">content.index_url</span></code>. You can replace the default
+<p>The index path is specified in <code class="docutils literal notranslate"><span class="pre">st2.conf</span></code> as <code class="docutils literal notranslate"><span class="pre">content.index_url</span></code>. You can replace the default
 index, or even use more than one with a comma-separated list:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[content]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[content]</span>
 <span class="na">index_url</span><span class="o">=</span><span class="s">https://my-super-index.org/index.json,https://exchange.stackstorm.org/v1/index.json</span>
 </pre></div>
 </div>
 <p>Contents from all specified indexes will merge with descending priority (left to right).
-In the example above, <code class="docutils literal"><span class="pre">sensu</span></code> pack in your own index would override <code class="docutils literal"><span class="pre">sensu</span></code> pack
+In the example above, <code class="docutils literal notranslate"><span class="pre">sensu</span></code> pack in your own index would override <code class="docutils literal notranslate"><span class="pre">sensu</span></code> pack
 from the Exchange.</p>
 <p>There are multiple reasons to consider hosting your own index, especially with HA deployments
 or multi-server setups:</p>
@@ -726,8 +726,8 @@ a centralized location.</li>
 </ul>
 <p>In most cases there are many other ways to solve the same problem, but sometimes a pack index
 is a viable alternative. Create your index file and make it accessible over HTTPS, change
-<code class="docutils literal"><span class="pre">st2.conf</span></code>—and you’re good!</p>
-<p>To monitor index health, the <code class="docutils literal"><span class="pre">/packs/index/health</span></code> API endpoint will show you the state of all
+<code class="docutils literal notranslate"><span class="pre">st2.conf</span></code>—and you’re good!</p>
+<p>To monitor index health, the <code class="docutils literal notranslate"><span class="pre">/packs/index/health</span></code> API endpoint will show you the state of all
 indexes used by your StackStorm instance.</p>
 <p class="rubric">Questions? Problems? Suggestions? Engage!</p>
 <ul class="simple">

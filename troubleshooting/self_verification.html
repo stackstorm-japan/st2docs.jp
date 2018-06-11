@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,7 +467,7 @@
 <p>StackStorm includes a script for verifying the system installation.</p>
 <p>The script covers the following aspects of StackStorm:</p>
 <ul class="simple">
-<li>Basic <code class="docutils literal"><span class="pre">st2</span></code> commands</li>
+<li>Basic <code class="docutils literal notranslate"><span class="pre">st2</span></code> commands</li>
 <li>Examples pack installation</li>
 <li>Commands described in <a class="reference internal" href="../start.html"><span class="doc">Quick Start</span></a></li>
 <li><a class="reference internal" href="../packs.html"><span class="doc">Packs</span></a> actions</li>
@@ -477,9 +477,9 @@
 <ol class="arabic simple">
 <li>If you don’t have <a class="reference internal" href="../datastore.html#admin-setup-for-encrypted-datastore"><span class="std std-ref">encryption keys setup already</span></a>, do so.
 This will require both StackStorm and system admin privileges to configure.</li>
-<li>Run the self-check script <code class="docutils literal"><span class="pre">/opt/stackstorm/st2/bin/st2-self-check</span></code>. This also copies the examples from <code class="docutils literal"><span class="pre">/usr/share/doc/st2/examples</span></code> to <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/</span></code> and registers the content. Running this step will pollute your StackStorm environment because it will download fixtures from <a class="reference external" href="https://github.com/StackStorm/st2tests/tree/master/packs/">st2tests</a>.</li>
+<li>Run the self-check script <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/st2/bin/st2-self-check</span></code>. This also copies the examples from <code class="docutils literal notranslate"><span class="pre">/usr/share/doc/st2/examples</span></code> to <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/</span></code> and registers the content. Running this step will pollute your StackStorm environment because it will download fixtures from <a class="reference external" href="https://github.com/StackStorm/st2tests/tree/master/packs/">st2tests</a>.</li>
 </ol>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo <span class="nv">ST2_AUTH_TOKEN</span><span class="o">=</span><span class="k">$(</span>st2 auth st2admin -p <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -t<span class="k">)</span> /opt/stackstorm/st2/bin/st2-self-check
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo <span class="nv">ST2_AUTH_TOKEN</span><span class="o">=</span><span class="k">$(</span>st2 auth st2admin -p <span class="s1">&#39;&lt;PASSWORD&gt;&#39;</span> -t<span class="k">)</span> /opt/stackstorm/st2/bin/st2-self-check
 </pre></div>
 </div>
 </div>

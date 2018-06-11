@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -475,8 +475,8 @@ migration scripts for skipped versions.</p>
 <h2>General Upgrade Procedure<a class="headerlink" href="#general-upgrade-procedure" title="Permalink to this headline">¶</a></h2>
 <p>This is the standard upgrade procedure:</p>
 <ol class="arabic">
-<li><p class="first">Stop <code class="docutils literal"><span class="pre">st2*</span></code> services, and check all processes have terminated:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl stop
+<li><p class="first">Stop <code class="docutils literal notranslate"><span class="pre">st2*</span></code> services, and check all processes have terminated:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl stop
 ps auxww <span class="p">|</span> grep st2
 </pre></div>
 </div>
@@ -484,16 +484,16 @@ ps auxww <span class="p">|</span> grep st2
 </li>
 <li><p class="first">Upgrade StackStorm packages using distro-specific tools:</p>
 <p>Ubuntu:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install --only-upgrade st2 st2web st2chatops st2mistral
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install --only-upgrade st2 st2web st2chatops st2mistral
 </pre></div>
 </div>
 <p>RHEL/CentOS:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum update st2 st2web st2chatops st2mistral
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum update st2 st2web st2chatops st2mistral
 </pre></div>
 </div>
 </li>
 <li><p class="first">Upgrade Mistral database:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
 /opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate <span class="p">|</span> grep -v -e openstack -e keystone
 </pre></div>
 </div>
@@ -501,18 +501,18 @@ ps auxww <span class="p">|</span> grep st2
 <p class="first admonition-title">Warning</p>
 <p class="last">The mistral and mistral-api services must be stopped at time of upgrade. If the services are
 restarted before the mistral-db-manage commands are run, then the
-<code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command may fail.</p>
+<code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code> command may fail.</p>
 </div>
 </li>
 <li><p class="first">Run the migration scripts (if any). See below for version-specific migration scripts.</p>
 </li>
 <li><p class="first">Ensure all content is registered:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl reload --register-all
 </pre></div>
 </div>
 </li>
 <li><p class="first">Start StackStorm services:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo st2ctl start
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo st2ctl start
 </pre></div>
 </div>
 </li>
@@ -538,12 +538,12 @@ version 1.1 installed, you must upgrade this to &gt;= v1.1.1. Follow <a class="r
 <li><p class="first">Node.js v6 is now used by ChatOps (previously v4 was used). The following procedure should be
 used to upgrade:</p>
 <p>Ubuntu:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sL https://deb.nodesource.com/setup_6.x <span class="p">|</span> sudo -E bash -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sL https://deb.nodesource.com/setup_6.x <span class="p">|</span> sudo -E bash -
 sudo apt-get install --only-upgrade st2chatops
 </pre></div>
 </div>
 <p>RHEL/CentOS:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -sL https://rpm.nodesource.com/setup_6.x <span class="p">|</span> sudo -E bash -
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -sL https://rpm.nodesource.com/setup_6.x <span class="p">|</span> sudo -E bash -
 sudo yum clean all
 sudo rpm -e --nodeps npm
 sudo yum upgrade st2chatops
@@ -551,7 +551,7 @@ sudo yum upgrade st2chatops
 </div>
 </li>
 <li><p class="first">Extreme Workflow Composer users on RHEL or CentOS must run this command after upgrading packages:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo /opt/stackstorm/st2/bin/pip install --find-links /opt/stackstorm/share/wheels --no-index --quiet --upgrade st2-enterprise-auth-backend-ldap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo /opt/stackstorm/st2/bin/pip install --find-links /opt/stackstorm/share/wheels --no-index --quiet --upgrade st2-enterprise-auth-backend-ldap
 </pre></div>
 </div>
 </li>
@@ -565,7 +565,7 @@ It is not required for those using Open Source StackStorm.</p>
 <li><p class="first">The database schema for Mistral has changed. The executions_v2 table is no longer used. The
 table is being broken down into workflow_executions_v2, task_executions_v2, and
 action_executions_v2. After upgrade, using the Mistral commands from the command line such as
-<code class="docutils literal"><span class="pre">mistral</span> <span class="pre">execution-list</span></code> will return an empty table. The records in executions_v2 have not
+<code class="docutils literal notranslate"><span class="pre">mistral</span> <span class="pre">execution-list</span></code> will return an empty table. The records in executions_v2 have not
 been deleted. The commands are reading from the new tables. There is currently no migration
 script to move existing records from executions_v2 into the new tables. To read from
 executions_v2, either use psql or install an older version of the python-mistralclient in a
@@ -575,8 +575,8 @@ separate python virtual environment.</p>
 <p class="last">Please be sure to follow the general steps listed above to do the database upgrade.</p>
 </div>
 </li>
-<li id="mistral-db-recover"><p class="first">If you’re seeing an error <code class="docutils literal"><span class="pre">event_triggers_v2</span> <span class="pre">already</span> <span class="pre">exists</span></code> when running
-<code class="docutils literal"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code>, this means the mistral services started before the
+<li id="mistral-db-recover"><p class="first">If you’re seeing an error <code class="docutils literal notranslate"><span class="pre">event_triggers_v2</span> <span class="pre">already</span> <span class="pre">exists</span></code> when running
+<code class="docutils literal notranslate"><span class="pre">mistral-db-manage</span> <span class="pre">upgrade</span> <span class="pre">head</span></code>, this means the mistral services started before the
 mistral-db-manage commands were run. SQLAlchemy automatically creates new tables in
 the updated database schema and it conflicts with the mistral-db-manage commands.
 To recover, open the psql shell and delete the new tables manually and rerun the
@@ -584,7 +584,7 @@ mistral-db-manage commands. The following is a sample script to recover from the
 </li>
 </ul>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo service mistral-api stop
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo service mistral-api stop
 sudo service mistral stop
 sudo -u postgres psql
 <span class="se">\c</span>onnect mistral
@@ -605,19 +605,19 @@ sudo service mistral-api start
 <div class="section" id="v2-1">
 <h4>v2.1<a class="headerlink" href="#v2-1" title="Permalink to this headline">¶</a></h4>
 <ul>
-<li><p class="first">Datastore model migration - Scope names are now <code class="docutils literal"><span class="pre">st2kv.system</span></code> and <code class="docutils literal"><span class="pre">st2kv.user</span></code> as
-opposed to <code class="docutils literal"><span class="pre">system</span></code> and <code class="docutils literal"><span class="pre">user</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-migrate-datastore-scopes.py
+<li><p class="first">Datastore model migration - Scope names are now <code class="docutils literal notranslate"><span class="pre">st2kv.system</span></code> and <code class="docutils literal notranslate"><span class="pre">st2kv.user</span></code> as
+opposed to <code class="docutils literal notranslate"><span class="pre">system</span></code> and <code class="docutils literal notranslate"><span class="pre">user</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-migrate-datastore-scopes.py
 </pre></div>
 </div>
 </li>
 <li><p class="first">We are piloting pluggable runners (See <a class="reference internal" href="../upgrade_notes.html#upgrade-notes"><span class="std std-ref">upgrade notes</span></a>). Runners now
 have to be explicitly registered just like other content.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-migrate-runners.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-migrate-runners.sh
 </pre></div>
 </div>
 </li>
-<li><p class="first">Service restart <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">restart</span></code> and reload <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> are required after upgrade
+<li><p class="first">Service restart <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">restart</span></code> and reload <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span></code> are required after upgrade
 for the new pack management features to work properly. Some of the pack management actions
 and workflows have changed.</p>
 </li>
@@ -629,7 +629,7 @@ and workflows have changed.</p>
 <li>Datastore model migration</li>
 </ul>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py
 </pre></div>
 </div>
 </div></blockquote>
@@ -643,17 +643,17 @@ or deployment. To do this, provision a new StackStorm instance, and roll over th
 the “Infrastructure as code” approach, all StackStorm content and artifacts are simple files, and
 should be kept under source control.</p>
 <ol class="arabic simple">
-<li>Install StackStorm <code class="docutils literal"><span class="pre">VERSION_NEW</span></code> on a brand new instance using packages based installer.</li>
-<li>Package all your packs from the old <code class="docutils literal"><span class="pre">VERSION_OLD</span></code> instance and place them under some SCM
+<li>Install StackStorm <code class="docutils literal notranslate"><span class="pre">VERSION_NEW</span></code> on a brand new instance using packages based installer.</li>
+<li>Package all your packs from the old <code class="docutils literal notranslate"><span class="pre">VERSION_OLD</span></code> instance and place them under some SCM
 like git (you should have done it long ago). Each pack must be in its own repo.</li>
-<li>Save your key-value pairs from the st2 datastore: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-j</span> <span class="pre">&gt;</span> <span class="pre">kv_file.json</span></code></li>
+<li>Save your key-value pairs from the st2 datastore: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">list</span> <span class="pre">-j</span> <span class="pre">&gt;</span> <span class="pre">kv_file.json</span></code></li>
 <li>Grab packs from the SCM. If the SCM is git then you can directly install them with
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;repo-url&gt;=&lt;pack-list&gt;&gt;</span></code></li>
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;repo-url&gt;=&lt;pack-list&gt;&gt;</span></code></li>
 <li>Reconfigure all external services to point to the new StackStorm instance.</li>
-<li>Load your keys to the datastore: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">load</span> <span class="pre">kv_file.json</span></code>. You might have to adjust the
-JSON files to include <code class="docutils literal"><span class="pre">scope</span></code> and <code class="docutils literal"><span class="pre">secret</span></code> if you are upgrading from a version &lt; 1.5.
-See migration script in <code class="docutils literal"><span class="pre">/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py</span></code>.</li>
-<li>Back up audit log from <code class="docutils literal"><span class="pre">VERSION_OLD</span></code> server found under <code class="docutils literal"><span class="pre">/var/log/st2/*.audit.log</span></code> and move
+<li>Load your keys to the datastore: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">key</span> <span class="pre">load</span> <span class="pre">kv_file.json</span></code>. You might have to adjust the
+JSON files to include <code class="docutils literal notranslate"><span class="pre">scope</span></code> and <code class="docutils literal notranslate"><span class="pre">secret</span></code> if you are upgrading from a version &lt; 1.5.
+See migration script in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/st2/bin/st2-migrate-datastore-to-include-scope-secret.py</span></code>.</li>
+<li>Back up audit log from <code class="docutils literal notranslate"><span class="pre">VERSION_OLD</span></code> server found under <code class="docutils literal notranslate"><span class="pre">/var/log/st2/*.audit.log</span></code> and move
 to a safe location. Note that history of old executions will be lost during such a transition,
 but a full audit record is still available in the log files that were transferred over.</li>
 </ol>

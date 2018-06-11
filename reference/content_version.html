@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -474,17 +474,17 @@ the latest version can be found in the <a class="reference external" href="https
 </div>
 <p>By default, when running an execution for an action from a pack on disk which is a git repository,
 StackStorm will use the currently checked out git revision of the pack content. That is the version you
-have specified when installing the pack using <code class="docutils literal"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack</span> <span class="pre">name&gt;[=pack</span> <span class="pre">version]</span></code>.</p>
+have specified when installing the pack using <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">pack</span> <span class="pre">install</span> <span class="pre">&lt;pack</span> <span class="pre">name&gt;[=pack</span> <span class="pre">version]</span></code>.</p>
 <p>If you don’t explicitly specify a version, the latest stable version will be installed and used
 for the action executions.</p>
-<p>StackStorm v2.7.0 introduced a new <code class="docutils literal"><span class="pre">content_version</span></code> runner parameter for the local and Python runner
+<p>StackStorm v2.7.0 introduced a new <code class="docutils literal notranslate"><span class="pre">content_version</span></code> runner parameter for the local and Python runner
 actions.</p>
 <p>When running an action, users can specify this parameter, which can be a git revision hash,
 tag or a branch. This will cause StackStorm to use action content from that git revision.</p>
 <p>This is useful in many scenarios, such as when performing consistent zero downtime pack upgrades
 and you want to use different version of the action content for different pack executions (e.g. for
-some executions you want to use the older version <code class="docutils literal"><span class="pre">v2.2.0</span></code> and for other executions you want to use
-version <code class="docutils literal"><span class="pre">v2.3.0</span></code> which has just been deployed).</p>
+some executions you want to use the older version <code class="docutils literal notranslate"><span class="pre">v2.2.0</span></code> and for other executions you want to use
+version <code class="docutils literal notranslate"><span class="pre">v2.3.0</span></code> which has just been deployed).</p>
 <div class="section" id="example-usage">
 <h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to demonstrate this functionality is using a pack which was built for purposes of
@@ -494,7 +494,7 @@ The pack itself contains 4 different versions / tags (v0.1.0, v0.2.0, v0.3.0, v0
 StackStorm pack git repository layout each pack version should have a corresponding git tag.</p>
 <div class="section" id="installing-the-pack">
 <h3>Installing the pack<a class="headerlink" href="#installing-the-pack" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 pack install https://github.com/StackStorm-Exchange/stackstorm-test-content-version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 pack install https://github.com/StackStorm-Exchange/stackstorm-test-content-version
 
 vagrant@local$ st2 pack install https://github.com/StackStorm-Exchange/stackstorm-test-content-version
 
@@ -518,7 +518,7 @@ vagrant@local$ st2 pack install https://github.com/StackStorm-Exchange/stackstor
 <h3>Running the latest installed and checked out pack version (v0.4.0)<a class="headerlink" href="#running-the-latest-installed-and-checked-out-pack-version-v0-4-0" title="Permalink to this headline">¶</a></h3>
 <p>By default, if no version if specified, the latest installed and checked out version is used. This is
 the same behavior as before:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant@local$ st2 run test_content_version.python_runner_print_version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant@local$ st2 run test_content_version.python_runner_print_version
 
 id: 5ad0ce8b0640fd27f7b97845
 status: succeeded
@@ -534,8 +534,8 @@ result:
 </div>
 <div class="section" id="running-a-specific-version">
 <h3>Running a specific version<a class="headerlink" href="#running-a-specific-version" title="Permalink to this headline">¶</a></h3>
-<p>In this case we specify that we want to use git tag <code class="docutils literal"><span class="pre">v0.2.0</span></code> which matches the same pack version:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>vagrant@local$ st2 run test_content_version.python_runner_print_version <span class="nv">content_version</span><span class="o">=</span>v0.2.0
+<p>In this case we specify that we want to use git tag <code class="docutils literal notranslate"><span class="pre">v0.2.0</span></code> which matches the same pack version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant@local$ st2 run test_content_version.python_runner_print_version <span class="nv">content_version</span><span class="o">=</span>v0.2.0
 
 id: 5ad0cee40640fd27f7b97848
 status: succeeded

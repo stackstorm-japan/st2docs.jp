@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -463,8 +463,8 @@
 <h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p>Just need the default password? Try username <code class="docutils literal"><span class="pre">st2admin</span></code>, password <code class="docutils literal"><span class="pre">Ch&#64;ngeMe</span></code>.</p>
-<p>Need to change the password? Run: <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">htpasswd</span> <span class="pre">/etc/st2/htpasswd</span> <span class="pre">st2admin</span></code>.</p>
+<p>Just need the default password? Try username <code class="docutils literal notranslate"><span class="pre">st2admin</span></code>, password <code class="docutils literal notranslate"><span class="pre">Ch&#64;ngeMe</span></code>.</p>
+<p>Need to change the password? Run: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">htpasswd</span> <span class="pre">/etc/st2/htpasswd</span> <span class="pre">st2admin</span></code>.</p>
 <p class="last">Something more complex? Read on to learn about StackStorm authentication.</p>
 </div>
 <p>StackStorm includes an auth service that is responsible for handling user authentication and generating
@@ -475,42 +475,42 @@ used to authenticate against the StackStorm REST APIs.</p>
 </div>
 <div class="section" id="configuring-the-service">
 <h2>Configuring the Service<a class="headerlink" href="#configuring-the-service" title="Permalink to this headline">¶</a></h2>
-<p>By default, the StackStorm configuration file is located at <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>. The settings listed
-below are configured under the <code class="docutils literal"><span class="pre">auth</span></code> section in the configuration file. The service can be
+<p>By default, the StackStorm configuration file is located at <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>. The settings listed
+below are configured under the <code class="docutils literal notranslate"><span class="pre">auth</span></code> section in the configuration file. The service can be
 configured with different backends (i.e. PAM, LDAP, etc.) to handle authentication. If a backend is
 not specified, an htpasswd-compatible flat file authentication backend is used.</p>
-<p>We recommend that the service be configured to listen on https (<code class="docutils literal"><span class="pre">use_ssl</span></code> option) and be
+<p>We recommend that the service be configured to listen on https (<code class="docutils literal notranslate"><span class="pre">use_ssl</span></code> option) and be
 accessible to st2 clients.</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">host</span></code> Hostname for the service to listen on.</li>
-<li><code class="docutils literal"><span class="pre">port</span></code> Port for the service to listen on.</li>
-<li><code class="docutils literal"><span class="pre">use_ssl</span></code> Set to True to enable SSL/TLS mode.</li>
-<li><code class="docutils literal"><span class="pre">cert</span></code> Path to the SSL certificate file. Only used when <code class="docutils literal"><span class="pre">use_ssl</span></code> is set to True.</li>
-<li><code class="docutils literal"><span class="pre">key</span></code> Path to the SSL private key file. Only used when <code class="docutils literal"><span class="pre">use_ssl</span></code> is set to True.</li>
-<li><code class="docutils literal"><span class="pre">mode</span></code> Mode to use (<code class="docutils literal"><span class="pre">proxy</span></code> or <code class="docutils literal"><span class="pre">standalone</span></code>). Default is <code class="docutils literal"><span class="pre">standalone</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">backend</span></code> Authentication backend to use in standalone mode (i.e. <code class="docutils literal"><span class="pre">pam</span></code>, <code class="docutils literal"><span class="pre">flat_file</span></code>).
+<li><code class="docutils literal notranslate"><span class="pre">host</span></code> Hostname for the service to listen on.</li>
+<li><code class="docutils literal notranslate"><span class="pre">port</span></code> Port for the service to listen on.</li>
+<li><code class="docutils literal notranslate"><span class="pre">use_ssl</span></code> Set to True to enable SSL/TLS mode.</li>
+<li><code class="docutils literal notranslate"><span class="pre">cert</span></code> Path to the SSL certificate file. Only used when <code class="docutils literal notranslate"><span class="pre">use_ssl</span></code> is set to True.</li>
+<li><code class="docutils literal notranslate"><span class="pre">key</span></code> Path to the SSL private key file. Only used when <code class="docutils literal notranslate"><span class="pre">use_ssl</span></code> is set to True.</li>
+<li><code class="docutils literal notranslate"><span class="pre">mode</span></code> Mode to use (<code class="docutils literal notranslate"><span class="pre">proxy</span></code> or <code class="docutils literal notranslate"><span class="pre">standalone</span></code>). Default is <code class="docutils literal notranslate"><span class="pre">standalone</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">backend</span></code> Authentication backend to use in standalone mode (i.e. <code class="docutils literal notranslate"><span class="pre">pam</span></code>, <code class="docutils literal notranslate"><span class="pre">flat_file</span></code>).
 Please review the supported list of authentication backends below.</li>
-<li><code class="docutils literal"><span class="pre">backend_kwargs</span></code> JSON-serialized arguments which are passed to the authentication backend in
+<li><code class="docutils literal notranslate"><span class="pre">backend_kwargs</span></code> JSON-serialized arguments which are passed to the authentication backend in
 standalone mode.</li>
-<li><code class="docutils literal"><span class="pre">token_ttl</span></code> The token lifetime, in seconds. By default, the token expires in 24 hours.</li>
-<li><code class="docutils literal"><span class="pre">api_url</span></code> The authentication service also acts as a service catalog. It returns a URL to the
+<li><code class="docutils literal notranslate"><span class="pre">token_ttl</span></code> The token lifetime, in seconds. By default, the token expires in 24 hours.</li>
+<li><code class="docutils literal notranslate"><span class="pre">api_url</span></code> The authentication service also acts as a service catalog. It returns a URL to the
 API endpoint on successful authentication. This information is used by clients such as the CLI
 and web UI. The setting needs to contain a public base URL to the API endpoint (excluding
-the API version). Example: <code class="docutils literal"><span class="pre">https://myhost.example.com/api/</span></code></li>
-<li><code class="docutils literal"><span class="pre">enable</span></code> Authentication is not enabled for the StackStorm API until this is set to True. If
+the API version). Example: <code class="docutils literal notranslate"><span class="pre">https://myhost.example.com/api/</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">enable</span></code> Authentication is not enabled for the StackStorm API until this is set to True. If
 running StackStorm on multiple servers, please ensure that this is set to True on all StackStorm systems.</li>
-<li><code class="docutils literal"><span class="pre">debug</span></code> Enable debug mode.</li>
+<li><code class="docutils literal notranslate"><span class="pre">debug</span></code> Enable debug mode.</li>
 </ul>
 <p>If you make any changes, you must restart StackStorm:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo st2ctl restart
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo st2ctl restart
 </pre></div>
 </div>
 </div>
 <div class="section" id="standalone-auth-mode">
 <h2>Standalone Auth Mode<a class="headerlink" href="#standalone-auth-mode" title="Permalink to this headline">¶</a></h2>
 <p>Standalone mode is the default auth mode where external users authenticate directly with
-StackStorm. Under the hood the <code class="docutils literal"><span class="pre">st2auth</span></code> service delegates to the configured
-<code class="docutils literal"><span class="pre">backend</span></code> to perform the authentication. When the backend service properly
+StackStorm. Under the hood the <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> service delegates to the configured
+<code class="docutils literal notranslate"><span class="pre">backend</span></code> to perform the authentication. When the backend service properly
 authenticates the user, an auth token is returned. This token can then be used
 to make further API calls.</p>
 </div>
@@ -519,11 +519,11 @@ to make further API calls.</p>
 <p>Proxy mode can be used when there is a service that sits in front of StackStorm
 that performs user authentication (ex: load balancer, apache, nginx, etc). When
 the frontend service authenticates a user it will need to make an API call
-<code class="docutils literal"><span class="pre">POST</span> <span class="pre">https://&lt;stackstorm&gt;/auth/v1/tokens</span></code> to the <code class="docutils literal"><span class="pre">st2auth</span></code> service in order
+<code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">https://&lt;stackstorm&gt;/auth/v1/tokens</span></code> to the <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> service in order
 to obtain an auth token. In this request the following headers need to be added:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">remote_addr</span></code> Source of the request (hostname/ip).</li>
-<li><code class="docutils literal"><span class="pre">remote_user</span></code> User identity of proxy authenticated user.</li>
+<li><code class="docutils literal notranslate"><span class="pre">remote_addr</span></code> Source of the request (hostname/ip).</li>
+<li><code class="docutils literal notranslate"><span class="pre">remote_user</span></code> User identity of proxy authenticated user.</li>
 </ul>
 <p>The request will return an auth token that can be used to make further API calls.</p>
 </div>
@@ -533,30 +533,30 @@ to obtain an auth token. In this request the following headers need to be added:
 authentication. If a backend is not specified, an htpasswd-compatible flat file authentication
 backend is used. To use a different backend, select and install the appropriate python package from
 the StackStorm <a class="reference external" href="https://github.com/StackStorm?utf8=✓&amp;query=st2-auth">community repos</a> and configure
-<code class="docutils literal"><span class="pre">st2auth</span></code> accordingly.</p>
+<code class="docutils literal notranslate"><span class="pre">st2auth</span></code> accordingly.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When using the <code class="docutils literal"><span class="pre">pam</span></code> authentication backend you need to make sure that the <code class="docutils literal"><span class="pre">st2auth</span></code>
-process runs as <code class="docutils literal"><span class="pre">root</span></code> otherwise authentication will fail. For security reasons <code class="docutils literal"><span class="pre">st2auth</span></code>
-process runs under <code class="docutils literal"><span class="pre">st2</span></code> user by default. If you want to use <code class="docutils literal"><span class="pre">pam</span></code> auth backend and change
-it to run as <code class="docutils literal"><span class="pre">root</span></code>, you can do that by editing the service manager file for the <code class="docutils literal"><span class="pre">st2</span></code>
+<p class="last">When using the <code class="docutils literal notranslate"><span class="pre">pam</span></code> authentication backend you need to make sure that the <code class="docutils literal notranslate"><span class="pre">st2auth</span></code>
+process runs as <code class="docutils literal notranslate"><span class="pre">root</span></code> otherwise authentication will fail. For security reasons <code class="docutils literal notranslate"><span class="pre">st2auth</span></code>
+process runs under <code class="docutils literal notranslate"><span class="pre">st2</span></code> user by default. If you want to use <code class="docutils literal notranslate"><span class="pre">pam</span></code> auth backend and change
+it to run as <code class="docutils literal notranslate"><span class="pre">root</span></code>, you can do that by editing the service manager file for the <code class="docutils literal notranslate"><span class="pre">st2</span></code>
 auth service.</p>
 </div>
 <p>For example, to install the package for the PAM backend manually, run the
-following command on the same server where <code class="docutils literal"><span class="pre">st2auth</span></code> is running:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo /opt/stackstorm/st2/bin/pip install git+https://github.com/StackStorm/st2-auth-backend-pam.git@master#egg<span class="o">=</span>st2_auth_backend_pam
+following command on the same server where <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> is running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo /opt/stackstorm/st2/bin/pip install git+https://github.com/StackStorm/st2-auth-backend-pam.git@master#egg<span class="o">=</span>st2_auth_backend_pam
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>StackStorm uses a Python virtual environment in <code class="docutils literal"><span class="pre">/opt/stackstorm/st2/</span></code> for StackStorm
+<p>StackStorm uses a Python virtual environment in <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/st2/</span></code> for StackStorm
 dependencies and components.</p>
 <p>This means that if you want to work with the StackStorm installation (e.g. use the
-<code class="docutils literal"><span class="pre">python</span></code> binary from that virtualenv or to install a new auth backend), you
+<code class="docutils literal notranslate"><span class="pre">python</span></code> binary from that virtualenv or to install a new auth backend), you
 need to use the StackStorm virtual environment.</p>
 <p>You can do so by activating the virtual environment or running
-<code class="docutils literal"><span class="pre">python</span></code>/<code class="docutils literal"><span class="pre">pip</span></code> directly from the virtual environment:</p>
-<div class="last highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># by activating the virtual environment</span>
+<code class="docutils literal notranslate"><span class="pre">python</span></code>/<code class="docutils literal notranslate"><span class="pre">pip</span></code> directly from the virtual environment:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># by activating the virtual environment</span>
 
 $ <span class="nb">source</span> /opt/stackstorm/st2/bin/activate
 
@@ -569,10 +569,10 @@ $ sudo /opt/stackstorm/st2/bin/pip install foo
 </pre></div>
 </div>
 </div>
-<p>After the backend is installed, configure the backend at <code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>, and restart StackStorm.
+<p>After the backend is installed, configure the backend at <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>, and restart StackStorm.
 Specific configuration details for the backend can be found in the README at the corresponding
 repo. The following is a sample auth section in the config file for the PAM backend:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
 <span class="na">mode</span> <span class="o">=</span> <span class="s">standalone</span>
 <span class="na">backend</span> <span class="o">=</span> <span class="s">pam</span>
 <span class="na">enable</span> <span class="o">=</span> <span class="s">True</span>
@@ -708,8 +708,8 @@ configuration options for the backend:</p>
 <tr class="row-even"><td colspan="3">group_dns_check</td>
 <td>no</td>
 <td>and</td>
-<td colspan="69">What kind of check to perform when validating user group membership (<code class="docutils literal"><span class="pre">and</span></code> / <code class="docutils literal"><span class="pre">or</span></code>). When <code class="docutils literal"><span class="pre">and</span></code> behavior is used, user
-needs to be part of all the specified groups and when <code class="docutils literal"><span class="pre">or</span></code> behavior is used, user needs to be part of at least one or more
+<td colspan="69">What kind of check to perform when validating user group membership (<code class="docutils literal notranslate"><span class="pre">and</span></code> / <code class="docutils literal notranslate"><span class="pre">or</span></code>). When <code class="docutils literal notranslate"><span class="pre">and</span></code> behavior is used, user
+needs to be part of all the specified groups and when <code class="docutils literal notranslate"><span class="pre">or</span></code> behavior is used, user needs to be part of at least one or more
 of the specified groups.</td>
 </tr>
 <tr class="row-odd"><td colspan="3">host</td>
@@ -765,20 +765,20 @@ of the specified groups.</td>
 <tr class="row-odd"><td colspan="3">client_options</td>
 <td>no</td>
 <td>&#160;</td>
-<td colspan="69">A dictionary with additional Python LDAP client options which can be passed to <code class="docutils literal"><span class="pre">set_connection()</span></code> method</td>
+<td colspan="69">A dictionary with additional Python LDAP client options which can be passed to <code class="docutils literal notranslate"><span class="pre">set_connection()</span></code> method</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">By default a logical <code class="docutils literal"><span class="pre">and</span></code> check is performed when validating user group membership against
-groups defined in <code class="docutils literal"><span class="pre">group_dns</span></code> config option. This means if multiple groups are specified, the
+<p class="last">By default a logical <code class="docutils literal notranslate"><span class="pre">and</span></code> check is performed when validating user group membership against
+groups defined in <code class="docutils literal notranslate"><span class="pre">group_dns</span></code> config option. This means if multiple groups are specified, the
 user needs to be member of <strong>all</strong> the specified groups for authentication to succeed. If you
-want to use <code class="docutils literal"><span class="pre">or</span></code> behavior instead (user needs to be a member of one or more of the specified
-groups), you can achieve that by setting the <code class="docutils literal"><span class="pre">group_dns_check</span></code> config option to <code class="docutils literal"><span class="pre">or</span></code>.</p>
+want to use <code class="docutils literal notranslate"><span class="pre">or</span></code> behavior instead (user needs to be a member of one or more of the specified
+groups), you can achieve that by setting the <code class="docutils literal notranslate"><span class="pre">group_dns_check</span></code> config option to <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
 </div>
 <p>The following is a sample auth section for the LDAP backend in the st2 config file:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[auth]</span>
 <span class="na">mode</span> <span class="o">=</span> <span class="s">standalone</span>
 <span class="na">backend</span> <span class="o">=</span> <span class="s">ldap</span>
 <span class="na">backend_kwargs</span> <span class="o">=</span> <span class="s">{&quot;bind_dn&quot;: &quot;CN=st2admin,ou=users,dc=example,dc=com&quot;, &quot;bind_password&quot;: &quot;foobar123&quot;, &quot;base_ou&quot;: &quot;dc=example,dc=com&quot;, &quot;group_dns&quot;: [&quot;CN=st2users,ou=groups,dc=example,dc=com&quot;, &quot;CN=st2developers,ou=groups,dc=example,dc=com&quot;], &quot;host&quot;: &quot;identity.example.com&quot;, &quot;port&quot;: 636, &quot;use_ssl&quot;: true, &quot;cacert&quot;: &quot;/path/to/cacert.pem&quot;}</span>
@@ -791,14 +791,14 @@ groups), you can achieve that by setting the <code class="docutils literal"><spa
 <span class="na">debug</span> <span class="o">=</span> <span class="s">False</span>
 </pre></div>
 </div>
-<p>This will need customization for your environment - e.g. the LDAP server to bind to, and the <code class="docutils literal"><span class="pre">cert</span></code> and <code class="docutils literal"><span class="pre">key</span></code> paths if you are using SSL.</p>
+<p>This will need customization for your environment - e.g. the LDAP server to bind to, and the <code class="docutils literal notranslate"><span class="pre">cert</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code> paths if you are using SSL.</p>
 </div>
 </div>
 <div class="section" id="running-the-service">
 <h2>Running the Service<a class="headerlink" href="#running-the-service" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">st2auth</span></code> is set up to run as a service. It runs under gunicorn.</p>
+<p><code class="docutils literal notranslate"><span class="pre">st2auth</span></code> is set up to run as a service. It runs under gunicorn.</p>
 <p>The service can be started with one of the options below:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Individually</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Individually</span>
 sudo service st2auth start
 
 <span class="c1"># Individually via st2ctl</span>
@@ -814,8 +814,8 @@ sudo /usr/bin/st2auth --config-file /etc/st2/st2.conf
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>Run the following <code class="docutils literal"><span class="pre">curl</span></code> commands to test:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># If use_ssl is set to True, the following will fail because SSL is required.</span>
+<p>Run the following <code class="docutils literal notranslate"><span class="pre">curl</span></code> commands to test:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># If use_ssl is set to True, the following will fail because SSL is required.</span>
 curl -X POST http://myhost.example.com/auth/v1/tokens
 
 <span class="c1"># The following will fail with 401 unauthorized. Please note that this is executed with &quot;-k&quot; to skip SSL cert verification.</span>
@@ -833,10 +833,10 @@ curl -X POST --cacert /path/to/cacert.pem -u yourusername:<span class="s1">&#39;
 <span id="authentication-usage"></span><h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 <p>Once st2auth is enabled, API calls require the token to be passed via the headers. CLI calls
 require the token to be included as a CLI argument or as an environment variable.</p>
-<p>To acquire a new token via the CLI, run the <code class="docutils literal"><span class="pre">st2</span> <span class="pre">auth</span></code> command.  If password is not provided,
-then <code class="docutils literal"><span class="pre">st2</span> <span class="pre">auth</span></code> will prompt for the password. If successful, a token is returned in the
+<p>To acquire a new token via the CLI, run the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">auth</span></code> command.  If password is not provided,
+then <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">auth</span></code> will prompt for the password. If successful, a token is returned in the
 response:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># with password</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># with password</span>
 st2 auth yourusername -p <span class="s1">&#39;yourpassword&#39;</span>
 
 <span class="c1"># without password</span>
@@ -846,15 +846,15 @@ Password:
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If your password contains special characters such as <code class="docutils literal"><span class="pre">$</span></code>, they may be interpreted by the shell.
-Wrap your password in single quotes (<code class="docutils literal"><span class="pre">'</span></code>) as above.</p>
+<p class="last">If your password contains special characters such as <code class="docutils literal notranslate"><span class="pre">$</span></code>, they may be interpreted by the shell.
+Wrap your password in single quotes (<code class="docutils literal notranslate"><span class="pre">'</span></code>) as above.</p>
 </div>
-<p>The following is a sample API call via <code class="docutils literal"><span class="pre">curl</span></code> using that token:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -H <span class="s2">&quot;X-Auth-Token: 4d76e023841a4a91a9c66aa4541156fe&quot;</span> https://myhost.example.com/api/v1/actions
+<p>The following is a sample API call via <code class="docutils literal notranslate"><span class="pre">curl</span></code> using that token:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -H <span class="s2">&quot;X-Auth-Token: 4d76e023841a4a91a9c66aa4541156fe&quot;</span> https://myhost.example.com/api/v1/actions
 </pre></div>
 </div>
 <p>This is the CLI equivalent:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Include the token as command line argument.</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Include the token as command line argument.</span>
 st2 action list -t 4d76e023841a4a91a9c66aa4541156fe
 
 <span class="c1"># Or set the token as an environment variable.</span>
@@ -864,7 +864,7 @@ st2 action list
 </div>
 <p>There may be use-cases where you want a token with a different TTL from the default. You can specify a TTL
 (in seconds) when you request a token. For example, to request a token that is valid for 10 minutes:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># with TTL and password</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># with TTL and password</span>
 st2 auth yourusername -p <span class="s1">&#39;yourpassword&#39;</span> -l <span class="m">600</span>
 </pre></div>
 </div>
@@ -880,7 +880,7 @@ automatically authenticate, retrieve and cache the auth token for you.</p>
 suited for integrations with other applications, e.g. through webhooks.</p>
 <p>All API key management is currently available via the StackStorm CLI or API.</p>
 <p>To create an API key:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 apikey create -k -m <span class="s1">&#39;{&quot;used_by&quot;: &quot;my integration&quot;}&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 apikey create -k -m <span class="s1">&#39;{&quot;used_by&quot;: &quot;my integration&quot;}&#39;</span>
 &lt;API_KEY_VALUE&gt;
 </pre></div>
 </div>
@@ -891,17 +891,17 @@ store this API Key value in its database, only a one-way hash is stored. It is n
 retrieve an API Key after creation. If the API Key is lost or not recorded at the time of
 creation, delete the API Key and create a new one.</p>
 </div>
-<p>The optional <code class="docutils literal"><span class="pre">-m</span></code> attribute allows metadata to be associated with the created key. It is good
+<p>The optional <code class="docutils literal notranslate"><span class="pre">-m</span></code> attribute allows metadata to be associated with the created key. It is good
 practice to assign a meaningful value like the external service which uses this key to authenticate
 with StackStorm.</p>
-<p>The CLI for API keys also support <code class="docutils literal"><span class="pre">get</span></code>, <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">delete</span></code>, <code class="docutils literal"><span class="pre">enable</span></code> and <code class="docutils literal"><span class="pre">disable</span></code> commands.</p>
+<p>The CLI for API keys also support <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code>, <code class="docutils literal notranslate"><span class="pre">enable</span></code> and <code class="docutils literal notranslate"><span class="pre">disable</span></code> commands.</p>
 <p>If an API Key is disabled it will disallow access until that API key is enabled again. This is a
 good way to temporarily revoke access of an external service to StackStorm.</p>
 <div class="section" id="api-key-usage">
 <h3>API Key Usage<a class="headerlink" href="#api-key-usage" title="Permalink to this headline">¶</a></h3>
 <p>API keys are designed for API access. As of now they cannot be used via clients like the UI and CLI.</p>
-<p>The following are sample API calls via <code class="docutils literal"><span class="pre">curl</span></code> using API Keys:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -H <span class="s2">&quot;St2-Api-Key: &lt;API-KEY-VALUE&gt;&quot;</span> https://myhost.example.com/api/v1/actions
+<p>The following are sample API calls via <code class="docutils literal notranslate"><span class="pre">curl</span></code> using API Keys:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -H <span class="s2">&quot;St2-Api-Key: &lt;API-KEY-VALUE&gt;&quot;</span> https://myhost.example.com/api/v1/actions
 $ curl https://myhost.example.com/api/v1/actions?st2-api-key<span class="o">=</span>&lt;API-KEY-VALUE&gt;
 </pre></div>
 </div>
@@ -918,7 +918,7 @@ per-API call basis disable the masking without having to make config changes.
 See <a class="reference internal" href="install/config/config.html#mask-secrets"><span class="std std-ref">Configure secrets masking</span></a> to see how to disable masking on a system wide basis.</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 apikey list -dy --show-secrets &gt; apikeys.yaml
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 apikey list -dy --show-secrets &gt; apikeys.yaml
 </pre></div>
 </div>
 </div></blockquote>
@@ -926,7 +926,7 @@ See <a class="reference internal" href="install/config/config.html#mask-secrets"
 <li>Transfer the file to the new StackStorm instance, and load the keys from file:</li>
 </ol>
 <blockquote>
-<div><div class="highlight-bash"><div class="highlight"><pre><span></span>$ st2 apikey load apikeys.yaml
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ st2 apikey load apikeys.yaml
 </pre></div>
 </div>
 </div></blockquote>
@@ -934,25 +934,25 @@ See <a class="reference internal" href="install/config/config.html#mask-secrets"
 <div class="section" id="using-authentication-tokens-or-api-keys-with-the-api">
 <h3>Using Authentication Tokens or API Keys with the API<a class="headerlink" href="#using-authentication-tokens-or-api-keys-with-the-api" title="Permalink to this headline">¶</a></h3>
 <p>To authenticate against the StackStorm API, either an authentication token or an API key (but not both)
-should be provided in the HTTP request headers. The headers are named <code class="docutils literal"><span class="pre">X-Auth-Token</span></code> and
-<code class="docutils literal"><span class="pre">St2-Api-Key</span></code> respectively.</p>
+should be provided in the HTTP request headers. The headers are named <code class="docutils literal notranslate"><span class="pre">X-Auth-Token</span></code> and
+<code class="docutils literal notranslate"><span class="pre">St2-Api-Key</span></code> respectively.</p>
 <p>If for some reason you can’t specify an auth token or API key in the headers (e.g. you are using a
 third party service to integrate with StackStorm and this service doesn’t allow you to specify custom
-headers), you can provide it as a query parameter named <code class="docutils literal"><span class="pre">x-auth-token</span></code> and <code class="docutils literal"><span class="pre">st2-api-key</span></code>
+headers), you can provide it as a query parameter named <code class="docutils literal notranslate"><span class="pre">x-auth-token</span></code> and <code class="docutils literal notranslate"><span class="pre">st2-api-key</span></code>
 respectively.</p>
 <p>Keep in mind that using HTTP header is preferred since some web servers and third party services
 log query parameters which are sent with each request, which could be a security risk.</p>
 <p>Here’s some examples of how to send authentication token and API key in the headers, and as a query
-parameter using <code class="docutils literal"><span class="pre">curl</span></code>:</p>
+parameter using <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
 <ul>
 <li><p class="first">Providing it in the request headers:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -H <span class="s2">&quot;X-Auth-Token: &lt;auth token value&gt;&quot;</span> https://myhost.example.com/api/v1/actions
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -H <span class="s2">&quot;X-Auth-Token: &lt;auth token value&gt;&quot;</span> https://myhost.example.com/api/v1/actions
 $ curl -H <span class="s2">&quot;St2-Api-Key: &lt;api key value&gt;&quot;</span> https://myhost.example.com/api/v1/actions
 </pre></div>
 </div>
 </li>
 <li><p class="first">Providing it as a query parameter:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl <span class="s2">&quot;https://myhost.example.com/api/v1/actions?x-auth-token=&lt;auth token value&gt;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl <span class="s2">&quot;https://myhost.example.com/api/v1/actions?x-auth-token=&lt;auth token value&gt;&quot;</span>
 $ curl <span class="s2">&quot;https://myhost.example.com/api/v1/actions?st2-api-key=&lt;api key value&gt;&quot;</span>
 </pre></div>
 </div>

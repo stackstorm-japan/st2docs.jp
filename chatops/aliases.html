@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -470,7 +470,7 @@ of actions in StackStorm. They are useful in text based interfaces, notably Chat
 <h2>Action Alias Structure<a class="headerlink" href="#action-alias-structure" title="Permalink to this headline">¶</a></h2>
 <p>Action aliases are content like actions, rules, and sensors. They are defined in YAML
 files and deployed via packs, e.g.:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;remote_shell_cmd&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;examples&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">action_ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.remote&quot;</span>
@@ -479,22 +479,22 @@ files and deployed via packs, e.g.:</p>
   <span class="p p-Indicator">-</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{cmd}}</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts}}&quot;</span>
 </pre></div>
 </div>
-<p>In the above example <code class="docutils literal"><span class="pre">remote_shell_cmd</span></code> is an alias for the <code class="docutils literal"><span class="pre">core.remote</span></code> action. The
-supported format for the alias is specified in the <code class="docutils literal"><span class="pre">formats</span></code> field. A single alias can support
+<p>In the above example <code class="docutils literal notranslate"><span class="pre">remote_shell_cmd</span></code> is an alias for the <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> action. The
+supported format for the alias is specified in the <code class="docutils literal notranslate"><span class="pre">formats</span></code> field. A single alias can support
 multiple formats for the same action.</p>
 <div class="section" id="property-description">
 <h3>Property description<a class="headerlink" href="#property-description" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">name</span></code>: unique name of the alias.</li>
-<li><code class="docutils literal"><span class="pre">action_ref</span></code>: the action that is being aliased.</li>
-<li><code class="docutils literal"><span class="pre">formats</span></code>: possible options for users to invoke the action. Typically entered in a textual
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code>: unique name of the alias.</li>
+<li><code class="docutils literal notranslate"><span class="pre">action_ref</span></code>: the action that is being aliased.</li>
+<li><code class="docutils literal notranslate"><span class="pre">formats</span></code>: possible options for users to invoke the action. Typically entered in a textual
 interface supported by ChatOps.</li>
 </ol>
 </div>
 <div class="section" id="location">
 <h3>Location<a class="headerlink" href="#location" title="Permalink to this headline">¶</a></h3>
 <p>Action Aliases are supplied in packs as YAML files:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>packs/my_pack$ ls
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>packs/my_pack$ ls
 actions  aliases  rules  sensors
 </pre></div>
 </div>
@@ -503,24 +503,24 @@ actions  aliases  rules  sensors
 <div class="section" id="listing">
 <h3>Listing<a class="headerlink" href="#listing" title="Permalink to this headline">¶</a></h3>
 <p>To list all currently registered action aliases, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action-alias list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action-alias list
 </pre></div>
 </div>
 </div>
 <div class="section" id="loading">
 <h3>Loading<a class="headerlink" href="#loading" title="Permalink to this headline">¶</a></h3>
 <p>Aliases are not automatically loaded when a pack is registered. To load all aliases use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2ctl reload --register-aliases
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2ctl reload --register-aliases
 </pre></div>
 </div>
 </div>
 <div class="section" id="removing">
 <h3>Removing<a class="headerlink" href="#removing" title="Permalink to this headline">¶</a></h3>
 <p>To remove an action alias, use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 action-alias delete <span class="o">{</span>ALIAS<span class="o">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 action-alias delete <span class="o">{</span>ALIAS<span class="o">}</span>
 </pre></div>
 </div>
-<p>After removing or modifying existing aliases, you may need to restart the <code class="docutils literal"><span class="pre">st2chatops</span></code> service,
+<p>After removing or modifying existing aliases, you may need to restart the <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> service,
 or you may see old or duplicate commands still showing up on your chatbot.</p>
 </div>
 </div>
@@ -529,34 +529,34 @@ or you may see old or duplicate commands still showing up on your chatbot.</p>
 <p>Aliases support the following format structures:</p>
 <div class="section" id="basic">
 <h3>Basic<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{cmd}}</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts}}&quot;&quot;</span>
 </pre></div>
 </div>
-<p>If the user entered <code class="docutils literal"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">localhost</span></code> via a ChatOps interface, the aliasing mechanism
-would interpret this as <code class="docutils literal"><span class="pre">cmd=date</span> <span class="pre">hosts=localhost</span></code>. The action <code class="docutils literal"><span class="pre">core.remote</span></code> would then be
+<p>If the user entered <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">localhost</span></code> via a ChatOps interface, the aliasing mechanism
+would interpret this as <code class="docutils literal notranslate"><span class="pre">cmd=date</span> <span class="pre">hosts=localhost</span></code>. The action <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> would then be
 called with the parameters:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">cmd</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
     <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
 </pre></div>
 </div>
-<p>Since <code class="docutils literal"><span class="pre">core.remote</span></code> accepts multiple hosts, you can also use a comma-separated list:
-<code class="docutils literal"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">10.0.10.1,10.0.10.2</span></code>.</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> accepts multiple hosts, you can also use a comma-separated list:
+<code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">10.0.10.1,10.0.10.2</span></code>.</p>
 </div>
 <div class="section" id="with-default">
 <h3>With default<a class="headerlink" href="#with-default" title="Permalink to this headline">¶</a></h3>
 <p>Using this example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{cmd}}</span><span class="nv"> </span><span class="s">{{hosts=localhost}}&quot;</span>
 </pre></div>
 </div>
 <p>In this case, the query has a default value assigned which will be used if no value is provided by
-the user. Therefore, a simple <code class="docutils literal"><span class="pre">run</span> <span class="pre">date</span></code> instead of <code class="docutils literal"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">10.0.10.1</span></code> would result in
+the user. Therefore, a simple <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">date</span></code> instead of <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">10.0.10.1</span></code> would result in
 assigning the default value, in a similar manner to how Action default parameter values are
 interpreted.</p>
 <p>For default inputs like JSON, the following pattern can be applied:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{thing={&#39;key&#39;:</span><span class="nv"> </span><span class="s">&#39;value&#39;}}}&quot;</span>
 </pre></div>
 </div>
@@ -566,7 +566,7 @@ using this pattern.</p>
 <div class="section" id="regular-expressions">
 <h3>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h3>
 <p>You can use regular expressions in the format string:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;(run|execute)</span><span class="nv"> </span><span class="s">{{cmd}}(</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts=localhost}})?[!.]?&quot;</span>
 </pre></div>
 </div>
@@ -577,15 +577,15 @@ have two problems to solve.</p>
 <div class="section" id="key-value-parameters">
 <h3>Key-Value Parameters<a class="headerlink" href="#key-value-parameters" title="Permalink to this headline">¶</a></h3>
 <p>Using this example:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{cmd}}</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts}}&quot;</span>
 </pre></div>
 </div>
-<p>Users can supply extra key value parameters like <code class="docutils literal"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">localhost</span> <span class="pre">timeout=120</span></code>. In this
-case even though <code class="docutils literal"><span class="pre">timeout</span></code> does not appear in any alias format it will still be extracted and
-supplied for execution. In this case the action <code class="docutils literal"><span class="pre">core.remote</span></code> would be called with the
+<p>Users can supply extra key value parameters like <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">date</span> <span class="pre">on</span> <span class="pre">localhost</span> <span class="pre">timeout=120</span></code>. In this
+case even though <code class="docutils literal notranslate"><span class="pre">timeout</span></code> does not appear in any alias format it will still be extracted and
+supplied for execution. In this case the action <code class="docutils literal notranslate"><span class="pre">core.remote</span></code> would be called with the
 parameters:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">cmd</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">date</span>
     <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
     <span class="l l-Scalar l-Scalar-Plain">timeout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">120</span>
@@ -594,18 +594,18 @@ parameters:</p>
 </div>
 <div class="section" id="additional-chatops-parameters-passed">
 <h3>Additional ChatOps Parameters Passed<a class="headerlink" href="#additional-chatops-parameters-passed" title="Permalink to this headline">¶</a></h3>
-<p>An execution triggered via ChatOps will contain variables such as <code class="docutils literal"><span class="pre">action_context.api_user</span></code>,
-<code class="docutils literal"><span class="pre">action_context.user</span></code> and <code class="docutils literal"><span class="pre">action_context.source_channel</span></code>. <code class="docutils literal"><span class="pre">api_user</span></code> is the user who runs
-the ChatOps command from the client and <code class="docutils literal"><span class="pre">user</span></code> is the StackStorm user configured in hubot.
-<code class="docutils literal"><span class="pre">source_channel</span></code> is the channel in which the ChatOps command was entered.</p>
+<p>An execution triggered via ChatOps will contain variables such as <code class="docutils literal notranslate"><span class="pre">action_context.api_user</span></code>,
+<code class="docutils literal notranslate"><span class="pre">action_context.user</span></code> and <code class="docutils literal notranslate"><span class="pre">action_context.source_channel</span></code>. <code class="docutils literal notranslate"><span class="pre">api_user</span></code> is the user who runs
+the ChatOps command from the client and <code class="docutils literal notranslate"><span class="pre">user</span></code> is the StackStorm user configured in hubot.
+<code class="docutils literal notranslate"><span class="pre">source_channel</span></code> is the channel in which the ChatOps command was entered.</p>
 <p>If you are attempting to access this information from inside an ActionChain, you will need to
-reference the variables through the parent, e.g. <code class="docutils literal"><span class="pre">action_context.parent.api_user</span></code></p>
+reference the variables through the parent, e.g. <code class="docutils literal notranslate"><span class="pre">action_context.parent.api_user</span></code></p>
 </div>
 </div>
 <div class="section" id="multiple-formats-in-a-single-alias">
 <h2>Multiple Formats in a Single Alias<a class="headerlink" href="#multiple-formats-in-a-single-alias" title="Permalink to this headline">¶</a></h2>
 <p>A single alias file allows multiple formats to be specified for a single alias e.g.:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;st2_sensors_list&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;st2&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">action_ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;st2.sensors.list&quot;</span>
@@ -617,7 +617,7 @@ reference the variables through the parent, e.g. <code class="docutils literal">
 </pre></div>
 </div>
 <p>The above alias supports the following commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>!sensors list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!sensors list
 !list sensors
 !sensors list <span class="nv">pack</span><span class="o">=</span>examples
 !list sensors from examples
@@ -626,8 +626,8 @@ reference the variables through the parent, e.g. <code class="docutils literal">
 </div>
 <p>Note: formats are matched in the exact order they are specified in a YAML array, and must be
 ordered from the most specific (first) to the most generic (last).
-<code class="docutils literal"><span class="pre">deploy</span> <span class="pre">{{</span> <span class="pre">pack</span> <span class="pre">}}</span> <span class="pre">to</span> <span class="pre">{{</span> <span class="pre">host</span> <span class="pre">}}</span></code> should come before <code class="docutils literal"><span class="pre">deploy</span> <span class="pre">{{</span> <span class="pre">pack</span> <span class="pre">}}</span></code>, otherwise everything
-after <code class="docutils literal"><span class="pre">deploy</span></code> will always be mapped to <code class="docutils literal"><span class="pre">pack</span></code>, ignoring more specific format strings that
+<code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">{{</span> <span class="pre">pack</span> <span class="pre">}}</span> <span class="pre">to</span> <span class="pre">{{</span> <span class="pre">host</span> <span class="pre">}}</span></code> should come before <code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">{{</span> <span class="pre">pack</span> <span class="pre">}}</span></code>, otherwise everything
+after <code class="docutils literal notranslate"><span class="pre">deploy</span></code> will always be mapped to <code class="docutils literal notranslate"><span class="pre">pack</span></code>, ignoring more specific format strings that
 come after.</p>
 </div>
 <div class="section" id="display-representation-format-objects">
@@ -635,10 +635,10 @@ come after.</p>
 <p>By default, every format string is exposed in Hubot help as-is. This is not always desirable in
 cases where you want to make a complicated regex, have ten very similar format strings to
 “humanize” the input, or need to hide one of the strings for any other reason.</p>
-<p>In this case, instead of having a string in <code class="docutils literal"><span class="pre">formats</span></code>, you can write an object with a <code class="docutils literal"><span class="pre">display</span></code>
-parameter (a string that will show up in help) and a <code class="docutils literal"><span class="pre">representation</span></code> list (matches that Hubot
+<p>In this case, instead of having a string in <code class="docutils literal notranslate"><span class="pre">formats</span></code>, you can write an object with a <code class="docutils literal notranslate"><span class="pre">display</span></code>
+parameter (a string that will show up in help) and a <code class="docutils literal notranslate"><span class="pre">representation</span></code> list (matches that Hubot
 will actually look for):</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">display</span><span class="p p-Indicator">:</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{cmd}}</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">representation</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="s">&quot;(run|execute)</span><span class="nv"> </span><span class="s">{{cmd}}(</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts=localhost}})?[!.]?&quot;</span>
@@ -648,15 +648,15 @@ will actually look for):</p>
 <p>This works as follows:</p>
 <blockquote>
 <div><ul class="simple">
-<li>the <code class="docutils literal"><span class="pre">display</span></code> string (<code class="docutils literal"><span class="pre">run</span> <span class="pre">{{cmd}}</span> <span class="pre">on</span> <span class="pre">{{hosts}}</span></code>) will be exposed via the <code class="docutils literal"><span class="pre">!help</span></code>
+<li>the <code class="docutils literal notranslate"><span class="pre">display</span></code> string (<code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">{{cmd}}</span> <span class="pre">on</span> <span class="pre">{{hosts}}</span></code>) will be exposed via the <code class="docutils literal notranslate"><span class="pre">!help</span></code>
 command.</li>
-<li>strings from the <code class="docutils literal"><span class="pre">representation</span></code> list (<code class="docutils literal"><span class="pre">(run|execute)</span> <span class="pre">{{cmd}}(</span> <span class="pre">on</span>
-<span class="pre">{{hosts=localhost}})?[!.]?</span></code> regex, and <code class="docutils literal"><span class="pre">run</span> <span class="pre">remote</span> <span class="pre">command</span> <span class="pre">{{cmd}}</span> <span class="pre">on</span> <span class="pre">{{hosts}}</span></code> string)
+<li>strings from the <code class="docutils literal notranslate"><span class="pre">representation</span></code> list (<code class="docutils literal notranslate"><span class="pre">(run|execute)</span> <span class="pre">{{cmd}}(</span> <span class="pre">on</span>
+<span class="pre">{{hosts=localhost}})?[!.]?</span></code> regex, and <code class="docutils literal notranslate"><span class="pre">run</span> <span class="pre">remote</span> <span class="pre">command</span> <span class="pre">{{cmd}}</span> <span class="pre">on</span> <span class="pre">{{hosts}}</span></code> string)
 will be matched by Hubot.</li>
 </ul>
 </div></blockquote>
-<p>You can use both strings and display-representation objects in <code class="docutils literal"><span class="pre">formats</span></code> at the same time:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
+<p>You can use both strings and display-representation objects in <code class="docutils literal notranslate"><span class="pre">formats</span></code> at the same time:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">display</span><span class="p p-Indicator">:</span> <span class="s">&quot;run</span><span class="nv"> </span><span class="s">{{cmd}}</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">representation</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="s">&quot;(run|execute)</span><span class="nv"> </span><span class="s">{{cmd}}(</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">{{hosts=localhost}})?[!.]?&quot;</span>
@@ -670,31 +670,31 @@ will be matched by Hubot.</li>
 <h2>Acknowledgment Options<a class="headerlink" href="#acknowledgment-options" title="Permalink to this headline">¶</a></h2>
 <p>Hubot will acknowledge every ChatOps command with a random message containing the StackStorm execution
 ID and a link to the Web UI. This message can be customized in your alias definition:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">ack</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">ack</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="s">&quot;acknowledged!&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">append_url</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">format</span></code> parameter will customize your message, and the <code class="docutils literal"><span class="pre">append_url</span></code> flag controls the Web
-UI link at the end. It is also possible to use Jinja in the format string, with <code class="docutils literal"><span class="pre">actionalias</span></code>
-and <code class="docutils literal"><span class="pre">execution</span></code> comprising the Jinja context:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">ack</span><span class="p p-Indicator">:</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">format</span></code> parameter will customize your message, and the <code class="docutils literal notranslate"><span class="pre">append_url</span></code> flag controls the Web
+UI link at the end. It is also possible to use Jinja in the format string, with <code class="docutils literal notranslate"><span class="pre">actionalias</span></code>
+and <code class="docutils literal notranslate"><span class="pre">execution</span></code> comprising the Jinja context:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">ack</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="s">&quot;Executing</span><span class="nv"> </span><span class="s">`{{</span><span class="nv"> </span><span class="s">actionalias.ref</span><span class="nv"> </span><span class="s">}}`,</span><span class="nv"> </span><span class="s">your</span><span class="nv"> </span><span class="s">ID</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">`{{</span><span class="nv"> </span><span class="s">execution.id[:2]</span><span class="nv"> </span><span class="s">}}..{{</span><span class="nv"> </span><span class="s">execution.id[-2:]</span><span class="nv"> </span><span class="s">}}`&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">enabled</span></code> parameter controls whether the message will be sent. It defaults to <code class="docutils literal"><span class="pre">true</span></code>.
-Setting it to <code class="docutils literal"><span class="pre">false</span></code> will disable the acknowledgment message:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">ack</span><span class="p p-Indicator">:</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">enabled</span></code> parameter controls whether the message will be sent. It defaults to <code class="docutils literal notranslate"><span class="pre">true</span></code>.
+Setting it to <code class="docutils literal notranslate"><span class="pre">false</span></code> will disable the acknowledgment message:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">ack</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="result-options">
 <h2>Result Options<a class="headerlink" href="#result-options" title="Permalink to this headline">¶</a></h2>
-<p>Similar to <code class="docutils literal"><span class="pre">ack</span></code>, you can configure <code class="docutils literal"><span class="pre">result</span></code> to disable result messages or set a custom format
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">ack</span></code>, you can configure <code class="docutils literal notranslate"><span class="pre">result</span></code> to disable result messages or set a custom format
 so that Hubot will output a nicely formatted list, filter strings, or switch the message text
 depending on execution status:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">result</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">result</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
     <span class="no">Ran command *{{execution.parameters.cmd}}* on *{{ execution.result | length }}* hosts.</span>
 
@@ -706,28 +706,28 @@ depending on execution status:</p>
     <span class="no">{%+ endfor %}</span>
 </pre></div>
 </div>
-<p>To disable the result message, you can use the <code class="docutils literal"><span class="pre">enabled</span></code> flag in the same way as in <code class="docutils literal"><span class="pre">ack</span></code>.</p>
+<p>To disable the result message, you can use the <code class="docutils literal notranslate"><span class="pre">enabled</span></code> flag in the same way as in <code class="docutils literal notranslate"><span class="pre">ack</span></code>.</p>
 </div>
 <div class="section" id="plaintext-messages-slack-and-hipchat">
 <h2>Plaintext Messages (Slack and HipChat)<a class="headerlink" href="#plaintext-messages-slack-and-hipchat" title="Permalink to this headline">¶</a></h2>
 <p>Result messages tend to be quite long, and Hubot will utilize the extra formatting capabilities of
 some chat clients: Slack messages will be sent as attachments, and HipChat messages are formatted
 as code blocks. While this is a good fit in most cases, sometimes you want part or all of your
-message in plaintext. Use <code class="docutils literal"><span class="pre">{~}</span></code> as a delimiter to split a message into a plaintext/attachment
+message in plaintext. Use <code class="docutils literal notranslate"><span class="pre">{~}</span></code> as a delimiter to split a message into a plaintext/attachment
 pair:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">result</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">result</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">format</span><span class="p p-Indicator">:</span> <span class="s">&quot;action</span><span class="nv"> </span><span class="s">completed!</span><span class="nv"> </span><span class="s">{~}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">execution.result</span><span class="nv"> </span><span class="s">}}&quot;</span>
 </pre></div>
 </div>
 <p>In this case “action completed!” will be displayed in plaintext, and the execution result will
 follow as an attachment.</p>
-<p><code class="docutils literal"><span class="pre">{~}</span></code> at the end of the string will display the whole message in plaintext.</p>
+<p><code class="docutils literal notranslate"><span class="pre">{~}</span></code> at the end of the string will display the whole message in plaintext.</p>
 </div>
 <div class="section" id="passing-attachment-api-parameters-slack-only">
 <h2>Passing Attachment API parameters (Slack-only)<a class="headerlink" href="#passing-attachment-api-parameters-slack-only" title="Permalink to this headline">¶</a></h2>
 <p>Slack formats ChatOps output as attachments, and you can configure the API parameters in the
-<code class="docutils literal"><span class="pre">result.extra.slack</span></code> field.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<code class="docutils literal notranslate"><span class="pre">result.extra.slack</span></code> field.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;kitten&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;kitten&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Post</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">kitten</span><span class="nv"> </span><span class="s">picture</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">cheer</span><span class="nv"> </span><span class="s">people</span><span class="nv"> </span><span class="s">up.&quot;</span>
@@ -751,11 +751,11 @@ follow as an attachment.</p>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;#00AA00&quot;</span>
 </pre></div>
 </div>
-<p>Everything that’s specified in <code class="docutils literal"><span class="pre">extra.slack</span></code> will be passed as-is to the
+<p>Everything that’s specified in <code class="docutils literal notranslate"><span class="pre">extra.slack</span></code> will be passed as-is to the
 <a class="reference external" href="https://api.slack.com/docs/attachments">Slack Attachment API</a>.</p>
-<p>Note: parameters in <code class="docutils literal"><span class="pre">extra</span></code> support Jinja templating, and you can calculate the values
+<p>Note: parameters in <code class="docutils literal notranslate"><span class="pre">extra</span></code> support Jinja templating, and you can calculate the values
 dynamically:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
 <span class="l l-Scalar l-Scalar-Plain">formats</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="s">&quot;say</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">phrase</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">color</span><span class="nv"> </span><span class="s">}}&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">result</span><span class="p p-Indicator">:</span>
@@ -766,16 +766,16 @@ dynamically:</p>
 </pre></div>
 </div>
 <p>Support for other chat providers is coming soon, and of course you are always welcome to
-contribute! See the example below for hacking on <code class="docutils literal"><span class="pre">extra</span></code>.</p>
+contribute! See the example below for hacking on <code class="docutils literal notranslate"><span class="pre">extra</span></code>.</p>
 </div>
 <div class="section" id="testing-and-extending-alias-parameters">
 <h2>Testing and extending alias parameters<a class="headerlink" href="#testing-and-extending-alias-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Action Aliases have a strict schema, and normally you have to modify it if you want to introduce
-new parameters to Hubot. However, <code class="docutils literal"><span class="pre">extra</span></code> (see above) is schema-less and can be used for hacking
-on <code class="docutils literal"><span class="pre">hubot-stackstorm</span></code> without having to modify StackStorm source code.</p>
-<p>For example, you might want to introduce an <code class="docutils literal"><span class="pre">audit</span></code> parameter that would make Hubot log
+new parameters to Hubot. However, <code class="docutils literal notranslate"><span class="pre">extra</span></code> (see above) is schema-less and can be used for hacking
+on <code class="docutils literal notranslate"><span class="pre">hubot-stackstorm</span></code> without having to modify StackStorm source code.</p>
+<p>For example, you might want to introduce an <code class="docutils literal notranslate"><span class="pre">audit</span></code> parameter that would make Hubot log
 executions of certain aliases into a separate file. You would define it in your aliases like this:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;remote_shell_cmd&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;examples&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">action_ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.remote&quot;</span>
@@ -786,9 +786,9 @@ executions of certain aliases into a separate file. You would define it in your 
   <span class="l l-Scalar l-Scalar-Plain">audit</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
-<p>Then you can access it as <code class="docutils literal"><span class="pre">extra.audit</span></code> inside the Hubot StackStorm plugin. A good example of
-working with <code class="docutils literal"><span class="pre">extra</span></code> parameters is the <a class="reference external" href="https://github.com/StackStorm/hubot-stackstorm/blob/v0.4.2/lib/post_data.js#L43">Slack post handler</a>
-in <code class="docutils literal"><span class="pre">hubot-stackstorm</span></code>.</p>
+<p>Then you can access it as <code class="docutils literal notranslate"><span class="pre">extra.audit</span></code> inside the Hubot StackStorm plugin. A good example of
+working with <code class="docutils literal notranslate"><span class="pre">extra</span></code> parameters is the <a class="reference external" href="https://github.com/StackStorm/hubot-stackstorm/blob/v0.4.2/lib/post_data.js#L43">Slack post handler</a>
+in <code class="docutils literal notranslate"><span class="pre">hubot-stackstorm</span></code>.</p>
 <p>A sample alias ships with StackStorm. Please checkout <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/aliases/remote_shell_cmd.yaml">st2/contrib/examples/aliases/remote_shell_cmd.yaml</a>.</p>
 </div>
 </div>

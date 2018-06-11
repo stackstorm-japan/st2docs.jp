@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -478,17 +478,17 @@ for error handling, use <a class="reference internal" href="mistral.html"><span 
 </div>
 <div class="section" id="creating-an-actionchain">
 <h2>Creating an ActionChain<a class="headerlink" href="#creating-an-actionchain" title="Permalink to this headline">¶</a></h2>
-<p>ActionChains are defined in packs, under the <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/&lt;pack&gt;/actions/</span></code> directory.
+<p>ActionChains are defined in packs, under the <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;pack&gt;/actions/</span></code> directory.
 An ActionChain needs two files: a YAML metadata file, the same as used for simple actions, and the
-ActionChain definition itself. The metadata file lives in the <code class="docutils literal"><span class="pre">&lt;pack&gt;/actions</span></code> directory, while
-the ActionChain definition is placed in the <code class="docutils literal"><span class="pre">&lt;pack&gt;/actions/chains</span></code> directory.</p>
+ActionChain definition itself. The metadata file lives in the <code class="docutils literal notranslate"><span class="pre">&lt;pack&gt;/actions</span></code> directory, while
+the ActionChain definition is placed in the <code class="docutils literal notranslate"><span class="pre">&lt;pack&gt;/actions/chains</span></code> directory.</p>
 <div class="section" id="actionchain-metadata">
 <h3>ActionChain Metadata<a class="headerlink" href="#actionchain-metadata" title="Permalink to this headline">¶</a></h3>
 <p>The ActionChain metadata is very similar to that used for <a class="reference internal" href="actions.html"><span class="doc">any other action</span></a>.
-The key differences are that it specifies <code class="docutils literal"><span class="pre">action-chain</span></code> as the <code class="docutils literal"><span class="pre">runner_type</span></code>, and the
-<code class="docutils literal"><span class="pre">entry_point</span></code> points to the workflow definition file.</p>
+The key differences are that it specifies <code class="docutils literal notranslate"><span class="pre">action-chain</span></code> as the <code class="docutils literal notranslate"><span class="pre">runner_type</span></code>, and the
+<code class="docutils literal notranslate"><span class="pre">entry_point</span></code> points to the workflow definition file.</p>
 <p>Here is an example showing the action definition metadata <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/actions/echochain.meta.yaml">echochain.meta.yaml</a> for an ActionChain <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/actions/chains/echochain.yaml">echochain.yaml</a>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="c1"># Action definition metadata</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;echochain&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Simple</span><span class="nv"> </span><span class="s">Action</span><span class="nv"> </span><span class="s">Chain</span><span class="nv"> </span><span class="s">workflow&quot;</span>
@@ -516,7 +516,7 @@ The key differences are that it specifies <code class="docutils literal"><span c
 <h3>ActionChain Definition<a class="headerlink" href="#actionchain-definition" title="Permalink to this headline">¶</a></h3>
 <p>This <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/actions/chains/echochain.yaml">echochain.yaml</a>: is the
 corresponding ActionChain workflow definition referenced above:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span>
             <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;c1&quot;</span>
@@ -549,17 +549,17 @@ corresponding ActionChain workflow definition referenced above:</p>
 <div class="section" id="definition-details">
 <h4>Definition Details:<a class="headerlink" href="#definition-details" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">chain</span></code> is the array property that contains tasks, which encapsulate action invocation.</li>
+<li><code class="docutils literal notranslate"><span class="pre">chain</span></code> is the array property that contains tasks, which encapsulate action invocation.</li>
 <li>Tasks are named action execution specifications provided in the form of a list. The name is
 scoped to an ActionChain and is used as a reference to a task.</li>
-<li>The <code class="docutils literal"><span class="pre">ref</span></code> property of a task points to an Action registered in StackStorm. This could be in any
+<li>The <code class="docutils literal notranslate"><span class="pre">ref</span></code> property of a task points to an Action registered in StackStorm. This could be in any
 pack.</li>
-<li><code class="docutils literal"><span class="pre">on-success</span></code> is the link to a task to invoke next upon successful action execution. If not
-provided, the ActionChain will terminate with status set to <code class="docutils literal"><span class="pre">success</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">on-failure</span></code> is an optional link to a task to invoke next in case of a  failed action execution.
-If not provided, the ActionChain will terminate with the status set to <code class="docutils literal"><span class="pre">error</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">default</span></code> is an optional top level property that specifies the start of an ActionChain. If
-<code class="docutils literal"><span class="pre">default</span></code> is not explicitly specified, the ActionChain starts from the first action.</li>
+<li><code class="docutils literal notranslate"><span class="pre">on-success</span></code> is the link to a task to invoke next upon successful action execution. If not
+provided, the ActionChain will terminate with status set to <code class="docutils literal notranslate"><span class="pre">success</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">on-failure</span></code> is an optional link to a task to invoke next in case of a  failed action execution.
+If not provided, the ActionChain will terminate with the status set to <code class="docutils literal notranslate"><span class="pre">error</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">default</span></code> is an optional top level property that specifies the start of an ActionChain. If
+<code class="docutils literal notranslate"><span class="pre">default</span></code> is not explicitly specified, the ActionChain starts from the first action.</li>
 </ul>
 </div>
 </div>
@@ -567,7 +567,7 @@ If not provided, the ActionChain will terminate with the status set to <code cla
 <div class="section" id="registering-the-actionchain">
 <h2>Registering the ActionChain<a class="headerlink" href="#registering-the-actionchain" title="Permalink to this headline">¶</a></h2>
 <p>Once action definition and metadata files are created, load the action:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Register the action</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Register the action</span>
 st2 action create /opt/stackstorm/packs/examples/actions/echochain.meta.yaml
 <span class="c1"># Check it is available</span>
 st2 action list --pack<span class="o">=</span>examples
@@ -577,13 +577,13 @@ st2 run examples.echochain
 </div>
 <p>Any changes in the ActionChain workflow definition are picked up automatically. However if you
 change the action metadata (e.g. rename or add parameters), you will have to update the action with
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">update</span> <span class="pre">&lt;action.ref&gt;</span> <span class="pre">&lt;action.metadata.file&gt;`</span></code>. Alternatively, a full reload with
-<code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code> will pick up all the changes.</p>
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">action</span> <span class="pre">update</span> <span class="pre">&lt;action.ref&gt;</span> <span class="pre">&lt;action.metadata.file&gt;`</span></code>. Alternatively, a full reload with
+<code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-all</span></code> will pick up all the changes.</p>
 </div>
 <div class="section" id="providing-input">
 <h2>Providing Input<a class="headerlink" href="#providing-input" title="Permalink to this headline">¶</a></h2>
 <p>To provide input to an ActionChain, input parameters must be defined in the action metadata:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="c1"># Action definition metadata</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;echochain-param&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Action</span><span class="nv"> </span><span class="s">Chain</span><span class="nv"> </span><span class="s">workflow</span><span class="nv"> </span><span class="s">passing</span><span class="nv"> </span><span class="s">variables&quot;</span>
@@ -599,9 +599,9 @@ change the action metadata (e.g. rename or add parameters), you will have to upd
         <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Any</span><span class="nv"> </span><span class="s">string</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pass</span><span class="nv"> </span><span class="s">down&quot;</span>
 </pre></div>
 </div>
-<p>The input parameter <code class="docutils literal"><span class="pre">input1</span></code> can now be referenced in the parameters field of a task in the
+<p>The input parameter <code class="docutils literal notranslate"><span class="pre">input1</span></code> can now be referenced in the parameters field of a task in the
 ActionChain definition:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
    <span class="c1"># ...</span>
    <span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span>
@@ -612,21 +612,21 @@ ActionChain definition:</p>
    <span class="c1"># ...</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">action1_input</span></code> has value <code class="docutils literal"><span class="pre">{{input1}}</span></code>. This syntax is variable referencing as supported by
+<p><code class="docutils literal notranslate"><span class="pre">action1_input</span></code> has value <code class="docutils literal notranslate"><span class="pre">{{input1}}</span></code>. This syntax is variable referencing as supported by
 <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/">Jinja templating</a>.</p>
 <p>Similar constructs are also used in <a class="reference internal" href="rules.html"><span class="doc">Rule</span></a> criteria and action fields.</p>
 </div>
 <div class="section" id="variables">
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
 <p>ActionChain offers the convenience of named variables. Global vars are set at the top of the
-definition with the <code class="docutils literal"><span class="pre">var</span></code> keyword.</p>
-<p>Tasks publish new variables with the <code class="docutils literal"><span class="pre">publish</span></code> keyword. Variables are handy when you need to mash
+definition with the <code class="docutils literal notranslate"><span class="pre">var</span></code> keyword.</p>
+<p>Tasks publish new variables with the <code class="docutils literal notranslate"><span class="pre">publish</span></code> keyword. Variables are handy when you need to mash
 up a reusable value from the input, globals, datastore values, and results of multiple action
 executions.</p>
 <p>All variables are referred to using Jinja syntax. The cumulative published variables are also
-available in the result of an ActionChain execution under the <code class="docutils literal"><span class="pre">published</span></code> property if the
-<code class="docutils literal"><span class="pre">display_published</span></code> property is supplied to the <a class="reference internal" href="reference/runners.html#ref-actionchain-runner"><span class="std std-ref">ActionChain Runner</span></a>.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+available in the result of an ActionChain execution under the <code class="docutils literal notranslate"><span class="pre">published</span></code> property if the
+<code class="docutils literal notranslate"><span class="pre">display_published</span></code> property is supplied to the <a class="reference internal" href="reference/runners.html#ref-actionchain-runner"><span class="std std-ref">ActionChain Runner</span></a>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">domain</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">st2kv.system.domain</span><span class="nv"> </span><span class="s">}}&quot;</span> <span class="c1"># Global Var</span>
     <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">9101</span>
@@ -640,8 +640,8 @@ available in the result of an ActionChain execution under the <code class="docut
 </pre></div>
 </div>
 <p>The <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/actions/chains/publish_data.yaml">publish_data.yaml</a> workflow in
-the <cite>examples</cite> pack shows a complete working example of using <code class="docutils literal"><span class="pre">vars</span></code> and <code class="docutils literal"><span class="pre">publish</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+the <cite>examples</cite> pack shows a complete working example of using <code class="docutils literal notranslate"><span class="pre">vars</span></code> and <code class="docutils literal notranslate"><span class="pre">publish</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">domain</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">st2kv.system.domain</span><span class="nv"> </span><span class="s">}}&quot;</span> <span class="c1"># `system` references DataStore key-values. Null if not set.</span>
     <span class="l l-Scalar l-Scalar-Plain">api_port</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">9101</span>
@@ -677,7 +677,7 @@ the <cite>examples</cite> pack shows a complete working example of using <code c
 <p>The output of previous tasks can be referenced in a similar manner to input to an ActionChain.</p>
 <p>This example <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/actions/chains/echochain_param.yaml">echochain_param.yaml</a>
 shows input and data passing down the workflow:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span>
             <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;c1&quot;</span>
@@ -710,10 +710,10 @@ shows input and data passing down the workflow:</p>
 <div class="section" id="details">
 <h4>Details:<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>Output of a task is always prefixed by the task name. e.g. in <code class="docutils literal"><span class="pre">{&quot;cmd&quot;:&quot;echo</span> <span class="pre">c2</span> <span class="pre">{{c1.stdout}}&quot;}</span></code>,
-<code class="docutils literal"><span class="pre">c1.stdout</span></code> refers to the output of ‘c1’ and further drills down into properties of the output.
-The reference point is the <code class="docutils literal"><span class="pre">result</span></code> field of <code class="docutils literal"><span class="pre">action</span> <span class="pre">execution</span></code> object.</li>
-<li>A special <code class="docutils literal"><span class="pre">__results</span></code> key provides access to the entire result of the whole chain up to that
+<li>Output of a task is always prefixed by the task name. e.g. in <code class="docutils literal notranslate"><span class="pre">{&quot;cmd&quot;:&quot;echo</span> <span class="pre">c2</span> <span class="pre">{{c1.stdout}}&quot;}</span></code>,
+<code class="docutils literal notranslate"><span class="pre">c1.stdout</span></code> refers to the output of ‘c1’ and further drills down into properties of the output.
+The reference point is the <code class="docutils literal notranslate"><span class="pre">result</span></code> field of <code class="docutils literal notranslate"><span class="pre">action</span> <span class="pre">execution</span></code> object.</li>
+<li>A special <code class="docutils literal notranslate"><span class="pre">__results</span></code> key provides access to the entire result of the whole chain up to that
 point of execution.</li>
 </ul>
 </div>
@@ -722,11 +722,11 @@ point of execution.</li>
 <h3>Passing Data Between Different Workflows<a class="headerlink" href="#passing-data-between-different-workflows" title="Permalink to this headline">¶</a></h3>
 <p>In StackStorm, a workflow is just an action. This means you pass data from one workflow to another in
 exactly the same manner was you would pass data to an action - you use action parameters.</p>
-<p>In the example below, we have two workflows - <code class="docutils literal"><span class="pre">workflow1</span></code> and <code class="docutils literal"><span class="pre">workflow2</span></code>. The task named
-<code class="docutils literal"><span class="pre">task2</span></code> inside <code class="docutils literal"><span class="pre">workflow1</span></code> calls <code class="docutils literal"><span class="pre">workflow2</span></code> and passes the variable <code class="docutils literal"><span class="pre">date</span></code> to it as an
-action parameter. <code class="docutils literal"><span class="pre">workflow2</span></code> then uses this value and prints it to standard output.</p>
-<p><code class="docutils literal"><span class="pre">workflow1.yaml</span></code></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p>In the example below, we have two workflows - <code class="docutils literal notranslate"><span class="pre">workflow1</span></code> and <code class="docutils literal notranslate"><span class="pre">workflow2</span></code>. The task named
+<code class="docutils literal notranslate"><span class="pre">task2</span></code> inside <code class="docutils literal notranslate"><span class="pre">workflow1</span></code> calls <code class="docutils literal notranslate"><span class="pre">workflow2</span></code> and passes the variable <code class="docutils literal notranslate"><span class="pre">date</span></code> to it as an
+action parameter. <code class="docutils literal notranslate"><span class="pre">workflow2</span></code> then uses this value and prints it to standard output.</p>
+<p><code class="docutils literal notranslate"><span class="pre">workflow1.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span>
             <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;task1&quot;</span>
@@ -741,8 +741,8 @@ action parameter. <code class="docutils literal"><span class="pre">workflow2</sp
                 <span class="l l-Scalar l-Scalar-Plain">date</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">task1.stdout</span><span class="nv"> </span><span class="s">}}&quot;</span>  <span class="c1"># Here we pass result from &quot;task1&quot; as a &quot;date&quot; action parameter to the action &quot;workflow2&quot;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">workflow2.meta.yaml</span></code></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p><code class="docutils literal notranslate"><span class="pre">workflow2.meta.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;workflow2&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;...&quot;</span>
 <span class="l l-Scalar l-Scalar-Plain">runner_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;action-chain&quot;</span>
@@ -755,8 +755,8 @@ action parameter. <code class="docutils literal"><span class="pre">workflow2</sp
     <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">workflow2.yaml</span></code></p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p><code class="docutils literal notranslate"><span class="pre">workflow2.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">chain</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span>
             <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;task1&quot;</span>
@@ -779,20 +779,20 @@ first one - you simply need to pass the required parameters to it.</p>
 </div>
 <div class="section" id="pausing-and-resuming-action-chain-execution">
 <h2>Pausing and Resuming Action Chain Execution<a class="headerlink" href="#pausing-and-resuming-action-chain-execution" title="Permalink to this headline">¶</a></h2>
-<p>An execution of an ActionChain can be paused by running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">pause</span> <span class="pre">&lt;execution-id&gt;</span></code>. An
+<p>An execution of an ActionChain can be paused by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">pause</span> <span class="pre">&lt;execution-id&gt;</span></code>. An
 execution must be in a running state in order for pause to be successful. The execution will initially
-go into a <code class="docutils literal"><span class="pre">pausing</span></code> state, then will go into a <code class="docutils literal"><span class="pre">paused</span></code> state when no more tasks are in an active
-state such as <code class="docutils literal"><span class="pre">running</span></code>, <code class="docutils literal"><span class="pre">pausing</span></code>, or <code class="docutils literal"><span class="pre">canceling</span></code>. When an Action Chain is paused, it can be
-resumed by running <code class="docutils literal"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">resume</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
+go into a <code class="docutils literal notranslate"><span class="pre">pausing</span></code> state, then will go into a <code class="docutils literal notranslate"><span class="pre">paused</span></code> state when no more tasks are in an active
+state such as <code class="docutils literal notranslate"><span class="pre">running</span></code>, <code class="docutils literal notranslate"><span class="pre">pausing</span></code>, or <code class="docutils literal notranslate"><span class="pre">canceling</span></code>. When an Action Chain is paused, it can be
+resumed by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">resume</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
 <p>Published variables are saved in the execution context on pause and restored on resume.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">In this version, the published variables are stored unencrypted in the execution context.</p>
 </div>
-<p>The <code class="docutils literal"><span class="pre">pause</span></code> and <code class="docutils literal"><span class="pre">resume</span></code> operation will cascade down to subworkflows, whether it’s another StackStorm
-action that is a Mistral workflow or ActionChain. If the <code class="docutils literal"><span class="pre">pause</span></code> operation is performed from a
-subworkflow or subchain, then the <code class="docutils literal"><span class="pre">pause</span></code> will cascade up to the parent workflow or parent chain.
-However, if the <code class="docutils literal"><span class="pre">resume</span></code> operation is performed from a subworkflow or subchain, the <code class="docutils literal"><span class="pre">resume</span></code>
+<p>The <code class="docutils literal notranslate"><span class="pre">pause</span></code> and <code class="docutils literal notranslate"><span class="pre">resume</span></code> operation will cascade down to subworkflows, whether it’s another StackStorm
+action that is a Mistral workflow or ActionChain. If the <code class="docutils literal notranslate"><span class="pre">pause</span></code> operation is performed from a
+subworkflow or subchain, then the <code class="docutils literal notranslate"><span class="pre">pause</span></code> will cascade up to the parent workflow or parent chain.
+However, if the <code class="docutils literal notranslate"><span class="pre">resume</span></code> operation is performed from a subworkflow or subchain, the <code class="docutils literal notranslate"><span class="pre">resume</span></code>
 will not cascade up to the parent workflow or parent chain. This allows users to resume and
 troubleshoot branches individually.</p>
 </div>
@@ -803,11 +803,11 @@ troubleshoot branches individually.</p>
 <li>Variable names can use letters, underscores, and numbers. No dashes! This applies to all
 variables: global vars, input parameters, <a class="reference internal" href="datastore.html"><span class="doc">DataStore keys</span></a>, and published
 variables.</li>
-<li>The same naming rules apply to task names: <code class="docutils literal"><span class="pre">this-task-name-is-wrong</span></code>! Use
-<code class="docutils literal"><span class="pre">task_names_with_underscores</span></code>.</li>
-<li>Always quote variable references <code class="docutils literal"><span class="pre">&quot;{{</span> <span class="pre">my_variable.or.expression</span> <span class="pre">}}&quot;</span></code> (remember that <code class="docutils literal"><span class="pre">{</span> <span class="pre">}</span></code> is
+<li>The same naming rules apply to task names: <code class="docutils literal notranslate"><span class="pre">this-task-name-is-wrong</span></code>! Use
+<code class="docutils literal notranslate"><span class="pre">task_names_with_underscores</span></code>.</li>
+<li>Always quote variable references <code class="docutils literal notranslate"><span class="pre">&quot;{{</span> <span class="pre">my_variable.or.expression</span> <span class="pre">}}&quot;</span></code> (remember that <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code> is
 a YAML dictionary). The types are respected inside the Jinja template but converted to strings
-outside: <code class="docutils literal"><span class="pre">&quot;{{</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">}}</span> <span class="pre">+</span> <span class="pre">3&quot;</span></code> resolves to <code class="docutils literal"><span class="pre">&quot;3</span> <span class="pre">+</span> <span class="pre">3&quot;</span></code>.</li>
+outside: <code class="docutils literal notranslate"><span class="pre">&quot;{{</span> <span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">}}</span> <span class="pre">+</span> <span class="pre">3&quot;</span></code> resolves to <code class="docutils literal notranslate"><span class="pre">&quot;3</span> <span class="pre">+</span> <span class="pre">3&quot;</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="error-reporting">
@@ -817,7 +817,7 @@ outside: <code class="docutils literal"><span class="pre">&quot;{{</span> <span 
 <li><p class="first">Errors reported by a specific task in the chain. In this case the error is reported as per
 behavior of the particular action in the task.</p>
 <p>Sample output:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
      <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
          <span class="nt">&quot;tasks&quot;</span><span class="p">:</span> <span class="p">[</span>
              <span class="p">{</span>
@@ -845,7 +845,7 @@ behavior of the particular action in the task.</p>
 <li><p class="first">Errors experienced by the ActionChain runtime while determining the flow. In this case the error
 is reported as the error property of the ActionChain result.</p>
 <p>Sample output:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;result&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Failed to run task \&quot;c2\&quot;. Parameter rendering failed: &#39;s1&#39; is undefined&quot;</span><span class="p">,</span>
         <span class="nt">&quot;traceback&quot;</span><span class="p">:</span> <span class="s2">&quot;Traceback (most recent call last):...&quot;</span><span class="p">,</span>

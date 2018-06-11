@@ -255,8 +255,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -467,7 +467,7 @@ to actions (or workflows), apply matching criteria and map trigger payloads to a
 <h2>Rule Structure<a class="headerlink" href="#rule-structure" title="Permalink to this headline">¶</a></h2>
 <p>Rules are defined in YAML. Rule definition structure, as well as required and optional elements are
 listed below:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;rule_name&quot;</span>                      <span class="c1"># required</span>
     <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;examples&quot;</span>                       <span class="c1"># optional</span>
     <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Rule</span><span class="nv"> </span><span class="s">description.&quot;</span>       <span class="c1"># optional</span>
@@ -493,21 +493,21 @@ listed below:</p>
 </div>
 <p>The generic form of a rule is:</p>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">name</span></code> of the rule.</li>
-<li>The <code class="docutils literal"><span class="pre">pack</span></code> that the rule belongs to. <code class="docutils literal"><span class="pre">default</span></code> is assumed if a pack is not specified.</li>
-<li>The <code class="docutils literal"><span class="pre">description</span></code> of the rule.</li>
-<li>The <code class="docutils literal"><span class="pre">enabled</span></code> state of a rule (<code class="docutils literal"><span class="pre">true</span></code> or <code class="docutils literal"><span class="pre">false</span></code>).</li>
-<li>The type of <code class="docutils literal"><span class="pre">trigger</span></code> emitted from sensors to monitor, and optionally parameters associated
+<li>The <code class="docutils literal notranslate"><span class="pre">name</span></code> of the rule.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">pack</span></code> that the rule belongs to. <code class="docutils literal notranslate"><span class="pre">default</span></code> is assumed if a pack is not specified.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">description</span></code> of the rule.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">enabled</span></code> state of a rule (<code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>).</li>
+<li>The type of <code class="docutils literal notranslate"><span class="pre">trigger</span></code> emitted from sensors to monitor, and optionally parameters associated
 with that trigger.</li>
-<li>An optional set of <code class="docutils literal"><span class="pre">criteria</span></code>, consisting of:<ul>
+<li>An optional set of <code class="docutils literal notranslate"><span class="pre">criteria</span></code>, consisting of:<ul>
 <li>An attribute of the trigger payload.</li>
-<li>The <code class="docutils literal"><span class="pre">type</span></code> of criteria comparison.</li>
-<li>The <code class="docutils literal"><span class="pre">pattern</span></code> to match against.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">type</span></code> of criteria comparison.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">pattern</span></code> to match against.</li>
 </ul>
 </li>
-<li>The <code class="docutils literal"><span class="pre">action</span></code> to execute when a rule is matched, consisting of:<ul>
-<li>The <code class="docutils literal"><span class="pre">ref</span></code> (action/workflow) to execute.</li>
-<li>An optional set of <code class="docutils literal"><span class="pre">parameters</span></code> to pass to the action execution.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">action</span></code> to execute when a rule is matched, consisting of:<ul>
+<li>The <code class="docutils literal notranslate"><span class="pre">ref</span></code> (action/workflow) to execute.</li>
+<li>An optional set of <code class="docutils literal notranslate"><span class="pre">parameters</span></code> to pass to the action execution.</li>
 </ul>
 </li>
 </ul>
@@ -516,8 +516,8 @@ with that trigger.</li>
 <h2>Trigger<a class="headerlink" href="#trigger" title="Permalink to this headline">¶</a></h2>
 <p>The trigger in a rule specifies which incoming events should be inspected for potential match
 against this rule. View all the triggers configured on a system via the command line with the
-<code class="docutils literal"><span class="pre">st2</span> <span class="pre">trigger</span> <span class="pre">list</span></code> command:</p>
-<div class="highlight-shell"><div class="highlight"><pre><span></span>vagrant@st2vagrant:~$ st2 trigger list
+<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">trigger</span> <span class="pre">list</span></code> command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>vagrant@st2vagrant:~$ st2 trigger list
 +--------------------------------+-----------+---------------------------+---------------------------------------------------------------------------------+
 <span class="p">|</span> ref                            <span class="p">|</span> pack      <span class="p">|</span> name                      <span class="p">|</span> description                                                                     <span class="p">|</span>
 +--------------------------------+-----------+---------------------------+---------------------------------------------------------------------------------+
@@ -546,9 +546,9 @@ against this rule. View all the triggers configured on a system via the command 
 </div>
 <div class="section" id="criteria">
 <h2>Criteria<a class="headerlink" href="#criteria" title="Permalink to this headline">¶</a></h2>
-<p>Rule criteria are the rule(s) needed to be matched against (logical <code class="docutils literal"><span class="pre">AND</span></code>). Criteria in the rule
+<p>Rule criteria are the rule(s) needed to be matched against (logical <code class="docutils literal notranslate"><span class="pre">AND</span></code>). Criteria in the rule
 is expressed as:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># more variables</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># more variables</span>
 <span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">trigger.payload_parameter_name1</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;regex&quot;</span>
@@ -560,33 +560,33 @@ is expressed as:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can achieve logical <code class="docutils literal"><span class="pre">OR</span></code> behavior (either one of multiple criteria expressions needs to
+<p class="last">You can achieve logical <code class="docutils literal notranslate"><span class="pre">OR</span></code> behavior (either one of multiple criteria expressions needs to
 match for the action execution to be triggered) by creating multiple independent rules (one per
 criteria expression).</p>
 </div>
-<p><code class="docutils literal"><span class="pre">type</span></code> specifies which criteria comparison operator to use and <code class="docutils literal"><span class="pre">pattern</span></code> specifies a pattern
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code> specifies which criteria comparison operator to use and <code class="docutils literal notranslate"><span class="pre">pattern</span></code> specifies a pattern
 which gets passed to the operator function.</p>
-<p>In the <code class="docutils literal"><span class="pre">regex</span></code> case, <code class="docutils literal"><span class="pre">pattern</span></code> is a regular expression pattern which the trigger value
+<p>In the <code class="docutils literal notranslate"><span class="pre">regex</span></code> case, <code class="docutils literal notranslate"><span class="pre">pattern</span></code> is a regular expression pattern which the trigger value
 needs to match.</p>
 <p>A list of all the available criteria operators is described below.</p>
-<p>If the criteria key contains any special characters (like <code class="docutils literal"><span class="pre">-</span></code>) then use the dictionary lookup
+<p>If the criteria key contains any special characters (like <code class="docutils literal notranslate"><span class="pre">-</span></code>) then use the dictionary lookup
 format for specifying the criteria key. In case of a webhook based rule it is typical for the
 header of the posted event to contain such values:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">trigger.headers[&#39;X-Custom-Header&#39;]</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;eq&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">pattern</span> <span class="p p-Indicator">:</span> <span class="s">&quot;customvalue&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">pattern</span></code> value can also reference a datastore value using Jinja variable access syntax:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">pattern</span></code> value can also reference a datastore value using Jinja variable access syntax:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">trigger.payload.build_number</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;equals&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">pattern</span> <span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">st2kv.system.current_build_number</span><span class="nv"> </span><span class="s">}}&quot;</span>
 </pre></div>
 </div>
 <p>In this example we are referencing the value of a datastore item with the name
-<code class="docutils literal"><span class="pre">current_build_number</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">current_build_number</span></code>.</p>
 </div>
 <div class="section" id="critera-comparison">
 <h2>Critera Comparison<a class="headerlink" href="#critera-comparison" title="Permalink to this headline">¶</a></h2>
@@ -607,103 +607,103 @@ header of the posted event to contain such values:</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">equals</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">equals</span></code></td>
 <td>Values are equal (for values of arbitrary type).</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">nequals</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">nequals</span></code></td>
 <td>Values are not equal (for values of arbitrary type).</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lessthan</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lessthan</span></code></td>
 <td>Trigger value is less than the provided value.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">greaterthan</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">greaterthan</span></code></td>
 <td>Trigger value is greater than the provided value.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">matchwildcard</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">matchwildcard</span></code></td>
 <td>Trigger value matches the provided wildcard-like string. This
 operator provides support for Unix shell-style wildcards which
-means you can use characters such as <code class="docutils literal"><span class="pre">*</span></code> and <code class="docutils literal"><span class="pre">?</span></code>. This
-operator is preferred over <code class="docutils literal"><span class="pre">regex</span></code> for simple string
+means you can use characters such as <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">?</span></code>. This
+operator is preferred over <code class="docutils literal notranslate"><span class="pre">regex</span></code> for simple string
 matches.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">regex</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">regex</span></code></td>
 <td>Trigger value matches the provided regular expression
 pattern. This operator behaves like
-<code class="docutils literal"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value)</span></code>.</td>
+<code class="docutils literal notranslate"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value)</span></code>.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">iregex</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">iregex</span></code></td>
 <td>Trigger value matches the provided regular expression
 pattern case insensitively. This operator behaves like
-<code class="docutils literal"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value,</span> <span class="pre">re.IGNORECASE)</span></code>.</td>
+<code class="docutils literal notranslate"><span class="pre">re.search('pattern',</span> <span class="pre">trigger_value,</span> <span class="pre">re.IGNORECASE)</span></code>.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">matchregex</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">matchregex</span></code></td>
 <td>Trigger value matches the provided regular expression
-pattern. This operator is deprecated in favor of <code class="docutils literal"><span class="pre">regex</span></code> and
-<code class="docutils literal"><span class="pre">iregex</span></code></td>
+pattern. This operator is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">regex</span></code> and
+<code class="docutils literal notranslate"><span class="pre">iregex</span></code></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">iequals</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">iequals</span></code></td>
 <td>String trigger value equals the provided value case
 insensitively.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">contains</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">contains</span></code></td>
 <td>Trigger value contains the provided value. Keep in mind that
 the trigger value can be either a string or an array (list).</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ncontains</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ncontains</span></code></td>
 <td>Trigger value does not contain the provided value. Keep in mind
 that the trigger value can be either a string or an array (list).</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">icontains</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">icontains</span></code></td>
 <td>String trigger value contains the provided value case
 insensitively.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">incontains</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">incontains</span></code></td>
 <td>String trigger value does not contain the provided string
 value case insensitively.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">startswith</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">startswith</span></code></td>
 <td>Beginning of the string trigger value matches the provided
 string value.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">istartswith</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">istartswith</span></code></td>
 <td>Beginning of the string trigger value matches the provided
 string value case insensitively.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">endswith</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">endswith</span></code></td>
 <td>End of the string trigger value matches the provided string
 value.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">iendswith</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">iendswith</span></code></td>
 <td>End of the string trigger value matches the provided string
 value case insensitively.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">timediff_lt</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">timediff_lt</span></code></td>
 <td>Time difference between trigger value and current time is
 less than the provided value.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">timediff_gt</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">timediff_gt</span></code></td>
 <td>Time difference between trigger value and current time is
 greater than the provided value.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">exists</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">exists</span></code></td>
 <td>Key exists in payload.</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">nexists</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">nexists</span></code></td>
 <td>Key doesn’t exist in payload.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">inside</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">inside</span></code></td>
 <td>Trigger payload is inside provided value. (e.g. testing if
-“<code class="docutils literal"><span class="pre">trigger.payload</span></code> in <code class="docutils literal"><span class="pre">provided_value</span></code>”). Reverse of <code class="docutils literal"><span class="pre">contains</span></code>.
-(where <code class="docutils literal"><span class="pre">contains</span></code> would test for “<code class="docutils literal"><span class="pre">trigger.payload</span></code> contains
-<code class="docutils literal"><span class="pre">provided_value</span></code>”).</td>
+“<code class="docutils literal notranslate"><span class="pre">trigger.payload</span></code> in <code class="docutils literal notranslate"><span class="pre">provided_value</span></code>”). Reverse of <code class="docutils literal notranslate"><span class="pre">contains</span></code>.
+(where <code class="docutils literal notranslate"><span class="pre">contains</span></code> would test for “<code class="docutils literal notranslate"><span class="pre">trigger.payload</span></code> contains
+<code class="docutils literal notranslate"><span class="pre">provided_value</span></code>”).</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ninside</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ninside</span></code></td>
 <td>Trigger payload is not inside provided value. (e.g. testing if
-“<code class="docutils literal"><span class="pre">trigger.payload</span></code> not in <code class="docutils literal"><span class="pre">provided_value</span></code>”). Reverse of
-<code class="docutils literal"><span class="pre">ncontains</span></code> (where <code class="docutils literal"><span class="pre">contains</span></code> would test for “<code class="docutils literal"><span class="pre">trigger.payload</span></code>
-does not contain <code class="docutils literal"><span class="pre">provided_value</span></code>”).</td>
+“<code class="docutils literal notranslate"><span class="pre">trigger.payload</span></code> not in <code class="docutils literal notranslate"><span class="pre">provided_value</span></code>”). Reverse of
+<code class="docutils literal notranslate"><span class="pre">ncontains</span></code> (where <code class="docutils literal notranslate"><span class="pre">contains</span></code> would test for “<code class="docutils literal notranslate"><span class="pre">trigger.payload</span></code>
+does not contain <code class="docutils literal notranslate"><span class="pre">provided_value</span></code>”).</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">search</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">search</span></code></td>
 <td>Search an array (list) in the trigger payload that matches child
 criteria.
 See the <a class="reference internal" href="#advanced-comparison">Advanced Comparison</a> section for more information and
@@ -716,22 +716,22 @@ examples.</td>
 <h2>Advanced Comparison<a class="headerlink" href="#advanced-comparison" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">The <code class="docutils literal"><span class="pre">search</span></code> operator has some complexity and performance caveats to using
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">search</span></code> operator has some complexity and performance caveats to using
 it. Ensure that you understand all of the implications before attempting to use it.
 Remember that it is very easy to create complex criteria or a slow rule when you use
 it. See the <a class="reference internal" href="#search-operator-caveats">Search Operator Caveats</a> subsection below for more.</p>
 </div>
-<p>The <code class="docutils literal"><span class="pre">search</span></code> operator is slightly more complex than any of the other operators. It
-takes an additional <code class="docutils literal"><span class="pre">condition</span></code> parameter as well as additional nested criteria that it
+<p>The <code class="docutils literal notranslate"><span class="pre">search</span></code> operator is slightly more complex than any of the other operators. It
+takes an additional <code class="docutils literal notranslate"><span class="pre">condition</span></code> parameter as well as additional nested criteria that it
 applies to each element of the search list.</p>
-<p>The <code class="docutils literal"><span class="pre">condition</span></code> parameter controls how the <code class="docutils literal"><span class="pre">search</span></code> operator matches the list.
-With the <code class="docutils literal"><span class="pre">any</span></code> condition, if <em>at least one</em> item in the trigger payload list matches
+<p>The <code class="docutils literal notranslate"><span class="pre">condition</span></code> parameter controls how the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator matches the list.
+With the <code class="docutils literal notranslate"><span class="pre">any</span></code> condition, if <em>at least one</em> item in the trigger payload list matches
 all of the child criteria, the search operator will return a successful match.
-Conversely, with the <code class="docutils literal"><span class="pre">all</span></code> condition, every single item in the trigger payload list
+Conversely, with the <code class="docutils literal notranslate"><span class="pre">all</span></code> condition, every single item in the trigger payload list
 must match all of the child criteria for the search operator to return a successful
 match.</p>
-<p>Here’s an example criteria that uses the <code class="docutils literal"><span class="pre">search</span></code> operator with the <code class="docutils literal"><span class="pre">any</span></code> condition:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p>Here’s an example criteria that uses the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator with the <code class="docutils literal notranslate"><span class="pre">any</span></code> condition:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">trigger.issue_fields</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;search&quot;</span>
@@ -751,9 +751,9 @@ match.</p>
           <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&quot;Approved&quot;</span>
 </pre></div>
 </div>
-<p>This criteria would match the following trigger payload, because the <code class="docutils literal"><span class="pre">Status</span></code> field was
-changed to <code class="docutils literal"><span class="pre">Approved</span></code>:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p>This criteria would match the following trigger payload, because the <code class="docutils literal notranslate"><span class="pre">Status</span></code> field was
+changed to <code class="docutils literal notranslate"><span class="pre">Approved</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;issue_fields&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="nt">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom&quot;</span><span class="p">,</span>
@@ -768,9 +768,9 @@ changed to <code class="docutils literal"><span class="pre">Approved</span></cod
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">condition</span></code> parameter can also be <code class="docutils literal"><span class="pre">all</span></code>, in which case all of the items in the list
+<p>The <code class="docutils literal notranslate"><span class="pre">condition</span></code> parameter can also be <code class="docutils literal notranslate"><span class="pre">all</span></code>, in which case all of the items in the list
 must match all of the child pattern:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">criteria</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">trigger.issue_fields</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;search&quot;</span>
@@ -782,9 +782,9 @@ must match all of the child pattern:</p>
 </pre></div>
 </div>
 <p>That criteria would also match the trigger payload from above.</p>
-<p>However, the following trigger payload would not match with the <code class="docutils literal"><span class="pre">all</span></code> condition because the
-<code class="docutils literal"><span class="pre">Summary</span></code> field is not a custom field:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p>However, the following trigger payload would not match with the <code class="docutils literal notranslate"><span class="pre">all</span></code> condition because the
+<code class="docutils literal notranslate"><span class="pre">Summary</span></code> field is not a custom field:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;issue_fields&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
       <span class="nt">&quot;field_type&quot;</span><span class="p">:</span> <span class="s2">&quot;Built-in&quot;</span><span class="p">,</span>
@@ -803,27 +803,27 @@ must match all of the child pattern:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The search operator is very powerful, but more options for the <code class="docutils literal"><span class="pre">condition</span></code> parameter are
-possible. At this point, only the <code class="docutils literal"><span class="pre">any</span></code> and <code class="docutils literal"><span class="pre">all</span></code> conditions are implemented, but
+<p>The search operator is very powerful, but more options for the <code class="docutils literal notranslate"><span class="pre">condition</span></code> parameter are
+possible. At this point, only the <code class="docutils literal notranslate"><span class="pre">any</span></code> and <code class="docutils literal notranslate"><span class="pre">all</span></code> conditions are implemented, but
 future improvements could include:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">count</span></code></li>
-<li><code class="docutils literal"><span class="pre">count_gt</span></code></li>
-<li><code class="docutils literal"><span class="pre">count_gte</span></code></li>
-<li><code class="docutils literal"><span class="pre">count_lt</span></code></li>
-<li><code class="docutils literal"><span class="pre">count_lte</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">count</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">count_gt</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">count_gte</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">count_lt</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">count_lte</span></code></li>
 </ul>
 <div class="section" id="search-operator-caveats">
 <h3>Search Operator Caveats<a class="headerlink" href="#search-operator-caveats" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal"><span class="pre">search</span></code> operator has some caveats regarding its usage.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">search</span></code> operator has some caveats regarding its usage.</p>
 <p>First, it turns the rules engine into a recursive descent parser, which can reduce
 the performance of the rules engine. So if you have a rule that must remain fast regardless
-of system load, you should avoid using the <code class="docutils literal"><span class="pre">search</span></code> operator unless you absolutely have
+of system load, you should avoid using the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator unless you absolutely have
 to.</p>
-<p>Second, the cognitive complexity of the <code class="docutils literal"><span class="pre">search</span></code> operator makes it a little difficult to
+<p>Second, the cognitive complexity of the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator makes it a little difficult to
 grasp at a glance. If you are sharing your code with others you may need to extensively
 document your rules and patterns to explain your intent more clearly.</p>
-<p>Lastly, the algorithmic complexity of the <code class="docutils literal"><span class="pre">search</span></code> operator is much different
+<p>Lastly, the algorithmic complexity of the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator is much different
 than the other operators:</p>
 <ul class="simple">
 <li>O(n<sub>patterns</sub>) in terms of n<sub>patterns</sub>, the number of child patterns</li>
@@ -833,10 +833,10 @@ than the other operators:</p>
 <p>It is therefore <strong>very easy to write a slow rule when using this operator</strong> if you have a
 large number of child criteria or if you are searching through a long list in your trigger
 payload.</p>
-<p>Usage of the <code class="docutils literal"><span class="pre">search</span></code> operator should largely be limited to trying to match a small number
+<p>Usage of the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator should largely be limited to trying to match a small number
 of child criteria, and a small number of expected payload list items. However, as slow as
-the <code class="docutils literal"><span class="pre">search</span></code> operator might make the rules engine, it will still be faster and more
-lightweight to use the <code class="docutils literal"><span class="pre">search</span></code> operator in your rules than it would be to run the rules
+the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator might make the rules engine, it will still be faster and more
+lightweight to use the <code class="docutils literal notranslate"><span class="pre">search</span></code> operator in your rules than it would be to run the rules
 engine, unconditionally run a workflow, and do the filtering there.</p>
 </div>
 </div>
@@ -845,7 +845,7 @@ engine, unconditionally run a workflow, and do the filtering there.</p>
 <p>This section describes the subsequent action/workflow to be executed on successful match of a
 trigger and an optional set of criteria. At a minimum, a rule should specify the action to
 execute. A rule can also specify parameters that will be supplied to an action upon execution.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>                                <span class="c1"># required</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>                                <span class="c1"># required</span>
     <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;action_ref&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>                        <span class="c1"># optional</span>
         <span class="l l-Scalar l-Scalar-Plain">foo</span><span class="p p-Indicator">:</span> <span class="s">&quot;bar&quot;</span>
@@ -856,7 +856,7 @@ execute. A rule can also specify parameters that will be supplied to an action u
 <div class="section" id="variable-interpolation">
 <h2>Variable Interpolation<a class="headerlink" href="#variable-interpolation" title="Permalink to this headline">¶</a></h2>
 <p>Occasionally, it will be necessary to pass along context of a trigger to an action when a rule is matched. The rules engine is able to interpolate variables by leveraging <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/">Jinja templating syntax</a>.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;action_ref&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">foo</span><span class="p p-Indicator">:</span> <span class="s">&quot;bar&quot;</span>
@@ -865,9 +865,9 @@ execute. A rule can also specify parameters that will be supplied to an action u
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The value of a trigger attribute can be <code class="docutils literal"><span class="pre">null</span></code> and <code class="docutils literal"><span class="pre">None</span></code>. It is also a valid value of the action parameter in question. You need to use the <code class="docutils literal"><span class="pre">use_none</span></code> Jinja template filter to make sure that <code class="docutils literal"><span class="pre">null</span></code>/<code class="docutils literal"><span class="pre">None</span></code> values are correctly serialized when invoking an action.</p>
+<p class="last">The value of a trigger attribute can be <code class="docutils literal notranslate"><span class="pre">null</span></code> and <code class="docutils literal notranslate"><span class="pre">None</span></code>. It is also a valid value of the action parameter in question. You need to use the <code class="docutils literal notranslate"><span class="pre">use_none</span></code> Jinja template filter to make sure that <code class="docutils literal notranslate"><span class="pre">null</span></code>/<code class="docutils literal notranslate"><span class="pre">None</span></code> values are correctly serialized when invoking an action.</p>
 </div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;action_ref&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">foo</span><span class="p p-Indicator">:</span> <span class="s">&quot;bar&quot;</span>
@@ -880,48 +880,48 @@ parameters definition before invoking an action.</p>
 </div>
 <div class="section" id="managing-rules">
 <h2>Managing Rules<a class="headerlink" href="#managing-rules" title="Permalink to this headline">¶</a></h2>
-<p>To deploy a rule, use the CLI command: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">create</span> <span class="pre">${PATH_TO_RULE}</span></code>,  for example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule create /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
+<p>To deploy a rule, use the CLI command: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">create</span> <span class="pre">${PATH_TO_RULE}</span></code>,  for example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule create /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
 </pre></div>
 </div>
-<p>To reload all the rules, use <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-rules</span></code>.</p>
+<p>To reload all the rules, use <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">reload</span> <span class="pre">--register-rules</span></code>.</p>
 <p>If a rule with the same name already exists, the above command will return an error:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>ERROR: <span class="m">409</span> Client Error: Conflict
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ERROR: <span class="m">409</span> Client Error: Conflict
 MESSAGE: Tried to save duplicate unique keys <span class="o">(</span>E11000 duplicate key error index: st2.rule_d_b.<span class="nv">$uid_1</span>  dup key: <span class="o">{</span> : <span class="s2">&quot;rule:examples:sample_rule_with_webhook&quot;</span> <span class="o">})</span>
 </pre></div>
 </div>
-<p>To update the rule, edit the rule definition file and run the command: <code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">update</span></code>, as in
+<p>To update the rule, edit the rule definition file and run the command: <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">update</span></code>, as in
 the following example:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule update examples.sample_rule_with_webhook /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule update examples.sample_rule_with_webhook /usr/share/doc/st2/examples/rules/sample_rule_with_webhook.yaml
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><strong>Hint:</strong> It is a good practice to always edit the original rule file, so that keep your infrastructure in code. You still can get the rule definition from the system by <code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">get</span> <span class="pre">&lt;rule</span> <span class="pre">name&gt;</span> <span class="pre">-j</span></code>, update it, and load it back.</p>
+<p class="last"><strong>Hint:</strong> It is a good practice to always edit the original rule file, so that keep your infrastructure in code. You still can get the rule definition from the system by <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">get</span> <span class="pre">&lt;rule</span> <span class="pre">name&gt;</span> <span class="pre">-j</span></code>, update it, and load it back.</p>
 </div>
 <p>To see all the rules, or to get an individual rule, use commands below:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule list
 st2 rule get examples.sample_rule_with_webhook
 </pre></div>
 </div>
-<p>To undeploy a rule, run <code class="docutils literal"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">delete</span> <span class="pre">${RULE_NAME_OR_ID}</span></code>. For example, to undeploy the
-<code class="docutils literal"><span class="pre">examples.sample_rule_with_webhook</span></code> rule we deployed previously, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 rule delete examples.sample_rule_with_webhook
+<p>To undeploy a rule, run <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">rule</span> <span class="pre">delete</span> <span class="pre">${RULE_NAME_OR_ID}</span></code>. For example, to undeploy the
+<code class="docutils literal notranslate"><span class="pre">examples.sample_rule_with_webhook</span></code> rule we deployed previously, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 rule delete examples.sample_rule_with_webhook
 </pre></div>
 </div>
 </div>
 <div class="section" id="rule-location">
 <h2>Rule Location<a class="headerlink" href="#rule-location" title="Permalink to this headline">¶</a></h2>
 <p>Custom rules can be placed in any accessible folder on local system. By convention, custom rules
-are placed in the <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/&lt;pack_name&gt;/rules</span></code> directory.</p>
+are placed in the <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;pack_name&gt;/rules</span></code> directory.</p>
 </div>
 <div class="section" id="testing-rules">
 <span id="id1"></span><h2>Testing Rules<a class="headerlink" href="#testing-rules" title="Permalink to this headline">¶</a></h2>
-<p>To make testing rules easier we provide a <code class="docutils literal"><span class="pre">st2-rule-tester</span></code> tool which can evaluate rules against
+<p>To make testing rules easier we provide a <code class="docutils literal notranslate"><span class="pre">st2-rule-tester</span></code> tool which can evaluate rules against
 trigger instances without running any of the StackStorm components.</p>
 <p>The tool works by taking a path to the file which contains rule definition and a file which
 contains a trigger instance definition:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-rule-tester --rule<span class="o">=</span><span class="si">${</span><span class="nv">RULE_FILE</span><span class="si">}</span> --trigger-instance<span class="o">=</span><span class="si">${</span><span class="nv">TRIGGER_INSTANCE_DEFINITION</span><span class="si">}</span> --config-file<span class="o">=</span>/etc/st2/st2.conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-rule-tester --rule<span class="o">=</span><span class="si">${</span><span class="nv">RULE_FILE</span><span class="si">}</span> --trigger-instance<span class="o">=</span><span class="si">${</span><span class="nv">TRIGGER_INSTANCE_DEFINITION</span><span class="si">}</span> --config-file<span class="o">=</span>/etc/st2/st2.conf
 <span class="nb">echo</span> <span class="nv">$?</span>
 </pre></div>
 </div>
@@ -929,19 +929,19 @@ contains a trigger instance definition:</p>
 file you are planning to deploy.</p>
 <p>For the trigger instance, the definition file needs contain the following keys:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">trigger</span></code> - Full reference to the trigger (e.g. <code class="docutils literal"><span class="pre">core.st2.IntervalTimer</span></code>,
-<code class="docutils literal"><span class="pre">slack.message</span></code>, <code class="docutils literal"><span class="pre">irc.pubmsg</span></code>, <code class="docutils literal"><span class="pre">twitter.matched_tweet</span></code>, etc.).</li>
-<li><code class="docutils literal"><span class="pre">payload</span></code> - Trigger payload. The payload itself is specific to the trigger in question. To
+<li><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Full reference to the trigger (e.g. <code class="docutils literal notranslate"><span class="pre">core.st2.IntervalTimer</span></code>,
+<code class="docutils literal notranslate"><span class="pre">slack.message</span></code>, <code class="docutils literal notranslate"><span class="pre">irc.pubmsg</span></code>, <code class="docutils literal notranslate"><span class="pre">twitter.matched_tweet</span></code>, etc.).</li>
+<li><code class="docutils literal notranslate"><span class="pre">payload</span></code> - Trigger payload. The payload itself is specific to the trigger in question. To
 figure out the trigger structure you can look at the pack README or look for the
-<code class="docutils literal"><span class="pre">trigger_types</span></code> section in the sensor metadata file which is located in the
-<code class="docutils literal"><span class="pre">packs/&lt;pack_name&gt;/sensors/</span></code> directory.</li>
+<code class="docutils literal notranslate"><span class="pre">trigger_types</span></code> section in the sensor metadata file which is located in the
+<code class="docutils literal notranslate"><span class="pre">packs/&lt;pack_name&gt;/sensors/</span></code> directory.</li>
 </ul>
-<p>If the trigger instance matches, <code class="docutils literal"><span class="pre">===</span> <span class="pre">RULE</span> <span class="pre">MATCHES</span> <span class="pre">===</span></code> will be printed and the tool will exit
-with <code class="docutils literal"><span class="pre">0</span></code> status code. If the rule doesn’t match, <code class="docutils literal"><span class="pre">===</span> <span class="pre">RULE</span> <span class="pre">DOES</span> <span class="pre">NOT</span> <span class="pre">MATCH</span> <span class="pre">===</span></code> will be printed
-and the tool will exit with status code <code class="docutils literal"><span class="pre">1</span></code>.</p>
+<p>If the trigger instance matches, <code class="docutils literal notranslate"><span class="pre">===</span> <span class="pre">RULE</span> <span class="pre">MATCHES</span> <span class="pre">===</span></code> will be printed and the tool will exit
+with <code class="docutils literal notranslate"><span class="pre">0</span></code> status code. If the rule doesn’t match, <code class="docutils literal notranslate"><span class="pre">===</span> <span class="pre">RULE</span> <span class="pre">DOES</span> <span class="pre">NOT</span> <span class="pre">MATCH</span> <span class="pre">===</span></code> will be printed
+and the tool will exit with status code <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
 <p>Here are some examples of how to use the tool:</p>
-<p><code class="docutils literal"><span class="pre">my_rule.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p><code class="docutils literal notranslate"><span class="pre">my_rule.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
   <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;relayed_matched_irc_message&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">pack</span><span class="p p-Indicator">:</span> <span class="s">&quot;irc&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="s">&quot;Relay</span><span class="nv"> </span><span class="s">IRC</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Slack</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">message</span><span class="nv"> </span><span class="s">contains</span><span class="nv"> </span><span class="s">word</span><span class="nv"> </span><span class="s">StackStorm&quot;</span>
@@ -963,8 +963,8 @@ and the tool will exit with status code <code class="docutils literal"><span cla
         <span class="l l-Scalar l-Scalar-Plain">channel</span><span class="p p-Indicator">:</span> <span class="s">&quot;#irc-relay&quot;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">trigger_instance_1.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p><code class="docutils literal notranslate"><span class="pre">trigger_instance_1.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span> <span class="s">&quot;irc.pubmsg&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">payload</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span>
@@ -975,8 +975,8 @@ and the tool will exit with status code <code class="docutils literal"><span cla
       <span class="l l-Scalar l-Scalar-Plain">message</span><span class="p p-Indicator">:</span> <span class="s">&quot;stackstorm</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">cool!&quot;</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">trigger_instance_2.yaml</span></code>:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p><code class="docutils literal notranslate"><span class="pre">trigger_instance_2.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
     <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span> <span class="s">&quot;irc.pubmsg&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">payload</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span>
@@ -987,24 +987,24 @@ and the tool will exit with status code <code class="docutils literal"><span cla
       <span class="l l-Scalar l-Scalar-Plain">message</span><span class="p p-Indicator">:</span> <span class="s">&quot;blah</span><span class="nv"> </span><span class="s">blah&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-rule-tester --rule<span class="o">=</span>./my_rule.yaml --trigger-instance<span class="o">=</span>./trigger_instance_1.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-rule-tester --rule<span class="o">=</span>./my_rule.yaml --trigger-instance<span class="o">=</span>./trigger_instance_1.yaml
 <span class="nb">echo</span> <span class="nv">$?</span>
 </pre></div>
 </div>
 <p>Output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-12-11 <span class="m">14</span>:35:03,249 INFO <span class="o">[</span>-<span class="o">]</span> Connecting to database <span class="s2">&quot;st2&quot;</span> @ <span class="s2">&quot;0.0.0.0:27017&quot;</span> as user <span class="s2">&quot;None&quot;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-12-11 <span class="m">14</span>:35:03,249 INFO <span class="o">[</span>-<span class="o">]</span> Connecting to database <span class="s2">&quot;st2&quot;</span> @ <span class="s2">&quot;0.0.0.0:27017&quot;</span> as user <span class="s2">&quot;None&quot;</span>.
 <span class="m">2015</span>-12-11 <span class="m">14</span>:35:03,318 INFO <span class="o">[</span>-<span class="o">]</span> Validating rule irc.relayed_matched_irc_message <span class="k">for</span> pubmsg.
 <span class="m">2015</span>-12-11 <span class="m">14</span>:35:03,331 INFO <span class="o">[</span>-<span class="o">]</span> <span class="m">1</span> rule<span class="o">(</span>s<span class="o">)</span> found to enforce <span class="k">for</span> pubmsg.
 <span class="m">2015</span>-12-11 <span class="m">14</span>:35:03,333 INFO <span class="o">[</span>-<span class="o">]</span> <span class="o">===</span> RULE <span class="nv">MATCHES</span> <span class="o">===</span>
 <span class="m">0</span>
 </pre></div>
 </div>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-rule-tester --rule<span class="o">=</span>./my_rule.yaml --trigger-instance<span class="o">=</span>./trigger_instance_2.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-rule-tester --rule<span class="o">=</span>./my_rule.yaml --trigger-instance<span class="o">=</span>./trigger_instance_2.yaml
 <span class="nb">echo</span> <span class="nv">$?</span>
 </pre></div>
 </div>
 <p>Output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-12-11 <span class="m">14</span>:35:57,380 INFO <span class="o">[</span>-<span class="o">]</span> Connecting to database <span class="s2">&quot;st2&quot;</span> @ <span class="s2">&quot;0.0.0.0:27017&quot;</span> as user <span class="s2">&quot;None&quot;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-12-11 <span class="m">14</span>:35:57,380 INFO <span class="o">[</span>-<span class="o">]</span> Connecting to database <span class="s2">&quot;st2&quot;</span> @ <span class="s2">&quot;0.0.0.0:27017&quot;</span> as user <span class="s2">&quot;None&quot;</span>.
 <span class="m">2015</span>-12-11 <span class="m">14</span>:35:57,444 INFO <span class="o">[</span>-<span class="o">]</span> Validating rule irc.relayed_matched_irc_message <span class="k">for</span> pubmsg.
 <span class="m">2015</span>-12-11 <span class="m">14</span>:35:57,459 INFO <span class="o">[</span>-<span class="o">]</span> Validation <span class="k">for</span> rule irc.relayed_matched_irc_message failed on -
   key: trigger.message
@@ -1016,18 +1016,18 @@ and the tool will exit with status code <code class="docutils literal"><span cla
 <span class="m">1</span>
 </pre></div>
 </div>
-<p id="ref-rule-tester-post-mortem-debug"><code class="docutils literal"><span class="pre">st2-rule-tester</span></code> further allows a kind of post-mortem debugging where you can answer the
-question <code class="docutils literal"><span class="pre">Why</span> <span class="pre">did</span> <span class="pre">my</span> <span class="pre">rule</span> <span class="pre">not</span> <span class="pre">match</span> <span class="pre">the</span> <span class="pre">trigger</span> <span class="pre">that</span> <span class="pre">just</span> <span class="pre">fired?</span></code>. This means there is a known
-<code class="docutils literal"><span class="pre">Rule</span></code> identifiable by its reference loaded in StackStorm and similarly a TriggerInstance with a
+<p id="ref-rule-tester-post-mortem-debug"><code class="docutils literal notranslate"><span class="pre">st2-rule-tester</span></code> further allows a kind of post-mortem debugging where you can answer the
+question <code class="docutils literal notranslate"><span class="pre">Why</span> <span class="pre">did</span> <span class="pre">my</span> <span class="pre">rule</span> <span class="pre">not</span> <span class="pre">match</span> <span class="pre">the</span> <span class="pre">trigger</span> <span class="pre">that</span> <span class="pre">just</span> <span class="pre">fired?</span></code>. This means there is a known
+<code class="docutils literal notranslate"><span class="pre">Rule</span></code> identifiable by its reference loaded in StackStorm and similarly a TriggerInstance with a
 known id.</p>
-<p>Lets say we have rule reference <code class="docutils literal"><span class="pre">my_pack.fire_on_execution</span></code> and a trigger instance
-<code class="docutils literal"><span class="pre">566b4be632ed352a09cd347d</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2-rule-tester --rule-ref<span class="o">=</span>my_pack.fire_on_execution --trigger-instance-id<span class="o">=</span>566b4be632ed352a09cd347d --config-file<span class="o">=</span>/etc/st2/st2.conf
+<p>Lets say we have rule reference <code class="docutils literal notranslate"><span class="pre">my_pack.fire_on_execution</span></code> and a trigger instance
+<code class="docutils literal notranslate"><span class="pre">566b4be632ed352a09cd347d</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2-rule-tester --rule-ref<span class="o">=</span>my_pack.fire_on_execution --trigger-instance-id<span class="o">=</span>566b4be632ed352a09cd347d --config-file<span class="o">=</span>/etc/st2/st2.conf
 <span class="nb">echo</span> <span class="nv">$?</span>
 </pre></div>
 </div>
 <p>Output:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">2015</span>-12-11 <span class="m">15</span>:24:16,459 INFO <span class="o">[</span>-<span class="o">]</span> Connecting to database <span class="s2">&quot;st2&quot;</span> @ <span class="s2">&quot;0.0.0.0:27017&quot;</span> as user <span class="s2">&quot;None&quot;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">2015</span>-12-11 <span class="m">15</span>:24:16,459 INFO <span class="o">[</span>-<span class="o">]</span> Connecting to database <span class="s2">&quot;st2&quot;</span> @ <span class="s2">&quot;0.0.0.0:27017&quot;</span> as user <span class="s2">&quot;None&quot;</span>.
 <span class="m">2015</span>-12-11 <span class="m">15</span>:24:16,527 INFO <span class="o">[</span>-<span class="o">]</span> Validating rule my_pack.fire_on_execution <span class="k">for</span> st2.generic.actiontrigger.
 <span class="m">2015</span>-12-11 <span class="m">15</span>:24:16,542 INFO <span class="o">[</span>-<span class="o">]</span> Validation <span class="k">for</span> rule my_pack.fire_on_execution failed on -
   key: trigger.status
@@ -1042,26 +1042,26 @@ known id.</p>
 did not match or one of the criteria.</p>
 <p>If you are debugging and would like to see the list of trigger instances sent to StackStorm,
 you can use the CLI:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance list
 </pre></div>
 </div>
 <p>You can also filter trigger instances by trigger:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span>core.f9e09284-b2b1-4127-aedd-dcde7a752819
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span>core.f9e09284-b2b1-4127-aedd-dcde7a752819
 </pre></div>
 </div>
-<p>Also, you can get trigger instances within a time range by using <code class="docutils literal"><span class="pre">timestamp_gt</span></code> and
-<code class="docutils literal"><span class="pre">timestamp_lt</span></code> filter options:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span><span class="s2">&quot;core.f9e09284-b2b1-4127-aedd-dcde7a752819&quot;</span> -timestamp_gt<span class="o">=</span><span class="m">2015</span>-06-01T12:00:00Z -timestamp_lt<span class="o">=</span><span class="m">2015</span>-06-02T12:00:00Z
+<p>Also, you can get trigger instances within a time range by using <code class="docutils literal notranslate"><span class="pre">timestamp_gt</span></code> and
+<code class="docutils literal notranslate"><span class="pre">timestamp_lt</span></code> filter options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance list --trigger<span class="o">=</span><span class="s2">&quot;core.f9e09284-b2b1-4127-aedd-dcde7a752819&quot;</span> -timestamp_gt<span class="o">=</span><span class="m">2015</span>-06-01T12:00:00Z -timestamp_lt<span class="o">=</span><span class="m">2015</span>-06-02T12:00:00Z
 </pre></div>
 </div>
-<p>Note that you can also specify one of <code class="docutils literal"><span class="pre">timestamp_lt</span></code> or <code class="docutils literal"><span class="pre">timestamp_gt</span></code> too. You can get
-details about a trigger instance by using <code class="docutils literal"><span class="pre">get</span></code>:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance get 556e135232ed35569ff23238
+<p>Note that you can also specify one of <code class="docutils literal notranslate"><span class="pre">timestamp_lt</span></code> or <code class="docutils literal notranslate"><span class="pre">timestamp_gt</span></code> too. You can get
+details about a trigger instance by using <code class="docutils literal notranslate"><span class="pre">get</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance get 556e135232ed35569ff23238
 </pre></div>
 </div>
 <p>Something that might be useful in debugging a rule is to re-send a trigger instance into StackStorm. You
-can use the <code class="docutils literal"><span class="pre">re-emit</span></code> command for that.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>st2 trigger-instance re-emit 556e135232ed35569ff23238
+can use the <code class="docutils literal notranslate"><span class="pre">re-emit</span></code> command for that.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 trigger-instance re-emit 556e135232ed35569ff23238
 </pre></div>
 </div>
 </div>
@@ -1072,21 +1072,21 @@ particular date and time. You can think of them as cron jobs, but with additiona
 e.g. the ability to run actions only once, at the provided date and time.</p>
 <p>Currently, we support the following timer trigger types:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">core.st2.IntervalTimer</span></code> - Run an action at predefined time intervals (e.g. every 30 seconds,
+<li><code class="docutils literal notranslate"><span class="pre">core.st2.IntervalTimer</span></code> - Run an action at predefined time intervals (e.g. every 30 seconds,
 every 24 hours, every week, etc.).</li>
-<li><code class="docutils literal"><span class="pre">core.st2.DateTimer</span></code> - Run an action at the specified date and time.</li>
-<li><code class="docutils literal"><span class="pre">core.st2.CronTimer</span></code> - Run an action when current time matches the time constraint
+<li><code class="docutils literal notranslate"><span class="pre">core.st2.DateTimer</span></code> - Run an action at the specified date and time.</li>
+<li><code class="docutils literal notranslate"><span class="pre">core.st2.CronTimer</span></code> - Run an action when current time matches the time constraint
 defined in UNIX cron format.</li>
 </ul>
 <p>Timers are implemented as triggers, which means you can use them inside the rules. In the section
 below, you can find some examples of how to use timers in the rule definitions.</p>
 <div class="section" id="core-st2-intervaltimer">
 <h3>core.st2.IntervalTimer<a class="headerlink" href="#core-st2-intervaltimer" title="Permalink to this headline">¶</a></h3>
-<p>Available parameters:<code class="docutils literal"><span class="pre">unit</span></code>, <code class="docutils literal"><span class="pre">delta</span></code>.</p>
-<p>Supported values for <code class="docutils literal"><span class="pre">unit</span></code> parameter: <code class="docutils literal"><span class="pre">seconds</span></code>, <code class="docutils literal"><span class="pre">minutes</span></code>, <code class="docutils literal"><span class="pre">hours</span></code>, <code class="docutils literal"><span class="pre">days</span></code>, <code class="docutils literal"><span class="pre">weeks</span></code>.</p>
+<p>Available parameters:<code class="docutils literal notranslate"><span class="pre">unit</span></code>, <code class="docutils literal notranslate"><span class="pre">delta</span></code>.</p>
+<p>Supported values for <code class="docutils literal notranslate"><span class="pre">unit</span></code> parameter: <code class="docutils literal notranslate"><span class="pre">seconds</span></code>, <code class="docutils literal notranslate"><span class="pre">minutes</span></code>, <code class="docutils literal notranslate"><span class="pre">hours</span></code>, <code class="docutils literal notranslate"><span class="pre">days</span></code>, <code class="docutils literal notranslate"><span class="pre">weeks</span></code>.</p>
 <div class="section" id="run-action-every-30-seconds">
 <h4>Run action every 30 seconds<a class="headerlink" href="#run-action-every-30-seconds" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1102,7 +1102,7 @@ below, you can find some examples of how to use timers in the rule definitions.<
 </div>
 <div class="section" id="run-action-every-24-hours">
 <h4>Run action every 24 hours<a class="headerlink" href="#run-action-every-24-hours" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1118,7 +1118,7 @@ below, you can find some examples of how to use timers in the rule definitions.<
 </div>
 <div class="section" id="run-action-every-2-weeks">
 <h4>Run action every 2 weeks<a class="headerlink" href="#run-action-every-2-weeks" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1135,10 +1135,10 @@ below, you can find some examples of how to use timers in the rule definitions.<
 </div>
 <div class="section" id="core-st2-datetimer">
 <h3>core.st2.DateTimer<a class="headerlink" href="#core-st2-datetimer" title="Permalink to this headline">¶</a></h3>
-<p>Available parameters: <code class="docutils literal"><span class="pre">timezone</span></code>, <code class="docutils literal"><span class="pre">date</span></code>.</p>
+<p>Available parameters: <code class="docutils literal notranslate"><span class="pre">timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code>.</p>
 <div class="section" id="run-action-on-a-specific-date">
 <h4>Run action on a specific date<a class="headerlink" href="#run-action-on-a-specific-date" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1157,20 +1157,20 @@ below, you can find some examples of how to use timers in the rule definitions.<
 <h3>core.st2.CronTimer<a class="headerlink" href="#core-st2-crontimer" title="Permalink to this headline">¶</a></h3>
 <p>This timer supports cron-like expressions. For a full list of supported expressions, please see
 <a class="reference external" href="http://apscheduler.readthedocs.org/en/3.0/modules/triggers/cron.html#api">http://apscheduler.readthedocs.org/en/3.0/modules/triggers/cron.html#api</a>.</p>
-<p>By default, if no value is provided for a particular parameter, <code class="docutils literal"><span class="pre">*</span></code> is assumed, which means
+<p>By default, if no value is provided for a particular parameter, <code class="docutils literal notranslate"><span class="pre">*</span></code> is assumed, which means
 fire on every value.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Unlike with cron where the first day (<code class="docutils literal"><span class="pre">0</span></code>) in <code class="docutils literal"><span class="pre">day_of_week</span></code> is a Sunday, in StackStorm CronTimer
+<p class="last">Unlike with cron where the first day (<code class="docutils literal notranslate"><span class="pre">0</span></code>) in <code class="docutils literal notranslate"><span class="pre">day_of_week</span></code> is a Sunday, in StackStorm CronTimer
 first day of the week is always Monday. To make it more explicit and avoid confusion, you are
-encouraged to use the name of the weekdays instead (e.g. <code class="docutils literal"><span class="pre">mon-fri</span></code> instead of <code class="docutils literal"><span class="pre">0-4</span></code>, or in
-cron case, <code class="docutils literal"><span class="pre">1-5</span></code>).</p>
+encouraged to use the name of the weekdays instead (e.g. <code class="docutils literal notranslate"><span class="pre">mon-fri</span></code> instead of <code class="docutils literal notranslate"><span class="pre">0-4</span></code>, or in
+cron case, <code class="docutils literal notranslate"><span class="pre">1-5</span></code>).</p>
 </div>
-<p>Available parameter <code class="docutils literal"><span class="pre">timezone</span></code>, <code class="docutils literal"><span class="pre">year</span></code>, <code class="docutils literal"><span class="pre">month</span></code>, <code class="docutils literal"><span class="pre">day</span></code>, <code class="docutils literal"><span class="pre">week</span></code>, <code class="docutils literal"><span class="pre">day_of_week</span></code>,
-<code class="docutils literal"><span class="pre">hour</span></code>, <code class="docutils literal"><span class="pre">minute</span></code>, <code class="docutils literal"><span class="pre">second</span></code>.</p>
+<p>Available parameter <code class="docutils literal notranslate"><span class="pre">timezone</span></code>, <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">week</span></code>, <code class="docutils literal notranslate"><span class="pre">day_of_week</span></code>,
+<code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, <code class="docutils literal notranslate"><span class="pre">second</span></code>.</p>
 <div class="section" id="run-action-every-sunday-at-midnight">
 <h4>Run action every Sunday at midnight<a class="headerlink" href="#run-action-every-sunday-at-midnight" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1189,7 +1189,7 @@ cron case, <code class="docutils literal"><span class="pre">1-5</span></code>).<
 </div>
 <div class="section" id="run-action-every-day-at-midnight">
 <h4>Run action every day at midnight<a class="headerlink" href="#run-action-every-day-at-midnight" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1205,9 +1205,9 @@ cron case, <code class="docutils literal"><span class="pre">1-5</span></code>).<
   <span class="l l-Scalar l-Scalar-Plain">...</span>
 </pre></div>
 </div>
-<p>As noted above, <code class="docutils literal"><span class="pre">*</span></code> is assumed if no value is provided for a particular parameter, which means
+<p>As noted above, <code class="docutils literal notranslate"><span class="pre">*</span></code> is assumed if no value is provided for a particular parameter, which means
 the following is equivalent to the above:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1225,7 +1225,7 @@ the following is equivalent to the above:</p>
 </div>
 <div class="section" id="run-action-monday-through-friday-every-day-except-weekends-at-midnight">
 <h4>Run action Monday through Friday (every day except weekends) at midnight<a class="headerlink" href="#run-action-monday-through-friday-every-day-except-weekends-at-midnight" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
@@ -1244,7 +1244,7 @@ the following is equivalent to the above:</p>
 </div>
 <div class="section" id="run-action-every-full-hour-every-day-of-the-week">
 <h4>Run action every full hour every day of the week<a class="headerlink" href="#run-action-every-full-hour-every-day-of-the-week" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="nn">...</span>
 
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>

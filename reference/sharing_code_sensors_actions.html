@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -464,36 +464,36 @@
             
   <div class="section" id="sharing-code-between-sensors-and-python-actions">
 <span id="ref-shared-libs-python-sensors-actions"></span><h1>Sharing code between Sensors and Python Actions<a class="headerlink" href="#sharing-code-between-sensors-and-python-actions" title="Permalink to this headline">¶</a></h1>
-<p>You can create a python package called <code class="docutils literal"><span class="pre">lib</span></code> with a <code class="docutils literal"><span class="pre">__init__.py</span></code> file and place it
-in <code class="docutils literal"><span class="pre">${pack_dir}/</span></code> to share code between Sensors and Python actions. For example, the path
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/my_pack/lib/</span></code> can contain library code
-you want to share between Sensors and Actions in pack <code class="docutils literal"><span class="pre">my_pack</span></code>. Note, if you want to
+<p>You can create a python package called <code class="docutils literal notranslate"><span class="pre">lib</span></code> with a <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file and place it
+in <code class="docutils literal notranslate"><span class="pre">${pack_dir}/</span></code> to share code between Sensors and Python actions. For example, the path
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/my_pack/lib/</span></code> can contain library code
+you want to share between Sensors and Actions in pack <code class="docutils literal notranslate"><span class="pre">my_pack</span></code>. Note, if you want to
 share common code across packs, the recommended approach is to pin the dependency in the packs’
-requirements.txt and push the dependency to <code class="docutils literal"><span class="pre">pypi</span></code> to be installable via pip.
-The <code class="docutils literal"><span class="pre">lib</span></code> feature is restricted to scope of individual packs only. The <code class="docutils literal"><span class="pre">lib</span></code> folder can
+requirements.txt and push the dependency to <code class="docutils literal notranslate"><span class="pre">pypi</span></code> to be installable via pip.
+The <code class="docutils literal notranslate"><span class="pre">lib</span></code> feature is restricted to scope of individual packs only. The <code class="docutils literal notranslate"><span class="pre">lib</span></code> folder can
 contain any number of python files. These files can in turn contain library code, common utility
 functions and the like. You can then use import statements in sensors and actions like</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">common_lib</span> <span class="kn">import</span> <span class="n">base_function</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">common_lib</span> <span class="kn">import</span> <span class="n">base_function</span>
 </pre></div>
 </div>
-<p>to import base_function from a file named <code class="docutils literal"><span class="pre">common_lib.py</span></code> inside
-<code class="docutils literal"><span class="pre">/opt/stackstorm/packs/examples/lib/</span></code> folder. You can call code from dependencies
-in pack’s requirements.txt from inside the files in the <code class="docutils literal"><span class="pre">lib</span></code> folder as you are able to call
+<p>to import base_function from a file named <code class="docutils literal notranslate"><span class="pre">common_lib.py</span></code> inside
+<code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/examples/lib/</span></code> folder. You can call code from dependencies
+in pack’s requirements.txt from inside the files in the <code class="docutils literal notranslate"><span class="pre">lib</span></code> folder as you are able to call
 them inside sensors and actions. Due to how python module loading works, files inside the lib
 folder cannot have the same names as standard python module names. Actions may fail with
 weird errors if you named your files same as standard python module names.</p>
-<p>Note that this pack <code class="docutils literal"><span class="pre">lib</span></code> folder is different from shell actions’ <code class="docutils literal"><span class="pre">lib</span></code> folder which is
-inside <code class="docutils literal"><span class="pre">/opt/stackstorm/packs/some_pack/actions/lib/</span></code>. The pack <code class="docutils literal"><span class="pre">lib</span></code> folder is never
+<p>Note that this pack <code class="docutils literal notranslate"><span class="pre">lib</span></code> folder is different from shell actions’ <code class="docutils literal notranslate"><span class="pre">lib</span></code> folder which is
+inside <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/some_pack/actions/lib/</span></code>. The pack <code class="docutils literal notranslate"><span class="pre">lib</span></code> folder is never
 copied to a remote machine and is strictly for sharing code between sensors and actions.</p>
 <p>This feature is turned off by default to avoid potential issues that might arise due to existing
 pack structures and lib imports. You may require to refactor your pack if enabling this feature
 breaks your packs. To enable this feature, simply set the following config option in
-<code class="docutils literal"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
-<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[packs]</span>
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[packs]</span>
 <span class="na">enable_common_libs</span> <span class="o">=</span> <span class="s">True</span>
 </pre></div>
 </div>
-<p>You have to restart st2 via <code class="docutils literal"><span class="pre">st2ctl</span> <span class="pre">restart</span></code> for the config change to be picked up.</p>
+<p>You have to restart st2 via <code class="docutils literal notranslate"><span class="pre">st2ctl</span> <span class="pre">restart</span></code> for the config change to be picked up.</p>
 </div>
 
 

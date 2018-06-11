@@ -256,8 +256,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../inquiries.html">Inquiries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal"><span class="pre">core.ask</span></code> Action</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal"><span class="pre">core.ask</span></code> in a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#new-core-ask-action">New <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> Action</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inquiries.html#using-core-ask-in-a-workflow">Using <code class="docutils literal notranslate"><span class="pre">core.ask</span></code> in a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#notifying-users-of-inquiries-using-rules">Notifying Users of Inquiries using Rules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#responding-to-an-inquiry">Responding to an Inquiry</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inquiries.html#securing-inquiries">Securing Inquiries</a></li>
@@ -476,7 +476,7 @@ idempotent production-friendly StackStorm installations.</p>
 <li><a class="reference internal" href="#quick-start" id="id2">Quick Start</a></li>
 <li><a class="reference internal" href="#roles" id="id3">Roles</a></li>
 <li><a class="reference internal" href="#example-play" id="id4">Example Play</a></li>
-<li><a class="reference internal" href="#custom-ssl-certificate-for-st2web" id="id5">Custom SSL Certificate for <code class="docutils literal"><span class="pre">st2web</span></code></a></li>
+<li><a class="reference internal" href="#custom-ssl-certificate-for-st2web" id="id5">Custom SSL Certificate for <code class="docutils literal notranslate"><span class="pre">st2web</span></code></a></li>
 <li><a class="reference internal" href="#installing-behind-a-proxy" id="id6">Installing Behind a Proxy</a></li>
 <li><a class="reference internal" href="#bwc" id="id7">Extreme Workflow Composer</a></li>
 </ul>
@@ -497,7 +497,7 @@ idempotent production-friendly StackStorm installations.</p>
 <h2><a class="toc-backref" href="#id2">Quick Start</a><a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
 <p>To get started with a single node deployment, and default configuration settings, run these
 commands:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/ansible-st2.git
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/StackStorm/ansible-st2.git
 <span class="nb">cd</span> ansible-st2
 
 ansible-playbook stackstorm.yml
@@ -505,34 +505,34 @@ ansible-playbook stackstorm.yml
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Please keep in mind that the default StackStorm login credentials according to <a class="reference external" href="https://github.com/StackStorm/ansible-st2#variables">https://github.com/StackStorm/ansible-st2#variables</a>  are: <code class="docutils literal"><span class="pre">testu:testp</span></code>. Don’t forget to change them to a more secure settings.</p>
+<p class="last">Please keep in mind that the default StackStorm login credentials according to <a class="reference external" href="https://github.com/StackStorm/ansible-st2#variables">https://github.com/StackStorm/ansible-st2#variables</a>  are: <code class="docutils literal notranslate"><span class="pre">testu:testp</span></code>. Don’t forget to change them to a more secure settings.</p>
 </div>
 </div>
 <div class="section" id="roles">
 <h2><a class="toc-backref" href="#id3">Roles</a><a class="headerlink" href="#roles" title="Permalink to this headline">¶</a></h2>
-<p>Behind the scenes the <code class="docutils literal"><span class="pre">stackstorm.yml</span></code> play is composed of the following Ansible <code class="docutils literal"><span class="pre">roles</span></code> for a
+<p>Behind the scenes the <code class="docutils literal notranslate"><span class="pre">stackstorm.yml</span></code> play is composed of the following Ansible <code class="docutils literal notranslate"><span class="pre">roles</span></code> for a
 complete installation:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">epel</span></code> - Repository with extra packages for <code class="docutils literal"><span class="pre">RHEL/CentOS</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">mongodb</span></code> - Main DB storage engine.</li>
-<li><code class="docutils literal"><span class="pre">rabbitmq</span></code> - Message broker.</li>
-<li><code class="docutils literal"><span class="pre">postgresql</span></code> - DB storage engine for Mistral.</li>
-<li><code class="docutils literal"><span class="pre">st2repos</span></code> - Adds StackStorm PackageCloud repositories.</li>
-<li><code class="docutils literal"><span class="pre">st2</span></code> - Install and configure StackStorm itself.</li>
-<li><code class="docutils literal"><span class="pre">st2mistral</span></code> - Install and configure StackStorm Mistral workflow engine.</li>
-<li><code class="docutils literal"><span class="pre">nginx</span></code> - Dependency for <code class="docutils literal"><span class="pre">st2web</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">st2web</span></code> - Nice &amp; shiny WebUI for StackStorm.</li>
-<li><code class="docutils literal"><span class="pre">nodejs</span></code> - Dependency for <code class="docutils literal"><span class="pre">st2chatops</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">st2chatops</span></code> - Install and configure st2chatops for hubot adapter integration with StackStorm.</li>
-<li><code class="docutils literal"><span class="pre">st2smoketests</span></code> - Simple checks to see if StackStorm is working.</li>
-<li><code class="docutils literal"><span class="pre">bwc</span></code> - Install and configure Extreme Workflow Composer, including <code class="docutils literal"><span class="pre">LDAP</span></code> and <code class="docutils literal"><span class="pre">RBAC</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">bwc_smoketests</span></code> - Simple checks to see if Extreme Workflow Composer is working.</li>
+<li><code class="docutils literal notranslate"><span class="pre">epel</span></code> - Repository with extra packages for <code class="docutils literal notranslate"><span class="pre">RHEL/CentOS</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">mongodb</span></code> - Main DB storage engine.</li>
+<li><code class="docutils literal notranslate"><span class="pre">rabbitmq</span></code> - Message broker.</li>
+<li><code class="docutils literal notranslate"><span class="pre">postgresql</span></code> - DB storage engine for Mistral.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2repos</span></code> - Adds StackStorm PackageCloud repositories.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2</span></code> - Install and configure StackStorm itself.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2mistral</span></code> - Install and configure StackStorm Mistral workflow engine.</li>
+<li><code class="docutils literal notranslate"><span class="pre">nginx</span></code> - Dependency for <code class="docutils literal notranslate"><span class="pre">st2web</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2web</span></code> - Nice &amp; shiny WebUI for StackStorm.</li>
+<li><code class="docutils literal notranslate"><span class="pre">nodejs</span></code> - Dependency for <code class="docutils literal notranslate"><span class="pre">st2chatops</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2chatops</span></code> - Install and configure st2chatops for hubot adapter integration with StackStorm.</li>
+<li><code class="docutils literal notranslate"><span class="pre">st2smoketests</span></code> - Simple checks to see if StackStorm is working.</li>
+<li><code class="docutils literal notranslate"><span class="pre">bwc</span></code> - Install and configure Extreme Workflow Composer, including <code class="docutils literal notranslate"><span class="pre">LDAP</span></code> and <code class="docutils literal notranslate"><span class="pre">RBAC</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">bwc_smoketests</span></code> - Simple checks to see if Extreme Workflow Composer is working.</li>
 </ul>
 </div>
 <div class="section" id="example-play">
 <h2><a class="toc-backref" href="#id4">Example Play</a><a class="headerlink" href="#example-play" title="Permalink to this headline">¶</a></h2>
 <p>Here’s a more advanced example showing how to customize your StackStorm deployment:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install StackStorm with all services on a single node</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install StackStorm with all services on a single node</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
   <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mongodb</span>
@@ -588,9 +588,9 @@ complete installation:</p>
 <p>Check out the <a class="reference external" href="https://github.com/stackstorm/ansible-st2#variables">full list of Variables</a>.</p>
 </div>
 <div class="section" id="custom-ssl-certificate-for-st2web">
-<h2><a class="toc-backref" href="#id5">Custom SSL Certificate for <code class="docutils literal"><span class="pre">st2web</span></code></a><a class="headerlink" href="#custom-ssl-certificate-for-st2web" title="Permalink to this headline">¶</a></h2>
-<p>By default we generate a self-signed certificate for <code class="docutils literal"><span class="pre">nginx</span></code> in <code class="docutils literal"><span class="pre">st2web</span></code> role. If you have your own properly signed certificate, you can use that instead:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Configure st2web with custom SSL certificate</span>
+<h2><a class="toc-backref" href="#id5">Custom SSL Certificate for <code class="docutils literal notranslate"><span class="pre">st2web</span></code></a><a class="headerlink" href="#custom-ssl-certificate-for-st2web" title="Permalink to this headline">¶</a></h2>
+<p>By default we generate a self-signed certificate for <code class="docutils literal notranslate"><span class="pre">nginx</span></code> in <code class="docutils literal notranslate"><span class="pre">st2web</span></code> role. If you have your own properly signed certificate, you can use that instead:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Configure st2web with custom SSL certificate</span>
   <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">st2web</span>
   <span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">st2web_ssl_certificate</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">lookup(&#39;file&#39;,</span><span class="nv"> </span><span class="s">&#39;local/path/to/domain-name.crt&#39;)</span><span class="nv"> </span><span class="s">}}&quot;</span>
@@ -600,9 +600,9 @@ complete installation:</p>
 </div>
 <div class="section" id="installing-behind-a-proxy">
 <h2><a class="toc-backref" href="#id6">Installing Behind a Proxy</a><a class="headerlink" href="#installing-behind-a-proxy" title="Permalink to this headline">¶</a></h2>
-<p>If you are installing from behind a proxy, you can use the environment variables <code class="docutils literal"><span class="pre">http_proxy</span></code>,
-<code class="docutils literal"><span class="pre">https_proxy</span></code>, and <code class="docutils literal"><span class="pre">no_proxy</span></code>. They will be passed through during the execution.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<p>If you are installing from behind a proxy, you can use the environment variables <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code>,
+<code class="docutils literal notranslate"><span class="pre">https_proxy</span></code>, and <code class="docutils literal notranslate"><span class="pre">no_proxy</span></code>. They will be passed through during the execution.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install st2</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
   <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
@@ -620,7 +620,7 @@ complete installation:</p>
 <a class="reference external" href="https://ewc-docs.extremenetworks.com/authentication.html#ldap">LDAP</a> authentication and
 <a class="reference external" href="https://ewc-docs.extremenetworks.com/rbac.html">RBAC</a> configuration to allow/restrict/limit StackStorm
 functionality to specific users:</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install StackStorm Enterprise</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install StackStorm Enterprise</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
   <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install and configure StackStorm Enterprise (EWC)</span>
