@@ -1,40 +1,31 @@
-Datastore
+データストア
 ===============================
 
-The goal of the datastore service is to allow users to store common parameters and their values
-within |st2| for reuse in the definition of sensors, actions, and rules. The datastore service
-stores the data as a key-value pair. They can be get/set using the |st2| CLI or the |st2|
-Python client. 
+データストアサービス (以下、データストア) の目的は、ユーザが |st2| ノードの共通パラメータや、センサ、アクション、ルールが参照する値を設定できるようにすることです。データストアに登録するデータは key-value 型で、ユーザは |st2| の CLI や Python クライアントから登録/取得できます。
 
-From the sensor and action plugins, since they are implemented in Python, the key-value pairs are
-accessed from the |st2| Python client. For rule definitions in YAML/JSON, the key-value pairs are
-referenced with a specific string substitution syntax and the references are resolved on rule
-evaluation.
+センサとアクションのプラグインは、Python クライアントから key-value ペアにアクセスします。YAML/JSON 形式で記述されたのルールの場合は、それぞれのデータ形式に従って解析した上でデータを評価します。
 
-Key-Value pairs can also have a TTL associated with them, for automatic expiry. 
+自動化の有効期限を設定する目的などで、データストアに登録する key-value ペアの値に TTL を設定することもできます。
 
 .. note::
 
-   Currently only string values are supported. This was done intentionally, to keep the feature
-   simple and fully compatible with existing API and CLI commands.
+   現在はデータストアに登録できる値は文字列しかサポートしていませんが、これは機能をシンプルに保ち既存の API, CLI との互換性を保つ為のものです。
 
-   If you want to store a non-string value, you can store a JSON-serialized version, and then
-   de-serialize it in your action/sensor code, or using the ``from_json_string``
-   Jinja filter. See the :doc:`/reference/jinja` documentation for more details.
+   もし文字列以外の構造化したデータをデータストアに登録したい場合には、JSON をシリアライズして登録することもできます。その場合、アクションやセンサのコード内で、JSON データに戻す処理を実装するか、Jinja フィルタ ``from_json_string`` を使用する必要があります。詳しくは :doc:`/reference/jinja` を参照してください。
 
-   This may change in future if there is sufficient interest.
+   なお、これらの機能は将来変更される可能性があります。
 
-Storing and Retrieving Key-Value Pairs via CLI
-----------------------------------------------
+CLI による Key-Value ペアの登録と取得方法
+-----------------------------------------
 
-Set the value of a key-value pair:
+key-value ペアの値を登録方法
 
 .. code-block:: bash
 
     st2 key set os_keystone_endpoint http://localhost:5000/v2.0
     st2 key set aws_cfn_endpoint https://cloudformation.us-west-1.amazonaws.com
 
-Get individual key-value pair or list all:
+登録済みの key-value ペアの値の一覧と key 毎に値を取得する方法
 
 .. code-block:: bash
 
@@ -48,23 +39,22 @@ Get individual key-value pair or list all:
     # Get value for key "os_keystone_endpoint" in json format
     st2 key get os_keystone_endpoint -j
 
-Update an existing key-value pair:
+登録済みの key-value ペアの値を更新する方法
 
 .. code-block:: bash
 
     st2 key set os_keystone_endpoint http://localhost:5000/v3
 
-Delete an existing key-value pair:
+登録済みの key-value ペアの値を削除する方法
 
 .. code-block:: bash
 
     st2 key delete os_keystone_endpoint
 
-Loading Key-Value Pairs from a File
------------------------------------
+ファイルから key-value ペアを読み込む方法
+-----------------------------------------
 
-Load a list of key-value pairs from a JSON file. The following is a JSON example using the same
-keys from the examples above:
+上記の例と同じ key-value ペアを指定した JSON ファイルを作成します。
 
 .. code-block:: json
 
@@ -79,14 +69,13 @@ keys from the examples above:
         }
     ]
 
-Load this file using this command:
+以下のコマンドで、上記ファイルで指定した key-value ペアのデータをデータストアに読み込ませます。
 
 .. code-block:: bash
 
     st2 key load mydata.json
 
-The load command can also accept a YAML file. The following example is YAML for the same
-key-value pairs as the JSON file above:
+YAML 形式のデータも同様に読み込ませることができます。以下は、先ほどと等価なデータを YAML 形式で記述したものです。
 
 .. code-block:: yaml
 
@@ -96,16 +85,15 @@ key-value pairs as the JSON file above:
     - name: aws_cfn_endpoint
       value: https://cloudformation.us-west-1.amazonaws.com
 
-Load this file using this command:
+以下のコマンドで読み込ませられます。
 
 .. code-block:: bash
 
     st2 key load mydata.yaml
 
-The load command also allows you to directly load the output of the ``st2 key list -j`` command.
-If you have more than 50 key-value pairs, use ``st2 key list -n -1 -j`` to export all keys. This
-is useful if you want to migrate datastore items from a different cluster or if you want to
-version control the datastore items and load them from version controlled files:
+``st2 key load`` コマンドは ``st2 key list -j`` コマンドの出力から直接データをロードさせることもできます。
+もし大量の key-value ペアが登録されている場合 ``st2 key list -n -1 -j`` によって全てのキーをエクスポートできます。
+このコマンドは異なるクラスタからデータを移す場合や、データストアの登録値をバーション管理するためにファイルに変換（またはその逆の操作を）するのに便利です。
 
 .. code-block:: bash
 
@@ -118,13 +106,9 @@ version control the datastore items and load them from version controlled files:
     st2 key load mydata.yaml
 
 
-By default, all values for keys in the file must be strings. However, it is also
-possible to set the value to any arbitrary data type supported by JSON/YAML
-(hash, array, int, boolean, etc) in the file and have StackStorm convert it to JSON before
-loading it into the datastore. To accomplish this, you need to explicity pass the
-``-c/--convert`` flag: ``st2 key load -c mydata.json``
+デフォルトでは、全ての key に対応する value は文字列でないといけませんが、JSON/YAML でサポートされている任意のデータ構造 (hash, array, int, boolean, etc) の value を設定できます。こうしたデータ構造を持ったファイルを ``st2 key load`` コマンドで読み込ませる場合 ``-c/--convert`` フラグを指定することで StackStorm はこれらの値をデータストアに登録する前に JSON 形式に変換します。
 
-Loading non-string content via JSON:
+以下の構造化したデータを持つファイルをデータストアに読み込ませます。
 
 .. code-block:: json
 
@@ -151,7 +135,7 @@ Loading non-string content via JSON:
         }
     ]
 
-Load this file using this command (values will be converted into JSON strings):
+``-c/--convert`` オプションを指定して、このファイルをデータストアに読み込ませます (非文字列の値はそれぞれシリアライズした文字列に変換されます)
 
 .. code-block:: bash
 
@@ -172,7 +156,7 @@ Load this file using this command (values will be converted into JSON strings):
     |               | "tag": 123}           |        |        |      |     |
     +---------------+-----------------------+--------+--------+------+-----+
 
-Loading non-string content via YAML:
+同様に YAML 形式でも指定できます。
     
 .. code-block:: yaml
 
@@ -188,7 +172,7 @@ Loading non-string content via YAML:
           tag: 123
           note: General purpose traffic
 
-Load this file using this command (values will be converted into JSON strings):
+JSON 形式の場合と同様に、以下のコマンドでロードされます。構造化されたデータはシリアライズした JSON の文字列に変換されます。
 
 .. code-block:: bash
 
