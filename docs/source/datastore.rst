@@ -195,54 +195,42 @@ JSON 形式の場合と同様に、以下のコマンドでロードされます
     
 .. _datastore-scopes-in-key-value-store:
 
-Scoping Datastore Items
------------------------
+データのスコープ設定
+--------------------
 
-By default, all items in the key-value store are stored in the ``st2kv.system`` scope. This means
-every user has access to these variables. Use the Jinja expression ``{{st2kv.system.key_name}}``
-to refer to these variables in actions or workflows. Prior to v2.0.1, the scope was called
-``system`` and therefore the Jinja expression was ``{{system.key_name}}``. As of v2.2, this is no
-longer supported.
+デフォルトでは |st2| の CLI/API から登録される key-value ペアのデータは全て ``st2kv.system`` のスコープに登録されます。これは、登録されるデータは全てのユーザから等しくアクセスできることを意味します。こうした値は Jinja の変数 ``{{st2kv.system.key_name}}`` によってアクションやワークフローからも参照できます。v2.0.1 以前では、データは ``system`` スコープに登録され、Jinja からは ``{{system.key_name}}`` から参照できますが、このスコープは v2.2 以降ではサポートされていません。
 
-Variables can be scoped to a specific user. With authentication enabled, you can now control who
-can read or write into those variables. For example, to set the variable ``date_cmd`` for the
-currently authenticated user, use:
+データを特定のユーザのスコープで登録することもできます。ユーザ認証機能を有効化させることで、登録した変数を読み書きできるユーザを限定することができます（こうした変数をユーザ変数と定義します）。例えば、現在ログインしているユーザでユーザ変数 ``date_cmd`` を作成するには次のようにします。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date -u" --scope=user
 
-The name of the user is determined by the ``X-Auth-Token`` or ``St2-Api-Key`` header passed with
-the API call. From the API call authentication credentials, |st2| will determine the user, and
-assign this variable to that particular user.
+ユーザ名は ``X-Auth-Token`` や ``St2-Api-Key`` ヘッダで渡されるアクセストークンや API キーによって決まります。認証 API への呼び出しによって |st2| は登録する値を特定のユーザにひもづけます。
 
-To retrieve the key, use:
+登録した値を取得するには以下のようにします。
 
 .. code-block:: bash
 
     st2 key get date_cmd --scope=user
 
-If you want a variable ``date_cmd`` as a system variable, you can use:
+システム変数として ``date_cmd`` を設定したい場合には、以下のようにします。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date +%s" --scope=system
 
-or simply:
+以下のコマンドもこれと等価です。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date +%s"
 
-This variable won't clash with user variables with the same name. Also, you can refer to user
-variables in actions or workflows. The Jinja syntax to do so is ``{{st2kv.user.date_cmd}}``. 
+別々のユーザが同名のユーザ変数を定義しても値の衝突は発生しません。ユーザ変数はアクションやワークフローからも参照できます。Jinja テンプレートから参照する場合には ``{{st2kv.user.date_cmd}}`` のように記述します。
 
-Note that the notion of ``st2kv.user`` is available only when actions or workflows are run
-manually. The notion of ``st2kv.user`` is non-existent when actions or workflows are kicked off
-via rules. So the use of user scoped variables is limited to manual execution of actions or
-workflows.
+ただし ``st2kv.user`` はユーザが手動でアクションやワークフローを実行した場合のみ設定されます。ルールによってアクションやワークフローが実行された場合 ``st2kv.user`` は設定されませんのでご注意ください。
 
-Scope can be set in a JSON/YAML key file by adding the ``scope`` property:
+JSON/YAML 形式のファイルから登録する際 ``scope`` プロパティを設定することでユーザ変数として登録できます。
 
 JSON
 
