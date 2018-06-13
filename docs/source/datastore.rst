@@ -255,28 +255,21 @@ YAML
     
 .. _datastore-ttl:
 
-Setting a Key-Value Pair TTL
-----------------------------
+登録データの TTL
+----------------
 
-By default, items do not have any TTL (Time To Live). They will remain in the datastore until
-manually deleted. You can set a TTL with key-value pairs, so they will be automatically deleted on
-expiry of the TTL.
+デフォルトでは、データストアに登録するデータに TTL (Time To Live) は設定されません。登録されたデータはユーザによって削除されるまで残ります。これに対して、登録データが一定時間経過後に自動的に削除されるようにするため、登録データの生存期間 (TTL) を設定することができます。
 
-The TTL is set in seconds. To set a key-value pair for the next hour, use this:
+TTL として設定できる単位は「秒」です。以下では１時間後に削除される key-value ペアを登録します。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date +%s" --ttl=3600
 
-Use-cases for setting a TTL include limiting auto-remediation workflows from running too
-frequently. For example, you could set a value with a TTL when a workflow is triggered. If the
-workflow is triggered again, it could check if the value is still set, and if so, bypass running
-the remediation action.
+TTL のユースケースの一つとして、自動復旧 (auto-remediation) のワークフローが頻繁に実行されるのを防止する使い方があります。例えば、ワークフローが実行された際に TTL が設定された変数を登録し、TTL が切れる前に２回目のワークフローが実行された際に、当該アクションの実行を回避するといった使い方ができます。
+また、一定時間内に実行されたの回数を記録するといった使い方もできます。
 
-Some users keep a count of executions in the key-value store to set a maximum number of executions
-in a time period.
-
-TTL can be set in a JSON/YAML key file by adding the ``ttl`` property with an integer value:
+JSON/YAML 形式ファイルから値を登録する場合 ``ttl`` プロパティから値を設定できます。
 
 JSON
 
@@ -299,12 +292,10 @@ YAML
       value: date -u
       ttl: 3600
 
-Storing and Retrieving via Python Client
-----------------------------------------
+Python Client から値を設定・取得
+--------------------------------
 
-Create new key-value pairs. The |st2| API endpoint is set either via the Client init (base\_url)
-or from the environment variable (ST2\_BASE\_URL). The default ports for the API servers are
-assumed:
+以下では新規 key-value ペアを作成しています。Client オブジェクト生成時に |st2| の API エンドポイントの URL を引数 ``base_url`` (もしくは環境変数 ``ST2_BASE_URL``) に指定します。
 
 .. code-block:: python
 
@@ -313,7 +304,7 @@ assumed:
     >>> client = Client(base_url='http://localhost')
     >>> client.keys.update(KeyValuePair(name='os_keystone_endpoint', value='http://localhost:5000/v2.0'))
 
-Get individual key-value pair or list all:
+登録済みの key-value ペアの値の一覧と key 毎に値を取得します。
 
 .. code-block:: python
 
@@ -322,7 +313,7 @@ Get individual key-value pair or list all:
     >>> os_keystone_endpoint.value
     u'http://localhost:5000/v2.0'
 
-Update an existing key-value pair:
+登録済みの key-value ペアを更新します。
 
 .. code-block:: python
 
@@ -330,20 +321,20 @@ Update an existing key-value pair:
     >>> os_keystone_endpoint.value = 'http://localhost:5000/v3'
     >>> client.keys.update(os_keystone_endpoint)
 
-Delete an existing key-value pair:
+登録済みの key-value ペアを削除します。
 
 .. code-block:: python
 
     >>> os_keystone_endpoint = client.keys.get_by_name(name='os_keystone_endpoint')
     >>> client.keys.delete(os_keystone_endpoint)
 
-Create an encrypted key-value pair:
+暗号化した key-value ペアを作成します。
 
 .. code-block:: python
 
     >>> client.keys.update(KeyValuePair(name='os_keystone_password', value='$uper$ecret!', secret=True))
 
-Get and decrypt an encrypted key-value pair:
+暗号化された key-value ペアを取得して復号化します。
 
 .. code-block:: python
 
@@ -352,7 +343,7 @@ Get and decrypt an encrypted key-value pair:
     u'$uper$ecret!'
 
 
-Get all key-value pairs and decrypt any that are encrypted:
+全ての key-value ペアを取得し、それらを復号化します。
 
 .. code-block:: python
 
@@ -360,7 +351,7 @@ Get all key-value pairs and decrypt any that are encrypted:
     >>> # or
     >>> keys = client.keys.query(decrypt=True)
 
-Update an existing encrypted key-value pair:
+登録済みの暗号化された key-value ペアを更新します。
 
 .. code-block:: python
 
@@ -372,7 +363,7 @@ Update an existing encrypted key-value pair:
     >>> client.keys.get_by_name(name='os_keystone_password', decrypt=True)
     <KeyValuePair name=os_keystone_password,value=New$ecret!>
 
-Set the TTL when creating a key-value pair:
+TTL を設定した key-value ペアを作成します。
 
 .. code-block:: python
 
