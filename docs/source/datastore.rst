@@ -373,15 +373,12 @@ TTL を設定した key-value ペアを作成します。
     >>> client.keys.update(KeyValuePair(name='os_keystone_endpoint', value='http://localhost:5000/v2.0', ttl=600))
 
 
-Referencing Key-Value Pairs in Rule Definitions
+ルール定義ファイルから key-value ペアを参照する
 -----------------------------------------------
 
-Key-value pairs are referenced via specific string substitution syntax in rules. In general, the
-variable for substitution is enclosed with double brackets (i.e. ``{{var1}}``). To refer to a
-key-value pair, prefix the name with "st2kv.system", e.g. ``{{st2kv.system.os_keystone_endpoint}}``.
+key-value ペアはルール定義ファイルから置換構文を用いて参照できます。基本的にルール定義ファイルの中から変数を参照する場合、中括弧２つで囲んだ形 (例: ``{{var1}}``) で指定した変数に置換されます。登録済みの key-value ペアにアクセスするには ``st2kv.system`` の接頭辞をつけて ``{{st2kv.system.os_keystone_endpoint}}`` と記述します。
 
-An example rule is provided below. Please refer to the :doc:`Rules </rules>` documentation for
-rule-related syntax.
+以下は key-value ペアの参照を含むルール定義ファイルの例です。ルールに関する詳細は `Rules </rules>` を参照ください。
 
 .. code-block:: json
 
@@ -401,26 +398,27 @@ rule-related syntax.
 
 .. _admin-setup-for-encrypted-datastore:
 
-Securing Secrets (admin only)
------------------------------
+登録データの暗号化設定 (管理者のみ)
+-----------------------------------
 
-The key-value store allows users to store encrypted values (secrets). Symmetric encryption
-using AES-256 is used to encrypt secrets. The |st2| administrator is responsible for generating the
-symmetric key used for encryption/decryption. Note that the |st2| operator and administrator
-(or anyone else who has access to the key) can decrypt the encrypted values.
+セキュリティ上の目的で登録データを暗号化させることができます。暗号化は AES-256 による共通鍵暗号方式によって行います。共通鍵は管理者が作成し、これにアクセスできるユーザのみデータを暗号化して登録できます。
 
-To generate a symmetric crypto key, please run:
+共通鍵の生成は以下のようにして行います。
 
 .. code-block:: bash
 
     sudo mkdir -p /etc/st2/keys/
     sudo st2-generate-symmetric-crypto-key --key-path /etc/st2/keys/datastore_key.json
 
-We recommend that the key is placed in a private location such as ``/etc/st2/keys/`` and
-permissions are set such that only the |st2| API process owner (usually ``st2``)
-can read the file, and only root can write to it.
+鍵の置き場所 (ディレクトリ) と権限は、以下のとおり設定することを推奨します。
 
-To make sure only ``st2`` and root can access the file on the box, run:
++-------------+--------------------------------------------+
+| 設置場所    | /etc/st2/keys                              |
++-------------+--------------------------------------------+
+| 権限(Read)  | st2 api のプロセスオーナー (主に ``st2``)  |
++-------------+--------------------------------------------+
+| 権限(Write) | root                                       |
++-------------+--------------------------------------------+
 
 .. code-block:: bash
 
@@ -430,70 +428,56 @@ To make sure only ``st2`` and root can access the file on the box, run:
     sudo chmod o-r /etc/st2/keys/                           # Revoke read access for others
     sudo chmod o-r /etc/st2/keys/datastore_key.json         # Revoke read access for others
 
-Once the key is generated, |st2| needs to be made aware of the key. To do this, edit the st2
-configuration file (``/etc/st2/st2.conf``) and add the following lines:
+鍵を生成したら、それを |st2| に認識させる必要があります。これを行うには |st2| の設定ファイル ``/etc/st2/st2.conf`` に以下の業を追加します。
 
 .. code-block:: ini
 
     [keyvalue]
     encryption_key_path = /etc/st2/keys/datastore_key.json
 
-Once the config file changes are made, restart |st2|:
+設定ファイルの修正を反映させるために、以下のコマンドで |st2| を再起動させます。
 
 .. code-block:: bash
 
   sudo st2ctl restart
 
-Validate you are able to set an encrypted key-value in the datastore:
+以下のコマンドで、暗号化した key-value ペアのデータをデータストアに登録できるか確認できます。
 
 .. code-block:: bash
 
   st2 key set test_key test_value --encrypt
 
-If you see errors like ``"MESSAGE: Crypto key not found"``, something has gone wrong with setting
-up the keys.
+もし ``MESSAGE: Crypto key not found`` といったエラーが表示された場合、共通鍵の設定に誤りがあります。
 
 .. _datastore-storing-secrets-in-key-value-store:
 
-Storing Secrets
----------------
+暗号化データの保存
+------------------
 
-Please note that if an admin has not setup an encryption key, you will not be allowed to save
-secrets in the key-value store. Contact your |st2| admin to setup encryption keys as per the
-section above.
+暗号化データの登録には鍵の登録が必須なため、もし |st2| にデータ暗号化のための鍵の登録が行われていない場合は、管理者に先述の :ref:`登録データの暗号化設定<admin-setup-for-encrypted-datastore>` に従って設定してください。
 
-To save a secret in the key-value store:
+暗号化した key-value ペアの登録は以下のようにして行います。
 
 .. code-block:: bash
 
     st2 key set api_token SECRET_TOKEN --encrypt
 
-By default, getting a key tagged as secret (via ``--encrypt``) will always return encrypted values
-only. To get plain text, please run the command with the ``--decrypt`` flag:
+このように ``--encrypt`` フラグを付けて登録されたデータを取得すると、暗号化された値が返されます。暗号化される前のデータを取得するには、データ取得コマンドに ``--decrypt`` フラグを付けます。
 
 .. code-block:: bash
 
     st2 key get api_token --decrypt
 
 .. note::
+    ``--decrypt`` フラグによるデータの復号化は、データを登録したユーザに加えて、管理者も全ての登録済みデータに対して復号化できる点に留意してください。
 
-    Keep in mind that ``--decrypt`` flag can either be used by an administrator (administrator is
-    able to decrypt every value) and by the user who set that value in case of the user-scoped
-    datastore items (i.e. if ``--scope=user`` flag was passed when originally setting the value).
-
-If you are using system scoped variables (``st2kv.system``) to store secrets, you can decrypt them
-and use as parameter values in rules or actions. This is supported via Jinja filter ``decrypt_kv``
-(read more about :ref:`Jinja filters<applying-filters-with-jinja>`). For example,
-to pass a decrypted password as a parameter, use:
+システムワイドなスコープ ``st2kv.system`` で登録した場合、以下のように ``decript_kv`` という :ref:`Jinja フィルター<applying-filters-with-jinja>` を利用することで、ルールやアクション定義ファイルからこれらにアクセスすることができます。
 
 .. code-block:: YAML
 
     aws_key: "{{st2kv.system.aws_key | decrypt_kv}}"
 
-Decrypting user scoped variables is currently unsupported.
-
-Secret keys can be loaded from a JSON/YAML key file by adding the ``secret`` property with
-a boolean value.
+JSON/YAML 形式ファイルからデータを読み込ませる際に暗号化するには ``secret`` フラグを true に設定することでできます。
 
 JSON
 
@@ -516,23 +500,11 @@ YAML
       value: SECRET_TOKEN
       secret: true
 
-Security notes
---------------
+セキュリティノート
+------------------
 
-We wish to discuss security details and be transparent about the implementation and limitations
-of the security practices to attract more eyes to it and therefore build better quality into
-security implementations. For the key-value store, we have settled on AES-256 symmetric encryption
-for simplicity. We use the Python library keyczar for doing this.
+セキュリティの実装については、実用的な実装・制限について、透明性のある議論を通じて、ユーザの関心をより高めるとともに、品質向上を図りたいと考えています。実装をシンプルにするため、AES-256 による共通鍵暗号方式を採っており、実装には Python ライブラリ ``keyczar`` を使用しております。
 
-We have made a trade-off that the |st2| admin is allowed to decrypt the secrets in the key-value
-store. This made our implementation simpler. We are looking into how to let users pass their own
-keys for encryption every time they want to consume a secret from the key-value store. This
-requires more UX thought and also moves the responsibility of storing keys to the users. Your
-ideas are welcome here.
+シンプルな実装にしたために、管理者に暗号化するための唯一の鍵を持たせるという制約を作ってしまっています。これに対して我々は、ユーザが独自の鍵を利用してデータを暗号化できるようにする方法を検討しています。これには UX や安全性について注意深く検討する必要があると考えています。これについて、ユーザの皆さんの忌憚のないご意見をお待ちしています。
 
-Please note that the global encryption key means that users with direct access to the database
-will only see encrypted secrets in the database. Still, the onus is on the |st2| admin to restrict
-access to the database via network daemons only and not allow physical access to the box (or run
-databases on different boxes to st2). Note that several layers of security need to be in place,
-beyond the scope of this document. While we can help people with deployment questions on the
-StackStorm Slack community, please follow your own best security practices guide.
+最後に、暗号化キーによって例えデータベースを直接読まれたとしても、そこには暗号化したデータしか存在しません。しかし |st2| 管理者には、直接データベースへのアクセスを制限し、ネットワークデーモンのみアクセスを許可するといったセキュリティ上の対策を施す責任があります。セキュリティ対策についてはそれだけではない多角的な対策を施す必要があります（ただ、本ドキュメントの主旨ではないため割愛します）。もし |st2| のデプロイについて Slack チャンネルでご質問いただければお助けできることがあると思いますが、皆さんにとってベストな方法で運用してみてください。
