@@ -1,40 +1,31 @@
-Datastore
+データストア
 ===============================
 
-The goal of the datastore service is to allow users to store common parameters and their values
-within |st2| for reuse in the definition of sensors, actions, and rules. The datastore service
-stores the data as a key-value pair. They can be get/set using the |st2| CLI or the |st2|
-Python client. 
+データストアサービス (以下、データストア) の目的は、ユーザが |st2| ノードの共通パラメータや、センサ、アクション、ルールが参照する値を設定できるようにすることです。データストアに登録するデータは key-value 型で、ユーザは |st2| の CLI や Python クライアントから登録/取得できます。
 
-From the sensor and action plugins, since they are implemented in Python, the key-value pairs are
-accessed from the |st2| Python client. For rule definitions in YAML/JSON, the key-value pairs are
-referenced with a specific string substitution syntax and the references are resolved on rule
-evaluation.
+センサとアクションのプラグインは、Python クライアントから key-value ペアにアクセスします。YAML/JSON 形式で記述されたのルールの場合は、それぞれのデータ形式に従って解析した上でデータを評価します。
 
-Key-Value pairs can also have a TTL associated with them, for automatic expiry. 
+自動化の有効期限を設定する目的などで、データストアに登録する key-value ペアの値に TTL を設定することもできます。
 
 .. note::
 
-   Currently only string values are supported. This was done intentionally, to keep the feature
-   simple and fully compatible with existing API and CLI commands.
+   現在はデータストアに登録できる値は文字列しかサポートしていませんが、これは機能をシンプルに保ち既存の API, CLI との互換性を保つ為のものです。
 
-   If you want to store a non-string value, you can store a JSON-serialized version, and then
-   de-serialize it in your action/sensor code, or using the ``from_json_string``
-   Jinja filter. See the :doc:`/reference/jinja` documentation for more details.
+   もし文字列以外の構造化したデータをデータストアに登録したい場合には、JSON をシリアライズして登録することもできます。その場合、アクションやセンサのコード内で、JSON データに戻す処理を実装するか、Jinja フィルタ ``from_json_string`` を使用する必要があります。詳しくは :doc:`/reference/jinja` を参照してください。
 
-   This may change in future if there is sufficient interest.
+   なお、これらの機能は将来変更される可能性があります。
 
-Storing and Retrieving Key-Value Pairs via CLI
-----------------------------------------------
+CLI による Key-Value ペアの登録と取得方法
+-----------------------------------------
 
-Set the value of a key-value pair:
+key-value ペアの値を登録方法
 
 .. code-block:: bash
 
     st2 key set os_keystone_endpoint http://localhost:5000/v2.0
     st2 key set aws_cfn_endpoint https://cloudformation.us-west-1.amazonaws.com
 
-Get individual key-value pair or list all:
+登録済みの key-value ペアの値の一覧と key 毎に値を取得する方法
 
 .. code-block:: bash
 
@@ -48,23 +39,22 @@ Get individual key-value pair or list all:
     # Get value for key "os_keystone_endpoint" in json format
     st2 key get os_keystone_endpoint -j
 
-Update an existing key-value pair:
+登録済みの key-value ペアの値を更新する方法
 
 .. code-block:: bash
 
     st2 key set os_keystone_endpoint http://localhost:5000/v3
 
-Delete an existing key-value pair:
+登録済みの key-value ペアの値を削除する方法
 
 .. code-block:: bash
 
     st2 key delete os_keystone_endpoint
 
-Loading Key-Value Pairs from a File
------------------------------------
+ファイルから key-value ペアを読み込む方法
+-----------------------------------------
 
-Load a list of key-value pairs from a JSON file. The following is a JSON example using the same
-keys from the examples above:
+上記の例と同じ key-value ペアを指定した JSON ファイルを作成します。
 
 .. code-block:: json
 
@@ -79,14 +69,13 @@ keys from the examples above:
         }
     ]
 
-Load this file using this command:
+以下のコマンドで、上記ファイルで指定した key-value ペアのデータをデータストアに読み込ませます。
 
 .. code-block:: bash
 
     st2 key load mydata.json
 
-The load command can also accept a YAML file. The following example is YAML for the same
-key-value pairs as the JSON file above:
+YAML 形式のデータも同様に読み込ませることができます。以下は、先ほどと等価なデータを YAML 形式で記述したものです。
 
 .. code-block:: yaml
 
@@ -96,16 +85,15 @@ key-value pairs as the JSON file above:
     - name: aws_cfn_endpoint
       value: https://cloudformation.us-west-1.amazonaws.com
 
-Load this file using this command:
+以下のコマンドで読み込ませられます。
 
 .. code-block:: bash
 
     st2 key load mydata.yaml
 
-The load command also allows you to directly load the output of the ``st2 key list -j`` command.
-If you have more than 50 key-value pairs, use ``st2 key list -n -1 -j`` to export all keys. This
-is useful if you want to migrate datastore items from a different cluster or if you want to
-version control the datastore items and load them from version controlled files:
+``st2 key load`` コマンドは ``st2 key list -j`` コマンドの出力から直接データをロードさせることもできます。
+もし大量の key-value ペアが登録されている場合 ``st2 key list -n -1 -j`` によって全てのキーをエクスポートできます。
+このコマンドは異なるクラスタからデータを移す場合や、データストアの登録値をバーション管理するためにファイルに変換（またはその逆の操作を）するのに便利です。
 
 .. code-block:: bash
 
@@ -118,13 +106,9 @@ version control the datastore items and load them from version controlled files:
     st2 key load mydata.yaml
 
 
-By default, all values for keys in the file must be strings. However, it is also
-possible to set the value to any arbitrary data type supported by JSON/YAML
-(hash, array, int, boolean, etc) in the file and have StackStorm convert it to JSON before
-loading it into the datastore. To accomplish this, you need to explicity pass the
-``-c/--convert`` flag: ``st2 key load -c mydata.json``
+デフォルトでは、全ての key に対応する value は文字列でないといけませんが、JSON/YAML でサポートされている任意のデータ構造 (hash, array, int, boolean, etc) の value を設定できます。こうしたデータ構造を持ったファイルを ``st2 key load`` コマンドで読み込ませる場合 ``-c/--convert`` フラグを指定することで StackStorm はこれらの値をデータストアに登録する前に JSON 形式に変換します。
 
-Loading non-string content via JSON:
+以下の構造化したデータを持つファイルをデータストアに読み込ませます。
 
 .. code-block:: json
 
@@ -151,7 +135,7 @@ Loading non-string content via JSON:
         }
     ]
 
-Load this file using this command (values will be converted into JSON strings):
+``-c/--convert`` オプションを指定して、このファイルをデータストアに読み込ませます (非文字列の値はそれぞれシリアライズした文字列に変換されます)
 
 .. code-block:: bash
 
@@ -172,7 +156,7 @@ Load this file using this command (values will be converted into JSON strings):
     |               | "tag": 123}           |        |        |      |     |
     +---------------+-----------------------+--------+--------+------+-----+
 
-Loading non-string content via YAML:
+同様に YAML 形式でも指定できます。
     
 .. code-block:: yaml
 
@@ -188,7 +172,7 @@ Loading non-string content via YAML:
           tag: 123
           note: General purpose traffic
 
-Load this file using this command (values will be converted into JSON strings):
+JSON 形式の場合と同様に、以下のコマンドでロードされます。構造化されたデータはシリアライズした JSON の文字列に変換されます。
 
 .. code-block:: bash
 
@@ -211,54 +195,42 @@ Load this file using this command (values will be converted into JSON strings):
     
 .. _datastore-scopes-in-key-value-store:
 
-Scoping Datastore Items
------------------------
+データのスコープ設定
+--------------------
 
-By default, all items in the key-value store are stored in the ``st2kv.system`` scope. This means
-every user has access to these variables. Use the Jinja expression ``{{st2kv.system.key_name}}``
-to refer to these variables in actions or workflows. Prior to v2.0.1, the scope was called
-``system`` and therefore the Jinja expression was ``{{system.key_name}}``. As of v2.2, this is no
-longer supported.
+デフォルトでは |st2| の CLI/API から登録される key-value ペアのデータは全て ``st2kv.system`` のスコープに登録されます。これは、登録されるデータは全てのユーザから等しくアクセスできることを意味します。こうした値は Jinja の変数 ``{{st2kv.system.key_name}}`` によってアクションやワークフローからも参照できます。v2.0.1 以前では、データは ``system`` スコープに登録され、Jinja からは ``{{system.key_name}}`` から参照できますが、このスコープは v2.2 以降ではサポートされていません。
 
-Variables can be scoped to a specific user. With authentication enabled, you can now control who
-can read or write into those variables. For example, to set the variable ``date_cmd`` for the
-currently authenticated user, use:
+データを特定のユーザのスコープで登録することもできます。ユーザ認証機能を有効化させることで、登録した変数を読み書きできるユーザを限定することができます（こうした変数をユーザ変数と定義します）。現在ログインしているユーザでユーザ変数 ``date_cmd`` を作成するには次のようにします。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date -u" --scope=user
 
-The name of the user is determined by the ``X-Auth-Token`` or ``St2-Api-Key`` header passed with
-the API call. From the API call authentication credentials, |st2| will determine the user, and
-assign this variable to that particular user.
+ユーザ名は、認証 API によって発行された ``X-Auth-Token`` ヘッダで渡されるアクセストークン (または ``St2-Api-Key`` ヘッダで渡される API キー) によって識別され、当該ユーザのスコープに key-value ペアのデータが登録されます。
 
-To retrieve the key, use:
+登録した値を取得するには以下のようにします。
 
 .. code-block:: bash
 
     st2 key get date_cmd --scope=user
 
-If you want a variable ``date_cmd`` as a system variable, you can use:
+システム変数として ``date_cmd`` を設定したい場合には、以下のようにします。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date +%s" --scope=system
 
-or simply:
+以下のコマンドもこれと等価です。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date +%s"
 
-This variable won't clash with user variables with the same name. Also, you can refer to user
-variables in actions or workflows. The Jinja syntax to do so is ``{{st2kv.user.date_cmd}}``. 
+システム変数とユーザ変数のスコープは別なので、同名のユーザ変数が定義されていたとしてもユーザ変数の値は上書きされません。ユーザ変数はアクションやワークフローからも参照できます。Jinja テンプレートから参照する場合には ``{{st2kv.user.date_cmd}}`` のように記述します。
 
-Note that the notion of ``st2kv.user`` is available only when actions or workflows are run
-manually. The notion of ``st2kv.user`` is non-existent when actions or workflows are kicked off
-via rules. So the use of user scoped variables is limited to manual execution of actions or
-workflows.
+ただし ``st2kv.user`` はユーザが手動でアクションやワークフローを実行した場合のみ設定されます。ルールによってアクションやワークフローが実行された場合 ``st2kv.user`` は設定されませんのでご注意ください。
 
-Scope can be set in a JSON/YAML key file by adding the ``scope`` property:
+JSON/YAML 形式のファイルから登録する際 ``scope`` プロパティを設定することでユーザ変数として登録できます。
 
 JSON
 
@@ -283,28 +255,21 @@ YAML
     
 .. _datastore-ttl:
 
-Setting a Key-Value Pair TTL
-----------------------------
+登録データの TTL
+----------------
 
-By default, items do not have any TTL (Time To Live). They will remain in the datastore until
-manually deleted. You can set a TTL with key-value pairs, so they will be automatically deleted on
-expiry of the TTL.
+デフォルトでは、データストアに登録するデータに TTL (Time To Live) は設定されません。登録されたデータはユーザによって削除されるまで残ります。これに対して、登録データが一定時間経過後に自動的に削除されるようにするため、登録データの生存期間 (TTL) を設定することができます。
 
-The TTL is set in seconds. To set a key-value pair for the next hour, use this:
+TTL として設定できる単位は「秒」です。以下では１時間後に削除される key-value ペアを登録します。
 
 .. code-block:: bash
 
     st2 key set date_cmd "date +%s" --ttl=3600
 
-Use-cases for setting a TTL include limiting auto-remediation workflows from running too
-frequently. For example, you could set a value with a TTL when a workflow is triggered. If the
-workflow is triggered again, it could check if the value is still set, and if so, bypass running
-the remediation action.
+TTL のユースケースの一つとして、自動復旧 (auto-remediation) のワークフローが頻繁に実行されるのを防止する使い方があります。例えば、ワークフローが実行された際に TTL が設定された変数を登録し、TTL が切れる前に２回目のワークフローが実行された際に、当該アクションの実行を回避するといった使い方ができます。
+また、一定時間内に実行されたの回数を記録するといった使い方もできます。
 
-Some users keep a count of executions in the key-value store to set a maximum number of executions
-in a time period.
-
-TTL can be set in a JSON/YAML key file by adding the ``ttl`` property with an integer value:
+JSON/YAML 形式ファイルから値を登録する場合 ``ttl`` プロパティから値を設定できます。
 
 JSON
 
@@ -327,12 +292,10 @@ YAML
       value: date -u
       ttl: 3600
 
-Storing and Retrieving via Python Client
-----------------------------------------
+Python Client から値を設定・取得
+--------------------------------
 
-Create new key-value pairs. The |st2| API endpoint is set either via the Client init (base\_url)
-or from the environment variable (ST2\_BASE\_URL). The default ports for the API servers are
-assumed:
+以下では新規 key-value ペアを作成しています。Client オブジェクト生成時に |st2| の API エンドポイントの URL を引数 ``base_url`` (もしくは環境変数 ``ST2_BASE_URL``) に指定します。
 
 .. code-block:: python
 
@@ -341,7 +304,7 @@ assumed:
     >>> client = Client(base_url='http://localhost')
     >>> client.keys.update(KeyValuePair(name='os_keystone_endpoint', value='http://localhost:5000/v2.0'))
 
-Get individual key-value pair or list all:
+登録済みの key-value ペアの値の一覧と key 毎に値を取得します。
 
 .. code-block:: python
 
@@ -350,7 +313,7 @@ Get individual key-value pair or list all:
     >>> os_keystone_endpoint.value
     u'http://localhost:5000/v2.0'
 
-Update an existing key-value pair:
+登録済みの key-value ペアを更新します。
 
 .. code-block:: python
 
@@ -358,20 +321,20 @@ Update an existing key-value pair:
     >>> os_keystone_endpoint.value = 'http://localhost:5000/v3'
     >>> client.keys.update(os_keystone_endpoint)
 
-Delete an existing key-value pair:
+登録済みの key-value ペアを削除します。
 
 .. code-block:: python
 
     >>> os_keystone_endpoint = client.keys.get_by_name(name='os_keystone_endpoint')
     >>> client.keys.delete(os_keystone_endpoint)
 
-Create an encrypted key-value pair:
+暗号化した key-value ペアを作成します。
 
 .. code-block:: python
 
     >>> client.keys.update(KeyValuePair(name='os_keystone_password', value='$uper$ecret!', secret=True))
 
-Get and decrypt an encrypted key-value pair:
+暗号化された key-value ペアを取得して復号化します。
 
 .. code-block:: python
 
@@ -380,7 +343,7 @@ Get and decrypt an encrypted key-value pair:
     u'$uper$ecret!'
 
 
-Get all key-value pairs and decrypt any that are encrypted:
+全ての key-value ペアを取得し、それらを復号化します。
 
 .. code-block:: python
 
@@ -388,7 +351,7 @@ Get all key-value pairs and decrypt any that are encrypted:
     >>> # or
     >>> keys = client.keys.query(decrypt=True)
 
-Update an existing encrypted key-value pair:
+登録済みの暗号化された key-value ペアを更新します。
 
 .. code-block:: python
 
@@ -400,7 +363,7 @@ Update an existing encrypted key-value pair:
     >>> client.keys.get_by_name(name='os_keystone_password', decrypt=True)
     <KeyValuePair name=os_keystone_password,value=New$ecret!>
 
-Set the TTL when creating a key-value pair:
+TTL を設定した key-value ペアを作成します。
 
 .. code-block:: python
 
@@ -410,15 +373,12 @@ Set the TTL when creating a key-value pair:
     >>> client.keys.update(KeyValuePair(name='os_keystone_endpoint', value='http://localhost:5000/v2.0', ttl=600))
 
 
-Referencing Key-Value Pairs in Rule Definitions
+ルール定義ファイルから key-value ペアを参照する
 -----------------------------------------------
 
-Key-value pairs are referenced via specific string substitution syntax in rules. In general, the
-variable for substitution is enclosed with double brackets (i.e. ``{{var1}}``). To refer to a
-key-value pair, prefix the name with "st2kv.system", e.g. ``{{st2kv.system.os_keystone_endpoint}}``.
+key-value ペアはルール定義ファイルから置換構文を用いて参照できます。基本的にルール定義ファイルの中から変数を参照する場合、中括弧２つで囲んだ形 (例: ``{{var1}}``) で指定した変数に置換されます。登録済みの key-value ペアにアクセスするには ``st2kv.system`` の接頭辞をつけて ``{{st2kv.system.os_keystone_endpoint}}`` と記述します。
 
-An example rule is provided below. Please refer to the :doc:`Rules </rules>` documentation for
-rule-related syntax.
+以下は key-value ペアの参照を含むルール定義ファイルの例です。ルールに関する詳細は `Rules </rules>` を参照ください。
 
 .. code-block:: json
 
@@ -438,26 +398,27 @@ rule-related syntax.
 
 .. _admin-setup-for-encrypted-datastore:
 
-Securing Secrets (admin only)
------------------------------
+登録データの暗号化設定 (管理者のみ)
+-----------------------------------
 
-The key-value store allows users to store encrypted values (secrets). Symmetric encryption
-using AES-256 is used to encrypt secrets. The |st2| administrator is responsible for generating the
-symmetric key used for encryption/decryption. Note that the |st2| operator and administrator
-(or anyone else who has access to the key) can decrypt the encrypted values.
+セキュリティ上の目的で登録データを暗号化させることができます。暗号化は AES-256 による共通鍵暗号方式によって行います。共通鍵は管理者が作成し、これにアクセスできるユーザのみデータを暗号化して登録できます。
 
-To generate a symmetric crypto key, please run:
+共通鍵の生成は以下のようにして行います。
 
 .. code-block:: bash
 
     sudo mkdir -p /etc/st2/keys/
     sudo st2-generate-symmetric-crypto-key --key-path /etc/st2/keys/datastore_key.json
 
-We recommend that the key is placed in a private location such as ``/etc/st2/keys/`` and
-permissions are set such that only the |st2| API process owner (usually ``st2``)
-can read the file, and only root can write to it.
+鍵の置き場所 (ディレクトリ) と権限は、以下のとおり設定することを推奨します。
 
-To make sure only ``st2`` and root can access the file on the box, run:
++-------------+--------------------------------------------+
+| 設置場所    | /etc/st2/keys                              |
++-------------+--------------------------------------------+
+| 権限(Read)  | st2 api のプロセスオーナー (主に ``st2``)  |
++-------------+--------------------------------------------+
+| 権限(Write) | root                                       |
++-------------+--------------------------------------------+
 
 .. code-block:: bash
 
@@ -467,70 +428,56 @@ To make sure only ``st2`` and root can access the file on the box, run:
     sudo chmod o-r /etc/st2/keys/                           # Revoke read access for others
     sudo chmod o-r /etc/st2/keys/datastore_key.json         # Revoke read access for others
 
-Once the key is generated, |st2| needs to be made aware of the key. To do this, edit the st2
-configuration file (``/etc/st2/st2.conf``) and add the following lines:
+鍵を生成したら、それを |st2| に認識させる必要があります。これを行うには |st2| の設定ファイル ``/etc/st2/st2.conf`` に以下の業を追加します。
 
 .. code-block:: ini
 
     [keyvalue]
     encryption_key_path = /etc/st2/keys/datastore_key.json
 
-Once the config file changes are made, restart |st2|:
+設定ファイルの修正を反映させるために、以下のコマンドで |st2| を再起動させます。
 
 .. code-block:: bash
 
   sudo st2ctl restart
 
-Validate you are able to set an encrypted key-value in the datastore:
+以下のコマンドで、暗号化した key-value ペアのデータをデータストアに登録できるか確認できます。
 
 .. code-block:: bash
 
   st2 key set test_key test_value --encrypt
 
-If you see errors like ``"MESSAGE: Crypto key not found"``, something has gone wrong with setting
-up the keys.
+もし ``MESSAGE: Crypto key not found`` といったエラーが表示された場合、共通鍵の設定に誤りがあります。
 
 .. _datastore-storing-secrets-in-key-value-store:
 
-Storing Secrets
----------------
+暗号化データの保存
+------------------
 
-Please note that if an admin has not setup an encryption key, you will not be allowed to save
-secrets in the key-value store. Contact your |st2| admin to setup encryption keys as per the
-section above.
+暗号化データの登録には鍵の登録が必須なため、もし |st2| にデータ暗号化のための鍵の登録が行われていない場合は、管理者に先述の :ref:`登録データの暗号化設定<admin-setup-for-encrypted-datastore>` に従って設定してください。
 
-To save a secret in the key-value store:
+暗号化した key-value ペアの登録は以下のようにして行います。
 
 .. code-block:: bash
 
     st2 key set api_token SECRET_TOKEN --encrypt
 
-By default, getting a key tagged as secret (via ``--encrypt``) will always return encrypted values
-only. To get plain text, please run the command with the ``--decrypt`` flag:
+このように ``--encrypt`` フラグを付けて登録されたデータを取得すると、暗号化された値が返されます。暗号化される前のデータを取得するには、データ取得コマンドに ``--decrypt`` フラグを付けます。
 
 .. code-block:: bash
 
     st2 key get api_token --decrypt
 
 .. note::
+    ``--decrypt`` フラグによるデータの復号化は、データを登録したユーザに加えて、管理者も全ての登録済みデータに対して復号化できる点に留意してください。
 
-    Keep in mind that ``--decrypt`` flag can either be used by an administrator (administrator is
-    able to decrypt every value) and by the user who set that value in case of the user-scoped
-    datastore items (i.e. if ``--scope=user`` flag was passed when originally setting the value).
-
-If you are using system scoped variables (``st2kv.system``) to store secrets, you can decrypt them
-and use as parameter values in rules or actions. This is supported via Jinja filter ``decrypt_kv``
-(read more about :ref:`Jinja filters<applying-filters-with-jinja>`). For example,
-to pass a decrypted password as a parameter, use:
+システムワイドなスコープ ``st2kv.system`` で登録した場合、以下のように ``decript_kv`` という :ref:`Jinja フィルター<applying-filters-with-jinja>` を利用することで、ルールやアクション定義ファイルからこれらにアクセスすることができます。
 
 .. code-block:: YAML
 
     aws_key: "{{st2kv.system.aws_key | decrypt_kv}}"
 
-Decrypting user scoped variables is currently unsupported.
-
-Secret keys can be loaded from a JSON/YAML key file by adding the ``secret`` property with
-a boolean value.
+JSON/YAML 形式ファイルからデータを読み込ませる際に暗号化するには ``secret`` フラグを true に設定することでできます。
 
 JSON
 
@@ -553,23 +500,11 @@ YAML
       value: SECRET_TOKEN
       secret: true
 
-Security notes
---------------
+セキュリティノート
+------------------
 
-We wish to discuss security details and be transparent about the implementation and limitations
-of the security practices to attract more eyes to it and therefore build better quality into
-security implementations. For the key-value store, we have settled on AES-256 symmetric encryption
-for simplicity. We use the Python library keyczar for doing this.
+セキュリティの実装については、実用的な実装・制限について、透明性のある議論を通じて、ユーザの関心をより高めるとともに、品質向上を図りたいと考えています。実装をシンプルにするため、AES-256 による共通鍵暗号方式を採っており、実装には Python ライブラリ ``keyczar`` を使用しております。
 
-We have made a trade-off that the |st2| admin is allowed to decrypt the secrets in the key-value
-store. This made our implementation simpler. We are looking into how to let users pass their own
-keys for encryption every time they want to consume a secret from the key-value store. This
-requires more UX thought and also moves the responsibility of storing keys to the users. Your
-ideas are welcome here.
+シンプルな実装にしたために、管理者に暗号化するための唯一の鍵を持たせるという制約を作ってしまっています。これに対して我々は、ユーザが独自の鍵を利用してデータを暗号化できるようにする方法を検討しています。これには UX や安全性について注意深く検討する必要があると考えています。これについて、ユーザの皆さんの忌憚のないご意見をお待ちしています。
 
-Please note that the global encryption key means that users with direct access to the database
-will only see encrypted secrets in the database. Still, the onus is on the |st2| admin to restrict
-access to the database via network daemons only and not allow physical access to the box (or run
-databases on different boxes to st2). Note that several layers of security need to be in place,
-beyond the scope of this document. While we can help people with deployment questions on the
-StackStorm Slack community, please follow your own best security practices guide.
+最後に、暗号化キーによって例えデータベースを直接読まれたとしても、そこには暗号化したデータしか存在しません。しかし |st2| 管理者には、直接データベースへのアクセスを制限し、ネットワークデーモンのみアクセスを許可するといったセキュリティ上の対策を施す責任があります。セキュリティ対策についてはそれだけではない多角的な対策を施す必要があります（ただ、本ドキュメントの主旨ではないため割愛します）。もし |st2| のデプロイについて Slack チャンネルでご質問いただければお助けできることがあると思いますが、皆さんにとってベストな方法で運用してみてください。
