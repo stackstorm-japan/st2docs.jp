@@ -207,14 +207,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../datastore.html">データストア</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#cli-key-value">CLI による Key-Value ペアの登録と取得方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#cli">CLI からの数値、オブジェクト、配列値の登録・取得</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#key-value">ファイルから key-value ペアを読み込む方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#datastore-scopes-in-key-value-store">データのスコープ設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#ttl">登録データの TTL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#python-client">Python Client から値を設定・取得</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datastore.html#id3">ルール定義ファイルから key-value ペアを参照する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#referencing-key-value-pairs-in-action-definitions">アクション定義ファイルから key-value ペアを取得する方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#id4">ルール定義ファイルから key-value ペアを参照する</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#admin-setup-for-encrypted-datastore">登録データの暗号化設定 (管理者のみ)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../datastore.html#datastore-storing-secrets-in-key-value-store">暗号化データの保存</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../datastore.html#id6">セキュリティノート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datastore.html#id7">セキュリティノート</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../chatops/index.html">ChatOps</a><ul>
@@ -252,6 +254,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../rbac.html#defining-roles-and-assignments">Defining Roles and Assignments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rbac.html#applying-rbac-definitions">Applying RBAC Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rbac.html#automatically-granting-roles-based-on-ldap-group-membership">Automatically Granting Roles Based on LDAP Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rbac.html#restricting-users-to-only-view-resources-they-own-or-created">Restricting Users to Only View Resources They Own or Created</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../rbac.html#using-rbac-example">Using RBAC Example</a></li>
 </ul>
 </li>
@@ -389,6 +392,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap.html#eta-june-2018">2.8 - ETA June 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap.html#eta-august-2018">2.9 - ETA August 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap.html#eta-october-2018">3.0 - ETA October 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../roadmap.html#backlog">Backlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../roadmap.html#release-history">Release History</a></li>
 </ul>
 </li>
@@ -480,10 +487,19 @@ retrieving the data.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pass the result of this expression to the action st2.kv.set</span>
 <span class="o">{{</span> <span class="o">{</span><span class="s1">&#39;complex&#39;</span>: <span class="s1">&#39;structure&#39;</span>, <span class="s1">&#39;foo&#39;</span>: <span class="o">[</span><span class="s1">&#39;x&#39;</span>, True<span class="o">]}</span> <span class="p">|</span> to_json_string <span class="o">}}</span>
 
+<span class="c1"># Or set it on the CLI</span>
+st2 key <span class="nb">set</span> foo <span class="s1">&#39;{&quot;complex&quot;: &quot;structure&quot;, &quot;foo&quot;: [&quot;x&quot;, True]}&#39;</span>
+
 <span class="c1"># Read the data back in using the st2kv and from_json_string filters</span>
 <span class="o">{{</span> st2kv.system.foo <span class="p">|</span> from_json_string <span class="o">}}</span>
 </pre></div>
 </div>
+<p>When accessing <code class="docutils literal notranslate"><span class="pre">numbers</span></code>, <code class="docutils literal notranslate"><span class="pre">integers</span></code>, <code class="docutils literal notranslate"><span class="pre">objects</span></code> and <code class="docutils literal notranslate"><span class="pre">arrays</span></code> in an Action
+Definition file, utilizing the <code class="docutils literal notranslate"><span class="pre">from_json_string</span></code> filter is NOT necessary. For
+more information on accessing key-value pairs from Actions see:
+<a class="reference internal" href="../datastore.html#referencing-key-value-pairs-in-action-definitions"><span class="std std-ref">Referencing Key-Value Pairs in Action Definitions</span></a></p>
+<p>Accessing <code class="docutils literal notranslate"><span class="pre">numbers</span></code>, <code class="docutils literal notranslate"><span class="pre">integers</span></code>, <code class="docutils literal notranslate"><span class="pre">objects</span></code> and <code class="docutils literal notranslate"><span class="pre">arrays</span></code> in other places,
+such as Mistral workflows, utilizing <code class="docutils literal notranslate"><span class="pre">from_json_string</span></code> is still necessary.</p>
 </div>
 <div class="section" id="jinja-jinja-filters">
 <span id="id2"></span><h2>Applying Filters with Jinja<a class="headerlink" href="#jinja-jinja-filters" title="Permalink to this headline">¶</a></h2>

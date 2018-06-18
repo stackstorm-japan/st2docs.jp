@@ -206,14 +206,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastore.html">データストア</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#cli-key-value">CLI による Key-Value ペアの登録と取得方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#cli">CLI からの数値、オブジェクト、配列値の登録・取得</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#key-value">ファイルから key-value ペアを読み込む方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#datastore-scopes-in-key-value-store">データのスコープ設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#ttl">登録データの TTL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#python-client">Python Client から値を設定・取得</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastore.html#id3">ルール定義ファイルから key-value ペアを参照する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#referencing-key-value-pairs-in-action-definitions">アクション定義ファイルから key-value ペアを取得する方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#id4">ルール定義ファイルから key-value ペアを参照する</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#admin-setup-for-encrypted-datastore">登録データの暗号化設定 (管理者のみ)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#datastore-storing-secrets-in-key-value-store">暗号化データの保存</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastore.html#id6">セキュリティノート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#id7">セキュリティノート</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="chatops/index.html">ChatOps</a><ul>
@@ -251,6 +253,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#defining-roles-and-assignments">Defining Roles and Assignments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#applying-rbac-definitions">Applying RBAC Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#automatically-granting-roles-based-on-ldap-group-membership">Automatically Granting Roles Based on LDAP Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restricting-users-to-only-view-resources-they-own-or-created">Restricting Users to Only View Resources They Own or Created</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-rbac-example">Using RBAC Example</a></li>
 </ul>
 </li>
@@ -388,6 +391,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#eta-june-2018">2.8 - ETA June 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#eta-august-2018">2.9 - ETA August 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#eta-october-2018">3.0 - ETA October 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="roadmap.html#backlog">Backlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roadmap.html#release-history">Release History</a></li>
 </ul>
 </li>
@@ -1374,6 +1381,128 @@ force the user to re-authenticate.</p>
 removed from LDAP they will still be able to use StackStorm if they have a valid auth token, until that
 auth token expires. If you want user access to be revoked as soon as they are removed from LDAP,
 you can manually purge active auth tokens for a particular user from the user database.</p>
+</div>
+</div>
+<div class="section" id="restricting-users-to-only-view-resources-they-own-or-created">
+<h2>Restricting Users to Only View Resources They Own or Created<a class="headerlink" href="#restricting-users-to-only-view-resources-they-own-or-created" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>This functionality is disabled by default and is only available in StackStorm v2.7.0 and above.</p>
+<p>To enable it, you need to set the <code class="docutils literal notranslate"><span class="pre">rbac.permission_isolation</span></code> config option in
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> and restart the API service (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">restart-component</span>
+<span class="pre">st2api</span></code>).</p>
+<p class="last">Currently it is only supported by the <code class="docutils literal notranslate"><span class="pre">/v1/executions</span></code> and <code class="docutils literal notranslate"><span class="pre">/v1/rules</span></code> API endpoints.</p>
+</div>
+<p>By default, a user needs <code class="docutils literal notranslate"><span class="pre">RESOURCE_LIST</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">EXECUTION_LIST</span></code>) permission type to be able to
+use “get all” API endpoints and view all the resources of a specific type.</p>
+<p>The same applies to viewing a single resource (using “get one” API endpoint) - the user needs
+<code class="docutils literal notranslate"><span class="pre">RESOURCE_VIEW</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">RULE_VIEW</span></code>) permission on a specific resource (or on a parent pack).</p>
+<p>When this feature is enabled, non-admin users can only view resources which belong to or are owned by
+them (resource <code class="docutils literal notranslate"><span class="pre">context.user</span></code> matches the currently authenticated user) when using “get all” and
+“get one” API endpoints (that is in addition to needing <code class="docutils literal notranslate"><span class="pre">RESOURCE_LIST</span></code>/<code class="docutils literal notranslate"><span class="pre">RESOURCE_VIEW</span></code>
+permission).</p>
+<p>Examples with this feature enabled:</p>
+<div class="section" id="admin-user-can-view-all-the-resources">
+<h3>1. Admin user (can view all the resources)<a class="headerlink" href="#admin-user-can-view-all-the-resources" title="Permalink to this headline">¶</a></h3>
+<p>Authenticated as a user with admin role.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">curl</span> <span class="s2">&quot;https://localhost/api/v1/rules&quot;</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule1&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;admin&quot;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule2&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user2&quot;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule3&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user2&quot;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule4&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user3&quot;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule5&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user3&quot;</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-user2-can-only-view-their-own-resources">
+<h3>2. User “user2” can only view their own resources<a class="headerlink" href="#user-user2-can-only-view-their-own-resources" title="Permalink to this headline">¶</a></h3>
+<p>Authenticated as “user2”.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">curl</span> <span class="s2">&quot;https://localhost/api/v1/rules&quot;</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule2&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user2&quot;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule3&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule3&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user2&quot;</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-user3-can-only-view-their-own-resources">
+<h3>3. User “user3” can only view their own resources<a class="headerlink" href="#user-user3-can-only-view-their-own-resources" title="Permalink to this headline">¶</a></h3>
+<p>Authenticated as “user3”.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">curl</span> <span class="s2">&quot;https://localhost/api/v1/rules&quot;</span>
+
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule4&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user3&quot;</span>
+        <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rule5&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ref&quot;</span><span class="o">:</span> <span class="s2">&quot;examples.rule5&quot;</span><span class="p">,</span>
+        <span class="p">...</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;user&quot;</span><span class="o">:</span> <span class="s2">&quot;user3&quot;</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="using-rbac-example">

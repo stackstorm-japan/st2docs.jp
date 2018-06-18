@@ -51,6 +51,33 @@ key-value ペアの値を登録方法
 
     st2 key delete os_keystone_endpoint
 
+
+CLI からの数値、オブジェクト、配列値の登録・取得
+------------------------------------------------
+
+ここまで、データストアに登録する key-value ペアの値は全て文字列でした。もし文字列以外のデータ型の値を登録したい場合には、JSON 形式にシリアライズして登録し、アクションやセンサ定義ファイルからデータを取得する際に復元します。アクション定義ファイルからデータを参照する方法は :ref:`後述<referencing-key-value-pairs-in-action-definitions>` します。
+
+``number`` / ``integer`` 型の値を登録するには以下のようにします。
+
+.. code-block:: bash
+
+    st2 key set retention_days 7
+
+    
+``object`` 型の値を登録するには、以下のように JSON 形式にシリアライズします。
+
+.. code-block:: bash
+
+    st2 key set complex_data '{"name": "Dave Smith", "age": 7, "is_parent": True}'
+
+    
+``array`` 型の値を登録するには、同様にに JSON 形式にシリアライズします。
+
+.. code-block:: bash
+
+    st2 key set number_list '[1, 2, 3, 4]'
+    st2 key set object_list '[{"name": "Eric Jones"}, {"name": "Bob Seger"}]'
+    
 ファイルから key-value ペアを読み込む方法
 -----------------------------------------
 
@@ -372,11 +399,98 @@ TTL を設定した key-value ペアを作成します。
     >>> client = Client(base_url='http://localhost')
     >>> client.keys.update(KeyValuePair(name='os_keystone_endpoint', value='http://localhost:5000/v2.0', ttl=600))
 
+.. _referencing-key-value-pairs-in-action-definitions:
+    
+アクション定義ファイルから key-value ペアを取得する方法
+-------------------------------------------------------
+
+key-value ペアはルール定義ファイルから置換構文を用いて参照できます。基本的にルール定義ファイルの中から変数を参照する場合、中括弧２つで囲んだ形 (例: ``{{var1}}``) で指定した変数に置換されます。登録済みの key-value ペアにアクセスするには ``st2kv.system`` の接頭辞をつけて ``{{st2kv.system.os_keystone_endpoint}}`` と記述します。
+
+以下の簡単なアクション定義ファイルの例で解説します。
+
+.. code-block:: bash
+   
+    st2 key set error_message "Remediation failure"
+
+.. code-block:: yaml
+                
+    ---
+    description: Remediates a host.
+    enabled: true
+    runner_type: mistral-v2
+    entry_point: workflows/remediate.yaml
+    name: remediate
+    pack: default
+    parameters:
+      host:
+        required: true
+        type: string
+      error_message:
+        type: string
+        default: "{{ st2kv.system.error_message }}"    
+    
+
+データストアから取得できる値のデータ型は文字列以外に以下のデータ型をサポートしています。
+
++----------+----------+-----------------------------+
+| データ型 | 値       | 入力例                      |
++----------+----------+-----------------------------+
+| integer  | 整数値   | 1, 234, 5678                |
++----------+----------+-----------------------------+
+| number   | 数値     | 12.34, 0.123                |
++----------+----------+-----------------------------+
+| array    | 配列     | ['foo', 'bar', 'baz']       |
++----------+----------+-----------------------------+
+| object   | 連想配列 | {'name': 'jhon', 'age': 10} |
++----------+----------+-----------------------------+
+
+これらの値を JSON 形式でシリアライズして登録した場合、アクション定義ファイルから取り出す場合、自動的にデータを復元（デシリアライズ）及び解析し ``st2kv.system`` パラメータから参照できるようにしています。
+
+.. code-block:: bash
+   
+    st2 key set username "stanley"
+    st2 key set -e password "$ecret1!"
+    st2 key set num_network_adapters 1
+    st2 key set vlan_config '{"vlan_100_general_use": {"tag": 100, "subnet": "10.1.1.0/24"}, "vlan_200_dmz": {"tag": 200, "subnet": "10.99.1.0/24"}}'
+    st2 key set dns_servers '["10.0.0.10", "10.0.0.11"]'
+
+.. code-block:: yaml
+                    
+    ---
+    description: Provisions a VM
+    enabled: true
+    runner_type: mistral-v2
+    entry_point: workflows/vm_provision.yaml
+    name: vm_provision
+    pack: default
+    parameters:
+      fqdn:
+        type: string
+        required: true
+      username:
+        type: string
+        default: "{{ st2kv.system.username }}"
+      password:
+        type: string
+        default: "{{ st2kv.system.password | decrypt_kv }}"
+      num_network_adapters:
+        type: integer
+        default: "{{ st2kv.system.num_network_adapters }}"
+      vlan:
+        type: string
+        required: true
+      vlan_config:
+        type: array
+        default: "{{ st2kv.system.vlan_config }}"
+      dns_servers:
+        type: object
+        default: "{{ st2kv.system.dns_servers }}"
+
 
 ルール定義ファイルから key-value ペアを参照する
 -----------------------------------------------
-
-key-value ペアはルール定義ファイルから置換構文を用いて参照できます。基本的にルール定義ファイルの中から変数を参照する場合、中括弧２つで囲んだ形 (例: ``{{var1}}``) で指定した変数に置換されます。登録済みの key-value ペアにアクセスするには ``st2kv.system`` の接頭辞をつけて ``{{st2kv.system.os_keystone_endpoint}}`` と記述します。
+Similar to Action Definitions above, one can refer to a key-value pair by prefixing
+the name with ``st2kv.system``, e.g. ``{{ st2kv.system.os_keystone_endpoint }}``.
 
 以下は key-value ペアの参照を含むルール定義ファイルの例です。ルールに関する詳細は `Rules </rules>` を参照ください。
 
@@ -391,7 +505,7 @@ key-value ペアはルール定義ファイルから置換構文を用いて参�
         "action": {
             "name": "daily_clean_up_action",
             "parameters": {
-                "os_keystone_endpoint": "{{st2kv.system.os_keystone_endpoint}}"
+                "os_keystone_endpoint": "{{ st2kv.system.os_keystone_endpoint }}"
             }
         }
     }

@@ -205,14 +205,16 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastore.html">データストア</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#cli-key-value">CLI による Key-Value ペアの登録と取得方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#cli">CLI からの数値、オブジェクト、配列値の登録・取得</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#key-value">ファイルから key-value ペアを読み込む方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#datastore-scopes-in-key-value-store">データのスコープ設定</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#ttl">登録データの TTL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#python-client">Python Client から値を設定・取得</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastore.html#id3">ルール定義ファイルから key-value ペアを参照する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#referencing-key-value-pairs-in-action-definitions">アクション定義ファイルから key-value ペアを取得する方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#id4">ルール定義ファイルから key-value ペアを参照する</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#admin-setup-for-encrypted-datastore">登録データの暗号化設定 (管理者のみ)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="datastore.html#datastore-storing-secrets-in-key-value-store">暗号化データの保存</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datastore.html#id6">セキュリティノート</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datastore.html#id7">セキュリティノート</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="chatops/index.html">ChatOps</a><ul>
@@ -250,6 +252,7 @@
 <li class="toctree-l2"><a class="reference internal" href="rbac.html#defining-roles-and-assignments">Defining Roles and Assignments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rbac.html#applying-rbac-definitions">Applying RBAC Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rbac.html#automatically-granting-roles-based-on-ldap-group-membership">Automatically Granting Roles Based on LDAP Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rbac.html#restricting-users-to-only-view-resources-they-own-or-created">Restricting Users to Only View Resources They Own or Created</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rbac.html#using-rbac-example">Using RBAC Example</a></li>
 </ul>
 </li>
@@ -387,6 +390,10 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Roadmap</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eta-june-2018">2.8 - ETA June 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eta-august-2018">2.9 - ETA August 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eta-october-2018">3.0 - ETA October 2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backlog">Backlog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#release-history">Release History</a></li>
 </ul>
 </li>
@@ -461,51 +468,83 @@
   <div class="section" id="roadmap">
 <h1>Roadmap<a class="headerlink" href="#roadmap" title="Permalink to this headline">¶</a></h1>
 <p>StackStorm is still under active development. We welcome community feedback, and encourage
-contributions. Here’s what we see as our top priorities:</p>
+contributions. Here’s our plans for the next few releases:</p>
+<div class="section" id="eta-june-2018">
+<h2>2.8 - ETA June 2018<a class="headerlink" href="#eta-june-2018" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><strong>Multi-node deployments:</strong> Provide platform support for content deployment to multiple worker
-nodes, with better integration with git/GitHub. Simplify development and deployment of
-“automation as code” at scale.</li>
-<li><strong>Multi target configurations for integration packs:</strong> For a given integration pack, define and
-manage multiple targets. This should allow the user to choose which one of a set of
-configurations to use for a given action.</li>
+<li><strong>Orchestra Beta:</strong> Public beta of new “Orchestra” workflow engine.</li>
+<li><strong>WebUI:</strong> Update look &amp; feel of Web UI, and add “Triggers” tab for troubleshooting rules.</li>
+<li><strong>Python3 Actions:</strong> Support Python 3 actions on a per-pack basis.</li>
+<li><strong>Metrics Framework:</strong> New framework for metrics collection for action results, time, etc.</li>
+</ul>
+</div>
+<div class="section" id="eta-august-2018">
+<h2>2.9 - ETA August 2018<a class="headerlink" href="#eta-august-2018" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Orchestra Second Beta:</strong> Second beta of new “Orchestra” workflow engine.</li>
+<li><strong>Action Output Structure Definition</strong>: Enable optional definition of action payload, so that it
+can be inspected and used when passing data between actions in workflows.</li>
+<li><strong>WebUI:</strong> Add st2.ask and streaming output to the web UI.</li>
+<li><strong>ChatOps:</strong> Update ChatOps components, and add support for Microsoft Teams.</li>
+<li><strong>k8s:</strong> Reference configuration for running StackStorm on k8s.</li>
+<li><strong>Ubuntu 18.04:</strong> Support Ubuntu 18.04 LTS.</li>
+<li><strong>Windows Runners:</strong> Add pywinrm-based Windows runner.</li>
+</ul>
+</div>
+<div class="section" id="eta-october-2018">
+<h2>3.0 - ETA October 2018<a class="headerlink" href="#eta-october-2018" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Orchestra GA:</strong> GA version of Orchestra.</li>
+<li><strong>WebUI:</strong> Datastore viewer/editor, and RBAC UI.</li>
+<li><strong>ChatOps:</strong> RBAC support.</li>
+<li><strong>HA:</strong> Simplify &amp; streamline running StackStorm in HA mode.</li>
+<li><strong>Workflow Designer:</strong> Updated Workflow Designer.</li>
+<li><strong>SAML:</strong> Support SAML authentication.</li>
+</ul>
+<p>This list above is subject to change, based upon customer feedback, and development progress.
+Monitor the <a class="reference external" href="https://github.com/StackStorm/st2/">master branch</a> to see how we’re progressing.</p>
+<p>See something you really like? Make sure to get involved with testing and PR feedback.</p>
+</div>
+<div class="section" id="backlog">
+<h2>Backlog<a class="headerlink" href="#backlog" title="Permalink to this headline">¶</a></h2>
+<p>Here’s some more things on our list that we haven’t scheduled yet:</p>
+<ul class="simple">
 <li><strong>History and Audit service:</strong> History view with advanced search over years worth of execution
 records, over multiple versions of continuously upgraded StackStorm.</li>
 <li><strong>At-scale refinements:</strong> Ensure event handling reliability, and event storm resilience. Complete
 support for multi-node deployment of sensor containers and rules engines for resilience and
 throughput.</li>
-<li><strong>Security hardening:</strong> Complete security audit and address issues discovered so far.</li>
-<li><strong>First class Windows support:</strong> switch to pywinrm for better license. Remote PowerShell via
-Powershell.REST.API. Windows-native ActionRunners.</li>
-<li><strong>Projects and Uber-flow:</strong> Introduce projects to group and manage rules and workflows. Handle
-versions and dependencies. “Productize” flow-rule-flow-rule chain pattern, aka “uber-flow”.
-Manage large number of automations across users and teams, on a single StackStorm deployment at
-enterprise scale.</li>
-<li><strong>Action Output Structure Definition</strong>: Enable optional definition of action payload, so that it
-can be inspected and used when passing data between actions in workflows.</li>
+<li><strong>RHEL 8.x:</strong> Support RHEL/CentOS 8.x when it is released. Drop RHEL 6.x at that time.</li>
+<li><strong>DB/Filesystem Consistency:</strong> Provide better tooling for managing consistency between database and
+filesystem consistency for rules, actions, sensors, etc.</li>
+<li><strong>Configurable Sensors:</strong> Run multiple instances of the same sensor, with different configurations.</li>
+<li><strong>Pack Dependency:</strong> Better automatic handling of pack dependencies.</li>
+<li><strong>Python 3:</strong> Complete Python 3 support. We are progressively updating code and adding support, but
+do not yet have a final date for when everything can run via Python 3.</li>
 <li><strong>RBACv2:</strong><ul>
 <li><strong>Filters</strong>: Tag and property based filters, more refined and convenient access control.</li>
-<li><strong>Permissions</strong>: Permissions on key value objects, arbitrary triggers, support for a default
-role to be assigned to new users.</li>
-<li><strong>WebUI</strong>: UI for RBAC configuration.</li>
-<li><strong>ChatOps</strong>: Allow users to authenticate with StackStorm via bot on chat. Check permissions of the
-user who triggered an action/ran a command. Introduce a special set of permission types for
-ChatOps.</li>
+<li><strong>Permissions</strong>: Permissions on key value objects, arbitrary triggers, support for a default role.</li>
 </ul>
 </li>
-<li><strong>More integration packs:</strong> push more content to the community to help work with most common and
-widely used tools. Tell us if there is a tool you love and think we should integrate with, or
-better yet write a pack!</li>
 </ul>
-<p>Is there some other feature you’re desperately missing? Submit an
-<a class="reference external" href="https://github.com/StackStorm/st2docs/issues">issue</a>!</p>
+<p>Something else you’d like to see on the backlog? Submit an
+<a class="reference external" href="https://github.com/StackStorm/st2/issues">issue</a>. Or want to see something implemented sooner?
+Submit a PR!</p>
+</div>
 <div class="section" id="release-history">
 <h2>Release History<a class="headerlink" href="#release-history" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">Done in v2.7</p>
+<ul class="simple">
+<li><strong>Action Versioning:</strong> Allow running specific action version - better management of rolling upgrades.</li>
+<li><strong>Mistral Callbacks:</strong> Refactor Mistral to support callbacks instead of polling.</li>
+<li><strong>UTF-8/Unicode:</strong> Allow UTF-8/Unicode characters in pack config files.</li>
+<li><strong>Virtual Appliance:</strong> Vagrantbox/Virtual Appliance with ST2 already installed, for quicker testing.</li>
+</ul>
 <p class="rubric">Done in v2.6</p>
 <ul class="simple">
-<li><strong>React Web UI:</strong> Rewrote st2web Web UI to use React framework</li>
-<li><strong>Streaming Output:</strong> Streaming output enabled by default</li>
-<li><strong>Pack Development:</strong> Shared <code class="docutils literal notranslate"><span class="pre">lib</span></code> directory for actions and sensors</li>
+<li><strong>React Web UI:</strong> Rewrote st2web Web UI to use React framework.</li>
+<li><strong>Streaming Output:</strong> Streaming output enabled by default.</li>
+<li><strong>Pack Development:</strong> Shared <code class="docutils literal notranslate"><span class="pre">lib</span></code> directory for actions and sensors.</li>
 <li><strong>st2client:</strong> Python 3 support for <code class="docutils literal notranslate"><span class="pre">st2client</span></code>.</li>
 </ul>
 <p class="rubric">Done in v2.5</p>
