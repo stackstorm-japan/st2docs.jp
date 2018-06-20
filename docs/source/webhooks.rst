@@ -1,29 +1,20 @@
 Webhooks
 ========
 
-Webhooks allow you to integrate external systems with |st2| using HTTP webhooks. Unlike sensors
-which use a "pull" approach, webhooks use a "push" approach. They push triggers directly to the
-|st2| API using HTTP POST requests.
+Webhook を通じて、ユーザは様々な外部システムを |st2| に統合することができます。センサのようにイベント情報をこちらから取得しに行く形態（pull 型）とは異なり、Webhook では外部システムが直接 |st2| API のエンドポイントに対して HTTP POST リクエストを送ってイベント情報を通知する形態 (push 型) になります。
 
 Sensors vs Webhooks
 -------------------
 
-Sensors integrate with external systems and services using either a polling approach (sensors
-periodically connect to an external system to retrieve data), or a passive approach, where they
-listen on some port, receiving data using whatever custom protocol you define. 
+センサが外部システムと連携する際は、センサが定期的に外部システムに対して接続し情報を取得する処理) をするか、センサがユーザ定義のポート・プロトコルでのリクエストを待つかのどちらかの方法で行います。
 
-Webhooks provide a built-in passive approach for receiving JSON or URL-encoded form data, via
-HTTP POST. This data must be "pushed" from an external system to |st2| when an interesting event
-occurs.
+Webhook は後者に大別され、JSON か URL エンコーディングされたデータを HTTP POST リクエストから受け取ります。外部システムで何からのイベントが発生した際は、当該システムが |st2| に対してデータを送ります。
 
-Sensors are the preferred integration method since they offer a more granular and tighter
-integration.
+センサを使うことで、より細かい粒度でかつ厳格なシステム連携ができます。
 
-On the other hand, webhooks come in handy when you have an existing script or software which you
-can easily modify to send a webhook to the |st2| API when an intersting event occurs.
+一方、Webhook によってより簡単にシステム連携できるようになります。例えば、すでにあるシステム連携のスクリプトがある場合、リクエストの送信先を |st2| に変えるだけで、簡単に |st2| によるイベントハンドリングを行えます。
 
-Another example where webhooks are useful is when you want to consume events from a 3rd party
-service that already offers webhook integration - e.g. GitHub.
+また GitHub など既に Webhook 機能を提供しているサードパーティ製システムと連携が容易である点でも Webhook は有用です。
 
 Authentication
 --------------
