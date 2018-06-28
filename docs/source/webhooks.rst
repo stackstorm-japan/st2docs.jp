@@ -16,40 +16,32 @@ Webhook は後者に大別され、JSON か URL エンコーディングされ�
 
 また GitHub など既に Webhook 機能を提供しているサードパーティ製システムと連携が容易である点でも Webhook は有用です。
 
-Authentication
---------------
+認証(Authentication)
+--------------------
 
-All requests to the ``/api/v1/webhooks`` endpoints need to be authenticated in the same way as other
-API requests. There are two possible authentication approaches - :ref:`API keys
-<authentication-apikeys>` and tokens. API keys are recommended for webhooks, as they do not
-expire. Tokens have a fixed expiry.
+Webhook のエンドポイント ``/api/v1/webhooks`` に対する全てのリクエストは API へのリクエストと同様、認証を経る必要があります。認証の方法は :ref:`API キー<authentication-apikeys>` とトークンの２つあります。Webhook では API キーを推奨します（トークンと違い、有効期限が無いため）。
 
-API key-based
-~~~~~~~~~~~~~
+API キーによる認証
+~~~~~~~~~~~~~~~~~~
 
-* `Header` : ``St2-Api-Key``
-* `Query parameter` : ``?st2-api-key``
+* `ヘッダ` : ``St2-Api-Key``
+* `クエリパラメータ` : ``?st2-api-key``
 
-Token-based
-~~~~~~~~~~~
+トークンによる認証
+~~~~~~~~~~~~~~~~~~
 
-* `Header` : ``X-Auth-Token``
-* `Query parameter` : ``?x-auth-token``
+* `ヘッダ` : ``X-Auth-Token``
+* `クエリパラメータ` : ``?x-auth-token``
 
 
-Both methods above support providing the authentication material as a header or query parameter.
-A header is usually used with your scripts where you can control request headers while query
-parameters are used with 3rd party services such as GitHub where you can only specify a URL.
+上記の２種類の方法ともにヘッダもしくはクエリパラメータによる認証をサポートしています。ヘッダによる認証はリクエストヘッダを自由に変更できるユーザスクリプトで主に用いられ、クエリパラメータは GitHub などの Webhook エンドポイントの URL しか渡せないようなサードパーティシステムから認証を行う際に利用できます。
 
-Request Body
-------------
+リクエストボディ
+---------------
 
-The request body or so called trigger payload can be either JSON or URL encoded form data. The
-body type is determined based on the value of the ``Content-Type`` header (``application/json``
-for JSON and ``application/x-www-form-urlencoded`` for URL encoded form data).
+トリガのペイロードとなるリクエストボディは、JSON 形式もしくは URL エンコードされたデータのどちらでも受けられます。リクエストボディのデータタイプは ``Content-Type`` ヘッダによって決まります。当該ヘッダに ``application/json`` が指定されれば JSON と解釈し ``application/x-www-form-urlencoded`` が指定されれば、URL エンコードされたデータとして処理します。
 
-All the examples below assume JSON and as such, provide ``application/json`` for the
-``Content-Type`` header value.
+以降で示す例では、JSON 形式でデータを受け取った場合（``Content-Type`` ヘッダに ``application/json`` を指定した場合）を想定しています。
 
 Registering a Webhook
 ---------------------
