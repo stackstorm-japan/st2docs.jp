@@ -43,13 +43,12 @@ API キーによる認証
 
 以降で示す例では、JSON 形式でデータを受け取った場合（``Content-Type`` ヘッダに ``application/json`` を指定した場合）を想定しています。
 
-Registering a Webhook
----------------------
+Webhook の登録
+--------------
 
-You can register a webhook in |st2| by specifying the ``core.st2.webhook`` trigger inside a rule
-definition.
+|st2| に Webhook を登録するには、ルール定義中にトリガ ``core.st2.webhook`` を指定することでできます。
 
-Here is an excerpt from a rule which registers a new webhook named ``sample``:
+以下は Webhook ``sample`` を登録するルール定義ファイルになります。
 
 .. sourcecode:: yaml
 
@@ -60,32 +59,31 @@ Here is an excerpt from a rule which registers a new webhook named ``sample``:
                 url: "sample"
     ...
 
-The ``url:`` parameter above is added as a suffix to ``/api/v1/webhooks/`` to create the URL to
-POST data to. So once you have created the rule above, you can use this webhook by POST-ing data
-to your |st2| server at ``https://{$ST2_IP}/api/v1/webhooks/sample``.
+ファイル中の ``url`` パラメータで指定した値が ``/api/v1/webhooks/`` をプレフィックスに持つ HTTP POST リクエストを受け付けるエンドポイントの URL になります。上記ルールファイルを登録することで、``https://{$ST2_IP}/api/v1/webhooks/sample`` に対する HTTP POST リクエストをハンドリングできるようになります。
 
-The request body needs to be JSON and may contain arbitrary data which you can match against in
-the rule criteria.
+リクエストボディは、JSON 形式の任意の値を受け取ることができ、ルールにおいて `criteria`` パラメータでマッチする条件を指定することもできます。
 
-Note that all trailing and leading ``/`` of the ``url`` parameter are ignored by |st2|. e.g. a
-value of ``/sample``, ``sample/``, ``/sample/`` and ``sample`` are all treated the same, i.e.
-considered identical. They all result in an effective URL of ``/api/v1/webhooks/sample``.
+なお ```url`` パラメータで指定された値の先頭と末尾の ``/`` は無視されます。なので ``/sample``, ``sample/``, ``/sample`` のいづれを指定した場合も ``sample`` として解釈され ``/api/v1/webhooks/sample`` と登録されます。
 
-POST-ing data to a custom webhook will cause a trigger with the following attributes to be
-dispatched:
+作成した Webhook に対して HTTP POST リクエストを送ると、リクエスト情報が以下の変数に設定されます。
 
-* ``trigger`` - Trigger name.
-* ``trigger.headers`` - Dictionary containing the request headers.
-* ``trigger.body`` - Dictionary containing the request body.
++-----------------+------------------------+--------------+
+| **変数名**      | **内容**               | **データ型** |
++-----------------+------------------------+--------------+
+| trigger         | トリガ名               | string       |
++-----------------+------------------------+--------------+
+| trigger.headers | HTTP ヘッダの情報      | dict         |
++-----------------+------------------------+--------------+
+| trigger.body    | リクエストボディの情報 | dict         |
++-----------------+------------------------+--------------+
 
-This example shows how to send data to a custom webhook using ``curl`` and how to match on this
-data using rule criteria:
+以下は ``curl`` からユーザ定義の Webhook に対してリクエストを送り、これをハンドリングするための ``criteria`` を設定する方法を示した例になります。
 
 .. sourcecode:: bash
 
     curl -X POST https://localhost/api/v1/webhooks/sample -H "X-Auth-Token: matoken" -H "Content-Type: application/json" --data '{"key1": "value1"}'
 
-Rule:
+ルール定義ファイル:
 
 .. sourcecode:: yaml
 
@@ -105,27 +103,26 @@ Rule:
         parameters:
     ...
 
-Using a Generic Webhook
------------------------
+Generic Webhook の使用
+----------------------
 
-By default, a special-purpose webhook with the name ``st2`` is already registered. Instead of
-using ``st2.core.webhook``, it allows you to specify any trigger that is known to |st2| (either by
-default or from custom sensors and triggers in packs), so you can use it to trigger rules that
-aren’t explicitly set up to be triggered by webhooks.
+|st2| では ``st2`` という名前の webhook (generic webhook) がデフォルトで登録されており、当該 Webhook へ POST リクエストを送ることで、ユーザは ``core.st2.webhook`` を定義しなくても |st2| に登録されている任意のトリガをディスパッチすることが出来ます。これによって、明示的に Webhook を定義していないルールを発動させることができます。
 
-The body of this request needs to be JSON and must contain the following attributes:
+generic webhook のリクエストボディには、以下の JSON 形式で値を必ず設定しないといけません。
 
-* ``trigger`` - Name of the trigger (e.g. ``mypack.mytrigger``)
-* ``payload`` - Object with a trigger payload.
+* ``trigger`` - トリガ名 (e.g. ``mypack.mytrigger``)
+* ``payload`` - トリガに渡すのペイロードデータ
 
 This example shows how to send data to the generic webhook using ``curl``, and how to match this
 data using rule criteria (replace ``localhost`` with your st2 host if called remotely):
+
+以下は curl から generic webhook に対するリクエスト送信と、当該リクエストにマッチするルール定義ファイルの例です。``localhost`` の部分は、|st2| ノードのホスト名に適宜置き換えて実行してください。
 
 .. sourcecode:: bash
 
     curl -X POST https://localhost/api/v1/webhooks/st2 -H "X-Auth-Token: matoken" -H "Content-Type: application/json" --data '{"trigger": "mypack.mytrigger", "payload": {"attribute1": "value1"}}'
 
-Rule:
+ルール定義ファイル:
 
 .. sourcecode:: yaml
 
@@ -143,8 +140,7 @@ Rule:
         parameters:
     ...
 
-The ``trigger.type`` attribute in the rule definition needs to be the same as the trigger name
-defined in the webhook payload body.
+ルール定義ファイルの ``trigger.type`` の値は、リクエストボディの ``trigger`` パラメータで指定する値と同じにする必要があります。
 
 Listing Registered Webhooks
 ---------------------------
