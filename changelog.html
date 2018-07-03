@@ -180,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mistral.html">Mistral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mistral_yaql.html">Mistral + YAQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mistral_jinja.html">Mistral + Jinja</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cloudslang.html">CloudSlang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestra/index.html">Orchestra</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="packs.html">Packs</a><ul>
@@ -195,13 +195,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="webhooks.html">Webhooks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="webhooks.html#sensors-vs-webhooks">Sensors vs Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#request-body">Request Body</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#registering-a-webhook">Registering a Webhook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#using-a-generic-webhook">Using a Generic Webhook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#listing-registered-webhooks">Listing Registered Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#my-webhook-isn-t-working">My Webhook Isn’t Working!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#when-not-to-use-webhooks">When Not to Use Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#authentication">認証(Authentication)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id2">リクエストボディ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#webhook">Webhook の登録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#generic-webhook">Generic Webhook の使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id3">登録済み Webhook の一覧表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id4">Webhook がうまく動かない場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id5">Webhook を使わない場合</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastore.html">データストア</a><ul>
@@ -473,6 +473,8 @@
 <div class="section" id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">¶</a></h3>
 <ul>
+<li><p class="first">Orchestra - new StackStorm-native workflow engine. This is currently in <strong>beta</strong>. (new feature)</p>
+</li>
 <li><p class="first">Added metrics for collecting performance and health information about the various ST2 services
 and functions. (new feature) #4004 #2974</p>
 </li>
@@ -506,11 +508,18 @@ package installed on the system needs to support Python 3 (it needs to be a rece
 pack in question needs to support Python 3.</p>
 <p>Note 2: This feature is experimental and opt-in. (new feature) #4016 #3922 #4149</p>
 </li>
+<li><p class="first">Add two new Jinja filters - <code class="docutils literal notranslate"><span class="pre">basename</span></code> (<code class="docutils literal notranslate"><span class="pre">os.path.basename</span></code>) and <code class="docutils literal notranslate"><span class="pre">dirname</span></code>
+(<code class="docutils literal notranslate"><span class="pre">os.path.dirname</span></code>). #4184</p>
+<p>Contributed by Florian Reisinger (&#64;reisingerf).</p>
+</li>
 </ul>
 </div>
 <div class="section" id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
 <ul>
+<li><p class="first">Update st2 CLI to create the configuration directory and file, and authentication tokens with
+secure permissions (eg: readable only to owner) #4173</p>
+</li>
 <li><p class="first">Refactor the callback module for the post run in runner to be more generic. (improvement)</p>
 </li>
 <li><p class="first">Update various Python dependencies to the latest stable versions (gunicorn, gitpython,
@@ -527,6 +536,12 @@ to function correctly in some scenarios is used. (improvement) #4127 #4120</p>
 </li>
 <li><p class="first">Upgrade various internal Python library dependencies to the latest stable versions (kombu, amqp,
 gitpython, pytz, semver, oslo.utils). (improvement) #4162</p>
+</li>
+<li><p class="first">Move from <code class="docutils literal notranslate"><span class="pre">keyczar</span></code> library to <code class="docutils literal notranslate"><span class="pre">cryptography</span></code> library for handling symmetric encryption and
+decryption (secret datastore values).</p>
+<p>Note: This change is fully backward compatible since it just changes the underlying backend and
+implementation details. The same underlying encryption algorithm is used (AES256 in CBC mode
+with HMAC signature). (improvement) #4165</p>
 </li>
 </ul>
 </div>

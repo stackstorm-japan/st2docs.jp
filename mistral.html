@@ -181,7 +181,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mistral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mistral_yaql.html">Mistral + YAQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mistral_jinja.html">Mistral + Jinja</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cloudslang.html">CloudSlang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestra/index.html">Orchestra</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="packs.html">Packs</a><ul>
@@ -196,13 +196,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="webhooks.html">Webhooks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="webhooks.html#sensors-vs-webhooks">Sensors vs Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#request-body">Request Body</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#registering-a-webhook">Registering a Webhook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#using-a-generic-webhook">Using a Generic Webhook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#listing-registered-webhooks">Listing Registered Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#my-webhook-isn-t-working">My Webhook Isn’t Working!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="webhooks.html#when-not-to-use-webhooks">When Not to Use Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#authentication">認証(Authentication)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id2">リクエストボディ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#webhook">Webhook の登録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#generic-webhook">Generic Webhook の使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id3">登録済み Webhook の一覧表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id4">Webhook がうまく動かない場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webhooks.html#id5">Webhook を使わない場合</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastore.html">データストア</a><ul>
@@ -499,7 +499,7 @@ workflow can be traced back to the original parent action that invoked the workf
 <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/&lt;mypack&gt;/actions/workflows</span></code>.</p>
 <p>Let’s start with a very basic workflow that calls a StackStorm action and notifies StackStorm when the
 workflow is done. The files used in this example are also located under
-<a class="reference external" href="https://github.com/StackStorm/st2/tree/master//contrib/examples">/usr/share/doc/st2/examples</a> if StackStorm is already installed (see
+<a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples">/usr/share/doc/st2/examples</a> if StackStorm is already installed (see
 also <a class="reference internal" href="start.html#start-deploy-examples"><span class="std std-ref">deploy examples</span></a>).</p>
 <p>The first task is named <code class="docutils literal notranslate"><span class="pre">run-cmd</span></code>. It executes a shell command on the server where StackStorm is
 installed. A task can reference any registered StackStorm action directly. In this example, the
@@ -527,7 +527,7 @@ definition appropriately before sending it to Mistral. Let’s save this as
 </div>
 <p>This is the corresponding StackStorm action metadata for the example above. The StackStorm pack for this
 workflow action is named “examples”. Note that the workflow is named fully qualified as
-<code class="docutils literal notranslate"><span class="pre">&lt;pack&gt;.&lt;action</span></code> in the definition above. The StackStorm action runner is <code class="docutils literal notranslate"><span class="pre">mistral-v2</span></code>. The entry
+<code class="docutils literal notranslate"><span class="pre">&lt;pack&gt;.&lt;action&gt;</span></code> in the definition above. The StackStorm action runner is <code class="docutils literal notranslate"><span class="pre">mistral-v2</span></code>. The entry
 point for the StackStorm action refers to the YAML file of the workflow definition. Let’s save this
 metadata as <code class="docutils literal notranslate"><span class="pre">/opt/stackstorm/packs/examples/actions/mistral-basic.yaml</span></code>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
@@ -628,60 +628,8 @@ workflow branches and aggregate their data.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="pausing-and-resuming-workflow-execution">
-<h2>Pausing and Resuming Workflow Execution<a class="headerlink" href="#pausing-and-resuming-workflow-execution" title="Permalink to this headline">¶</a></h2>
-<p>An execution of a Mistral workflow can be paused by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">pause</span> <span class="pre">&lt;execution-id&gt;</span></code>.
-An execution must be in a running state in order for pause to be successful. The execution will
-initially go into a <code class="docutils literal notranslate"><span class="pre">pausing</span></code> state, and will go into a <code class="docutils literal notranslate"><span class="pre">paused</span></code> state when no more tasks are
-in an active state such as <code class="docutils literal notranslate"><span class="pre">running</span></code>, <code class="docutils literal notranslate"><span class="pre">pausing</span></code>, or <code class="docutils literal notranslate"><span class="pre">canceling</span></code>. When a workflow execution
-is paused, it can be resumed by running <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">resume</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">pause</span></code> and <code class="docutils literal notranslate"><span class="pre">resume</span></code> operation will cascade down to subworkflows, whether it’s another
-workflow defined in a workbook or it’s another StackStorm action that is a Mistral workflow or Action
-Chain. If the <code class="docutils literal notranslate"><span class="pre">pause</span></code> operation is performed from a subworkflow or subchain, then the <code class="docutils literal notranslate"><span class="pre">pause</span></code>
-will cascade up to the parent workflow or parent chain. However, if the <code class="docutils literal notranslate"><span class="pre">resume</span></code> operation is
-performed from a subworkflow or subchain, the <code class="docutils literal notranslate"><span class="pre">resume</span></code> will not cascade up to the parent workflow
-or parent chain. This allows users to resume and troubleshoot branches individually.</p>
-</div>
-<div class="section" id="canceling-workflow-execution">
-<h2>Canceling Workflow Execution<a class="headerlink" href="#canceling-workflow-execution" title="Permalink to this headline">¶</a></h2>
-<p>An execution of a Mistral workflow can be cancelled by running
-<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">cancel</span> <span class="pre">&lt;execution-id&gt;</span></code>. Workflow tasks that are still running will not be
-canceled and will run to completion. No new tasks for the workflow will be scheduled.</p>
-</div>
-<div class="section" id="re-running-workflow-execution">
-<h2>Re-running Workflow Execution<a class="headerlink" href="#re-running-workflow-execution" title="Permalink to this headline">¶</a></h2>
-<p>An execution of a Mistral workflow can be re-run on error. The execution either can be re-run from
-the beginning or from the task(s) that failed. The latter is useful for long running workflows with
-temporary service or network outages. Re-running the workflow execution from the beginning is
-exactly like re-running any StackStorm execution with the command
-<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span></code>.</p>
-<p>The re-run is a completely separate execution with a new execution ID in both StackStorm and Mistral.
-Re-running the workflow from where it errored is slightly different. To retain context, the
-original workflow execution is reused in Mistral but a new StackStorm execution will be created to stay
-consistent in StackStorm. The re-run command has a new <code class="docutils literal notranslate"><span class="pre">--tasks</span></code> option that takes a list of task
-names to re-run.</p>
-<p>For example, given a workflow that fails at task3 and task4 on separate parallel branches, the
-command <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--tasks</span> <span class="pre">task3</span> <span class="pre">task4</span></code> will resume the Mistral
-workflow execution and re-run both task3 and task4 using original inputs. Both the workflow and
-task execution in Mistral have to be in an <code class="docutils literal notranslate"><span class="pre">errored</span></code> state for re-run.</p>
-<p>If using a Mistral workbook, tasks of subworkflows can also be re-run. For example, if the main
-workflow has a task1 that calls subflow1, then to re-run subtask1 of subflow1, the syntax for the
-<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span></code> command would be
-<code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">&lt;execution-id&gt;</span> <span class="pre">--tasks</span> <span class="pre">task1.subtask1</span></code>.</p>
-<p>If the task to re-run is a “with-items” task, there is an option to re-run only failed iterations.
-For example, task1 is a with-items task with 5 items. Let’s say 2 of the items failed. By
-specifying the <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">execution</span> <span class="pre">re-run</span> <span class="pre">--tasks</span> <span class="pre">task1</span> <span class="pre">task2</span> <span class="pre">--no-reset</span> <span class="pre">task1</span></code> option, task1 will
-only re-run the 2 items that failed. If the <code class="docutils literal notranslate"><span class="pre">--no-reset</span></code> option is not provided, then all 5
-items will be re-run.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Re-running workflow execution from the task(s) that failed is currently an experimental
-feature and subject to bug(s) and change(s). Please also note that re-running a subtask nested
-in another StackStorm action is not currently supported.</p>
-</div>
-</div>
-<div class="section" id="publishing-variables-in-mistral-workflows">
-<h2>Publishing Variables in Mistral Workflows<a class="headerlink" href="#publishing-variables-in-mistral-workflows" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="publishing-variables">
+<h2>Publishing Variables<a class="headerlink" href="#publishing-variables" title="Permalink to this headline">¶</a></h2>
 <p>A Mistral task can publish results from a task as variables that can be consumed in other tasks:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">get_hostname</span><span class="p p-Indicator">:</span>
@@ -888,44 +836,20 @@ or Jinja2 expressions.</p>
 </div>
 <div class="section" id="more-examples">
 <h2>More Examples<a class="headerlink" href="#more-examples" title="Permalink to this headline">¶</a></h2>
-<p>There are more workflow examples under <a class="reference external" href="https://github.com/StackStorm/st2/tree/master//contrib/examples/actions/workflows/">/usr/share/doc/st2/examples</a>. These include error handling, repeat, and retries.</p>
+<p>There are more workflow examples under <a class="reference external" href="https://github.com/StackStorm/st2/tree/master/contrib/examples/actions/workflows/">/usr/share/doc/st2/examples</a>. These include error handling, repeat, and retries.</p>
 <p>Check out this step-by-step tutorial on building a workflow in StackStorm <a class="reference external" href="https://stackstorm.com/2015/07/08/automating-with-mistral-workflow/">https://stackstorm.com/2015/07/08/automating-with-mistral-workflow/</a></p>
 <p>More details about Mistral can be found at <a class="reference external" href="https://docs.openstack.org/mistral/latest/">https://docs.openstack.org/mistral/latest/</a>.</p>
 </div>
-<div class="section" id="mistral-workflows-completion-latency-and-performance">
-<span id="id3"></span><h2>Mistral Workflows Completion, Latency, and Performance<a class="headerlink" href="#mistral-workflows-completion-latency-and-performance" title="Permalink to this headline">¶</a></h2>
-<p>During the workflow runtime, StackStorm and Mistral handshake multiple times over HTTP. This applies when launching
-the workflow execution, completing a task, or completing the workflow.</p>
-<p>Prior to v2.7, StackStorm queries Mistral to check on workflow execution status and the status of individual tasks
-via st2resultstracker. This mechanism has a number of configuration settings. See <a class="reference internal" href="troubleshooting/mistral.html#mistral-workflows-latency"><span class="std std-ref">Troubleshooting Mistral Workflow Completion Latency</span></a>
-section about how to fine-tune the Mistral workflows completion time opposed to CPU usage.</p>
-<p>Since v2.7, the results tracking mechanism is replaced with a callback mechanism from Mistral. Instead of StackStorm
-querying Mistral at regular interval, Mistral is configured to callback StackStorm on task and workflow completion.
-With the callback mechanism, it is possible to trace the events sent to StackStorm.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identify the Mistral workflow execution ID which is different</span>
-st2 execution get &lt;st2-action-execution-id&gt; -dj <span class="p">|</span> grep workflow_execution_id
-
-<span class="c1"># Grep the log entries from the Mistral log, typically at /var/log/mistral/mistral-server.log</span>
-sudo tail -n <span class="m">1000</span> /var/log/mistral/mistral-server.log <span class="p">|</span> grep stackstorm_notifier <span class="p">|</span> grep &lt;mistral-wf-ex-id&gt;
-</pre></div>
-</div>
-<p>The returned list of log entries would look something similar to the following.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">,</span><span class="mi">811</span> <span class="mi">140124959618704</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_LAUNCHED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="n">will</span> <span class="n">be</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">05</span><span class="p">,</span><span class="mi">844</span> <span class="mi">140124959618704</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_LAUNCHED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="ow">is</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">06</span><span class="p">,</span><span class="mi">492</span> <span class="mi">140124958584912</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">task</span> <span class="n">event</span> <span class="n">TASK_SUCCEEDED</span> <span class="k">for</span> <span class="n">c8731e6a</span><span class="o">-</span><span class="mi">2464</span><span class="o">-</span><span class="mi">4</span><span class="n">a59</span><span class="o">-</span><span class="n">bf46</span><span class="o">-</span><span class="mi">501</span><span class="n">a80215298</span> <span class="n">will</span> <span class="n">be</span> <span class="n">processed</span> <span class="k">for</span> <span class="n">st2</span><span class="o">.</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">06</span><span class="p">,</span><span class="mi">492</span> <span class="mi">140124958584912</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">task</span> <span class="n">event</span> <span class="n">TASK_SUCCEEDED</span> <span class="k">for</span> <span class="n">c8731e6a</span><span class="o">-</span><span class="mi">2464</span><span class="o">-</span><span class="mi">4</span><span class="n">a59</span><span class="o">-</span><span class="n">bf46</span><span class="o">-</span><span class="mi">501</span><span class="n">a80215298</span> <span class="ow">is</span> <span class="n">processed</span> <span class="k">for</span> <span class="n">st2</span><span class="o">.</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">07</span><span class="p">,</span><span class="mi">195</span> <span class="mi">140124956804432</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_SUCCEEDED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="n">will</span> <span class="n">be</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
-<span class="mi">2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">07</span><span class="p">,</span><span class="mi">371</span> <span class="mi">140124956804432</span> <span class="n">INFO</span> <span class="n">stackstorm_notifier</span> <span class="p">[</span><span class="o">-</span><span class="p">]</span> <span class="p">[</span><span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span><span class="p">]</span> <span class="n">The</span> <span class="n">workflow</span> <span class="n">event</span> <span class="n">WORKFLOW_SUCCEEDED</span> <span class="k">for</span> <span class="mi">839925</span><span class="n">d9</span><span class="o">-</span><span class="mi">02</span><span class="n">c7</span><span class="o">-</span><span class="mi">47</span><span class="n">be</span><span class="o">-</span><span class="n">ad8e</span><span class="o">-</span><span class="n">ce0943749a7b</span> <span class="ow">is</span> <span class="n">published</span> <span class="n">to</span> <span class="n">st2</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>The results tracking mechanism is still available for manual intervention and can be enabled on an individual workflow
-basis in case StackStorm or Mistral services is offline during a callback operation.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable the results tracking for an individual workflow execution</span>
-st2-track-result &lt;st2-action-execution-id&gt; --config-dir /etc/st2
-
-<span class="c1"># Disable the results tracking for an individual workflow execution</span>
-st2-track-result &lt;st2-action-execution-id&gt; --config-dir /etc/st2 --delete
-</pre></div>
+<div class="section" id="more-topics">
+<h2>More Topics<a class="headerlink" href="#more-topics" title="Permalink to this headline">¶</a></h2>
+<p>The following sections go into more details on specific topics.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mistral_yaql.html">YAQL Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mistral_jinja.html">Jinja Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mistral_result.html">Completion and Latency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mistral_operations.html">Workflow Operations</a></li>
+</ul>
 </div>
 </div>
 </div>

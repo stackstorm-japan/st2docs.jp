@@ -180,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="mistral.html">Mistral</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mistral_yaql.html">Mistral + YAQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="mistral_jinja.html">Mistral + Jinja</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cloudslang.html">CloudSlang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestra/index.html">Orchestra</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="packs.html">Packs</a><ul>
@@ -195,13 +195,13 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Webhooks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#sensors-vs-webhooks">Sensors vs Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#authentication">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#request-body">Request Body</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#registering-a-webhook">Registering a Webhook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#using-a-generic-webhook">Using a Generic Webhook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#listing-registered-webhooks">Listing Registered Webhooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#my-webhook-isn-t-working">My Webhook Isn’t Working!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#when-not-to-use-webhooks">When Not to Use Webhooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#authentication">認証(Authentication)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">リクエストボディ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#webhook">Webhook の登録</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic-webhook">Generic Webhook の使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">登録済み Webhook の一覧表示</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Webhook がうまく動かない場合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Webhook を使わない場合</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="datastore.html">データストア</a><ul>
@@ -468,60 +468,43 @@
             
   <div class="section" id="webhooks">
 <h1>Webhooks<a class="headerlink" href="#webhooks" title="Permalink to this headline">¶</a></h1>
-<p>Webhooks allow you to integrate external systems with StackStorm using HTTP webhooks. Unlike sensors
-which use a “pull” approach, webhooks use a “push” approach. They push triggers directly to the
-StackStorm API using HTTP POST requests.</p>
+<p>Webhook を通じて、ユーザは様々な外部システムを StackStorm に統合することができます。センサのようにイベント情報をこちらから取得しに行く形態（pull 型）とは異なり、Webhook では外部システムが直接 StackStorm API のエンドポイントに対して HTTP POST リクエストを送ってイベント情報を通知する形態 (push 型) になります。</p>
 <div class="section" id="sensors-vs-webhooks">
 <h2>Sensors vs Webhooks<a class="headerlink" href="#sensors-vs-webhooks" title="Permalink to this headline">¶</a></h2>
-<p>Sensors integrate with external systems and services using either a polling approach (sensors
-periodically connect to an external system to retrieve data), or a passive approach, where they
-listen on some port, receiving data using whatever custom protocol you define.</p>
-<p>Webhooks provide a built-in passive approach for receiving JSON or URL-encoded form data, via
-HTTP POST. This data must be “pushed” from an external system to StackStorm when an interesting event
-occurs.</p>
-<p>Sensors are the preferred integration method since they offer a more granular and tighter
-integration.</p>
-<p>On the other hand, webhooks come in handy when you have an existing script or software which you
-can easily modify to send a webhook to the StackStorm API when an intersting event occurs.</p>
-<p>Another example where webhooks are useful is when you want to consume events from a 3rd party
-service that already offers webhook integration - e.g. GitHub.</p>
+<p>センサが外部システムと連携する際は、センサが定期的に外部システムに対して接続し情報を取得する処理) をするか、センサがユーザ定義のポート・プロトコルでのリクエストを待つかのどちらかの方法で行います。</p>
+<p>Webhook は後者に大別され、JSON か URL エンコーディングされたデータを HTTP POST リクエストから受け取ります。外部システムで何からのイベントが発生した際は、当該システムが StackStorm に対してデータを送ります。</p>
+<p>センサを使うことで、より細かい粒度でかつ厳格なシステム連携ができます。</p>
+<p>一方、Webhook によってより簡単にシステム連携できるようになります。例えば、すでにあるシステム連携のスクリプトがある場合、リクエストの送信先を StackStorm に変えるだけで、簡単に StackStorm によるイベントハンドリングを行えます。</p>
+<p>また GitHub など既に Webhook 機能を提供しているサードパーティ製システムと連携が容易である点でも Webhook は有用です。</p>
 </div>
 <div class="section" id="authentication">
-<h2>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
-<p>All requests to the <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks</span></code> endpoints need to be authenticated in the same way as other
-API requests. There are two possible authentication approaches - <a class="reference internal" href="authentication.html#authentication-apikeys"><span class="std std-ref">API keys</span></a> and tokens. API keys are recommended for webhooks, as they do not
-expire. Tokens have a fixed expiry.</p>
-<div class="section" id="api-key-based">
-<h3>API key-based<a class="headerlink" href="#api-key-based" title="Permalink to this headline">¶</a></h3>
+<h2>認証(Authentication)<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h2>
+<p>Webhook のエンドポイント <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks</span></code> に対する全てのリクエストは API へのリクエストと同様、認証を経る必要があります。認証の方法は <a class="reference internal" href="authentication.html#authentication-apikeys"><span class="std std-ref">API キー</span></a> とトークンの２つあります。Webhook では API キーを推奨します（トークンと違い、有効期限が無いため）。</p>
+<div class="section" id="api">
+<h3>API キーによる認証<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>Header</cite> : <code class="docutils literal notranslate"><span class="pre">St2-Api-Key</span></code></li>
-<li><cite>Query parameter</cite> : <code class="docutils literal notranslate"><span class="pre">?st2-api-key</span></code></li>
+<li><cite>ヘッダ</cite> : <code class="docutils literal notranslate"><span class="pre">St2-Api-Key</span></code></li>
+<li><cite>クエリパラメータ</cite> : <code class="docutils literal notranslate"><span class="pre">?st2-api-key</span></code></li>
 </ul>
 </div>
-<div class="section" id="token-based">
-<h3>Token-based<a class="headerlink" href="#token-based" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>トークンによる認証<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><cite>Header</cite> : <code class="docutils literal notranslate"><span class="pre">X-Auth-Token</span></code></li>
-<li><cite>Query parameter</cite> : <code class="docutils literal notranslate"><span class="pre">?x-auth-token</span></code></li>
+<li><cite>ヘッダ</cite> : <code class="docutils literal notranslate"><span class="pre">X-Auth-Token</span></code></li>
+<li><cite>クエリパラメータ</cite> : <code class="docutils literal notranslate"><span class="pre">?x-auth-token</span></code></li>
 </ul>
-<p>Both methods above support providing the authentication material as a header or query parameter.
-A header is usually used with your scripts where you can control request headers while query
-parameters are used with 3rd party services such as GitHub where you can only specify a URL.</p>
+<p>上記の２種類の方法ともにヘッダもしくはクエリパラメータによる認証をサポートしています。ヘッダによる認証はリクエストヘッダを自由に変更できるユーザスクリプトで主に用いられ、クエリパラメータは GitHub などの Webhook エンドポイントの URL しか渡せないようなサードパーティシステムから認証を行う際に利用できます。</p>
 </div>
 </div>
-<div class="section" id="request-body">
-<h2>Request Body<a class="headerlink" href="#request-body" title="Permalink to this headline">¶</a></h2>
-<p>The request body or so called trigger payload can be either JSON or URL encoded form data. The
-body type is determined based on the value of the <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header (<code class="docutils literal notranslate"><span class="pre">application/json</span></code>
-for JSON and <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> for URL encoded form data).</p>
-<p>All the examples below assume JSON and as such, provide <code class="docutils literal notranslate"><span class="pre">application/json</span></code> for the
-<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> header value.</p>
+<div class="section" id="id2">
+<h2>リクエストボディ<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>トリガのペイロードとなるリクエストボディは、JSON 形式もしくは URL エンコードされたデータのどちらでも受けられます。リクエストボディのデータタイプは <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> ヘッダによって決まります。当該ヘッダに <code class="docutils literal notranslate"><span class="pre">application/json</span></code> が指定されれば JSON と解釈し <code class="docutils literal notranslate"><span class="pre">application/x-www-form-urlencoded</span></code> が指定されれば、URL エンコードされたデータとして処理します。</p>
+<p>以降で示す例では、JSON 形式でデータを受け取った場合（<code class="docutils literal notranslate"><span class="pre">Content-Type</span></code> ヘッダに <code class="docutils literal notranslate"><span class="pre">application/json</span></code> を指定した場合）を想定しています。</p>
 </div>
-<div class="section" id="registering-a-webhook">
-<h2>Registering a Webhook<a class="headerlink" href="#registering-a-webhook" title="Permalink to this headline">¶</a></h2>
-<p>You can register a webhook in StackStorm by specifying the <code class="docutils literal notranslate"><span class="pre">core.st2.webhook</span></code> trigger inside a rule
-definition.</p>
-<p>Here is an excerpt from a rule which registers a new webhook named <code class="docutils literal notranslate"><span class="pre">sample</span></code>:</p>
+<div class="section" id="webhook">
+<h2>Webhook の登録<a class="headerlink" href="#webhook" title="Permalink to this headline">¶</a></h2>
+<p>StackStorm に Webhook を登録するには、ルール定義中にトリガ <code class="docutils literal notranslate"><span class="pre">core.st2.webhook</span></code> を指定することでできます。</p>
+<p>以下は Webhook <code class="docutils literal notranslate"><span class="pre">sample</span></code> を登録するルール定義ファイルになります。</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.st2.webhook&quot;</span>
@@ -530,27 +513,40 @@ definition.</p>
 <span class="nn">...</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">url:</span></code> parameter above is added as a suffix to <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks/</span></code> to create the URL to
-POST data to. So once you have created the rule above, you can use this webhook by POST-ing data
-to your StackStorm server at <code class="docutils literal notranslate"><span class="pre">https://{$ST2_IP}/api/v1/webhooks/sample</span></code>.</p>
-<p>The request body needs to be JSON and may contain arbitrary data which you can match against in
-the rule criteria.</p>
-<p>Note that all trailing and leading <code class="docutils literal notranslate"><span class="pre">/</span></code> of the <code class="docutils literal notranslate"><span class="pre">url</span></code> parameter are ignored by StackStorm. e.g. a
-value of <code class="docutils literal notranslate"><span class="pre">/sample</span></code>, <code class="docutils literal notranslate"><span class="pre">sample/</span></code>, <code class="docutils literal notranslate"><span class="pre">/sample/</span></code> and <code class="docutils literal notranslate"><span class="pre">sample</span></code> are all treated the same, i.e.
-considered identical. They all result in an effective URL of <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks/sample</span></code>.</p>
-<p>POST-ing data to a custom webhook will cause a trigger with the following attributes to be
-dispatched:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Trigger name.</li>
-<li><code class="docutils literal notranslate"><span class="pre">trigger.headers</span></code> - Dictionary containing the request headers.</li>
-<li><code class="docutils literal notranslate"><span class="pre">trigger.body</span></code> - Dictionary containing the request body.</li>
-</ul>
-<p>This example shows how to send data to a custom webhook using <code class="docutils literal notranslate"><span class="pre">curl</span></code> and how to match on this
-data using rule criteria:</p>
+<p>ファイル中の <code class="docutils literal notranslate"><span class="pre">url</span></code> パラメータで指定した値が <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks/</span></code> をプレフィックスに持つ HTTP POST リクエストを受け付けるエンドポイントの URL になります。上記ルールファイルを登録することで、<code class="docutils literal notranslate"><span class="pre">https://{$ST2_IP}/api/v1/webhooks/sample</span></code> に対する HTTP POST リクエストをハンドリングできるようになります。</p>
+<p>リクエストボディは、JSON 形式の任意の値を受け取ることができ、ルールにおいて <cite>criteria`</cite> パラメータでマッチする条件を指定することもできます。</p>
+<p>なお <code class="docutils literal notranslate"><span class="pre">`url</span></code> パラメータで指定された値の先頭と末尾の <code class="docutils literal notranslate"><span class="pre">/</span></code> は無視されます。なので <code class="docutils literal notranslate"><span class="pre">/sample</span></code>, <code class="docutils literal notranslate"><span class="pre">sample/</span></code>, <code class="docutils literal notranslate"><span class="pre">/sample</span></code> のいづれを指定した場合も <code class="docutils literal notranslate"><span class="pre">sample</span></code> として解釈され <code class="docutils literal notranslate"><span class="pre">/api/v1/webhooks/sample</span></code> と登録されます。</p>
+<p>作成した Webhook に対して HTTP POST リクエストを送ると、リクエスト情報が以下の変数に設定されます。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="44%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>変数名</strong></td>
+<td><strong>内容</strong></td>
+<td><strong>データ型</strong></td>
+</tr>
+<tr class="row-even"><td>trigger</td>
+<td>トリガ名</td>
+<td>string</td>
+</tr>
+<tr class="row-odd"><td>trigger.headers</td>
+<td>HTTP ヘッダの情報</td>
+<td>dict</td>
+</tr>
+<tr class="row-even"><td>trigger.body</td>
+<td>リクエストボディの情報</td>
+<td>dict</td>
+</tr>
+</tbody>
+</table>
+<p>以下は <code class="docutils literal notranslate"><span class="pre">curl</span></code> からユーザ定義の Webhook に対してリクエストを送り、これをハンドリングするための <code class="docutils literal notranslate"><span class="pre">criteria</span></code> を設定する方法を示した例になります。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST https://localhost/api/v1/webhooks/sample -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> --data <span class="s1">&#39;{&quot;key1&quot;: &quot;value1&quot;}&#39;</span>
 </pre></div>
 </div>
-<p>Rule:</p>
+<p>ルール定義ファイル:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
         <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;core.st2.webhook&quot;</span>
@@ -569,23 +565,19 @@ data using rule criteria:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="using-a-generic-webhook">
-<h2>Using a Generic Webhook<a class="headerlink" href="#using-a-generic-webhook" title="Permalink to this headline">¶</a></h2>
-<p>By default, a special-purpose webhook with the name <code class="docutils literal notranslate"><span class="pre">st2</span></code> is already registered. Instead of
-using <code class="docutils literal notranslate"><span class="pre">st2.core.webhook</span></code>, it allows you to specify any trigger that is known to StackStorm (either by
-default or from custom sensors and triggers in packs), so you can use it to trigger rules that
-aren’t explicitly set up to be triggered by webhooks.</p>
-<p>The body of this request needs to be JSON and must contain the following attributes:</p>
+<div class="section" id="generic-webhook">
+<h2>Generic Webhook の使用<a class="headerlink" href="#generic-webhook" title="Permalink to this headline">¶</a></h2>
+<p>StackStorm では <code class="docutils literal notranslate"><span class="pre">st2</span></code> という名前の webhook (generic webhook) がデフォルトで登録されており、当該 Webhook へ POST リクエストを送ることで、ユーザは <code class="docutils literal notranslate"><span class="pre">core.st2.webhook</span></code> を定義しなくても StackStorm に登録されている任意のトリガをディスパッチすることが出来ます。これによって、明示的に Webhook を定義していないルールを発動させることができます。</p>
+<p>generic webhook のリクエストボディには、以下の JSON 形式で値を必ず設定しないといけません。</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - Name of the trigger (e.g. <code class="docutils literal notranslate"><span class="pre">mypack.mytrigger</span></code>)</li>
-<li><code class="docutils literal notranslate"><span class="pre">payload</span></code> - Object with a trigger payload.</li>
+<li><code class="docutils literal notranslate"><span class="pre">trigger</span></code> - トリガ名 (e.g. <code class="docutils literal notranslate"><span class="pre">mypack.mytrigger</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">payload</span></code> - トリガに渡すのペイロードデータ</li>
 </ul>
-<p>This example shows how to send data to the generic webhook using <code class="docutils literal notranslate"><span class="pre">curl</span></code>, and how to match this
-data using rule criteria (replace <code class="docutils literal notranslate"><span class="pre">localhost</span></code> with your st2 host if called remotely):</p>
+<p>以下は curl から generic webhook に対するリクエスト送信と、当該リクエストにマッチするルール定義ファイルの例です。<code class="docutils literal notranslate"><span class="pre">localhost</span></code> の部分は、StackStorm ノードのホスト名に適宜置き換えて実行してください。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST https://localhost/api/v1/webhooks/st2 -H <span class="s2">&quot;X-Auth-Token: matoken&quot;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> --data <span class="s1">&#39;{&quot;trigger&quot;: &quot;mypack.mytrigger&quot;, &quot;payload&quot;: {&quot;attribute1&quot;: &quot;value1&quot;}}&#39;</span>
 </pre></div>
 </div>
-<p>Rule:</p>
+<p>ルール定義ファイル:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">trigger</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;mypack.mytrigger&quot;</span>
@@ -601,35 +593,28 @@ data using rule criteria (replace <code class="docutils literal notranslate"><sp
 <span class="nn">...</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">trigger.type</span></code> attribute in the rule definition needs to be the same as the trigger name
-defined in the webhook payload body.</p>
+<p>ルール定義ファイルの <code class="docutils literal notranslate"><span class="pre">trigger.type</span></code> の値は、リクエストボディの <code class="docutils literal notranslate"><span class="pre">trigger</span></code> パラメータで指定する値と同じにする必要があります。</p>
 </div>
-<div class="section" id="listing-registered-webhooks">
-<h2>Listing Registered Webhooks<a class="headerlink" href="#listing-registered-webhooks" title="Permalink to this headline">¶</a></h2>
-<p>To list all registered webhooks, run:</p>
+<div class="section" id="id3">
+<h2>登録済み Webhook の一覧表示<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>登録済みの Webhook の一覧を表示するには以下を実行します。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 webhook list
 </pre></div>
 </div>
 </div>
-<div class="section" id="my-webhook-isn-t-working">
-<h2>My Webhook Isn’t Working!<a class="headerlink" href="#my-webhook-isn-t-working" title="Permalink to this headline">¶</a></h2>
-<p>If you’re encountering issues with webhooks, such as StackStorm failing to recognize incoming webhooks, or trigger
-instances not showing when expected, please see <a class="reference internal" href="troubleshooting/webhooks.html"><span class="doc">Troubleshooting Webhooks</span></a>.</p>
+<div class="section" id="id4">
+<h2>Webhook がうまく動かない場合<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>もし、登録した webhook が StackStorm にうまく認識されなかったり、期待通りにトリガがディスパッチされない場合、まずは <a class="reference internal" href="troubleshooting/webhooks.html"><span class="doc">Webhooks のトラブルシュート</span></a> をご確認ください。</p>
 </div>
-<div class="section" id="when-not-to-use-webhooks">
-<h2>When Not to Use Webhooks<a class="headerlink" href="#when-not-to-use-webhooks" title="Permalink to this headline">¶</a></h2>
-<p>While webhooks are useful, they do have two drawbacks:</p>
+<div class="section" id="id5">
+<h2>Webhook を使わない場合<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Webhook はとても便利ですが、以下の欠点もあります。</p>
 <ul class="simple">
-<li><strong>Not Bidirectional</strong>  - Webhooks simply submit data into StackStorm. So if you want data back from
-StackStorm, or an action execution ID, you’ll have to get that data in an asynchronous fashion.</li>
-<li><strong>No Guarantee of Execution</strong> - Webhooks in StackStorm do not guarantee an execution. It depends on
-the rule configuration. Based upon the webhook contents, it may not execute any action, or may
-execute multiple actions.</li>
+<li><strong>非双方向性</strong> - Webhook は単純にデータを StackStorm に送るだけなので、リクエストによって実行されたアクションの execution ID などのデータを StackStorm から取得するといったことができません（別の非同期的なやり方が必要）。</li>
+<li><strong>非実行保証</strong> - StackStorm は Webhook リクエストに対するアクション・ワークフローの実行を保証しません。これらの実行はルールの設定に依存し、リクエストボディに応じて、アクションが実行されない（もしくは複数のアクションが実行される）可能性があります。</li>
 </ul>
-<p>If you always want to execute a specific action or workflow, and/or you’re looking for a
-guaranteed response, you can use the <code class="docutils literal notranslate"><span class="pre">/v1/executions</span></code> API. This is the same as explicitly
-running an action from the CLI with <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;mypack&gt;.&lt;myaction&gt;</span></code>.</p>
-<p>We can get a little insight into how this work using the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag:</p>
+<p>もし確実にアクション・ワークフローを実行し、かつ実行に関する情報を取得したい場合は <code class="docutils literal notranslate"><span class="pre">/v1/executinos</span></code> API を利用します。これは <code class="docutils literal notranslate"><span class="pre">st2</span> <span class="pre">run</span> <span class="pre">&lt;mypack&gt;.&lt;myaction&gt;</span></code> のようにアクションを明示的に実行した場合と同じです。
+<code class="docutils literal notranslate"><span class="pre">--debug</span></code> オプションによって、このコマンドの裏側で実行される処理を確認できます。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>st2 --debug run core.local <span class="s2">&quot;date&quot;</span>
 <span class="m">2017</span>-03-31 <span class="m">08</span>:21:18,706  DEBUG - Using cached token from file <span class="s2">&quot;/home/ubuntu/.st2/token-st2admin&quot;</span>
 <span class="c1"># -------- begin 140183979680208 request ----------</span>
@@ -668,12 +653,9 @@ result:
   succeeded: <span class="nb">true</span>
 </pre></div>
 </div>
-<p>In addition to the “usual” output that shows the result of the execution, the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag also
-shows all the API calls made during the course of the entire interaction, in the form of <code class="docutils literal notranslate"><span class="pre">curl</span></code>
-commands.</p>
-<p>That output shows the API calls made when executing the command from the StackStorm host. If you are
-accessing the API from a remote system, it will be proxied through nginx, using the <code class="docutils literal notranslate"><span class="pre">/api</span></code> URI.
-So remote calls will take this form:</p>
+<p><code class="docutils literal notranslate"><span class="pre">--debug</span></code> オプションを指定することで、通常の出力に加えて、アクションが実行されるまでの全過程で発行される API リクエストを <code class="docutils literal notranslate"><span class="pre">curl</span></code> コマンド形式で確認できます。
+なおこの結果は StackStorm ホストで直接コマンドを実行した場合に生成される API リクエストで、Nginx などのプロキシを経由して実行した場合は、URI が <code class="docutils literal notranslate"><span class="pre">/api</span></code> になります。</p>
+<p>従って、リモートノードから特定のアクションを確実に実行し、結果を取得するには以下のようにします。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -X POST https://<span class="o">[</span>ST2_IP<span class="o">]</span>/v1/executions -H  <span class="s1">&#39;Connection: keep-alive&#39;</span> -H  <span class="s1">&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span class="s1">&#39;Accept: */*&#39;</span> -H  <span class="s1">&#39;User-Agent: python-requests/2.11.1&#39;</span> -H  <span class="s1">&#39;content-type: application/json&#39;</span> -H  <span class="s1">&#39;X-Auth-Token: matoken&#39;</span> -H  <span class="s1">&#39;Content-Length: 69&#39;</span> --data-binary <span class="s1">&#39;{&quot;action&quot;: &quot;core.local&quot;, &quot;user&quot;: null, &quot;parameters&quot;: {&quot;cmd&quot;: &quot;date&quot;}}&#39;</span>
 </pre></div>
 </div>

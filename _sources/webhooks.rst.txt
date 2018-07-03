@@ -1,72 +1,54 @@
 Webhooks
 ========
 
-Webhooks allow you to integrate external systems with |st2| using HTTP webhooks. Unlike sensors
-which use a "pull" approach, webhooks use a "push" approach. They push triggers directly to the
-|st2| API using HTTP POST requests.
+Webhook を通じて、ユーザは様々な外部システムを |st2| に統合することができます。センサのようにイベント情報をこちらから取得しに行く形態（pull 型）とは異なり、Webhook では外部システムが直接 |st2| API のエンドポイントに対して HTTP POST リクエストを送ってイベント情報を通知する形態 (push 型) になります。
 
 Sensors vs Webhooks
 -------------------
 
-Sensors integrate with external systems and services using either a polling approach (sensors
-periodically connect to an external system to retrieve data), or a passive approach, where they
-listen on some port, receiving data using whatever custom protocol you define. 
+センサが外部システムと連携する際は、センサが定期的に外部システムに対して接続し情報を取得する処理) をするか、センサがユーザ定義のポート・プロトコルでのリクエストを待つかのどちらかの方法で行います。
 
-Webhooks provide a built-in passive approach for receiving JSON or URL-encoded form data, via
-HTTP POST. This data must be "pushed" from an external system to |st2| when an interesting event
-occurs.
+Webhook は後者に大別され、JSON か URL エンコーディングされたデータを HTTP POST リクエストから受け取ります。外部システムで何からのイベントが発生した際は、当該システムが |st2| に対してデータを送ります。
 
-Sensors are the preferred integration method since they offer a more granular and tighter
-integration.
+センサを使うことで、より細かい粒度でかつ厳格なシステム連携ができます。
 
-On the other hand, webhooks come in handy when you have an existing script or software which you
-can easily modify to send a webhook to the |st2| API when an intersting event occurs.
+一方、Webhook によってより簡単にシステム連携できるようになります。例えば、すでにあるシステム連携のスクリプトがある場合、リクエストの送信先を |st2| に変えるだけで、簡単に |st2| によるイベントハンドリングを行えます。
 
-Another example where webhooks are useful is when you want to consume events from a 3rd party
-service that already offers webhook integration - e.g. GitHub.
+また GitHub など既に Webhook 機能を提供しているサードパーティ製システムと連携が容易である点でも Webhook は有用です。
 
-Authentication
+認証(Authentication)
+--------------------
+
+Webhook のエンドポイント ``/api/v1/webhooks`` に対する全てのリクエストは API へのリクエストと同様、認証を経る必要があります。認証の方法は :ref:`API キー<authentication-apikeys>` とトークンの２つあります。Webhook では API キーを推奨します（トークンと違い、有効期限が無いため）。
+
+API キーによる認証
+~~~~~~~~~~~~~~~~~~
+
+* `ヘッダ` : ``St2-Api-Key``
+* `クエリパラメータ` : ``?st2-api-key``
+
+トークンによる認証
+~~~~~~~~~~~~~~~~~~
+
+* `ヘッダ` : ``X-Auth-Token``
+* `クエリパラメータ` : ``?x-auth-token``
+
+
+上記の２種類の方法ともにヘッダもしくはクエリパラメータによる認証をサポートしています。ヘッダによる認証はリクエストヘッダを自由に変更できるユーザスクリプトで主に用いられ、クエリパラメータは GitHub などの Webhook エンドポイントの URL しか渡せないようなサードパーティシステムから認証を行う際に利用できます。
+
+リクエストボディ
+----------------
+
+トリガのペイロードとなるリクエストボディは、JSON 形式もしくは URL エンコードされたデータのどちらでも受けられます。リクエストボディのデータタイプは ``Content-Type`` ヘッダによって決まります。当該ヘッダに ``application/json`` が指定されれば JSON と解釈し ``application/x-www-form-urlencoded`` が指定されれば、URL エンコードされたデータとして処理します。
+
+以降で示す例では、JSON 形式でデータを受け取った場合（``Content-Type`` ヘッダに ``application/json`` を指定した場合）を想定しています。
+
+Webhook の登録
 --------------
 
-All requests to the ``/api/v1/webhooks`` endpoints need to be authenticated in the same way as other
-API requests. There are two possible authentication approaches - :ref:`API keys
-<authentication-apikeys>` and tokens. API keys are recommended for webhooks, as they do not
-expire. Tokens have a fixed expiry.
+|st2| に Webhook を登録するには、ルール定義中にトリガ ``core.st2.webhook`` を指定することでできます。
 
-API key-based
-~~~~~~~~~~~~~
-
-* `Header` : ``St2-Api-Key``
-* `Query parameter` : ``?st2-api-key``
-
-Token-based
-~~~~~~~~~~~
-
-* `Header` : ``X-Auth-Token``
-* `Query parameter` : ``?x-auth-token``
-
-
-Both methods above support providing the authentication material as a header or query parameter.
-A header is usually used with your scripts where you can control request headers while query
-parameters are used with 3rd party services such as GitHub where you can only specify a URL.
-
-Request Body
-------------
-
-The request body or so called trigger payload can be either JSON or URL encoded form data. The
-body type is determined based on the value of the ``Content-Type`` header (``application/json``
-for JSON and ``application/x-www-form-urlencoded`` for URL encoded form data).
-
-All the examples below assume JSON and as such, provide ``application/json`` for the
-``Content-Type`` header value.
-
-Registering a Webhook
----------------------
-
-You can register a webhook in |st2| by specifying the ``core.st2.webhook`` trigger inside a rule
-definition.
-
-Here is an excerpt from a rule which registers a new webhook named ``sample``:
+以下は Webhook ``sample`` を登録するルール定義ファイルになります。
 
 .. sourcecode:: yaml
 
@@ -77,32 +59,31 @@ Here is an excerpt from a rule which registers a new webhook named ``sample``:
                 url: "sample"
     ...
 
-The ``url:`` parameter above is added as a suffix to ``/api/v1/webhooks/`` to create the URL to
-POST data to. So once you have created the rule above, you can use this webhook by POST-ing data
-to your |st2| server at ``https://{$ST2_IP}/api/v1/webhooks/sample``.
+ファイル中の ``url`` パラメータで指定した値が ``/api/v1/webhooks/`` をプレフィックスに持つ HTTP POST リクエストを受け付けるエンドポイントの URL になります。上記ルールファイルを登録することで、``https://{$ST2_IP}/api/v1/webhooks/sample`` に対する HTTP POST リクエストをハンドリングできるようになります。
 
-The request body needs to be JSON and may contain arbitrary data which you can match against in
-the rule criteria.
+リクエストボディは、JSON 形式の任意の値を受け取ることができ、ルールにおいて `criteria`` パラメータでマッチする条件を指定することもできます。
 
-Note that all trailing and leading ``/`` of the ``url`` parameter are ignored by |st2|. e.g. a
-value of ``/sample``, ``sample/``, ``/sample/`` and ``sample`` are all treated the same, i.e.
-considered identical. They all result in an effective URL of ``/api/v1/webhooks/sample``.
+なお ```url`` パラメータで指定された値の先頭と末尾の ``/`` は無視されます。なので ``/sample``, ``sample/``, ``/sample`` のいづれを指定した場合も ``sample`` として解釈され ``/api/v1/webhooks/sample`` と登録されます。
 
-POST-ing data to a custom webhook will cause a trigger with the following attributes to be
-dispatched:
+作成した Webhook に対して HTTP POST リクエストを送ると、リクエスト情報が以下の変数に設定されます。
 
-* ``trigger`` - Trigger name.
-* ``trigger.headers`` - Dictionary containing the request headers.
-* ``trigger.body`` - Dictionary containing the request body.
++-----------------+------------------------+--------------+
+| **変数名**      | **内容**               | **データ型** |
++-----------------+------------------------+--------------+
+| trigger         | トリガ名               | string       |
++-----------------+------------------------+--------------+
+| trigger.headers | HTTP ヘッダの情報      | dict         |
++-----------------+------------------------+--------------+
+| trigger.body    | リクエストボディの情報 | dict         |
++-----------------+------------------------+--------------+
 
-This example shows how to send data to a custom webhook using ``curl`` and how to match on this
-data using rule criteria:
+以下は ``curl`` からユーザ定義の Webhook に対してリクエストを送り、これをハンドリングするための ``criteria`` を設定する方法を示した例になります。
 
 .. sourcecode:: bash
 
     curl -X POST https://localhost/api/v1/webhooks/sample -H "X-Auth-Token: matoken" -H "Content-Type: application/json" --data '{"key1": "value1"}'
 
-Rule:
+ルール定義ファイル:
 
 .. sourcecode:: yaml
 
@@ -122,27 +103,23 @@ Rule:
         parameters:
     ...
 
-Using a Generic Webhook
------------------------
+Generic Webhook の使用
+----------------------
 
-By default, a special-purpose webhook with the name ``st2`` is already registered. Instead of
-using ``st2.core.webhook``, it allows you to specify any trigger that is known to |st2| (either by
-default or from custom sensors and triggers in packs), so you can use it to trigger rules that
-aren’t explicitly set up to be triggered by webhooks.
+|st2| では ``st2`` という名前の webhook (generic webhook) がデフォルトで登録されており、当該 Webhook へ POST リクエストを送ることで、ユーザは ``core.st2.webhook`` を定義しなくても |st2| に登録されている任意のトリガをディスパッチすることが出来ます。これによって、明示的に Webhook を定義していないルールを発動させることができます。
 
-The body of this request needs to be JSON and must contain the following attributes:
+generic webhook のリクエストボディには、以下の JSON 形式で値を必ず設定しないといけません。
 
-* ``trigger`` - Name of the trigger (e.g. ``mypack.mytrigger``)
-* ``payload`` - Object with a trigger payload.
+* ``trigger`` - トリガ名 (e.g. ``mypack.mytrigger``)
+* ``payload`` - トリガに渡すのペイロードデータ
 
-This example shows how to send data to the generic webhook using ``curl``, and how to match this
-data using rule criteria (replace ``localhost`` with your st2 host if called remotely):
+以下は curl から generic webhook に対するリクエスト送信と、当該リクエストにマッチするルール定義ファイルの例です。``localhost`` の部分は、|st2| ノードのホスト名に適宜置き換えて実行してください。
 
 .. sourcecode:: bash
 
     curl -X POST https://localhost/api/v1/webhooks/st2 -H "X-Auth-Token: matoken" -H "Content-Type: application/json" --data '{"trigger": "mypack.mytrigger", "payload": {"attribute1": "value1"}}'
 
-Rule:
+ルール定義ファイル:
 
 .. sourcecode:: yaml
 
@@ -160,40 +137,32 @@ Rule:
         parameters:
     ...
 
-The ``trigger.type`` attribute in the rule definition needs to be the same as the trigger name
-defined in the webhook payload body.
+ルール定義ファイルの ``trigger.type`` の値は、リクエストボディの ``trigger`` パラメータで指定する値と同じにする必要があります。
 
-Listing Registered Webhooks
+登録済み Webhook の一覧表示
 ---------------------------
 
-To list all registered webhooks, run:
+登録済みの Webhook の一覧を表示するには以下を実行します。
 
 .. code-block:: bash
 
     st2 webhook list
 
-My Webhook Isn't Working!
--------------------------
+Webhook がうまく動かない場合
+----------------------------
 
-If you're encountering issues with webhooks, such as |st2| failing to recognize incoming webhooks, or trigger
-instances not showing when expected, please see :doc:`Troubleshooting Webhooks</troubleshooting/webhooks>`.
+もし、登録した webhook が |st2| にうまく認識されなかったり、期待通りにトリガがディスパッチされない場合、まずは :doc:`Webhooks のトラブルシュート</troubleshooting/webhooks>` をご確認ください。
 
-When Not to Use Webhooks
-------------------------
+Webhook を使わない場合
+----------------------
 
-While webhooks are useful, they do have two drawbacks:
+Webhook はとても便利ですが、以下の欠点もあります。
 
-* **Not Bidirectional**  - Webhooks simply submit data into |st2|. So if you want data back from
-  |st2|, or an action execution ID, you'll have to get that data in an asynchronous fashion.
-* **No Guarantee of Execution** - Webhooks in |st2| do not guarantee an execution. It depends on
-  the rule configuration. Based upon the webhook contents, it may not execute any action, or may 
-  execute multiple actions.
+* **非双方向性** - Webhook は単純にデータを |st2| に送るだけなので、リクエストによって実行されたアクションの execution ID などのデータを |st2| から取得するといったことができません（別の非同期的なやり方が必要）。
+* **非実行保証** - |st2| は Webhook リクエストに対するアクション・ワークフローの実行を保証しません。これらの実行はルールの設定に依存し、リクエストボディに応じて、アクションが実行されない（もしくは複数のアクションが実行される）可能性があります。
 
-If you always want to execute a specific action or workflow, and/or you're looking for a
-guaranteed response, you can use the ``/v1/executions`` API. This is the same as explicitly
-running an action from the CLI with ``st2 run <mypack>.<myaction>``. 
-
-We can get a little insight into how this work using the ``--debug`` flag:
+もし確実にアクション・ワークフローを実行し、かつ実行に関する情報を取得したい場合は ``/v1/executinos`` API を利用します。これは ``st2 run <mypack>.<myaction>`` のようにアクションを明示的に実行した場合と同じです。
+``--debug`` オプションによって、このコマンドの裏側で実行される処理を確認できます。
 
 .. sourcecode:: bash
 
@@ -234,13 +203,10 @@ We can get a little insight into how this work using the ``--debug`` flag:
       stdout: Fri Mar 31 08:21:19 UTC 2017
       succeeded: true
 
-In addition to the "usual" output that shows the result of the execution, the ``--debug`` flag also
-shows all the API calls made during the course of the entire interaction, in the form of ``curl``
-commands.
+``--debug`` オプションを指定することで、通常の出力に加えて、アクションが実行されるまでの全過程で発行される API リクエストを ``curl`` コマンド形式で確認できます。
+なおこの結果は |st2| ホストで直接コマンドを実行した場合に生成される API リクエストで、Nginx などのプロキシを経由して実行した場合は、URI が ``/api`` になります。
 
-That output shows the API calls made when executing the command from the |st2| host. If you are
-accessing the API from a remote system, it will be proxied through nginx, using the ``/api`` URI.
-So remote calls will take this form:
+従って、リモートノードから特定のアクションを確実に実行し、結果を取得するには以下のようにします。
 
 .. sourcecode:: bash
 
