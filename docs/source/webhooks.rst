@@ -113,9 +113,6 @@ generic webhook のリクエストボディには、以下の JSON 形式で値�
 * ``trigger`` - トリガ名 (e.g. ``mypack.mytrigger``)
 * ``payload`` - トリガに渡すのペイロードデータ
 
-This example shows how to send data to the generic webhook using ``curl``, and how to match this
-data using rule criteria (replace ``localhost`` with your st2 host if called remotely):
-
 以下は curl から generic webhook に対するリクエスト送信と、当該リクエストにマッチするルール定義ファイルの例です。``localhost`` の部分は、|st2| ノードのホスト名に適宜置き換えて実行してください。
 
 .. sourcecode:: bash
@@ -142,37 +139,30 @@ data using rule criteria (replace ``localhost`` with your st2 host if called rem
 
 ルール定義ファイルの ``trigger.type`` の値は、リクエストボディの ``trigger`` パラメータで指定する値と同じにする必要があります。
 
-Listing Registered Webhooks
+登録済み Webhook の一覧表示
 ---------------------------
 
-To list all registered webhooks, run:
+登録済みの Webhook の一覧を表示するには以下を実行します。
 
 .. code-block:: bash
 
     st2 webhook list
 
-My Webhook Isn't Working!
--------------------------
+Webhook がうまく動かない場合
+----------------------------
 
-If you're encountering issues with webhooks, such as |st2| failing to recognize incoming webhooks, or trigger
-instances not showing when expected, please see :doc:`Troubleshooting Webhooks</troubleshooting/webhooks>`.
+もし、登録した webhook が |st2| にうまく認識されなかったり、期待通りにトリガがディスパッチされない場合、まずは :doc:`Webhooks のトラブルシュート</troubleshooting/webhooks>` をご確認ください。
 
-When Not to Use Webhooks
-------------------------
+Webhook を使わない場合
+----------------------
 
-While webhooks are useful, they do have two drawbacks:
+Webhook はとても便利ですが、以下の欠点もあります。
 
-* **Not Bidirectional**  - Webhooks simply submit data into |st2|. So if you want data back from
-  |st2|, or an action execution ID, you'll have to get that data in an asynchronous fashion.
-* **No Guarantee of Execution** - Webhooks in |st2| do not guarantee an execution. It depends on
-  the rule configuration. Based upon the webhook contents, it may not execute any action, or may 
-  execute multiple actions.
+* **非双方向性** - Webhook は単純にデータを |st2| に送るだけなので、リクエストによって実行されたアクションの execution ID などのデータを |st2| から取得するといったことができません（別の非同期的なやり方が必要）。
+* **非実行保証** - |st2| は Webhook リクエストに対するアクション・ワークフローの実行を保証しません。これらの実行はルールの設定に依存し、リクエストボディに応じて、アクションが実行されない（もしくは複数のアクションが実行される）可能性があります。
 
-If you always want to execute a specific action or workflow, and/or you're looking for a
-guaranteed response, you can use the ``/v1/executions`` API. This is the same as explicitly
-running an action from the CLI with ``st2 run <mypack>.<myaction>``. 
-
-We can get a little insight into how this work using the ``--debug`` flag:
+もし確実にアクション・ワークフローを実行し、かつ実行に関する情報を取得したい場合は ``/v1/executinos`` API を利用します。これは ``st2 run <mypack>.<myaction>`` のようにアクションを明示的に実行した場合と同じです。
+``--debug`` オプションによって、このコマンドの裏側で実行される処理を確認できます。
 
 .. sourcecode:: bash
 
@@ -213,13 +203,10 @@ We can get a little insight into how this work using the ``--debug`` flag:
       stdout: Fri Mar 31 08:21:19 UTC 2017
       succeeded: true
 
-In addition to the "usual" output that shows the result of the execution, the ``--debug`` flag also
-shows all the API calls made during the course of the entire interaction, in the form of ``curl``
-commands.
+``--debug`` オプションを指定することで、通常の出力に加えて、アクションが実行されるまでの全過程で発行される API リクエストを ``curl`` コマンド形式で確認できます。
+なおこの結果は |st2| ホストで直接コマンドを実行した場合に生成される API リクエストで、Nginx などのプロキシを経由して実行した場合は、URI が ``/api`` になります。
 
-That output shows the API calls made when executing the command from the |st2| host. If you are
-accessing the API from a remote system, it will be proxied through nginx, using the ``/api`` URI.
-So remote calls will take this form:
+従って、リモートノードから特定のアクションを確実に実行し、結果を取得するには以下のようにします。
 
 .. sourcecode:: bash
 
