@@ -372,6 +372,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-8">StackStorm v2.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
@@ -523,16 +524,20 @@ to make further API calls.</p>
 </div>
 <div class="section" id="proxy-auth-mode">
 <h2>Proxy Auth Mode<a class="headerlink" href="#proxy-auth-mode" title="Permalink to this headline">¶</a></h2>
-<p>Proxy mode can be used when there is a service that sits in front of StackStorm
+<p>Proxy mode can be used when there is a service (proxy) that sits in front of StackStorm
 that performs user authentication (ex: load balancer, apache, nginx, etc). When
-the frontend service authenticates a user it will need to make an API call
+the frontend service authenticates a user, it will need to make an API call
 <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">https://&lt;stackstorm&gt;/auth/v1/tokens</span></code> to the <code class="docutils literal notranslate"><span class="pre">st2auth</span></code> service in order
-to obtain an auth token. In this request the following headers need to be added:</p>
+to obtain an auth token. In this request the following CGI environment variables
+need to be set:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">remote_addr</span></code> Source of the request (hostname/ip).</li>
-<li><code class="docutils literal notranslate"><span class="pre">remote_user</span></code> User identity of proxy authenticated user.</li>
+<li><code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> - Source of the request (hostname/ip of the user who authenticated against the
+proxy).</li>
+<li><code class="docutils literal notranslate"><span class="pre">REMOTE_USER</span></code> - User identity (username) of proxy authenticated user.</li>
 </ul>
-<p>The request will return an auth token that can be used to make further API calls.</p>
+<p>The request will return an auth token that authenticated user can use to make further API calls.</p>
+<p>When using a reverse proxy such as Apache in front of st2auth, those two CGI environment variables
+are usually set automatically by a proxy upon successful authentication.</p>
 </div>
 <div class="section" id="auth-backends">
 <span id="ref-auth-backends"></span><h2>Auth Backends<a class="headerlink" href="#auth-backends" title="Permalink to this headline">¶</a></h2>

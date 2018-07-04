@@ -372,6 +372,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#st2-v2-8">StackStorm v2.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#st2-v2-5">StackStorm v2.5</a></li>
@@ -468,6 +469,34 @@
             
   <div class="section" id="upgrade-notes">
 <span id="id1"></span><h1>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="st2-v2-8">
+<span id="ref-upgrade-nptes-v2-8"></span><h2>StackStorm v2.8<a class="headerlink" href="#st2-v2-8" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">This version introduces new Orchestra runner and Orchestra workflows. For this functionality
+to work, new <code class="docutils literal notranslate"><span class="pre">st2workflowengine</span></code> service needs to be installed and running.</p>
+<p>If you are installing StackStorm on a new server using the official installation script this
+service is automatically installed and started.</p>
+<p>If you are  upgrading from a previous release using instructions from the <a class="reference internal" href="install/upgrades.html"><span class="doc">Upgrades</span></a>
+documentation page, you need to ensure <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> file contains a new
+<code class="docutils literal notranslate"><span class="pre">workflow_engine</span></code> section with the corresponding <code class="docutils literal notranslate"><span class="pre">logging</span></code> config option, otherwise the
+service won’t start.</p>
+<p>After you have completed all the steps from the “General Upgrade Procedure” page, you need to add
+the following entry to <code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> config file:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[workflow_engine]</span>
+<span class="na">logging</span> <span class="o">=</span> <span class="s">/etc/st2/logging.workflowengine.conf</span>
+</pre></div>
+</div>
+<p>After you have saved the configuration file you need to start the <code class="docutils literal notranslate"><span class="pre">st2workflowengine</span></code> service
+(all other services should already be running).</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">sudo st2ctl start</span>
+</pre></div>
+</div>
+<p>You can verify that the new <code class="docutils literal notranslate"><span class="pre">st2workflowengine</span></code> service has indeed been started by running
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">st2ctl</span> <span class="pre">status</span></code> and by inspecting the service log file at
+<code class="docutils literal notranslate"><span class="pre">/var/log/st2/st2workflowengine.log</span></code>.</p>
+</li>
+</ul>
+</div>
 <div class="section" id="st2-v2-7">
 <h2>StackStorm v2.7<a class="headerlink" href="#st2-v2-7" title="Permalink to this headline">¶</a></h2>
 <ul>

@@ -373,6 +373,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../upgrade_notes.html">Upgrade Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-8">StackStorm v2.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-7">StackStorm v2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-6">StackStorm v2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrade_notes.html#st2-v2-5">StackStorm v2.5</a></li>
@@ -532,6 +533,14 @@ an idea of what major changes happened with each release. You may also want to t
 <p>The following sections call out the migration scripts that need to be run when upgrading to the
 respective version. If you are upgrading across multiple versions, make sure you run the scripts for
 any skipped versions:</p>
+<div class="section" id="v2-8">
+<h4>v2.8<a class="headerlink" href="#v2-8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>This version introduced new <code class="docutils literal notranslate"><span class="pre">st2workflowengine</span></code> service which needs to be configured in
+<code class="docutils literal notranslate"><span class="pre">/etc/st2/st2.conf</span></code> config file for it to work. For more information, please refer to Upgrade
+Notes - <a class="reference internal" href="../upgrade_notes.html#ref-upgrade-nptes-v2-8"><span class="std std-ref">StackStorm v2.8</span></a>.</li>
+</ul>
+</div>
 <div class="section" id="v2-5">
 <h4>v2.5<a class="headerlink" href="#v2-5" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
