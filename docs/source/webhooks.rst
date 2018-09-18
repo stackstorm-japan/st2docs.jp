@@ -12,7 +12,7 @@ Webhook は後者に大別され、JSON か URL エンコーディングされ�
 
 センサを使うことで、より細かい粒度でかつ厳格なシステム連携ができます。
 
-一方、Webhook によってより簡単にシステム連携できるようになります。例えば、すでにあるシステム連携のスクリプトがある場合、リクエストの送信先を |st2| に変えるだけで、簡単に |st2| によるイベントハンドリングを行えます。
+一方、Webhook によってより簡単にシステム連携できるようになります。例えば、特定のシステムと連携するスクリプトやソフトウェアがある場合、リクエストの送信先を |st2| の API に変えるだけで、簡単に |st2| によるイベントハンドリングを行えます。
 
 また GitHub など既に Webhook 機能を提供しているサードパーティ製システムと連携が容易である点でも Webhook は有用です。
 
@@ -210,4 +210,4 @@ Webhook はとても便利ですが、以下の欠点もあります。
 
 .. sourcecode:: bash
 
-    curl -X POST https://[ST2_IP]/v1/executions -H  'Connection: keep-alive' -H  'Accept-Encoding: gzip, deflate' -H  'Accept: */*' -H  'User-Agent: python-requests/2.11.1' -H  'content-type: application/json' -H  'X-Auth-Token: matoken' -H  'Content-Length: 69' --data-binary '{"action": "core.local", "user": null, "parameters": {"cmd": "date"}}'
+    curl -X POST https://[ST2_IP]/api/v1/executions -H  'Connection: keep-alive' -H  'Accept-Encoding: gzip, deflate' -H  'Accept: */*' -H  'User-Agent: python-requests/2.11.1' -H  'content-type: application/json' -H  'X-Auth-Token: matoken' -H  'Content-Length: 69' --data-binary '{"action": "core.local", "user": null, "parameters": {"cmd": "date"}}'

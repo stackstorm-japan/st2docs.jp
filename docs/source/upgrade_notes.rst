@@ -3,12 +3,125 @@
 Upgrade Notes
 =============
 
-.. _ref-upgrade-nptes-v2-8:
+.. _ref-upgrade-notes-v2-9:
+
+|st2| v2.9
+----------
+
+* Trigger parameters and payload schema validation is now enabled by default
+  (``system.validate_trigger_parameters`` and ``system.validate_trigger_payload`` config options
+  now default to ``True``).
+
+  This means that trigger parameters are now validated against the ``parameters_schema`` defined on
+  the trigger type when creating a rule and trigger payload is validated against ``payload_schema``
+  when dispatching a trigger via the sensor or via the webhooks API endpoint.
+
+  This provides a much safer and user-friendly default value.
+
+  Previously we didn't validate trigger payload for custom (non-system) triggers when dispatching
+  a trigger via webhook which meant that webhooks API endpoint would silently accept an invalid
+  trigger (e.g. referenced trigger doesn't exist in the database or the payload doesn't validate
+  against the ``payload_schema``), but ``TriggerInstanceDB`` object would never be created
+  because creation failed inside the ``st2rulesengine`` service. This would make such issues very
+  hard to troubleshoot because only way to find out about this failure would be to inspect the
+  ``st2rulesengine`` service logs.
+
+  If you want to revert to the old behavior (validation is only performed for system triggers),
+  you can do that by setting ``system.validate_trigger_parameters`` and
+  ``system.validate_trigger_payload`` config option to ``False`` and restart the services
+  (``sudo st2ctl restart``).
+
+  Keep in mind that having this functionality enabled is strongly advised since it allows users
+  to catch various issues related to typos, invalid payload, etc. much easier and faster.
+
+  Before (webhook references an invalid trigger which doesn't exist in the database):
+
+  .. code-block:: bash
+
+    $ curl -X POST "http://127.0.0.1:9101/v1/webhooks/st2" -H "Content-Type: application/json" -data '{"trigger": "doesnt.exist", "payload": {"attribute1": "value1"}}' -H "St2-Trace-Tag: woo"
+    {
+        "trigger": "doesnt.exist",
+        "payload": {
+            "attribute1": "value1"
+        }
+    }
+
+  After:
+
+  .. code-block:: bash
+
+    $ curl -X POST "http://127.0.0.1:9101/v1/webhooks/st2" -H "Content-Type: application/json" -data '{"trigger": "doesnt.exist", "payload": {"attribute1": "value1"}}' -H "St2-Trace-Tag: woo"
+    {
+        "faultstring": "Trigger payload validation failed and validation is enabled, not dispatching a trigger \"doesnt.exist\" ({u'attribute1': u'value1'}): Trigger type with reference \"doesnt.exist\" doesn't exist in the database"
+    }
+
+  Before (trigger payload doesn't validate against the payload schema):
+
+  .. code-block:: bash
+
+    $ curl -X POST "http://127.0.0.1:9101/v1/webhooks/st2" -H "Content-Type: application/json" -data '{"trigger": "core.st2.webhook", "payload": {"headers": "invalid", "body": {}}}' -H "St2-Trace-Tag: woo"
+    {
+        "trigger": "core.st2.webhook",
+        "payload": {
+            "body": {},
+            "headers": "invalid"
+        }
+    }
+
+  After:
+
+  .. code-block:: bash
+
+    $ curl -X POST "http://127.0.0.1:9101/v1/webhooks/st2" -H "Content-Type: application/json" -data '{"trigger": "core.st2.webhook", "payload": {"headers": "invalid", "body": {}}}' -H "St2-Trace-Tag: woo"
+    {
+        "faultstring": "Trigger payload validation failed and validation is enabled, not dispatching a trigger \"core.st2.webhook\" ({u'body': {}, u'headers': u'invalid'}): u'invalid' is not of type 'object', 'null'\n\nFailed validating 'type' in schema['properties']['headers']:\n    {'type': ['object', 'null']}\n\nOn instance['headers']:\n    u'invalid'"
+    }
+
+* ``GET /v1/executions/<execution id>/output[?output_type=stdout/stderr/other]`` API endpoint has
+  been made non-blocking and it now only returns data produced by the execution so far (or all data
+  if the execution has already finished).
+
+  If you are interested in the real-time execution output as it's produced, you should utilize the
+  general purpose stream API endpoint or a new execution output stream API endpoint which has been
+  added in |st2| v2.9. For more information, please refer to the
+  :doc:`/reference/action_output_streaming` documentation page.
+* |st2| timers moved from ``st2rulesengine`` to ``st2timersengine`` service in ``v2.9``. Moving timers
+  out of rules engine allows scaling rules and timers independently. ``st2timersengine`` is the new
+  process that schedules all the user timers. Please note that when upgrading from older versions, you
+  will need to carefully accept changes to ``st2.conf`` file. Otherwise, you risk losing access to
+  ``st2`` database in MongoDB.
+
+  .. Warning
+
+    Please back up ``/etc/st2/st2.conf`` before upgrade.
+
+  Please ensure that the following configuration section is enabled in ``/etc/st2/st2.conf``:
+
+  .. code-block:: ini
+
+    [timersengine]
+    logging = /etc/st2/logging.timersengine.conf
+
+  If you are already using a ``timer`` section in ``/etc/st2/st2.conf``, you can append the logging
+  configuration parameter to the timer section too.
+
+  .. code-block:: ini
+
+    [timer]
+    local_timezone = America/Los_Angeles
+    logging = conf/logging.timersengine.conf
+
+  We recommend renaming the ``timer`` config section to ``timersengine``. Though deprecated,
+  using the ``timer`` section is still supported for backwards compatibility. In a future release,
+  support for the ``timer`` section will be removed and ``timersengine`` will be the only way to
+  configure timers.
+
+.. _ref-upgrade-notes-v2-8:
 
 |st2| v2.8
 ----------
 
-* This version introduces new Orchestra runner and Orchestra workflows. For this functionality
+* This version introduces new Orquesta runner and Orquesta workflows. For this functionality
   to work, new ``st2workflowengine`` service needs to be installed and running.
 
   If you are installing StackStorm on a new server using the official installation script this

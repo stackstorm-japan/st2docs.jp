@@ -33,6 +33,17 @@ key-value ペアの値を登録方法
     st2 key list
     # To list all the key-value pairs in the datastore
     st2 key list -n -1
+    # To list all the system and user scoped datstore items (default behavior)
+    st2 key list --scope=all
+    # To list all the system scoped key-value pairs
+    st2 key list --scope=system
+    # To list all the key-value pairs scoped to the current user
+    st2 key list --scope=user
+    # To list all the key-value pairs scoped to a particular user
+    # NOTE: When RBAC is enabled, only admins can list key-value pairs scoped to
+    # a different user. Regular users can only list key-value pairs scoped to
+    # themselves.
+    st2 key list --scope=user --user=john
 
     # Get value for key "os_keystone_endpoint"
     st2 key get os_keystone_endpoint
@@ -63,21 +74,20 @@ CLI からの数値、オブジェクト、配列値の登録・取得
 
     st2 key set retention_days 7
 
-    
 ``object`` 型の値を登録するには、以下のように JSON 形式にシリアライズします。
 
 .. code-block:: bash
 
     st2 key set complex_data '{"name": "Dave Smith", "age": 7, "is_parent": True}'
 
-    
+
 ``array`` 型の値を登録するには、同様にに JSON 形式にシリアライズします。
 
 .. code-block:: bash
 
     st2 key set number_list '[1, 2, 3, 4]'
     st2 key set object_list '[{"name": "Eric Jones"}, {"name": "Bob Seger"}]'
-    
+
 ファイルから key-value ペアを読み込む方法
 -----------------------------------------
 
@@ -184,7 +194,7 @@ YAML 形式のデータも同様に読み込ませることができます。以
     +---------------+-----------------------+--------+--------+------+-----+
 
 同様に YAML 形式でも指定できます。
-    
+
 .. code-block:: yaml
 
     ---
@@ -219,7 +229,7 @@ JSON 形式の場合と同様に、以下のコマンドでロードされます
     |               | purpose traffic",     |        |        |      |     |
     |               | "tag": 123}           |        |        |      |     |
     +---------------+-----------------------+--------+--------+------+-----+
-    
+
 .. _datastore-scopes-in-key-value-store:
 
 データのスコープ設定
@@ -279,7 +289,7 @@ YAML
     - name: date_cmd
       value: date -u
       scope: user
-    
+
 .. _datastore-ttl:
 
 登録データの TTL
@@ -318,6 +328,7 @@ YAML
     - name: date_cmd
       value: date -u
       ttl: 3600
+
 
 Python Client から値を設定・取得
 --------------------------------
@@ -400,7 +411,7 @@ TTL を設定した key-value ペアを作成します。
     >>> client.keys.update(KeyValuePair(name='os_keystone_endpoint', value='http://localhost:5000/v2.0', ttl=600))
 
 .. _referencing-key-value-pairs-in-action-definitions:
-    
+
 アクション定義ファイルから key-value ペアを取得する方法
 -------------------------------------------------------
 
@@ -409,11 +420,11 @@ key-value ペアはルール定義ファイルから置換構文を用いて参�
 以下の簡単なアクション定義ファイルの例で解説します。
 
 .. code-block:: bash
-   
+
     st2 key set error_message "Remediation failure"
 
 .. code-block:: yaml
-                
+
     ---
     description: Remediates a host.
     enabled: true
@@ -427,8 +438,8 @@ key-value ペアはルール定義ファイルから置換構文を用いて参�
         type: string
       error_message:
         type: string
-        default: "{{ st2kv.system.error_message }}"    
-    
+        default: "{{ st2kv.system.error_message }}"
+
 
 データストアから取得できる値のデータ型は文字列以外に以下のデータ型をサポートしています。
 
@@ -447,7 +458,7 @@ key-value ペアはルール定義ファイルから置換構文を用いて参�
 これらの値を JSON 形式でシリアライズして登録した場合、アクション定義ファイルから取り出す場合、自動的にデータを復元（デシリアライズ）及び解析し ``st2kv.system`` パラメータから参照できるようにしています。
 
 .. code-block:: bash
-   
+
     st2 key set username "stanley"
     st2 key set -e password "$ecret1!"
     st2 key set num_network_adapters 1
@@ -455,7 +466,7 @@ key-value ペアはルール定義ファイルから置換構文を用いて参�
     st2 key set dns_servers '["10.0.0.10", "10.0.0.11"]'
 
 .. code-block:: yaml
-                    
+
     ---
     description: Provisions a VM
     enabled: true
