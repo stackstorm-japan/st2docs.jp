@@ -1,87 +1,56 @@
 |st2| 概要
 ==========
 
-About
------
+はじめに
+--------
 
-|st2| is a platform for integration and automation across services and tools. It ties together
-your existing infrastructure and application environment so you can more easily automate that
-environment. It has a particular focus on taking actions in response to events.
+|st2| は複数のサービスツールを統合自動化するプラットフォームです。既存のインフラ・アプリケーション環境を結びつけることにより、こうした環境の運用を自動化できます。特にシステムから発生するイベントを検知し、それに対するオペレーションの定義と実行に特化しています。
 
-|st2| helps automate common operational patterns. Some examples are:
+|st2| による運用自動化のユースケースの例を以下に示します。
 
-* **Facilitated Troubleshooting** - triggering on system failures captured by Nagios, Sensu, New
-  Relic and other monitoring systems, running a series of diagnostic checks on physical nodes,
-  OpenStack or Amazon instances, and application components, and posting results to a shared
-  communication context, like HipChat or JIRA.
-* **Automated remediation** - identifying and verifying hardware failure on OpenStack compute
-  node, properly evacuating instances and emailing admins about potential downtime, but if
-  anything goes wrong - freezing the workflow and calling PagerDuty to wake up a human.
-* **Continuous deployment** - build and test with Jenkins, provision a new AWS cluster, turn on
-  some traffic with the load balancer, and roll-forward or roll-back, based on NewRelic app
-  performance data.
+* **障害対応の自動化** -
+  `Nagios` や `Sensu`, `New Relic` などといったモニタリングシステムによる、物理ノード・OpenStack、または Amazon EC2 インスタンスなどのノード、またはアプリケーションプロセスの異常検知を起因として、HipChat や JIRA といったサービスにこうした情報を通知する使い方。
+* **自動復旧 (AR: Automated Remediation)** -
+  OpenStack のコンピュートノードで異常を検知した場合、適切にインスタンスを別のコンピュートノードに退避させ、予測されるダウンタイムを管理者に通知するという使い方。もし不測の事態が発生した場合は、ワークフローの処理を停止させ、PagerDuty を使って管理者を起こす。
+* **継続的デリバリ (CD: Continuous Deployment)** -
+  Jenkins によるテストと構築、AWS クラスタのプロビジョニングと LB の設定、NewRelic のパフォーマンスデータの基づいて環境の切り替え、または切り戻しをする使い方。
 
-|st2| helps you compose these and other operational patterns as rules and workflows or actions.
-These rules and workflows - the content within the |st2| platform - are stored *as code* which
-means they support the same approach to collaboration that you use today for code development.
-They can be shared with the broader open source community, for example via the `StackStorm
-community <https://www.stackstorm.com/community/>`_.
+|st2| はワークフロー（又はアクション）やルールによって、こうしたユースケースやそれ以外の運用を自動化するお手伝いをします。また、こうしたルールやワークフローといった StackStorm のコンテンツはコード化されており、ソフトウェア開発の分野 (とかく `StackStorm コミュニティ <https://www.stackstorm.com/community/>`_ などの OSS コミュニティ) ではお馴染みのコード共有のアプローチを通じて、広くお互いに助け合えることができます。
 
-How it Works
-------------
+システムの仕組み
+----------------
 
 .. figure:: /_static/images/architecture_diagram.jpg
     :align: center
 
     |st2| architecture diagram
 
-|st2| plugs into the environment via the extensible set of adapters containing sensors and actions.
+|st2| は、センサとアクションを含む拡張可能な仕組みを通じて、様々な環境と連携します。
 
-* **Sensors** are Python plugins for either inbound or outbound integration that receives or
-  watches for events respectively. When an event from external systems occurs and is processed by
-  a sensor, a |st2| trigger will be emitted into the system.
+* **センサ (Sensors)** は外部システムからの個々のイベントを取得、または監視しする Python プラグインです。センサがイベントを検知した場合 |st2| はトリガを起動させます。
 
-* **Triggers** are |st2| representations of external events. There are generic triggers (e.g.
-  timers, webhooks) and integration triggers (e.g. Sensu alert, JIRA issue updated). A new trigger
-  type can be defined by writing a sensor plugin.
+* **トリガ (Triggers)** は |st2| が外部システムのイベントを扱うための仕組みです。トリガにはタイマや webhook によって起動される一般トリガ (generic triggers) と、個別のサービスのイベント (Sensu のアラート発報や、JIRA の Issue の更新など) によって起動されるインテグレーショントリガ (integration triggers) が存在します。センサプラグインの記述によって、ユーザは新たなトリガを定義することができます。
 
-* **Actions** are |st2| outbound integrations. There are generic actions (ssh, REST call),
-  integrations (OpenStack, Docker, Puppet), or custom actions. Actions are either Python plugins,
-  or any scripts, consumed into |st2| by adding a few lines of metadata. Actions can be invoked
-  directly by user via CLI or API, or used and called as part of rules and workflows.
+* **アクション (Actions)** は |st2| の外のシステムに対して処理を行う仕組みです。これも ssh ログインや REST API の呼び出しなどといった一般アクション (generic actions) と、特定の pack (OpenStack, Docker, Pappet など) 用のアクションがあります。アクションは Python で記述されたプラグインだけでなく、任意のスクリプトを |st2| から起動させることができます。またアクションは CLI や API からの呼び出しによって直接実行することはもちろん、後述するルール (Rules) やワークフロー (Workflows) から呼び出すこともできます。
 
-* **Rules** map triggers to actions (or to workflows), applying matching criteria and mapping
-  trigger payload to action inputs.
+* **ルール (Rules)** は、トリガとアクション (又はワークフロー) のマッピングを行う仕組みです。条件 (criteria) を指定してやることで、トリガに特定の値が入力された場合にのみアクションを実行するといったことが出来ます。
 
-* **Workflows** stitch actions together into “uber-actions”, defining the order, transition
-  conditions, and passing the data. Most automations are more than one-step and thus need more
-  than one action. Workflows, just like “atomic” actions, are available in the Action library, and
-  can be invoked manually or triggered by rules.
+* **ワークフロー (Workflows)** は、複数のアクションを組み合わせた別のアクションを作る仕組みです。ワークフローでは、実行するアクションの順番、条件分岐、前後のアクションでの値の受け渡しといった処理が行えます。多くの自動化のケースにおいて、複数のアクションを組み合わせる必要が発生します。|st2| で言うアクションとは、ある一つの目的を達成するために定義された処理のことで、ワークフローはこうしたアクションのライブラリとも言えます。そして、ワークフローもアクション同様に手動で実行することも、ルールで定義したトリガーから実行させることもできます。
 
-* **Packs** are the units of content deployment. They simplify the management and sharing of |st2|
-  pluggable content by grouping integrations (triggers and actions) and automations (rules and
-  workflows). A growing number of packs are available on `StackStorm Exchange <https://exchange.stackstorm.org>`_. Users can create their own packs, share them on Github, or submit to
-  the StackStorm Exchange.
+* **パック (Packs)** は、上述のコンテンツをまとめたパッケージです。|st2| は上述のシステム連携を行う仕組み（トリガとアクション）と、自動化の仕組み（ルールとワークフロー）を一つの単位として管理されており、それらがプラグイン可能になっています。こうした仕組みによって、それぞれのシステム毎のコンテンツの管理・共有がし易くなります。現在、利用可能なパックは `StackStorm Exchange <https://exchange.stackstorm.org>`_ から確認できます。利用者は独自のパックを作成できるとともに、それを GitHub で公開し、更に StackStorm Exchange で共有することもできます。
 
-* **Audit trail** of action executions, manual or automated, is recorded and stored with full
-  details of triggering context and execution results. It is also captured in audit logs for
-  integrating with external logging and analytical tools: LogStash, Splunk, statsd, syslog.
+* **証跡 (Audit trail)** は、全ての手動・自動実行されたアクションの全記録（実行パラメータ、トリガに渡されたデータ、実行結果と出力結果）を保存します。更に、ここで記録したデータは LogStash, Splunk, statsd, syslog などといったログ収集・分析ツールに出力させることもできます。
 
+|st2| のサービスはモジュール化された複数のサービスによって構成されるアーキテクチャをしています。複数のサービスコンポーネントがメッセージバスを介した疎結合な構成にすることで、スケーラブルなサービスを提供できます。また |st2| は Web UI のほか、CLI クライアントや RESTful API を提供しています。更に同包の Python クライアントを通じて開発者の仕事がより楽になると期待しています。
 
-|st2| is a service with modular architecture. It comprises loosely coupled service components that
-communicate over the message bus, and scales horizontally to deliver automation at scale. |st2|
-has a Web UI, a CLI client, and of course a full REST API. We also ship Python client bindings to
-make life easier for developers.
+|st2| は活発に開発を行っています。今後の機能改善や方向性の決定に際し、ユーザコニュニティからの要望・フィードバックを受け付けています。またプロジェクトへのコントリビューションはいつでも歓迎しています！
 
-|st2| is new and under active development. We are very keen to engage the community, to get
-feedback and refine our directions. Contributions are always welcome!
-
-What's Next?
+次のステップ
 ------------
 
-* Install and run - follow :doc:`/install/index`
-* Build a simple automation - follow :doc:`/start` Guide
-* Help us with directions - comment on the :doc:`/roadmap`
-* Explore the `StackStorm community <https://www.stackstorm.com/community/>`__
+* インストールと実行方法については、:doc:`インストールガイド </install/index>` をご参照ください。
+* オールインワン構成で試してみたい場合は、:doc:`クイックスタートガイド</start>` をご参照ください。
+* プロジェクトの方向性についてきになる方は :doc:`ロードマップ </roadmap>` をご参照ください。ご意見もお待ちしています。
+* もし宜しければ `StackStorm のユーザコミュニティ <https://www.stackstorm.com/community/>`__ にもご参加ください。
 
 .. include:: __engage_community.rst
