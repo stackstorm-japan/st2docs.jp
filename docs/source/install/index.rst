@@ -1,7 +1,6 @@
 インストール
 ============
 
-<<<<<<< HEAD
 ここでは |st2| をインストールする方法の全体像を示します。
 
 |st2| は、RPM 及び deb パッケージによるインストールの他、Docker による環境構築に加え、インストールスクリプトによる自動インストールといった、様々なインストール方法を提供しています。以下に |st2| がサポートするインストール方法の選択肢を示します。
@@ -18,12 +17,12 @@
   もご参照ください。
 * **Ansible Playbooks:**
   Ansible によるインストールを行う場合には、:doc:`/install/ansible` をご覧ください。
-* **Puppet Module:** For Puppet users, check this :doc:`/install/puppet` for
-  installing |st2|. A robust and idempotent method of installing and configuring |st2|.
 * **Puppet Module:**
   Puppet を用いて、堅牢で冪等に |st2| をインストール・設定する方法を知りたい方は :doc:`/install/puppet` をご覧ください。
 * **Docker:**
   |st2| は Docker イメージを提供しています。詳しくは :doc:`Docker による環境構築 <docker>` をご覧ください。
+* **High Availability**
+  商用環境の重要な処理の自動化を行うシステムには高い可用性が求められます。|st2| は HA モードで実行することで、こうしたニーズに対応できます。:doc:`/install/k8s_ha` によって、複雑な構成のインフラ全体を環境依存を気にせずに自動構築できます。
 
 ニーズに合わせて最適な方法をお選びください。
 
@@ -75,6 +74,7 @@
     RHEL 7 / CentOS 7 <rhel7>
     RHEL 6 / CentOS 6 <rhel6>
     Docker <docker>
+    Kubernetes / HA <k8s_ha>
     Ansible Playbooks <ansible>
     Puppet Module <puppet>
     Extreme Workflow Composer <bwc>
