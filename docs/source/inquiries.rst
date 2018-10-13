@@ -1,22 +1,15 @@
 Inquiries
 =========
 
-|st2| 2.5 introduced a new feature that allows you to pause a workflow to wait for additional
-information. This is done by using a new action: ``core.ask``. These are called "Inquiries", and
-the idea is to allow you to "ask a question" in the middle of a workflow. This could be a question
-like "do I have approval to continue?" or "what is the second factor I should provide to this
-authentication service?"
+|st2| のバージョン 2.5 から、ワークフローの実行を一時停止させ、追加の情報を付加させる機能が追加されました。これは、新たに追加されたアクション ``core.ask`` を使います。これらの機能は "Inquiries (問い合わせ)" と呼ばれ、実行途中のワークフローに対して処理を確認することができます。これにより、ワークフローの実行途中で処理の継続を確認したり、２段階認証の入力を求めるといった使い方ができます。
 
-These use cases (and others) require the ability to pause a workflow mid-execution and wait for
-additional information. Inquiries make this possible. This document explains how to use them.
+このようなユースケースでは、ワークフローの実行途中で処理を一時停止させ、外から情報を与える機能が必要になります。"Inquiries" はこうした処理を可能にするもので、以下ではこの使い方について説明します。
 
 .. note::
 
-    As of now, Inquiries should be considered a "beta" feature. It has been exposed to general
-    use for a while now, and we have found and fixed several issues. It is still evolving, and
-    we would appreciate more feedback. The user experience as well as the new API functionality
-    should not be considered "stable" at this point. Please consider using this feature in your
-    test/dev deployments, and send us your feedback.
+    現時点では Inquiries はベータ版の機能です。通常通り使用いただいて問題ありませんが、
+    鋭意開発中でフィードバックを歓迎しています。UX はもとより API についても検討中の部分もあるため、
+    当該機能はテスト・開発環境でください。その際、フィードバックをお待ちしています。
 
 New ``core.ask`` Action
 -----------------------
