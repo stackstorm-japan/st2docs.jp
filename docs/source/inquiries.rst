@@ -1,29 +1,21 @@
 Inquiries
 =========
 
-|st2| 2.5 introduced a new feature that allows you to pause a workflow to wait for additional
-information. This is done by using a new action: ``core.ask``. These are called "Inquiries", and
-the idea is to allow you to "ask a question" in the middle of a workflow. This could be a question
-like "do I have approval to continue?" or "what is the second factor I should provide to this
-authentication service?"
+　|st2| のバージョン 2.5 から、ワークフローの実行を一時停止させ、追加の情報を付加させる機能が追加されました。これは、新たに追加されたアクション ``core.ask`` を使います。これらの機能は "Inquiries (問い合わせ)" と呼ばれ、実行途中のワークフローに対して処理を確認することができます。これにより、ワークフローの実行途中で処理の継続を確認したり、２段階認証の入力を求めるといった使い方ができます。
 
-These use cases (and others) require the ability to pause a workflow mid-execution and wait for
-additional information. Inquiries make this possible. This document explains how to use them.
+　このようなユースケースでは、ワークフローの実行途中で処理を一時停止させ、外から情報を与える機能が必要になります。"Inquiries" はこうした処理を可能にするもので、以下ではこの使い方について説明します。
 
 .. note::
 
-    As of now, Inquiries should be considered a "beta" feature. It has been exposed to general
-    use for a while now, and we have found and fixed several issues. It is still evolving, and
-    we would appreciate more feedback. The user experience as well as the new API functionality
-    should not be considered "stable" at this point. Please consider using this feature in your
-    test/dev deployments, and send us your feedback.
+    現時点では Inquiries はベータ版の機能です。通常通り使用いただいて問題ありませんが、
+    鋭意開発中でフィードバックを歓迎しています。UX はもとより API についても検討中の部分もあるため、
+    当該機能はテスト・開発環境でください。その際、フィードバックをお待ちしています。
 
-New ``core.ask`` Action
+``core.ask`` アクション
 -----------------------
 
-The best way to get started using Inquiries is to check out the new core action - ``core.ask`` - 
-and start using it in your workflows. This action is built on a new runner type: ``inquirer``,
-which performs the bulk of the logic required to pause workflows and wait for a response.
+　Inquiries を使い始める最も良い方法は、新しいアクション - ``core.ask`` - をワークフローで使ってみることです。
+このアクションは新しい実行タイプ (runner type) ``inquirer`` に基づいており、ワークフローの途中でリクエストを受け付けるため、処理を一時停止させます。
 
 .. code-block:: bash
 
@@ -45,39 +37,34 @@ which performs the bulk of the logic required to pause workflows and wait for a 
     | tags        |                                                          |
     +-------------+----------------------------------------------------------+
 
-The ``inquirer`` runner imposes a number of parameters that are, in turn, required by the
-``core.ask`` action:
+実行タイプ ``inquier`` は以下のパラメータを取ります。これらのパラメータはそのまま ``core.ask`` のパラメータになります。
 
-+-------------+---------------------------------------------------------+
-| Parameter   | Description                                             |
-+=============+=========================================================+
-| schema      | A JSON schema that will be used to validate             |
-|             | the response data. A basic schema will be provided      |
-|             | by default, or you can provide one here. Only valid     |
-|             | responses will cause the action to succeed, and the     |
-|             | workflow to continue.                                   |
-+-------------+---------------------------------------------------------+
-| ttl         | Time (in minutes) until an unacknowledged Inquiry is    |
-|             | garbage-collected. Set to 0 to disable garbage          |
-|             | collection for this Inquiry. NOTE - Inquiry garbage     |
-|             | collection is not enabled by default, so this field     |
-|             | does nothing unless it is turned on. See                |
-|             | `Garbage Collection for Inquiries`_ for more info.      |
-+-------------+---------------------------------------------------------+
-| roles       | A list of RBAC roles that are permitted to respond to   |
-|             | the action. Defaults to empty list, which permits all   |
-|             | roles. **This requires enterprise features**            |
-+-------------+---------------------------------------------------------+
-| users       | A list of users that are permitted to respond to        |
-|             | the action. Defaults to empty list, which permits all   |
-|             | users.                                                  |
-+-------------+---------------------------------------------------------+
-| route       | An arbitrary string that can be used to filter          |
-|             | different Inquiries inside rules. This can be helpful   |
-|             | for deciding who to notify of an incoming Inquiry.      |
-|             | See `Notifying Users of Inquiries using Rules`_ for     |
-|             | more info.                                              |
-+-------------+---------------------------------------------------------+
++-------------+---------------------------------------------------------------------------------+
+| パラメータ  | 説明                                                                            |
++=============+=================================================================================+
+| schema      | レスポンスデータをバリデート (validate) するための JSON スキーマを指定します。  |
+|             | デフォルトで基本スキーマ (basic schema) が指定されますが、ここでユーザ定義の    |
+|             | スキーマを指定することができます。ここで指定したバリデータで有効なレスポンス    |
+|             | のみがアクションを成功させ、ワークフロー処理を再開できます。                    |
++-------------+---------------------------------------------------------------------------------+
+| ttl         | ガーベージコレクション (以下、GC (Garbage Collection)) が応答の無いアクション   |
+|             | を処理するまでの時間 (単位：分) を指定します。ここに ``0`` を指定した場合       |
+|             | GC は起動しません。但し Inquiry の GC はデフォルトで無効化されているため、      |
+|             | ここで有効な値を設定しない限り GC は起動しません。詳しくは                      |
+|             | `Inquiries の GC (Garbage Collection)`_ をご参照ください。                      |
++-------------+---------------------------------------------------------------------------------+
+| roles       | 返答を許可するアクションを規定した RBAC ロールのリストを指定します。            |
+|             | デフォルトでは空リストになり、全てのロールを許可します。                        |
+|             | (エンタープライズ版で有効)                                                      |
++-------------+---------------------------------------------------------------------------------+
+| users       | レスポンスを許可するユーザのリストを指定します。                                |
+|             | デフォルトでは空リストになり、全てのユーザを許可します。                        |
++-------------+---------------------------------------------------------------------------------+
+| route       | 複数の異なるルール中で記述されている Inquiry でフィルタリングするための任意の   |
+|             | 文字列を指定します。これは、入力された Inquriy を誰に通知するかを決めるのに     |
+|             | 役立ちます。詳しくは `Notifying Users of Inquiries using Rules`_  をご参照      |
+|             | ください。                                                                      |
++-------------+---------------------------------------------------------------------------------+
 
 Using ``core.ask`` in a Workflow
 --------------------------------
@@ -504,8 +491,8 @@ All other users attempting to respond will be rejected, even if they are granted
 ``inquiry_respond`` RBAC permissions.
 
 
-Garbage Collection for Inquiries
---------------------------------
+Inquiries の GC (Garbage Collection)
+------------------------------------
 
 As alluded to in :doc:`Purging Old Operational Data </troubleshooting/purging_old_data>`, the
 ``st2garbagecollector`` service is also responsible for cleaning up old Inquiries. This is done by
